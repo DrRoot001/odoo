@@ -2,18 +2,19 @@
 
 ## Current state
 
-Follow-up PR [#2](https://github.com/DrRoot001/odoo/pull/2) is **open** against `20.0`. Its CodeRabbit status check is successful. The complete documentation package through Phase 16 is available on `docs/erp-system-documentation` at commit `07b69570`.
+Follow-up PR [#2](https://github.com/DrRoot001/odoo/pull/2) is **open** against `20.0`. Its CodeRabbit status context is successful, but the associated bot comment states that automatic reviews are not enabled because the repository has fewer than 10 stars. The complete documentation package through Phase 17 is available on `docs/erp-system-documentation` at commit `eeca2364`.
 
 | Reference | Commit/state |
 |---|---|
 | `20.0` base branch | `5f1f2c61` |
-| Documentation branch | `07b69570` |
+| Documentation branch | `eeca2364` |
 | Follow-up PR | #2, open |
+| Human reviews | None recorded |
 | Required owner action | Review and merge PR #2 |
 
 ## Included post-merge phases
 
-PR #2 contains Phases 10–16:
+PR #2 contains Phases 10–17:
 
 - Testing and QA evidence.
 - Deployment and operations.
@@ -22,6 +23,7 @@ PR #2 contains Phases 10–16:
 - Final completeness audit.
 - Final release handoff.
 - Publication audit.
+- Publication status.
 
 ## Completion boundary
 
