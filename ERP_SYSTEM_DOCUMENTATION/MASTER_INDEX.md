@@ -15,6 +15,8 @@
 - [Functional requirements register](02_REQUIREMENTS/Functional_Requirements_Document.md) — Phase 3 detailed FRD and `Functional_Requirements.csv`
 - [Validation rules](02_REQUIREMENTS/Validation_Rules.csv) — constraints, dependencies, security, jobs, reports
 - [Requirements traceability](10_TESTING/Requirements_Traceability.csv) — requirement-to-source/test links
+- [Master traceability matrix](10_TESTING/Master_Traceability_Matrix.csv) — Phase 13 requirement-to-module/UI/API/database/test chain
+- [Traceability gaps](10_TESTING/Traceability_Gaps.csv)
 - [Module catalog](03_MODULE_DOCUMENTATION/Module_Catalog.md) — 666 per-addon evidence pages in `03_MODULE_DOCUMENTATION/addons/`
 - [Module hierarchy](03_MODULE_DOCUMENTATION/Module_Hierarchy.md) — normalized Phase 2 domain classification
 - [Detailed module specifications](03_MODULE_DOCUMENTATION/Module_Detail_Methodology.md) — Phase 4 evidence structure for all 666 modules
