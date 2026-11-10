@@ -1,7 +1,10 @@
-# Improvement Roadmap
+# Improvement Roadmap — Phase 12
 
-1. Select the actual deployed addon set and capture a sanitized registry/database schema.
-2. Export route contracts and permissions from the running instance.
-3. Resolve XML view inheritance and generate a deployment-specific screen/navigation catalog.
-4. Execute selected module tests, record coverage, and add missing acceptance tests.
-5. Validate integration credentials, retries, rate limits, observability, backup/restore, and security controls in a staging environment.
+1. **Establish deployment truth:** capture a sanitized installed-module registry, database schema, configuration, and route/security export.
+2. **Close operational evidence:** define topology, backup retention, encryption, restore drills, monitoring, alerting, RPO/RTO, and rollback procedures.
+3. **Execute quality gates:** run selected backend, HTTP, browser, security, migration, and integration tests; record exact commands and results.
+4. **Triage technical debt:** review the 1,682 marker rows and 164 `NotImplementedError` rows, assigning ownership and release impact.
+5. **Harden security-sensitive surfaces:** review the safe-evaluation wildcard entries, external routes, record rules, attachment access, and optional integrations.
+6. **Maintain traceability:** link each accepted finding to an issue, remediation commit, regression test, and deployment verification result.
+
+This roadmap separates recommendations from existing implementation.
