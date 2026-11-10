@@ -1,120 +1,184 @@
 # Module: http_routing
 
 - **Module ID:** MOD-107
-- **Path:** `addons/http_routing`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/http_routing`
 - **Manifest:** `addons/http_routing/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Web Routing
+**Purpose:** Web Routing
 
+**Manifest description:**
 
 Proposes advanced routing options not available in web or base to keep
 base modules simple.
 
+**Scope evidence:** The module contains 63 files, including 11 Python, 2 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `web`.
 
-Declared dependencies: `web`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 3
+- Controller/API files: 2
+- XML/data/view/template files: 2
+- Browser asset files: 0
+- Security files: 0
+- Test files: 3
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 11 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 4 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 2 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 2 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "web"
-  ],
-  "data": [
-    "views/http_routing_template.xml",
-    "views/res_lang_views.xml"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/http_routing/__init__.py` (12 lines)
-- `addons/http_routing/__manifest__.py` (20 lines)
-- `addons/http_routing/controllers/__init__.py` (4 lines)
-- `addons/http_routing/controllers/main.py` (25 lines)
-- `addons/http_routing/i18n/ar.po` (202 lines)
-- `addons/http_routing/i18n/az.po` (201 lines)
-- `addons/http_routing/i18n/bg.po` (197 lines)
-- `addons/http_routing/i18n/bs.po` (200 lines)
-- `addons/http_routing/i18n/ca.po` (210 lines)
-- `addons/http_routing/i18n/cs.po` (202 lines)
-- `addons/http_routing/i18n/da.po` (204 lines)
-- `addons/http_routing/i18n/de.po` (212 lines)
-- `addons/http_routing/i18n/el.po` (200 lines)
-- `addons/http_routing/i18n/es.po` (208 lines)
-- `addons/http_routing/i18n/es_419.po` (210 lines)
-- `addons/http_routing/i18n/et.po` (209 lines)
-- `addons/http_routing/i18n/fa.po` (202 lines)
-- `addons/http_routing/i18n/fi.po` (212 lines)
-- `addons/http_routing/i18n/fr.po` (207 lines)
-- `addons/http_routing/i18n/he.po` (204 lines)
-- `addons/http_routing/i18n/hi.po` (197 lines)
-- `addons/http_routing/i18n/hr.po` (207 lines)
-- `addons/http_routing/i18n/http_routing.pot` (194 lines)
-- `addons/http_routing/i18n/hu.po` (207 lines)
-- `addons/http_routing/i18n/id.po` (201 lines)
-- `addons/http_routing/i18n/it.po` (212 lines)
-- `addons/http_routing/i18n/ja.po` (204 lines)
-- `addons/http_routing/i18n/kab.po` (198 lines)
-- `addons/http_routing/i18n/ko.po` (204 lines)
-- `addons/http_routing/i18n/ku.po` (197 lines)
-- `addons/http_routing/i18n/lo.po` (203 lines)
-- `addons/http_routing/i18n/lt.po` (205 lines)
-- `addons/http_routing/i18n/lv.po` (198 lines)
-- `addons/http_routing/i18n/mn.po` (202 lines)
-- `addons/http_routing/i18n/my.po` (197 lines)
-- `addons/http_routing/i18n/nb.po` (202 lines)
-- `addons/http_routing/i18n/nl.po` (204 lines)
-- `addons/http_routing/i18n/pl.po` (210 lines)
-- `addons/http_routing/i18n/pt.po` (205 lines)
-- `addons/http_routing/i18n/pt_BR.po` (213 lines)
-- `addons/http_routing/i18n/ro.po` (208 lines)
-- `addons/http_routing/i18n/ru.po` (204 lines)
-- `addons/http_routing/i18n/sk.po` (201 lines)
-- `addons/http_routing/i18n/sl.po` (201 lines)
-- `addons/http_routing/i18n/sr@latin.po` (202 lines)
-- `addons/http_routing/i18n/sv.po` (211 lines)
-- `addons/http_routing/i18n/th.po` (203 lines)
-- `addons/http_routing/i18n/tr.po` (211 lines)
-- `addons/http_routing/i18n/uk.po` (205 lines)
-- `addons/http_routing/i18n/uz.po` (229 lines)
-- `addons/http_routing/i18n/vi.po` (204 lines)
-- `addons/http_routing/i18n/zh_CN.po` (205 lines)
-- `addons/http_routing/i18n/zh_TW.po` (202 lines)
-- `addons/http_routing/models/__init__.py` (6 lines)
-- `addons/http_routing/models/ir_http.py` (644 lines)
-- `addons/http_routing/models/ir_qweb.py` (15 lines)
-- `addons/http_routing/models/res_lang.py` (14 lines)
-- `addons/http_routing/static/shapes/404.svg` (15 lines)
-- `addons/http_routing/tests/__init__.py` (2 lines)
-- `addons/http_routing/tests/common.py` (126 lines)
-- `addons/http_routing/tests/test_res_lang.py` (14 lines)
-- `addons/http_routing/views/http_routing_template.xml` (270 lines)
-- `addons/http_routing/views/res_lang_views.xml` (24 lines)
+- **Description:** 3 model declarations, 30 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/http_routing/models/res_lang.py:7`, `addons/http_routing/models/ir_qweb.py:6`, `addons/http_routing/models/ir_http.py:49`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### HTTP/API surface
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 2 controller files and 2 route declarations.
+- **Evidence:** `addons/http_routing/controllers/main.py:12`, `addons/http_routing/controllers/main.py:23`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 2 XML files and 0 JavaScript/TypeScript files; static XML analysis found 18 record/template/menu identifiers.
+- **Evidence:** `addons/http_routing/views/http_routing_template.xml:3`, `addons/http_routing/views/http_routing_template.xml:16`, `addons/http_routing/views/http_routing_template.xml:23`, `addons/http_routing/views/http_routing_template.xml:62`, `addons/http_routing/views/http_routing_template.xml:73`, `addons/http_routing/views/http_routing_template.xml:84`, `addons/http_routing/views/http_routing_template.xml:94`, `addons/http_routing/views/http_routing_template.xml:105`, `addons/http_routing/views/http_routing_template.xml:116`, `addons/http_routing/views/http_routing_template.xml:127`, `addons/http_routing/views/http_routing_template.xml:138`, `addons/http_routing/views/http_routing_template.xml:174`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/http_routing/tests/test_res_lang.py`, `addons/http_routing/tests/common.py`, `addons/http_routing/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 2; representative identifiers: `HTTP Error`, `error_message`, `http_error_debug`, `http_error_container`, `4xx`, `4xx (oe_structure_4xx_layout_1)`, `400`, `400 (oe_structure_400_layout_1)`, `403`, `403 (oe_structure_403_layout_1)`, `Page Not Found`, `415`, `415 (oe_structure_415_layout_1)`, `422`, `422 (oe_structure_422_layout_1)`, `500`, `res_lang_form_inherit_model`, `res_lang_tree_inherit_model`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 16; representative evidence: `addons/http_routing/views/http_routing_template.xml:3`, `addons/http_routing/views/http_routing_template.xml:16`, `addons/http_routing/views/http_routing_template.xml:23`, `addons/http_routing/views/http_routing_template.xml:62`, `addons/http_routing/views/http_routing_template.xml:73`, `addons/http_routing/views/http_routing_template.xml:84`, `addons/http_routing/views/http_routing_template.xml:94`, `addons/http_routing/views/http_routing_template.xml:105`, `addons/http_routing/views/http_routing_template.xml:116`, `addons/http_routing/views/http_routing_template.xml:127`, `addons/http_routing/views/http_routing_template.xml:138`, `addons/http_routing/views/http_routing_template.xml:174`
+- View/action field declarations: 4; representative evidence: `addons/http_routing/views/res_lang_views.xml:5`, `addons/http_routing/views/res_lang_views.xml:7`, `addons/http_routing/views/res_lang_views.xml:16`, `addons/http_routing/views/res_lang_views.xml:18`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/http_routing/__manifest__.py`
+- **HTTP entry points:** `addons/http_routing/controllers/main.py:12`, `addons/http_routing/controllers/main.py:23`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 3
+- Representative model evidence: inherits `res.lang` (addons/http_routing/models/res_lang.py:7); inherits `ir.qweb` (addons/http_routing/models/ir_qweb.py:6); inherits `ir.http` (addons/http_routing/models/ir_http.py:49)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 2
+- Route evidence: `addons/http_routing/controllers/main.py:12`, `addons/http_routing/controllers/main.py:23`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `web`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/http_routing/__init__.py`
+- `addons/http_routing/__manifest__.py`
+- `addons/http_routing/controllers/__init__.py`
+- `addons/http_routing/controllers/main.py`
+- `addons/http_routing/i18n/ar.po`
+- `addons/http_routing/i18n/az.po`
+- `addons/http_routing/i18n/bg.po`
+- `addons/http_routing/i18n/bs.po`
+- `addons/http_routing/i18n/ca.po`
+- `addons/http_routing/i18n/cs.po`
+- `addons/http_routing/i18n/da.po`
+- `addons/http_routing/i18n/de.po`
+- `addons/http_routing/i18n/el.po`
+- `addons/http_routing/i18n/es.po`
+- `addons/http_routing/i18n/es_419.po`
+- `addons/http_routing/i18n/et.po`
+- `addons/http_routing/i18n/fa.po`
+- `addons/http_routing/i18n/fi.po`
+- `addons/http_routing/i18n/fr.po`
+- `addons/http_routing/i18n/he.po`
+- `addons/http_routing/i18n/hi.po`
+- `addons/http_routing/i18n/hr.po`
+- `addons/http_routing/i18n/http_routing.pot`
+- `addons/http_routing/i18n/hu.po`
+- `addons/http_routing/i18n/id.po`
+- `addons/http_routing/i18n/it.po`
+- `addons/http_routing/i18n/ja.po`
+- `addons/http_routing/i18n/kab.po`
+- `addons/http_routing/i18n/ko.po`
+- `addons/http_routing/i18n/ku.po`
+- `addons/http_routing/i18n/lo.po`
+- `addons/http_routing/i18n/lt.po`
+- `addons/http_routing/i18n/lv.po`
+- `addons/http_routing/i18n/mn.po`
+- `addons/http_routing/i18n/my.po`
+- `addons/http_routing/i18n/nb.po`
+- `addons/http_routing/i18n/nl.po`
+- `addons/http_routing/i18n/pl.po`
+- `addons/http_routing/i18n/pt.po`
+- `addons/http_routing/i18n/pt_BR.po`
+- `addons/http_routing/i18n/ro.po`
+- `addons/http_routing/i18n/ru.po`
+- `addons/http_routing/i18n/sk.po`
+- `addons/http_routing/i18n/sl.po`
+- `addons/http_routing/i18n/sr@latin.po`
+- `addons/http_routing/i18n/sv.po`
+- `addons/http_routing/i18n/th.po`
+- `addons/http_routing/i18n/tr.po`
+- `addons/http_routing/i18n/uk.po`
+- `addons/http_routing/i18n/uz.po`
+- `addons/http_routing/i18n/vi.po`
+- `addons/http_routing/i18n/zh_CN.po`
+- `addons/http_routing/i18n/zh_TW.po`
+- `addons/http_routing/models/__init__.py`
+- `addons/http_routing/models/ir_http.py`
+- `addons/http_routing/models/ir_qweb.py`
+- `addons/http_routing/models/res_lang.py`
+- `addons/http_routing/static/shapes/404.svg`
+- `addons/http_routing/tests/__init__.py`
+- `addons/http_routing/tests/common.py`
+- `addons/http_routing/tests/test_res_lang.py`
+- `addons/http_routing/views/http_routing_template.xml`
+- `addons/http_routing/views/res_lang_views.xml`

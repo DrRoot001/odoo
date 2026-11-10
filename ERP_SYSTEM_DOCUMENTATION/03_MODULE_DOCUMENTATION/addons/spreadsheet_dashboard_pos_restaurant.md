@@ -1,109 +1,150 @@
 # Module: spreadsheet_dashboard_pos_restaurant
 
 - **Module ID:** MOD-553
-- **Path:** `addons/spreadsheet_dashboard_pos_restaurant`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/spreadsheet_dashboard_pos_restaurant`
 - **Manifest:** `addons/spreadsheet_dashboard_pos_restaurant/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `['pos_hr', 'pos_restaurant']`
+- **Category:** `Productivity/Dashboard`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
+
+**Purpose:** Spreadsheet
+
+**Manifest description:**
 
 Spreadsheet
 
-Spreadsheet
+**Scope evidence:** The module contains 54 files, including 2 Python, 1 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `spreadsheet_dashboard`, `pos_hr`, `pos_restaurant`.
 
-Declared dependencies: `spreadsheet_dashboard`, `pos_hr`, `pos_restaurant`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 0
+- Controller/API files: 0
+- XML/data/view/template files: 1
+- Browser asset files: 0
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 2 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 0 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "spreadsheet_dashboard",
-    "pos_hr",
-    "pos_restaurant"
-  ],
-  "data": [
-    "data/dashboards.xml"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### User interface and data
 
-- `addons/spreadsheet_dashboard_pos_restaurant/__init__.py` (1 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/__manifest__.py` (14 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/data/dashboards.xml` (15 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json` (1,597 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json` (1,385 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ar.po` (226 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/az.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/bg.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/bs.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ca.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/cs.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/da.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/de.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/el.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/es.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/es_419.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/et.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/fa.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/fi.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/fr.po` (226 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/he.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/hi.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/hr.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/hu.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/id.po` (226 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/it.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ja.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/kab.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ko.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ku.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/lo.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/lt.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/lv.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/mn.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/my.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/nb.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/nl.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/pl.po` (226 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/pt.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/pt_BR.po` (228 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ro.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ru.po` (226 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/sk.po` (223 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/sl.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/spreadsheet_dashboard_pos_restaurant.pot` (220 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/sr@latin.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/sv.po` (226 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/th.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/tr.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/uk.po` (224 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/uz.po` (247 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/vi.po` (225 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/zh_CN.po` (226 lines)
-- `addons/spreadsheet_dashboard_pos_restaurant/i18n/zh_TW.po` (228 lines)
+- **Description:** 1 XML files and 0 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/spreadsheet_dashboard_pos_restaurant/data/dashboards.xml:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+## 5. Screens and user interface
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- XML files: 1; representative identifiers: `spreadsheet_dashboard_pos_restaurant`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/spreadsheet_dashboard_pos_restaurant/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 0
+- Representative model evidence: No literal model metadata found
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `spreadsheet_dashboard`, `pos_hr`, `pos_restaurant`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Not found
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/spreadsheet_dashboard_pos_restaurant/__init__.py`
+- `addons/spreadsheet_dashboard_pos_restaurant/__manifest__.py`
+- `addons/spreadsheet_dashboard_pos_restaurant/data/dashboards.xml`
+- `addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json`
+- `addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ar.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/az.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/bg.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/bs.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ca.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/cs.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/da.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/de.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/el.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/es.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/es_419.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/et.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/fa.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/fi.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/fr.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/he.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/hi.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/hr.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/hu.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/id.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/it.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ja.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/kab.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ko.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ku.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/lo.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/lt.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/lv.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/mn.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/my.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/nb.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/nl.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/pl.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/pt.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/pt_BR.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ro.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/ru.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/sk.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/sl.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/spreadsheet_dashboard_pos_restaurant.pot`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/sr@latin.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/sv.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/th.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/tr.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/uk.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/uz.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/vi.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/zh_CN.po`
+- `addons/spreadsheet_dashboard_pos_restaurant/i18n/zh_TW.po`

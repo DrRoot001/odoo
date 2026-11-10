@@ -1,96 +1,140 @@
 # Module: test_event_full
 
 - **Module ID:** MOD-572
-- **Path:** `addons/test_event_full`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/test_event_full`
 - **Manifest:** `addons/test_event_full/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden/Tests`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 This module will test the main event flows of Odoo, both frontend and backend.
 It installs sale capabilities, front-end flow, eCommerce, questions and
 automatic lead generation, full Online support, ...
 
+**Scope evidence:** The module contains 18 files, including 12 Python, 2 XML, and 4 JavaScript/TypeScript files. The manifest declares dependencies: `event`, `event_booth`, `event_crm`, `event_crm_sale`, `event_sale`, `event_sms`, `payment_demo`, `website_event_booth_sale_exhibitor`, `website_event_exhibitor`, `website_event_sale`, `website_event_track`, `website_event_track_live`, `website_event_track_quiz`.
 
-Declared dependencies: `event`, `event_booth`, `event_crm`, `event_crm_sale`, `event_sale`, `event_sms`, `payment_demo`, `website_event_booth_sale_exhibitor`, `website_event_exhibitor`, `website_event_sale`, `website_event_track`, `website_event_track_live`, `website_event_track_quiz`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 0
+- Controller/API files: 0
+- XML/data/view/template files: 2
+- Browser asset files: 4
+- Security files: 0
+- Test files: 10
+- Scheduled/automation evidence files: 2
+- Reporting evidence files: 1
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 12 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 0 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 2 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 4 | Client behavior/assets. |
-| Tests | 10 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "event",
-    "event_booth",
-    "event_crm",
-    "event_crm_sale",
-    "event_sale",
-    "event_sms",
-    "payment_demo",
-    "website_event_booth_sale_exhibitor",
-    "website_event_exhibitor",
-    "website_event_sale",
-    "website_event_track",
-    "website_event_track_live",
-    "website_event_track_quiz"
-  ],
-  "data": [
-    "data/ir_actions_report_data.xml",
-    "views/event_registration_templates_reports.xml"
-  ],
-  "assets": {
-    "web.assets_tests": [
-      "test_event_full/static/src/js/tours/*"
-    ],
-    "web.assets_unit_tests": [
-      "test_event_full/static/src/js/tests/*"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### User interface and data
 
-- `addons/test_event_full/__init__.py` (2 lines)
-- `addons/test_event_full/__manifest__.py` (41 lines)
-- `addons/test_event_full/data/ir_actions_report_data.xml` (12 lines)
-- `addons/test_event_full/static/src/js/tests/test_template_reference_field_widget.test.js` (128 lines)
-- `addons/test_event_full/static/src/js/tours/event_portal_tour.js` (48 lines)
-- `addons/test_event_full/static/src/js/tours/wevent_performance_tour.js` (70 lines)
-- `addons/test_event_full/static/src/js/tours/wevent_register_tour.js` (204 lines)
-- `addons/test_event_full/tests/__init__.py` (12 lines)
-- `addons/test_event_full/tests/common.py` (538 lines)
-- `addons/test_event_full/tests/test_event_crm.py` (179 lines)
-- `addons/test_event_full/tests/test_event_event.py` (171 lines)
-- `addons/test_event_full/tests/test_event_mail.py` (353 lines)
-- `addons/test_event_full/tests/test_event_portal.py` (34 lines)
-- `addons/test_event_full/tests/test_event_security.py` (292 lines)
-- `addons/test_event_full/tests/test_performance.py` (482 lines)
-- `addons/test_event_full/tests/test_wevent_menu.py` (41 lines)
-- `addons/test_event_full/tests/test_wevent_register.py` (51 lines)
-- `addons/test_event_full/views/event_registration_templates_reports.xml` (14 lines)
+- **Description:** 2 XML files and 4 JavaScript/TypeScript files; static XML analysis found 2 record/template/menu identifiers.
+- **Evidence:** `addons/test_event_full/data/ir_actions_report_data.xml:3`, `addons/test_event_full/views/event_registration_templates_reports.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### Scheduled/automation
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 2 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/test_event_full/tests/test_event_mail.py`, `addons/test_event_full/tests/common.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 1 files contain report-action/template indicators.
+- **Evidence:** `addons/test_event_full/data/ir_actions_report_data.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 10 test files are present.
+- **Evidence:** `addons/test_event_full/tests/test_event_event.py`, `addons/test_event_full/tests/test_event_portal.py`, `addons/test_event_full/tests/test_performance.py`, `addons/test_event_full/tests/test_wevent_register.py`, `addons/test_event_full/tests/test_event_crm.py`, `addons/test_event_full/tests/test_wevent_menu.py`, `addons/test_event_full/tests/test_event_mail.py`, `addons/test_event_full/tests/common.py`, `addons/test_event_full/tests/__init__.py`, `addons/test_event_full/tests/test_event_security.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 2; representative identifiers: `event_registration_report_test`, `event_registration_template_report`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 1; representative evidence: `addons/test_event_full/views/event_registration_templates_reports.xml:3`
+- View/action field declarations: 1; representative evidence: `addons/test_event_full/data/ir_actions_report_data.xml:5`
+- Browser assets: 4; representative files: `addons/test_event_full/static/src/js/tours/wevent_performance_tour.js`, `addons/test_event_full/static/src/js/tours/event_portal_tour.js`, `addons/test_event_full/static/src/js/tours/wevent_register_tour.js`, `addons/test_event_full/static/src/js/tests/test_template_reference_field_widget.test.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/test_event_full/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** `addons/test_event_full/tests/test_event_mail.py`, `addons/test_event_full/tests/common.py`
+- **Report entry points:** `addons/test_event_full/data/ir_actions_report_data.xml`
+
+## 7. Database interactions
+
+- Model declarations: 0
+- Representative model evidence: No literal model metadata found
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `event`, `event_booth`, `event_crm`, `event_crm_sale`, `event_sale`, `event_sms`, `payment_demo`, `website_event_booth_sale_exhibitor`, `website_event_exhibitor`, `website_event_sale`, `website_event_track`, `website_event_track_live`, `website_event_track_quiz`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Not found
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/test_event_full/__init__.py`
+- `addons/test_event_full/__manifest__.py`
+- `addons/test_event_full/data/ir_actions_report_data.xml`
+- `addons/test_event_full/static/src/js/tests/test_template_reference_field_widget.test.js`
+- `addons/test_event_full/static/src/js/tours/event_portal_tour.js`
+- `addons/test_event_full/static/src/js/tours/wevent_performance_tour.js`
+- `addons/test_event_full/static/src/js/tours/wevent_register_tour.js`
+- `addons/test_event_full/tests/__init__.py`
+- `addons/test_event_full/tests/common.py`
+- `addons/test_event_full/tests/test_event_crm.py`
+- `addons/test_event_full/tests/test_event_event.py`
+- `addons/test_event_full/tests/test_event_mail.py`
+- `addons/test_event_full/tests/test_event_portal.py`
+- `addons/test_event_full/tests/test_event_security.py`
+- `addons/test_event_full/tests/test_performance.py`
+- `addons/test_event_full/tests/test_wevent_menu.py`
+- `addons/test_event_full/tests/test_wevent_register.py`
+- `addons/test_event_full/views/event_registration_templates_reports.xml`

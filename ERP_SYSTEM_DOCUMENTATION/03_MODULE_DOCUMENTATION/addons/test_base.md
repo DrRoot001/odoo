@@ -1,197 +1,272 @@
 # Module: test_base
 
 - **Module ID:** MOD-650
-- **Path:** `odoo/addons/test_base`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `odoo/addons/test_base`
 - **Manifest:** `odoo/addons/test_base/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden/Tests`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
+
+**Manifest description:**
 
 A module to test the ORM.
 
-Declared dependencies: `base`.
+**Scope evidence:** The module contains 136 files, including 112 Python, 10 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `base`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 112 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 22 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 10 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 107 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 255
+- Controller/API files: 0
+- XML/data/view/template files: 10
+- Browser asset files: 0
+- Security files: 1
+- Test files: 107
+- Scheduled/automation evidence files: 8
+- Reporting evidence files: 1
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "base"
-  ],
-  "data": [
-    "data/test_translated_field/test_model_data.xml",
-    "data/test_access_rights_data.xml",
-    "data/test_action_bindings.xml",
-    "data/test_inherits.xml",
-    "data/test_orm_data.xml",
-    "data/test_orm_partner.xml",
-    "views/test_acl.xml",
-    "views/test_orm_views.xml",
-    "security/ir.access.csv"
-  ]
-}
-```
+**Security evidence:** `odoo/addons/test_base/security/ir.access.csv`
 
-### Representative source files
+## 4. Functionalities
 
-- `odoo/addons/test_base/__init__.py` (1 lines)
-- `odoo/addons/test_base/__manifest__.py` (22 lines)
-- `odoo/addons/test_base/data/test_access_rights_data.xml` (5 lines)
-- `odoo/addons/test_base/data/test_action_bindings.xml` (40 lines)
-- `odoo/addons/test_base/data/test_inherits.xml` (19 lines)
-- `odoo/addons/test_base/data/test_orm_data.xml` (54 lines)
-- `odoo/addons/test_base/data/test_orm_partner.xml` (17 lines)
-- `odoo/addons/test_base/data/test_translated_field/test_model_data.xml` (8 lines)
-- `odoo/addons/test_base/data/test_translated_field/test_tools.convert.csv` (2 lines)
-- `odoo/addons/test_base/i18n/fr.po` (22 lines)
-- `odoo/addons/test_base/models/__init__.py` (21 lines)
-- `odoo/addons/test_base/models/common.py` (192 lines)
-- `odoo/addons/test_base/models/models_translation.py` (12 lines)
-- `odoo/addons/test_base/models/test_access_rights.py` (83 lines)
-- `odoo/addons/test_base/models/test_acl.py` (41 lines)
-- `odoo/addons/test_base/models/test_action_bindings.py` (11 lines)
-- `odoo/addons/test_base/models/test_config.py` (54 lines)
-- `odoo/addons/test_base/models/test_convert.py` (38 lines)
-- `odoo/addons/test_base/models/test_domain_expression.py` (93 lines)
-- `odoo/addons/test_base/models/test_fields.py` (62 lines)
-- `odoo/addons/test_base/models/test_inherits.py` (165 lines)
-- `odoo/addons/test_base/models/test_ir_qweb_fields.py` (33 lines)
-- `odoo/addons/test_base/models/test_orm.py` (2,462 lines)
-- `odoo/addons/test_base/models/test_performance.py` (129 lines)
-- `odoo/addons/test_base/models/test_properties.py` (9 lines)
-- `odoo/addons/test_base/models/test_read_group.py` (282 lines)
-- `odoo/addons/test_base/models/test_schema.py` (38 lines)
-- `odoo/addons/test_base/models/test_search.py` (66 lines)
-- `odoo/addons/test_base/models/test_tools.py` (38 lines)
-- `odoo/addons/test_base/models/test_unity_read.py` (78 lines)
-- `odoo/addons/test_base/security/ir.access.csv` (247 lines)
-- `odoo/addons/test_base/test_file.txt` (1 lines)
-- `odoo/addons/test_base/tests/__init__.py` (4 lines)
-- `odoo/addons/test_base/tests/test_core/__init__.py` (8 lines)
-- `odoo/addons/test_base/tests/test_core/shell_file.txt` (1 lines)
-- `odoo/addons/test_base/tests/test_core/test_cli.py` (234 lines)
-- `odoo/addons/test_base/tests/test_core/test_core_init.py` (60 lines)
-- `odoo/addons/test_base/tests/test_core/test_monkeypatch_lxml.py` (15 lines)
-- `odoo/addons/test_base/tests/test_core/test_monkeypatch_num2words.py` (35 lines)
-- `odoo/addons/test_base/tests/test_core/test_monkeypatch_num2words_es.py` (84 lines)
-- `odoo/addons/test_base/tests/test_core/test_monkeypatch_zoneinfo.py` (103 lines)
-- `odoo/addons/test_base/tests/test_modules/__init__.py` (6 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/__init__.py` (1 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/__manifest__.py` (13 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/data/ir_cron.xml` (15 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/models/__init__.py` (1 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/models/res_currency.py` (11 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_base/__init__.py` (0 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_base/__manifest__.py` (10 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_fail/__init__.py` (0 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_fail/__manifest__.py` (13 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_fail/views/res_currency_views.xml` (13 lines)
-- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_isolated_install.md` (19 lines)
-- `odoo/addons/test_base/tests/test_modules/test_loading.py` (46 lines)
-- `odoo/addons/test_base/tests/test_modules/test_manifest.py` (102 lines)
-- `odoo/addons/test_base/tests/test_modules/test_module_graph.py` (135 lines)
-- `odoo/addons/test_base/tests/test_modules/test_neutralize.py` (30 lines)
-- `odoo/addons/test_base/tests/test_orm/__init__.py` (47 lines)
-- `odoo/addons/test_base/tests/test_orm/common.py` (98 lines)
-- `odoo/addons/test_base/tests/test_orm/test_access.py` (376 lines)
-- `odoo/addons/test_base/tests/test_orm/test_access_feedback.py` (558 lines)
-- `odoo/addons/test_base/tests/test_orm/test_access_monetary_related.py` (38 lines)
-- `odoo/addons/test_base/tests/test_orm/test_acl.py` (253 lines)
-- `odoo/addons/test_base/tests/test_orm/test_action_bindings.py` (97 lines)
-- `odoo/addons/test_base/tests/test_orm/test_all_models.py` (102 lines)
-- `odoo/addons/test_base/tests/test_orm/test_autovacuum.py` (18 lines)
-- `odoo/addons/test_base/tests/test_orm/test_cache.py` (124 lines)
-- `odoo/addons/test_base/tests/test_orm/test_check_access.py` (51 lines)
-- `odoo/addons/test_base/tests/test_orm/test_company_checks.py` (284 lines)
-- `odoo/addons/test_base/tests/test_orm/test_config_settings.py` (259 lines)
-- `odoo/addons/test_base/tests/test_orm/test_copy.py` (84 lines)
-- `odoo/addons/test_base/tests/test_orm/test_create.py` (23 lines)
-- `odoo/addons/test_base/tests/test_orm/test_domain.py` (1,272 lines)
-- `odoo/addons/test_base/tests/test_orm/test_domain_expression.py` (3,029 lines)
-- `odoo/addons/test_base/tests/test_orm/test_fields.py` (5,625 lines)
-- `odoo/addons/test_base/tests/test_orm/test_index_method.py` (72 lines)
-- `odoo/addons/test_base/tests/test_orm/test_indexed_translation.py` (91 lines)
-- `odoo/addons/test_base/tests/test_orm/test_inherits.py` (255 lines)
-- `odoo/addons/test_base/tests/test_orm/test_ir_qweb_fields.py` (303 lines)
-- `odoo/addons/test_base/tests/test_orm/test_ir_rules.py` (252 lines)
-- `odoo/addons/test_base/tests/test_orm/test_json_field.py` (37 lines)
-- `odoo/addons/test_base/tests/test_orm/test_many2many.py` (97 lines)
-- `odoo/addons/test_base/tests/test_orm/test_models.py` (858 lines)
-- `odoo/addons/test_base/tests/test_orm/test_modules_db.py` (170 lines)
-- `odoo/addons/test_base/tests/test_orm/test_one2many.py` (469 lines)
-- `odoo/addons/test_base/tests/test_orm/test_parent_store.py` (93 lines)
-- `odoo/addons/test_base/tests/test_orm/test_performance.py` (855 lines)
-- `odoo/addons/test_base/tests/test_orm/test_prefetch.py` (255 lines)
-- `odoo/addons/test_base/tests/test_orm/test_properties.py` (2,218 lines)
-- `odoo/addons/test_base/tests/test_orm/test_query.py` (188 lines)
-- `odoo/addons/test_base/tests/test_orm/test_read_group_override.py` (54 lines)
-- `odoo/addons/test_base/tests/test_orm/test_read_group_private.py` (1,601 lines)
-- `odoo/addons/test_base/tests/test_orm/test_read_grouping_sets.py` (293 lines)
-- `odoo/addons/test_base/tests/test_orm/test_registry.py` (127 lines)
-- `odoo/addons/test_base/tests/test_orm/test_registry_signaling.py` (693 lines)
-- `odoo/addons/test_base/tests/test_orm/test_schema.py` (508 lines)
-- `odoo/addons/test_base/tests/test_orm/test_search.py` (2,470 lines)
-- `odoo/addons/test_base/tests/test_orm/test_search_order.py` (277 lines)
-- `odoo/addons/test_base/tests/test_orm/test_sort.py` (207 lines)
-- `odoo/addons/test_base/tests/test_orm/test_timeit.py` (277 lines)
-- `odoo/addons/test_base/tests/test_orm/test_transactions.py` (69 lines)
-- `odoo/addons/test_base/tests/test_orm/test_uninstall.py` (85 lines)
-- `odoo/addons/test_base/tests/test_orm/test_views.py` (126 lines)
-- `odoo/addons/test_base/tests/test_tools/__init__.py` (24 lines)
-- `odoo/addons/test_base/tests/test_tools/config/16.0.conf` (67 lines)
-- `odoo/addons/test_base/tests/test_tools/config/cli` (79 lines)
-- `odoo/addons/test_base/tests/test_tools/config/empty.conf` (1 lines)
-- `odoo/addons/test_base/tests/test_tools/config/environ` (70 lines)
-- `odoo/addons/test_base/tests/test_tools/config/multidb.conf` (2 lines)
-- `odoo/addons/test_base/tests/test_tools/config/non_default.conf` (99 lines)
-- `odoo/addons/test_base/tests/test_tools/config/save_posix.conf` (83 lines)
-- `odoo/addons/test_base/tests/test_tools/config/sysloglogfile.conf` (3 lines)
-- `odoo/addons/test_base/tests/test_tools/test_barcode.py` (27 lines)
-- `odoo/addons/test_base/tests/test_tools/test_binary.py` (33 lines)
-- `odoo/addons/test_base/tests/test_tools/test_cloc.py` (264 lines)
-- `odoo/addons/test_base/tests/test_tools/test_config.py` (833 lines)
-- `odoo/addons/test_base/tests/test_tools/test_convert.py` (481 lines)
-- `odoo/addons/test_base/tests/test_tools/test_date_utils.py` (508 lines)
-- `odoo/addons/test_base/tests/test_tools/test_float_utils.py` (301 lines)
-- `odoo/addons/test_base/tests/test_tools/test_func.py` (210 lines)
-- `odoo/addons/test_base/tests/test_tools/test_i18n.py` (36 lines)
-- `odoo/addons/test_base/tests/test_tools/test_image.py` (366 lines)
-- `odoo/addons/test_base/tests/test_tools/test_intervals.py` (268 lines)
-- `odoo/addons/test_base/tests/test_tools/test_mail.py` (1,066 lines)
-- `odoo/addons/test_base/tests/test_tools/test_mimetypes.py` (239 lines)
-- `odoo/addons/test_base/tests/test_tools/test_misc.py` (857 lines)
-- `odoo/addons/test_base/tests/test_tools/test_pdf.py` (598 lines)
-- `odoo/addons/test_base/tests/test_tools/test_profiler.py` (832 lines)
-- `odoo/addons/test_base/tests/test_tools/test_safe_eval.py` (890 lines)
-- `odoo/addons/test_base/tests/test_tools/test_safe_eval_expr.py` (251 lines)
-- `odoo/addons/test_base/tests/test_tools/test_set_expression.py` (474 lines)
-- `odoo/addons/test_base/tests/test_tools/test_sql.py` (405 lines)
-- `odoo/addons/test_base/tests/test_tools/test_translate.py` (3,097 lines)
-- `odoo/addons/test_base/tests/test_tools/test_xml_utils.py` (54 lines)
-- `odoo/addons/test_base/views/test_acl.xml` (18 lines)
-- `odoo/addons/test_base/views/test_orm_views.xml` (524 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 255 model declarations, 1791 methods, 4 constraint handlers, 0 onchange handlers, and 103 dependency declarations.
+- **Evidence:** `odoo/addons/test_base/models/test_access_rights.py:4`, `odoo/addons/test_base/models/test_access_rights.py:22`, `odoo/addons/test_base/models/test_access_rights.py:29`, `odoo/addons/test_base/models/test_access_rights.py:38`, `odoo/addons/test_base/models/test_access_rights.py:45`, `odoo/addons/test_base/models/test_access_rights.py:58`, `odoo/addons/test_base/models/test_access_rights.py:69`, `odoo/addons/test_base/models/test_read_group.py:4`, `odoo/addons/test_base/models/test_read_group.py:12`, `odoo/addons/test_base/models/test_read_group.py:23`, `odoo/addons/test_base/models/test_read_group.py:40`, `odoo/addons/test_base/models/test_read_group.py:60`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 10 XML files and 0 JavaScript/TypeScript files; static XML analysis found 68 record/template/menu identifiers.
+- **Evidence:** `odoo/addons/test_base/data/test_orm_partner.xml:4`, `odoo/addons/test_base/data/test_orm_partner.xml:7`, `odoo/addons/test_base/data/test_orm_partner.xml:10`, `odoo/addons/test_base/data/test_orm_partner.xml:13`, `odoo/addons/test_base/data/test_action_bindings.xml:3`, `odoo/addons/test_base/data/test_action_bindings.xml:10`, `odoo/addons/test_base/data/test_action_bindings.xml:17`, `odoo/addons/test_base/data/test_action_bindings.xml:23`, `odoo/addons/test_base/data/test_action_bindings.xml:29`, `odoo/addons/test_base/data/test_action_bindings.xml:35`, `odoo/addons/test_base/data/test_inherits.xml:3`, `odoo/addons/test_base/data/test_inherits.xml:8`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `odoo/addons/test_base/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 8 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `odoo/addons/test_base/models/test_orm.py`, `odoo/addons/test_base/tests/test_modules/test_loading.py`, `odoo/addons/test_base/tests/test_tools/test_cloc.py`, `odoo/addons/test_base/tests/test_tools/test_config.py`, `odoo/addons/test_base/tests/test_orm/test_properties.py`, `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/__manifest__.py`, `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/models/res_currency.py`, `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/data/ir_cron.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 1 files contain report-action/template indicators.
+- **Evidence:** `odoo/addons/test_base/tests/test_orm/test_action_bindings.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 107 test files are present.
+- **Evidence:** `odoo/addons/test_base/models/test_access_rights.py`, `odoo/addons/test_base/models/test_read_group.py`, `odoo/addons/test_base/models/test_domain_expression.py`, `odoo/addons/test_base/models/test_performance.py`, `odoo/addons/test_base/models/test_convert.py`, `odoo/addons/test_base/models/test_fields.py`, `odoo/addons/test_base/models/test_unity_read.py`, `odoo/addons/test_base/models/test_acl.py`, `odoo/addons/test_base/models/test_properties.py`, `odoo/addons/test_base/models/test_inherits.py`, `odoo/addons/test_base/models/test_schema.py`, `odoo/addons/test_base/models/test_ir_qweb_fields.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 10; representative identifiers: `test_orm_partner_1`, `test_orm_partner_2`, `test_orm_partner_3`, `test_orm_partner_4`, `act1`, `act2`, `act3`, `r1`, `r2`, `r3`, `unit_a`, `box_a`, `pallet_a`, `category_0`, `category_0_0`, `discussion_0`, `message_0_0`, `message_0_1`, `message_0_2`, `emailmessage_0_0`
+- Menus: 10; representative evidence: `odoo/addons/test_base/views/test_orm_views.xml:3`, `odoo/addons/test_base/views/test_orm_views.xml:5`, `odoo/addons/test_base/views/test_orm_views.xml:12`, `odoo/addons/test_base/views/test_orm_views.xml:19`, `odoo/addons/test_base/views/test_orm_views.xml:26`, `odoo/addons/test_base/views/test_orm_views.xml:28`, `odoo/addons/test_base/views/test_orm_views.xml:35`, `odoo/addons/test_base/views/test_orm_views.xml:154`, `odoo/addons/test_base/views/test_orm_views.xml:189`, `odoo/addons/test_base/views/test_orm_views.xml:491`
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 64; representative evidence: `odoo/addons/test_base/data/test_action_bindings.xml:5`, `odoo/addons/test_base/data/test_action_bindings.xml:12`, `odoo/addons/test_base/data/test_action_bindings.xml:19`, `odoo/addons/test_base/data/test_action_bindings.xml:25`, `odoo/addons/test_base/data/test_action_bindings.xml:31`, `odoo/addons/test_base/data/test_action_bindings.xml:37`, `odoo/addons/test_base/views/test_acl.xml:5`, `odoo/addons/test_base/views/test_acl.xml:6`, `odoo/addons/test_base/views/test_orm_views.xml:9`, `odoo/addons/test_base/views/test_orm_views.xml:10`, `odoo/addons/test_base/views/test_orm_views.xml:16`, `odoo/addons/test_base/views/test_orm_views.xml:17`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `odoo/addons/test_base/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** `odoo/addons/test_base/models/test_orm.py`, `odoo/addons/test_base/tests/test_modules/test_loading.py`, `odoo/addons/test_base/tests/test_tools/test_cloc.py`, `odoo/addons/test_base/tests/test_tools/test_config.py`, `odoo/addons/test_base/tests/test_orm/test_properties.py`, `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/__manifest__.py`, `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/models/res_currency.py`, `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/data/ir_cron.xml`
+- **Report entry points:** `odoo/addons/test_base/tests/test_orm/test_action_bindings.py`
+
+## 7. Database interactions
+
+- Model declarations: 255
+- Representative model evidence: `test_access_right.some_obj` (odoo/addons/test_base/models/test_access_rights.py:4); `test_access_right.container` (odoo/addons/test_base/models/test_access_rights.py:22); `test_access_right.inherits` (odoo/addons/test_base/models/test_access_rights.py:29); `test_access_right.child` (odoo/addons/test_base/models/test_access_rights.py:38); `test_access_right.obj_categ` (odoo/addons/test_base/models/test_access_rights.py:45); `test_access_right.ticket` (odoo/addons/test_base/models/test_access_rights.py:58); inherits `res.partner` (odoo/addons/test_base/models/test_access_rights.py:69); `test_read_group.on_date` (odoo/addons/test_base/models/test_read_group.py:4); `test_read_group.aggregate.boolean` (odoo/addons/test_base/models/test_read_group.py:12); `test_read_group.aggregate.monetary.related` (odoo/addons/test_base/models/test_read_group.py:23); `test_read_group.aggregate.monetary` (odoo/addons/test_base/models/test_read_group.py:40); `test_read_group.aggregate` (odoo/addons/test_base/models/test_read_group.py:60); `test_read_group.partner` (odoo/addons/test_base/models/test_read_group.py:72); `test_read_group.on_selection` (odoo/addons/test_base/models/test_read_group.py:84); `test_read_group.fill_temporal` (odoo/addons/test_base/models/test_read_group.py:99); `test_read_group.order` (odoo/addons/test_base/models/test_read_group.py:108); `test_read_group.order.line` (odoo/addons/test_base/models/test_read_group.py:126); `test_read_group.null.order` (odoo/addons/test_base/models/test_read_group.py:136); `test_read_group.null.order.line` (odoo/addons/test_base/models/test_read_group.py:145); `test_read_group.user` (odoo/addons/test_base/models/test_read_group.py:152); `test_read_group.task` (odoo/addons/test_base/models/test_read_group.py:166); `test_read_group.tag` (odoo/addons/test_base/models/test_read_group.py:213); `test_read_group.related_bar` (odoo/addons/test_base/models/test_read_group.py:221); `test_read_group.related_foo` (odoo/addons/test_base/models/test_read_group.py:237); `test_read_group.related_base` (odoo/addons/test_base/models/test_read_group.py:252); `test_read_group.related_inherits` (odoo/addons/test_base/models/test_read_group.py:268); `test_read_group.chain_inherits` (odoo/addons/test_base/models/test_read_group.py:278); `test_orm.domain_expression.partner` (odoo/addons/test_base/models/test_domain_expression.py:12); `test_orm.domain_expression.partner.bank` (odoo/addons/test_base/models/test_domain_expression.py:45); `test_orm.domain_expression.country` (odoo/addons/test_base/models/test_domain_expression.py:67)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `odoo/addons/test_base/__init__.py`
+- `odoo/addons/test_base/__manifest__.py`
+- `odoo/addons/test_base/data/test_access_rights_data.xml`
+- `odoo/addons/test_base/data/test_action_bindings.xml`
+- `odoo/addons/test_base/data/test_inherits.xml`
+- `odoo/addons/test_base/data/test_orm_data.xml`
+- `odoo/addons/test_base/data/test_orm_partner.xml`
+- `odoo/addons/test_base/data/test_translated_field/test_model_data.xml`
+- `odoo/addons/test_base/data/test_translated_field/test_tools.convert.csv`
+- `odoo/addons/test_base/i18n/fr.po`
+- `odoo/addons/test_base/models/__init__.py`
+- `odoo/addons/test_base/models/common.py`
+- `odoo/addons/test_base/models/models_translation.py`
+- `odoo/addons/test_base/models/test_access_rights.py`
+- `odoo/addons/test_base/models/test_acl.py`
+- `odoo/addons/test_base/models/test_action_bindings.py`
+- `odoo/addons/test_base/models/test_config.py`
+- `odoo/addons/test_base/models/test_convert.py`
+- `odoo/addons/test_base/models/test_domain_expression.py`
+- `odoo/addons/test_base/models/test_fields.py`
+- `odoo/addons/test_base/models/test_inherits.py`
+- `odoo/addons/test_base/models/test_ir_qweb_fields.py`
+- `odoo/addons/test_base/models/test_orm.py`
+- `odoo/addons/test_base/models/test_performance.py`
+- `odoo/addons/test_base/models/test_properties.py`
+- `odoo/addons/test_base/models/test_read_group.py`
+- `odoo/addons/test_base/models/test_schema.py`
+- `odoo/addons/test_base/models/test_search.py`
+- `odoo/addons/test_base/models/test_tools.py`
+- `odoo/addons/test_base/models/test_unity_read.py`
+- `odoo/addons/test_base/security/ir.access.csv`
+- `odoo/addons/test_base/test_file.txt`
+- `odoo/addons/test_base/tests/__init__.py`
+- `odoo/addons/test_base/tests/test_core/__init__.py`
+- `odoo/addons/test_base/tests/test_core/shell_file.txt`
+- `odoo/addons/test_base/tests/test_core/test_cli.py`
+- `odoo/addons/test_base/tests/test_core/test_core_init.py`
+- `odoo/addons/test_base/tests/test_core/test_monkeypatch_lxml.py`
+- `odoo/addons/test_base/tests/test_core/test_monkeypatch_num2words.py`
+- `odoo/addons/test_base/tests/test_core/test_monkeypatch_num2words_es.py`
+- `odoo/addons/test_base/tests/test_core/test_monkeypatch_zoneinfo.py`
+- `odoo/addons/test_base/tests/test_modules/__init__.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/__init__.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/__manifest__.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/data/ir_cron.xml`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/models/__init__.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_auto/models/res_currency.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_base/__init__.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_base/__manifest__.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_fail/__init__.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_fail/__manifest__.py`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_install_fail/views/res_currency_views.xml`
+- `odoo/addons/test_base/tests/test_modules/test_install_addons/test_isolated_install.md`
+- `odoo/addons/test_base/tests/test_modules/test_loading.py`
+- `odoo/addons/test_base/tests/test_modules/test_manifest.py`
+- `odoo/addons/test_base/tests/test_modules/test_module_graph.py`
+- `odoo/addons/test_base/tests/test_modules/test_neutralize.py`
+- `odoo/addons/test_base/tests/test_orm/__init__.py`
+- `odoo/addons/test_base/tests/test_orm/common.py`
+- `odoo/addons/test_base/tests/test_orm/test_access.py`
+- `odoo/addons/test_base/tests/test_orm/test_access_feedback.py`
+- `odoo/addons/test_base/tests/test_orm/test_access_monetary_related.py`
+- `odoo/addons/test_base/tests/test_orm/test_acl.py`
+- `odoo/addons/test_base/tests/test_orm/test_action_bindings.py`
+- `odoo/addons/test_base/tests/test_orm/test_all_models.py`
+- `odoo/addons/test_base/tests/test_orm/test_autovacuum.py`
+- `odoo/addons/test_base/tests/test_orm/test_cache.py`
+- `odoo/addons/test_base/tests/test_orm/test_check_access.py`
+- `odoo/addons/test_base/tests/test_orm/test_company_checks.py`
+- `odoo/addons/test_base/tests/test_orm/test_config_settings.py`
+- `odoo/addons/test_base/tests/test_orm/test_copy.py`
+- `odoo/addons/test_base/tests/test_orm/test_create.py`
+- `odoo/addons/test_base/tests/test_orm/test_domain.py`
+- `odoo/addons/test_base/tests/test_orm/test_domain_expression.py`
+- `odoo/addons/test_base/tests/test_orm/test_fields.py`
+- `odoo/addons/test_base/tests/test_orm/test_index_method.py`
+- `odoo/addons/test_base/tests/test_orm/test_indexed_translation.py`
+- `odoo/addons/test_base/tests/test_orm/test_inherits.py`
+- `odoo/addons/test_base/tests/test_orm/test_ir_qweb_fields.py`
+- `odoo/addons/test_base/tests/test_orm/test_ir_rules.py`
+- `odoo/addons/test_base/tests/test_orm/test_json_field.py`
+- `odoo/addons/test_base/tests/test_orm/test_many2many.py`
+- `odoo/addons/test_base/tests/test_orm/test_models.py`
+- `odoo/addons/test_base/tests/test_orm/test_modules_db.py`
+- `odoo/addons/test_base/tests/test_orm/test_one2many.py`
+- `odoo/addons/test_base/tests/test_orm/test_parent_store.py`
+- `odoo/addons/test_base/tests/test_orm/test_performance.py`
+- `odoo/addons/test_base/tests/test_orm/test_prefetch.py`
+- `odoo/addons/test_base/tests/test_orm/test_properties.py`
+- `odoo/addons/test_base/tests/test_orm/test_query.py`
+- `odoo/addons/test_base/tests/test_orm/test_read_group_override.py`
+- `odoo/addons/test_base/tests/test_orm/test_read_group_private.py`
+- `odoo/addons/test_base/tests/test_orm/test_read_grouping_sets.py`
+- `odoo/addons/test_base/tests/test_orm/test_registry.py`
+- `odoo/addons/test_base/tests/test_orm/test_registry_signaling.py`
+- `odoo/addons/test_base/tests/test_orm/test_schema.py`
+- `odoo/addons/test_base/tests/test_orm/test_search.py`
+- `odoo/addons/test_base/tests/test_orm/test_search_order.py`
+- `odoo/addons/test_base/tests/test_orm/test_sort.py`
+- `odoo/addons/test_base/tests/test_orm/test_timeit.py`
+- `odoo/addons/test_base/tests/test_orm/test_transactions.py`
+- `odoo/addons/test_base/tests/test_orm/test_uninstall.py`
+- `odoo/addons/test_base/tests/test_orm/test_views.py`
+- `odoo/addons/test_base/tests/test_tools/__init__.py`
+- `odoo/addons/test_base/tests/test_tools/config/16.0.conf`
+- `odoo/addons/test_base/tests/test_tools/config/cli`
+- `odoo/addons/test_base/tests/test_tools/config/empty.conf`
+- `odoo/addons/test_base/tests/test_tools/config/environ`
+- `odoo/addons/test_base/tests/test_tools/config/multidb.conf`
+- `odoo/addons/test_base/tests/test_tools/config/non_default.conf`
+- `odoo/addons/test_base/tests/test_tools/config/save_posix.conf`
+- `odoo/addons/test_base/tests/test_tools/config/sysloglogfile.conf`
+- `odoo/addons/test_base/tests/test_tools/test_barcode.py`
+- `odoo/addons/test_base/tests/test_tools/test_binary.py`
+- `odoo/addons/test_base/tests/test_tools/test_cloc.py`
+- `odoo/addons/test_base/tests/test_tools/test_config.py`
+- `odoo/addons/test_base/tests/test_tools/test_convert.py`
+- `odoo/addons/test_base/tests/test_tools/test_date_utils.py`
+- `odoo/addons/test_base/tests/test_tools/test_float_utils.py`
+- `odoo/addons/test_base/tests/test_tools/test_func.py`
+- `odoo/addons/test_base/tests/test_tools/test_i18n.py`
+- `odoo/addons/test_base/tests/test_tools/test_image.py`
+- `odoo/addons/test_base/tests/test_tools/test_intervals.py`
+- `odoo/addons/test_base/tests/test_tools/test_mail.py`
+- `odoo/addons/test_base/tests/test_tools/test_mimetypes.py`
+- `odoo/addons/test_base/tests/test_tools/test_misc.py`
+- `odoo/addons/test_base/tests/test_tools/test_pdf.py`
+- `odoo/addons/test_base/tests/test_tools/test_profiler.py`
+- `odoo/addons/test_base/tests/test_tools/test_safe_eval.py`
+- `odoo/addons/test_base/tests/test_tools/test_safe_eval_expr.py`
+- `odoo/addons/test_base/tests/test_tools/test_set_expression.py`
+- `odoo/addons/test_base/tests/test_tools/test_sql.py`
+- `odoo/addons/test_base/tests/test_tools/test_translate.py`
+- `odoo/addons/test_base/tests/test_tools/test_xml_utils.py`
+- `odoo/addons/test_base/views/test_acl.xml`
+- `odoo/addons/test_base/views/test_orm_views.xml`

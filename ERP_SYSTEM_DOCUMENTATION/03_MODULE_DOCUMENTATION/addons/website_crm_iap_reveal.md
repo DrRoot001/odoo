@@ -1,132 +1,205 @@
 # Module: website_crm_iap_reveal
 
 - **Module ID:** MOD-601
-- **Path:** `addons/website_crm_iap_reveal`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/website_crm_iap_reveal`
 - **Manifest:** `addons/website_crm_iap_reveal/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Sales/CRM`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Generate Leads/Opportunities from your website's traffic
+**Purpose:** Generate Leads/Opportunities from your website's traffic
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `iap_crm`, `iap_mail`, `crm_iap_mine`, `website_crm`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 69 files, including 12 Python, 7 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `iap_crm`, `iap_mail`, `crm_iap_mine`, `website_crm`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 12 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 5 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 7 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 4
+- Controller/API files: 2
+- XML/data/view/template files: 7
+- Browser asset files: 0
+- Security files: 1
+- Test files: 3
+- Scheduled/automation evidence files: 2
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "iap_crm",
-    "iap_mail",
-    "crm_iap_mine",
-    "website_crm"
-  ],
-  "data": [
-    "data/ir_cron_data.xml",
-    "data/ir_model_data.xml",
-    "data/mail_templates.xml",
-    "views/crm_lead_views.xml",
-    "views/crm_reveal_views.xml",
-    "views/res_config_settings_views.xml",
-    "views/crm_menus.xml",
-    "security/ir.access.csv"
-  ]
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/website_crm_iap_reveal/security/ir.access.csv`
 
-- `addons/website_crm_iap_reveal/__init__.py` (5 lines)
-- `addons/website_crm_iap_reveal/__manifest__.py` (27 lines)
-- `addons/website_crm_iap_reveal/controllers/__init__.py` (4 lines)
-- `addons/website_crm_iap_reveal/controllers/website_form.py` (18 lines)
-- `addons/website_crm_iap_reveal/data/ir_cron_data.xml` (15 lines)
-- `addons/website_crm_iap_reveal/data/ir_model_data.xml` (7 lines)
-- `addons/website_crm_iap_reveal/data/mail_templates.xml` (59 lines)
-- `addons/website_crm_iap_reveal/i18n/ar.po` (563 lines)
-- `addons/website_crm_iap_reveal/i18n/az.po` (575 lines)
-- `addons/website_crm_iap_reveal/i18n/bg.po` (587 lines)
-- `addons/website_crm_iap_reveal/i18n/bs.po` (576 lines)
-- `addons/website_crm_iap_reveal/i18n/ca.po` (564 lines)
-- `addons/website_crm_iap_reveal/i18n/cs.po` (573 lines)
-- `addons/website_crm_iap_reveal/i18n/da.po` (563 lines)
-- `addons/website_crm_iap_reveal/i18n/de.po` (568 lines)
-- `addons/website_crm_iap_reveal/i18n/el.po` (538 lines)
-- `addons/website_crm_iap_reveal/i18n/es.po` (564 lines)
-- `addons/website_crm_iap_reveal/i18n/es_419.po` (562 lines)
-- `addons/website_crm_iap_reveal/i18n/et.po` (646 lines)
-- `addons/website_crm_iap_reveal/i18n/fa.po` (585 lines)
-- `addons/website_crm_iap_reveal/i18n/fi.po` (561 lines)
-- `addons/website_crm_iap_reveal/i18n/fr.po` (568 lines)
-- `addons/website_crm_iap_reveal/i18n/he.po` (562 lines)
-- `addons/website_crm_iap_reveal/i18n/hi.po` (585 lines)
-- `addons/website_crm_iap_reveal/i18n/hr.po` (555 lines)
-- `addons/website_crm_iap_reveal/i18n/hu.po` (546 lines)
-- `addons/website_crm_iap_reveal/i18n/id.po` (560 lines)
-- `addons/website_crm_iap_reveal/i18n/it.po` (563 lines)
-- `addons/website_crm_iap_reveal/i18n/ja.po` (553 lines)
-- `addons/website_crm_iap_reveal/i18n/kab.po` (558 lines)
-- `addons/website_crm_iap_reveal/i18n/ko.po` (551 lines)
-- `addons/website_crm_iap_reveal/i18n/ku.po` (556 lines)
-- `addons/website_crm_iap_reveal/i18n/lo.po` (546 lines)
-- `addons/website_crm_iap_reveal/i18n/lt.po` (552 lines)
-- `addons/website_crm_iap_reveal/i18n/lv.po` (577 lines)
-- `addons/website_crm_iap_reveal/i18n/mn.po` (545 lines)
-- `addons/website_crm_iap_reveal/i18n/my.po` (559 lines)
-- `addons/website_crm_iap_reveal/i18n/nb.po` (542 lines)
-- `addons/website_crm_iap_reveal/i18n/nl.po` (564 lines)
-- `addons/website_crm_iap_reveal/i18n/pl.po` (575 lines)
-- `addons/website_crm_iap_reveal/i18n/pt.po` (573 lines)
-- `addons/website_crm_iap_reveal/i18n/pt_BR.po` (568 lines)
-- `addons/website_crm_iap_reveal/i18n/ro.po` (593 lines)
-- `addons/website_crm_iap_reveal/i18n/ru.po` (565 lines)
-- `addons/website_crm_iap_reveal/i18n/sk.po` (652 lines)
-- `addons/website_crm_iap_reveal/i18n/sl.po` (538 lines)
-- `addons/website_crm_iap_reveal/i18n/sr@latin.po` (571 lines)
-- `addons/website_crm_iap_reveal/i18n/sv.po` (559 lines)
-- `addons/website_crm_iap_reveal/i18n/th.po` (545 lines)
-- `addons/website_crm_iap_reveal/i18n/tr.po` (569 lines)
-- `addons/website_crm_iap_reveal/i18n/uk.po` (567 lines)
-- `addons/website_crm_iap_reveal/i18n/uz.po` (659 lines)
-- `addons/website_crm_iap_reveal/i18n/vi.po` (559 lines)
-- `addons/website_crm_iap_reveal/i18n/website_crm_iap_reveal.pot` (532 lines)
-- `addons/website_crm_iap_reveal/i18n/zh_CN.po` (547 lines)
-- `addons/website_crm_iap_reveal/i18n/zh_TW.po` (544 lines)
-- `addons/website_crm_iap_reveal/models/__init__.py` (7 lines)
-- `addons/website_crm_iap_reveal/models/crm_lead.py` (15 lines)
-- `addons/website_crm_iap_reveal/models/crm_reveal_rule.py` (387 lines)
-- `addons/website_crm_iap_reveal/models/crm_reveal_view.py` (49 lines)
-- `addons/website_crm_iap_reveal/models/ir_http.py` (45 lines)
-- `addons/website_crm_iap_reveal/security/ir.access.csv` (7 lines)
-- `addons/website_crm_iap_reveal/tests/__init__.py` (4 lines)
-- `addons/website_crm_iap_reveal/tests/common.py` (83 lines)
-- `addons/website_crm_iap_reveal/tests/test_lead_reveal.py` (190 lines)
-- `addons/website_crm_iap_reveal/views/crm_lead_views.xml` (96 lines)
-- `addons/website_crm_iap_reveal/views/crm_menus.xml` (14 lines)
-- `addons/website_crm_iap_reveal/views/crm_reveal_views.xml` (166 lines)
-- `addons/website_crm_iap_reveal/views/res_config_settings_views.xml` (13 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 4 model declarations, 29 methods, 1 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/website_crm_iap_reveal/models/crm_reveal_rule.py:21`, `addons/website_crm_iap_reveal/models/ir_http.py:13`, `addons/website_crm_iap_reveal/models/crm_reveal_view.py:12`, `addons/website_crm_iap_reveal/models/crm_lead.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### HTTP/API surface
+
+- **Description:** 2 controller files and 0 route declarations.
+- **Evidence:** `addons/website_crm_iap_reveal/controllers/website_form.py`, `addons/website_crm_iap_reveal/controllers/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 7 XML files and 0 JavaScript/TypeScript files; static XML analysis found 20 record/template/menu identifiers.
+- **Evidence:** `addons/website_crm_iap_reveal/data/ir_cron_data.xml:5`, `addons/website_crm_iap_reveal/data/mail_templates.xml:3`, `addons/website_crm_iap_reveal/views/crm_menus.xml:3`, `addons/website_crm_iap_reveal/views/crm_menus.xml:9`, `addons/website_crm_iap_reveal/views/res_config_settings_views.xml:3`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:4`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:19`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:30`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:41`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:52`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:63`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:74`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/website_crm_iap_reveal/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 2 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/website_crm_iap_reveal/__manifest__.py`, `addons/website_crm_iap_reveal/data/ir_cron_data.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/website_crm_iap_reveal/tests/test_lead_reveal.py`, `addons/website_crm_iap_reveal/tests/common.py`, `addons/website_crm_iap_reveal/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 7; representative identifiers: `ir_cron_crm_reveal_lead`, `enrich_company`, `crm_reveal_rule_menu_action`, `crm_reveal_view_menu_action`, `res_config_settings_view_form`, `crm_reveal_lead_opportunity_form`, `crm_lead_view_pivot`, `crm_lead_view_graph`, `crm_lead_view_graph_report_opportunity`, `crm_lead_view_graph_report_lead`, `crm_lead_view_graph_report_forecast`, `crm_lead_view_pivot_forecast`, `crm_opportunity_report_view_pivot_lead`, `crm_reveal_rule_form`, `crm_reveal_rule_tree`, `crm_reveal_rule_view_search`, `crm_reveal_rule_action`, `crm_reveal_view_form`, `crm_reveal_view_tree`, `crm_reveal_view_action`
+- Menus: 2; representative evidence: `addons/website_crm_iap_reveal/views/crm_menus.xml:3`, `addons/website_crm_iap_reveal/views/crm_menus.xml:9`
+- Templates: 1; representative evidence: `addons/website_crm_iap_reveal/data/mail_templates.xml:3`
+- View/action field declarations: 32; representative evidence: `addons/website_crm_iap_reveal/views/res_config_settings_views.xml:5`, `addons/website_crm_iap_reveal/views/res_config_settings_views.xml:7`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:6`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:8`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:21`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:23`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:32`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:34`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:43`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:45`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:54`, `addons/website_crm_iap_reveal/views/crm_lead_views.xml:56`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/website_crm_iap_reveal/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** `addons/website_crm_iap_reveal/__manifest__.py`, `addons/website_crm_iap_reveal/data/ir_cron_data.xml`
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 4
+- Representative model evidence: `crm.reveal.rule` (addons/website_crm_iap_reveal/models/crm_reveal_rule.py:21); inherits `ir.http` (addons/website_crm_iap_reveal/models/ir_http.py:13); `crm.reveal.view` (addons/website_crm_iap_reveal/models/crm_reveal_view.py:12); inherits `crm.lead` (addons/website_crm_iap_reveal/models/crm_lead.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `iap_crm`, `iap_mail`, `crm_iap_mine`, `website_crm`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/website_crm_iap_reveal/__init__.py`
+- `addons/website_crm_iap_reveal/__manifest__.py`
+- `addons/website_crm_iap_reveal/controllers/__init__.py`
+- `addons/website_crm_iap_reveal/controllers/website_form.py`
+- `addons/website_crm_iap_reveal/data/ir_cron_data.xml`
+- `addons/website_crm_iap_reveal/data/ir_model_data.xml`
+- `addons/website_crm_iap_reveal/data/mail_templates.xml`
+- `addons/website_crm_iap_reveal/i18n/ar.po`
+- `addons/website_crm_iap_reveal/i18n/az.po`
+- `addons/website_crm_iap_reveal/i18n/bg.po`
+- `addons/website_crm_iap_reveal/i18n/bs.po`
+- `addons/website_crm_iap_reveal/i18n/ca.po`
+- `addons/website_crm_iap_reveal/i18n/cs.po`
+- `addons/website_crm_iap_reveal/i18n/da.po`
+- `addons/website_crm_iap_reveal/i18n/de.po`
+- `addons/website_crm_iap_reveal/i18n/el.po`
+- `addons/website_crm_iap_reveal/i18n/es.po`
+- `addons/website_crm_iap_reveal/i18n/es_419.po`
+- `addons/website_crm_iap_reveal/i18n/et.po`
+- `addons/website_crm_iap_reveal/i18n/fa.po`
+- `addons/website_crm_iap_reveal/i18n/fi.po`
+- `addons/website_crm_iap_reveal/i18n/fr.po`
+- `addons/website_crm_iap_reveal/i18n/he.po`
+- `addons/website_crm_iap_reveal/i18n/hi.po`
+- `addons/website_crm_iap_reveal/i18n/hr.po`
+- `addons/website_crm_iap_reveal/i18n/hu.po`
+- `addons/website_crm_iap_reveal/i18n/id.po`
+- `addons/website_crm_iap_reveal/i18n/it.po`
+- `addons/website_crm_iap_reveal/i18n/ja.po`
+- `addons/website_crm_iap_reveal/i18n/kab.po`
+- `addons/website_crm_iap_reveal/i18n/ko.po`
+- `addons/website_crm_iap_reveal/i18n/ku.po`
+- `addons/website_crm_iap_reveal/i18n/lo.po`
+- `addons/website_crm_iap_reveal/i18n/lt.po`
+- `addons/website_crm_iap_reveal/i18n/lv.po`
+- `addons/website_crm_iap_reveal/i18n/mn.po`
+- `addons/website_crm_iap_reveal/i18n/my.po`
+- `addons/website_crm_iap_reveal/i18n/nb.po`
+- `addons/website_crm_iap_reveal/i18n/nl.po`
+- `addons/website_crm_iap_reveal/i18n/pl.po`
+- `addons/website_crm_iap_reveal/i18n/pt.po`
+- `addons/website_crm_iap_reveal/i18n/pt_BR.po`
+- `addons/website_crm_iap_reveal/i18n/ro.po`
+- `addons/website_crm_iap_reveal/i18n/ru.po`
+- `addons/website_crm_iap_reveal/i18n/sk.po`
+- `addons/website_crm_iap_reveal/i18n/sl.po`
+- `addons/website_crm_iap_reveal/i18n/sr@latin.po`
+- `addons/website_crm_iap_reveal/i18n/sv.po`
+- `addons/website_crm_iap_reveal/i18n/th.po`
+- `addons/website_crm_iap_reveal/i18n/tr.po`
+- `addons/website_crm_iap_reveal/i18n/uk.po`
+- `addons/website_crm_iap_reveal/i18n/uz.po`
+- `addons/website_crm_iap_reveal/i18n/vi.po`
+- `addons/website_crm_iap_reveal/i18n/website_crm_iap_reveal.pot`
+- `addons/website_crm_iap_reveal/i18n/zh_CN.po`
+- `addons/website_crm_iap_reveal/i18n/zh_TW.po`
+- `addons/website_crm_iap_reveal/models/__init__.py`
+- `addons/website_crm_iap_reveal/models/crm_lead.py`
+- `addons/website_crm_iap_reveal/models/crm_reveal_rule.py`
+- `addons/website_crm_iap_reveal/models/crm_reveal_view.py`
+- `addons/website_crm_iap_reveal/models/ir_http.py`
+- `addons/website_crm_iap_reveal/security/ir.access.csv`
+- `addons/website_crm_iap_reveal/tests/__init__.py`
+- `addons/website_crm_iap_reveal/tests/common.py`
+- `addons/website_crm_iap_reveal/tests/test_lead_reveal.py`
+- `addons/website_crm_iap_reveal/views/crm_lead_views.xml`
+- `addons/website_crm_iap_reveal/views/crm_menus.xml`
+- `addons/website_crm_iap_reveal/views/crm_reveal_views.xml`
+- `addons/website_crm_iap_reveal/views/res_config_settings_views.xml`

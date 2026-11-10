@@ -1,203 +1,245 @@
 # Module: loyalty
 
 - **Module ID:** MOD-349
-- **Path:** `addons/loyalty`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/loyalty`
 - **Manifest:** `addons/loyalty/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Sales`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Use discounts, gift cards, eWallets and loyalty programs in your sales channels
+**Purpose:** Use discounts, gift cards, eWallets and loyalty programs in your sales channels
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `product`, `portal`, `account`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 109 files, including 21 Python, 17 XML, and 5 JavaScript/TypeScript files. The manifest declares dependencies: `product`, `portal`, `account`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 21 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 11 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 17 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 5 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 3 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 13
+- Controller/API files: 2
+- XML/data/view/template files: 17
+- Browser asset files: 5
+- Security files: 1
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 1
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "product",
-    "portal",
-    "account"
-  ],
-  "data": [
-    "report/loyalty_report_templates.xml",
-    "report/loyalty_report.xml",
-    "data/mail_template_data.xml",
-    "data/loyalty_data.xml",
-    "wizard/loyalty_card_update_balance_views.xml",
-    "wizard/loyalty_generate_wizard_views.xml",
-    "views/loyalty_card_views.xml",
-    "views/loyalty_history_views.xml",
-    "views/loyalty_mail_views.xml",
-    "views/loyalty_program_views.xml",
-    "views/loyalty_reward_views.xml",
-    "views/loyalty_rule_views.xml",
-    "views/portal_templates.xml",
-    "views/res_partner_views.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/loyalty_demo.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "loyalty/static/src/js/**/*.js",
-      "loyalty/static/src/scss/*.scss",
-      "loyalty/static/src/xml/*.xml",
-      [
-        "remove",
-        "loyalty/static/src/js/portal/**/*"
-      ],
-      [
-        "remove",
-        "loyalty/static/src/scss/*.dark.scss"
-      ]
-    ],
-    "web.assets_web_dark": [
-      "loyalty/static/src/scss/*.dark.scss"
-    ],
-    "web.assets_frontend": [
-      "loyalty/static/src/js/portal/**/*",
-      "loyalty/static/src/interactions/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/loyalty/security/ir.access.csv`
 
-- `addons/loyalty/__init__.py` (3 lines)
-- `addons/loyalty/__manifest__.py` (43 lines)
-- `addons/loyalty/controllers/__init__.py` (1 lines)
-- `addons/loyalty/controllers/portal.py` (149 lines)
-- `addons/loyalty/data/loyalty_data.xml` (53 lines)
-- `addons/loyalty/data/loyalty_demo.xml` (75 lines)
-- `addons/loyalty/data/mail_template_data.xml` (132 lines)
-- `addons/loyalty/i18n/ar.po` (2,535 lines)
-- `addons/loyalty/i18n/az.po` (2,344 lines)
-- `addons/loyalty/i18n/bg.po` (2,350 lines)
-- `addons/loyalty/i18n/bs.po` (2,346 lines)
-- `addons/loyalty/i18n/ca.po` (2,418 lines)
-- `addons/loyalty/i18n/cs.po` (2,400 lines)
-- `addons/loyalty/i18n/da.po` (2,357 lines)
-- `addons/loyalty/i18n/de.po` (2,895 lines)
-- `addons/loyalty/i18n/el.po` (2,351 lines)
-- `addons/loyalty/i18n/es.po` (2,553 lines)
-- `addons/loyalty/i18n/es_419.po` (2,902 lines)
-- `addons/loyalty/i18n/et.po` (2,755 lines)
-- `addons/loyalty/i18n/fa.po` (2,344 lines)
-- `addons/loyalty/i18n/fi.po` (2,874 lines)
-- `addons/loyalty/i18n/fr.po` (2,701 lines)
-- `addons/loyalty/i18n/he.po` (2,345 lines)
-- `addons/loyalty/i18n/hi.po` (2,344 lines)
-- `addons/loyalty/i18n/hr.po` (2,345 lines)
-- `addons/loyalty/i18n/hu.po` (2,349 lines)
-- `addons/loyalty/i18n/id.po` (2,666 lines)
-- `addons/loyalty/i18n/it.po` (2,690 lines)
-- `addons/loyalty/i18n/ja.po` (2,667 lines)
-- `addons/loyalty/i18n/kab.po` (2,345 lines)
-- `addons/loyalty/i18n/ko.po` (2,653 lines)
-- `addons/loyalty/i18n/ku.po` (2,344 lines)
-- `addons/loyalty/i18n/lo.po` (2,724 lines)
-- `addons/loyalty/i18n/loyalty.pot` (2,272 lines)
-- `addons/loyalty/i18n/lt.po` (2,346 lines)
-- `addons/loyalty/i18n/lv.po` (2,345 lines)
-- `addons/loyalty/i18n/mn.po` (2,344 lines)
-- `addons/loyalty/i18n/my.po` (2,345 lines)
-- `addons/loyalty/i18n/nb.po` (2,351 lines)
-- `addons/loyalty/i18n/nl.po` (2,885 lines)
-- `addons/loyalty/i18n/pl.po` (2,675 lines)
-- `addons/loyalty/i18n/pt.po` (2,738 lines)
-- `addons/loyalty/i18n/pt_BR.po` (2,880 lines)
-- `addons/loyalty/i18n/ro.po` (2,500 lines)
-- `addons/loyalty/i18n/ru.po` (2,558 lines)
-- `addons/loyalty/i18n/sk.po` (2,344 lines)
-- `addons/loyalty/i18n/sl.po` (2,414 lines)
-- `addons/loyalty/i18n/sr@latin.po` (2,346 lines)
-- `addons/loyalty/i18n/sv.po` (2,424 lines)
-- `addons/loyalty/i18n/th.po` (2,630 lines)
-- `addons/loyalty/i18n/tr.po` (2,676 lines)
-- `addons/loyalty/i18n/uk.po` (2,345 lines)
-- `addons/loyalty/i18n/uz.po` (2,881 lines)
-- `addons/loyalty/i18n/vi.po` (2,673 lines)
-- `addons/loyalty/i18n/zh_CN.po` (2,723 lines)
-- `addons/loyalty/i18n/zh_TW.po` (2,638 lines)
-- `addons/loyalty/models/__init__.py` (14 lines)
-- `addons/loyalty/models/loyalty_card.py` (309 lines)
-- `addons/loyalty/models/loyalty_history.py` (313 lines)
-- `addons/loyalty/models/loyalty_mail.py` (29 lines)
-- `addons/loyalty/models/loyalty_program.py` (762 lines)
-- `addons/loyalty/models/loyalty_reward.py` (404 lines)
-- `addons/loyalty/models/loyalty_rule.py` (169 lines)
-- `addons/loyalty/models/product_pricelist.py` (25 lines)
-- `addons/loyalty/models/product_product.py` (49 lines)
-- `addons/loyalty/models/product_template.py` (33 lines)
-- `addons/loyalty/models/res_partner.py` (48 lines)
-- `addons/loyalty/report/loyalty_report.xml` (22 lines)
-- `addons/loyalty/report/loyalty_report_templates.xml` (133 lines)
-- `addons/loyalty/security/ir.access.csv` (6 lines)
-- `addons/loyalty/static/img/2_plus_1.svg` (32 lines)
-- `addons/loyalty/static/img/coupons.svg` (56 lines)
-- `addons/loyalty/static/img/discount_placeholder_thumbnail.png` (31 lines)
-- `addons/loyalty/static/img/ewallet.svg` (15 lines)
-- `addons/loyalty/static/img/fidelity_cards.svg` (13 lines)
-- `addons/loyalty/static/img/gift_card.png` (22 lines)
-- `addons/loyalty/static/img/gift_card.svg` (22 lines)
-- `addons/loyalty/static/img/loyalty_cards.svg` (9 lines)
-- `addons/loyalty/static/img/loyalty_cards_2.svg` (1 lines)
-- `addons/loyalty/static/img/portal-loyalty.svg` (14 lines)
-- `addons/loyalty/static/img/promo_code.svg` (10 lines)
-- `addons/loyalty/static/img/promotional_program.svg` (13 lines)
-- `addons/loyalty/static/src/img/ewallet.svg` (15 lines)
-- `addons/loyalty/static/src/img/loyalty.svg` (14 lines)
-- `addons/loyalty/static/src/interactions/loyalty_card.js` (21 lines)
-- `addons/loyalty/static/src/js/loyalty_card_list_view.js` (9 lines)
-- `addons/loyalty/static/src/js/loyalty_control_panel_widget.js` (13 lines)
-- `addons/loyalty/static/src/js/loyalty_list_view.js` (55 lines)
-- `addons/loyalty/static/src/js/portal/loyalty_card_dialog/loyalty_card_dialog.js` (38 lines)
-- `addons/loyalty/static/src/js/portal/loyalty_card_dialog/loyalty_card_dialog.xml` (66 lines)
-- `addons/loyalty/static/src/scss/loyalty.dark.scss` (7 lines)
-- `addons/loyalty/static/src/scss/loyalty.scss` (64 lines)
-- `addons/loyalty/static/src/xml/loyalty_templates.xml` (56 lines)
-- `addons/loyalty/tests/__init__.py` (3 lines)
-- `addons/loyalty/tests/test_loyalty.py` (397 lines)
-- `addons/loyalty/views/loyalty_card_views.xml` (105 lines)
-- `addons/loyalty/views/loyalty_history_views.xml` (28 lines)
-- `addons/loyalty/views/loyalty_mail_views.xml` (16 lines)
-- `addons/loyalty/views/loyalty_program_views.xml` (314 lines)
-- `addons/loyalty/views/loyalty_reward_views.xml` (145 lines)
-- `addons/loyalty/views/loyalty_rule_views.xml` (111 lines)
-- `addons/loyalty/views/portal_templates.xml` (106 lines)
-- `addons/loyalty/views/res_partner_views.xml` (23 lines)
-- `addons/loyalty/wizard/__init__.py` (3 lines)
-- `addons/loyalty/wizard/base_partner_merge.py` (41 lines)
-- `addons/loyalty/wizard/loyalty_card_update_balance.py` (22 lines)
-- `addons/loyalty/wizard/loyalty_card_update_balance_views.xml` (33 lines)
-- `addons/loyalty/wizard/loyalty_generate_wizard.py` (116 lines)
-- `addons/loyalty/wizard/loyalty_generate_wizard_views.xml` (66 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 13 model declarations, 131 methods, 9 constraint handlers, 0 onchange handlers, and 26 dependency declarations.
+- **Evidence:** `addons/loyalty/models/res_partner.py:6`, `addons/loyalty/models/product_product.py:7`, `addons/loyalty/models/loyalty_reward.py:11`, `addons/loyalty/models/product_template.py:8`, `addons/loyalty/models/loyalty_program.py:14`, `addons/loyalty/models/loyalty_history.py:12`, `addons/loyalty/models/product_pricelist.py:7`, `addons/loyalty/models/loyalty_rule.py:10`, `addons/loyalty/models/loyalty_card.py:11`, `addons/loyalty/models/loyalty_mail.py:9`, `addons/loyalty/wizard/loyalty_generate_wizard.py:8`, `addons/loyalty/wizard/base_partner_merge.py:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### HTTP/API surface
+
+- **Description:** 2 controller files and 3 route declarations.
+- **Evidence:** `addons/loyalty/controllers/portal.py:11`, `addons/loyalty/controllers/portal.py:43`, `addons/loyalty/controllers/portal.py:93`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 17 XML files and 5 JavaScript/TypeScript files; static XML analysis found 51 record/template/menu identifiers.
+- **Evidence:** `addons/loyalty/report/loyalty_report.xml:4`, `addons/loyalty/report/loyalty_report.xml:13`, `addons/loyalty/report/loyalty_report_templates.xml:3`, `addons/loyalty/report/loyalty_report_templates.xml:73`, `addons/loyalty/report/loyalty_report_templates.xml:82`, `addons/loyalty/report/loyalty_report_templates.xml:123`, `addons/loyalty/wizard/loyalty_generate_wizard_views.xml:3`, `addons/loyalty/wizard/loyalty_generate_wizard_views.xml:60`, `addons/loyalty/wizard/loyalty_card_update_balance_views.xml:4`, `addons/loyalty/data/loyalty_demo.xml:4`, `addons/loyalty/data/loyalty_demo.xml:12`, `addons/loyalty/data/loyalty_demo.xml:18`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/loyalty/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 1 files contain report-action/template indicators.
+- **Evidence:** `addons/loyalty/report/loyalty_report.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/loyalty/tests/__init__.py`, `addons/loyalty/tests/test_loyalty.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 17; representative identifiers: `report_loyalty_card`, `report_gift_card`, `loyalty_report`, `loyalty_report_i18n`, `gift_card_report`, `gift_card_report_i18n`, `loyalty_generate_wizard_view_form`, `loyalty_generate_wizard_action`, `loyalty_card_update_balance_form`, `10_percent_with_code`, `10_percent_with_code_rule`, `10_percent_with_code_reward`, `3_cabinets_plus_1_free`, `3_cabinets_plus_1_free_rule`, `3_cabinets_plus_1_free_reward`, `10_percent_coupon`, `10_percent_coupon_rule`, `10_percent_coupon_reward`, `10_percent_coupon_communication`, `mail_template_gift_card`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 7; representative evidence: `addons/loyalty/report/loyalty_report_templates.xml:3`, `addons/loyalty/report/loyalty_report_templates.xml:73`, `addons/loyalty/report/loyalty_report_templates.xml:82`, `addons/loyalty/report/loyalty_report_templates.xml:123`, `addons/loyalty/views/portal_templates.xml:2`, `addons/loyalty/views/portal_templates.xml:49`, `addons/loyalty/views/portal_templates.xml:94`
+- View/action field declarations: 46; representative evidence: `addons/loyalty/report/loyalty_report.xml:6`, `addons/loyalty/report/loyalty_report.xml:15`, `addons/loyalty/wizard/loyalty_generate_wizard_views.xml:5`, `addons/loyalty/wizard/loyalty_generate_wizard_views.xml:6`, `addons/loyalty/wizard/loyalty_generate_wizard_views.xml:62`, `addons/loyalty/wizard/loyalty_generate_wizard_views.xml:63`, `addons/loyalty/wizard/loyalty_card_update_balance_views.xml:6`, `addons/loyalty/wizard/loyalty_card_update_balance_views.xml:7`, `addons/loyalty/views/loyalty_reward_views.xml:5`, `addons/loyalty/views/loyalty_reward_views.xml:6`, `addons/loyalty/views/loyalty_reward_views.xml:74`, `addons/loyalty/views/loyalty_reward_views.xml:75`
+- Browser assets: 5; representative files: `addons/loyalty/static/src/js/loyalty_list_view.js`, `addons/loyalty/static/src/js/loyalty_card_list_view.js`, `addons/loyalty/static/src/js/loyalty_control_panel_widget.js`, `addons/loyalty/static/src/interactions/loyalty_card.js`, `addons/loyalty/static/src/js/portal/loyalty_card_dialog/loyalty_card_dialog.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/loyalty/__manifest__.py`
+- **HTTP entry points:** `addons/loyalty/controllers/portal.py:11`, `addons/loyalty/controllers/portal.py:43`, `addons/loyalty/controllers/portal.py:93`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** `addons/loyalty/report/loyalty_report.xml`
+
+## 7. Database interactions
+
+- Model declarations: 13
+- Representative model evidence: inherits `res.partner` (addons/loyalty/models/res_partner.py:6); inherits `product.product` (addons/loyalty/models/product_product.py:7); `loyalty.reward` (addons/loyalty/models/loyalty_reward.py:11); inherits `product.template` (addons/loyalty/models/product_template.py:8); `loyalty.program` (addons/loyalty/models/loyalty_program.py:14); `loyalty.history` (addons/loyalty/models/loyalty_history.py:12); inherits `product.pricelist` (addons/loyalty/models/product_pricelist.py:7); `loyalty.rule` (addons/loyalty/models/loyalty_rule.py:10); `loyalty.card` (addons/loyalty/models/loyalty_card.py:11); `loyalty.mail` (addons/loyalty/models/loyalty_mail.py:9); `loyalty.generate.wizard` (addons/loyalty/wizard/loyalty_generate_wizard.py:8); inherits `base.partner.merge.automatic.wizard` (addons/loyalty/wizard/base_partner_merge.py:4); `loyalty.card.update.balance` (addons/loyalty/wizard/loyalty_card_update_balance.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 3
+- Route evidence: `addons/loyalty/controllers/portal.py:11`, `addons/loyalty/controllers/portal.py:43`, `addons/loyalty/controllers/portal.py:93`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `product`, `portal`, `account`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/loyalty/__init__.py`
+- `addons/loyalty/__manifest__.py`
+- `addons/loyalty/controllers/__init__.py`
+- `addons/loyalty/controllers/portal.py`
+- `addons/loyalty/data/loyalty_data.xml`
+- `addons/loyalty/data/loyalty_demo.xml`
+- `addons/loyalty/data/mail_template_data.xml`
+- `addons/loyalty/i18n/ar.po`
+- `addons/loyalty/i18n/az.po`
+- `addons/loyalty/i18n/bg.po`
+- `addons/loyalty/i18n/bs.po`
+- `addons/loyalty/i18n/ca.po`
+- `addons/loyalty/i18n/cs.po`
+- `addons/loyalty/i18n/da.po`
+- `addons/loyalty/i18n/de.po`
+- `addons/loyalty/i18n/el.po`
+- `addons/loyalty/i18n/es.po`
+- `addons/loyalty/i18n/es_419.po`
+- `addons/loyalty/i18n/et.po`
+- `addons/loyalty/i18n/fa.po`
+- `addons/loyalty/i18n/fi.po`
+- `addons/loyalty/i18n/fr.po`
+- `addons/loyalty/i18n/he.po`
+- `addons/loyalty/i18n/hi.po`
+- `addons/loyalty/i18n/hr.po`
+- `addons/loyalty/i18n/hu.po`
+- `addons/loyalty/i18n/id.po`
+- `addons/loyalty/i18n/it.po`
+- `addons/loyalty/i18n/ja.po`
+- `addons/loyalty/i18n/kab.po`
+- `addons/loyalty/i18n/ko.po`
+- `addons/loyalty/i18n/ku.po`
+- `addons/loyalty/i18n/lo.po`
+- `addons/loyalty/i18n/loyalty.pot`
+- `addons/loyalty/i18n/lt.po`
+- `addons/loyalty/i18n/lv.po`
+- `addons/loyalty/i18n/mn.po`
+- `addons/loyalty/i18n/my.po`
+- `addons/loyalty/i18n/nb.po`
+- `addons/loyalty/i18n/nl.po`
+- `addons/loyalty/i18n/pl.po`
+- `addons/loyalty/i18n/pt.po`
+- `addons/loyalty/i18n/pt_BR.po`
+- `addons/loyalty/i18n/ro.po`
+- `addons/loyalty/i18n/ru.po`
+- `addons/loyalty/i18n/sk.po`
+- `addons/loyalty/i18n/sl.po`
+- `addons/loyalty/i18n/sr@latin.po`
+- `addons/loyalty/i18n/sv.po`
+- `addons/loyalty/i18n/th.po`
+- `addons/loyalty/i18n/tr.po`
+- `addons/loyalty/i18n/uk.po`
+- `addons/loyalty/i18n/uz.po`
+- `addons/loyalty/i18n/vi.po`
+- `addons/loyalty/i18n/zh_CN.po`
+- `addons/loyalty/i18n/zh_TW.po`
+- `addons/loyalty/models/__init__.py`
+- `addons/loyalty/models/loyalty_card.py`
+- `addons/loyalty/models/loyalty_history.py`
+- `addons/loyalty/models/loyalty_mail.py`
+- `addons/loyalty/models/loyalty_program.py`
+- `addons/loyalty/models/loyalty_reward.py`
+- `addons/loyalty/models/loyalty_rule.py`
+- `addons/loyalty/models/product_pricelist.py`
+- `addons/loyalty/models/product_product.py`
+- `addons/loyalty/models/product_template.py`
+- `addons/loyalty/models/res_partner.py`
+- `addons/loyalty/report/loyalty_report.xml`
+- `addons/loyalty/report/loyalty_report_templates.xml`
+- `addons/loyalty/security/ir.access.csv`
+- `addons/loyalty/static/img/2_plus_1.svg`
+- `addons/loyalty/static/img/coupons.svg`
+- `addons/loyalty/static/img/discount_placeholder_thumbnail.png`
+- `addons/loyalty/static/img/ewallet.svg`
+- `addons/loyalty/static/img/fidelity_cards.svg`
+- `addons/loyalty/static/img/gift_card.png`
+- `addons/loyalty/static/img/gift_card.svg`
+- `addons/loyalty/static/img/loyalty_cards.svg`
+- `addons/loyalty/static/img/loyalty_cards_2.svg`
+- `addons/loyalty/static/img/portal-loyalty.svg`
+- `addons/loyalty/static/img/promo_code.svg`
+- `addons/loyalty/static/img/promotional_program.svg`
+- `addons/loyalty/static/src/img/ewallet.svg`
+- `addons/loyalty/static/src/img/loyalty.svg`
+- `addons/loyalty/static/src/interactions/loyalty_card.js`
+- `addons/loyalty/static/src/js/loyalty_card_list_view.js`
+- `addons/loyalty/static/src/js/loyalty_control_panel_widget.js`
+- `addons/loyalty/static/src/js/loyalty_list_view.js`
+- `addons/loyalty/static/src/js/portal/loyalty_card_dialog/loyalty_card_dialog.js`
+- `addons/loyalty/static/src/js/portal/loyalty_card_dialog/loyalty_card_dialog.xml`
+- `addons/loyalty/static/src/scss/loyalty.dark.scss`
+- `addons/loyalty/static/src/scss/loyalty.scss`
+- `addons/loyalty/static/src/xml/loyalty_templates.xml`
+- `addons/loyalty/tests/__init__.py`
+- `addons/loyalty/tests/test_loyalty.py`
+- `addons/loyalty/views/loyalty_card_views.xml`
+- `addons/loyalty/views/loyalty_history_views.xml`
+- `addons/loyalty/views/loyalty_mail_views.xml`
+- `addons/loyalty/views/loyalty_program_views.xml`
+- `addons/loyalty/views/loyalty_reward_views.xml`
+- `addons/loyalty/views/loyalty_rule_views.xml`
+- `addons/loyalty/views/portal_templates.xml`
+- `addons/loyalty/views/res_partner_views.xml`
+- `addons/loyalty/wizard/__init__.py`
+- `addons/loyalty/wizard/base_partner_merge.py`
+- `addons/loyalty/wizard/loyalty_card_update_balance.py`
+- `addons/loyalty/wizard/loyalty_card_update_balance_views.xml`
+- `addons/loyalty/wizard/loyalty_generate_wizard.py`
+- `addons/loyalty/wizard/loyalty_generate_wizard_views.xml`

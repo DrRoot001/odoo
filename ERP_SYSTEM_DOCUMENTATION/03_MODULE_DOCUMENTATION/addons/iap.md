@@ -1,152 +1,207 @@
 # Module: iap
 
 - **Module ID:** MOD-108
-- **Path:** `addons/iap`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/iap`
 - **Manifest:** `addons/iap/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Hidden/Tools`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Basic models and helpers to support In-App Purchase.
+**Purpose:** Basic models and helpers to support In-App Purchase.
 
+**Manifest description:**
 
 This module provides standard tools (account model, context manager and helpers)
-to support In-App Purchase inside Odoo. 
+to support In-App Purchase inside Odoo.
 
-Declared dependencies: `web`, `base_setup`.
+**Scope evidence:** The module contains 86 files, including 13 Python, 5 XML, and 1 JavaScript/TypeScript files. The manifest declares dependencies: `web`, `base_setup`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 13 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 6 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 5 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 1 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 5
+- Controller/API files: 0
+- XML/data/view/template files: 5
+- Browser asset files: 1
+- Security files: 1
+- Test files: 3
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "web",
-    "base_setup"
-  ],
-  "data": [
-    "data/services.xml",
-    "views/iap_views.xml",
-    "views/res_config_settings.xml",
-    "views/res_users_views.xml",
-    "security/ir.access.csv"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "iap/static/src/**/*.js",
-      "iap/static/src/**/*.xml"
-    ]
-  }
-}
-```
+**Security evidence:** `addons/iap/security/ir.access.csv`
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/iap/__init__.py` (9 lines)
-- `addons/iap/__manifest__.py` (32 lines)
-- `addons/iap/data/neutralize.sql` (9 lines)
-- `addons/iap/data/services.xml` (13 lines)
-- `addons/iap/i18n/af.po` (379 lines)
-- `addons/iap/i18n/am.po` (375 lines)
-- `addons/iap/i18n/ar.po` (438 lines)
-- `addons/iap/i18n/az.po` (417 lines)
-- `addons/iap/i18n/bg.po` (418 lines)
-- `addons/iap/i18n/bs.po` (418 lines)
-- `addons/iap/i18n/ca.po` (422 lines)
-- `addons/iap/i18n/cs.po` (422 lines)
-- `addons/iap/i18n/da.po` (419 lines)
-- `addons/iap/i18n/de.po` (497 lines)
-- `addons/iap/i18n/el.po` (417 lines)
-- `addons/iap/i18n/es.po` (435 lines)
-- `addons/iap/i18n/es_419.po` (489 lines)
-- `addons/iap/i18n/es_CL.po` (69 lines)
-- `addons/iap/i18n/et.po` (422 lines)
-- `addons/iap/i18n/eu.po` (378 lines)
-- `addons/iap/i18n/fa.po` (422 lines)
-- `addons/iap/i18n/fi.po` (439 lines)
-- `addons/iap/i18n/fo.po` (378 lines)
-- `addons/iap/i18n/fr.po` (486 lines)
-- `addons/iap/i18n/fr_CA.po` (64 lines)
-- `addons/iap/i18n/gl.po` (378 lines)
-- `addons/iap/i18n/gu.po` (379 lines)
-- `addons/iap/i18n/he.po` (422 lines)
-- `addons/iap/i18n/hi.po` (413 lines)
-- `addons/iap/i18n/hr.po` (419 lines)
-- `addons/iap/i18n/hu.po` (421 lines)
-- `addons/iap/i18n/iap.pot` (410 lines)
-- `addons/iap/i18n/id.po` (468 lines)
-- `addons/iap/i18n/is.po` (375 lines)
-- `addons/iap/i18n/it.po` (490 lines)
-- `addons/iap/i18n/ja.po` (475 lines)
-- `addons/iap/i18n/ka.po` (378 lines)
-- `addons/iap/i18n/kab.po` (415 lines)
-- `addons/iap/i18n/km.po` (378 lines)
-- `addons/iap/i18n/ko.po` (449 lines)
-- `addons/iap/i18n/ku.po` (413 lines)
-- `addons/iap/i18n/lo.po` (424 lines)
-- `addons/iap/i18n/lt.po` (423 lines)
-- `addons/iap/i18n/lv.po` (419 lines)
-- `addons/iap/i18n/mk.po` (378 lines)
-- `addons/iap/i18n/mn.po` (419 lines)
-- `addons/iap/i18n/my.po` (414 lines)
-- `addons/iap/i18n/nb.po` (419 lines)
-- `addons/iap/i18n/nl.po` (490 lines)
-- `addons/iap/i18n/pl.po` (444 lines)
-- `addons/iap/i18n/pt.po` (424 lines)
-- `addons/iap/i18n/pt_BR.po` (496 lines)
-- `addons/iap/i18n/ro.po` (436 lines)
-- `addons/iap/i18n/ru.po` (435 lines)
-- `addons/iap/i18n/sk.po` (418 lines)
-- `addons/iap/i18n/sl.po` (442 lines)
-- `addons/iap/i18n/sq.po` (378 lines)
-- `addons/iap/i18n/sr@latin.po` (419 lines)
-- `addons/iap/i18n/sv.po` (432 lines)
-- `addons/iap/i18n/th.po` (427 lines)
-- `addons/iap/i18n/tr.po` (455 lines)
-- `addons/iap/i18n/uk.po` (420 lines)
-- `addons/iap/i18n/uz.po` (477 lines)
-- `addons/iap/i18n/vi.po` (445 lines)
-- `addons/iap/i18n/zh_CN.po` (431 lines)
-- `addons/iap/i18n/zh_TW.po` (425 lines)
-- `addons/iap/models/__init__.py` (7 lines)
-- `addons/iap/models/iap_account.py` (384 lines)
-- `addons/iap/models/iap_enrich_api.py` (39 lines)
-- `addons/iap/models/iap_service.py` (21 lines)
-- `addons/iap/models/iap_service_pack.py` (23 lines)
-- `addons/iap/models/res_config_settings.py` (8 lines)
-- `addons/iap/security/ir.access.csv` (6 lines)
-- `addons/iap/static/description/icon.png` (6 lines)
-- `addons/iap/static/description/icon.svg` (1 lines)
-- `addons/iap/static/description/icon_hi.png` (19 lines)
-- `addons/iap/static/src/action_buttons_widget/action_buttons_widget.js` (46 lines)
-- `addons/iap/static/src/action_buttons_widget/action_buttons_widget.xml` (13 lines)
-- `addons/iap/tests/__init__.py` (5 lines)
-- `addons/iap/tests/common.py` (176 lines)
-- `addons/iap/tests/test_iap.py` (33 lines)
-- `addons/iap/tools/__init__.py` (4 lines)
-- `addons/iap/tools/iap_tools.py` (164 lines)
-- `addons/iap/views/iap_views.xml` (104 lines)
-- `addons/iap/views/res_config_settings.xml` (19 lines)
-- `addons/iap/views/res_users_views.xml` (16 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 5 model declarations, 30 methods, 1 constraint handlers, 0 onchange handlers, and 2 dependency declarations.
+- **Evidence:** `addons/iap/models/iap_account.py:25`, `addons/iap/models/iap_service_pack.py:4`, `addons/iap/models/res_config_settings.py:4`, `addons/iap/models/iap_service.py:6`, `addons/iap/models/iap_enrich_api.py:8`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 5 XML files and 1 JavaScript/TypeScript files; static XML analysis found 10 record/template/menu identifiers.
+- **Evidence:** `addons/iap/data/services.xml:5`, `addons/iap/views/res_config_settings.xml:3`, `addons/iap/views/iap_views.xml:5`, `addons/iap/views/iap_views.xml:52`, `addons/iap/views/iap_views.xml:70`, `addons/iap/views/iap_views.xml:83`, `addons/iap/views/iap_views.xml:91`, `addons/iap/views/iap_views.xml:97`, `addons/iap/views/res_users_views.xml:4`, `addons/iap/static/src/action_buttons_widget/action_buttons_widget.xml:2`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/iap/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/iap/tests/test_iap.py`, `addons/iap/tests/common.py`, `addons/iap/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 5; representative identifiers: `iap_service_reveal`, `res_config_settings_view_form`, `iap_account_view_form`, `iap_account_view_tree`, `iap_service_pack_view_tree`, `iap_account_action`, `IAP`, `In-App Purchase Accounts`, `view_iap_users_tree`, `template`
+- Menus: 2; representative evidence: `addons/iap/views/iap_views.xml:91`, `addons/iap/views/iap_views.xml:97`
+- Templates: 1; representative evidence: `addons/iap/static/src/action_buttons_widget/action_buttons_widget.xml:2`
+- View/action field declarations: 12; representative evidence: `addons/iap/views/res_config_settings.xml:5`, `addons/iap/views/res_config_settings.xml:7`, `addons/iap/views/iap_views.xml:7`, `addons/iap/views/iap_views.xml:8`, `addons/iap/views/iap_views.xml:54`, `addons/iap/views/iap_views.xml:55`, `addons/iap/views/iap_views.xml:72`, `addons/iap/views/iap_views.xml:73`, `addons/iap/views/iap_views.xml:85`, `addons/iap/views/iap_views.xml:87`, `addons/iap/views/res_users_views.xml:6`, `addons/iap/views/res_users_views.xml:7`
+- Browser assets: 1; representative files: `addons/iap/static/src/action_buttons_widget/action_buttons_widget.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/iap/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 5
+- Representative model evidence: `iap.account` (addons/iap/models/iap_account.py:25); `iap.service.pack` (addons/iap/models/iap_service_pack.py:4); inherits `res.config.settings` (addons/iap/models/res_config_settings.py:4); `iap.service` (addons/iap/models/iap_service.py:6); `iap.enrich.api` (addons/iap/models/iap_enrich_api.py:8)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `web`, `base_setup`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/iap/__init__.py`
+- `addons/iap/__manifest__.py`
+- `addons/iap/data/neutralize.sql`
+- `addons/iap/data/services.xml`
+- `addons/iap/i18n/af.po`
+- `addons/iap/i18n/am.po`
+- `addons/iap/i18n/ar.po`
+- `addons/iap/i18n/az.po`
+- `addons/iap/i18n/bg.po`
+- `addons/iap/i18n/bs.po`
+- `addons/iap/i18n/ca.po`
+- `addons/iap/i18n/cs.po`
+- `addons/iap/i18n/da.po`
+- `addons/iap/i18n/de.po`
+- `addons/iap/i18n/el.po`
+- `addons/iap/i18n/es.po`
+- `addons/iap/i18n/es_419.po`
+- `addons/iap/i18n/es_CL.po`
+- `addons/iap/i18n/et.po`
+- `addons/iap/i18n/eu.po`
+- `addons/iap/i18n/fa.po`
+- `addons/iap/i18n/fi.po`
+- `addons/iap/i18n/fo.po`
+- `addons/iap/i18n/fr.po`
+- `addons/iap/i18n/fr_CA.po`
+- `addons/iap/i18n/gl.po`
+- `addons/iap/i18n/gu.po`
+- `addons/iap/i18n/he.po`
+- `addons/iap/i18n/hi.po`
+- `addons/iap/i18n/hr.po`
+- `addons/iap/i18n/hu.po`
+- `addons/iap/i18n/iap.pot`
+- `addons/iap/i18n/id.po`
+- `addons/iap/i18n/is.po`
+- `addons/iap/i18n/it.po`
+- `addons/iap/i18n/ja.po`
+- `addons/iap/i18n/ka.po`
+- `addons/iap/i18n/kab.po`
+- `addons/iap/i18n/km.po`
+- `addons/iap/i18n/ko.po`
+- `addons/iap/i18n/ku.po`
+- `addons/iap/i18n/lo.po`
+- `addons/iap/i18n/lt.po`
+- `addons/iap/i18n/lv.po`
+- `addons/iap/i18n/mk.po`
+- `addons/iap/i18n/mn.po`
+- `addons/iap/i18n/my.po`
+- `addons/iap/i18n/nb.po`
+- `addons/iap/i18n/nl.po`
+- `addons/iap/i18n/pl.po`
+- `addons/iap/i18n/pt.po`
+- `addons/iap/i18n/pt_BR.po`
+- `addons/iap/i18n/ro.po`
+- `addons/iap/i18n/ru.po`
+- `addons/iap/i18n/sk.po`
+- `addons/iap/i18n/sl.po`
+- `addons/iap/i18n/sq.po`
+- `addons/iap/i18n/sr@latin.po`
+- `addons/iap/i18n/sv.po`
+- `addons/iap/i18n/th.po`
+- `addons/iap/i18n/tr.po`
+- `addons/iap/i18n/uk.po`
+- `addons/iap/i18n/uz.po`
+- `addons/iap/i18n/vi.po`
+- `addons/iap/i18n/zh_CN.po`
+- `addons/iap/i18n/zh_TW.po`
+- `addons/iap/models/__init__.py`
+- `addons/iap/models/iap_account.py`
+- `addons/iap/models/iap_enrich_api.py`
+- `addons/iap/models/iap_service.py`
+- `addons/iap/models/iap_service_pack.py`
+- `addons/iap/models/res_config_settings.py`
+- `addons/iap/security/ir.access.csv`
+- `addons/iap/static/description/icon.png`
+- `addons/iap/static/description/icon.svg`
+- `addons/iap/static/description/icon_hi.png`
+- `addons/iap/static/src/action_buttons_widget/action_buttons_widget.js`
+- `addons/iap/static/src/action_buttons_widget/action_buttons_widget.xml`
+- `addons/iap/tests/__init__.py`
+- `addons/iap/tests/common.py`
+- `addons/iap/tests/test_iap.py`
+- `addons/iap/tools/__init__.py`
+- `addons/iap/tools/iap_tools.py`
+- `addons/iap/views/iap_views.xml`
+- `addons/iap/views/res_config_settings.xml`
+- `addons/iap/views/res_users_views.xml`

@@ -1,229 +1,269 @@
 # Module: bus
 
 - **Module ID:** MOD-045
-- **Path:** `addons/bus`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/bus`
 - **Manifest:** `addons/bus/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Hidden`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
+
+**Manifest description:**
 
 Instant Messaging Bus allow you to send messages to users, in live.
 
-Declared dependencies: `base`, `web`.
+**Scope evidence:** The module contains 141 files, including 41 Python, 1 XML, and 34 JavaScript/TypeScript files. The manifest declares dependencies: `base`, `web`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 41 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 12 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 4 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 34 | Client behavior/assets. |
-| Tests | 15 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 6 | Static decorator matches. |
+- Model/business logic files: 11
+- Controller/API files: 4
+- XML/data/view/template files: 1
+- Browser asset files: 34
+- Security files: 0
+- Test files: 15
+- Scheduled/automation evidence files: 1
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "base",
-    "web"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "bus/static/src/*.js",
-      "bus/static/src/debug/**/*",
-      "bus/static/src/services/**/*.js",
-      "bus/static/src/workers/*",
-      [
-        "remove",
-        "bus/static/src/workers/bus_worker_script.js"
-      ]
-    ],
-    "web.assets_frontend": [
-      "bus/static/src/*.js",
-      "bus/static/src/services/**/*.js",
-      [
-        "remove",
-        "bus/static/src/services/assets_watchdog_plugin.js"
-      ],
-      [
-        "remove",
-        "bus/static/src/simple_notification_plugin.js"
-      ],
-      "bus/static/src/workers/*",
-      [
-        "remove",
-        "bus/static/src/workers/bus_worker_script.js"
-      ]
-    ],
-    "web.assets_unit_tests": [
-      "bus/static/tests/**/*"
-    ],
-    "bus.websocket_worker_assets": [
-      "web/static/src/module_loader.js",
-      "web/static/src/polyfills/promise.js",
-      "bus/static/src/workers/*"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/bus/__init__.py` (7 lines)
-- `addons/bus/__manifest__.py` (35 lines)
-- `addons/bus/bus_dispatcher.py` (580 lines)
-- `addons/bus/controllers/__init__.py` (5 lines)
-- `addons/bus/controllers/home.py` (38 lines)
-- `addons/bus/controllers/main.py` (13 lines)
-- `addons/bus/controllers/websocket.py` (61 lines)
-- `addons/bus/i18n/af.po` (203 lines)
-- `addons/bus/i18n/ar.po` (220 lines)
-- `addons/bus/i18n/az.po` (206 lines)
-- `addons/bus/i18n/bg.po` (208 lines)
-- `addons/bus/i18n/bs.po` (208 lines)
-- `addons/bus/i18n/bus.pot` (199 lines)
-- `addons/bus/i18n/ca.po` (227 lines)
-- `addons/bus/i18n/cs.po` (214 lines)
-- `addons/bus/i18n/da.po` (213 lines)
-- `addons/bus/i18n/de.po` (226 lines)
-- `addons/bus/i18n/el.po` (208 lines)
-- `addons/bus/i18n/es.po` (223 lines)
-- `addons/bus/i18n/es_419.po` (222 lines)
-- `addons/bus/i18n/es_CL.po` (65 lines)
-- `addons/bus/i18n/et.po` (213 lines)
-- `addons/bus/i18n/eu.po` (202 lines)
-- `addons/bus/i18n/fa.po` (213 lines)
-- `addons/bus/i18n/fi.po` (227 lines)
-- `addons/bus/i18n/fo.po` (202 lines)
-- `addons/bus/i18n/fr.po` (226 lines)
-- `addons/bus/i18n/fr_BE.po` (54 lines)
-- `addons/bus/i18n/fr_CA.po` (65 lines)
-- `addons/bus/i18n/gl.po` (202 lines)
-- `addons/bus/i18n/gu.po` (203 lines)
-- `addons/bus/i18n/he.po` (213 lines)
-- `addons/bus/i18n/hi.po` (203 lines)
-- `addons/bus/i18n/hr.po` (209 lines)
-- `addons/bus/i18n/hu.po` (211 lines)
-- `addons/bus/i18n/hy.po` (201 lines)
-- `addons/bus/i18n/id.po` (224 lines)
-- `addons/bus/i18n/is.po` (199 lines)
-- `addons/bus/i18n/it.po` (226 lines)
-- `addons/bus/i18n/ja.po` (224 lines)
-- `addons/bus/i18n/ka.po` (202 lines)
-- `addons/bus/i18n/kab.po` (205 lines)
-- `addons/bus/i18n/km.po` (203 lines)
-- `addons/bus/i18n/ko.po` (220 lines)
-- `addons/bus/i18n/ku.po` (203 lines)
-- `addons/bus/i18n/lo.po` (205 lines)
-- `addons/bus/i18n/lt.po` (214 lines)
-- `addons/bus/i18n/lv.po` (211 lines)
-- `addons/bus/i18n/mk.po` (202 lines)
-- `addons/bus/i18n/ml_IN.po` (202 lines)
-- `addons/bus/i18n/mn.po` (207 lines)
-- `addons/bus/i18n/my.po` (204 lines)
-- `addons/bus/i18n/nb.po` (206 lines)
-- `addons/bus/i18n/nl.po` (222 lines)
-- `addons/bus/i18n/pl.po` (230 lines)
-- `addons/bus/i18n/pt.po` (216 lines)
-- `addons/bus/i18n/pt_BR.po` (225 lines)
-- `addons/bus/i18n/ro.po` (222 lines)
-- `addons/bus/i18n/ru.po` (221 lines)
-- `addons/bus/i18n/sk.po` (206 lines)
-- `addons/bus/i18n/sl.po` (223 lines)
-- `addons/bus/i18n/sq.po` (202 lines)
-- `addons/bus/i18n/sr@latin.po` (208 lines)
-- `addons/bus/i18n/sv.po` (226 lines)
-- `addons/bus/i18n/ta.po` (201 lines)
-- `addons/bus/i18n/th.po` (218 lines)
-- `addons/bus/i18n/tr.po` (233 lines)
-- `addons/bus/i18n/uk.po` (222 lines)
-- `addons/bus/i18n/uz.po` (246 lines)
-- `addons/bus/i18n/vi.po` (221 lines)
-- `addons/bus/i18n/zh_CN.po` (218 lines)
-- `addons/bus/i18n/zh_TW.po` (217 lines)
-- `addons/bus/models/__init__.py` (13 lines)
-- `addons/bus/models/bus.py` (184 lines)
-- `addons/bus/models/bus_listener_mixin.py` (25 lines)
-- `addons/bus/models/ir_attachment.py` (11 lines)
-- `addons/bus/models/ir_http.py` (28 lines)
-- `addons/bus/models/ir_model.py` (36 lines)
-- `addons/bus/models/ir_qweb.py` (11 lines)
-- `addons/bus/models/ir_websocket.py` (108 lines)
-- `addons/bus/models/res_groups.py` (8 lines)
-- `addons/bus/models/res_partner.py` (12 lines)
-- `addons/bus/models/res_users.py` (8 lines)
-- `addons/bus/models/res_users_settings.py` (11 lines)
-- `addons/bus/session_helpers.py` (141 lines)
-- `addons/bus/static/src/@types/services.d.ts` (15 lines)
-- `addons/bus/static/src/bus_parameters_plugin.js` (28 lines)
-- `addons/bus/static/src/debug/bus_logs_menu_item.js` (49 lines)
-- `addons/bus/static/src/debug/bus_logs_menu_item.xml` (15 lines)
-- `addons/bus/static/src/debug/bus_logs_plugin.js` (71 lines)
-- `addons/bus/static/src/misc.js` (63 lines)
-- `addons/bus/static/src/multi_tab_fallback_plugin.js` (191 lines)
-- `addons/bus/static/src/multi_tab_plugin.js` (25 lines)
-- `addons/bus/static/src/multi_tab_shared_worker_plugin.js` (87 lines)
-- `addons/bus/static/src/services/assets_watchdog_plugin.js` (88 lines)
-- `addons/bus/static/src/services/bus_monitoring_plugin.js` (63 lines)
-- `addons/bus/static/src/services/bus_plugin.js` (282 lines)
-- `addons/bus/static/src/services/presence_plugin.js` (92 lines)
-- `addons/bus/static/src/services/worker_plugin.js` (167 lines)
-- `addons/bus/static/src/simple_notification_plugin.js` (23 lines)
-- `addons/bus/static/src/workers/base_worker.js` (17 lines)
-- `addons/bus/static/src/workers/bus_worker_script.js` (33 lines)
-- `addons/bus/static/src/workers/bus_worker_utils.js` (199 lines)
-- `addons/bus/static/src/workers/election_worker.js` (103 lines)
-- `addons/bus/static/src/workers/websocket_worker.js` (627 lines)
-- `addons/bus/static/tests/assets_watchdog.test.js` (23 lines)
-- `addons/bus/static/tests/bus_logger.test.js` (64 lines)
-- `addons/bus/static/tests/bus_monitoring_plugin.test.js` (88 lines)
-- `addons/bus/static/tests/bus_plugin.test.js` (613 lines)
-- `addons/bus/static/tests/bus_test_helpers.js` (342 lines)
-- `addons/bus/static/tests/mock_base_worker.js` (23 lines)
-- `addons/bus/static/tests/mock_election_worker.js` (16 lines)
-- `addons/bus/static/tests/mock_server/mock_models/@types/mock_models.d.ts` (12 lines)
-- `addons/bus/static/tests/mock_server/mock_models/bus_bus.js` (78 lines)
-- `addons/bus/static/tests/mock_server/mock_models/ir_websocket.js` (32 lines)
-- `addons/bus/static/tests/mock_websocket.js` (125 lines)
-- `addons/bus/static/tests/multi_tab_fallback_plugin.test.js` (38 lines)
-- `addons/bus/static/tests/multi_tab_shared_worker_plugin.test.js` (66 lines)
-- `addons/bus/static/tests/simple_notification.test.js` (48 lines)
-- `addons/bus/static/tests/websocket_worker.test.js` (215 lines)
-- `addons/bus/tests/__init__.py` (16 lines)
-- `addons/bus/tests/common.py` (447 lines)
-- `addons/bus/tests/test_assetsbundle.py` (45 lines)
-- `addons/bus/tests/test_bus_gc.py` (36 lines)
-- `addons/bus/tests/test_close_websocket_after_tour.py` (51 lines)
-- `addons/bus/tests/test_health.py` (13 lines)
-- `addons/bus/tests/test_ir_model.py` (46 lines)
-- `addons/bus/tests/test_ir_websocket.py` (38 lines)
-- `addons/bus/tests/test_notify.py` (154 lines)
-- `addons/bus/tests/test_websocket_caryall.py` (352 lines)
-- `addons/bus/tests/test_websocket_check_session.py` (221 lines)
-- `addons/bus/tests/test_websocket_controller.py` (99 lines)
-- `addons/bus/tests/test_websocket_dispatching.py` (75 lines)
-- `addons/bus/tests/test_websocket_rate_limiting.py` (88 lines)
-- `addons/bus/tests/test_websocket_timeouts.py` (95 lines)
-- `addons/bus/tools/__init__.py` (3 lines)
-- `addons/bus/tools/misc.py` (44 lines)
-- `addons/bus/tools/notifications.py` (57 lines)
-- `addons/bus/tools/orjson.py` (16 lines)
-- `addons/bus/websocket.py` (1,018 lines)
-- `addons/bus/websocket_protocol.py` (84 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 11 model declarations, 192 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/bus/models/res_partner.py:6`, `addons/bus/models/res_groups.py:6`, `addons/bus/models/bus_listener_mixin.py:6`, `addons/bus/models/ir_qweb.py:5`, `addons/bus/models/ir_websocket.py:17`, `addons/bus/models/ir_model.py:6`, `addons/bus/models/res_users_settings.py:6`, `addons/bus/models/ir_http.py:7`, `addons/bus/models/bus.py:71`, `addons/bus/models/res_users.py:6`, `addons/bus/models/ir_attachment.py:6`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 4 controller files and 6 route declarations.
+- **Evidence:** `addons/bus/controllers/websocket.py:12`, `addons/bus/controllers/websocket.py:23`, `addons/bus/controllers/websocket.py:32`, `addons/bus/controllers/websocket.py:46`, `addons/bus/controllers/websocket.py:52`, `addons/bus/controllers/main.py:9`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 1 XML files and 34 JavaScript/TypeScript files; static XML analysis found 0 record/template/menu identifiers.
+- **Evidence:** Not found in module
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 1 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/bus/models/bus.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 15 test files are present.
+- **Evidence:** `addons/bus/tests/test_websocket_check_session.py`, `addons/bus/tests/test_ir_model.py`, `addons/bus/tests/test_websocket_controller.py`, `addons/bus/tests/test_websocket_timeouts.py`, `addons/bus/tests/test_websocket_rate_limiting.py`, `addons/bus/tests/test_health.py`, `addons/bus/tests/test_assetsbundle.py`, `addons/bus/tests/common.py`, `addons/bus/tests/test_bus_gc.py`, `addons/bus/tests/test_notify.py`, `addons/bus/tests/__init__.py`, `addons/bus/tests/test_close_websocket_after_tour.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 34; representative files: `addons/bus/static/src/multi_tab_shared_worker_plugin.js`, `addons/bus/static/src/bus_parameters_plugin.js`, `addons/bus/static/src/multi_tab_fallback_plugin.js`, `addons/bus/static/src/multi_tab_plugin.js`, `addons/bus/static/src/misc.js`, `addons/bus/static/src/simple_notification_plugin.js`, `addons/bus/static/tests/multi_tab_shared_worker_plugin.test.js`, `addons/bus/static/tests/bus_test_helpers.js`, `addons/bus/static/tests/assets_watchdog.test.js`, `addons/bus/static/tests/simple_notification.test.js`, `addons/bus/static/tests/mock_election_worker.js`, `addons/bus/static/tests/bus_logger.test.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/bus/__manifest__.py`
+- **HTTP entry points:** `addons/bus/controllers/websocket.py:12`, `addons/bus/controllers/websocket.py:23`, `addons/bus/controllers/websocket.py:32`, `addons/bus/controllers/websocket.py:46`, `addons/bus/controllers/websocket.py:52`, `addons/bus/controllers/main.py:9`
+- **Scheduled entry points:** `addons/bus/models/bus.py`
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 11
+- Representative model evidence: `res.partner` (addons/bus/models/res_partner.py:6); `res.groups` (addons/bus/models/res_groups.py:6); `bus.listener.mixin` (addons/bus/models/bus_listener_mixin.py:6); inherits `ir.qweb` (addons/bus/models/ir_qweb.py:5); `ir.websocket` (addons/bus/models/ir_websocket.py:17); inherits `ir.model` (addons/bus/models/ir_model.py:6); `res.users.settings` (addons/bus/models/res_users_settings.py:6); inherits `ir.http` (addons/bus/models/ir_http.py:7); `bus.bus` (addons/bus/models/bus.py:71); `res.users` (addons/bus/models/res_users.py:6); `ir.attachment` (addons/bus/models/ir_attachment.py:6)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 4
+- Route declarations: 6
+- Route evidence: `addons/bus/controllers/websocket.py:12`, `addons/bus/controllers/websocket.py:23`, `addons/bus/controllers/websocket.py:32`, `addons/bus/controllers/websocket.py:46`, `addons/bus/controllers/websocket.py:52`, `addons/bus/controllers/main.py:9`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base`, `web`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/bus/__init__.py`
+- `addons/bus/__manifest__.py`
+- `addons/bus/bus_dispatcher.py`
+- `addons/bus/controllers/__init__.py`
+- `addons/bus/controllers/home.py`
+- `addons/bus/controllers/main.py`
+- `addons/bus/controllers/websocket.py`
+- `addons/bus/i18n/af.po`
+- `addons/bus/i18n/ar.po`
+- `addons/bus/i18n/az.po`
+- `addons/bus/i18n/bg.po`
+- `addons/bus/i18n/bs.po`
+- `addons/bus/i18n/bus.pot`
+- `addons/bus/i18n/ca.po`
+- `addons/bus/i18n/cs.po`
+- `addons/bus/i18n/da.po`
+- `addons/bus/i18n/de.po`
+- `addons/bus/i18n/el.po`
+- `addons/bus/i18n/es.po`
+- `addons/bus/i18n/es_419.po`
+- `addons/bus/i18n/es_CL.po`
+- `addons/bus/i18n/et.po`
+- `addons/bus/i18n/eu.po`
+- `addons/bus/i18n/fa.po`
+- `addons/bus/i18n/fi.po`
+- `addons/bus/i18n/fo.po`
+- `addons/bus/i18n/fr.po`
+- `addons/bus/i18n/fr_BE.po`
+- `addons/bus/i18n/fr_CA.po`
+- `addons/bus/i18n/gl.po`
+- `addons/bus/i18n/gu.po`
+- `addons/bus/i18n/he.po`
+- `addons/bus/i18n/hi.po`
+- `addons/bus/i18n/hr.po`
+- `addons/bus/i18n/hu.po`
+- `addons/bus/i18n/hy.po`
+- `addons/bus/i18n/id.po`
+- `addons/bus/i18n/is.po`
+- `addons/bus/i18n/it.po`
+- `addons/bus/i18n/ja.po`
+- `addons/bus/i18n/ka.po`
+- `addons/bus/i18n/kab.po`
+- `addons/bus/i18n/km.po`
+- `addons/bus/i18n/ko.po`
+- `addons/bus/i18n/ku.po`
+- `addons/bus/i18n/lo.po`
+- `addons/bus/i18n/lt.po`
+- `addons/bus/i18n/lv.po`
+- `addons/bus/i18n/mk.po`
+- `addons/bus/i18n/ml_IN.po`
+- `addons/bus/i18n/mn.po`
+- `addons/bus/i18n/my.po`
+- `addons/bus/i18n/nb.po`
+- `addons/bus/i18n/nl.po`
+- `addons/bus/i18n/pl.po`
+- `addons/bus/i18n/pt.po`
+- `addons/bus/i18n/pt_BR.po`
+- `addons/bus/i18n/ro.po`
+- `addons/bus/i18n/ru.po`
+- `addons/bus/i18n/sk.po`
+- `addons/bus/i18n/sl.po`
+- `addons/bus/i18n/sq.po`
+- `addons/bus/i18n/sr@latin.po`
+- `addons/bus/i18n/sv.po`
+- `addons/bus/i18n/ta.po`
+- `addons/bus/i18n/th.po`
+- `addons/bus/i18n/tr.po`
+- `addons/bus/i18n/uk.po`
+- `addons/bus/i18n/uz.po`
+- `addons/bus/i18n/vi.po`
+- `addons/bus/i18n/zh_CN.po`
+- `addons/bus/i18n/zh_TW.po`
+- `addons/bus/models/__init__.py`
+- `addons/bus/models/bus.py`
+- `addons/bus/models/bus_listener_mixin.py`
+- `addons/bus/models/ir_attachment.py`
+- `addons/bus/models/ir_http.py`
+- `addons/bus/models/ir_model.py`
+- `addons/bus/models/ir_qweb.py`
+- `addons/bus/models/ir_websocket.py`
+- `addons/bus/models/res_groups.py`
+- `addons/bus/models/res_partner.py`
+- `addons/bus/models/res_users.py`
+- `addons/bus/models/res_users_settings.py`
+- `addons/bus/session_helpers.py`
+- `addons/bus/static/src/@types/services.d.ts`
+- `addons/bus/static/src/bus_parameters_plugin.js`
+- `addons/bus/static/src/debug/bus_logs_menu_item.js`
+- `addons/bus/static/src/debug/bus_logs_menu_item.xml`
+- `addons/bus/static/src/debug/bus_logs_plugin.js`
+- `addons/bus/static/src/misc.js`
+- `addons/bus/static/src/multi_tab_fallback_plugin.js`
+- `addons/bus/static/src/multi_tab_plugin.js`
+- `addons/bus/static/src/multi_tab_shared_worker_plugin.js`
+- `addons/bus/static/src/services/assets_watchdog_plugin.js`
+- `addons/bus/static/src/services/bus_monitoring_plugin.js`
+- `addons/bus/static/src/services/bus_plugin.js`
+- `addons/bus/static/src/services/presence_plugin.js`
+- `addons/bus/static/src/services/worker_plugin.js`
+- `addons/bus/static/src/simple_notification_plugin.js`
+- `addons/bus/static/src/workers/base_worker.js`
+- `addons/bus/static/src/workers/bus_worker_script.js`
+- `addons/bus/static/src/workers/bus_worker_utils.js`
+- `addons/bus/static/src/workers/election_worker.js`
+- `addons/bus/static/src/workers/websocket_worker.js`
+- `addons/bus/static/tests/assets_watchdog.test.js`
+- `addons/bus/static/tests/bus_logger.test.js`
+- `addons/bus/static/tests/bus_monitoring_plugin.test.js`
+- `addons/bus/static/tests/bus_plugin.test.js`
+- `addons/bus/static/tests/bus_test_helpers.js`
+- `addons/bus/static/tests/mock_base_worker.js`
+- `addons/bus/static/tests/mock_election_worker.js`
+- `addons/bus/static/tests/mock_server/mock_models/@types/mock_models.d.ts`
+- `addons/bus/static/tests/mock_server/mock_models/bus_bus.js`
+- `addons/bus/static/tests/mock_server/mock_models/ir_websocket.js`
+- `addons/bus/static/tests/mock_websocket.js`
+- `addons/bus/static/tests/multi_tab_fallback_plugin.test.js`
+- `addons/bus/static/tests/multi_tab_shared_worker_plugin.test.js`
+- `addons/bus/static/tests/simple_notification.test.js`
+- `addons/bus/static/tests/websocket_worker.test.js`
+- `addons/bus/tests/__init__.py`
+- `addons/bus/tests/common.py`
+- `addons/bus/tests/test_assetsbundle.py`
+- `addons/bus/tests/test_bus_gc.py`
+- `addons/bus/tests/test_close_websocket_after_tour.py`
+- `addons/bus/tests/test_health.py`
+- `addons/bus/tests/test_ir_model.py`
+- `addons/bus/tests/test_ir_websocket.py`
+- `addons/bus/tests/test_notify.py`
+- `addons/bus/tests/test_websocket_caryall.py`
+- `addons/bus/tests/test_websocket_check_session.py`
+- `addons/bus/tests/test_websocket_controller.py`
+- `addons/bus/tests/test_websocket_dispatching.py`
+- `addons/bus/tests/test_websocket_rate_limiting.py`
+- `addons/bus/tests/test_websocket_timeouts.py`
+- `addons/bus/tools/__init__.py`
+- `addons/bus/tools/misc.py`
+- `addons/bus/tools/notifications.py`
+- `addons/bus/tools/orjson.py`
+- `addons/bus/websocket.py`
+- `addons/bus/websocket_protocol.py`

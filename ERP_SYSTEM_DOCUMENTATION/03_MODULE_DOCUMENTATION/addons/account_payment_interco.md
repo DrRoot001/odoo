@@ -1,111 +1,170 @@
 # Module: account_payment_interco
 
 - **Module ID:** MOD-010
-- **Path:** `addons/account_payment_interco`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/account_payment_interco`
 - **Manifest:** `addons/account_payment_interco/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Accounting/Accounting`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Enable Intercompany payments to reconcile with their invoices on post.
+**Purpose:** Enable Intercompany payments to reconcile with their invoices on post.
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `account_payment`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 58 files, including 8 Python, 1 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `account_payment`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 8 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 4 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 3
+- Controller/API files: 0
+- XML/data/view/template files: 1
+- Browser asset files: 0
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "account_payment"
-  ],
-  "data": [
-    "views/res_config_settings_views.xml"
-  ]
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** Not found in module
 
-- `addons/account_payment_interco/__init__.py` (1 lines)
-- `addons/account_payment_interco/__manifest__.py` (11 lines)
-- `addons/account_payment_interco/i18n/account_payment_interco.pot` (117 lines)
-- `addons/account_payment_interco/i18n/ar.po` (125 lines)
-- `addons/account_payment_interco/i18n/az.po` (117 lines)
-- `addons/account_payment_interco/i18n/bg.po` (117 lines)
-- `addons/account_payment_interco/i18n/bs.po` (117 lines)
-- `addons/account_payment_interco/i18n/ca.po` (121 lines)
-- `addons/account_payment_interco/i18n/cs.po` (117 lines)
-- `addons/account_payment_interco/i18n/da.po` (117 lines)
-- `addons/account_payment_interco/i18n/de.po` (128 lines)
-- `addons/account_payment_interco/i18n/el.po` (117 lines)
-- `addons/account_payment_interco/i18n/es.po` (125 lines)
-- `addons/account_payment_interco/i18n/es_419.po` (125 lines)
-- `addons/account_payment_interco/i18n/et.po` (117 lines)
-- `addons/account_payment_interco/i18n/fa.po` (117 lines)
-- `addons/account_payment_interco/i18n/fi.po` (123 lines)
-- `addons/account_payment_interco/i18n/fr.po` (128 lines)
-- `addons/account_payment_interco/i18n/he.po` (117 lines)
-- `addons/account_payment_interco/i18n/hi.po` (117 lines)
-- `addons/account_payment_interco/i18n/hr.po` (117 lines)
-- `addons/account_payment_interco/i18n/hu.po` (117 lines)
-- `addons/account_payment_interco/i18n/id.po` (117 lines)
-- `addons/account_payment_interco/i18n/it.po` (129 lines)
-- `addons/account_payment_interco/i18n/ja.po` (121 lines)
-- `addons/account_payment_interco/i18n/kab.po` (117 lines)
-- `addons/account_payment_interco/i18n/ko.po` (117 lines)
-- `addons/account_payment_interco/i18n/ku.po` (117 lines)
-- `addons/account_payment_interco/i18n/lo.po` (117 lines)
-- `addons/account_payment_interco/i18n/lt.po` (117 lines)
-- `addons/account_payment_interco/i18n/lv.po` (117 lines)
-- `addons/account_payment_interco/i18n/mn.po` (117 lines)
-- `addons/account_payment_interco/i18n/my.po` (121 lines)
-- `addons/account_payment_interco/i18n/nb.po` (117 lines)
-- `addons/account_payment_interco/i18n/nl.po` (128 lines)
-- `addons/account_payment_interco/i18n/pl.po` (124 lines)
-- `addons/account_payment_interco/i18n/pt.po` (117 lines)
-- `addons/account_payment_interco/i18n/pt_BR.po` (126 lines)
-- `addons/account_payment_interco/i18n/ro.po` (117 lines)
-- `addons/account_payment_interco/i18n/ru.po` (117 lines)
-- `addons/account_payment_interco/i18n/sk.po` (117 lines)
-- `addons/account_payment_interco/i18n/sl.po` (117 lines)
-- `addons/account_payment_interco/i18n/sr@latin.po` (117 lines)
-- `addons/account_payment_interco/i18n/sv.po` (124 lines)
-- `addons/account_payment_interco/i18n/th.po` (117 lines)
-- `addons/account_payment_interco/i18n/tr.po` (123 lines)
-- `addons/account_payment_interco/i18n/uk.po` (129 lines)
-- `addons/account_payment_interco/i18n/uz.po` (117 lines)
-- `addons/account_payment_interco/i18n/vi.po` (117 lines)
-- `addons/account_payment_interco/i18n/zh_CN.po` (122 lines)
-- `addons/account_payment_interco/i18n/zh_TW.po` (117 lines)
-- `addons/account_payment_interco/models/__init__.py` (4 lines)
-- `addons/account_payment_interco/models/account_move.py` (138 lines)
-- `addons/account_payment_interco/models/res_company.py` (26 lines)
-- `addons/account_payment_interco/models/res_config_settings.py` (24 lines)
-- `addons/account_payment_interco/tests/__init__.py` (1 lines)
-- `addons/account_payment_interco/tests/test_interco_clearing.py` (325 lines)
-- `addons/account_payment_interco/views/res_config_settings_views.xml` (54 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 3 model declarations, 12 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/account_payment_interco/models/res_config_settings.py:4`, `addons/account_payment_interco/models/account_move.py:6`, `addons/account_payment_interco/models/res_company.py:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 1 XML files and 0 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/account_payment_interco/views/res_config_settings_views.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/account_payment_interco/tests/test_interco_clearing.py`, `addons/account_payment_interco/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `res_config_settings_view_form`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/account_payment_interco/views/res_config_settings_views.xml:5`, `addons/account_payment_interco/views/res_config_settings_views.xml:7`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/account_payment_interco/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 3
+- Representative model evidence: inherits `res.config.settings` (addons/account_payment_interco/models/res_config_settings.py:4); inherits `account.move` (addons/account_payment_interco/models/account_move.py:6); inherits `res.company` (addons/account_payment_interco/models/res_company.py:4)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account_payment`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/account_payment_interco/__init__.py`
+- `addons/account_payment_interco/__manifest__.py`
+- `addons/account_payment_interco/i18n/account_payment_interco.pot`
+- `addons/account_payment_interco/i18n/ar.po`
+- `addons/account_payment_interco/i18n/az.po`
+- `addons/account_payment_interco/i18n/bg.po`
+- `addons/account_payment_interco/i18n/bs.po`
+- `addons/account_payment_interco/i18n/ca.po`
+- `addons/account_payment_interco/i18n/cs.po`
+- `addons/account_payment_interco/i18n/da.po`
+- `addons/account_payment_interco/i18n/de.po`
+- `addons/account_payment_interco/i18n/el.po`
+- `addons/account_payment_interco/i18n/es.po`
+- `addons/account_payment_interco/i18n/es_419.po`
+- `addons/account_payment_interco/i18n/et.po`
+- `addons/account_payment_interco/i18n/fa.po`
+- `addons/account_payment_interco/i18n/fi.po`
+- `addons/account_payment_interco/i18n/fr.po`
+- `addons/account_payment_interco/i18n/he.po`
+- `addons/account_payment_interco/i18n/hi.po`
+- `addons/account_payment_interco/i18n/hr.po`
+- `addons/account_payment_interco/i18n/hu.po`
+- `addons/account_payment_interco/i18n/id.po`
+- `addons/account_payment_interco/i18n/it.po`
+- `addons/account_payment_interco/i18n/ja.po`
+- `addons/account_payment_interco/i18n/kab.po`
+- `addons/account_payment_interco/i18n/ko.po`
+- `addons/account_payment_interco/i18n/ku.po`
+- `addons/account_payment_interco/i18n/lo.po`
+- `addons/account_payment_interco/i18n/lt.po`
+- `addons/account_payment_interco/i18n/lv.po`
+- `addons/account_payment_interco/i18n/mn.po`
+- `addons/account_payment_interco/i18n/my.po`
+- `addons/account_payment_interco/i18n/nb.po`
+- `addons/account_payment_interco/i18n/nl.po`
+- `addons/account_payment_interco/i18n/pl.po`
+- `addons/account_payment_interco/i18n/pt.po`
+- `addons/account_payment_interco/i18n/pt_BR.po`
+- `addons/account_payment_interco/i18n/ro.po`
+- `addons/account_payment_interco/i18n/ru.po`
+- `addons/account_payment_interco/i18n/sk.po`
+- `addons/account_payment_interco/i18n/sl.po`
+- `addons/account_payment_interco/i18n/sr@latin.po`
+- `addons/account_payment_interco/i18n/sv.po`
+- `addons/account_payment_interco/i18n/th.po`
+- `addons/account_payment_interco/i18n/tr.po`
+- `addons/account_payment_interco/i18n/uk.po`
+- `addons/account_payment_interco/i18n/uz.po`
+- `addons/account_payment_interco/i18n/vi.po`
+- `addons/account_payment_interco/i18n/zh_CN.po`
+- `addons/account_payment_interco/i18n/zh_TW.po`
+- `addons/account_payment_interco/models/__init__.py`
+- `addons/account_payment_interco/models/account_move.py`
+- `addons/account_payment_interco/models/res_company.py`
+- `addons/account_payment_interco/models/res_config_settings.py`
+- `addons/account_payment_interco/tests/__init__.py`
+- `addons/account_payment_interco/tests/test_interco_clearing.py`
+- `addons/account_payment_interco/views/res_config_settings_views.xml`

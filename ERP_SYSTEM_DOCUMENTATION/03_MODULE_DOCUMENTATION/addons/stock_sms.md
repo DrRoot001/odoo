@@ -1,118 +1,173 @@
 # Module: stock_sms
 
 - **Module ID:** MOD-566
-- **Path:** `addons/stock_sms`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/stock_sms`
 - **Manifest:** `addons/stock_sms/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Supply Chain/Inventory`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
+
+**Purpose:** Send text messages when final stock move
+
+**Manifest description:**
 
 Send text messages when final stock move
 
-Send text messages when final stock move
+**Scope evidence:** The module contains 61 files, including 8 Python, 3 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `stock`, `sms`.
 
-Declared dependencies: `stock`, `sms`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 4
+- Controller/API files: 0
+- XML/data/view/template files: 3
+- Browser asset files: 0
+- Security files: 1
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 8 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 4 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 3 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `addons/stock_sms/security/ir.access.csv`
 
-```text
-{
-  "depends": [
-    "stock",
-    "sms"
-  ],
-  "data": [
-    "data/sms_data.xml",
-    "views/res_config_settings_views.xml",
-    "wizard/confirm_stock_sms_views.xml",
-    "security/ir.access.csv"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/stock_sms/__init__.py` (27 lines)
-- `addons/stock_sms/__manifest__.py` (20 lines)
-- `addons/stock_sms/data/sms_data.xml` (12 lines)
-- `addons/stock_sms/i18n/ar.po` (176 lines)
-- `addons/stock_sms/i18n/az.po` (156 lines)
-- `addons/stock_sms/i18n/bg.po` (156 lines)
-- `addons/stock_sms/i18n/bs.po` (157 lines)
-- `addons/stock_sms/i18n/ca.po` (160 lines)
-- `addons/stock_sms/i18n/cs.po` (165 lines)
-- `addons/stock_sms/i18n/da.po` (164 lines)
-- `addons/stock_sms/i18n/de.po` (176 lines)
-- `addons/stock_sms/i18n/el.po` (156 lines)
-- `addons/stock_sms/i18n/es.po` (177 lines)
-- `addons/stock_sms/i18n/es_419.po` (174 lines)
-- `addons/stock_sms/i18n/et.po` (159 lines)
-- `addons/stock_sms/i18n/fa.po` (159 lines)
-- `addons/stock_sms/i18n/fi.po` (172 lines)
-- `addons/stock_sms/i18n/fr.po` (178 lines)
-- `addons/stock_sms/i18n/he.po` (167 lines)
-- `addons/stock_sms/i18n/hi.po` (156 lines)
-- `addons/stock_sms/i18n/hr.po` (161 lines)
-- `addons/stock_sms/i18n/hu.po` (164 lines)
-- `addons/stock_sms/i18n/id.po` (173 lines)
-- `addons/stock_sms/i18n/it.po` (178 lines)
-- `addons/stock_sms/i18n/ja.po` (172 lines)
-- `addons/stock_sms/i18n/kab.po` (156 lines)
-- `addons/stock_sms/i18n/ko.po` (172 lines)
-- `addons/stock_sms/i18n/ku.po` (156 lines)
-- `addons/stock_sms/i18n/lo.po` (155 lines)
-- `addons/stock_sms/i18n/lt.po` (165 lines)
-- `addons/stock_sms/i18n/lv.po` (156 lines)
-- `addons/stock_sms/i18n/mn.po` (163 lines)
-- `addons/stock_sms/i18n/my.po` (157 lines)
-- `addons/stock_sms/i18n/nb.po` (161 lines)
-- `addons/stock_sms/i18n/nl.po` (175 lines)
-- `addons/stock_sms/i18n/pl.po` (172 lines)
-- `addons/stock_sms/i18n/pt.po` (169 lines)
-- `addons/stock_sms/i18n/pt_BR.po` (178 lines)
-- `addons/stock_sms/i18n/ro.po` (166 lines)
-- `addons/stock_sms/i18n/ru.po` (162 lines)
-- `addons/stock_sms/i18n/sk.po` (155 lines)
-- `addons/stock_sms/i18n/sl.po` (157 lines)
-- `addons/stock_sms/i18n/sr@latin.po` (157 lines)
-- `addons/stock_sms/i18n/stock_sms.pot` (142 lines)
-- `addons/stock_sms/i18n/sv.po` (160 lines)
-- `addons/stock_sms/i18n/th.po` (172 lines)
-- `addons/stock_sms/i18n/tr.po` (178 lines)
-- `addons/stock_sms/i18n/uk.po` (166 lines)
-- `addons/stock_sms/i18n/uz.po` (185 lines)
-- `addons/stock_sms/i18n/vi.po` (164 lines)
-- `addons/stock_sms/i18n/zh_CN.po` (175 lines)
-- `addons/stock_sms/i18n/zh_TW.po` (160 lines)
-- `addons/stock_sms/models/__init__.py` (6 lines)
-- `addons/stock_sms/models/res_company.py` (21 lines)
-- `addons/stock_sms/models/res_config_settings.py` (11 lines)
-- `addons/stock_sms/models/stock_picking.py` (57 lines)
-- `addons/stock_sms/security/ir.access.csv` (4 lines)
-- `addons/stock_sms/views/res_config_settings_views.xml` (24 lines)
-- `addons/stock_sms/wizard/__init__.py` (4 lines)
-- `addons/stock_sms/wizard/confirm_stock_sms.py` (30 lines)
-- `addons/stock_sms/wizard/confirm_stock_sms_views.xml` (20 lines)
+- **Description:** 4 model declarations, 7 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/stock_sms/models/res_config_settings.py:7`, `addons/stock_sms/models/stock_picking.py:7`, `addons/stock_sms/models/res_company.py:7`, `addons/stock_sms/wizard/confirm_stock_sms.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### User interface and data
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 3 XML files and 0 JavaScript/TypeScript files; static XML analysis found 3 record/template/menu identifiers.
+- **Evidence:** `addons/stock_sms/wizard/confirm_stock_sms_views.xml:3`, `addons/stock_sms/data/sms_data.xml:4`, `addons/stock_sms/views/res_config_settings_views.xml:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/stock_sms/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 3; representative identifiers: `view_confirm_stock_sms`, `sms_template_data_stock_delivery`, `res_config_settings_view_form_stock`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 4; representative evidence: `addons/stock_sms/wizard/confirm_stock_sms_views.xml:5`, `addons/stock_sms/wizard/confirm_stock_sms_views.xml:6`, `addons/stock_sms/views/res_config_settings_views.xml:6`, `addons/stock_sms/views/res_config_settings_views.xml:8`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/stock_sms/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 4
+- Representative model evidence: inherits `res.config.settings` (addons/stock_sms/models/res_config_settings.py:7); inherits `stock.picking` (addons/stock_sms/models/stock_picking.py:7); inherits `res.company` (addons/stock_sms/models/res_company.py:7); `confirm.stock.sms` (addons/stock_sms/wizard/confirm_stock_sms.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `stock`, `sms`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/stock_sms/__init__.py`
+- `addons/stock_sms/__manifest__.py`
+- `addons/stock_sms/data/sms_data.xml`
+- `addons/stock_sms/i18n/ar.po`
+- `addons/stock_sms/i18n/az.po`
+- `addons/stock_sms/i18n/bg.po`
+- `addons/stock_sms/i18n/bs.po`
+- `addons/stock_sms/i18n/ca.po`
+- `addons/stock_sms/i18n/cs.po`
+- `addons/stock_sms/i18n/da.po`
+- `addons/stock_sms/i18n/de.po`
+- `addons/stock_sms/i18n/el.po`
+- `addons/stock_sms/i18n/es.po`
+- `addons/stock_sms/i18n/es_419.po`
+- `addons/stock_sms/i18n/et.po`
+- `addons/stock_sms/i18n/fa.po`
+- `addons/stock_sms/i18n/fi.po`
+- `addons/stock_sms/i18n/fr.po`
+- `addons/stock_sms/i18n/he.po`
+- `addons/stock_sms/i18n/hi.po`
+- `addons/stock_sms/i18n/hr.po`
+- `addons/stock_sms/i18n/hu.po`
+- `addons/stock_sms/i18n/id.po`
+- `addons/stock_sms/i18n/it.po`
+- `addons/stock_sms/i18n/ja.po`
+- `addons/stock_sms/i18n/kab.po`
+- `addons/stock_sms/i18n/ko.po`
+- `addons/stock_sms/i18n/ku.po`
+- `addons/stock_sms/i18n/lo.po`
+- `addons/stock_sms/i18n/lt.po`
+- `addons/stock_sms/i18n/lv.po`
+- `addons/stock_sms/i18n/mn.po`
+- `addons/stock_sms/i18n/my.po`
+- `addons/stock_sms/i18n/nb.po`
+- `addons/stock_sms/i18n/nl.po`
+- `addons/stock_sms/i18n/pl.po`
+- `addons/stock_sms/i18n/pt.po`
+- `addons/stock_sms/i18n/pt_BR.po`
+- `addons/stock_sms/i18n/ro.po`
+- `addons/stock_sms/i18n/ru.po`
+- `addons/stock_sms/i18n/sk.po`
+- `addons/stock_sms/i18n/sl.po`
+- `addons/stock_sms/i18n/sr@latin.po`
+- `addons/stock_sms/i18n/stock_sms.pot`
+- `addons/stock_sms/i18n/sv.po`
+- `addons/stock_sms/i18n/th.po`
+- `addons/stock_sms/i18n/tr.po`
+- `addons/stock_sms/i18n/uk.po`
+- `addons/stock_sms/i18n/uz.po`
+- `addons/stock_sms/i18n/vi.po`
+- `addons/stock_sms/i18n/zh_CN.po`
+- `addons/stock_sms/i18n/zh_TW.po`
+- `addons/stock_sms/models/__init__.py`
+- `addons/stock_sms/models/res_company.py`
+- `addons/stock_sms/models/res_config_settings.py`
+- `addons/stock_sms/models/stock_picking.py`
+- `addons/stock_sms/security/ir.access.csv`
+- `addons/stock_sms/views/res_config_settings_views.xml`
+- `addons/stock_sms/wizard/__init__.py`
+- `addons/stock_sms/wizard/confirm_stock_sms.py`
+- `addons/stock_sms/wizard/confirm_stock_sms_views.xml`

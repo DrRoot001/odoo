@@ -1,19 +1,19 @@
 # Module: l10n_do
 
 - **Module ID:** MOD-166
-- **Path:** `addons/l10n_do`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_do`
 - **Manifest:** `addons/l10n_do/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `['account']`
+- **Category:** `Accounting/Localizations/Account Charts`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
-
+**Manifest description:**
 
 Localization Module for Dominican Republic
 ===========================================
@@ -79,74 +79,112 @@ en Odoo):
 1101- Efectivo y Equivalentes
 110101- Caja
 11010101 Caja General
-    
 
-Declared dependencies: `account`, `l10n_latam_invoice_document`.
+**Scope evidence:** The module contains 23 files, including 9 Python, 8 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `account`, `l10n_latam_invoice_document`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 9 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 5 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 8 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 4
+- Controller/API files: 0
+- XML/data/view/template files: 8
+- Browser asset files: 0
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "account",
-    "l10n_latam_invoice_document"
-  ],
-  "data": [
-    "data/account_account_tag_data.xml",
-    "data/account_tax_report_data.xml",
-    "data/l10n_latam_document_type_data.xml",
-    "views/account_move_views.xml",
-    "views/account_tax_views.xml"
-  ],
-  "demo": [
-    "demo/demo_company.xml",
-    "demo/demo_res_partner.xml",
-    "demo/demo_account_journal.xml"
-  ]
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/l10n_do/__init__.py` (4 lines)
-- `addons/l10n_do/__manifest__.py` (95 lines)
-- `addons/l10n_do/data/account_account_tag_data.xml` (17 lines)
-- `addons/l10n_do/data/account_tax_report_data.xml` (291 lines)
-- `addons/l10n_do/data/l10n_latam_document_type_data.xml` (48 lines)
-- `addons/l10n_do/data/template/account.account-do.csv` (378 lines)
-- `addons/l10n_do/data/template/account.fiscal.position-do.csv` (15 lines)
-- `addons/l10n_do/data/template/account.tax-do.csv` (164 lines)
-- `addons/l10n_do/data/template/account.tax.group-do.csv` (16 lines)
-- `addons/l10n_do/demo/demo_account_journal.xml` (10 lines)
-- `addons/l10n_do/demo/demo_company.xml` (36 lines)
-- `addons/l10n_do/demo/demo_res_partner.xml` (15 lines)
-- `addons/l10n_do/i18n/es_419.po` (418 lines)
-- `addons/l10n_do/i18n/l10n_do.pot` (335 lines)
-- `addons/l10n_do/models/__init__.py` (5 lines)
-- `addons/l10n_do/models/account_move.py` (58 lines)
-- `addons/l10n_do/models/account_tax.py` (22 lines)
-- `addons/l10n_do/models/res_partner.py` (26 lines)
-- `addons/l10n_do/models/template_do.py` (44 lines)
-- `addons/l10n_do/tools/__init__.py` (1 lines)
-- `addons/l10n_do/tools/partner_identifiers.py` (18 lines)
-- `addons/l10n_do/views/account_move_views.xml` (14 lines)
-- `addons/l10n_do/views/account_tax_views.xml` (14 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 4 model declarations, 7 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/l10n_do/models/res_partner.py:7`, `addons/l10n_do/models/template_do.py:6`, `addons/l10n_do/models/account_tax.py:5`, `addons/l10n_do/models/account_move.py:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 8 XML files and 0 JavaScript/TypeScript files; static XML analysis found 57 record/template/menu identifiers.
+- **Evidence:** `addons/l10n_do/demo/demo_account_journal.xml:3`, `addons/l10n_do/demo/demo_res_partner.xml:3`, `addons/l10n_do/demo/demo_company.xml:3`, `addons/l10n_do/demo/demo_company.xml:16`, `addons/l10n_do/data/account_tax_report_data.xml:3`, `addons/l10n_do/data/account_tax_report_data.xml:10`, `addons/l10n_do/data/account_tax_report_data.xml:17`, `addons/l10n_do/data/account_tax_report_data.xml:23`, `addons/l10n_do/data/account_tax_report_data.xml:29`, `addons/l10n_do/data/account_tax_report_data.xml:34`, `addons/l10n_do/data/account_tax_report_data.xml:41`, `addons/l10n_do/data/account_tax_report_data.xml:46`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 8; representative identifiers: `demo_edi_sales_journal`, `demo_res_partner_tostadores`, `base.partner_demo_company_do`, `base.demo_company_do`, `tax_report`, `tax_report_balance`, `account_tax_report_total_operaciones`, `account_tax_report_2A`, `account_tax_report_2A2_base`, `account_tax_report_2A2_base_tag`, `account_tax_report_2A3_base`, `account_tax_report_2A3_base_tag`, `account_tax_report_2A4_base`, `account_tax_report_2A4_base_tag`, `account_tax_report_2A5_base`, `account_tax_report_2A5_base_tag`, `account_tax_report_2A6_base`, `account_tax_report_2A6_base_tag`, `account_tax_report_2A7_base`, `account_tax_report_2A7_base_tag`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 4; representative evidence: `addons/l10n_do/views/account_move_views.xml:5`, `addons/l10n_do/views/account_move_views.xml:7`, `addons/l10n_do/views/account_tax_views.xml:5`, `addons/l10n_do/views/account_tax_views.xml:7`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_do/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 4
+- Representative model evidence: inherits `res.partner` (addons/l10n_do/models/res_partner.py:7); inherits `account.chart.template` (addons/l10n_do/models/template_do.py:6); inherits `account.tax` (addons/l10n_do/models/account_tax.py:5); inherits `account.move` (addons/l10n_do/models/account_move.py:4)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account`, `l10n_latam_invoice_document`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_do/__init__.py`
+- `addons/l10n_do/__manifest__.py`
+- `addons/l10n_do/data/account_account_tag_data.xml`
+- `addons/l10n_do/data/account_tax_report_data.xml`
+- `addons/l10n_do/data/l10n_latam_document_type_data.xml`
+- `addons/l10n_do/data/template/account.account-do.csv`
+- `addons/l10n_do/data/template/account.fiscal.position-do.csv`
+- `addons/l10n_do/data/template/account.tax-do.csv`
+- `addons/l10n_do/data/template/account.tax.group-do.csv`
+- `addons/l10n_do/demo/demo_account_journal.xml`
+- `addons/l10n_do/demo/demo_company.xml`
+- `addons/l10n_do/demo/demo_res_partner.xml`
+- `addons/l10n_do/i18n/es_419.po`
+- `addons/l10n_do/i18n/l10n_do.pot`
+- `addons/l10n_do/models/__init__.py`
+- `addons/l10n_do/models/account_move.py`
+- `addons/l10n_do/models/account_tax.py`
+- `addons/l10n_do/models/res_partner.py`
+- `addons/l10n_do/models/template_do.py`
+- `addons/l10n_do/tools/__init__.py`
+- `addons/l10n_do/tools/partner_identifiers.py`
+- `addons/l10n_do/views/account_move_views.xml`
+- `addons/l10n_do/views/account_tax_views.xml`

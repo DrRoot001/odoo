@@ -1,288 +1,371 @@
 # Module: spreadsheet
 
 - **Module ID:** MOD-544
-- **Path:** `addons/spreadsheet`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/spreadsheet`
 - **Manifest:** `addons/spreadsheet/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Productivity/Dashboard`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
+
+**Purpose:** Spreadsheet
+
+**Manifest description:**
 
 Spreadsheet
 
-Spreadsheet
+**Scope evidence:** The module contains 257 files, including 24 Python, 13 XML, and 152 JavaScript/TypeScript files. The manifest declares dependencies: `bus`, `web`, `portal`.
 
-Declared dependencies: `bus`, `web`, `portal`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 6
+- Controller/API files: 2
+- XML/data/view/template files: 13
+- Browser asset files: 152
+- Security files: 0
+- Test files: 8
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 24 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 7 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 13 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 152 | Client behavior/assets. |
-| Tests | 8 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "bus",
-    "web",
-    "portal"
-  ],
-  "data": [
-    "views/public_readonly_spreadsheet_templates.xml"
-  ],
-  "assets": {
-    "web.chartjs_lib": [
-      "spreadsheet/static/lib/chartjs-chart-geo/chartjs-chart-geo.js",
-      "spreadsheet/static/lib/chart_js_treemap.js"
-    ],
-    "spreadsheet.o_spreadsheet_core": [
-      "web/static/src/views/graph/graph_model.js",
-      "web/static/src/views/pivot/pivot_model.js",
-      "web/static/src/polyfills/clipboard.js",
-      [
-        "include",
-        "web.chartjs_lib"
-      ],
-      "spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js",
-      "spreadsheet/static/src/**/*.js",
-      "spreadsheet/static/src/o_spreadsheet/o_spreadsheet.xml",
-      "spreadsheet/static/src/**/*.xml",
-      [
-        "remove",
-        "spreadsheet/static/src/assets_backend/**/*"
-      ],
-      [
-        "remove",
-        "spreadsheet/static/src/public_spreadsheet/**/*"
-      ]
-    ],
-    "spreadsheet.o_spreadsheet": [
-      [
-        "include",
-        "spreadsheet.o_spreadsheet_core"
-      ]
-    ],
-    "spreadsheet.public_spreadsheet": [
-      [
-        "include",
-        "web.assets_frontend"
-      ],
-      [
-        "include",
-        "spreadsheet.o_spreadsheet_core"
-      ],
-      "web/static/src/model/**/*.js",
-      "web/static/src/views/**/*.js",
-      "web/static/src/search/**/*.js",
-      "web/static/src/core/commands/command_hook.js",
-      "web/static/src/webclient/menus/menu_helpers.js",
-      [
-        "remove",
-        "spreadsheet/static/src/ir_ui_menu/spreadsheet_link_service.js"
-      ],
-      [
-        "remove",
-        "spreadsheet/static/src/chart/odoo_link/components/*"
-      ],
-      "spreadsheet/static/src/o_spreadsheet/o_spreadsheet.css",
-      "spreadsheet/static/src/**/*.scss",
-      "spreadsheet/static/src/public_spreadsheet/**/*"
-    ],
-    "web.assets_backend": [
-      "spreadsheet/static/src/o_spreadsheet/o_spreadsheet.css",
-      "spreadsheet/static/src/**/*.scss",
-      "spreadsheet/static/src/assets_backend/**/*"
-    ],
-    "web.assets_unit_tests": [
-      "spreadsheet/static/tests/**/*",
-      [
-        "include",
-        "spreadsheet.o_spreadsheet"
-      ]
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/spreadsheet/__init__.py` (4 lines)
-- `addons/spreadsheet/__manifest__.py` (58 lines)
-- `addons/spreadsheet/controllers/__init__.py` (3 lines)
-- `addons/spreadsheet/controllers/main.py` (45 lines)
-- `addons/spreadsheet/i18n/ar.po` (15,784 lines)
-- `addons/spreadsheet/i18n/az.po` (15,416 lines)
-- `addons/spreadsheet/i18n/bg.po` (15,417 lines)
-- `addons/spreadsheet/i18n/bs.po` (15,413 lines)
-- `addons/spreadsheet/i18n/ca.po` (15,453 lines)
-- `addons/spreadsheet/i18n/cs.po` (15,443 lines)
-- `addons/spreadsheet/i18n/da.po` (15,443 lines)
-- `addons/spreadsheet/i18n/de.po` (16,273 lines)
-- `addons/spreadsheet/i18n/el.po` (15,417 lines)
-- `addons/spreadsheet/i18n/es.po` (16,039 lines)
-- `addons/spreadsheet/i18n/es_419.po` (16,111 lines)
-- `addons/spreadsheet/i18n/et.po` (15,422 lines)
-- `addons/spreadsheet/i18n/fa.po` (15,443 lines)
-- `addons/spreadsheet/i18n/fi.po` (15,934 lines)
-- `addons/spreadsheet/i18n/fr.po` (16,179 lines)
-- `addons/spreadsheet/i18n/he.po` (15,421 lines)
-- `addons/spreadsheet/i18n/hi.po` (15,416 lines)
-- `addons/spreadsheet/i18n/hr.po` (15,441 lines)
-- `addons/spreadsheet/i18n/hu.po` (15,417 lines)
-- `addons/spreadsheet/i18n/id.po` (15,935 lines)
-- `addons/spreadsheet/i18n/it.po` (16,132 lines)
-- `addons/spreadsheet/i18n/ja.po` (15,597 lines)
-- `addons/spreadsheet/i18n/kab.po` (15,412 lines)
-- `addons/spreadsheet/i18n/ko.po` (15,500 lines)
-- `addons/spreadsheet/i18n/ku.po` (15,413 lines)
-- `addons/spreadsheet/i18n/lo.po` (15,601 lines)
-- `addons/spreadsheet/i18n/lt.po` (15,418 lines)
-- `addons/spreadsheet/i18n/lv.po` (15,412 lines)
-- `addons/spreadsheet/i18n/mn.po` (15,417 lines)
-- `addons/spreadsheet/i18n/my.po` (15,418 lines)
-- `addons/spreadsheet/i18n/nb.po` (15,420 lines)
-- `addons/spreadsheet/i18n/nl.po` (16,210 lines)
-- `addons/spreadsheet/i18n/pl.po` (15,506 lines)
-- `addons/spreadsheet/i18n/pt.po` (15,507 lines)
-- `addons/spreadsheet/i18n/pt_BR.po` (16,114 lines)
-- `addons/spreadsheet/i18n/ro.po` (15,509 lines)
-- `addons/spreadsheet/i18n/ru.po` (15,718 lines)
-- `addons/spreadsheet/i18n/sk.po` (15,415 lines)
-- `addons/spreadsheet/i18n/sl.po` (15,422 lines)
-- `addons/spreadsheet/i18n/spreadsheet.pot` (15,426 lines)
-- `addons/spreadsheet/i18n/sr@latin.po` (15,418 lines)
-- `addons/spreadsheet/i18n/sv.po` (15,493 lines)
-- `addons/spreadsheet/i18n/th.po` (15,469 lines)
-- `addons/spreadsheet/i18n/tr.po` (15,894 lines)
-- `addons/spreadsheet/i18n/uk.po` (15,444 lines)
-- `addons/spreadsheet/i18n/uz.po` (17,981 lines)
-- `addons/spreadsheet/i18n/vi.po` (15,852 lines)
-- `addons/spreadsheet/i18n/zh_CN.po` (15,627 lines)
-- `addons/spreadsheet/i18n/zh_TW.po` (16,844 lines)
-- `addons/spreadsheet/models/__init__.py` (8 lines)
-- `addons/spreadsheet/models/ir_http.py` (16 lines)
-- `addons/spreadsheet/models/ir_model.py` (21 lines)
-- `addons/spreadsheet/models/res_currency.py` (27 lines)
-- `addons/spreadsheet/models/res_currency_rate.py` (39 lines)
-- `addons/spreadsheet/models/res_lang.py` (41 lines)
-- `addons/spreadsheet/models/spreadsheet_mixin.py` (171 lines)
-- `addons/spreadsheet/static/description/icon.png` (6 lines)
-- `addons/spreadsheet/static/description/icon.svg` (1 lines)
-- `addons/spreadsheet/static/description/icon_hi.png` (19 lines)
-- `addons/spreadsheet/static/img/spreadsheet.svg` (1 lines)
-- `addons/spreadsheet/static/lib/chart_js_treemap.js` (1,298 lines)
-- `addons/spreadsheet/static/lib/chartjs-chart-geo/chartjs-chart-geo.js` (5,322 lines)
-- `addons/spreadsheet/static/src/@types/commands.d.ts` (203 lines)
-- `addons/spreadsheet/static/src/@types/env.d.ts` (11 lines)
-- `addons/spreadsheet/static/src/@types/functions.d.ts` (11 lines)
-- `addons/spreadsheet/static/src/@types/getters.d.ts` (74 lines)
-- `addons/spreadsheet/static/src/@types/global_filter.d.ts` (175 lines)
-- `addons/spreadsheet/static/src/@types/misc.d.ts` (10 lines)
-- `addons/spreadsheet/static/src/@types/models.d.ts` (16 lines)
-- `addons/spreadsheet/static/src/@types/pivot.d.ts` (75 lines)
-- `addons/spreadsheet/static/src/@types/plugins.d.ts` (29 lines)
-- `addons/spreadsheet/static/src/actions/helpers.js` (58 lines)
-- `addons/spreadsheet/static/src/actions/spreadsheet_component.js` (33 lines)
-- `addons/spreadsheet/static/src/actions/spreadsheet_component.scss` (5 lines)
-- `addons/spreadsheet/static/src/actions/spreadsheet_component.xml` (6 lines)
-- `addons/spreadsheet/static/src/actions/spreadsheet_download_action.js` (48 lines)
-- `addons/spreadsheet/static/src/assets_backend/spreadsheet_action_loader.js` (51 lines)
-- `addons/spreadsheet/static/src/assets_backend/spreadsheet_binary_field/spreadsheet_binary_field.js` (19 lines)
-- `addons/spreadsheet/static/src/assets_backend/spreadsheet_binary_field/spreadsheet_binary_field.xml` (9 lines)
-- `addons/spreadsheet/static/src/chart/data_source/chart_data_source.js` (176 lines)
-- `addons/spreadsheet/static/src/chart/index.js` (14 lines)
-- `addons/spreadsheet/static/src/chart/odoo_chart/odoo_chart_datasource.js` (119 lines)
-- `addons/spreadsheet/static/src/chart/odoo_chart/odoo_chart_helpers.js` (245 lines)
-- `addons/spreadsheet/static/src/chart/odoo_chart/odoo_chart_zoomable_component.js` (14 lines)
-- `addons/spreadsheet/static/src/chart/odoo_chart/odoo_dataset_styles.js` (54 lines)
-- `addons/spreadsheet/static/src/chart/odoo_link/chartjs/odoo_link_chartjs_plugin.js` (22 lines)
-- `addons/spreadsheet/static/src/chart/odoo_link/components/chart_menu.js` (25 lines)
-- `addons/spreadsheet/static/src/chart/odoo_link/components/figure_component.js` (156 lines)
-- `addons/spreadsheet/static/src/chart/odoo_link/components/figure_component.xml` (16 lines)
-- `addons/spreadsheet/static/src/chart/plugins/chart_odoo_link_plugin.js` (175 lines)
-- `addons/spreadsheet/static/src/chart/plugins/odoo_chart_core_plugin.js` (239 lines)
-- `addons/spreadsheet/static/src/chart/plugins/odoo_chart_core_view_plugin.js` (219 lines)
-- `addons/spreadsheet/static/src/chart/plugins/odoo_chart_feature_plugin.js` (126 lines)
-- `addons/spreadsheet/static/src/chart/plugins/operational_transform.js` (47 lines)
-- `addons/spreadsheet/static/src/command_palette.js` (13 lines)
-- `addons/spreadsheet/static/src/command_provider.js` (88 lines)
-- `addons/spreadsheet/static/src/components/share_button/share_button.js` (78 lines)
-- `addons/spreadsheet/static/src/components/share_button/share_button.scss` (18 lines)
-- `addons/spreadsheet/static/src/components/share_button/share_button.xml` (39 lines)
-- `addons/spreadsheet/static/src/currency/formulas.js` (30 lines)
-- `addons/spreadsheet/static/src/currency/helpers.js` (40 lines)
-- `addons/spreadsheet/static/src/currency/plugins/currency.js` (72 lines)
-- `addons/spreadsheet/static/src/data_sources/data_source.js` (186 lines)
-- `addons/spreadsheet/static/src/data_sources/data_source_link.js` (74 lines)
-- `addons/spreadsheet/static/src/data_sources/odoo_data_provider.js` (55 lines)
-- `addons/spreadsheet/static/src/data_sources/odoo_views_data_source.js` (167 lines)
-- `addons/spreadsheet/static/src/data_sources/server_data.js` (318 lines)
-- `addons/spreadsheet/static/src/global_filters/components/date_filter_dropdown/date_filter_dropdown.js` (174 lines)
-- `addons/spreadsheet/static/src/global_filters/components/date_filter_dropdown/date_filter_dropdown.xml` (30 lines)
-- `addons/spreadsheet/static/src/global_filters/components/date_filter_value/date_filter_value.js` (32 lines)
-- `addons/spreadsheet/static/src/global_filters/components/date_filter_value/date_filter_value.scss` (52 lines)
-- `addons/spreadsheet/static/src/global_filters/components/date_filter_value/date_filter_value.xml` (20 lines)
-- `addons/spreadsheet/static/src/global_filters/components/default_date_value/default_date_value.js` (47 lines)
-- `addons/spreadsheet/static/src/global_filters/components/default_date_value/default_date_value.xml` (18 lines)
-- `addons/spreadsheet/static/src/global_filters/components/filter_text_value/filter_text_value.js` (77 lines)
-- `addons/spreadsheet/static/src/global_filters/components/filter_text_value/filter_text_value.xml` (17 lines)
-- `addons/spreadsheet/static/src/global_filters/components/filter_value/filter_value.js` (201 lines)
-- `addons/spreadsheet/static/src/global_filters/components/filter_value/filter_value.scss` (27 lines)
-- `addons/spreadsheet/static/src/global_filters/components/filter_value/filter_value.xml` (72 lines)
-- `addons/spreadsheet/static/src/global_filters/components/selection_filter_value/selection_filter_value.js` (75 lines)
-- `addons/spreadsheet/static/src/global_filters/components/selection_filter_value/selection_filter_value.xml` (11 lines)
-- `addons/spreadsheet/static/src/global_filters/helpers.js` (1,127 lines)
-- `addons/spreadsheet/static/src/global_filters/index.js` (73 lines)
-- `addons/spreadsheet/static/src/global_filters/plugins/global_filters_core_plugin.js` (349 lines)
-- `addons/spreadsheet/static/src/global_filters/plugins/global_filters_core_view_plugin.js` (339 lines)
-- `addons/spreadsheet/static/src/global_filters/plugins/global_filters_ui_plugin.js` (142 lines)
-- `addons/spreadsheet/static/src/helpers/constants.js` (7 lines)
-- `addons/spreadsheet/static/src/helpers/geo_json_service.js` (168 lines)
-- `addons/spreadsheet/static/src/helpers/helpers.js` (85 lines)
-- `addons/spreadsheet/static/src/helpers/model.js` (356 lines)
-- `addons/spreadsheet/static/src/helpers/neutralized_link.js` (33 lines)
-- `addons/spreadsheet/static/src/helpers/odoo_functions_helpers.js` (23 lines)
-- `addons/spreadsheet/static/src/hooks.js` (69 lines)
-- `addons/spreadsheet/static/src/index.js` (141 lines)
-- `addons/spreadsheet/static/src/ir_ui_menu/index.js` (7 lines)
-- `addons/spreadsheet/static/src/ir_ui_menu/ir_ui_menu_plugin.js` (26 lines)
-- `addons/spreadsheet/static/src/ir_ui_menu/odoo_menu_link_cell.js` (103 lines)
-- `addons/spreadsheet/static/src/ir_ui_menu/spreadsheet_link_service.js` (131 lines)
-- `addons/spreadsheet/static/src/list/index.js` (75 lines)
-- `addons/spreadsheet/static/src/list/list_actions.js` (91 lines)
-- `addons/spreadsheet/static/src/list/list_data_source.js` (525 lines)
-- `addons/spreadsheet/static/src/list/list_functions.js` (102 lines)
-- `addons/spreadsheet/static/src/list/list_helpers.js` (55 lines)
-- `addons/spreadsheet/static/src/list/plugins/list_core_global_filter_plugin.js` (149 lines)
-- `addons/spreadsheet/static/src/list/plugins/list_core_plugin.js` (487 lines)
-- `addons/spreadsheet/static/src/list/plugins/list_core_view_plugin.js` (596 lines)
-- `addons/spreadsheet/static/src/list/plugins/list_ui_plugin.js` (157 lines)
-- `addons/spreadsheet/static/src/logging/logging_ui_plugin.js` (93 lines)
-- `addons/spreadsheet/static/src/model.js` (7 lines)
-- `addons/spreadsheet/static/src/o_spreadsheet/cancelled_reason.js` (22 lines)
-- `addons/spreadsheet/static/src/o_spreadsheet/errors.js` (19 lines)
-- `addons/spreadsheet/static/src/o_spreadsheet/icons.xml` (17 lines)
-- `addons/spreadsheet/static/src/o_spreadsheet/init_callbacks.js` (3 lines)
-- `addons/spreadsheet/static/src/o_spreadsheet/migration.js` (643 lines)
-- `addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.css` (3,802 lines)
-- `addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js` (91,107 lines)
+- **Description:** 6 model declarations, 51 methods, 1 constraint handlers, 1 onchange handlers, and 2 dependency declarations.
+- **Evidence:** `addons/spreadsheet/models/res_lang.py:11`, `addons/spreadsheet/models/res_currency_rate.py:5`, `addons/spreadsheet/models/res_currency.py:4`, `addons/spreadsheet/models/ir_model.py:6`, `addons/spreadsheet/models/spreadsheet_mixin.py:20`, `addons/spreadsheet/models/ir_http.py:6`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Additional files not expanded here: 97. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### HTTP/API surface
 
-## Functional behavior classification
+- **Description:** 2 controller files and 1 route declarations.
+- **Evidence:** `addons/spreadsheet/controllers/main.py:12`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 13 XML files and 152 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/spreadsheet/views/public_readonly_spreadsheet_templates.xml:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 8 test files are present.
+- **Evidence:** `addons/spreadsheet/tests/test_ir_model.py`, `addons/spreadsheet/tests/test_currency.py`, `addons/spreadsheet/tests/test_currency_rate.py`, `addons/spreadsheet/tests/test_locale.py`, `addons/spreadsheet/tests/test_session_info.py`, `addons/spreadsheet/tests/test_utils.py`, `addons/spreadsheet/tests/test_display_names.py`, `addons/spreadsheet/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 13; representative identifiers: `Public spreadsheet layout`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 1; representative evidence: `addons/spreadsheet/views/public_readonly_spreadsheet_templates.xml:4`
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 152; representative files: `addons/spreadsheet/static/lib/chart_js_treemap.js`, `addons/spreadsheet/static/src/command_provider.js`, `addons/spreadsheet/static/src/command_palette.js`, `addons/spreadsheet/static/src/index.js`, `addons/spreadsheet/static/src/hooks.js`, `addons/spreadsheet/static/src/model.js`, `addons/spreadsheet/static/src/plugins.js`, `addons/spreadsheet/static/src/server_data_plugin.js`, `addons/spreadsheet/static/tests/command_palette.test.js`, `addons/spreadsheet/static/tests/hoot_override.js`, `addons/spreadsheet/static/tests/logging_ui_plugin.test.js`, `addons/spreadsheet/static/lib/chartjs-chart-geo/chartjs-chart-geo.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/spreadsheet/__manifest__.py`
+- **HTTP entry points:** `addons/spreadsheet/controllers/main.py:12`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 6
+- Representative model evidence: inherits `res.lang` (addons/spreadsheet/models/res_lang.py:11); inherits `res.currency.rate` (addons/spreadsheet/models/res_currency_rate.py:5); inherits `res.currency` (addons/spreadsheet/models/res_currency.py:4); inherits `ir.model` (addons/spreadsheet/models/ir_model.py:6); `spreadsheet.mixin` (addons/spreadsheet/models/spreadsheet_mixin.py:20); inherits `ir.http` (addons/spreadsheet/models/ir_http.py:6)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 1
+- Route evidence: `addons/spreadsheet/controllers/main.py:12`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `bus`, `web`, `portal`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/spreadsheet/__init__.py`
+- `addons/spreadsheet/__manifest__.py`
+- `addons/spreadsheet/controllers/__init__.py`
+- `addons/spreadsheet/controllers/main.py`
+- `addons/spreadsheet/i18n/ar.po`
+- `addons/spreadsheet/i18n/az.po`
+- `addons/spreadsheet/i18n/bg.po`
+- `addons/spreadsheet/i18n/bs.po`
+- `addons/spreadsheet/i18n/ca.po`
+- `addons/spreadsheet/i18n/cs.po`
+- `addons/spreadsheet/i18n/da.po`
+- `addons/spreadsheet/i18n/de.po`
+- `addons/spreadsheet/i18n/el.po`
+- `addons/spreadsheet/i18n/es.po`
+- `addons/spreadsheet/i18n/es_419.po`
+- `addons/spreadsheet/i18n/et.po`
+- `addons/spreadsheet/i18n/fa.po`
+- `addons/spreadsheet/i18n/fi.po`
+- `addons/spreadsheet/i18n/fr.po`
+- `addons/spreadsheet/i18n/he.po`
+- `addons/spreadsheet/i18n/hi.po`
+- `addons/spreadsheet/i18n/hr.po`
+- `addons/spreadsheet/i18n/hu.po`
+- `addons/spreadsheet/i18n/id.po`
+- `addons/spreadsheet/i18n/it.po`
+- `addons/spreadsheet/i18n/ja.po`
+- `addons/spreadsheet/i18n/kab.po`
+- `addons/spreadsheet/i18n/ko.po`
+- `addons/spreadsheet/i18n/ku.po`
+- `addons/spreadsheet/i18n/lo.po`
+- `addons/spreadsheet/i18n/lt.po`
+- `addons/spreadsheet/i18n/lv.po`
+- `addons/spreadsheet/i18n/mn.po`
+- `addons/spreadsheet/i18n/my.po`
+- `addons/spreadsheet/i18n/nb.po`
+- `addons/spreadsheet/i18n/nl.po`
+- `addons/spreadsheet/i18n/pl.po`
+- `addons/spreadsheet/i18n/pt.po`
+- `addons/spreadsheet/i18n/pt_BR.po`
+- `addons/spreadsheet/i18n/ro.po`
+- `addons/spreadsheet/i18n/ru.po`
+- `addons/spreadsheet/i18n/sk.po`
+- `addons/spreadsheet/i18n/sl.po`
+- `addons/spreadsheet/i18n/spreadsheet.pot`
+- `addons/spreadsheet/i18n/sr@latin.po`
+- `addons/spreadsheet/i18n/sv.po`
+- `addons/spreadsheet/i18n/th.po`
+- `addons/spreadsheet/i18n/tr.po`
+- `addons/spreadsheet/i18n/uk.po`
+- `addons/spreadsheet/i18n/uz.po`
+- `addons/spreadsheet/i18n/vi.po`
+- `addons/spreadsheet/i18n/zh_CN.po`
+- `addons/spreadsheet/i18n/zh_TW.po`
+- `addons/spreadsheet/models/__init__.py`
+- `addons/spreadsheet/models/ir_http.py`
+- `addons/spreadsheet/models/ir_model.py`
+- `addons/spreadsheet/models/res_currency.py`
+- `addons/spreadsheet/models/res_currency_rate.py`
+- `addons/spreadsheet/models/res_lang.py`
+- `addons/spreadsheet/models/spreadsheet_mixin.py`
+- `addons/spreadsheet/static/description/icon.png`
+- `addons/spreadsheet/static/description/icon.svg`
+- `addons/spreadsheet/static/description/icon_hi.png`
+- `addons/spreadsheet/static/img/spreadsheet.svg`
+- `addons/spreadsheet/static/lib/chart_js_treemap.js`
+- `addons/spreadsheet/static/lib/chartjs-chart-geo/chartjs-chart-geo.js`
+- `addons/spreadsheet/static/src/@types/commands.d.ts`
+- `addons/spreadsheet/static/src/@types/env.d.ts`
+- `addons/spreadsheet/static/src/@types/functions.d.ts`
+- `addons/spreadsheet/static/src/@types/getters.d.ts`
+- `addons/spreadsheet/static/src/@types/global_filter.d.ts`
+- `addons/spreadsheet/static/src/@types/misc.d.ts`
+- `addons/spreadsheet/static/src/@types/models.d.ts`
+- `addons/spreadsheet/static/src/@types/pivot.d.ts`
+- `addons/spreadsheet/static/src/@types/plugins.d.ts`
+- `addons/spreadsheet/static/src/actions/helpers.js`
+- `addons/spreadsheet/static/src/actions/spreadsheet_component.js`
+- `addons/spreadsheet/static/src/actions/spreadsheet_component.scss`
+- `addons/spreadsheet/static/src/actions/spreadsheet_component.xml`
+- `addons/spreadsheet/static/src/actions/spreadsheet_download_action.js`
+- `addons/spreadsheet/static/src/assets_backend/spreadsheet_action_loader.js`
+- `addons/spreadsheet/static/src/assets_backend/spreadsheet_binary_field/spreadsheet_binary_field.js`
+- `addons/spreadsheet/static/src/assets_backend/spreadsheet_binary_field/spreadsheet_binary_field.xml`
+- `addons/spreadsheet/static/src/chart/data_source/chart_data_source.js`
+- `addons/spreadsheet/static/src/chart/index.js`
+- `addons/spreadsheet/static/src/chart/odoo_chart/odoo_chart_datasource.js`
+- `addons/spreadsheet/static/src/chart/odoo_chart/odoo_chart_helpers.js`
+- `addons/spreadsheet/static/src/chart/odoo_chart/odoo_chart_zoomable_component.js`
+- `addons/spreadsheet/static/src/chart/odoo_chart/odoo_dataset_styles.js`
+- `addons/spreadsheet/static/src/chart/odoo_link/chartjs/odoo_link_chartjs_plugin.js`
+- `addons/spreadsheet/static/src/chart/odoo_link/components/chart_menu.js`
+- `addons/spreadsheet/static/src/chart/odoo_link/components/figure_component.js`
+- `addons/spreadsheet/static/src/chart/odoo_link/components/figure_component.xml`
+- `addons/spreadsheet/static/src/chart/plugins/chart_odoo_link_plugin.js`
+- `addons/spreadsheet/static/src/chart/plugins/odoo_chart_core_plugin.js`
+- `addons/spreadsheet/static/src/chart/plugins/odoo_chart_core_view_plugin.js`
+- `addons/spreadsheet/static/src/chart/plugins/odoo_chart_feature_plugin.js`
+- `addons/spreadsheet/static/src/chart/plugins/operational_transform.js`
+- `addons/spreadsheet/static/src/command_palette.js`
+- `addons/spreadsheet/static/src/command_provider.js`
+- `addons/spreadsheet/static/src/components/share_button/share_button.js`
+- `addons/spreadsheet/static/src/components/share_button/share_button.scss`
+- `addons/spreadsheet/static/src/components/share_button/share_button.xml`
+- `addons/spreadsheet/static/src/currency/formulas.js`
+- `addons/spreadsheet/static/src/currency/helpers.js`
+- `addons/spreadsheet/static/src/currency/plugins/currency.js`
+- `addons/spreadsheet/static/src/data_sources/data_source.js`
+- `addons/spreadsheet/static/src/data_sources/data_source_link.js`
+- `addons/spreadsheet/static/src/data_sources/odoo_data_provider.js`
+- `addons/spreadsheet/static/src/data_sources/odoo_views_data_source.js`
+- `addons/spreadsheet/static/src/data_sources/server_data.js`
+- `addons/spreadsheet/static/src/global_filters/components/date_filter_dropdown/date_filter_dropdown.js`
+- `addons/spreadsheet/static/src/global_filters/components/date_filter_dropdown/date_filter_dropdown.xml`
+- `addons/spreadsheet/static/src/global_filters/components/date_filter_value/date_filter_value.js`
+- `addons/spreadsheet/static/src/global_filters/components/date_filter_value/date_filter_value.scss`
+- `addons/spreadsheet/static/src/global_filters/components/date_filter_value/date_filter_value.xml`
+- `addons/spreadsheet/static/src/global_filters/components/default_date_value/default_date_value.js`
+- `addons/spreadsheet/static/src/global_filters/components/default_date_value/default_date_value.xml`
+- `addons/spreadsheet/static/src/global_filters/components/filter_text_value/filter_text_value.js`
+- `addons/spreadsheet/static/src/global_filters/components/filter_text_value/filter_text_value.xml`
+- `addons/spreadsheet/static/src/global_filters/components/filter_value/filter_value.js`
+- `addons/spreadsheet/static/src/global_filters/components/filter_value/filter_value.scss`
+- `addons/spreadsheet/static/src/global_filters/components/filter_value/filter_value.xml`
+- `addons/spreadsheet/static/src/global_filters/components/selection_filter_value/selection_filter_value.js`
+- `addons/spreadsheet/static/src/global_filters/components/selection_filter_value/selection_filter_value.xml`
+- `addons/spreadsheet/static/src/global_filters/helpers.js`
+- `addons/spreadsheet/static/src/global_filters/index.js`
+- `addons/spreadsheet/static/src/global_filters/plugins/global_filters_core_plugin.js`
+- `addons/spreadsheet/static/src/global_filters/plugins/global_filters_core_view_plugin.js`
+- `addons/spreadsheet/static/src/global_filters/plugins/global_filters_ui_plugin.js`
+- `addons/spreadsheet/static/src/helpers/constants.js`
+- `addons/spreadsheet/static/src/helpers/geo_json_service.js`
+- `addons/spreadsheet/static/src/helpers/helpers.js`
+- `addons/spreadsheet/static/src/helpers/model.js`
+- `addons/spreadsheet/static/src/helpers/neutralized_link.js`
+- `addons/spreadsheet/static/src/helpers/odoo_functions_helpers.js`
+- `addons/spreadsheet/static/src/hooks.js`
+- `addons/spreadsheet/static/src/index.js`
+- `addons/spreadsheet/static/src/ir_ui_menu/index.js`
+- `addons/spreadsheet/static/src/ir_ui_menu/ir_ui_menu_plugin.js`
+- `addons/spreadsheet/static/src/ir_ui_menu/odoo_menu_link_cell.js`
+- `addons/spreadsheet/static/src/ir_ui_menu/spreadsheet_link_service.js`
+- `addons/spreadsheet/static/src/list/index.js`
+- `addons/spreadsheet/static/src/list/list_actions.js`
+- `addons/spreadsheet/static/src/list/list_data_source.js`
+- `addons/spreadsheet/static/src/list/list_functions.js`
+- `addons/spreadsheet/static/src/list/list_helpers.js`
+- `addons/spreadsheet/static/src/list/plugins/list_core_global_filter_plugin.js`
+- `addons/spreadsheet/static/src/list/plugins/list_core_plugin.js`
+- `addons/spreadsheet/static/src/list/plugins/list_core_view_plugin.js`
+- `addons/spreadsheet/static/src/list/plugins/list_ui_plugin.js`
+- `addons/spreadsheet/static/src/logging/logging_ui_plugin.js`
+- `addons/spreadsheet/static/src/model.js`
+- `addons/spreadsheet/static/src/o_spreadsheet/cancelled_reason.js`
+- `addons/spreadsheet/static/src/o_spreadsheet/errors.js`
+- `addons/spreadsheet/static/src/o_spreadsheet/icons.xml`
+- `addons/spreadsheet/static/src/o_spreadsheet/init_callbacks.js`
+- `addons/spreadsheet/static/src/o_spreadsheet/migration.js`
+- `addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.css`
+- `addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js`
+- `addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet.xml`
+- `addons/spreadsheet/static/src/o_spreadsheet/o_spreadsheet_extended.scss`
+- `addons/spreadsheet/static/src/o_spreadsheet/odoo_module.js`
+- `addons/spreadsheet/static/src/o_spreadsheet/translation.js`
+- `addons/spreadsheet/static/src/pivot/index.js`
+- `addons/spreadsheet/static/src/pivot/odoo_pivot.js`
+- `addons/spreadsheet/static/src/pivot/odoo_pivot_loader.js`
+- `addons/spreadsheet/static/src/pivot/pivot_actions.js`
+- `addons/spreadsheet/static/src/pivot/pivot_functions.js`
+- `addons/spreadsheet/static/src/pivot/pivot_helpers.js`
+- `addons/spreadsheet/static/src/pivot/pivot_model.js`
+- `addons/spreadsheet/static/src/pivot/pivot_time_adapters.js`
+- `addons/spreadsheet/static/src/pivot/pivot_to_function_values.js`
+- `addons/spreadsheet/static/src/pivot/pivot_values_normalizers.js`
+- `addons/spreadsheet/static/src/pivot/plugins/pivot_core_global_filter_plugin.js`
+- `addons/spreadsheet/static/src/pivot/plugins/pivot_core_view_global_filter_plugin.js`
+- `addons/spreadsheet/static/src/pivot/plugins/pivot_odoo_core_plugin.js`
+- `addons/spreadsheet/static/src/pivot/plugins/pivot_odoo_core_view_plugin.js`
+- `addons/spreadsheet/static/src/pivot/plugins/pivot_odoo_ui_plugin.js`
+- `addons/spreadsheet/static/src/plugins.js`
+- `addons/spreadsheet/static/src/public_spreadsheet/chart_component.js`
+- `addons/spreadsheet/static/src/public_spreadsheet/clipboard_plugin.js`
+- `addons/spreadsheet/static/src/public_spreadsheet/odoo_menu_fill.js`
+- `addons/spreadsheet/static/src/scss/spreadsheet_dashboard.scss`
+- `addons/spreadsheet/static/src/server_data_plugin.js`
+- `addons/spreadsheet/static/tests/charts/model/link_chart_plugin.test.js`
+- `addons/spreadsheet/static/tests/charts/model/odoo_chart_plugin.test.js`
+- `addons/spreadsheet/static/tests/charts/ui/link_chart_figure.test.js`
+- `addons/spreadsheet/static/tests/charts/ui/odoo_chart_component.test.js`
+- `addons/spreadsheet/static/tests/charts/ui/scorecard_figure.test.js`
+- `addons/spreadsheet/static/tests/command_palette.test.js`
+- `addons/spreadsheet/static/tests/currency/currency_plugin.test.js`
+- `addons/spreadsheet/static/tests/currency/currency_rate_function.test.js`
+- `addons/spreadsheet/static/tests/data_fetching/data_source.test.js`
+- `addons/spreadsheet/static/tests/data_fetching/server_data.test.js`
+- `addons/spreadsheet/static/tests/global_filters/date_filter_value.test.js`
+- `addons/spreadsheet/static/tests/global_filters/default_date_value.test.js`
+- `addons/spreadsheet/static/tests/global_filters/filter_value_component.test.js`
+- `addons/spreadsheet/static/tests/global_filters/global_filter_helper.test.js`
+- `addons/spreadsheet/static/tests/global_filters/global_filters_chart.test.js`
+- `addons/spreadsheet/static/tests/global_filters/global_filters_core_view.test.js`
+- `addons/spreadsheet/static/tests/global_filters/global_filters_model.test.js`
+- `addons/spreadsheet/static/tests/global_filters/odoo_filter_value_v18.test.js`
+- `addons/spreadsheet/static/tests/global_filters/selection_filter_value.test.js`
+- `addons/spreadsheet/static/tests/helpers/chart.js`
+- `addons/spreadsheet/static/tests/helpers/commands.js`
+- `addons/spreadsheet/static/tests/helpers/data.js`
+- `addons/spreadsheet/static/tests/helpers/date_domain.js`
+- `addons/spreadsheet/static/tests/helpers/getters.js`
+- `addons/spreadsheet/static/tests/helpers/global_filter.js`
+- `addons/spreadsheet/static/tests/helpers/list.js`
+- `addons/spreadsheet/static/tests/helpers/locale.js`
+- `addons/spreadsheet/static/tests/helpers/model.js`
+- `addons/spreadsheet/static/tests/helpers/pivot.js`
+- `addons/spreadsheet/static/tests/helpers/pivot_list.js`
+- `addons/spreadsheet/static/tests/helpers/stores.js`
+- `addons/spreadsheet/static/tests/helpers/ui.js`
+- `addons/spreadsheet/static/tests/helpers/zones.js`
+- `addons/spreadsheet/static/tests/hoot_override.js`
+- `addons/spreadsheet/static/tests/links/menu_data_utils.js`
+- `addons/spreadsheet/static/tests/links/model/link_menu_cells.test.js`
+- `addons/spreadsheet/static/tests/links/open_links.test.js`
+- `addons/spreadsheet/static/tests/lists/list_computed_columns.test.js`
+- `addons/spreadsheet/static/tests/lists/list_plugin.test.js`
+- `addons/spreadsheet/static/tests/logging_ui_plugin.test.js`
+- `addons/spreadsheet/static/tests/migrations/migrations.test.js`
+- `addons/spreadsheet/static/tests/pivots/model/pivot_custom_groups_model.test.js`
+- `addons/spreadsheet/static/tests/pivots/model/pivot_plugin.test.js`
+- `addons/spreadsheet/static/tests/pivots/model/pivot_positional_formula.test.js`
+- `addons/spreadsheet/static/tests/pivots/model/pivot_table_function.test.js`
+- `addons/spreadsheet/static/tests/pivots/pivot_core_view_global_filter_plugin.test.js`
+- `addons/spreadsheet/static/tests/pivots/pivot_helpers.test.js`
+- `addons/spreadsheet/static/tests/pivots/pivot_see_records.test.js`
+- `addons/spreadsheet/static/tests/public_spreadsheet/freeze.test.js`
+- `addons/spreadsheet/static/tests/widgets/spreadsheet_binary_field.test.js`
+- `addons/spreadsheet/static/topojson/africa.topo.json`
+- `addons/spreadsheet/static/topojson/asia.topo.json`
+- `addons/spreadsheet/static/topojson/europe.topo.json`
+- `addons/spreadsheet/static/topojson/north_america.topo.json`
+- `addons/spreadsheet/static/topojson/oceania.topo.json`
+- `addons/spreadsheet/static/topojson/south_america.topo.json`
+- `addons/spreadsheet/static/topojson/usa.topo.json`
+- `addons/spreadsheet/static/topojson/world.topo.json`
+- `addons/spreadsheet/tests/__init__.py`
+- `addons/spreadsheet/tests/test_currency.py`
+- `addons/spreadsheet/tests/test_currency_rate.py`
+- `addons/spreadsheet/tests/test_display_names.py`
+- `addons/spreadsheet/tests/test_ir_model.py`
+- `addons/spreadsheet/tests/test_locale.py`
+- `addons/spreadsheet/tests/test_session_info.py`
+- Additional source files not expanded in this page: 7; see `../../01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.

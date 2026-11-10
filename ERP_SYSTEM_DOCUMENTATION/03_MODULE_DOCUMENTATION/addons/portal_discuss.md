@@ -1,123 +1,183 @@
 # Module: portal_discuss
 
 - **Module ID:** MOD-420
-- **Path:** `addons/portal_discuss`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/portal_discuss`
 - **Manifest:** `addons/portal_discuss/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Services`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
+
+**Manifest description:**
 
 Bridge module adding Discuss access from portal.
 
-Declared dependencies: `mail`, `portal`.
+**Scope evidence:** The module contains 63 files, including 10 Python, 2 XML, and 1 JavaScript/TypeScript files. The manifest declares dependencies: `mail`, `portal`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 10 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 3 | Files under `controllers/` or `controllers.py`. |
-| XML files | 2 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 1 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 2
+- Controller/API files: 3
+- XML/data/view/template files: 2
+- Browser asset files: 1
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "mail",
-    "portal"
-  ],
-  "data": [
-    "data/portal_entry_data.xml",
-    "views/portal_templates.xml"
-  ],
-  "assets": {
-    "mail.assets_public": [
-      "portal_discuss/static/src/core/common/**/*"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/portal_discuss/__init__.py` (4 lines)
-- `addons/portal_discuss/__manifest__.py` (20 lines)
-- `addons/portal_discuss/controllers/__init__.py` (4 lines)
-- `addons/portal_discuss/controllers/portal.py` (17 lines)
-- `addons/portal_discuss/controllers/public_page.py` (29 lines)
-- `addons/portal_discuss/data/portal_entry_data.xml` (11 lines)
-- `addons/portal_discuss/i18n/ar.po` (58 lines)
-- `addons/portal_discuss/i18n/az.po` (58 lines)
-- `addons/portal_discuss/i18n/bg.po` (58 lines)
-- `addons/portal_discuss/i18n/bs.po` (58 lines)
-- `addons/portal_discuss/i18n/ca.po` (58 lines)
-- `addons/portal_discuss/i18n/cs.po` (58 lines)
-- `addons/portal_discuss/i18n/da.po` (58 lines)
-- `addons/portal_discuss/i18n/de.po` (63 lines)
-- `addons/portal_discuss/i18n/el.po` (58 lines)
-- `addons/portal_discuss/i18n/es.po` (62 lines)
-- `addons/portal_discuss/i18n/es_419.po` (62 lines)
-- `addons/portal_discuss/i18n/et.po` (58 lines)
-- `addons/portal_discuss/i18n/fa.po` (58 lines)
-- `addons/portal_discuss/i18n/fi.po` (62 lines)
-- `addons/portal_discuss/i18n/fr.po` (58 lines)
-- `addons/portal_discuss/i18n/he.po` (58 lines)
-- `addons/portal_discuss/i18n/hi.po` (58 lines)
-- `addons/portal_discuss/i18n/hr.po` (58 lines)
-- `addons/portal_discuss/i18n/hu.po` (58 lines)
-- `addons/portal_discuss/i18n/id.po` (62 lines)
-- `addons/portal_discuss/i18n/it.po` (63 lines)
-- `addons/portal_discuss/i18n/ja.po` (58 lines)
-- `addons/portal_discuss/i18n/kab.po` (58 lines)
-- `addons/portal_discuss/i18n/ko.po` (58 lines)
-- `addons/portal_discuss/i18n/ku.po` (58 lines)
-- `addons/portal_discuss/i18n/lo.po` (58 lines)
-- `addons/portal_discuss/i18n/lt.po` (58 lines)
-- `addons/portal_discuss/i18n/lv.po` (58 lines)
-- `addons/portal_discuss/i18n/mn.po` (58 lines)
-- `addons/portal_discuss/i18n/my.po` (58 lines)
-- `addons/portal_discuss/i18n/nb.po` (58 lines)
-- `addons/portal_discuss/i18n/nl.po` (62 lines)
-- `addons/portal_discuss/i18n/pl.po` (58 lines)
-- `addons/portal_discuss/i18n/portal_discuss.pot` (58 lines)
-- `addons/portal_discuss/i18n/pt.po` (58 lines)
-- `addons/portal_discuss/i18n/pt_BR.po` (68 lines)
-- `addons/portal_discuss/i18n/ro.po` (58 lines)
-- `addons/portal_discuss/i18n/ru.po` (58 lines)
-- `addons/portal_discuss/i18n/sk.po` (58 lines)
-- `addons/portal_discuss/i18n/sl.po` (58 lines)
-- `addons/portal_discuss/i18n/sr@latin.po` (58 lines)
-- `addons/portal_discuss/i18n/sv.po` (62 lines)
-- `addons/portal_discuss/i18n/th.po` (58 lines)
-- `addons/portal_discuss/i18n/tr.po` (58 lines)
-- `addons/portal_discuss/i18n/uk.po` (58 lines)
-- `addons/portal_discuss/i18n/uz.po` (58 lines)
-- `addons/portal_discuss/i18n/vi.po` (58 lines)
-- `addons/portal_discuss/i18n/zh_CN.po` (63 lines)
-- `addons/portal_discuss/i18n/zh_TW.po` (58 lines)
-- `addons/portal_discuss/models/__init__.py` (4 lines)
-- `addons/portal_discuss/models/discuss_channel.py` (18 lines)
-- `addons/portal_discuss/models/portal_entry.py` (23 lines)
-- `addons/portal_discuss/static/src/core/common/discuss_client_action_patch.js` (16 lines)
-- `addons/portal_discuss/static/src/img/portal-discuss.png` (229 lines)
-- `addons/portal_discuss/tests/__init__.py` (3 lines)
-- `addons/portal_discuss/tests/test_portal_discuss.py` (18 lines)
-- `addons/portal_discuss/views/portal_templates.xml` (8 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 2 model declarations, 6 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/portal_discuss/models/discuss_channel.py:6`, `addons/portal_discuss/models/portal_entry.py:6`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 3 controller files and 0 route declarations.
+- **Evidence:** `addons/portal_discuss/controllers/portal.py`, `addons/portal_discuss/controllers/public_page.py`, `addons/portal_discuss/controllers/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 2 XML files and 1 JavaScript/TypeScript files; static XML analysis found 2 record/template/menu identifiers.
+- **Evidence:** `addons/portal_discuss/data/portal_entry_data.xml:3`, `addons/portal_discuss/views/portal_templates.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/portal_discuss/tests/test_portal_discuss.py`, `addons/portal_discuss/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 2; representative identifiers: `portal_entry_discuss`, `portal_docs_entry_inherit_discuss`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 1; representative evidence: `addons/portal_discuss/views/portal_templates.xml:3`
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 1; representative files: `addons/portal_discuss/static/src/core/common/discuss_client_action_patch.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/portal_discuss/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `discuss.channel` (addons/portal_discuss/models/discuss_channel.py:6); inherits `portal.entry` (addons/portal_discuss/models/portal_entry.py:6)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 3
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `mail`, `portal`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/portal_discuss/__init__.py`
+- `addons/portal_discuss/__manifest__.py`
+- `addons/portal_discuss/controllers/__init__.py`
+- `addons/portal_discuss/controllers/portal.py`
+- `addons/portal_discuss/controllers/public_page.py`
+- `addons/portal_discuss/data/portal_entry_data.xml`
+- `addons/portal_discuss/i18n/ar.po`
+- `addons/portal_discuss/i18n/az.po`
+- `addons/portal_discuss/i18n/bg.po`
+- `addons/portal_discuss/i18n/bs.po`
+- `addons/portal_discuss/i18n/ca.po`
+- `addons/portal_discuss/i18n/cs.po`
+- `addons/portal_discuss/i18n/da.po`
+- `addons/portal_discuss/i18n/de.po`
+- `addons/portal_discuss/i18n/el.po`
+- `addons/portal_discuss/i18n/es.po`
+- `addons/portal_discuss/i18n/es_419.po`
+- `addons/portal_discuss/i18n/et.po`
+- `addons/portal_discuss/i18n/fa.po`
+- `addons/portal_discuss/i18n/fi.po`
+- `addons/portal_discuss/i18n/fr.po`
+- `addons/portal_discuss/i18n/he.po`
+- `addons/portal_discuss/i18n/hi.po`
+- `addons/portal_discuss/i18n/hr.po`
+- `addons/portal_discuss/i18n/hu.po`
+- `addons/portal_discuss/i18n/id.po`
+- `addons/portal_discuss/i18n/it.po`
+- `addons/portal_discuss/i18n/ja.po`
+- `addons/portal_discuss/i18n/kab.po`
+- `addons/portal_discuss/i18n/ko.po`
+- `addons/portal_discuss/i18n/ku.po`
+- `addons/portal_discuss/i18n/lo.po`
+- `addons/portal_discuss/i18n/lt.po`
+- `addons/portal_discuss/i18n/lv.po`
+- `addons/portal_discuss/i18n/mn.po`
+- `addons/portal_discuss/i18n/my.po`
+- `addons/portal_discuss/i18n/nb.po`
+- `addons/portal_discuss/i18n/nl.po`
+- `addons/portal_discuss/i18n/pl.po`
+- `addons/portal_discuss/i18n/portal_discuss.pot`
+- `addons/portal_discuss/i18n/pt.po`
+- `addons/portal_discuss/i18n/pt_BR.po`
+- `addons/portal_discuss/i18n/ro.po`
+- `addons/portal_discuss/i18n/ru.po`
+- `addons/portal_discuss/i18n/sk.po`
+- `addons/portal_discuss/i18n/sl.po`
+- `addons/portal_discuss/i18n/sr@latin.po`
+- `addons/portal_discuss/i18n/sv.po`
+- `addons/portal_discuss/i18n/th.po`
+- `addons/portal_discuss/i18n/tr.po`
+- `addons/portal_discuss/i18n/uk.po`
+- `addons/portal_discuss/i18n/uz.po`
+- `addons/portal_discuss/i18n/vi.po`
+- `addons/portal_discuss/i18n/zh_CN.po`
+- `addons/portal_discuss/i18n/zh_TW.po`
+- `addons/portal_discuss/models/__init__.py`
+- `addons/portal_discuss/models/discuss_channel.py`
+- `addons/portal_discuss/models/portal_entry.py`
+- `addons/portal_discuss/static/src/core/common/discuss_client_action_patch.js`
+- `addons/portal_discuss/static/src/img/portal-discuss.png`
+- `addons/portal_discuss/tests/__init__.py`
+- `addons/portal_discuss/tests/test_portal_discuss.py`
+- `addons/portal_discuss/views/portal_templates.xml`

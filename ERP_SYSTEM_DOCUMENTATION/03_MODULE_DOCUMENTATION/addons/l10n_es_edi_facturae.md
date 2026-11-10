@@ -1,123 +1,173 @@
 # Module: l10n_es_edi_facturae
 
 - **Module ID:** MOD-175
-- **Path:** `addons/l10n_es_edi_facturae`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_es_edi_facturae`
 - **Manifest:** `addons/l10n_es_edi_facturae/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Accounting/Localizations/EDI`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 This module create the Facturae file required to send the invoices information to the General State Administrations.
 It allows the export and signature of the signing of Facturae files.
 The current version of Facturae supported is the 3.2.2
 
 for more informations, see https://www.facturae.gob.es/face/Paginas/FACE.aspx
-    
 
-Declared dependencies: `certificate`, `l10n_es`.
+**Scope evidence:** The module contains 49 files, including 17 Python, 24 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `certificate`, `l10n_es`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 17 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 9 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 24 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 11
+- Controller/API files: 0
+- XML/data/view/template files: 24
+- Browser asset files: 0
+- Security files: 1
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "certificate",
-    "l10n_es"
-  ],
-  "data": [
-    "data/uom.uom.csv",
-    "data/facturae_templates.xml",
-    "data/l10n_es_edi_facturae.ac_role_type.csv",
-    "data/signature_templates.xml",
-    "views/l10n_es_edi_facturae_views.xml",
-    "views/res_partner_views.xml",
-    "views/account_tax_views.xml",
-    "views/account_move_views.xml",
-    "views/uom_uom_views.xml",
-    "views/account_menuitem.xml",
-    "wizard/account_move_reversal_view.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "demo/l10n_es_edi_facturae_demo.xml"
-  ]
-}
-```
+**Security evidence:** `addons/l10n_es_edi_facturae/security/ir.access.csv`
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/l10n_es_edi_facturae/__init__.py` (7 lines)
-- `addons/l10n_es_edi_facturae/__manifest__.py` (40 lines)
-- `addons/l10n_es_edi_facturae/data/facturae_templates.xml` (331 lines)
-- `addons/l10n_es_edi_facturae/data/l10n_es_edi_facturae.ac_role_type.csv` (10 lines)
-- `addons/l10n_es_edi_facturae/data/signature_templates.xml` (91 lines)
-- `addons/l10n_es_edi_facturae/data/template/account.tax-es_common.csv` (253 lines)
-- `addons/l10n_es_edi_facturae/data/uom.uom.csv` (14 lines)
-- `addons/l10n_es_edi_facturae/demo/certificate_demo.pfx` (35 lines)
-- `addons/l10n_es_edi_facturae/demo/l10n_es_edi_facturae_demo.xml` (43 lines)
-- `addons/l10n_es_edi_facturae/i18n/es.po` (1,164 lines)
-- `addons/l10n_es_edi_facturae/i18n/l10n_es_edi_facturae.pot` (1,080 lines)
-- `addons/l10n_es_edi_facturae/models/__init__.py` (8 lines)
-- `addons/l10n_es_edi_facturae/models/account_chart_template.py` (10 lines)
-- `addons/l10n_es_edi_facturae/models/account_move.py` (918 lines)
-- `addons/l10n_es_edi_facturae/models/account_move_send.py` (136 lines)
-- `addons/l10n_es_edi_facturae/models/account_tax.py` (37 lines)
-- `addons/l10n_es_edi_facturae/models/certificate.py` (27 lines)
-- `addons/l10n_es_edi_facturae/models/res_company.py` (40 lines)
-- `addons/l10n_es_edi_facturae/models/res_partner.py` (87 lines)
-- `addons/l10n_es_edi_facturae/models/uom_uom.py` (45 lines)
-- `addons/l10n_es_edi_facturae/security/ir.access.csv` (2 lines)
-- `addons/l10n_es_edi_facturae/tests/__init__.py` (1 lines)
-- `addons/l10n_es_edi_facturae/tests/data/certificate_test.pfx` (31 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_ac_document.xml` (259 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_in_invoice_document.xml` (298 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_invoice_payment_means.xml` (211 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_invoice_period_document.xml` (215 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_4_decimals.xml` (211 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_negative.xml` (264 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_round_2.xml` (253 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_round_glob.xml` (274 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_withhold.xml` (211 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_refund_document.xml` (241 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_signed_document.xml` (333 lines)
-- `addons/l10n_es_edi_facturae/tests/data/expected_simplified_document.xml` (212 lines)
-- `addons/l10n_es_edi_facturae/tests/data/import_multiple_invoices.xml` (333 lines)
-- `addons/l10n_es_edi_facturae/tests/data/import_withholding_invoice.xml` (255 lines)
-- `addons/l10n_es_edi_facturae/tests/test_edi_xml.py` (827 lines)
-- `addons/l10n_es_edi_facturae/views/account_menuitem.xml` (10 lines)
-- `addons/l10n_es_edi_facturae/views/account_move_views.xml` (20 lines)
-- `addons/l10n_es_edi_facturae/views/account_tax_views.xml` (28 lines)
-- `addons/l10n_es_edi_facturae/views/l10n_es_edi_facturae_views.xml` (35 lines)
-- `addons/l10n_es_edi_facturae/views/res_partner_views.xml` (18 lines)
-- `addons/l10n_es_edi_facturae/views/uom_uom_views.xml` (23 lines)
-- `addons/l10n_es_edi_facturae/wizard/__init__.py` (2 lines)
-- `addons/l10n_es_edi_facturae/wizard/account_move_reversal.py` (31 lines)
-- `addons/l10n_es_edi_facturae/wizard/account_move_reversal_view.xml` (30 lines)
-- `addons/l10n_es_edi_facturae/wizard/account_move_send_wizard.py` (14 lines)
-- `addons/l10n_es_edi_facturae/xml_utils.py` (65 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 11 model declarations, 75 methods, 2 constraint handlers, 0 onchange handlers, and 3 dependency declarations.
+- **Evidence:** `addons/l10n_es_edi_facturae/models/res_partner.py:6`, `addons/l10n_es_edi_facturae/models/res_partner.py:14`, `addons/l10n_es_edi_facturae/models/uom_uom.py:4`, `addons/l10n_es_edi_facturae/models/account_tax.py:4`, `addons/l10n_es_edi_facturae/models/account_chart_template.py:5`, `addons/l10n_es_edi_facturae/models/certificate.py:6`, `addons/l10n_es_edi_facturae/models/account_move.py:79`, `addons/l10n_es_edi_facturae/models/account_move_send.py:9`, `addons/l10n_es_edi_facturae/models/res_company.py:4`, `addons/l10n_es_edi_facturae/wizard/account_move_send_wizard.py:4`, `addons/l10n_es_edi_facturae/wizard/account_move_reversal.py:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 24 XML files and 0 JavaScript/TypeScript files; static XML analysis found 29 record/template/menu identifiers.
+- **Evidence:** `addons/l10n_es_edi_facturae/demo/l10n_es_edi_facturae_demo.xml:4`, `addons/l10n_es_edi_facturae/demo/l10n_es_edi_facturae_demo.xml:12`, `addons/l10n_es_edi_facturae/demo/l10n_es_edi_facturae_demo.xml:25`, `addons/l10n_es_edi_facturae/wizard/account_move_reversal_view.xml:5`, `addons/l10n_es_edi_facturae/wizard/account_move_reversal_view.xml:17`, `addons/l10n_es_edi_facturae/data/signature_templates.xml:3`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:5`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:26`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:35`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:45`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:56`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:65`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/l10n_es_edi_facturae/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/l10n_es_edi_facturae/tests/test_edi_xml.py`, `addons/l10n_es_edi_facturae/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 24; representative identifiers: `face_certificate_demo`, `partner_demo_bilbao_es`, `partner_demo_bilbao_ac_es`, `view_tax_tree_inherit_l10n_es_edi_facturae`, `view_account_move_reversal_inherit_l10n_es_edi_facturae`, `template_xades_signature`, `address_type`, `contact_details_type`, `legal_entity_type`, `individual_type`, `tax_identification_type`, `administrative_centers_type`, `business_type`, `tax_type`, `invoice_line_type`, `corrective_type`, `invoice_type`, `account_invoice_facturae_export`, `uom_uom_view_list`, `uom_uom_view_form`
+- Menus: 2; representative evidence: `addons/l10n_es_edi_facturae/views/account_menuitem.xml:4`, `addons/l10n_es_edi_facturae/views/account_menuitem.xml:6`
+- Templates: 13; representative evidence: `addons/l10n_es_edi_facturae/data/signature_templates.xml:3`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:5`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:26`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:35`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:45`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:56`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:65`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:84`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:96`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:125`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:170`, `addons/l10n_es_edi_facturae/data/facturae_templates.xml:185`
+- View/action field declarations: 22; representative evidence: `addons/l10n_es_edi_facturae/wizard/account_move_reversal_view.xml:8`, `addons/l10n_es_edi_facturae/wizard/account_move_reversal_view.xml:9`, `addons/l10n_es_edi_facturae/wizard/account_move_reversal_view.xml:20`, `addons/l10n_es_edi_facturae/wizard/account_move_reversal_view.xml:21`, `addons/l10n_es_edi_facturae/views/uom_uom_views.xml:5`, `addons/l10n_es_edi_facturae/views/uom_uom_views.xml:7`, `addons/l10n_es_edi_facturae/views/uom_uom_views.xml:15`, `addons/l10n_es_edi_facturae/views/uom_uom_views.xml:17`, `addons/l10n_es_edi_facturae/views/account_move_views.xml:6`, `addons/l10n_es_edi_facturae/views/account_move_views.xml:8`, `addons/l10n_es_edi_facturae/views/account_tax_views.xml:7`, `addons/l10n_es_edi_facturae/views/account_tax_views.xml:8`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_es_edi_facturae/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 11
+- Representative model evidence: `l10n_es_edi_facturae.ac_role_type` (addons/l10n_es_edi_facturae/models/res_partner.py:6); inherits `res.partner` (addons/l10n_es_edi_facturae/models/res_partner.py:14); inherits `uom.uom` (addons/l10n_es_edi_facturae/models/uom_uom.py:4); inherits `account.tax` (addons/l10n_es_edi_facturae/models/account_tax.py:4); inherits `account.chart.template` (addons/l10n_es_edi_facturae/models/account_chart_template.py:5); inherits `certificate.certificate` (addons/l10n_es_edi_facturae/models/certificate.py:6); inherits `account.move` (addons/l10n_es_edi_facturae/models/account_move.py:79); inherits `account.move.send` (addons/l10n_es_edi_facturae/models/account_move_send.py:9); inherits `res.company` (addons/l10n_es_edi_facturae/models/res_company.py:4); inherits `account.move.send.wizard` (addons/l10n_es_edi_facturae/wizard/account_move_send_wizard.py:4); inherits `account.move.reversal` (addons/l10n_es_edi_facturae/wizard/account_move_reversal.py:4)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `certificate`, `l10n_es`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_es_edi_facturae/__init__.py`
+- `addons/l10n_es_edi_facturae/__manifest__.py`
+- `addons/l10n_es_edi_facturae/data/facturae_templates.xml`
+- `addons/l10n_es_edi_facturae/data/l10n_es_edi_facturae.ac_role_type.csv`
+- `addons/l10n_es_edi_facturae/data/signature_templates.xml`
+- `addons/l10n_es_edi_facturae/data/template/account.tax-es_common.csv`
+- `addons/l10n_es_edi_facturae/data/uom.uom.csv`
+- `addons/l10n_es_edi_facturae/demo/certificate_demo.pfx`
+- `addons/l10n_es_edi_facturae/demo/l10n_es_edi_facturae_demo.xml`
+- `addons/l10n_es_edi_facturae/i18n/es.po`
+- `addons/l10n_es_edi_facturae/i18n/l10n_es_edi_facturae.pot`
+- `addons/l10n_es_edi_facturae/models/__init__.py`
+- `addons/l10n_es_edi_facturae/models/account_chart_template.py`
+- `addons/l10n_es_edi_facturae/models/account_move.py`
+- `addons/l10n_es_edi_facturae/models/account_move_send.py`
+- `addons/l10n_es_edi_facturae/models/account_tax.py`
+- `addons/l10n_es_edi_facturae/models/certificate.py`
+- `addons/l10n_es_edi_facturae/models/res_company.py`
+- `addons/l10n_es_edi_facturae/models/res_partner.py`
+- `addons/l10n_es_edi_facturae/models/uom_uom.py`
+- `addons/l10n_es_edi_facturae/security/ir.access.csv`
+- `addons/l10n_es_edi_facturae/tests/__init__.py`
+- `addons/l10n_es_edi_facturae/tests/data/certificate_test.pfx`
+- `addons/l10n_es_edi_facturae/tests/data/expected_ac_document.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_in_invoice_document.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_invoice_payment_means.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_invoice_period_document.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_4_decimals.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_negative.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_round_2.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_round_glob.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_out_invoice_withhold.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_refund_document.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_signed_document.xml`
+- `addons/l10n_es_edi_facturae/tests/data/expected_simplified_document.xml`
+- `addons/l10n_es_edi_facturae/tests/data/import_multiple_invoices.xml`
+- `addons/l10n_es_edi_facturae/tests/data/import_withholding_invoice.xml`
+- `addons/l10n_es_edi_facturae/tests/test_edi_xml.py`
+- `addons/l10n_es_edi_facturae/views/account_menuitem.xml`
+- `addons/l10n_es_edi_facturae/views/account_move_views.xml`
+- `addons/l10n_es_edi_facturae/views/account_tax_views.xml`
+- `addons/l10n_es_edi_facturae/views/l10n_es_edi_facturae_views.xml`
+- `addons/l10n_es_edi_facturae/views/res_partner_views.xml`
+- `addons/l10n_es_edi_facturae/views/uom_uom_views.xml`
+- `addons/l10n_es_edi_facturae/wizard/__init__.py`
+- `addons/l10n_es_edi_facturae/wizard/account_move_reversal.py`
+- `addons/l10n_es_edi_facturae/wizard/account_move_reversal_view.xml`
+- `addons/l10n_es_edi_facturae/wizard/account_move_send_wizard.py`
+- `addons/l10n_es_edi_facturae/xml_utils.py`

@@ -1,113 +1,170 @@
 # Module: microsoft_account
 
 - **Module ID:** MOD-374
-- **Path:** `addons/microsoft_account`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/microsoft_account`
 - **Manifest:** `addons/microsoft_account/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden/Tools`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 The module adds Microsoft user in res user.
 ===========================================
 
+**Scope evidence:** The module contains 57 files, including 7 Python, 1 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `base_setup`.
 
-Declared dependencies: `base_setup`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 2
+- Controller/API files: 2
+- XML/data/view/template files: 1
+- Browser asset files: 0
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 7 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "base_setup"
-  ],
-  "data": [
-    "data/microsoft_account_data.xml"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/microsoft_account/__init__.py` (5 lines)
-- `addons/microsoft_account/__manifest__.py` (16 lines)
-- `addons/microsoft_account/controllers/__init__.py` (4 lines)
-- `addons/microsoft_account/controllers/main.py` (58 lines)
-- `addons/microsoft_account/data/microsoft_account_data.xml` (9 lines)
-- `addons/microsoft_account/i18n/ar.po` (91 lines)
-- `addons/microsoft_account/i18n/az.po` (84 lines)
-- `addons/microsoft_account/i18n/bg.po` (88 lines)
-- `addons/microsoft_account/i18n/bs.po` (85 lines)
-- `addons/microsoft_account/i18n/ca.po` (87 lines)
-- `addons/microsoft_account/i18n/cs.po` (88 lines)
-- `addons/microsoft_account/i18n/da.po` (89 lines)
-- `addons/microsoft_account/i18n/de.po` (91 lines)
-- `addons/microsoft_account/i18n/el.po` (85 lines)
-- `addons/microsoft_account/i18n/es.po` (92 lines)
-- `addons/microsoft_account/i18n/es_419.po` (89 lines)
-- `addons/microsoft_account/i18n/et.po` (86 lines)
-- `addons/microsoft_account/i18n/fa.po` (84 lines)
-- `addons/microsoft_account/i18n/fi.po` (92 lines)
-- `addons/microsoft_account/i18n/fr.po` (89 lines)
-- `addons/microsoft_account/i18n/he.po` (86 lines)
-- `addons/microsoft_account/i18n/hi.po` (84 lines)
-- `addons/microsoft_account/i18n/hr.po` (87 lines)
-- `addons/microsoft_account/i18n/hu.po` (88 lines)
-- `addons/microsoft_account/i18n/id.po` (89 lines)
-- `addons/microsoft_account/i18n/it.po` (91 lines)
-- `addons/microsoft_account/i18n/ja.po` (89 lines)
-- `addons/microsoft_account/i18n/kab.po` (84 lines)
-- `addons/microsoft_account/i18n/ko.po` (86 lines)
-- `addons/microsoft_account/i18n/ku.po` (84 lines)
-- `addons/microsoft_account/i18n/lo.po` (83 lines)
-- `addons/microsoft_account/i18n/lt.po` (88 lines)
-- `addons/microsoft_account/i18n/lv.po` (84 lines)
-- `addons/microsoft_account/i18n/microsoft_account.pot` (80 lines)
-- `addons/microsoft_account/i18n/mn.po` (87 lines)
-- `addons/microsoft_account/i18n/my.po` (84 lines)
-- `addons/microsoft_account/i18n/nb.po` (85 lines)
-- `addons/microsoft_account/i18n/nl.po` (92 lines)
-- `addons/microsoft_account/i18n/pl.po` (88 lines)
-- `addons/microsoft_account/i18n/pt.po` (89 lines)
-- `addons/microsoft_account/i18n/pt_BR.po` (93 lines)
-- `addons/microsoft_account/i18n/ro.po` (88 lines)
-- `addons/microsoft_account/i18n/ru.po` (90 lines)
-- `addons/microsoft_account/i18n/sk.po` (83 lines)
-- `addons/microsoft_account/i18n/sl.po` (86 lines)
-- `addons/microsoft_account/i18n/sr@latin.po` (85 lines)
-- `addons/microsoft_account/i18n/sv.po` (88 lines)
-- `addons/microsoft_account/i18n/th.po` (85 lines)
-- `addons/microsoft_account/i18n/tr.po` (92 lines)
-- `addons/microsoft_account/i18n/uk.po` (87 lines)
-- `addons/microsoft_account/i18n/uz.po` (104 lines)
-- `addons/microsoft_account/i18n/vi.po` (90 lines)
-- `addons/microsoft_account/i18n/zh_CN.po` (88 lines)
-- `addons/microsoft_account/i18n/zh_TW.po` (87 lines)
-- `addons/microsoft_account/models/__init__.py` (5 lines)
-- `addons/microsoft_account/models/microsoft_service.py` (183 lines)
-- `addons/microsoft_account/models/res_users.py` (22 lines)
+- **Description:** 2 model declarations, 11 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/microsoft_account/models/microsoft_service.py:39`, `addons/microsoft_account/models/res_users.py:10`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### HTTP/API surface
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 2 controller files and 1 route declarations.
+- **Evidence:** `addons/microsoft_account/controllers/main.py:14`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 1 XML files and 0 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/microsoft_account/data/microsoft_account_data.xml:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `config_microsoft_redirect_uri`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/microsoft_account/__manifest__.py`
+- **HTTP entry points:** `addons/microsoft_account/controllers/main.py:14`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: `microsoft.service` (addons/microsoft_account/models/microsoft_service.py:39); inherits `res.users` (addons/microsoft_account/models/res_users.py:10)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 1
+- Route evidence: `addons/microsoft_account/controllers/main.py:14`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base_setup`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/microsoft_account/__init__.py`
+- `addons/microsoft_account/__manifest__.py`
+- `addons/microsoft_account/controllers/__init__.py`
+- `addons/microsoft_account/controllers/main.py`
+- `addons/microsoft_account/data/microsoft_account_data.xml`
+- `addons/microsoft_account/i18n/ar.po`
+- `addons/microsoft_account/i18n/az.po`
+- `addons/microsoft_account/i18n/bg.po`
+- `addons/microsoft_account/i18n/bs.po`
+- `addons/microsoft_account/i18n/ca.po`
+- `addons/microsoft_account/i18n/cs.po`
+- `addons/microsoft_account/i18n/da.po`
+- `addons/microsoft_account/i18n/de.po`
+- `addons/microsoft_account/i18n/el.po`
+- `addons/microsoft_account/i18n/es.po`
+- `addons/microsoft_account/i18n/es_419.po`
+- `addons/microsoft_account/i18n/et.po`
+- `addons/microsoft_account/i18n/fa.po`
+- `addons/microsoft_account/i18n/fi.po`
+- `addons/microsoft_account/i18n/fr.po`
+- `addons/microsoft_account/i18n/he.po`
+- `addons/microsoft_account/i18n/hi.po`
+- `addons/microsoft_account/i18n/hr.po`
+- `addons/microsoft_account/i18n/hu.po`
+- `addons/microsoft_account/i18n/id.po`
+- `addons/microsoft_account/i18n/it.po`
+- `addons/microsoft_account/i18n/ja.po`
+- `addons/microsoft_account/i18n/kab.po`
+- `addons/microsoft_account/i18n/ko.po`
+- `addons/microsoft_account/i18n/ku.po`
+- `addons/microsoft_account/i18n/lo.po`
+- `addons/microsoft_account/i18n/lt.po`
+- `addons/microsoft_account/i18n/lv.po`
+- `addons/microsoft_account/i18n/microsoft_account.pot`
+- `addons/microsoft_account/i18n/mn.po`
+- `addons/microsoft_account/i18n/my.po`
+- `addons/microsoft_account/i18n/nb.po`
+- `addons/microsoft_account/i18n/nl.po`
+- `addons/microsoft_account/i18n/pl.po`
+- `addons/microsoft_account/i18n/pt.po`
+- `addons/microsoft_account/i18n/pt_BR.po`
+- `addons/microsoft_account/i18n/ro.po`
+- `addons/microsoft_account/i18n/ru.po`
+- `addons/microsoft_account/i18n/sk.po`
+- `addons/microsoft_account/i18n/sl.po`
+- `addons/microsoft_account/i18n/sr@latin.po`
+- `addons/microsoft_account/i18n/sv.po`
+- `addons/microsoft_account/i18n/th.po`
+- `addons/microsoft_account/i18n/tr.po`
+- `addons/microsoft_account/i18n/uk.po`
+- `addons/microsoft_account/i18n/uz.po`
+- `addons/microsoft_account/i18n/vi.po`
+- `addons/microsoft_account/i18n/zh_CN.po`
+- `addons/microsoft_account/i18n/zh_TW.po`
+- `addons/microsoft_account/models/__init__.py`
+- `addons/microsoft_account/models/microsoft_service.py`
+- `addons/microsoft_account/models/res_users.py`

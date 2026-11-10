@@ -1,18 +1,19 @@
 # Module: im_livechat
 
 - **Module ID:** MOD-111
-- **Path:** `addons/im_livechat`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/im_livechat`
 - **Manifest:** `addons/im_livechat/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `True`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Website/Live Chat`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Chat with your website visitors
+**Purpose:** Chat with your website visitors
 
+**Manifest description:**
 
 Live Chat Support
 ==========================
@@ -22,356 +23,379 @@ with the current server and dispatch visitors request amongst several live
 chat operators.
 Help your customers with this chat, and analyse their feedback.
 
-        
+**Scope evidence:** The module contains 423 files, including 70 Python, 78 XML, and 185 JavaScript/TypeScript files. The manifest declares dependencies: `mail`, `digest`, `utm`, `phone_validation`.
 
-Declared dependencies: `mail`, `digest`, `utm`, `phone_validation`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 23
+- Controller/API files: 20
+- XML/data/view/template files: 78
+- Browser asset files: 185
+- Security files: 2
+- Test files: 24
+- Scheduled/automation evidence files: 2
+- Reporting evidence files: 2
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 70 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 22 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 20 | Files under `controllers/` or `controllers.py`. |
-| XML files | 78 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 185 | Client behavior/assets. |
-| Tests | 24 | Test files found by path/name convention. |
-| Security artifacts | 2 | Access CSV and/or security XML. |
-| Route declarations | 38 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `addons/im_livechat/security/im_livechat_channel_security.xml`, `addons/im_livechat/security/ir.access.csv`
 
-```text
-{
-  "depends": [
-    "mail",
-    "digest",
-    "utm",
-    "phone_validation"
-  ],
-  "data": [
-    "security/im_livechat_channel_security.xml",
-    "data/mail_templates.xml",
-    "data/im_livechat_channel_data.xml",
-    "data/im_livechat_chatbot_data.xml",
-    "data/digest_data.xml",
-    "data/utm_data.xml",
-    "views/chatbot_script_answer_views.xml",
-    "views/chatbot_script_step_views.xml",
-    "views/chatbot_script_views.xml",
-    "views/discuss_channel_views.xml",
-    "views/res_partner_views.xml",
-    "views/im_livechat_channel_views.xml",
-    "views/im_livechat_channel_templates.xml",
-    "views/im_livechat_chatbot_templates.xml",
-    "views/im_livechat_channel_config_views.xml",
-    "views/im_livechat_expertise_views.xml",
-    "views/im_livechat_channel_member_history_views.xml",
-    "views/res_users_views.xml",
-    "views/digest_views.xml",
-    "views/webclient_templates.xml",
-    "report/im_livechat_report_channel_views.xml",
-    "report/im_livechat_conversation_report.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "demo/im_livechat_channel/im_livechat_channel.xml",
-    "demo/im_livechat_channel/im_livechat_chatbot.xml",
-    "demo/im_livechat_channel/im_livechat_chatbot_session_1.xml",
-    "demo/im_livechat_channel/im_livechat_chatbot_session_2.xml",
-    "demo/im_livechat_channel/im_livechat_chatbot_session_3.xml",
-    "demo/im_livechat_channel/im_livechat_session_1.xml",
-    "demo/im_livechat_channel/im_livechat_session_2.xml",
-    "demo/im_livechat_channel/im_livechat_session_3.xml",
-    "demo/im_livechat_channel/im_livechat_session_4.xml",
-    "demo/im_livechat_channel/im_livechat_session_5.xml",
-    "demo/im_livechat_channel/im_livechat_session_6.xml",
-    "demo/im_livechat_channel/im_livechat_session_7.xml",
-    "demo/im_livechat_channel/im_livechat_session_8.xml",
-    "demo/im_livechat_channel/im_livechat_session_9.xml",
-    "demo/im_livechat_channel/im_livechat_session_10.xml",
-    "demo/im_livechat_channel/im_livechat_session_11.xml",
-    "demo/im_livechat_channel/im_livechat_session_12.xml",
-    "demo/im_livechat_channel/im_livechat_session_13.xml",
-    "demo/im_livechat_channel/im_livechat_session_14.xml",
-    "demo/im_livechat_channel/im_livechat_session_15.xml",
-    "demo/im_livechat_channel/im_livechat_support_bot.xml",
-    "demo/im_livechat_channel/im_livechat_support_bot_session_1.xml",
-    "demo/im_livechat_channel/im_livechat_support_bot_session_2.xml",
-    "demo/im_livechat_channel/im_livechat_support_bot_session_3.xml",
-    "demo/im_livechat_channel/im_livechat_support_bot_session_4.xml",
-    "demo/im_livechat_channel/im_livechat_support_bot_session_5.xml",
-    "demo/im_livechat_channel/im_livechat_support_bot_session_6.xml",
-    "demo/im_livechat_channel/im_livechat_support_bot_session_7.xml"
-  ],
-  "assets": {
-    "web.assets_frontend": [
-      "web/static/src/views/fields/file_handler.*",
-      "web/static/src/views/fields/formatters.js",
-      [
-        "include",
-        "im_livechat.assets_embed_core"
-      ],
-      "im_livechat/static/src/embed/frontend/**/*"
-    ],
-    "web.assets_backend": [
-      "im_livechat/static/src/js/colors_reset_button/*",
-      "im_livechat/static/src/js/im_livechat_chatbot_steps_one2many.js",
-      "im_livechat/static/src/views/**/*",
-      [
-        "remove",
-        "im_livechat/static/src/views/lazy/**/*"
-      ],
-      "im_livechat/static/src/scss/im_livechat_history.scss",
-      "im_livechat/static/src/scss/im_livechat_form.scss",
-      "im_livechat/static/src/core/common/**/*",
-      "im_livechat/static/src/core/public_web/**/*",
-      "im_livechat/static/src/core/web/**/*",
-      [
-        "remove",
-        "im_livechat/static/src/**/*.dark.scss"
-      ]
-    ],
-    "web.assets_backend_lazy": [
-      "im_livechat/static/src/views/lazy/**/*"
-    ],
-    "web.assets_web_dark": [
-      "im_livechat/static/src/**/*.dark.scss"
-    ],
-    "web.assets_unit_tests": [
-      "im_livechat/static/tests/**/*",
-      [
-        "remove",
-        "im_livechat/static/tests/embed/**/*"
-      ],
-      [
-        "remove",
-        "im_livechat/static/tests/tours/**/*"
-      ]
-    ],
-    "web.assets_tests": [
-      "im_livechat/static/tests/tours/**/*"
-    ],
-    "im_livechat.assets_embed_core": [
-      "im_livechat/static/src/core/common/**/*",
-      "im_livechat/static/src/embed/common/**/*"
-    ],
-    "im_livechat.assets_embed_external": [
-      "im_livechat/static/src/embed/external/**/*"
-    ],
-    "im_livechat.assets_embed_cors": [
-      "im_livechat/static/src/embed/cors/**/*"
-    ],
-    "im_livechat.embed_assets_unit_tests_setup": [
-      [
-        "remove",
-        "im_livechat/static/**"
-      ],
-      [
-        "include",
-        "im_livechat.assets_embed_external"
-      ],
-      [
-        "remove",
-        "im_livechat/static/src/embed/external/boot.js"
-      ],
-      "im_livechat/static/tests/livechat_test_helpers.js",
-      "im_livechat/static/tests/mock_server/**/*"
-    ],
-    "im_livechat.assets_livechat_support_tours": [
-      [
-        "include",
-        "web_tour.assets"
-      ],
-      "im_livechat/static/tests/tours/livechat_tour_utils.js",
-      "im_livechat/static/tests/tours/support/*"
-    ],
-    "im_livechat.embed_assets_unit_tests": [
-      "web/static/tests/_framework/**/*",
-      "im_livechat/static/tests/embed/**/*"
-    ],
-    "mail.assets_public": [
-      "im_livechat/static/src/core/common/**/*",
-      "im_livechat/static/src/core/public_web/**/*"
-    ],
-    "portal.assets_chatter_helpers": [
-      "im_livechat/static/src/core/common/**/*",
-      [
-        "remove",
-        "im_livechat/static/src/core/common/**/*.scss"
-      ]
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/im_livechat/__init__.py` (5 lines)
-- `addons/im_livechat/__manifest__.py` (145 lines)
-- `addons/im_livechat/controllers/__init__.py` (11 lines)
-- `addons/im_livechat/controllers/attachment.py` (25 lines)
-- `addons/im_livechat/controllers/channel.py` (69 lines)
-- `addons/im_livechat/controllers/chatbot.py` (171 lines)
-- `addons/im_livechat/controllers/cors/__init__.py` (12 lines)
-- `addons/im_livechat/controllers/cors/attachment.py` (13 lines)
-- `addons/im_livechat/controllers/cors/channel.py` (15 lines)
-- `addons/im_livechat/controllers/cors/chatbot.py` (23 lines)
-- `addons/im_livechat/controllers/cors/google_translate.py` (16 lines)
-- `addons/im_livechat/controllers/cors/link_preview.py` (15 lines)
-- `addons/im_livechat/controllers/cors/main.py` (35 lines)
-- `addons/im_livechat/controllers/cors/message_reaction.py` (11 lines)
-- `addons/im_livechat/controllers/cors/rtc.py` (27 lines)
-- `addons/im_livechat/controllers/cors/thread.py` (15 lines)
-- `addons/im_livechat/controllers/cors/webclient.py` (13 lines)
-- `addons/im_livechat/controllers/main.py` (278 lines)
-- `addons/im_livechat/controllers/messaging_menu.py` (41 lines)
-- `addons/im_livechat/controllers/rtc.py` (20 lines)
-- `addons/im_livechat/controllers/thread.py` (12 lines)
-- `addons/im_livechat/controllers/webclient.py` (96 lines)
-- `addons/im_livechat/data/digest_data.xml` (25 lines)
-- `addons/im_livechat/data/im_livechat_channel_data.xml` (9 lines)
-- `addons/im_livechat/data/im_livechat_chatbot_data.xml` (103 lines)
-- `addons/im_livechat/data/mail_templates.xml` (78 lines)
-- `addons/im_livechat/data/utm_data.xml` (6 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_channel.xml` (25 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_chatbot.xml` (92 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_chatbot_session_1.xml` (81 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_chatbot_session_2.xml` (81 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_chatbot_session_3.xml` (112 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_1.xml` (123 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_10.xml` (117 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_11.xml` (79 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_12.xml` (51 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_13.xml` (73 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_14.xml` (92 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_15.xml` (49 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_2.xml` (120 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_3.xml` (82 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_4.xml` (82 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_5.xml` (90 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_6.xml` (90 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_7.xml` (82 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_8.xml` (88 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_9.xml` (126 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot.xml` (117 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_1.xml` (206 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_2.xml` (106 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_3.xml` (106 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_4.xml` (194 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_5.xml` (105 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_6.xml` (149 lines)
-- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_7.xml` (72 lines)
-- `addons/im_livechat/i18n/af.po` (3,030 lines)
-- `addons/im_livechat/i18n/ar.po` (3,137 lines)
-- `addons/im_livechat/i18n/az.po` (3,071 lines)
-- `addons/im_livechat/i18n/bg.po` (3,103 lines)
-- `addons/im_livechat/i18n/bs.po` (3,079 lines)
-- `addons/im_livechat/i18n/ca.po` (3,143 lines)
-- `addons/im_livechat/i18n/cs.po` (3,141 lines)
-- `addons/im_livechat/i18n/da.po` (3,086 lines)
-- `addons/im_livechat/i18n/de.po` (3,231 lines)
-- `addons/im_livechat/i18n/el.po` (3,084 lines)
-- `addons/im_livechat/i18n/es.po` (3,189 lines)
-- `addons/im_livechat/i18n/es_419.po` (3,216 lines)
-- `addons/im_livechat/i18n/es_CL.po` (120 lines)
-- `addons/im_livechat/i18n/et.po` (3,105 lines)
-- `addons/im_livechat/i18n/eu.po` (3,029 lines)
-- `addons/im_livechat/i18n/fa.po` (3,122 lines)
-- `addons/im_livechat/i18n/fi.po` (3,186 lines)
-- `addons/im_livechat/i18n/fo.po` (3,029 lines)
-- `addons/im_livechat/i18n/fr.po` (3,223 lines)
-- `addons/im_livechat/i18n/fr_CA.po` (120 lines)
-- `addons/im_livechat/i18n/gl.po` (3,029 lines)
-- `addons/im_livechat/i18n/gu.po` (3,033 lines)
-- `addons/im_livechat/i18n/he.po` (3,086 lines)
-- `addons/im_livechat/i18n/hi.po` (3,070 lines)
-- `addons/im_livechat/i18n/hr.po` (3,091 lines)
-- `addons/im_livechat/i18n/hu.po` (3,122 lines)
-- `addons/im_livechat/i18n/id.po` (3,167 lines)
-- `addons/im_livechat/i18n/im_livechat.pot` (3,051 lines)
-- `addons/im_livechat/i18n/is.po` (3,026 lines)
-- `addons/im_livechat/i18n/it.po` (3,206 lines)
-- `addons/im_livechat/i18n/ja.po` (3,164 lines)
-- `addons/im_livechat/i18n/ka.po` (3,029 lines)
-- `addons/im_livechat/i18n/kab.po` (3,069 lines)
-- `addons/im_livechat/i18n/km.po` (3,032 lines)
-- `addons/im_livechat/i18n/ko.po` (3,132 lines)
-- `addons/im_livechat/i18n/ku.po` (3,068 lines)
-- `addons/im_livechat/i18n/lb.po` (3,031 lines)
-- `addons/im_livechat/i18n/lo.po` (3,149 lines)
-- `addons/im_livechat/i18n/lt.po` (3,095 lines)
-- `addons/im_livechat/i18n/lv.po` (3,075 lines)
-- `addons/im_livechat/i18n/mk.po` (3,029 lines)
-- `addons/im_livechat/i18n/mn.po` (3,086 lines)
-- `addons/im_livechat/i18n/my.po` (3,069 lines)
-- `addons/im_livechat/i18n/nb.po` (3,075 lines)
-- `addons/im_livechat/i18n/nl.po` (3,213 lines)
-- `addons/im_livechat/i18n/pl.po` (3,232 lines)
-- `addons/im_livechat/i18n/pt.po` (3,164 lines)
-- `addons/im_livechat/i18n/pt_BR.po` (3,219 lines)
-- `addons/im_livechat/i18n/ro.po` (3,128 lines)
-- `addons/im_livechat/i18n/ru.po` (3,168 lines)
-- `addons/im_livechat/i18n/sk.po` (3,087 lines)
-- `addons/im_livechat/i18n/sl.po` (3,137 lines)
-- `addons/im_livechat/i18n/sq.po` (3,029 lines)
-- `addons/im_livechat/i18n/sr@latin.po` (3,113 lines)
-- `addons/im_livechat/i18n/sv.po` (3,125 lines)
-- `addons/im_livechat/i18n/ta.po` (3,030 lines)
-- `addons/im_livechat/i18n/th.po` (3,106 lines)
-- `addons/im_livechat/i18n/tr.po` (3,174 lines)
-- `addons/im_livechat/i18n/uk.po` (3,118 lines)
-- `addons/im_livechat/i18n/uz.po` (3,594 lines)
-- `addons/im_livechat/i18n/vi.po` (3,152 lines)
-- `addons/im_livechat/i18n/zh_CN.po` (3,136 lines)
-- `addons/im_livechat/i18n/zh_TW.po` (3,105 lines)
-- `addons/im_livechat/models/__init__.py` (23 lines)
-- `addons/im_livechat/models/chatbot_message.py` (38 lines)
-- `addons/im_livechat/models/chatbot_script.py` (238 lines)
-- `addons/im_livechat/models/chatbot_script_answer.py` (47 lines)
-- `addons/im_livechat/models/chatbot_script_step.py` (367 lines)
-- `addons/im_livechat/models/digest.py` (68 lines)
-- `addons/im_livechat/models/discuss_call_history.py` (10 lines)
-- `addons/im_livechat/models/discuss_channel.py` (1,147 lines)
-- `addons/im_livechat/models/discuss_channel_member.py` (223 lines)
-- `addons/im_livechat/models/discuss_channel_rtc_session.py` (21 lines)
-- `addons/im_livechat/models/im_livechat_channel.py` (731 lines)
-- `addons/im_livechat/models/im_livechat_channel_member_history.py` (277 lines)
-- `addons/im_livechat/models/im_livechat_expertise.py` (52 lines)
-- `addons/im_livechat/models/ir_http.py` (50 lines)
-- `addons/im_livechat/models/ir_qweb.py` (11 lines)
-- `addons/im_livechat/models/ir_websocket.py` (21 lines)
-- `addons/im_livechat/models/mail_message.py` (52 lines)
-- `addons/im_livechat/models/res_groups.py` (25 lines)
-- `addons/im_livechat/models/res_partner.py` (125 lines)
-- `addons/im_livechat/models/res_users.py` (209 lines)
-- `addons/im_livechat/models/res_users_settings.py` (22 lines)
-- `addons/im_livechat/models/utm.py` (13 lines)
-- `addons/im_livechat/report/__init__.py` (2 lines)
-- `addons/im_livechat/report/im_livechat_conversation_report.xml` (20 lines)
-- `addons/im_livechat/report/im_livechat_report_channel.py` (336 lines)
-- `addons/im_livechat/report/im_livechat_report_channel_views.xml` (149 lines)
-- `addons/im_livechat/security/im_livechat_channel_security.xml` (25 lines)
-- `addons/im_livechat/security/ir.access.csv` (16 lines)
-- `addons/im_livechat/static/description/icon.png` (23 lines)
-- `addons/im_livechat/static/description/icon.svg` (1 lines)
-- `addons/im_livechat/static/description/icon_hi.png` (85 lines)
-- `addons/im_livechat/static/src/core/common/@types/models.d.ts` (107 lines)
-- `addons/im_livechat/static/src/core/common/channel_member_list_patch.js` (10 lines)
-- `addons/im_livechat/static/src/core/common/chat_window_model_patch.js` (44 lines)
-- `addons/im_livechat/static/src/core/common/chat_window_patch.js` (5 lines)
-- `addons/im_livechat/static/src/core/common/chat_window_patch.xml` (9 lines)
-- `addons/im_livechat/static/src/core/common/chatbot_message_model.js` (32 lines)
-- `addons/im_livechat/static/src/core/common/chatbot_model.js` (307 lines)
-- `addons/im_livechat/static/src/core/common/chatbot_script_model.js` (13 lines)
-- `addons/im_livechat/static/src/core/common/chatbot_script_step_answer_model.js` (13 lines)
-- `addons/im_livechat/static/src/core/common/chatbot_script_step_model.js` (28 lines)
-- `addons/im_livechat/static/src/core/common/chatbot_step_model.js` (55 lines)
+- **Description:** 23 model declarations, 407 methods, 4 constraint handlers, 1 onchange handlers, and 50 dependency declarations.
+- **Evidence:** `addons/im_livechat/models/res_partner.py:12`, `addons/im_livechat/models/im_livechat_expertise.py:8`, `addons/im_livechat/models/im_livechat_channel.py:17`, `addons/im_livechat/models/im_livechat_channel.py:639`, `addons/im_livechat/models/mail_message.py:5`, `addons/im_livechat/models/discuss_channel.py:32`, `addons/im_livechat/models/digest.py:7`, `addons/im_livechat/models/res_groups.py:7`, `addons/im_livechat/models/chatbot_script.py:14`, `addons/im_livechat/models/discuss_channel_member.py:10`, `addons/im_livechat/models/ir_qweb.py:5`, `addons/im_livechat/models/ir_websocket.py:6`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Additional files not expanded here: 263. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### HTTP/API surface
 
-## Functional behavior classification
+- **Description:** 20 controller files and 38 route declarations.
+- **Evidence:** `addons/im_livechat/controllers/webclient.py:11`, `addons/im_livechat/controllers/thread.py:8`, `addons/im_livechat/controllers/main.py:20`, `addons/im_livechat/controllers/main.py:38`, `addons/im_livechat/controllers/main.py:49`, `addons/im_livechat/controllers/main.py:53`, `addons/im_livechat/controllers/main.py:57`, `addons/im_livechat/controllers/main.py:64`, `addons/im_livechat/controllers/main.py:69`, `addons/im_livechat/controllers/main.py:204`, `addons/im_livechat/controllers/main.py:211`, `addons/im_livechat/controllers/main.py:219`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 78 XML files and 185 JavaScript/TypeScript files; static XML analysis found 435 record/template/menu identifiers.
+- **Evidence:** `addons/im_livechat/security/im_livechat_channel_security.xml:2`, `addons/im_livechat/security/im_livechat_channel_security.xml:8`, `addons/im_livechat/security/im_livechat_channel_security.xml:16`, `addons/im_livechat/report/im_livechat_conversation_report.xml:4`, `addons/im_livechat/report/im_livechat_conversation_report.xml:12`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:5`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:22`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:39`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:47`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:62`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:112`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:130`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 2 security-directory files are present.
+- **Evidence:** `addons/im_livechat/security/im_livechat_channel_security.xml`, `addons/im_livechat/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 2 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/im_livechat/models/discuss_channel.py`, `addons/im_livechat/models/discuss_channel_member.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 2 files contain report-action/template indicators.
+- **Evidence:** `addons/im_livechat/controllers/main.py`, `addons/im_livechat/report/im_livechat_conversation_report.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 24 test files are present.
+- **Evidence:** `addons/im_livechat/tests/test_chatbot_internals.py`, `addons/im_livechat/tests/test_im_livechat_report.py`, `addons/im_livechat/tests/test_discuss_channel.py`, `addons/im_livechat/tests/test_res_users.py`, `addons/im_livechat/tests/test_im_livechat_support_page.py`, `addons/im_livechat/tests/chatbot_common.py`, `addons/im_livechat/tests/test_call.py`, `addons/im_livechat/tests/test_transcript.py`, `addons/im_livechat/tests/test_chatbot_form_ui.py`, `addons/im_livechat/tests/common.py`, `addons/im_livechat/tests/test_digest.py`, `addons/im_livechat/tests/test_im_livechat_calls.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 78; representative identifiers: `res_groups_privilege_live_chat`, `im_livechat_group_user`, `im_livechat_group_manager`, `action_report_livechat_conversation`, `report_livechat_conversation`, `im_livechat_report_channel_view_pivot`, `im_livechat_report_channel_view_list`, `im_livechat_report_channel_view_form`, `im_livechat_report_channel_view_graph`, `im_livechat_report_channel_view_search`, `im_livechat_report_channel_action`, `im_livechat_report_channel_time_to_answer_action`, `Sessions Analysis`, `digest.digest_digest_default`, `digest_tip_im_livechat_0`, `im_livechat_channel_data`, `utm_source_chatbot`, `chatbot_script_welcome_bot`, `chatbot_script_welcome_step_welcome`, `chatbot_script_welcome_step_dispatch`
+- Menus: 13; representative evidence: `addons/im_livechat/report/im_livechat_report_channel_views.xml:141`, `addons/im_livechat/views/im_livechat_expertise_views.xml:38`, `addons/im_livechat/views/im_livechat_channel_views.xml:312`, `addons/im_livechat/views/im_livechat_channel_views.xml:319`, `addons/im_livechat/views/im_livechat_channel_views.xml:327`, `addons/im_livechat/views/im_livechat_channel_views.xml:335`, `addons/im_livechat/views/im_livechat_channel_views.xml:342`, `addons/im_livechat/views/im_livechat_channel_views.xml:348`, `addons/im_livechat/views/im_livechat_channel_views.xml:354`, `addons/im_livechat/views/im_livechat_channel_views.xml:362`, `addons/im_livechat/views/im_livechat_channel_member_history_views.xml:39`, `addons/im_livechat/views/im_livechat_channel_member_history_views.xml:142`
+- Templates: 7; representative evidence: `addons/im_livechat/report/im_livechat_conversation_report.xml:12`, `addons/im_livechat/data/mail_templates.xml:4`, `addons/im_livechat/views/im_livechat_channel_templates.xml:11`, `addons/im_livechat/views/im_livechat_channel_templates.xml:88`, `addons/im_livechat/views/im_livechat_channel_templates.xml:96`, `addons/im_livechat/views/webclient_templates.xml:3`, `addons/im_livechat/views/im_livechat_chatbot_templates.xml:4`
+- View/action field declarations: 221; representative evidence: `addons/im_livechat/report/im_livechat_conversation_report.xml:6`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:7`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:8`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:24`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:25`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:41`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:42`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:49`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:50`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:64`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:65`, `addons/im_livechat/report/im_livechat_report_channel_views.xml:114`
+- Browser assets: 185; representative files: `addons/im_livechat/static/tests/visitor_disconnection.test.js`, `addons/im_livechat/static/tests/livechat_channel_info_list.test.js`, `addons/im_livechat/static/tests/messaging_menu_livechat_tab.test.js`, `addons/im_livechat/static/tests/im_livechat_shared_tests.js`, `addons/im_livechat/static/tests/mobile_messaging_menu_patch.test.js`, `addons/im_livechat/static/tests/go_to_oldest_unread_thread.test.js`, `addons/im_livechat/static/tests/translation.test.js`, `addons/im_livechat/static/tests/looking_for_help.test.js`, `addons/im_livechat/static/tests/chat_window_patch.test.js`, `addons/im_livechat/static/tests/call.test.js`, `addons/im_livechat/static/tests/suggestions.test.js`, `addons/im_livechat/static/tests/chat_hub_compact.test.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/im_livechat/__manifest__.py`
+- **HTTP entry points:** `addons/im_livechat/controllers/webclient.py:11`, `addons/im_livechat/controllers/thread.py:8`, `addons/im_livechat/controllers/main.py:20`, `addons/im_livechat/controllers/main.py:38`, `addons/im_livechat/controllers/main.py:49`, `addons/im_livechat/controllers/main.py:53`, `addons/im_livechat/controllers/main.py:57`, `addons/im_livechat/controllers/main.py:64`, `addons/im_livechat/controllers/main.py:69`, `addons/im_livechat/controllers/main.py:204`, `addons/im_livechat/controllers/main.py:211`, `addons/im_livechat/controllers/main.py:219`
+- **Scheduled entry points:** `addons/im_livechat/models/discuss_channel.py`, `addons/im_livechat/models/discuss_channel_member.py`
+- **Report entry points:** `addons/im_livechat/controllers/main.py`, `addons/im_livechat/report/im_livechat_conversation_report.xml`
+
+## 7. Database interactions
+
+- Model declarations: 23
+- Representative model evidence: inherits `res.partner` (addons/im_livechat/models/res_partner.py:12); `im_livechat.expertise` (addons/im_livechat/models/im_livechat_expertise.py:8); `im_livechat.channel` (addons/im_livechat/models/im_livechat_channel.py:17); `im_livechat.channel.rule` (addons/im_livechat/models/im_livechat_channel.py:639); inherits `mail.message` (addons/im_livechat/models/mail_message.py:5); `discuss.channel` (addons/im_livechat/models/discuss_channel.py:32); inherits `digest.digest` (addons/im_livechat/models/digest.py:7); inherits `res.groups` (addons/im_livechat/models/res_groups.py:7); `chatbot.script` (addons/im_livechat/models/chatbot_script.py:14); inherits `discuss.channel.member` (addons/im_livechat/models/discuss_channel_member.py:10); inherits `ir.qweb` (addons/im_livechat/models/ir_qweb.py:5); inherits `ir.websocket` (addons/im_livechat/models/ir_websocket.py:6); `chatbot.message` (addons/im_livechat/models/chatbot_message.py:8); inherits `res.users.settings` (addons/im_livechat/models/res_users_settings.py:8); `chatbot.script.answer` (addons/im_livechat/models/chatbot_script_answer.py:10); inherits `ir.http` (addons/im_livechat/models/ir_http.py:9); inherits `utm.mixin` (addons/im_livechat/models/utm.py:6); inherits `discuss.channel.rtc.session` (addons/im_livechat/models/discuss_channel_rtc_session.py:6); inherits `res.users` (addons/im_livechat/models/res_users.py:12); `chatbot.script.step` (addons/im_livechat/models/chatbot_script_step.py:14); inherits `discuss.call.history` (addons/im_livechat/models/discuss_call_history.py:6); `im_livechat.channel.member.history` (addons/im_livechat/models/im_livechat_channel_member_history.py:7); `im_livechat.report.channel` (addons/im_livechat/report/im_livechat_report_channel.py:9)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 20
+- Route declarations: 38
+- Route evidence: `addons/im_livechat/controllers/webclient.py:11`, `addons/im_livechat/controllers/thread.py:8`, `addons/im_livechat/controllers/main.py:20`, `addons/im_livechat/controllers/main.py:38`, `addons/im_livechat/controllers/main.py:49`, `addons/im_livechat/controllers/main.py:53`, `addons/im_livechat/controllers/main.py:57`, `addons/im_livechat/controllers/main.py:64`, `addons/im_livechat/controllers/main.py:69`, `addons/im_livechat/controllers/main.py:204`, `addons/im_livechat/controllers/main.py:211`, `addons/im_livechat/controllers/main.py:219`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `mail`, `digest`, `utm`, `phone_validation`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/im_livechat/__init__.py`
+- `addons/im_livechat/__manifest__.py`
+- `addons/im_livechat/controllers/__init__.py`
+- `addons/im_livechat/controllers/attachment.py`
+- `addons/im_livechat/controllers/channel.py`
+- `addons/im_livechat/controllers/chatbot.py`
+- `addons/im_livechat/controllers/cors/__init__.py`
+- `addons/im_livechat/controllers/cors/attachment.py`
+- `addons/im_livechat/controllers/cors/channel.py`
+- `addons/im_livechat/controllers/cors/chatbot.py`
+- `addons/im_livechat/controllers/cors/google_translate.py`
+- `addons/im_livechat/controllers/cors/link_preview.py`
+- `addons/im_livechat/controllers/cors/main.py`
+- `addons/im_livechat/controllers/cors/message_reaction.py`
+- `addons/im_livechat/controllers/cors/rtc.py`
+- `addons/im_livechat/controllers/cors/thread.py`
+- `addons/im_livechat/controllers/cors/webclient.py`
+- `addons/im_livechat/controllers/main.py`
+- `addons/im_livechat/controllers/messaging_menu.py`
+- `addons/im_livechat/controllers/rtc.py`
+- `addons/im_livechat/controllers/thread.py`
+- `addons/im_livechat/controllers/webclient.py`
+- `addons/im_livechat/data/digest_data.xml`
+- `addons/im_livechat/data/im_livechat_channel_data.xml`
+- `addons/im_livechat/data/im_livechat_chatbot_data.xml`
+- `addons/im_livechat/data/mail_templates.xml`
+- `addons/im_livechat/data/utm_data.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_channel.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_chatbot.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_chatbot_session_1.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_chatbot_session_2.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_chatbot_session_3.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_1.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_10.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_11.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_12.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_13.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_14.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_15.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_2.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_3.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_4.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_5.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_6.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_7.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_8.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_session_9.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_1.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_2.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_3.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_4.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_5.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_6.xml`
+- `addons/im_livechat/demo/im_livechat_channel/im_livechat_support_bot_session_7.xml`
+- `addons/im_livechat/i18n/af.po`
+- `addons/im_livechat/i18n/ar.po`
+- `addons/im_livechat/i18n/az.po`
+- `addons/im_livechat/i18n/bg.po`
+- `addons/im_livechat/i18n/bs.po`
+- `addons/im_livechat/i18n/ca.po`
+- `addons/im_livechat/i18n/cs.po`
+- `addons/im_livechat/i18n/da.po`
+- `addons/im_livechat/i18n/de.po`
+- `addons/im_livechat/i18n/el.po`
+- `addons/im_livechat/i18n/es.po`
+- `addons/im_livechat/i18n/es_419.po`
+- `addons/im_livechat/i18n/es_CL.po`
+- `addons/im_livechat/i18n/et.po`
+- `addons/im_livechat/i18n/eu.po`
+- `addons/im_livechat/i18n/fa.po`
+- `addons/im_livechat/i18n/fi.po`
+- `addons/im_livechat/i18n/fo.po`
+- `addons/im_livechat/i18n/fr.po`
+- `addons/im_livechat/i18n/fr_CA.po`
+- `addons/im_livechat/i18n/gl.po`
+- `addons/im_livechat/i18n/gu.po`
+- `addons/im_livechat/i18n/he.po`
+- `addons/im_livechat/i18n/hi.po`
+- `addons/im_livechat/i18n/hr.po`
+- `addons/im_livechat/i18n/hu.po`
+- `addons/im_livechat/i18n/id.po`
+- `addons/im_livechat/i18n/im_livechat.pot`
+- `addons/im_livechat/i18n/is.po`
+- `addons/im_livechat/i18n/it.po`
+- `addons/im_livechat/i18n/ja.po`
+- `addons/im_livechat/i18n/ka.po`
+- `addons/im_livechat/i18n/kab.po`
+- `addons/im_livechat/i18n/km.po`
+- `addons/im_livechat/i18n/ko.po`
+- `addons/im_livechat/i18n/ku.po`
+- `addons/im_livechat/i18n/lb.po`
+- `addons/im_livechat/i18n/lo.po`
+- `addons/im_livechat/i18n/lt.po`
+- `addons/im_livechat/i18n/lv.po`
+- `addons/im_livechat/i18n/mk.po`
+- `addons/im_livechat/i18n/mn.po`
+- `addons/im_livechat/i18n/my.po`
+- `addons/im_livechat/i18n/nb.po`
+- `addons/im_livechat/i18n/nl.po`
+- `addons/im_livechat/i18n/pl.po`
+- `addons/im_livechat/i18n/pt.po`
+- `addons/im_livechat/i18n/pt_BR.po`
+- `addons/im_livechat/i18n/ro.po`
+- `addons/im_livechat/i18n/ru.po`
+- `addons/im_livechat/i18n/sk.po`
+- `addons/im_livechat/i18n/sl.po`
+- `addons/im_livechat/i18n/sq.po`
+- `addons/im_livechat/i18n/sr@latin.po`
+- `addons/im_livechat/i18n/sv.po`
+- `addons/im_livechat/i18n/ta.po`
+- `addons/im_livechat/i18n/th.po`
+- `addons/im_livechat/i18n/tr.po`
+- `addons/im_livechat/i18n/uk.po`
+- `addons/im_livechat/i18n/uz.po`
+- `addons/im_livechat/i18n/vi.po`
+- `addons/im_livechat/i18n/zh_CN.po`
+- `addons/im_livechat/i18n/zh_TW.po`
+- `addons/im_livechat/models/__init__.py`
+- `addons/im_livechat/models/chatbot_message.py`
+- `addons/im_livechat/models/chatbot_script.py`
+- `addons/im_livechat/models/chatbot_script_answer.py`
+- `addons/im_livechat/models/chatbot_script_step.py`
+- `addons/im_livechat/models/digest.py`
+- `addons/im_livechat/models/discuss_call_history.py`
+- `addons/im_livechat/models/discuss_channel.py`
+- `addons/im_livechat/models/discuss_channel_member.py`
+- `addons/im_livechat/models/discuss_channel_rtc_session.py`
+- `addons/im_livechat/models/im_livechat_channel.py`
+- `addons/im_livechat/models/im_livechat_channel_member_history.py`
+- `addons/im_livechat/models/im_livechat_expertise.py`
+- `addons/im_livechat/models/ir_http.py`
+- `addons/im_livechat/models/ir_qweb.py`
+- `addons/im_livechat/models/ir_websocket.py`
+- `addons/im_livechat/models/mail_message.py`
+- `addons/im_livechat/models/res_groups.py`
+- `addons/im_livechat/models/res_partner.py`
+- `addons/im_livechat/models/res_users.py`
+- `addons/im_livechat/models/res_users_settings.py`
+- `addons/im_livechat/models/utm.py`
+- `addons/im_livechat/report/__init__.py`
+- `addons/im_livechat/report/im_livechat_conversation_report.xml`
+- `addons/im_livechat/report/im_livechat_report_channel.py`
+- `addons/im_livechat/report/im_livechat_report_channel_views.xml`
+- `addons/im_livechat/security/im_livechat_channel_security.xml`
+- `addons/im_livechat/security/ir.access.csv`
+- `addons/im_livechat/static/description/icon.png`
+- `addons/im_livechat/static/description/icon.svg`
+- `addons/im_livechat/static/description/icon_hi.png`
+- `addons/im_livechat/static/src/core/common/@types/models.d.ts`
+- `addons/im_livechat/static/src/core/common/channel_member_list_patch.js`
+- `addons/im_livechat/static/src/core/common/chat_window_model_patch.js`
+- `addons/im_livechat/static/src/core/common/chat_window_patch.js`
+- `addons/im_livechat/static/src/core/common/chat_window_patch.xml`
+- `addons/im_livechat/static/src/core/common/chatbot_message_model.js`
+- `addons/im_livechat/static/src/core/common/chatbot_model.js`
+- `addons/im_livechat/static/src/core/common/chatbot_script_model.js`
+- `addons/im_livechat/static/src/core/common/chatbot_script_step_answer_model.js`
+- `addons/im_livechat/static/src/core/common/chatbot_script_step_model.js`
+- `addons/im_livechat/static/src/core/common/chatbot_step_model.js`
+- `addons/im_livechat/static/src/core/common/close_confirmation.js`
+- `addons/im_livechat/static/src/core/common/close_confirmation.scss`
+- `addons/im_livechat/static/src/core/common/close_confirmation.xml`
+- `addons/im_livechat/static/src/core/common/data_response_model_patch.js`
+- `addons/im_livechat/static/src/core/common/discuss_channel_member_model_patch.js`
+- `addons/im_livechat/static/src/core/common/discuss_channel_model_patch.js`
+- `addons/im_livechat/static/src/core/common/expirable_storage.js`
+- `addons/im_livechat/static/src/core/common/livechat_channel_member_history_model.js`
+- `addons/im_livechat/static/src/core/common/livechat_channel_model.js`
+- `addons/im_livechat/static/src/core/common/livechat_channel_model_patch.js`
+- `addons/im_livechat/static/src/core/common/livechat_channel_rule_model.js`
+- `addons/im_livechat/static/src/core/common/livechat_command_dialog.js`
+- `addons/im_livechat/static/src/core/common/livechat_command_dialog.scss`
+- `addons/im_livechat/static/src/core/common/livechat_command_dialog.xml`
+- `addons/im_livechat/static/src/core/common/livechat_expertise_model.js`
+- `addons/im_livechat/static/src/core/common/message_model_patch.js`
+- `addons/im_livechat/static/src/core/common/misc.js`
+- `addons/im_livechat/static/src/core/common/res_partner_model_patch.js`
+- `addons/im_livechat/static/src/core/common/res_users_model_patch.js`
+- `addons/im_livechat/static/src/core/common/res_users_settings_model_patch.js`
+- `addons/im_livechat/static/src/core/common/store_service_patch.js`
+- `addons/im_livechat/static/src/core/common/suggestion_service_patch.js`
+- `addons/im_livechat/static/src/core/common/thread_actions_patch.js`
+- `addons/im_livechat/static/src/core/common/thread_model_patch.js`
+- `addons/im_livechat/static/src/core/common/thread_patch.js`
+- `addons/im_livechat/static/src/core/common/thread_patch.xml`
+- `addons/im_livechat/static/src/core/common/transcript_sender.js`
+- `addons/im_livechat/static/src/core/common/transcript_sender.scss`
+- `addons/im_livechat/static/src/core/common/transcript_sender.xml`
+- `addons/im_livechat/static/src/core/public_web/@types/menu_tabs.d.ts`
+- `addons/im_livechat/static/src/core/public_web/@types/models.d.ts`
+- `addons/im_livechat/static/src/core/public_web/discuss_app/@types/models.d.ts`
+- `addons/im_livechat/static/src/core/public_web/discuss_app/discuss_app_model_patch.js`
+- `addons/im_livechat/static/src/core/public_web/discuss_channel_model_patch.js`
+- `addons/im_livechat/static/src/core/public_web/livechat_leave_dialog.js`
+- `addons/im_livechat/static/src/core/public_web/livechat_leave_dialog.xml`
+- `addons/im_livechat/static/src/core/public_web/livechat_rating_notification_message.xml`
+- `addons/im_livechat/static/src/core/public_web/livechat_rating_notification_service.js`
+- `addons/im_livechat/static/src/core/public_web/message.scss`
+- `addons/im_livechat/static/src/core/public_web/messaging_menu_item_patch.js`
+- `addons/im_livechat/static/src/core/public_web/messaging_menu_item_patch.xml`
+- `addons/im_livechat/static/src/core/public_web/messaging_menu_model_patch.js`
+- `addons/im_livechat/static/src/core/public_web/messaging_menu_patch.js`
+- `addons/im_livechat/static/src/core/public_web/thread_compare_patch.js`
+- `addons/im_livechat/static/src/core/public_web/upgrade_19_1.js`
+- `addons/im_livechat/static/src/core/public_web/upgrade_19_2.js`
+- `addons/im_livechat/static/src/core/web/@types/models.d.ts`
+- `addons/im_livechat/static/src/core/web/channel_commands_patch.js`
+- `addons/im_livechat/static/src/core/web/channel_invitation_patch.scss`
+- `addons/im_livechat/static/src/core/web/channel_invitation_patch.xml`
+- `addons/im_livechat/static/src/core/web/channel_member_patch.js`
+- `addons/im_livechat/static/src/core/web/channel_member_patch.xml`
+- `addons/im_livechat/static/src/core/web/chat_bubble_patch.xml`
+- `addons/im_livechat/static/src/core/web/chat_window_patch.xml`
+- `addons/im_livechat/static/src/core/web/command_palette.xml`
+- `addons/im_livechat/static/src/core/web/composer_patch.js`
+- `addons/im_livechat/static/src/core/web/discuss_app/client_action_patch.js`
+- `addons/im_livechat/static/src/core/web/discuss_command_patch.js`
+- `addons/im_livechat/static/src/core/web/discuss_content_patch.js`
+- `addons/im_livechat/static/src/core/web/expertise_tags_autocomplete.js`
+- `addons/im_livechat/static/src/core/web/expertise_tags_autocomplete.xml`
+- `addons/im_livechat/static/src/core/web/livechat_channel_command_provider.js`
+- `addons/im_livechat/static/src/core/web/livechat_channel_info_list.dark.scss`
+- `addons/im_livechat/static/src/core/web/livechat_channel_info_list.js`
+- `addons/im_livechat/static/src/core/web/livechat_channel_info_list.scss`
+- `addons/im_livechat/static/src/core/web/livechat_channel_info_list.xml`
+- `addons/im_livechat/static/src/core/web/livechat_channel_model_patch.js`
+- `addons/im_livechat/static/src/core/web/livechat_status.xml`
+- `addons/im_livechat/static/src/core/web/notification_item.dark.scss`
+- `addons/im_livechat/static/src/core/web/notification_item.scss`
+- `addons/im_livechat/static/src/core/web/notification_item_patch.js`
+- `addons/im_livechat/static/src/core/web/notification_item_patch.xml`
+- `addons/im_livechat/static/src/core/web/partner_compare.js`
+- `addons/im_livechat/static/src/core/web/store_service_patch.js`
+- `addons/im_livechat/static/src/core/web/suggestion_service_patch.js`
+- `addons/im_livechat/static/src/core/web/thread_actions.js`
+- `addons/im_livechat/static/src/core/web/thread_icon_patch.js`
+- `addons/im_livechat/static/src/core/web/thread_model_patch.js`
+- `addons/im_livechat/static/src/embed/common/@types/models.d.ts`
+- `addons/im_livechat/static/src/embed/common/attachment_model_patch.js`
+- `addons/im_livechat/static/src/embed/common/attachment_upload_service_patch.js`
+- `addons/im_livechat/static/src/embed/common/autopopup_service.js`
+- `addons/im_livechat/static/src/embed/common/boot_helpers.js`
+- `addons/im_livechat/static/src/embed/common/chat_hub_patch.js`
+- `addons/im_livechat/static/src/embed/common/chat_hub_patch.xml`
+- `addons/im_livechat/static/src/embed/common/chat_window_model_patch.js`
+- `addons/im_livechat/static/src/embed/common/chat_window_patch.js`
+- `addons/im_livechat/static/src/embed/common/chat_window_patch.scss`
+- `addons/im_livechat/static/src/embed/common/chat_window_patch.xml`
+- `addons/im_livechat/static/src/embed/common/composer.scss`
+- Additional source files not expanded in this page: 173; see `../../01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.

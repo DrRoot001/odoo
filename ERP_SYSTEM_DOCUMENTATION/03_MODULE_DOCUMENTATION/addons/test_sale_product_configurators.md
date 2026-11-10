@@ -1,75 +1,122 @@
 # Module: test_sale_product_configurators
 
 - **Module ID:** MOD-581
-- **Path:** `addons/test_sale_product_configurators`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/test_sale_product_configurators`
 - **Manifest:** `addons/test_sale_product_configurators/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Test Suite for Sale Product Configurator
+**Purpose:** Test Suite for Sale Product Configurator
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `event_sale`, `sale_management`, `sale_product_matrix`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 18 files, including 6 Python, 0 XML, and 12 JavaScript/TypeScript files. The manifest declares dependencies: `event_sale`, `sale_management`, `sale_product_matrix`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 6 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 0 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 0 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 12 | Client behavior/assets. |
-| Tests | 4 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 0
+- Controller/API files: 0
+- XML/data/view/template files: 0
+- Browser asset files: 12
+- Security files: 0
+- Test files: 4
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "event_sale",
-    "sale_management",
-    "sale_product_matrix"
-  ],
-  "assets": {
-    "web.assets_tests": [
-      "test_sale_product_configurators/static/tests/tours/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** Not found in module
 
-- `addons/test_sale_product_configurators/__init__.py` (0 lines)
-- `addons/test_sale_product_configurators/__manifest__.py` (19 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/event_sale_with_product_configurator_ui.js` (137 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_attribute_with_multi_type.js` (16 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_advanced_ui.js` (52 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_custom_value_update_tour.js` (25 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_edition_ui.js` (72 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_optional_products_ui.js` (67 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_pricelist_ui.js` (42 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_recursive_optional_products.js` (20 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_single_custom_attribute_ui.js` (34 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_ui.js` (75 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_uom_choice.js` (43 lines)
-- `addons/test_sale_product_configurators/static/tests/tours/product_matrix_tour.js` (154 lines)
-- `addons/test_sale_product_configurators/tests/__init__.py` (5 lines)
-- `addons/test_sale_product_configurators/tests/test_event_sale_with_product_configurator.py` (126 lines)
-- `addons/test_sale_product_configurators/tests/test_sale_product_configurator.py` (337 lines)
-- `addons/test_sale_product_configurators/tests/test_sale_product_matrix.py` (77 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### User interface and data
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 0 XML files and 12 JavaScript/TypeScript files; static XML analysis found 0 record/template/menu identifiers.
+- **Evidence:** Not found in module
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 4 test files are present.
+- **Evidence:** `addons/test_sale_product_configurators/tests/test_sale_product_matrix.py`, `addons/test_sale_product_configurators/tests/test_sale_product_configurator.py`, `addons/test_sale_product_configurators/tests/test_event_sale_with_product_configurator.py`, `addons/test_sale_product_configurators/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 0; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 12; representative files: `addons/test_sale_product_configurators/static/tests/tours/product_configurator_custom_value_update_tour.js`, `addons/test_sale_product_configurators/static/tests/tours/product_configurator_pricelist_ui.js`, `addons/test_sale_product_configurators/static/tests/tours/product_configurator_uom_choice.js`, `addons/test_sale_product_configurators/static/tests/tours/product_configurator_ui.js`, `addons/test_sale_product_configurators/static/tests/tours/product_configurator_recursive_optional_products.js`, `addons/test_sale_product_configurators/static/tests/tours/product_matrix_tour.js`, `addons/test_sale_product_configurators/static/tests/tours/product_configurator_advanced_ui.js`, `addons/test_sale_product_configurators/static/tests/tours/product_configurator_edition_ui.js`, `addons/test_sale_product_configurators/static/tests/tours/product_attribute_with_multi_type.js`, `addons/test_sale_product_configurators/static/tests/tours/product_configurator_single_custom_attribute_ui.js`, `addons/test_sale_product_configurators/static/tests/tours/product_configurator_optional_products_ui.js`, `addons/test_sale_product_configurators/static/tests/tours/event_sale_with_product_configurator_ui.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/test_sale_product_configurators/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 0
+- Representative model evidence: No literal model metadata found
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `event_sale`, `sale_management`, `sale_product_matrix`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Not found
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/test_sale_product_configurators/__init__.py`
+- `addons/test_sale_product_configurators/__manifest__.py`
+- `addons/test_sale_product_configurators/static/tests/tours/event_sale_with_product_configurator_ui.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_attribute_with_multi_type.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_advanced_ui.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_custom_value_update_tour.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_edition_ui.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_optional_products_ui.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_pricelist_ui.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_recursive_optional_products.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_single_custom_attribute_ui.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_ui.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_configurator_uom_choice.js`
+- `addons/test_sale_product_configurators/static/tests/tours/product_matrix_tour.js`
+- `addons/test_sale_product_configurators/tests/__init__.py`
+- `addons/test_sale_product_configurators/tests/test_event_sale_with_product_configurator.py`
+- `addons/test_sale_product_configurators/tests/test_sale_product_configurator.py`
+- `addons/test_sale_product_configurators/tests/test_sale_product_matrix.py`

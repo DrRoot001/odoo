@@ -1,108 +1,160 @@
 # Module: google_account
 
 - **Module ID:** MOD-076
-- **Path:** `addons/google_account`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/google_account`
 - **Manifest:** `addons/google_account/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden/Tools`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 The module adds google user in res user.
 ========================================
 
+**Scope evidence:** The module contains 55 files, including 6 Python, 0 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `base_setup`.
 
-Declared dependencies: `base_setup`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 1
+- Controller/API files: 2
+- XML/data/view/template files: 0
+- Browser asset files: 0
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 6 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 0 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "base_setup"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/google_account/__init__.py` (7 lines)
-- `addons/google_account/__manifest__.py` (13 lines)
-- `addons/google_account/controllers/__init__.py` (1 lines)
-- `addons/google_account/controllers/main.py` (62 lines)
-- `addons/google_account/i18n/ar.po` (73 lines)
-- `addons/google_account/i18n/az.po` (62 lines)
-- `addons/google_account/i18n/bg.po` (68 lines)
-- `addons/google_account/i18n/bs.po` (66 lines)
-- `addons/google_account/i18n/ca.po` (68 lines)
-- `addons/google_account/i18n/cs.po` (69 lines)
-- `addons/google_account/i18n/da.po` (69 lines)
-- `addons/google_account/i18n/de.po` (72 lines)
-- `addons/google_account/i18n/el.po` (65 lines)
-- `addons/google_account/i18n/es.po` (73 lines)
-- `addons/google_account/i18n/es_419.po` (70 lines)
-- `addons/google_account/i18n/et.po` (67 lines)
-- `addons/google_account/i18n/fa.po` (66 lines)
-- `addons/google_account/i18n/fi.po` (71 lines)
-- `addons/google_account/i18n/fr.po` (74 lines)
-- `addons/google_account/i18n/google_account.pot` (58 lines)
-- `addons/google_account/i18n/he.po` (68 lines)
-- `addons/google_account/i18n/hi.po` (62 lines)
-- `addons/google_account/i18n/hr.po` (67 lines)
-- `addons/google_account/i18n/hu.po` (68 lines)
-- `addons/google_account/i18n/id.po` (65 lines)
-- `addons/google_account/i18n/it.po` (73 lines)
-- `addons/google_account/i18n/ja.po` (69 lines)
-- `addons/google_account/i18n/kab.po` (63 lines)
-- `addons/google_account/i18n/ko.po` (66 lines)
-- `addons/google_account/i18n/ku.po` (62 lines)
-- `addons/google_account/i18n/lo.po` (61 lines)
-- `addons/google_account/i18n/lt.po` (68 lines)
-- `addons/google_account/i18n/lv.po` (61 lines)
-- `addons/google_account/i18n/mn.po` (68 lines)
-- `addons/google_account/i18n/my.po` (62 lines)
-- `addons/google_account/i18n/nb.po` (65 lines)
-- `addons/google_account/i18n/nl.po` (72 lines)
-- `addons/google_account/i18n/pl.po` (72 lines)
-- `addons/google_account/i18n/pt.po` (70 lines)
-- `addons/google_account/i18n/pt_BR.po` (73 lines)
-- `addons/google_account/i18n/ro.po` (69 lines)
-- `addons/google_account/i18n/ru.po` (68 lines)
-- `addons/google_account/i18n/sk.po` (67 lines)
-- `addons/google_account/i18n/sl.po` (65 lines)
-- `addons/google_account/i18n/sr@latin.po` (63 lines)
-- `addons/google_account/i18n/sv.po` (69 lines)
-- `addons/google_account/i18n/th.po` (63 lines)
-- `addons/google_account/i18n/tr.po` (74 lines)
-- `addons/google_account/i18n/uk.po` (70 lines)
-- `addons/google_account/i18n/uz.po` (78 lines)
-- `addons/google_account/i18n/vi.po` (69 lines)
-- `addons/google_account/i18n/zh_CN.po` (69 lines)
-- `addons/google_account/i18n/zh_TW.po` (65 lines)
-- `addons/google_account/models/__init__.py` (4 lines)
-- `addons/google_account/models/google_service.py` (162 lines)
+- **Description:** 1 model declarations, 7 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/google_account/models/google_service.py:37`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### HTTP/API surface
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 2 controller files and 1 route declarations.
+- **Evidence:** `addons/google_account/controllers/main.py:14`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 0; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/google_account/__manifest__.py`
+- **HTTP entry points:** `addons/google_account/controllers/main.py:14`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: `google.service` (addons/google_account/models/google_service.py:37)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 1
+- Route evidence: `addons/google_account/controllers/main.py:14`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base_setup`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Not found
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/google_account/__init__.py`
+- `addons/google_account/__manifest__.py`
+- `addons/google_account/controllers/__init__.py`
+- `addons/google_account/controllers/main.py`
+- `addons/google_account/i18n/ar.po`
+- `addons/google_account/i18n/az.po`
+- `addons/google_account/i18n/bg.po`
+- `addons/google_account/i18n/bs.po`
+- `addons/google_account/i18n/ca.po`
+- `addons/google_account/i18n/cs.po`
+- `addons/google_account/i18n/da.po`
+- `addons/google_account/i18n/de.po`
+- `addons/google_account/i18n/el.po`
+- `addons/google_account/i18n/es.po`
+- `addons/google_account/i18n/es_419.po`
+- `addons/google_account/i18n/et.po`
+- `addons/google_account/i18n/fa.po`
+- `addons/google_account/i18n/fi.po`
+- `addons/google_account/i18n/fr.po`
+- `addons/google_account/i18n/google_account.pot`
+- `addons/google_account/i18n/he.po`
+- `addons/google_account/i18n/hi.po`
+- `addons/google_account/i18n/hr.po`
+- `addons/google_account/i18n/hu.po`
+- `addons/google_account/i18n/id.po`
+- `addons/google_account/i18n/it.po`
+- `addons/google_account/i18n/ja.po`
+- `addons/google_account/i18n/kab.po`
+- `addons/google_account/i18n/ko.po`
+- `addons/google_account/i18n/ku.po`
+- `addons/google_account/i18n/lo.po`
+- `addons/google_account/i18n/lt.po`
+- `addons/google_account/i18n/lv.po`
+- `addons/google_account/i18n/mn.po`
+- `addons/google_account/i18n/my.po`
+- `addons/google_account/i18n/nb.po`
+- `addons/google_account/i18n/nl.po`
+- `addons/google_account/i18n/pl.po`
+- `addons/google_account/i18n/pt.po`
+- `addons/google_account/i18n/pt_BR.po`
+- `addons/google_account/i18n/ro.po`
+- `addons/google_account/i18n/ru.po`
+- `addons/google_account/i18n/sk.po`
+- `addons/google_account/i18n/sl.po`
+- `addons/google_account/i18n/sr@latin.po`
+- `addons/google_account/i18n/sv.po`
+- `addons/google_account/i18n/th.po`
+- `addons/google_account/i18n/tr.po`
+- `addons/google_account/i18n/uk.po`
+- `addons/google_account/i18n/uz.po`
+- `addons/google_account/i18n/vi.po`
+- `addons/google_account/i18n/zh_CN.po`
+- `addons/google_account/i18n/zh_TW.po`
+- `addons/google_account/models/__init__.py`
+- `addons/google_account/models/google_service.py`

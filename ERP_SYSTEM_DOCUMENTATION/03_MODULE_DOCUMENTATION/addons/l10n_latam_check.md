@@ -1,18 +1,19 @@
 # Module: l10n_latam_check
 
 - **Module ID:** MOD-259
-- **Path:** `addons/l10n_latam_check`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_latam_check`
 - **Manifest:** `addons/l10n_latam_check/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Accounting/Localizations`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Checks Management
+**Purpose:** Checks Management
 
+**Manifest description:**
 
 Own Checks Management
 ---------------------
@@ -49,74 +50,132 @@ There are 2 main Payment Methods additions:
 
   * Those operations can be done with multiple checks at once
 
+**Scope evidence:** The module contains 28 files, including 18 Python, 6 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `account`.
 
-Declared dependencies: `account`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 10
+- Controller/API files: 0
+- XML/data/view/template files: 6
+- Browser asset files: 0
+- Security files: 1
+- Test files: 4
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 18 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 8 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 6 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 4 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `addons/l10n_latam_check/security/ir.access.csv`
 
-```text
-{
-  "depends": [
-    "account"
-  ],
-  "data": [
-    "data/account_payment_method_data.xml",
-    "wizard/l10n_latam_payment_mass_transfer_views.xml",
-    "views/account_payment_view.xml",
-    "views/l10n_latam_check_view.xml",
-    "views/report_payment_receipt_templates.xml",
-    "wizard/account_payment_register_views.xml",
-    "security/ir.access.csv"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/l10n_latam_check/__init__.py` (2 lines)
-- `addons/l10n_latam_check/__manifest__.py` (56 lines)
-- `addons/l10n_latam_check/data/account_payment_method_data.xml` (40 lines)
-- `addons/l10n_latam_check/i18n/es_419.po` (1,042 lines)
-- `addons/l10n_latam_check/i18n/l10n_latam_check.pot` (911 lines)
-- `addons/l10n_latam_check/i18n/pt_BR.po` (1,045 lines)
-- `addons/l10n_latam_check/models/__init__.py` (7 lines)
-- `addons/l10n_latam_check/models/account_chart_template.py` (78 lines)
-- `addons/l10n_latam_check/models/account_journal.py` (50 lines)
-- `addons/l10n_latam_check/models/account_move.py` (12 lines)
-- `addons/l10n_latam_check/models/account_move_line.py` (8 lines)
-- `addons/l10n_latam_check/models/account_payment.py` (272 lines)
-- `addons/l10n_latam_check/models/account_payment_method.py` (15 lines)
-- `addons/l10n_latam_check/models/l10n_latam_check.py` (276 lines)
-- `addons/l10n_latam_check/security/ir.access.csv` (6 lines)
-- `addons/l10n_latam_check/tests/__init__.py` (3 lines)
-- `addons/l10n_latam_check/tests/common.py` (30 lines)
-- `addons/l10n_latam_check/tests/test_own_checks.py` (179 lines)
-- `addons/l10n_latam_check/tests/test_third_party_checks.py` (559 lines)
-- `addons/l10n_latam_check/views/account_payment_view.xml` (52 lines)
-- `addons/l10n_latam_check/views/l10n_latam_check_view.xml` (239 lines)
-- `addons/l10n_latam_check/views/report_payment_receipt_templates.xml` (41 lines)
-- `addons/l10n_latam_check/wizard/__init__.py` (5 lines)
-- `addons/l10n_latam_check/wizard/account_payment_register.py` (83 lines)
-- `addons/l10n_latam_check/wizard/account_payment_register_views.xml` (52 lines)
-- `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer.py` (150 lines)
-- `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer_views.xml` (35 lines)
-- `addons/l10n_latam_check/wizard/l10n_latam_payment_register_check.py` (52 lines)
+- **Description:** 10 model declarations, 88 methods, 4 constraint handlers, 4 onchange handlers, and 15 dependency declarations.
+- **Evidence:** `addons/l10n_latam_check/models/account_payment_method.py:4`, `addons/l10n_latam_check/models/account_payment.py:6`, `addons/l10n_latam_check/models/l10n_latam_check.py:14`, `addons/l10n_latam_check/models/account_journal.py:4`, `addons/l10n_latam_check/models/account_chart_template.py:5`, `addons/l10n_latam_check/models/account_move.py:5`, `addons/l10n_latam_check/models/account_move_line.py:5`, `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer.py:5`, `addons/l10n_latam_check/wizard/l10n_latam_payment_register_check.py:11`, `addons/l10n_latam_check/wizard/account_payment_register.py:5`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### User interface and data
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 6 XML files and 0 JavaScript/TypeScript files; static XML analysis found 22 record/template/menu identifiers.
+- **Evidence:** `addons/l10n_latam_check/wizard/account_payment_register_views.xml:4`, `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer_views.xml:3`, `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer_views.xml:29`, `addons/l10n_latam_check/data/account_payment_method_data.xml:4`, `addons/l10n_latam_check/data/account_payment_method_data.xml:12`, `addons/l10n_latam_check/data/account_payment_method_data.xml:19`, `addons/l10n_latam_check/data/account_payment_method_data.xml:26`, `addons/l10n_latam_check/data/account_payment_method_data.xml:33`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:4`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:37`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:63`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:79`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/l10n_latam_check/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 4 test files are present.
+- **Evidence:** `addons/l10n_latam_check/tests/test_own_checks.py`, `addons/l10n_latam_check/tests/test_third_party_checks.py`, `addons/l10n_latam_check/tests/common.py`, `addons/l10n_latam_check/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 6; representative identifiers: `view_account_payment_register_form`, `view_l10n_latam_payment_mass_transfer_form`, `action_view_l10n_latam_payment_mass_transfer`, `account_payment_method_own_checks`, `account_payment_method_new_third_party_checks`, `account_payment_method_in_third_party_checks`, `account_payment_method_out_third_party_checks`, `account_payment_method_return_third_party_checks`, `view_account_payment_search`, `view_account_payment_third_party_checks_search`, `view_account_third_party_check_operations_tree`, `view_account_check_calendar`, `view_account_check_pivot`, `l10n_latam_check_view_form`, `view_account_own_check_tree`, `action_own_check`, `view_account_third_party_check_tree`, `action_third_party_check`, `menu_own_check`, `menu_third_party_check`
+- Menus: 2; representative evidence: `addons/l10n_latam_check/views/l10n_latam_check_view.xml:185`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:233`
+- Templates: 1; representative evidence: `addons/l10n_latam_check/views/report_payment_receipt_templates.xml:2`
+- View/action field declarations: 28; representative evidence: `addons/l10n_latam_check/wizard/account_payment_register_views.xml:6`, `addons/l10n_latam_check/wizard/account_payment_register_views.xml:9`, `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer_views.xml:5`, `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer_views.xml:6`, `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer_views.xml:31`, `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer_views.xml:32`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:6`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:8`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:39`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:42`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:65`, `addons/l10n_latam_check/views/l10n_latam_check_view.xml:67`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_latam_check/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 10
+- Representative model evidence: inherits `account.payment.method` (addons/l10n_latam_check/models/account_payment_method.py:4); inherits `account.payment` (addons/l10n_latam_check/models/account_payment.py:6); `l10n_latam.check` (addons/l10n_latam_check/models/l10n_latam_check.py:14); inherits `account.journal` (addons/l10n_latam_check/models/account_journal.py:4); inherits `account.chart.template` (addons/l10n_latam_check/models/account_chart_template.py:5); inherits `account.move` (addons/l10n_latam_check/models/account_move.py:5); inherits `account.move.line` (addons/l10n_latam_check/models/account_move_line.py:5); `l10n_latam.payment.mass.transfer` (addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer.py:5); `l10n_latam.payment.register.check` (addons/l10n_latam_check/wizard/l10n_latam_payment_register_check.py:11); inherits `account.payment.register` (addons/l10n_latam_check/wizard/account_payment_register.py:5)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_latam_check/__init__.py`
+- `addons/l10n_latam_check/__manifest__.py`
+- `addons/l10n_latam_check/data/account_payment_method_data.xml`
+- `addons/l10n_latam_check/i18n/es_419.po`
+- `addons/l10n_latam_check/i18n/l10n_latam_check.pot`
+- `addons/l10n_latam_check/i18n/pt_BR.po`
+- `addons/l10n_latam_check/models/__init__.py`
+- `addons/l10n_latam_check/models/account_chart_template.py`
+- `addons/l10n_latam_check/models/account_journal.py`
+- `addons/l10n_latam_check/models/account_move.py`
+- `addons/l10n_latam_check/models/account_move_line.py`
+- `addons/l10n_latam_check/models/account_payment.py`
+- `addons/l10n_latam_check/models/account_payment_method.py`
+- `addons/l10n_latam_check/models/l10n_latam_check.py`
+- `addons/l10n_latam_check/security/ir.access.csv`
+- `addons/l10n_latam_check/tests/__init__.py`
+- `addons/l10n_latam_check/tests/common.py`
+- `addons/l10n_latam_check/tests/test_own_checks.py`
+- `addons/l10n_latam_check/tests/test_third_party_checks.py`
+- `addons/l10n_latam_check/views/account_payment_view.xml`
+- `addons/l10n_latam_check/views/l10n_latam_check_view.xml`
+- `addons/l10n_latam_check/views/report_payment_receipt_templates.xml`
+- `addons/l10n_latam_check/wizard/__init__.py`
+- `addons/l10n_latam_check/wizard/account_payment_register.py`
+- `addons/l10n_latam_check/wizard/account_payment_register_views.xml`
+- `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer.py`
+- `addons/l10n_latam_check/wizard/l10n_latam_payment_mass_transfer_views.xml`
+- `addons/l10n_latam_check/wizard/l10n_latam_payment_register_check.py`

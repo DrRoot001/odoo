@@ -1,121 +1,173 @@
 # Module: pos_event_sale
 
 - **Module ID:** MOD-431
-- **Path:** `addons/pos_event_sale`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/pos_event_sale`
 - **Manifest:** `addons/pos_event_sale/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Technical`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Link module between pos_sale and pos_event
+**Purpose:** Link module between pos_sale and pos_event
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `pos_event`, `pos_sale`, `event_sale`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 61 files, including 10 Python, 0 XML, and 2 JavaScript/TypeScript files. The manifest declares dependencies: `pos_event`, `pos_sale`, `event_sale`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 10 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 0 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 2 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 3
+- Controller/API files: 0
+- XML/data/view/template files: 0
+- Browser asset files: 2
+- Security files: 0
+- Test files: 3
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "pos_event",
-    "pos_sale",
-    "event_sale"
-  ],
-  "assets": {
-    "point_of_sale._assets_pos": [
-      "pos_event_sale/static/src/**/*"
-    ],
-    "web.assets_tests": [
-      "pos_event_sale/static/tests/tours/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** Not found in module
 
-- `addons/pos_event_sale/__init__.py` (3 lines)
-- `addons/pos_event_sale/__manifest__.py` (19 lines)
-- `addons/pos_event_sale/i18n/ar.po` (67 lines)
-- `addons/pos_event_sale/i18n/az.po` (68 lines)
-- `addons/pos_event_sale/i18n/bg.po` (69 lines)
-- `addons/pos_event_sale/i18n/bs.po` (70 lines)
-- `addons/pos_event_sale/i18n/ca.po` (69 lines)
-- `addons/pos_event_sale/i18n/cs.po` (67 lines)
-- `addons/pos_event_sale/i18n/da.po` (68 lines)
-- `addons/pos_event_sale/i18n/de.po` (66 lines)
-- `addons/pos_event_sale/i18n/el.po` (68 lines)
-- `addons/pos_event_sale/i18n/es.po` (67 lines)
-- `addons/pos_event_sale/i18n/es_419.po` (66 lines)
-- `addons/pos_event_sale/i18n/et.po` (69 lines)
-- `addons/pos_event_sale/i18n/fa.po` (69 lines)
-- `addons/pos_event_sale/i18n/fi.po` (65 lines)
-- `addons/pos_event_sale/i18n/fr.po` (66 lines)
-- `addons/pos_event_sale/i18n/he.po` (70 lines)
-- `addons/pos_event_sale/i18n/hi.po` (69 lines)
-- `addons/pos_event_sale/i18n/hr.po` (69 lines)
-- `addons/pos_event_sale/i18n/hu.po` (69 lines)
-- `addons/pos_event_sale/i18n/id.po` (66 lines)
-- `addons/pos_event_sale/i18n/it.po` (65 lines)
-- `addons/pos_event_sale/i18n/ja.po` (65 lines)
-- `addons/pos_event_sale/i18n/kab.po` (68 lines)
-- `addons/pos_event_sale/i18n/ko.po` (67 lines)
-- `addons/pos_event_sale/i18n/ku.po` (66 lines)
-- `addons/pos_event_sale/i18n/lo.po` (69 lines)
-- `addons/pos_event_sale/i18n/lt.po` (71 lines)
-- `addons/pos_event_sale/i18n/lv.po` (70 lines)
-- `addons/pos_event_sale/i18n/mn.po` (68 lines)
-- `addons/pos_event_sale/i18n/my.po` (67 lines)
-- `addons/pos_event_sale/i18n/nb.po` (68 lines)
-- `addons/pos_event_sale/i18n/nl.po` (67 lines)
-- `addons/pos_event_sale/i18n/pl.po` (68 lines)
-- `addons/pos_event_sale/i18n/pos_event_sale.pot` (61 lines)
-- `addons/pos_event_sale/i18n/pt.po` (69 lines)
-- `addons/pos_event_sale/i18n/pt_BR.po` (71 lines)
-- `addons/pos_event_sale/i18n/ro.po` (68 lines)
-- `addons/pos_event_sale/i18n/ru.po` (68 lines)
-- `addons/pos_event_sale/i18n/sk.po` (68 lines)
-- `addons/pos_event_sale/i18n/sl.po` (70 lines)
-- `addons/pos_event_sale/i18n/sr@latin.po` (70 lines)
-- `addons/pos_event_sale/i18n/sv.po` (67 lines)
-- `addons/pos_event_sale/i18n/th.po` (67 lines)
-- `addons/pos_event_sale/i18n/tr.po` (66 lines)
-- `addons/pos_event_sale/i18n/uk.po` (70 lines)
-- `addons/pos_event_sale/i18n/uz.po` (75 lines)
-- `addons/pos_event_sale/i18n/vi.po` (69 lines)
-- `addons/pos_event_sale/i18n/zh_CN.po` (66 lines)
-- `addons/pos_event_sale/i18n/zh_TW.po` (65 lines)
-- `addons/pos_event_sale/models/__init__.py` (3 lines)
-- `addons/pos_event_sale/models/event_registration.py` (26 lines)
-- `addons/pos_event_sale/models/sale_order_line.py` (10 lines)
-- `addons/pos_event_sale/report/__init__.py` (3 lines)
-- `addons/pos_event_sale/report/event_sale_report.py` (83 lines)
-- `addons/pos_event_sale/static/src/app/services/pos_store.js` (87 lines)
-- `addons/pos_event_sale/static/tests/tours/pos_event_sale_tour.js` (50 lines)
-- `addons/pos_event_sale/tests/__init__.py` (3 lines)
-- `addons/pos_event_sale/tests/test_frontend.py` (179 lines)
-- `addons/pos_event_sale/tests/test_sale_report.py` (72 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 3 model declarations, 14 methods, 0 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/pos_event_sale/models/event_registration.py:6`, `addons/pos_event_sale/models/sale_order_line.py:5`, `addons/pos_event_sale/report/event_sale_report.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 0 XML files and 2 JavaScript/TypeScript files; static XML analysis found 0 record/template/menu identifiers.
+- **Evidence:** Not found in module
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/pos_event_sale/tests/test_frontend.py`, `addons/pos_event_sale/tests/test_sale_report.py`, `addons/pos_event_sale/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 0; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 2; representative files: `addons/pos_event_sale/static/src/app/services/pos_store.js`, `addons/pos_event_sale/static/tests/tours/pos_event_sale_tour.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/pos_event_sale/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 3
+- Representative model evidence: `event.registration` (addons/pos_event_sale/models/event_registration.py:6); inherits `sale.order.line` (addons/pos_event_sale/models/sale_order_line.py:5); inherits `event.sale.report` (addons/pos_event_sale/report/event_sale_report.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `pos_event`, `pos_sale`, `event_sale`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/pos_event_sale/__init__.py`
+- `addons/pos_event_sale/__manifest__.py`
+- `addons/pos_event_sale/i18n/ar.po`
+- `addons/pos_event_sale/i18n/az.po`
+- `addons/pos_event_sale/i18n/bg.po`
+- `addons/pos_event_sale/i18n/bs.po`
+- `addons/pos_event_sale/i18n/ca.po`
+- `addons/pos_event_sale/i18n/cs.po`
+- `addons/pos_event_sale/i18n/da.po`
+- `addons/pos_event_sale/i18n/de.po`
+- `addons/pos_event_sale/i18n/el.po`
+- `addons/pos_event_sale/i18n/es.po`
+- `addons/pos_event_sale/i18n/es_419.po`
+- `addons/pos_event_sale/i18n/et.po`
+- `addons/pos_event_sale/i18n/fa.po`
+- `addons/pos_event_sale/i18n/fi.po`
+- `addons/pos_event_sale/i18n/fr.po`
+- `addons/pos_event_sale/i18n/he.po`
+- `addons/pos_event_sale/i18n/hi.po`
+- `addons/pos_event_sale/i18n/hr.po`
+- `addons/pos_event_sale/i18n/hu.po`
+- `addons/pos_event_sale/i18n/id.po`
+- `addons/pos_event_sale/i18n/it.po`
+- `addons/pos_event_sale/i18n/ja.po`
+- `addons/pos_event_sale/i18n/kab.po`
+- `addons/pos_event_sale/i18n/ko.po`
+- `addons/pos_event_sale/i18n/ku.po`
+- `addons/pos_event_sale/i18n/lo.po`
+- `addons/pos_event_sale/i18n/lt.po`
+- `addons/pos_event_sale/i18n/lv.po`
+- `addons/pos_event_sale/i18n/mn.po`
+- `addons/pos_event_sale/i18n/my.po`
+- `addons/pos_event_sale/i18n/nb.po`
+- `addons/pos_event_sale/i18n/nl.po`
+- `addons/pos_event_sale/i18n/pl.po`
+- `addons/pos_event_sale/i18n/pos_event_sale.pot`
+- `addons/pos_event_sale/i18n/pt.po`
+- `addons/pos_event_sale/i18n/pt_BR.po`
+- `addons/pos_event_sale/i18n/ro.po`
+- `addons/pos_event_sale/i18n/ru.po`
+- `addons/pos_event_sale/i18n/sk.po`
+- `addons/pos_event_sale/i18n/sl.po`
+- `addons/pos_event_sale/i18n/sr@latin.po`
+- `addons/pos_event_sale/i18n/sv.po`
+- `addons/pos_event_sale/i18n/th.po`
+- `addons/pos_event_sale/i18n/tr.po`
+- `addons/pos_event_sale/i18n/uk.po`
+- `addons/pos_event_sale/i18n/uz.po`
+- `addons/pos_event_sale/i18n/vi.po`
+- `addons/pos_event_sale/i18n/zh_CN.po`
+- `addons/pos_event_sale/i18n/zh_TW.po`
+- `addons/pos_event_sale/models/__init__.py`
+- `addons/pos_event_sale/models/event_registration.py`
+- `addons/pos_event_sale/models/sale_order_line.py`
+- `addons/pos_event_sale/report/__init__.py`
+- `addons/pos_event_sale/report/event_sale_report.py`
+- `addons/pos_event_sale/static/src/app/services/pos_store.js`
+- `addons/pos_event_sale/static/tests/tours/pos_event_sale_tour.js`
+- `addons/pos_event_sale/tests/__init__.py`
+- `addons/pos_event_sale/tests/test_frontend.py`
+- `addons/pos_event_sale/tests/test_sale_report.py`

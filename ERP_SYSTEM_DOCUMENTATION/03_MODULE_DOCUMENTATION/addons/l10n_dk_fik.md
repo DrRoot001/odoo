@@ -1,63 +1,112 @@
 # Module: l10n_dk_fik
 
 - **Module ID:** MOD-165
-- **Path:** `addons/l10n_dk_fik`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_dk_fik`
 - **Manifest:** `addons/l10n_dk_fik/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Accounting/Localizations`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Use FIK Number as Payment reference
+**Purpose:** Use FIK Number as Payment reference
 
+**Manifest description:**
 
 Support Danish FIK number as payment references on customer invoices.
 
+**Scope evidence:** The module contains 8 files, including 5 Python, 1 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `l10n_dk`.
 
-Declared dependencies: `l10n_dk`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 2
+- Controller/API files: 0
+- XML/data/view/template files: 1
+- Browser asset files: 0
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 5 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "l10n_dk"
-  ],
-  "data": [
-    "views/account_journal_view.xml"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/l10n_dk_fik/__init__.py` (1 lines)
-- `addons/l10n_dk_fik/__manifest__.py` (17 lines)
-- `addons/l10n_dk_fik/i18n/da.po` (105 lines)
-- `addons/l10n_dk_fik/i18n/l10n_dk_fik.pot` (96 lines)
-- `addons/l10n_dk_fik/models/__init__.py` (2 lines)
-- `addons/l10n_dk_fik/models/account_journal.py` (53 lines)
-- `addons/l10n_dk_fik/models/account_move.py` (34 lines)
-- `addons/l10n_dk_fik/views/account_journal_view.xml` (15 lines)
+- **Description:** 2 model declarations, 5 methods, 1 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/l10n_dk_fik/models/account_journal.py:9`, `addons/l10n_dk_fik/models/account_move.py:8`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### User interface and data
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 1 XML files and 0 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/l10n_dk_fik/views/account_journal_view.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `view_account_journal_form_l10n_dk_fik`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/l10n_dk_fik/views/account_journal_view.xml:5`, `addons/l10n_dk_fik/views/account_journal_view.xml:7`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_dk_fik/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `account.journal` (addons/l10n_dk_fik/models/account_journal.py:9); inherits `account.move` (addons/l10n_dk_fik/models/account_move.py:8)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `l10n_dk`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_dk_fik/__init__.py`
+- `addons/l10n_dk_fik/__manifest__.py`
+- `addons/l10n_dk_fik/i18n/da.po`
+- `addons/l10n_dk_fik/i18n/l10n_dk_fik.pot`
+- `addons/l10n_dk_fik/models/__init__.py`
+- `addons/l10n_dk_fik/models/account_journal.py`
+- `addons/l10n_dk_fik/models/account_move.py`
+- `addons/l10n_dk_fik/views/account_journal_view.xml`

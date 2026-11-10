@@ -1,161 +1,153 @@
 # Module: test_assetsbundle
 
 - **Module ID:** MOD-649
-- **Path:** `odoo/addons/test_assetsbundle`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `odoo/addons/test_assetsbundle`
 - **Manifest:** `odoo/addons/test_assetsbundle/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden/Tests`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
+
+**Manifest description:**
 
 A module to verify the Assets Bundle mechanism.
 
-Declared dependencies: `base`.
+**Scope evidence:** The module contains 33 files, including 10 Python, 8 XML, and 7 JavaScript/TypeScript files. The manifest declares dependencies: `base`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 10 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 8 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 7 | Client behavior/assets. |
-| Tests | 4 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+- Model/business logic files: 1
+- Controller/API files: 2
+- XML/data/view/template files: 8
+- Browser asset files: 7
+- Security files: 0
+- Test files: 4
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "base"
-  ],
-  "data": [
-    "data/ir_asset.xml",
-    "views/views.xml"
-  ],
-  "assets": {
-    "web.assets_tests": [
-      "test_assetsbundle/static/tests/test_css_error.js"
-    ],
-    "test_assetsbundle.bundle2": [
-      "test_assetsbundle/static/src/css/test_cssfile1.css"
-    ],
-    "test_assetsbundle.bundle3": [
-      "test_assetsbundle/static/src/scss/test_file1.scss"
-    ],
-    "test_assetsbundle.bundle4": [
-      "test_assetsbundle/static/src/js/test_jsfile1.js",
-      "test_assetsbundle/static/src/js/test_jsfile2.js",
-      "http://test.external.link/javascript1.js",
-      "test_assetsbundle/static/src/css/test_cssfile1.css",
-      "http://test.external.link/style1.css",
-      "test_assetsbundle/static/src/css/test_cssfile2.css",
-      "test_assetsbundle/static/src/js/test_jsfile3.js",
-      "http://test.external.link/javascript2.js",
-      "http://test.external.link/style2.css"
-    ],
-    "test_assetsbundle.manifest1": [
-      "test_assetsbundle/static/src/*/**"
-    ],
-    "test_assetsbundle.manifest2": [
-      "test_assetsbundle/static/src/js/test_jsfile1.js",
-      "test_assetsbundle/static/src/*/**"
-    ],
-    "test_assetsbundle.manifest3": [
-      "test_assetsbundle/static/src/js/test_jsfile3.js",
-      "test_assetsbundle/static/src/*/**"
-    ],
-    "test_assetsbundle.manifest4": [
-      "test_assetsbundle/static/src/js/test_jsfile3.js"
-    ],
-    "test_assetsbundle.manifest5": [
-      "test_assetsbundle/static/src/js/test_jsfile1.js",
-      "test_assetsbundle/static/src/js/test_jsfile2.js",
-      "test_assetsbundle/static/src/js/test_jsfile3.js",
-      "test_assetsbundle/static/src/js/test_jsfile4.js"
-    ],
-    "test_assetsbundle.manifest6": [
-      [
-        "include",
-        "test_assetsbundle.manifest4"
-      ]
-    ],
-    "test_assetsbundle.manifest_multi_module1": [],
-    "test_assetsbundle.broken_css": [
-      "test_assetsbundle/static/invalid_src/css/invalid_css.css"
-    ],
-    "test_assetsbundle.lazy_test_component": [
-      "test_assetsbundle/static/tests/lazy_test_component/**/*"
-    ],
-    "test_assetsbundle.broken_xml": [
-      "test_assetsbundle/static/invalid_src/xml/invalid_xml.xml"
-    ],
-    "test_assetsbundle.multiple_broken_xml": [
-      "test_assetsbundle/static/invalid_src/xml/invalid_xml.xml",
-      "test_assetsbundle/static/invalid_src/xml/second_invalid_xml.xml"
-    ],
-    "test_assetsbundle.multiple_same_name": [
-      "test_assetsbundle/static/invalid_src/xml/multiple_same_name.xml"
-    ],
-    "test_assetsbundle.wo_name": [
-      "test_assetsbundle/static/invalid_src/xml/template_wo_name.xml"
-    ],
-    "test_assetsbundle.file_not_found": [
-      "test_assetsbundle/static/invalid_src/xml/file_not_found.xml"
-    ],
-    "web.assets_unit_tests": [
-      "test_assetsbundle/static/tests/lazy_component.test.js"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `odoo/addons/test_assetsbundle/__init__.py` (2 lines)
-- `odoo/addons/test_assetsbundle/__manifest__.py` (88 lines)
-- `odoo/addons/test_assetsbundle/controllers/__init__.py` (4 lines)
-- `odoo/addons/test_assetsbundle/controllers/main.py` (11 lines)
-- `odoo/addons/test_assetsbundle/data/ir_asset.xml` (9 lines)
-- `odoo/addons/test_assetsbundle/models/__init__.py` (1 lines)
-- `odoo/addons/test_assetsbundle/models/ir_qweb.py` (16 lines)
-- `odoo/addons/test_assetsbundle/static/accessible.xml` (1 lines)
-- `odoo/addons/test_assetsbundle/static/invalid_src/css/invalid_css.css` (8 lines)
-- `odoo/addons/test_assetsbundle/static/invalid_src/xml/invalid_xml.xml` (6 lines)
-- `odoo/addons/test_assetsbundle/static/invalid_src/xml/multiple_same_name.xml` (9 lines)
-- `odoo/addons/test_assetsbundle/static/invalid_src/xml/second_invalid_xml.xml` (7 lines)
-- `odoo/addons/test_assetsbundle/static/invalid_src/xml/template_wo_name.xml` (6 lines)
-- `odoo/addons/test_assetsbundle/static/src/css/test_cssfile1.css` (11 lines)
-- `odoo/addons/test_assetsbundle/static/src/css/test_cssfile2.css` (3 lines)
-- `odoo/addons/test_assetsbundle/static/src/css/test_cssfile3.css` (3 lines)
-- `odoo/addons/test_assetsbundle/static/src/css/test_error.scss` (3 lines)
-- `odoo/addons/test_assetsbundle/static/src/js/test_jsfile1.js` (2 lines)
-- `odoo/addons/test_assetsbundle/static/src/js/test_jsfile2.js` (2 lines)
-- `odoo/addons/test_assetsbundle/static/src/js/test_jsfile3.js` (2 lines)
-- `odoo/addons/test_assetsbundle/static/src/js/test_jsfile4.js` (2 lines)
-- `odoo/addons/test_assetsbundle/static/src/scss/test_file1.scss` (3 lines)
-- `odoo/addons/test_assetsbundle/static/src/scss/test_prefix.scss` (90 lines)
-- `odoo/addons/test_assetsbundle/static/tests/lazy_component.test.js` (25 lines)
-- `odoo/addons/test_assetsbundle/static/tests/lazy_test_component/lazy_test_component.js` (16 lines)
-- `odoo/addons/test_assetsbundle/static/tests/lazy_test_component/lazy_test_component.scss` (3 lines)
-- `odoo/addons/test_assetsbundle/static/tests/lazy_test_component/lazy_test_component.xml` (8 lines)
-- `odoo/addons/test_assetsbundle/static/tests/test_css_error.js` (25 lines)
-- `odoo/addons/test_assetsbundle/tests/__init__.py` (6 lines)
-- `odoo/addons/test_assetsbundle/tests/test_assetsbundle.py` (2,093 lines)
-- `odoo/addons/test_assetsbundle/tests/test_js_transpiler.py` (499 lines)
-- `odoo/addons/test_assetsbundle/tests/test_js_transpiler_regex.py` (83 lines)
-- `odoo/addons/test_assetsbundle/views/views.xml` (26 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 1 model declarations, 112 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `odoo/addons/test_assetsbundle/models/ir_qweb.py:6`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 2 controller files and 1 route declarations.
+- **Evidence:** `odoo/addons/test_assetsbundle/controllers/main.py:8`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 8 XML files and 7 JavaScript/TypeScript files; static XML analysis found 2 record/template/menu identifiers.
+- **Evidence:** `odoo/addons/test_assetsbundle/views/views.xml:2`, `odoo/addons/test_assetsbundle/views/views.xml:13`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 4 test files are present.
+- **Evidence:** `odoo/addons/test_assetsbundle/tests/test_js_transpiler_regex.py`, `odoo/addons/test_assetsbundle/tests/test_assetsbundle.py`, `odoo/addons/test_assetsbundle/tests/__init__.py`, `odoo/addons/test_assetsbundle/tests/test_js_transpiler.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 8; representative identifiers: `test template 1`, `test template 2`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 2; representative evidence: `odoo/addons/test_assetsbundle/views/views.xml:2`, `odoo/addons/test_assetsbundle/views/views.xml:13`
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 7; representative files: `odoo/addons/test_assetsbundle/static/tests/lazy_component.test.js`, `odoo/addons/test_assetsbundle/static/tests/test_css_error.js`, `odoo/addons/test_assetsbundle/static/src/js/test_jsfile2.js`, `odoo/addons/test_assetsbundle/static/src/js/test_jsfile3.js`, `odoo/addons/test_assetsbundle/static/src/js/test_jsfile1.js`, `odoo/addons/test_assetsbundle/static/src/js/test_jsfile4.js`, `odoo/addons/test_assetsbundle/static/tests/lazy_test_component/lazy_test_component.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `odoo/addons/test_assetsbundle/__manifest__.py`
+- **HTTP entry points:** `odoo/addons/test_assetsbundle/controllers/main.py:8`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: inherits `ir.qweb` (odoo/addons/test_assetsbundle/models/ir_qweb.py:6)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 1
+- Route evidence: `odoo/addons/test_assetsbundle/controllers/main.py:8`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `odoo/addons/test_assetsbundle/__init__.py`
+- `odoo/addons/test_assetsbundle/__manifest__.py`
+- `odoo/addons/test_assetsbundle/controllers/__init__.py`
+- `odoo/addons/test_assetsbundle/controllers/main.py`
+- `odoo/addons/test_assetsbundle/data/ir_asset.xml`
+- `odoo/addons/test_assetsbundle/models/__init__.py`
+- `odoo/addons/test_assetsbundle/models/ir_qweb.py`
+- `odoo/addons/test_assetsbundle/static/accessible.xml`
+- `odoo/addons/test_assetsbundle/static/invalid_src/css/invalid_css.css`
+- `odoo/addons/test_assetsbundle/static/invalid_src/xml/invalid_xml.xml`
+- `odoo/addons/test_assetsbundle/static/invalid_src/xml/multiple_same_name.xml`
+- `odoo/addons/test_assetsbundle/static/invalid_src/xml/second_invalid_xml.xml`
+- `odoo/addons/test_assetsbundle/static/invalid_src/xml/template_wo_name.xml`
+- `odoo/addons/test_assetsbundle/static/src/css/test_cssfile1.css`
+- `odoo/addons/test_assetsbundle/static/src/css/test_cssfile2.css`
+- `odoo/addons/test_assetsbundle/static/src/css/test_cssfile3.css`
+- `odoo/addons/test_assetsbundle/static/src/css/test_error.scss`
+- `odoo/addons/test_assetsbundle/static/src/js/test_jsfile1.js`
+- `odoo/addons/test_assetsbundle/static/src/js/test_jsfile2.js`
+- `odoo/addons/test_assetsbundle/static/src/js/test_jsfile3.js`
+- `odoo/addons/test_assetsbundle/static/src/js/test_jsfile4.js`
+- `odoo/addons/test_assetsbundle/static/src/scss/test_file1.scss`
+- `odoo/addons/test_assetsbundle/static/src/scss/test_prefix.scss`
+- `odoo/addons/test_assetsbundle/static/tests/lazy_component.test.js`
+- `odoo/addons/test_assetsbundle/static/tests/lazy_test_component/lazy_test_component.js`
+- `odoo/addons/test_assetsbundle/static/tests/lazy_test_component/lazy_test_component.scss`
+- `odoo/addons/test_assetsbundle/static/tests/lazy_test_component/lazy_test_component.xml`
+- `odoo/addons/test_assetsbundle/static/tests/test_css_error.js`
+- `odoo/addons/test_assetsbundle/tests/__init__.py`
+- `odoo/addons/test_assetsbundle/tests/test_assetsbundle.py`
+- `odoo/addons/test_assetsbundle/tests/test_js_transpiler.py`
+- `odoo/addons/test_assetsbundle/tests/test_js_transpiler_regex.py`
+- `odoo/addons/test_assetsbundle/views/views.xml`

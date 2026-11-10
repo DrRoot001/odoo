@@ -1,18 +1,19 @@
 # Module: auth_passkey_portal
 
 - **Module ID:** MOD-023
-- **Path:** `addons/auth_passkey_portal`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/auth_passkey_portal`
 - **Manifest:** `addons/auth_passkey_portal/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Hidden/Tools`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Passkeys for portal users
+**Purpose:** Passkeys for portal users
 
+**Manifest description:**
 
 The implementation of Passkeys using the webauthn protocol.
 ===========================================================
@@ -20,107 +21,146 @@ The implementation of Passkeys using the webauthn protocol.
 Passkeys are a secure alternative to a username and a password.
 When a user logs in with a Passkey, MFA will not be required.
 
+**Scope evidence:** The module contains 58 files, including 4 Python, 2 XML, and 3 JavaScript/TypeScript files. The manifest declares dependencies: `auth_passkey`, `portal`.
 
-Declared dependencies: `auth_passkey`, `portal`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 0
+- Controller/API files: 0
+- XML/data/view/template files: 2
+- Browser asset files: 3
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 4 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 0 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 2 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 3 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "auth_passkey",
-    "portal"
-  ],
-  "data": [
-    "views/templates.xml"
-  ],
-  "assets": {
-    "web.assets_frontend": [
-      "auth_passkey_portal/static/src/**"
-    ],
-    "web.assets_tests": [
-      "auth_passkey_portal/static/tests/tours/*.js"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### User interface and data
 
-- `addons/auth_passkey_portal/__init__.py` (0 lines)
-- `addons/auth_passkey_portal/__manifest__.py` (27 lines)
-- `addons/auth_passkey_portal/i18n/ar.po` (102 lines)
-- `addons/auth_passkey_portal/i18n/auth_passkey_portal.pot` (96 lines)
-- `addons/auth_passkey_portal/i18n/az.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/bg.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/bs.po` (102 lines)
-- `addons/auth_passkey_portal/i18n/ca.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/cs.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/da.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/de.po` (108 lines)
-- `addons/auth_passkey_portal/i18n/el.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/es.po` (108 lines)
-- `addons/auth_passkey_portal/i18n/es_419.po` (109 lines)
-- `addons/auth_passkey_portal/i18n/et.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/fa.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/fi.po` (108 lines)
-- `addons/auth_passkey_portal/i18n/fr.po` (109 lines)
-- `addons/auth_passkey_portal/i18n/he.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/hi.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/hr.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/hu.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/id.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/it.po` (107 lines)
-- `addons/auth_passkey_portal/i18n/ja.po` (106 lines)
-- `addons/auth_passkey_portal/i18n/kab.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/ko.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/ku.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/lo.po` (99 lines)
-- `addons/auth_passkey_portal/i18n/lt.po` (102 lines)
-- `addons/auth_passkey_portal/i18n/lv.po` (102 lines)
-- `addons/auth_passkey_portal/i18n/mn.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/my.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/nb.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/nl.po` (109 lines)
-- `addons/auth_passkey_portal/i18n/pl.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/pt.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/pt_BR.po` (106 lines)
-- `addons/auth_passkey_portal/i18n/ro.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/ru.po` (102 lines)
-- `addons/auth_passkey_portal/i18n/sk.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/sl.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/sr@latin.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/sv.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/th.po` (100 lines)
-- `addons/auth_passkey_portal/i18n/tr.po` (102 lines)
-- `addons/auth_passkey_portal/i18n/uk.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/uz.po` (117 lines)
-- `addons/auth_passkey_portal/i18n/vi.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/zh_CN.po` (101 lines)
-- `addons/auth_passkey_portal/i18n/zh_TW.po` (101 lines)
-- `addons/auth_passkey_portal/static/src/js/passkeys_portal.js` (51 lines)
-- `addons/auth_passkey_portal/static/src/js/passkeys_portal_create.js` (58 lines)
-- `addons/auth_passkey_portal/static/src/xml/passkeys_portal_popups.xml` (14 lines)
-- `addons/auth_passkey_portal/static/tests/tours/test_passkey_portal.js` (163 lines)
-- `addons/auth_passkey_portal/tests/__init__.py` (1 lines)
-- `addons/auth_passkey_portal/tests/test_passkey_portal.py` (40 lines)
-- `addons/auth_passkey_portal/views/templates.xml` (42 lines)
+- **Description:** 2 XML files and 3 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/auth_passkey_portal/views/templates.xml:2`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### Automated verification
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/auth_passkey_portal/tests/test_passkey_portal.py`, `addons/auth_passkey_portal/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 2; representative identifiers: `Passkeys Portal hook`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 1; representative evidence: `addons/auth_passkey_portal/views/templates.xml:2`
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 3; representative files: `addons/auth_passkey_portal/static/src/js/passkeys_portal.js`, `addons/auth_passkey_portal/static/src/js/passkeys_portal_create.js`, `addons/auth_passkey_portal/static/tests/tours/test_passkey_portal.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/auth_passkey_portal/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 0
+- Representative model evidence: No literal model metadata found
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `auth_passkey`, `portal`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Not found
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/auth_passkey_portal/__init__.py`
+- `addons/auth_passkey_portal/__manifest__.py`
+- `addons/auth_passkey_portal/i18n/ar.po`
+- `addons/auth_passkey_portal/i18n/auth_passkey_portal.pot`
+- `addons/auth_passkey_portal/i18n/az.po`
+- `addons/auth_passkey_portal/i18n/bg.po`
+- `addons/auth_passkey_portal/i18n/bs.po`
+- `addons/auth_passkey_portal/i18n/ca.po`
+- `addons/auth_passkey_portal/i18n/cs.po`
+- `addons/auth_passkey_portal/i18n/da.po`
+- `addons/auth_passkey_portal/i18n/de.po`
+- `addons/auth_passkey_portal/i18n/el.po`
+- `addons/auth_passkey_portal/i18n/es.po`
+- `addons/auth_passkey_portal/i18n/es_419.po`
+- `addons/auth_passkey_portal/i18n/et.po`
+- `addons/auth_passkey_portal/i18n/fa.po`
+- `addons/auth_passkey_portal/i18n/fi.po`
+- `addons/auth_passkey_portal/i18n/fr.po`
+- `addons/auth_passkey_portal/i18n/he.po`
+- `addons/auth_passkey_portal/i18n/hi.po`
+- `addons/auth_passkey_portal/i18n/hr.po`
+- `addons/auth_passkey_portal/i18n/hu.po`
+- `addons/auth_passkey_portal/i18n/id.po`
+- `addons/auth_passkey_portal/i18n/it.po`
+- `addons/auth_passkey_portal/i18n/ja.po`
+- `addons/auth_passkey_portal/i18n/kab.po`
+- `addons/auth_passkey_portal/i18n/ko.po`
+- `addons/auth_passkey_portal/i18n/ku.po`
+- `addons/auth_passkey_portal/i18n/lo.po`
+- `addons/auth_passkey_portal/i18n/lt.po`
+- `addons/auth_passkey_portal/i18n/lv.po`
+- `addons/auth_passkey_portal/i18n/mn.po`
+- `addons/auth_passkey_portal/i18n/my.po`
+- `addons/auth_passkey_portal/i18n/nb.po`
+- `addons/auth_passkey_portal/i18n/nl.po`
+- `addons/auth_passkey_portal/i18n/pl.po`
+- `addons/auth_passkey_portal/i18n/pt.po`
+- `addons/auth_passkey_portal/i18n/pt_BR.po`
+- `addons/auth_passkey_portal/i18n/ro.po`
+- `addons/auth_passkey_portal/i18n/ru.po`
+- `addons/auth_passkey_portal/i18n/sk.po`
+- `addons/auth_passkey_portal/i18n/sl.po`
+- `addons/auth_passkey_portal/i18n/sr@latin.po`
+- `addons/auth_passkey_portal/i18n/sv.po`
+- `addons/auth_passkey_portal/i18n/th.po`
+- `addons/auth_passkey_portal/i18n/tr.po`
+- `addons/auth_passkey_portal/i18n/uk.po`
+- `addons/auth_passkey_portal/i18n/uz.po`
+- `addons/auth_passkey_portal/i18n/vi.po`
+- `addons/auth_passkey_portal/i18n/zh_CN.po`
+- `addons/auth_passkey_portal/i18n/zh_TW.po`
+- `addons/auth_passkey_portal/static/src/js/passkeys_portal.js`
+- `addons/auth_passkey_portal/static/src/js/passkeys_portal_create.js`
+- `addons/auth_passkey_portal/static/src/xml/passkeys_portal_popups.xml`
+- `addons/auth_passkey_portal/static/tests/tours/test_passkey_portal.js`
+- `addons/auth_passkey_portal/tests/__init__.py`
+- `addons/auth_passkey_portal/tests/test_passkey_portal.py`
+- `addons/auth_passkey_portal/views/templates.xml`

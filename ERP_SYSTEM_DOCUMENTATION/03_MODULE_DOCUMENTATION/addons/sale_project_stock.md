@@ -1,111 +1,163 @@
 # Module: sale_project_stock
 
 - **Module ID:** MOD-526
-- **Path:** `addons/sale_project_stock`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/sale_project_stock`
 - **Manifest:** `addons/sale_project_stock/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Sales`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
+
+**Purpose:** Adds a full traceability of inventory operations on the profitability report.
+
+**Manifest description:**
 
 Adds a full traceability of inventory operations on the profitability report.
 
-Adds a full traceability of inventory operations on the profitability report.
+**Scope evidence:** The module contains 59 files, including 10 Python, 0 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `sale_project`, `sale_stock`, `project_stock_account`.
 
-Declared dependencies: `sale_project`, `sale_stock`, `project_stock_account`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 4
+- Controller/API files: 0
+- XML/data/view/template files: 0
+- Browser asset files: 0
+- Security files: 0
+- Test files: 3
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 10 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 5 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 0 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "sale_project",
-    "sale_stock",
-    "project_stock_account"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/sale_project_stock/__init__.py` (4 lines)
-- `addons/sale_project_stock/__manifest__.py` (12 lines)
-- `addons/sale_project_stock/i18n/ar.po` (115 lines)
-- `addons/sale_project_stock/i18n/az.po` (104 lines)
-- `addons/sale_project_stock/i18n/bg.po` (104 lines)
-- `addons/sale_project_stock/i18n/bs.po` (106 lines)
-- `addons/sale_project_stock/i18n/ca.po` (110 lines)
-- `addons/sale_project_stock/i18n/cs.po` (106 lines)
-- `addons/sale_project_stock/i18n/da.po` (113 lines)
-- `addons/sale_project_stock/i18n/de.po` (123 lines)
-- `addons/sale_project_stock/i18n/el.po` (105 lines)
-- `addons/sale_project_stock/i18n/es.po` (117 lines)
-- `addons/sale_project_stock/i18n/es_419.po` (121 lines)
-- `addons/sale_project_stock/i18n/et.po` (112 lines)
-- `addons/sale_project_stock/i18n/fa.po` (104 lines)
-- `addons/sale_project_stock/i18n/fi.po` (114 lines)
-- `addons/sale_project_stock/i18n/fr.po` (120 lines)
-- `addons/sale_project_stock/i18n/he.po` (105 lines)
-- `addons/sale_project_stock/i18n/hi.po` (104 lines)
-- `addons/sale_project_stock/i18n/hr.po` (105 lines)
-- `addons/sale_project_stock/i18n/hu.po` (114 lines)
-- `addons/sale_project_stock/i18n/id.po` (114 lines)
-- `addons/sale_project_stock/i18n/it.po` (120 lines)
-- `addons/sale_project_stock/i18n/ja.po` (120 lines)
-- `addons/sale_project_stock/i18n/kab.po` (105 lines)
-- `addons/sale_project_stock/i18n/ko.po` (114 lines)
-- `addons/sale_project_stock/i18n/ku.po` (104 lines)
-- `addons/sale_project_stock/i18n/lo.po` (104 lines)
-- `addons/sale_project_stock/i18n/lt.po` (106 lines)
-- `addons/sale_project_stock/i18n/lv.po` (105 lines)
-- `addons/sale_project_stock/i18n/mn.po` (104 lines)
-- `addons/sale_project_stock/i18n/my.po` (105 lines)
-- `addons/sale_project_stock/i18n/nb.po` (105 lines)
-- `addons/sale_project_stock/i18n/nl.po` (120 lines)
-- `addons/sale_project_stock/i18n/pl.po` (107 lines)
-- `addons/sale_project_stock/i18n/pt.po` (113 lines)
-- `addons/sale_project_stock/i18n/pt_BR.po` (124 lines)
-- `addons/sale_project_stock/i18n/ro.po` (114 lines)
-- `addons/sale_project_stock/i18n/ru.po` (116 lines)
-- `addons/sale_project_stock/i18n/sale_project_stock.pot` (102 lines)
-- `addons/sale_project_stock/i18n/sk.po` (104 lines)
-- `addons/sale_project_stock/i18n/sl.po` (106 lines)
-- `addons/sale_project_stock/i18n/sr@latin.po` (105 lines)
-- `addons/sale_project_stock/i18n/sv.po` (113 lines)
-- `addons/sale_project_stock/i18n/th.po` (116 lines)
-- `addons/sale_project_stock/i18n/tr.po` (116 lines)
-- `addons/sale_project_stock/i18n/uk.po` (107 lines)
-- `addons/sale_project_stock/i18n/uz.po` (128 lines)
-- `addons/sale_project_stock/i18n/vi.po` (113 lines)
-- `addons/sale_project_stock/i18n/zh_CN.po` (118 lines)
-- `addons/sale_project_stock/i18n/zh_TW.po` (113 lines)
-- `addons/sale_project_stock/models/__init__.py` (7 lines)
-- `addons/sale_project_stock/models/account_analytic_line.py` (29 lines)
-- `addons/sale_project_stock/models/project_project.py` (18 lines)
-- `addons/sale_project_stock/models/stock_move.py` (77 lines)
-- `addons/sale_project_stock/models/stock_picking.py` (62 lines)
-- `addons/sale_project_stock/tests/__init__.py` (4 lines)
-- `addons/sale_project_stock/tests/test_analytic_line.py` (70 lines)
-- `addons/sale_project_stock/tests/test_reinvoice.py` (86 lines)
+- **Description:** 4 model declarations, 15 methods, 0 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/sale_project_stock/models/account_analytic_line.py:6`, `addons/sale_project_stock/models/stock_move.py:7`, `addons/sale_project_stock/models/project_project.py:6`, `addons/sale_project_stock/models/stock_picking.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### Automated verification
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/sale_project_stock/tests/test_analytic_line.py`, `addons/sale_project_stock/tests/test_reinvoice.py`, `addons/sale_project_stock/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 0; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/sale_project_stock/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 4
+- Representative model evidence: inherits `account.analytic.line` (addons/sale_project_stock/models/account_analytic_line.py:6); inherits `stock.move` (addons/sale_project_stock/models/stock_move.py:7); inherits `project.project` (addons/sale_project_stock/models/project_project.py:6); inherits `stock.picking` (addons/sale_project_stock/models/stock_picking.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `sale_project`, `sale_stock`, `project_stock_account`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Not found
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/sale_project_stock/__init__.py`
+- `addons/sale_project_stock/__manifest__.py`
+- `addons/sale_project_stock/i18n/ar.po`
+- `addons/sale_project_stock/i18n/az.po`
+- `addons/sale_project_stock/i18n/bg.po`
+- `addons/sale_project_stock/i18n/bs.po`
+- `addons/sale_project_stock/i18n/ca.po`
+- `addons/sale_project_stock/i18n/cs.po`
+- `addons/sale_project_stock/i18n/da.po`
+- `addons/sale_project_stock/i18n/de.po`
+- `addons/sale_project_stock/i18n/el.po`
+- `addons/sale_project_stock/i18n/es.po`
+- `addons/sale_project_stock/i18n/es_419.po`
+- `addons/sale_project_stock/i18n/et.po`
+- `addons/sale_project_stock/i18n/fa.po`
+- `addons/sale_project_stock/i18n/fi.po`
+- `addons/sale_project_stock/i18n/fr.po`
+- `addons/sale_project_stock/i18n/he.po`
+- `addons/sale_project_stock/i18n/hi.po`
+- `addons/sale_project_stock/i18n/hr.po`
+- `addons/sale_project_stock/i18n/hu.po`
+- `addons/sale_project_stock/i18n/id.po`
+- `addons/sale_project_stock/i18n/it.po`
+- `addons/sale_project_stock/i18n/ja.po`
+- `addons/sale_project_stock/i18n/kab.po`
+- `addons/sale_project_stock/i18n/ko.po`
+- `addons/sale_project_stock/i18n/ku.po`
+- `addons/sale_project_stock/i18n/lo.po`
+- `addons/sale_project_stock/i18n/lt.po`
+- `addons/sale_project_stock/i18n/lv.po`
+- `addons/sale_project_stock/i18n/mn.po`
+- `addons/sale_project_stock/i18n/my.po`
+- `addons/sale_project_stock/i18n/nb.po`
+- `addons/sale_project_stock/i18n/nl.po`
+- `addons/sale_project_stock/i18n/pl.po`
+- `addons/sale_project_stock/i18n/pt.po`
+- `addons/sale_project_stock/i18n/pt_BR.po`
+- `addons/sale_project_stock/i18n/ro.po`
+- `addons/sale_project_stock/i18n/ru.po`
+- `addons/sale_project_stock/i18n/sale_project_stock.pot`
+- `addons/sale_project_stock/i18n/sk.po`
+- `addons/sale_project_stock/i18n/sl.po`
+- `addons/sale_project_stock/i18n/sr@latin.po`
+- `addons/sale_project_stock/i18n/sv.po`
+- `addons/sale_project_stock/i18n/th.po`
+- `addons/sale_project_stock/i18n/tr.po`
+- `addons/sale_project_stock/i18n/uk.po`
+- `addons/sale_project_stock/i18n/uz.po`
+- `addons/sale_project_stock/i18n/vi.po`
+- `addons/sale_project_stock/i18n/zh_CN.po`
+- `addons/sale_project_stock/i18n/zh_TW.po`
+- `addons/sale_project_stock/models/__init__.py`
+- `addons/sale_project_stock/models/account_analytic_line.py`
+- `addons/sale_project_stock/models/project_project.py`
+- `addons/sale_project_stock/models/stock_move.py`
+- `addons/sale_project_stock/models/stock_picking.py`
+- `addons/sale_project_stock/tests/__init__.py`
+- `addons/sale_project_stock/tests/test_analytic_line.py`
+- `addons/sale_project_stock/tests/test_reinvoice.py`

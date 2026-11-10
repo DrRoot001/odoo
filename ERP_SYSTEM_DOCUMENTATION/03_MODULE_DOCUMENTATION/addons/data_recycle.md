@@ -1,134 +1,197 @@
 # Module: data_recycle
 
 - **Module ID:** MOD-061
-- **Path:** `addons/data_recycle`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/data_recycle`
 - **Manifest:** `addons/data_recycle/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `True`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Productivity/Data Cleaning`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
+
+**Purpose:** Find old records and archive/delete them
+
+**Manifest description:**
 
 Find old records and archive/delete them
 
-Find old records and archive/delete them
+**Scope evidence:** The module contains 69 files, including 7 Python, 6 XML, and 3 JavaScript/TypeScript files. The manifest declares dependencies: `mail`.
 
-Declared dependencies: `mail`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 2
+- Controller/API files: 0
+- XML/data/view/template files: 6
+- Browser asset files: 3
+- Security files: 1
+- Test files: 2
+- Scheduled/automation evidence files: 4
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 7 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 6 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 3 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `addons/data_recycle/security/ir.access.csv`
 
-```text
-{
-  "depends": [
-    "mail"
-  ],
-  "data": [
-    "data/ir_cron_data.xml",
-    "views/data_recycle_model_views.xml",
-    "views/data_recycle_record_views.xml",
-    "views/data_cleaning_menu.xml",
-    "views/data_recycle_templates.xml",
-    "security/ir.access.csv"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "data_recycle/static/src/cog_menu/data_refresh_cog_menu.js",
-      "data_recycle/static/src/cog_menu/data_refresh_cog_menu.xml",
-      "data_recycle/static/src/views/*.js"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/data_recycle/__init__.py` (4 lines)
-- `addons/data_recycle/__manifest__.py` (28 lines)
-- `addons/data_recycle/data/ir_cron_data.xml` (13 lines)
-- `addons/data_recycle/i18n/ar.po` (411 lines)
-- `addons/data_recycle/i18n/az.po` (403 lines)
-- `addons/data_recycle/i18n/bg.po` (403 lines)
-- `addons/data_recycle/i18n/bs.po` (405 lines)
-- `addons/data_recycle/i18n/ca.po` (409 lines)
-- `addons/data_recycle/i18n/cs.po` (406 lines)
-- `addons/data_recycle/i18n/da.po` (410 lines)
-- `addons/data_recycle/i18n/data_recycle.pot` (396 lines)
-- `addons/data_recycle/i18n/de.po` (415 lines)
-- `addons/data_recycle/i18n/el.po` (403 lines)
-- `addons/data_recycle/i18n/es.po` (411 lines)
-- `addons/data_recycle/i18n/es_419.po` (410 lines)
-- `addons/data_recycle/i18n/et.po` (410 lines)
-- `addons/data_recycle/i18n/fa.po` (407 lines)
-- `addons/data_recycle/i18n/fi.po` (413 lines)
-- `addons/data_recycle/i18n/fr.po` (414 lines)
-- `addons/data_recycle/i18n/he.po` (409 lines)
-- `addons/data_recycle/i18n/hi.po` (408 lines)
-- `addons/data_recycle/i18n/hr.po` (407 lines)
-- `addons/data_recycle/i18n/hu.po` (403 lines)
-- `addons/data_recycle/i18n/id.po` (413 lines)
-- `addons/data_recycle/i18n/it.po` (413 lines)
-- `addons/data_recycle/i18n/ja.po` (409 lines)
-- `addons/data_recycle/i18n/kab.po` (404 lines)
-- `addons/data_recycle/i18n/ko.po` (409 lines)
-- `addons/data_recycle/i18n/ku.po` (403 lines)
-- `addons/data_recycle/i18n/lo.po` (402 lines)
-- `addons/data_recycle/i18n/lt.po` (408 lines)
-- `addons/data_recycle/i18n/lv.po` (405 lines)
-- `addons/data_recycle/i18n/mn.po` (406 lines)
-- `addons/data_recycle/i18n/my.po` (404 lines)
-- `addons/data_recycle/i18n/nb.po` (403 lines)
-- `addons/data_recycle/i18n/nl.po` (416 lines)
-- `addons/data_recycle/i18n/pl.po` (412 lines)
-- `addons/data_recycle/i18n/pt.po` (411 lines)
-- `addons/data_recycle/i18n/pt_BR.po` (414 lines)
-- `addons/data_recycle/i18n/ro.po` (411 lines)
-- `addons/data_recycle/i18n/ru.po` (413 lines)
-- `addons/data_recycle/i18n/sk.po` (404 lines)
-- `addons/data_recycle/i18n/sl.po` (413 lines)
-- `addons/data_recycle/i18n/sr@latin.po` (405 lines)
-- `addons/data_recycle/i18n/sv.po` (412 lines)
-- `addons/data_recycle/i18n/th.po` (408 lines)
-- `addons/data_recycle/i18n/tr.po` (413 lines)
-- `addons/data_recycle/i18n/uk.po` (410 lines)
-- `addons/data_recycle/i18n/uz.po` (482 lines)
-- `addons/data_recycle/i18n/vi.po` (408 lines)
-- `addons/data_recycle/i18n/zh_CN.po` (409 lines)
-- `addons/data_recycle/i18n/zh_TW.po` (411 lines)
-- `addons/data_recycle/models/__init__.py` (5 lines)
-- `addons/data_recycle/models/data_recycle_model.py` (260 lines)
-- `addons/data_recycle/models/data_recycle_record.py` (90 lines)
-- `addons/data_recycle/security/ir.access.csv` (3 lines)
-- `addons/data_recycle/static/description/icon.png` (17 lines)
-- `addons/data_recycle/static/description/icon.svg` (1 lines)
-- `addons/data_recycle/static/description/icon_hi.png` (35 lines)
-- `addons/data_recycle/static/src/cog_menu/data_refresh_cog_menu.js` (46 lines)
-- `addons/data_recycle/static/src/cog_menu/data_refresh_cog_menu.xml` (9 lines)
-- `addons/data_recycle/static/src/views/data_cleaning_common_list.js` (37 lines)
-- `addons/data_recycle/static/src/views/data_recycle_list_view.js` (35 lines)
-- `addons/data_recycle/tests/__init__.py` (4 lines)
-- `addons/data_recycle/tests/test_data_recycle.py` (97 lines)
-- `addons/data_recycle/views/data_cleaning_menu.xml` (34 lines)
-- `addons/data_recycle/views/data_recycle_model_views.xml` (86 lines)
-- `addons/data_recycle/views/data_recycle_record_views.xml` (72 lines)
-- `addons/data_recycle/views/data_recycle_templates.xml` (7 lines)
+- **Description:** 2 model declarations, 28 methods, 1 constraint handlers, 1 onchange handlers, and 4 dependency declarations.
+- **Evidence:** `addons/data_recycle/models/data_recycle_record.py:9`, `addons/data_recycle/models/data_recycle_model.py:19`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### User interface and data
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 6 XML files and 3 JavaScript/TypeScript files; static XML analysis found 14 record/template/menu identifiers.
+- **Evidence:** `addons/data_recycle/data/ir_cron_data.xml:3`, `addons/data_recycle/views/data_cleaning_menu.xml:3`, `addons/data_recycle/views/data_cleaning_menu.xml:9`, `addons/data_recycle/views/data_cleaning_menu.xml:16`, `addons/data_recycle/views/data_cleaning_menu.xml:22`, `addons/data_recycle/views/data_cleaning_menu.xml:28`, `addons/data_recycle/views/data_recycle_record_views.xml:4`, `addons/data_recycle/views/data_recycle_record_views.xml:26`, `addons/data_recycle/views/data_recycle_record_views.xml:39`, `addons/data_recycle/views/data_recycle_record_views.xml:56`, `addons/data_recycle/views/data_recycle_templates.xml:3`, `addons/data_recycle/views/data_recycle_model_views.xml:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/data_recycle/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 4 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/data_recycle/__manifest__.py`, `addons/data_recycle/models/data_recycle_model.py`, `addons/data_recycle/data/ir_cron_data.xml`, `addons/data_recycle/tests/test_data_recycle.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/data_recycle/tests/test_data_recycle.py`, `addons/data_recycle/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 6; representative identifiers: `ir_cron_clean_records`, `Data Cleaning`, `Recycle Records`, `Configuration`, `Rules`, `Recycle Records`, `view_data_recycle_record_list`, `view_data_recycle_record_search`, `action_data_recycle_record`, `action_data_recycle_record_notification`, `notification`, `view_data_recycle_model_list`, `view_data_merge_model_form`, `action_data_recycle_config`
+- Menus: 5; representative evidence: `addons/data_recycle/views/data_cleaning_menu.xml:3`, `addons/data_recycle/views/data_cleaning_menu.xml:9`, `addons/data_recycle/views/data_cleaning_menu.xml:16`, `addons/data_recycle/views/data_cleaning_menu.xml:22`, `addons/data_recycle/views/data_cleaning_menu.xml:28`
+- Templates: 1; representative evidence: `addons/data_recycle/views/data_recycle_templates.xml:3`
+- View/action field declarations: 14; representative evidence: `addons/data_recycle/views/data_recycle_record_views.xml:6`, `addons/data_recycle/views/data_recycle_record_views.xml:7`, `addons/data_recycle/views/data_recycle_record_views.xml:28`, `addons/data_recycle/views/data_recycle_record_views.xml:29`, `addons/data_recycle/views/data_recycle_record_views.xml:42`, `addons/data_recycle/views/data_recycle_record_views.xml:43`, `addons/data_recycle/views/data_recycle_record_views.xml:58`, `addons/data_recycle/views/data_recycle_record_views.xml:59`, `addons/data_recycle/views/data_recycle_model_views.xml:6`, `addons/data_recycle/views/data_recycle_model_views.xml:7`, `addons/data_recycle/views/data_recycle_model_views.xml:20`, `addons/data_recycle/views/data_recycle_model_views.xml:21`
+- Browser assets: 3; representative files: `addons/data_recycle/static/src/cog_menu/data_refresh_cog_menu.js`, `addons/data_recycle/static/src/views/data_recycle_list_view.js`, `addons/data_recycle/static/src/views/data_cleaning_common_list.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/data_recycle/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** `addons/data_recycle/__manifest__.py`, `addons/data_recycle/models/data_recycle_model.py`, `addons/data_recycle/data/ir_cron_data.xml`, `addons/data_recycle/tests/test_data_recycle.py`
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: `data_recycle.record` (addons/data_recycle/models/data_recycle_record.py:9); `data_recycle.model` (addons/data_recycle/models/data_recycle_model.py:19)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `mail`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/data_recycle/__init__.py`
+- `addons/data_recycle/__manifest__.py`
+- `addons/data_recycle/data/ir_cron_data.xml`
+- `addons/data_recycle/i18n/ar.po`
+- `addons/data_recycle/i18n/az.po`
+- `addons/data_recycle/i18n/bg.po`
+- `addons/data_recycle/i18n/bs.po`
+- `addons/data_recycle/i18n/ca.po`
+- `addons/data_recycle/i18n/cs.po`
+- `addons/data_recycle/i18n/da.po`
+- `addons/data_recycle/i18n/data_recycle.pot`
+- `addons/data_recycle/i18n/de.po`
+- `addons/data_recycle/i18n/el.po`
+- `addons/data_recycle/i18n/es.po`
+- `addons/data_recycle/i18n/es_419.po`
+- `addons/data_recycle/i18n/et.po`
+- `addons/data_recycle/i18n/fa.po`
+- `addons/data_recycle/i18n/fi.po`
+- `addons/data_recycle/i18n/fr.po`
+- `addons/data_recycle/i18n/he.po`
+- `addons/data_recycle/i18n/hi.po`
+- `addons/data_recycle/i18n/hr.po`
+- `addons/data_recycle/i18n/hu.po`
+- `addons/data_recycle/i18n/id.po`
+- `addons/data_recycle/i18n/it.po`
+- `addons/data_recycle/i18n/ja.po`
+- `addons/data_recycle/i18n/kab.po`
+- `addons/data_recycle/i18n/ko.po`
+- `addons/data_recycle/i18n/ku.po`
+- `addons/data_recycle/i18n/lo.po`
+- `addons/data_recycle/i18n/lt.po`
+- `addons/data_recycle/i18n/lv.po`
+- `addons/data_recycle/i18n/mn.po`
+- `addons/data_recycle/i18n/my.po`
+- `addons/data_recycle/i18n/nb.po`
+- `addons/data_recycle/i18n/nl.po`
+- `addons/data_recycle/i18n/pl.po`
+- `addons/data_recycle/i18n/pt.po`
+- `addons/data_recycle/i18n/pt_BR.po`
+- `addons/data_recycle/i18n/ro.po`
+- `addons/data_recycle/i18n/ru.po`
+- `addons/data_recycle/i18n/sk.po`
+- `addons/data_recycle/i18n/sl.po`
+- `addons/data_recycle/i18n/sr@latin.po`
+- `addons/data_recycle/i18n/sv.po`
+- `addons/data_recycle/i18n/th.po`
+- `addons/data_recycle/i18n/tr.po`
+- `addons/data_recycle/i18n/uk.po`
+- `addons/data_recycle/i18n/uz.po`
+- `addons/data_recycle/i18n/vi.po`
+- `addons/data_recycle/i18n/zh_CN.po`
+- `addons/data_recycle/i18n/zh_TW.po`
+- `addons/data_recycle/models/__init__.py`
+- `addons/data_recycle/models/data_recycle_model.py`
+- `addons/data_recycle/models/data_recycle_record.py`
+- `addons/data_recycle/security/ir.access.csv`
+- `addons/data_recycle/static/description/icon.png`
+- `addons/data_recycle/static/description/icon.svg`
+- `addons/data_recycle/static/description/icon_hi.png`
+- `addons/data_recycle/static/src/cog_menu/data_refresh_cog_menu.js`
+- `addons/data_recycle/static/src/cog_menu/data_refresh_cog_menu.xml`
+- `addons/data_recycle/static/src/views/data_cleaning_common_list.js`
+- `addons/data_recycle/static/src/views/data_recycle_list_view.js`
+- `addons/data_recycle/tests/__init__.py`
+- `addons/data_recycle/tests/test_data_recycle.py`
+- `addons/data_recycle/views/data_cleaning_menu.xml`
+- `addons/data_recycle/views/data_recycle_model_views.xml`
+- `addons/data_recycle/views/data_recycle_record_views.xml`
+- `addons/data_recycle/views/data_recycle_templates.xml`

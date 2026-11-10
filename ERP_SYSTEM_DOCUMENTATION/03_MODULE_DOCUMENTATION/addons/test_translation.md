@@ -1,91 +1,147 @@
 # Module: test_translation
 
 - **Module ID:** MOD-664
-- **Path:** `odoo/addons/test_translation`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `odoo/addons/test_translation`
 - **Manifest:** `odoo/addons/test_translation/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden/Tests`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
+
+**Manifest description:**
 
 A module to test translation.
 
-Declared dependencies: `base`, `web_tour`.
+**Scope evidence:** The module contains 27 files, including 11 Python, 3 XML, and 2 JavaScript/TypeScript files. The manifest declares dependencies: `base`, `web_tour`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 11 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 3 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 2 | Client behavior/assets. |
-| Tests | 7 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 7
+- Controller/API files: 0
+- XML/data/view/template files: 3
+- Browser asset files: 2
+- Security files: 1
+- Test files: 7
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "base",
-    "web_tour"
-  ],
-  "data": [
-    "view.xml",
-    "data/test_translation_data.xml",
-    "data/test.translation.model1.csv",
-    "data/test.translation.model1-translated.csv",
-    "security/ir.access.csv"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "test_translation/static/tests/tours/constraint.js",
-      "test_translation/static/src/xml/js_templates.xml"
-    ]
-  }
-}
-```
+**Security evidence:** `odoo/addons/test_translation/security/ir.access.csv`
 
-### Representative source files
+## 4. Functionalities
 
-- `odoo/addons/test_translation/__init__.py` (1 lines)
-- `odoo/addons/test_translation/__manifest__.py` (22 lines)
-- `odoo/addons/test_translation/data/files/test_spreadsheet_dashboard.json` (174 lines)
-- `odoo/addons/test_translation/data/files/test_spreadsheet_v16_dashboard.json` (146 lines)
-- `odoo/addons/test_translation/data/test.translation.model1-translated.csv` (2 lines)
-- `odoo/addons/test_translation/data/test.translation.model1.csv` (2 lines)
-- `odoo/addons/test_translation/data/test_translation_data.xml` (30 lines)
-- `odoo/addons/test_translation/i18n/dot.csv` (5 lines)
-- `odoo/addons/test_translation/i18n/fr.po` (777 lines)
-- `odoo/addons/test_translation/i18n/fr_BE.po` (775 lines)
-- `odoo/addons/test_translation/i18n/fr_CA.po` (775 lines)
-- `odoo/addons/test_translation/i18n/test_translation.pot` (775 lines)
-- `odoo/addons/test_translation/i18n/tlh.po` (775 lines)
-- `odoo/addons/test_translation/models/__init__.py` (2 lines)
-- `odoo/addons/test_translation/models/models.py` (99 lines)
-- `odoo/addons/test_translation/models/test_related_translation.py` (58 lines)
-- `odoo/addons/test_translation/security/ir.access.csv` (6 lines)
-- `odoo/addons/test_translation/static/src/js/js_codefile.js` (60 lines)
-- `odoo/addons/test_translation/static/src/xml/js_templates.xml` (13 lines)
-- `odoo/addons/test_translation/static/tests/tours/constraint.js` (31 lines)
-- `odoo/addons/test_translation/tests/__init__.py` (5 lines)
-- `odoo/addons/test_translation/tests/test_export_wizard.py` (26 lines)
-- `odoo/addons/test_translation/tests/test_load_manifest_translations.py` (27 lines)
-- `odoo/addons/test_translation/tests/test_related_translation.py` (780 lines)
-- `odoo/addons/test_translation/tests/test_term_count.py` (515 lines)
-- `odoo/addons/test_translation/tests/test_ui.py` (21 lines)
-- `odoo/addons/test_translation/view.xml` (19 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 7 model declarations, 59 methods, 0 constraint handlers, 0 onchange handlers, and 3 dependency declarations.
+- **Evidence:** `odoo/addons/test_translation/models/test_related_translation.py:5`, `odoo/addons/test_translation/models/test_related_translation.py:13`, `odoo/addons/test_translation/models/test_related_translation.py:42`, `odoo/addons/test_translation/models/test_related_translation.py:51`, `odoo/addons/test_translation/models/models.py:12`, `odoo/addons/test_translation/models/models.py:82`, `odoo/addons/test_translation/models/models.py:90`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 3 XML files and 2 JavaScript/TypeScript files; static XML analysis found 7 record/template/menu identifiers.
+- **Evidence:** `odoo/addons/test_translation/view.xml:5`, `odoo/addons/test_translation/view.xml:12`, `odoo/addons/test_translation/view.xml:14`, `odoo/addons/test_translation/data/test_translation_data.xml:3`, `odoo/addons/test_translation/data/test_translation_data.xml:7`, `odoo/addons/test_translation/data/test_translation_data.xml:21`, `odoo/addons/test_translation/data/test_translation_data.xml:25`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `odoo/addons/test_translation/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 7 test files are present.
+- **Evidence:** `odoo/addons/test_translation/models/test_related_translation.py`, `odoo/addons/test_translation/tests/test_related_translation.py`, `odoo/addons/test_translation/tests/test_term_count.py`, `odoo/addons/test_translation/tests/test_export_wizard.py`, `odoo/addons/test_translation/tests/test_ui.py`, `odoo/addons/test_translation/tests/__init__.py`, `odoo/addons/test_translation/tests/test_load_manifest_translations.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 3; representative identifiers: `action_test_translation_model1`, `Test translation model1`, `Test translation import model1`, `test_translation_model1_record1`, `test_translation_model1_record2`, `test_translation_model2_record1`, `action_constraint`
+- Menus: 2; representative evidence: `odoo/addons/test_translation/view.xml:12`, `odoo/addons/test_translation/view.xml:14`
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 4; representative evidence: `odoo/addons/test_translation/view.xml:7`, `odoo/addons/test_translation/view.xml:8`, `odoo/addons/test_translation/data/test_translation_data.xml:27`, `odoo/addons/test_translation/data/test_translation_data.xml:28`
+- Browser assets: 2; representative files: `odoo/addons/test_translation/static/src/js/js_codefile.js`, `odoo/addons/test_translation/static/tests/tours/constraint.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `odoo/addons/test_translation/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 7
+- Representative model evidence: `test_translation.related_translation_1` (odoo/addons/test_translation/models/test_related_translation.py:5); `test_translation.related_translation_2` (odoo/addons/test_translation/models/test_related_translation.py:13); `test_translation.related_translation_3` (odoo/addons/test_translation/models/test_related_translation.py:42); `test_translation.related_translation_4` (odoo/addons/test_translation/models/test_related_translation.py:51); `test.translation.model1` (odoo/addons/test_translation/models/models.py:12); `test.translation.model2` (odoo/addons/test_translation/models/models.py:82); `test.translation.constraint` (odoo/addons/test_translation/models/models.py:90)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base`, `web_tour`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `odoo/addons/test_translation/__init__.py`
+- `odoo/addons/test_translation/__manifest__.py`
+- `odoo/addons/test_translation/data/files/test_spreadsheet_dashboard.json`
+- `odoo/addons/test_translation/data/files/test_spreadsheet_v16_dashboard.json`
+- `odoo/addons/test_translation/data/test.translation.model1-translated.csv`
+- `odoo/addons/test_translation/data/test.translation.model1.csv`
+- `odoo/addons/test_translation/data/test_translation_data.xml`
+- `odoo/addons/test_translation/i18n/dot.csv`
+- `odoo/addons/test_translation/i18n/fr.po`
+- `odoo/addons/test_translation/i18n/fr_BE.po`
+- `odoo/addons/test_translation/i18n/fr_CA.po`
+- `odoo/addons/test_translation/i18n/test_translation.pot`
+- `odoo/addons/test_translation/i18n/tlh.po`
+- `odoo/addons/test_translation/models/__init__.py`
+- `odoo/addons/test_translation/models/models.py`
+- `odoo/addons/test_translation/models/test_related_translation.py`
+- `odoo/addons/test_translation/security/ir.access.csv`
+- `odoo/addons/test_translation/static/src/js/js_codefile.js`
+- `odoo/addons/test_translation/static/src/xml/js_templates.xml`
+- `odoo/addons/test_translation/static/tests/tours/constraint.js`
+- `odoo/addons/test_translation/tests/__init__.py`
+- `odoo/addons/test_translation/tests/test_export_wizard.py`
+- `odoo/addons/test_translation/tests/test_load_manifest_translations.py`
+- `odoo/addons/test_translation/tests/test_related_translation.py`
+- `odoo/addons/test_translation/tests/test_term_count.py`
+- `odoo/addons/test_translation/tests/test_ui.py`
+- `odoo/addons/test_translation/view.xml`

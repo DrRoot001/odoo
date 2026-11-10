@@ -1,164 +1,215 @@
 # Module: website_event_sale
 
 - **Module ID:** MOD-613
-- **Path:** `addons/website_event_sale`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/website_event_sale`
 - **Manifest:** `addons/website_event_sale/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Website/Website`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Sell event tickets online
+**Purpose:** Sell event tickets online
 
+**Manifest description:**
 
 Sell event tickets through eCommerce app.
-    
 
-Declared dependencies: `website_event`, `event_sale`, `website_sale`.
+**Scope evidence:** The module contains 95 files, including 21 Python, 5 XML, and 4 JavaScript/TypeScript files. The manifest declares dependencies: `website_event`, `event_sale`, `website_sale`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 21 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 7 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 3 | Files under `controllers/` or `controllers.py`. |
-| XML files | 5 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 4 | Client behavior/assets. |
-| Tests | 7 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+- Model/business logic files: 8
+- Controller/API files: 3
+- XML/data/view/template files: 5
+- Browser asset files: 4
+- Security files: 0
+- Test files: 7
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "website_event",
-    "event_sale",
-    "website_sale"
-  ],
-  "data": [
-    "data/event_data.xml",
-    "report/event_sale_report_views.xml",
-    "views/event_event_views.xml",
-    "views/website_event_templates.xml",
-    "views/website_sale_templates.xml"
-  ],
-  "assets": {
-    "web.assets_tests": [
-      "website_event_sale/static/tests/**/*"
-    ],
-    "web.assets_frontend": [
-      "website_event_sale/static/src/scss/*.scss"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/website_event_sale/__init__.py` (6 lines)
-- `addons/website_event_sale/__manifest__.py` (29 lines)
-- `addons/website_event_sale/controllers/__init__.py` (4 lines)
-- `addons/website_event_sale/controllers/main.py` (106 lines)
-- `addons/website_event_sale/controllers/sale.py` (32 lines)
-- `addons/website_event_sale/data/event_data.xml` (10 lines)
-- `addons/website_event_sale/i18n/af.po` (222 lines)
-- `addons/website_event_sale/i18n/ar.po` (234 lines)
-- `addons/website_event_sale/i18n/az.po` (234 lines)
-- `addons/website_event_sale/i18n/bg.po` (244 lines)
-- `addons/website_event_sale/i18n/bs.po` (235 lines)
-- `addons/website_event_sale/i18n/ca.po` (250 lines)
-- `addons/website_event_sale/i18n/cs.po` (238 lines)
-- `addons/website_event_sale/i18n/da.po` (242 lines)
-- `addons/website_event_sale/i18n/de.po` (239 lines)
-- `addons/website_event_sale/i18n/el.po` (230 lines)
-- `addons/website_event_sale/i18n/es.po` (240 lines)
-- `addons/website_event_sale/i18n/es_419.po` (231 lines)
-- `addons/website_event_sale/i18n/es_CL.po` (24 lines)
-- `addons/website_event_sale/i18n/et.po` (241 lines)
-- `addons/website_event_sale/i18n/eu.po` (219 lines)
-- `addons/website_event_sale/i18n/fa.po` (246 lines)
-- `addons/website_event_sale/i18n/fi.po` (239 lines)
-- `addons/website_event_sale/i18n/fo.po` (219 lines)
-- `addons/website_event_sale/i18n/fr.po` (237 lines)
-- `addons/website_event_sale/i18n/fr_CA.po` (24 lines)
-- `addons/website_event_sale/i18n/gl.po` (219 lines)
-- `addons/website_event_sale/i18n/gu.po` (221 lines)
-- `addons/website_event_sale/i18n/he.po` (238 lines)
-- `addons/website_event_sale/i18n/hi.po` (235 lines)
-- `addons/website_event_sale/i18n/hr.po` (235 lines)
-- `addons/website_event_sale/i18n/hu.po` (234 lines)
-- `addons/website_event_sale/i18n/id.po` (239 lines)
-- `addons/website_event_sale/i18n/is.po` (217 lines)
-- `addons/website_event_sale/i18n/it.po` (234 lines)
-- `addons/website_event_sale/i18n/ja.po` (233 lines)
-- `addons/website_event_sale/i18n/ka.po` (223 lines)
-- `addons/website_event_sale/i18n/kab.po` (230 lines)
-- `addons/website_event_sale/i18n/km.po` (222 lines)
-- `addons/website_event_sale/i18n/ko.po` (236 lines)
-- `addons/website_event_sale/i18n/ku.po` (227 lines)
-- `addons/website_event_sale/i18n/lo.po` (230 lines)
-- `addons/website_event_sale/i18n/lt.po` (244 lines)
-- `addons/website_event_sale/i18n/lv.po` (232 lines)
-- `addons/website_event_sale/i18n/mk.po` (221 lines)
-- `addons/website_event_sale/i18n/mn.po` (240 lines)
-- `addons/website_event_sale/i18n/my.po` (232 lines)
-- `addons/website_event_sale/i18n/nb.po` (230 lines)
-- `addons/website_event_sale/i18n/nl.po` (235 lines)
-- `addons/website_event_sale/i18n/pl.po` (240 lines)
-- `addons/website_event_sale/i18n/pt.po` (245 lines)
-- `addons/website_event_sale/i18n/pt_BR.po` (240 lines)
-- `addons/website_event_sale/i18n/ro.po` (241 lines)
-- `addons/website_event_sale/i18n/ru.po` (235 lines)
-- `addons/website_event_sale/i18n/sk.po` (234 lines)
-- `addons/website_event_sale/i18n/sl.po` (233 lines)
-- `addons/website_event_sale/i18n/sr@latin.po` (237 lines)
-- `addons/website_event_sale/i18n/sv.po` (239 lines)
-- `addons/website_event_sale/i18n/th.po` (235 lines)
-- `addons/website_event_sale/i18n/tr.po` (240 lines)
-- `addons/website_event_sale/i18n/uk.po` (243 lines)
-- `addons/website_event_sale/i18n/uz.po` (260 lines)
-- `addons/website_event_sale/i18n/vi.po` (239 lines)
-- `addons/website_event_sale/i18n/website_event_sale.pot` (217 lines)
-- `addons/website_event_sale/i18n/zh_CN.po` (235 lines)
-- `addons/website_event_sale/i18n/zh_TW.po` (231 lines)
-- `addons/website_event_sale/models/__init__.py` (6 lines)
-- `addons/website_event_sale/models/event_event.py` (23 lines)
-- `addons/website_event_sale/models/event_ticket.py` (23 lines)
-- `addons/website_event_sale/models/product.py` (40 lines)
-- `addons/website_event_sale/models/product_pricelist.py` (22 lines)
-- `addons/website_event_sale/models/sale_order.py` (171 lines)
-- `addons/website_event_sale/models/sale_order_line.py` (32 lines)
-- `addons/website_event_sale/report/__init__.py` (1 lines)
-- `addons/website_event_sale/report/event_sale_report.py` (15 lines)
-- `addons/website_event_sale/report/event_sale_report_views.xml` (14 lines)
-- `addons/website_event_sale/static/description/icon.png` (26 lines)
-- `addons/website_event_sale/static/description/icon.svg` (1 lines)
-- `addons/website_event_sale/static/description/icon_hi.png` (136 lines)
-- `addons/website_event_sale/static/img/event_ticket_placeholder_thumbnail.png` (33 lines)
-- `addons/website_event_sale/static/src/scss/website_event_sale_templates.scss` (18 lines)
-- `addons/website_event_sale/static/tests/tours/helpers/WebsiteEventSaleTourMethods.js` (62 lines)
-- `addons/website_event_sale/static/tests/tours/website_event_sale.js` (121 lines)
-- `addons/website_event_sale/static/tests/tours/website_event_sale_last_ticket.js` (61 lines)
-- `addons/website_event_sale/static/tests/tours/website_event_sale_pricelists.js` (72 lines)
-- `addons/website_event_sale/tests/__init__.py` (8 lines)
-- `addons/website_event_sale/tests/common.py` (100 lines)
-- `addons/website_event_sale/tests/test_event_checkout.py` (68 lines)
-- `addons/website_event_sale/tests/test_frontend_buy_tickets.py` (259 lines)
-- `addons/website_event_sale/tests/test_website_event_sale.py` (217 lines)
-- `addons/website_event_sale/tests/test_website_event_sale_cart.py` (83 lines)
-- `addons/website_event_sale/tests/test_website_event_sale_pricelist.py` (61 lines)
-- `addons/website_event_sale/views/event_event_views.xml` (13 lines)
-- `addons/website_event_sale/views/website_event_templates.xml` (102 lines)
-- `addons/website_event_sale/views/website_sale_templates.xml` (105 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 8 model declarations, 41 methods, 0 constraint handlers, 1 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/website_event_sale/models/sale_order.py:7`, `addons/website_event_sale/models/event_ticket.py:4`, `addons/website_event_sale/models/product_pricelist.py:6`, `addons/website_event_sale/models/product.py:7`, `addons/website_event_sale/models/product.py:35`, `addons/website_event_sale/models/event_event.py:6`, `addons/website_event_sale/models/sale_order_line.py:6`, `addons/website_event_sale/report/event_sale_report.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 3 controller files and 1 route declarations.
+- **Evidence:** `addons/website_event_sale/controllers/main.py:71`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 5 XML files and 4 JavaScript/TypeScript files; static XML analysis found 7 record/template/menu identifiers.
+- **Evidence:** `addons/website_event_sale/report/event_sale_report_views.xml:4`, `addons/website_event_sale/views/website_sale_templates.xml:5`, `addons/website_event_sale/views/website_sale_templates.xml:15`, `addons/website_event_sale/views/website_sale_templates.xml:21`, `addons/website_event_sale/views/website_event_templates.xml:4`, `addons/website_event_sale/views/website_event_templates.xml:85`, `addons/website_event_sale/views/event_event_views.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 7 test files are present.
+- **Evidence:** `addons/website_event_sale/tests/test_website_event_sale_pricelist.py`, `addons/website_event_sale/tests/test_website_event_sale_cart.py`, `addons/website_event_sale/tests/common.py`, `addons/website_event_sale/tests/test_frontend_buy_tickets.py`, `addons/website_event_sale/tests/test_event_checkout.py`, `addons/website_event_sale/tests/__init__.py`, `addons/website_event_sale/tests/test_website_event_sale.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 5; representative identifiers: `event_sale_report_view_search`, `Event Shopping Cart Line Product Link`, `cart_summary_inherit_website_event_sale`, `event_confirmation`, `modal_ticket_registration`, `registration_attendee_details`, `event_form_mandatory_company`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 5; representative evidence: `addons/website_event_sale/views/website_sale_templates.xml:5`, `addons/website_event_sale/views/website_sale_templates.xml:15`, `addons/website_event_sale/views/website_sale_templates.xml:21`, `addons/website_event_sale/views/website_event_templates.xml:4`, `addons/website_event_sale/views/website_event_templates.xml:85`
+- View/action field declarations: 4; representative evidence: `addons/website_event_sale/report/event_sale_report_views.xml:6`, `addons/website_event_sale/report/event_sale_report_views.xml:8`, `addons/website_event_sale/views/event_event_views.xml:5`, `addons/website_event_sale/views/event_event_views.xml:7`
+- Browser assets: 4; representative files: `addons/website_event_sale/static/tests/tours/website_event_sale_last_ticket.js`, `addons/website_event_sale/static/tests/tours/website_event_sale_pricelists.js`, `addons/website_event_sale/static/tests/tours/website_event_sale.js`, `addons/website_event_sale/static/tests/tours/helpers/WebsiteEventSaleTourMethods.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/website_event_sale/__manifest__.py`
+- **HTTP entry points:** `addons/website_event_sale/controllers/main.py:71`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 8
+- Representative model evidence: inherits `sale.order` (addons/website_event_sale/models/sale_order.py:7); inherits `event.event.ticket` (addons/website_event_sale/models/event_ticket.py:4); inherits `product.pricelist.item` (addons/website_event_sale/models/product_pricelist.py:6); inherits `product.product` (addons/website_event_sale/models/product.py:7); inherits `product.template` (addons/website_event_sale/models/product.py:35); inherits `event.event` (addons/website_event_sale/models/event_event.py:6); inherits `sale.order.line` (addons/website_event_sale/models/sale_order_line.py:6); inherits `event.sale.report` (addons/website_event_sale/report/event_sale_report.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 3
+- Route declarations: 1
+- Route evidence: `addons/website_event_sale/controllers/main.py:71`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `website_event`, `event_sale`, `website_sale`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/website_event_sale/__init__.py`
+- `addons/website_event_sale/__manifest__.py`
+- `addons/website_event_sale/controllers/__init__.py`
+- `addons/website_event_sale/controllers/main.py`
+- `addons/website_event_sale/controllers/sale.py`
+- `addons/website_event_sale/data/event_data.xml`
+- `addons/website_event_sale/i18n/af.po`
+- `addons/website_event_sale/i18n/ar.po`
+- `addons/website_event_sale/i18n/az.po`
+- `addons/website_event_sale/i18n/bg.po`
+- `addons/website_event_sale/i18n/bs.po`
+- `addons/website_event_sale/i18n/ca.po`
+- `addons/website_event_sale/i18n/cs.po`
+- `addons/website_event_sale/i18n/da.po`
+- `addons/website_event_sale/i18n/de.po`
+- `addons/website_event_sale/i18n/el.po`
+- `addons/website_event_sale/i18n/es.po`
+- `addons/website_event_sale/i18n/es_419.po`
+- `addons/website_event_sale/i18n/es_CL.po`
+- `addons/website_event_sale/i18n/et.po`
+- `addons/website_event_sale/i18n/eu.po`
+- `addons/website_event_sale/i18n/fa.po`
+- `addons/website_event_sale/i18n/fi.po`
+- `addons/website_event_sale/i18n/fo.po`
+- `addons/website_event_sale/i18n/fr.po`
+- `addons/website_event_sale/i18n/fr_CA.po`
+- `addons/website_event_sale/i18n/gl.po`
+- `addons/website_event_sale/i18n/gu.po`
+- `addons/website_event_sale/i18n/he.po`
+- `addons/website_event_sale/i18n/hi.po`
+- `addons/website_event_sale/i18n/hr.po`
+- `addons/website_event_sale/i18n/hu.po`
+- `addons/website_event_sale/i18n/id.po`
+- `addons/website_event_sale/i18n/is.po`
+- `addons/website_event_sale/i18n/it.po`
+- `addons/website_event_sale/i18n/ja.po`
+- `addons/website_event_sale/i18n/ka.po`
+- `addons/website_event_sale/i18n/kab.po`
+- `addons/website_event_sale/i18n/km.po`
+- `addons/website_event_sale/i18n/ko.po`
+- `addons/website_event_sale/i18n/ku.po`
+- `addons/website_event_sale/i18n/lo.po`
+- `addons/website_event_sale/i18n/lt.po`
+- `addons/website_event_sale/i18n/lv.po`
+- `addons/website_event_sale/i18n/mk.po`
+- `addons/website_event_sale/i18n/mn.po`
+- `addons/website_event_sale/i18n/my.po`
+- `addons/website_event_sale/i18n/nb.po`
+- `addons/website_event_sale/i18n/nl.po`
+- `addons/website_event_sale/i18n/pl.po`
+- `addons/website_event_sale/i18n/pt.po`
+- `addons/website_event_sale/i18n/pt_BR.po`
+- `addons/website_event_sale/i18n/ro.po`
+- `addons/website_event_sale/i18n/ru.po`
+- `addons/website_event_sale/i18n/sk.po`
+- `addons/website_event_sale/i18n/sl.po`
+- `addons/website_event_sale/i18n/sr@latin.po`
+- `addons/website_event_sale/i18n/sv.po`
+- `addons/website_event_sale/i18n/th.po`
+- `addons/website_event_sale/i18n/tr.po`
+- `addons/website_event_sale/i18n/uk.po`
+- `addons/website_event_sale/i18n/uz.po`
+- `addons/website_event_sale/i18n/vi.po`
+- `addons/website_event_sale/i18n/website_event_sale.pot`
+- `addons/website_event_sale/i18n/zh_CN.po`
+- `addons/website_event_sale/i18n/zh_TW.po`
+- `addons/website_event_sale/models/__init__.py`
+- `addons/website_event_sale/models/event_event.py`
+- `addons/website_event_sale/models/event_ticket.py`
+- `addons/website_event_sale/models/product.py`
+- `addons/website_event_sale/models/product_pricelist.py`
+- `addons/website_event_sale/models/sale_order.py`
+- `addons/website_event_sale/models/sale_order_line.py`
+- `addons/website_event_sale/report/__init__.py`
+- `addons/website_event_sale/report/event_sale_report.py`
+- `addons/website_event_sale/report/event_sale_report_views.xml`
+- `addons/website_event_sale/static/description/icon.png`
+- `addons/website_event_sale/static/description/icon.svg`
+- `addons/website_event_sale/static/description/icon_hi.png`
+- `addons/website_event_sale/static/img/event_ticket_placeholder_thumbnail.png`
+- `addons/website_event_sale/static/src/scss/website_event_sale_templates.scss`
+- `addons/website_event_sale/static/tests/tours/helpers/WebsiteEventSaleTourMethods.js`
+- `addons/website_event_sale/static/tests/tours/website_event_sale.js`
+- `addons/website_event_sale/static/tests/tours/website_event_sale_last_ticket.js`
+- `addons/website_event_sale/static/tests/tours/website_event_sale_pricelists.js`
+- `addons/website_event_sale/tests/__init__.py`
+- `addons/website_event_sale/tests/common.py`
+- `addons/website_event_sale/tests/test_event_checkout.py`
+- `addons/website_event_sale/tests/test_frontend_buy_tickets.py`
+- `addons/website_event_sale/tests/test_website_event_sale.py`
+- `addons/website_event_sale/tests/test_website_event_sale_cart.py`
+- `addons/website_event_sale/tests/test_website_event_sale_pricelist.py`
+- `addons/website_event_sale/views/event_event_views.xml`
+- `addons/website_event_sale/views/website_event_templates.xml`
+- `addons/website_event_sale/views/website_sale_templates.xml`

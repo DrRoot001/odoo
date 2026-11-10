@@ -1,18 +1,19 @@
 # Module: phone_validation
 
 - **Module ID:** MOD-416
-- **Path:** `addons/phone_validation`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/phone_validation`
 - **Manifest:** `addons/phone_validation/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Hidden`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Validate and format phone numbers
+**Purpose:** Validate and format phone numbers
 
+**Manifest description:**
 
 Phone Numbers Validation
 ========================
@@ -24,135 +25,195 @@ It also adds phone blacklist management through a specific model storing
 blacklisted phone numbers.
 
 It adds mail.thread.phone mixin that handles sanitation and blacklist of
-records numbers. 
+records numbers.
 
-Declared dependencies: `base`, `mail`.
+**Scope evidence:** The module contains 89 files, including 32 Python, 4 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `base`, `mail`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 32 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 8 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 4 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 5 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 9
+- Controller/API files: 0
+- XML/data/view/template files: 4
+- Browser asset files: 0
+- Security files: 1
+- Test files: 5
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "base",
-    "mail"
-  ],
-  "data": [
-    "views/phone_blacklist_views.xml",
-    "views/res_partner_views.xml",
-    "wizard/mail_activity_schedule_views.xml",
-    "wizard/phone_blacklist_remove_view.xml",
-    "security/ir.access.csv"
-  ]
-}
-```
+**Security evidence:** `addons/phone_validation/security/ir.access.csv`
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/phone_validation/__init__.py` (7 lines)
-- `addons/phone_validation/__manifest__.py` (35 lines)
-- `addons/phone_validation/i18n/ar.po` (495 lines)
-- `addons/phone_validation/i18n/az.po` (489 lines)
-- `addons/phone_validation/i18n/bg.po` (486 lines)
-- `addons/phone_validation/i18n/bs.po` (482 lines)
-- `addons/phone_validation/i18n/ca.po` (500 lines)
-- `addons/phone_validation/i18n/cs.po` (495 lines)
-- `addons/phone_validation/i18n/da.po` (488 lines)
-- `addons/phone_validation/i18n/de.po` (521 lines)
-- `addons/phone_validation/i18n/el.po` (482 lines)
-- `addons/phone_validation/i18n/es.po` (513 lines)
-- `addons/phone_validation/i18n/es_419.po` (507 lines)
-- `addons/phone_validation/i18n/et.po` (499 lines)
-- `addons/phone_validation/i18n/fa.po` (495 lines)
-- `addons/phone_validation/i18n/fi.po` (507 lines)
-- `addons/phone_validation/i18n/fr.po` (503 lines)
-- `addons/phone_validation/i18n/gu.po` (452 lines)
-- `addons/phone_validation/i18n/he.po` (499 lines)
-- `addons/phone_validation/i18n/hi.po` (478 lines)
-- `addons/phone_validation/i18n/hr.po` (488 lines)
-- `addons/phone_validation/i18n/hu.po` (486 lines)
-- `addons/phone_validation/i18n/id.po` (498 lines)
-- `addons/phone_validation/i18n/is.po` (448 lines)
-- `addons/phone_validation/i18n/it.po` (513 lines)
-- `addons/phone_validation/i18n/ja.po` (495 lines)
-- `addons/phone_validation/i18n/kab.po` (478 lines)
-- `addons/phone_validation/i18n/km.po` (451 lines)
-- `addons/phone_validation/i18n/ko.po` (492 lines)
-- `addons/phone_validation/i18n/ku.po` (478 lines)
-- `addons/phone_validation/i18n/lo.po` (498 lines)
-- `addons/phone_validation/i18n/lt.po` (492 lines)
-- `addons/phone_validation/i18n/lv.po` (483 lines)
-- `addons/phone_validation/i18n/mn.po` (486 lines)
-- `addons/phone_validation/i18n/my.po` (479 lines)
-- `addons/phone_validation/i18n/nb.po` (486 lines)
-- `addons/phone_validation/i18n/nl.po` (497 lines)
-- `addons/phone_validation/i18n/phone_validation.pot` (474 lines)
-- `addons/phone_validation/i18n/pl.po` (511 lines)
-- `addons/phone_validation/i18n/pt.po` (503 lines)
-- `addons/phone_validation/i18n/pt_BR.po` (519 lines)
-- `addons/phone_validation/i18n/ro.po` (497 lines)
-- `addons/phone_validation/i18n/ru.po` (499 lines)
-- `addons/phone_validation/i18n/sk.po` (490 lines)
-- `addons/phone_validation/i18n/sl.po` (495 lines)
-- `addons/phone_validation/i18n/sr@latin.po` (490 lines)
-- `addons/phone_validation/i18n/sv.po` (501 lines)
-- `addons/phone_validation/i18n/th.po` (487 lines)
-- `addons/phone_validation/i18n/tr.po` (513 lines)
-- `addons/phone_validation/i18n/uk.po` (493 lines)
-- `addons/phone_validation/i18n/uz.po` (563 lines)
-- `addons/phone_validation/i18n/vi.po` (493 lines)
-- `addons/phone_validation/i18n/zh_CN.po` (496 lines)
-- `addons/phone_validation/i18n/zh_TW.po` (488 lines)
-- `addons/phone_validation/lib/__init__.py` (4 lines)
-- `addons/phone_validation/lib/phonemetadata.py` (8 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/__init__.py` (110 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_BR.py` (26 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_CI.py` (9 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_CO.py` (18 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_IL.py` (25 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_KE.py` (15 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_MA.py` (18 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_MU.py` (14 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_PA.py` (13 lines)
-- `addons/phone_validation/lib/phonenumbers_patch/region_SN.py` (13 lines)
-- `addons/phone_validation/models/__init__.py` (10 lines)
-- `addons/phone_validation/models/mail_activity.py` (15 lines)
-- `addons/phone_validation/models/mail_activity_mixin.py` (26 lines)
-- `addons/phone_validation/models/mail_thread_phone.py` (241 lines)
-- `addons/phone_validation/models/models.py` (251 lines)
-- `addons/phone_validation/models/phone_blacklist.py` (140 lines)
-- `addons/phone_validation/models/res_partner.py` (8 lines)
-- `addons/phone_validation/models/res_users.py` (32 lines)
-- `addons/phone_validation/security/ir.access.csv` (3 lines)
-- `addons/phone_validation/tests/__init__.py` (7 lines)
-- `addons/phone_validation/tests/test_mail_activity_schedule.py` (165 lines)
-- `addons/phone_validation/tests/test_phonenumbers.py` (84 lines)
-- `addons/phone_validation/tests/test_phonenumbers_blacklist.py` (33 lines)
-- `addons/phone_validation/tests/test_phonenumbers_patch.py` (193 lines)
-- `addons/phone_validation/tools/__init__.py` (4 lines)
-- `addons/phone_validation/tools/phone_validation.py` (135 lines)
-- `addons/phone_validation/views/phone_blacklist_views.xml` (75 lines)
-- `addons/phone_validation/views/res_partner_views.xml` (74 lines)
-- `addons/phone_validation/wizard/__init__.py` (5 lines)
-- `addons/phone_validation/wizard/mail_activity_schedule.py` (30 lines)
-- `addons/phone_validation/wizard/mail_activity_schedule_views.xml` (19 lines)
-- `addons/phone_validation/wizard/phone_blacklist_remove.py` (22 lines)
-- `addons/phone_validation/wizard/phone_blacklist_remove_view.xml` (19 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 9 model declarations, 60 methods, 0 constraint handlers, 0 onchange handlers, and 4 dependency declarations.
+- **Evidence:** `addons/phone_validation/models/res_partner.py:6`, `addons/phone_validation/models/phone_blacklist.py:8`, `addons/phone_validation/models/mail_activity.py:6`, `addons/phone_validation/models/mail_thread_phone.py:13`, `addons/phone_validation/models/mail_activity_mixin.py:6`, `addons/phone_validation/models/res_users.py:7`, `addons/phone_validation/models/models.py:8`, `addons/phone_validation/wizard/phone_blacklist_remove.py:7`, `addons/phone_validation/wizard/mail_activity_schedule.py:6`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 4 XML files and 0 JavaScript/TypeScript files; static XML analysis found 13 record/template/menu identifiers.
+- **Evidence:** `addons/phone_validation/wizard/mail_activity_schedule_views.xml:4`, `addons/phone_validation/wizard/phone_blacklist_remove_view.xml:3`, `addons/phone_validation/views/phone_blacklist_views.xml:3`, `addons/phone_validation/views/phone_blacklist_views.xml:14`, `addons/phone_validation/views/phone_blacklist_views.xml:38`, `addons/phone_validation/views/phone_blacklist_views.xml:49`, `addons/phone_validation/views/phone_blacklist_views.xml:64`, `addons/phone_validation/views/phone_blacklist_views.xml:69`, `addons/phone_validation/views/res_partner_views.xml:3`, `addons/phone_validation/views/res_partner_views.xml:16`, `addons/phone_validation/views/res_partner_views.xml:33`, `addons/phone_validation/views/res_partner_views.xml:45`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/phone_validation/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 5 test files are present.
+- **Evidence:** `addons/phone_validation/tests/test_phonenumbers_blacklist.py`, `addons/phone_validation/tests/test_phonenumbers.py`, `addons/phone_validation/tests/test_phonenumbers_patch.py`, `addons/phone_validation/tests/test_mail_activity_schedule.py`, `addons/phone_validation/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 4; representative identifiers: `mail_activity_schedule_view_form`, `phone_blacklist_remove_view_form`, `phone_blacklist_view_tree`, `phone_blacklist_view_form`, `phone_blacklist_view_search`, `phone_blacklist_action`, `Phone / SMS`, `Phone Blacklist`, `res_partner_view_search`, `res_partner_view_form`, `res_partner_view_simple_form`, `res_partner_view_list`, `res_partner_view_kanban`
+- Menus: 2; representative evidence: `addons/phone_validation/views/phone_blacklist_views.xml:64`, `addons/phone_validation/views/phone_blacklist_views.xml:69`
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 21; representative evidence: `addons/phone_validation/wizard/mail_activity_schedule_views.xml:6`, `addons/phone_validation/wizard/mail_activity_schedule_views.xml:8`, `addons/phone_validation/wizard/phone_blacklist_remove_view.xml:5`, `addons/phone_validation/wizard/phone_blacklist_remove_view.xml:6`, `addons/phone_validation/views/phone_blacklist_views.xml:5`, `addons/phone_validation/views/phone_blacklist_views.xml:6`, `addons/phone_validation/views/phone_blacklist_views.xml:16`, `addons/phone_validation/views/phone_blacklist_views.xml:17`, `addons/phone_validation/views/phone_blacklist_views.xml:40`, `addons/phone_validation/views/phone_blacklist_views.xml:41`, `addons/phone_validation/views/phone_blacklist_views.xml:51`, `addons/phone_validation/views/res_partner_views.xml:5`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/phone_validation/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 9
+- Representative model evidence: `res.partner` (addons/phone_validation/models/res_partner.py:6); `phone.blacklist` (addons/phone_validation/models/phone_blacklist.py:8); inherits `mail.activity` (addons/phone_validation/models/mail_activity.py:6); `mail.thread.phone` (addons/phone_validation/models/mail_thread_phone.py:13); inherits `mail.activity.mixin` (addons/phone_validation/models/mail_activity_mixin.py:6); inherits `res.users` (addons/phone_validation/models/res_users.py:7); inherits `base` (addons/phone_validation/models/models.py:8); `phone.blacklist.remove` (addons/phone_validation/wizard/phone_blacklist_remove.py:7); inherits `mail.activity.schedule` (addons/phone_validation/wizard/mail_activity_schedule.py:6)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base`, `mail`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/phone_validation/__init__.py`
+- `addons/phone_validation/__manifest__.py`
+- `addons/phone_validation/i18n/ar.po`
+- `addons/phone_validation/i18n/az.po`
+- `addons/phone_validation/i18n/bg.po`
+- `addons/phone_validation/i18n/bs.po`
+- `addons/phone_validation/i18n/ca.po`
+- `addons/phone_validation/i18n/cs.po`
+- `addons/phone_validation/i18n/da.po`
+- `addons/phone_validation/i18n/de.po`
+- `addons/phone_validation/i18n/el.po`
+- `addons/phone_validation/i18n/es.po`
+- `addons/phone_validation/i18n/es_419.po`
+- `addons/phone_validation/i18n/et.po`
+- `addons/phone_validation/i18n/fa.po`
+- `addons/phone_validation/i18n/fi.po`
+- `addons/phone_validation/i18n/fr.po`
+- `addons/phone_validation/i18n/gu.po`
+- `addons/phone_validation/i18n/he.po`
+- `addons/phone_validation/i18n/hi.po`
+- `addons/phone_validation/i18n/hr.po`
+- `addons/phone_validation/i18n/hu.po`
+- `addons/phone_validation/i18n/id.po`
+- `addons/phone_validation/i18n/is.po`
+- `addons/phone_validation/i18n/it.po`
+- `addons/phone_validation/i18n/ja.po`
+- `addons/phone_validation/i18n/kab.po`
+- `addons/phone_validation/i18n/km.po`
+- `addons/phone_validation/i18n/ko.po`
+- `addons/phone_validation/i18n/ku.po`
+- `addons/phone_validation/i18n/lo.po`
+- `addons/phone_validation/i18n/lt.po`
+- `addons/phone_validation/i18n/lv.po`
+- `addons/phone_validation/i18n/mn.po`
+- `addons/phone_validation/i18n/my.po`
+- `addons/phone_validation/i18n/nb.po`
+- `addons/phone_validation/i18n/nl.po`
+- `addons/phone_validation/i18n/phone_validation.pot`
+- `addons/phone_validation/i18n/pl.po`
+- `addons/phone_validation/i18n/pt.po`
+- `addons/phone_validation/i18n/pt_BR.po`
+- `addons/phone_validation/i18n/ro.po`
+- `addons/phone_validation/i18n/ru.po`
+- `addons/phone_validation/i18n/sk.po`
+- `addons/phone_validation/i18n/sl.po`
+- `addons/phone_validation/i18n/sr@latin.po`
+- `addons/phone_validation/i18n/sv.po`
+- `addons/phone_validation/i18n/th.po`
+- `addons/phone_validation/i18n/tr.po`
+- `addons/phone_validation/i18n/uk.po`
+- `addons/phone_validation/i18n/uz.po`
+- `addons/phone_validation/i18n/vi.po`
+- `addons/phone_validation/i18n/zh_CN.po`
+- `addons/phone_validation/i18n/zh_TW.po`
+- `addons/phone_validation/lib/__init__.py`
+- `addons/phone_validation/lib/phonemetadata.py`
+- `addons/phone_validation/lib/phonenumbers_patch/__init__.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_BR.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_CI.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_CO.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_IL.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_KE.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_MA.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_MU.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_PA.py`
+- `addons/phone_validation/lib/phonenumbers_patch/region_SN.py`
+- `addons/phone_validation/models/__init__.py`
+- `addons/phone_validation/models/mail_activity.py`
+- `addons/phone_validation/models/mail_activity_mixin.py`
+- `addons/phone_validation/models/mail_thread_phone.py`
+- `addons/phone_validation/models/models.py`
+- `addons/phone_validation/models/phone_blacklist.py`
+- `addons/phone_validation/models/res_partner.py`
+- `addons/phone_validation/models/res_users.py`
+- `addons/phone_validation/security/ir.access.csv`
+- `addons/phone_validation/tests/__init__.py`
+- `addons/phone_validation/tests/test_mail_activity_schedule.py`
+- `addons/phone_validation/tests/test_phonenumbers.py`
+- `addons/phone_validation/tests/test_phonenumbers_blacklist.py`
+- `addons/phone_validation/tests/test_phonenumbers_patch.py`
+- `addons/phone_validation/tools/__init__.py`
+- `addons/phone_validation/tools/phone_validation.py`
+- `addons/phone_validation/views/phone_blacklist_views.xml`
+- `addons/phone_validation/views/res_partner_views.xml`
+- `addons/phone_validation/wizard/__init__.py`
+- `addons/phone_validation/wizard/mail_activity_schedule.py`
+- `addons/phone_validation/wizard/mail_activity_schedule_views.xml`
+- `addons/phone_validation/wizard/phone_blacklist_remove.py`
+- `addons/phone_validation/wizard/phone_blacklist_remove_view.xml`

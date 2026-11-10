@@ -1,521 +1,387 @@
 # Module: website
 
 - **Module ID:** MOD-596
-- **Path:** `addons/website`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/website`
 - **Manifest:** `addons/website/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `True`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Website/Website`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Enterprise website builder
+**Purpose:** Enterprise website builder
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `digest`, `web`, `html_editor`, `http_routing`, `portal`, `social_media`, `auth_signup`, `mail`, `google_recaptcha`, `utm`, `html_builder`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 1812 files, including 103 Python, 418 XML, and 674 JavaScript/TypeScript files. The manifest declares dependencies: `digest`, `web`, `html_editor`, `http_routing`, `portal`, `social_media`, `auth_signup`, `mail`, `google_recaptcha`, `utm`, `html_builder`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 103 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 38 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 7 | Files under `controllers/` or `controllers.py`. |
-| XML files | 418 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 674 | Client behavior/assets. |
-| Tests | 49 | Test files found by path/name convention. |
-| Security artifacts | 2 | Access CSV and/or security XML. |
-| Route declarations | 65 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 68
+- Controller/API files: 7
+- XML/data/view/template files: 418
+- Browser asset files: 674
+- Security files: 2
+- Test files: 49
+- Scheduled/automation evidence files: 12
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "digest",
-    "web",
-    "html_editor",
-    "http_routing",
-    "portal",
-    "social_media",
-    "auth_signup",
-    "mail",
-    "google_recaptcha",
-    "utm",
-    "html_builder"
-  ],
-  "data": [
-    "security/website_security.xml",
-    "data/image_library.xml",
-    "data/ir_asset.xml",
-    "data/ir_cron_data.xml",
-    "data/mail_mail_data.xml",
-    "data/website_data.xml",
-    "data/website_visitor_cron.xml",
-    "data/digest_data.xml",
-    "views/website_technical_views.xml",
-    "views/website_templates.xml",
-    "views/theme_colors_preview.xml",
-    "views/snippets/snippets.xml",
-    "views/snippets/s_announcement_scroll.xml",
-    "views/snippets/s_animated_number.xml",
-    "views/snippets/s_framed_intro.xml",
-    "views/snippets/s_title.xml",
-    "views/snippets/s_cover.xml",
-    "views/snippets/s_text_cover.xml",
-    "views/snippets/s_image_text_box.xml",
-    "views/snippets/s_striped_top.xml",
-    "views/snippets/s_text_image.xml",
-    "views/snippets/s_image_text.xml",
-    "views/snippets/s_text_image_full.xml",
-    "views/snippets/s_image_text_full.xml",
-    "views/snippets/s_mockup_image.xml",
-    "views/snippets/s_instagram_page.xml",
-    "views/snippets/s_image_text_overlap.xml",
-    "views/snippets/s_banner.xml",
-    "views/snippets/s_bento_block.xml",
-    "views/snippets/s_snippet_group.xml",
-    "views/snippets/s_text_block.xml",
-    "views/snippets/s_features.xml",
-    "views/snippets/s_features_wall.xml",
-    "views/snippets/s_three_columns.xml",
-    "views/snippets/s_key_benefits.xml",
-    "views/snippets/s_picture.xml",
-    "views/snippets/s_image_punchy.xml",
-    "views/snippets/s_bento_grid.xml",
-    "views/snippets/s_carousel.xml",
-    "views/snippets/s_carousel_intro.xml",
-    "views/snippets/s_carousel_cards.xml",
-    "views/snippets/s_alert.xml",
-    "views/snippets/s_icon_list.xml",
-    "views/snippets/s_motto.xml",
-    "views/snippets/s_card.xml",
-    "views/snippets/s_cards_grid.xml",
-    "views/snippets/s_cards_soft.xml",
-    "views/snippets/s_share.xml",
-    "views/snippets/s_social_media.xml",
-    "views/snippets/s_rating.xml",
-    "views/snippets/s_hr.xml",
-    "views/snippets/s_closer_look.xml",
-    "views/snippets/s_awards_list.xml",
-    "views/snippets/s_facebook_page.xml",
-    "views/snippets/s_whatsapp.xml",
-    "views/snippets/s_image_gallery.xml",
-    "views/snippets/s_countdown.xml",
-    "views/snippets/s_product_catalog.xml",
-    "views/snippets/s_comparisons.xml",
-    "views/snippets/s_comparisons_horizontal.xml",
-    "views/snippets/s_company_team.xml",
-    "views/snippets/s_company_team_basic.xml",
-    "views/snippets/s_company_team_shapes.xml",
-    "views/snippets/s_company_team_detail.xml",
-    "views/snippets/s_company_team_spotlight.xml",
-    "views/snippets/s_company_team_grid.xml",
-    "views/snippets/s_company_team_card.xml",
-    "views/snippets/s_call_to_action.xml",
-    "views/snippets/s_references.xml",
-    "views/snippets/s_references_social.xml",
-    "views/snippets/s_references_grid.xml",
-    "views/snippets/s_references_lite.xml",
-    "views/snippets/s_references_tiles.xml",
-    "views/snippets/s_popup.xml",
-    "views/snippets/s_faq_list.xml",
-    "views/snippets/s_faq_collapse.xml",
-    "views/snippets/s_faq_collapse_centered.xml",
-    "views/snippets/s_features_grid.xml",
-    "views/snippets/s_features_wave.xml",
-    "views/snippets/s_tabs.xml",
-    "views/snippets/s_tabs_images.xml",
-    "views/snippets/s_table_of_content.xml",
-    "views/snippets/s_images_constellation.xml",
-    "views/snippets/s_chart.xml",
-    "views/snippets/s_parallax.xml",
-    "views/snippets/s_quotes_carousel.xml",
-    "views/snippets/s_numbers_grid.xml",
-    "views/snippets/s_quotes_carousel_minimal.xml",
-    "views/snippets/s_quotes_carousel_compact.xml",
-    "views/snippets/s_numbers.xml",
-    "views/snippets/s_numbers_inline.xml",
-    "views/snippets/s_contact_info.xml",
-    "views/snippets/s_numbers_boxed.xml",
-    "views/snippets/s_cta_box.xml",
-    "views/snippets/s_cta_centered.xml",
-    "views/snippets/s_numbers_framed.xml",
-    "views/snippets/s_masonry_block.xml",
-    "views/snippets/s_sidegrid.xml",
-    "views/snippets/s_media_list.xml",
-    "views/snippets/s_services_pack.xml",
-    "views/snippets/s_showcase.xml",
-    "views/snippets/s_faq_horizontal.xml",
-    "views/snippets/s_floating_blocks.xml",
-    "views/snippets/s_opening_hours.xml",
-    "views/snippets/s_opening_hours_alt.xml",
-    "views/snippets/s_timeline.xml",
-    "views/snippets/s_timeline_images.xml",
-    "views/snippets/s_timeline_list.xml",
-    "views/snippets/s_process_steps.xml",
-    "views/snippets/s_accordion.xml",
-    "views/snippets/s_website_form_info.xml",
-    "views/snippets/s_numbers_showcase.xml",
-    "views/snippets/s_numbers_charts.xml",
-    "views/snippets/s_text_chart.xml",
-    "views/snippets/s_chart_text.xml",
-    "views/snippets/s_accordion_image.xml",
-    "views/snippets/s_pricelist_boxed.xml",
-    "views/snippets/s_adventure.xml",
-    "views/snippets/s_image_title.xml",
-    "views/snippets/s_banner_glow.xml",
-    "views/snippets/s_intro_spotlight.xml",
-    "views/snippets/s_bento_grid_avatars.xml",
-    "views/snippets/s_key_images.xml",
-    "views/snippets/s_kickoff.xml",
-    "views/snippets/s_discovery.xml",
-    "views/snippets/s_bento_banner.xml",
-    "views/snippets/s_striped.xml",
-    "views/snippets/s_intro_pill.xml",
-    "views/snippets/s_big_number.xml",
-    "views/snippets/s_wavy_grid.xml",
-    "views/snippets/s_images_mosaic.xml",
-    "views/snippets/s_shape_image.xml",
-    "views/snippets/s_empowerment.xml",
-    "views/snippets/s_split_intro.xml",
-    "views/snippets/s_splash_intro.xml",
-    "views/snippets/s_text_highlight.xml",
-    "views/snippets/s_pricelist_cafe.xml",
-    "views/snippets/s_progress_bar.xml",
-    "views/snippets/s_blockquote.xml",
-    "views/snippets/s_badge.xml",
-    "views/snippets/s_color_blocks_2.xml",
-    "views/snippets/s_attributes_horizontal.xml",
-    "views/snippets/s_attributes_vertical.xml",
-    "views/snippets/s_product_list.xml",
-    "views/snippets/s_mega_menu_multi_menus.xml",
-    "views/snippets/s_mega_menu_menu_image_menu.xml",
-    "views/snippets/s_mega_menu_thumbnails.xml",
-    "views/snippets/s_mega_menu_little_icons.xml",
-    "views/snippets/s_mega_menu_images_subtitles.xml",
-    "views/snippets/s_mega_menu_menus_logos.xml",
-    "views/snippets/s_mega_menu_odoo_menu.xml",
-    "views/snippets/s_mega_menu_dropzone.xml",
-    "views/snippets/s_mega_menu_big_icons_subtitles.xml",
-    "views/snippets/s_mega_menu_cards.xml",
-    "views/snippets/s_google_map.xml",
-    "views/snippets/s_cta_mockups.xml",
-    "views/snippets/s_map.xml",
-    "views/snippets/s_text_block_split.xml",
-    "views/snippets/s_manifesto.xml",
-    "views/snippets/s_bento_features.xml",
-    "views/snippets/s_projects_grid.xml",
-    "views/snippets/s_banner_contained.xml",
-    "views/snippets/s_duo_images.xml",
-    "views/snippets/s_hero_about.xml",
-    "views/snippets/s_website_form_bold.xml",
-    "views/snippets/s_title_split.xml",
-    "views/snippets/s_hero_maintenance.xml",
-    "views/snippets/s_hero_minimalist.xml",
-    "views/snippets/s_launch_countdown.xml",
-    "views/snippets/s_projects_grid_minimal.xml",
-    "views/snippets/s_features_cards.xml",
-    "views/snippets/s_achievements_list.xml",
-    "views/snippets/s_text_bold.xml",
-    "views/snippets/s_features_image.xml",
-    "views/snippets/s_image_features.xml",
-    "views/snippets/s_numbers_lite.xml",
-    "views/snippets/s_hours_and_place.xml",
-    "views/snippets/s_showcase_square.xml",
-    "views/snippets/s_services_grid.xml",
-    "views/snippets/s_dynamic_snippet.xml",
-    "views/snippets/s_dynamic_snippet_carousel.xml",
-    "views/snippets/s_banner_product.xml",
-    "views/snippets/s_embed_code.xml",
-    "views/snippets/s_website_form.xml",
-    "views/snippets/s_website_form_overlay.xml",
-    "views/snippets/s_title_form.xml",
-    "views/snippets/s_searchbar.xml",
-    "views/snippets/s_inline_text.xml",
-    "views/snippets/s_button.xml",
-    "views/snippets/s_freegrid.xml",
-    "views/snippets/s_card_offset.xml",
-    "views/snippets/s_image.xml",
-    "views/snippets/s_icon.xml",
-    "views/snippets/s_video.xml",
-    "views/snippets/s_cta_badge.xml",
-    "views/snippets/s_avatars.xml",
-    "views/snippets/s_unveil.xml",
-    "views/snippets/s_image_hexagonal.xml",
-    "views/snippets/s_striped_center_top.xml",
-    "views/snippets/s_numbers_list.xml",
-    "views/snippets/s_quadrant.xml",
-    "views/snippets/s_cta_card.xml",
-    "views/snippets/s_image_frame.xml",
-    "views/snippets/s_cta_mobile.xml",
-    "views/snippets/s_reviews_wall.xml",
-    "views/snippets/s_website_form_cover.xml",
-    "views/snippets/s_form_aside.xml",
-    "views/snippets/s_banner_connected.xml",
-    "views/snippets/s_ecomm_categories_showcase.xml",
-    "views/snippets/s_banner_categories.xml",
-    "views/snippets/s_animated_cover.xml",
-    "views/snippets/s_projects_list.xml",
-    "views/snippets/s_about_bold.xml",
-    "views/snippets/s_age_verification_popup.xml",
-    "views/http_routing_template.xml",
-    "views/new_page_template_templates.xml",
-    "views/website_views.xml",
-    "views/website_pages_views.xml",
-    "views/website_controller_pages_views.xml",
-    "views/website_visitor_views.xml",
-    "views/res_config_settings_views.xml",
-    "views/website_rewrite.xml",
-    "views/ir_actions_server_views.xml",
-    "views/ir_asset_views.xml",
-    "views/ir_attachment_views.xml",
-    "views/ir_model_views.xml",
-    "views/res_partner_views.xml",
-    "views/neutralize_views.xml",
-    "views/digest_digest_views.xml",
-    "wizard/base_language_install_views.xml",
-    "wizard/blocked_third_party_domains.xml",
-    "wizard/website_robots.xml",
-    "wizard/website_llms.xml",
-    "data/update_theme_images.xml",
-    "views/website_templates_svg.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/website_demo.xml",
-    "data/website_visitor_demo.xml"
-  ],
-  "assets": {
-    "im_livechat.assets_embed_core": [
-      "website/static/src/mail/core/common/**/*"
-    ],
-    "mail.assets_public": [
-      "website/static/src/mail/core/common/**/*"
-    ],
-    "portal.assets_chatter_helpers": [
-      "website/static/src/mail/core/common/**/*"
-    ],
-    "web.assets_frontend": [
-      "html_builder/static/src/utils/scrolling.js",
-      "website/static/src/interactions/**/*",
-      "website/static/src/core/**/*",
-      "website/static/src/services/google_maps_service.js",
-      "website/static/src/utils/**/*",
-      [
-        "remove",
-        "website/static/src/interactions/**/*.edit.js"
-      ],
-      [
-        "remove",
-        "website/static/src/interactions/multirange_input.js"
-      ],
-      [
-        "remove",
-        "website/static/src/interactions/ripple_effect.js"
-      ],
-      [
-        "remove",
-        "website/static/src/core/website_edit_service.js"
-      ],
-      [
-        "replace",
-        "web/static/src/public/public_root_instance.js",
-        "website/static/src/js/content/website_root_instance.js"
-      ],
-      "website/static/src/snippets/**/*.js",
-      [
-        "remove",
-        "website/static/src/snippets/**/*.edit.js"
-      ],
-      "website/static/src/scss/website.scss",
-      "website/static/src/scss/portal.scss",
-      "website/static/src/scss/website_common.scss",
-      "website/static/src/scss/website_controller_page.scss",
-      "website/static/src/scss/website.ui.scss",
-      "website/static/src/libs/bootstrap/bootstrap.js",
-      "website/static/src/js/utils.js",
-      "web/static/src/core/autocomplete/*",
-      "website/static/src/components/autocomplete_with_pages/*",
-      "website/static/src/js/tours/tour_utils.js",
-      "website/static/src/js/content/compatibility.js",
-      "website/static/src/js/user_custom_javascript.js",
-      "website/static/src/js/http_cookie.js",
-      "website/static/src/js/text_processing.js",
-      "website/static/src/js/highlight_utils.js",
-      "website/static/src/client_actions/website_preview/website
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/website/security/ir.access.csv`, `addons/website/security/website_security.xml`
 
-- `addons/website/README.md` (112 lines)
-- `addons/website/__init__.py` (43 lines)
-- `addons/website/__manifest__.py` (581 lines)
-- `addons/website/controllers/__init__.py` (8 lines)
-- `addons/website/controllers/backend.py` (63 lines)
-- `addons/website/controllers/binary.py` (13 lines)
-- `addons/website/controllers/form.py` (328 lines)
-- `addons/website/controllers/main.py` (2,290 lines)
-- `addons/website/controllers/model_page.py` (111 lines)
-- `addons/website/controllers/webclient.py` (14 lines)
-- `addons/website/data/digest_data.xml` (72 lines)
-- `addons/website/data/image_library.xml` (1,589 lines)
-- `addons/website/data/ir_asset.xml` (22 lines)
-- `addons/website/data/ir_cron_data.xml` (25 lines)
-- `addons/website/data/mail_mail_data.xml` (19 lines)
-- `addons/website/data/neutralize.sql` (16 lines)
-- `addons/website/data/update_theme_images.xml` (5 lines)
-- `addons/website/data/website_data.xml` (601 lines)
-- `addons/website/data/website_demo.xml` (655 lines)
-- `addons/website/data/website_visitor_cron.xml` (12 lines)
-- `addons/website/data/website_visitor_demo.xml` (23 lines)
-- `addons/website/doc/website.snippet.rst` (153 lines)
-- `addons/website/i18n/ar.po` (24,279 lines)
-- `addons/website/i18n/az.po` (22,952 lines)
-- `addons/website/i18n/bg.po` (22,922 lines)
-- `addons/website/i18n/bs.po` (22,867 lines)
-- `addons/website/i18n/ca.po` (23,430 lines)
-- `addons/website/i18n/cs.po` (23,561 lines)
-- `addons/website/i18n/da.po` (23,743 lines)
-- `addons/website/i18n/de.po` (25,000 lines)
-- `addons/website/i18n/el.po` (22,903 lines)
-- `addons/website/i18n/es.po` (24,147 lines)
-- `addons/website/i18n/es_419.po` (24,513 lines)
-- `addons/website/i18n/et.po` (23,206 lines)
-- `addons/website/i18n/fa.po` (23,234 lines)
-- `addons/website/i18n/fi.po` (24,162 lines)
-- `addons/website/i18n/fr.po` (24,212 lines)
-- `addons/website/i18n/gu.po` (22,586 lines)
-- `addons/website/i18n/he.po` (23,097 lines)
-- `addons/website/i18n/hi.po` (22,913 lines)
-- `addons/website/i18n/hr.po` (22,986 lines)
-- `addons/website/i18n/hu.po` (23,035 lines)
-- `addons/website/i18n/id.po` (24,931 lines)
-- `addons/website/i18n/is.po` (22,600 lines)
-- `addons/website/i18n/it.po` (25,036 lines)
-- `addons/website/i18n/ja.po` (23,934 lines)
-- `addons/website/i18n/ka.po` (22,581 lines)
-- `addons/website/i18n/kab.po` (22,853 lines)
-- `addons/website/i18n/km.po` (22,585 lines)
-- `addons/website/i18n/ko.po` (23,657 lines)
-- `addons/website/i18n/ku.po` (22,856 lines)
-- `addons/website/i18n/lb.po` (22,584 lines)
-- `addons/website/i18n/lo.po` (24,392 lines)
-- `addons/website/i18n/lt.po` (22,971 lines)
-- `addons/website/i18n/lv.po` (22,884 lines)
-- `addons/website/i18n/mk.po` (22,590 lines)
-- `addons/website/i18n/mn.po` (22,960 lines)
-- `addons/website/i18n/my.po` (22,876 lines)
-- `addons/website/i18n/nb.po` (22,983 lines)
-- `addons/website/i18n/nl.po` (24,998 lines)
-- `addons/website/i18n/pl.po` (24,203 lines)
-- `addons/website/i18n/pt.po` (23,782 lines)
-- `addons/website/i18n/pt_BR.po` (24,954 lines)
-- `addons/website/i18n/ro.po` (23,952 lines)
-- `addons/website/i18n/ru.po` (23,921 lines)
-- `addons/website/i18n/sk.po` (23,020 lines)
-- `addons/website/i18n/sl.po` (23,183 lines)
-- `addons/website/i18n/sr@latin.po` (22,859 lines)
-- `addons/website/i18n/sv.po` (23,619 lines)
-- `addons/website/i18n/th.po` (23,431 lines)
-- `addons/website/i18n/tr.po` (23,954 lines)
-- `addons/website/i18n/uk.po` (23,238 lines)
-- `addons/website/i18n/uz.po` (27,352 lines)
-- `addons/website/i18n/vi.po` (23,932 lines)
-- `addons/website/i18n/website.pot` (22,665 lines)
-- `addons/website/i18n/zh_CN.po` (24,202 lines)
-- `addons/website/i18n/zh_TW.po` (23,541 lines)
-- `addons/website/models/__init__.py` (40 lines)
-- `addons/website/models/assets.py` (369 lines)
-- `addons/website/models/base_partner_merge.py` (31 lines)
-- `addons/website/models/digest.py` (86 lines)
-- `addons/website/models/html_text_processor.py` (358 lines)
-- `addons/website/models/ir_access.py` (15 lines)
-- `addons/website/models/ir_actions_server.py` (60 lines)
-- `addons/website/models/ir_asset.py` (106 lines)
-- `addons/website/models/ir_attachment.py` (31 lines)
-- `addons/website/models/ir_binary.py` (25 lines)
-- `addons/website/models/ir_http.py` (507 lines)
-- `addons/website/models/ir_model.py` (47 lines)
-- `addons/website/models/ir_model_data.py` (29 lines)
-- `addons/website/models/ir_module_module.py` (799 lines)
-- `addons/website/models/ir_qweb.py` (119 lines)
-- `addons/website/models/ir_qweb_fields.py` (42 lines)
-- `addons/website/models/ir_ui_menu.py` (25 lines)
-- `addons/website/models/ir_ui_view.py` (776 lines)
-- `addons/website/models/mixins.py` (1,099 lines)
-- `addons/website/models/models.py` (17 lines)
-- `addons/website/models/res_company.py` (40 lines)
-- `addons/website/models/res_config_settings.py` (269 lines)
-- `addons/website/models/res_groups.py` (13 lines)
-- `addons/website/models/res_lang.py` (68 lines)
-- `addons/website/models/res_partner.py` (42 lines)
-- `addons/website/models/res_users.py` (110 lines)
-- `addons/website/models/theme_models.py` (457 lines)
-- `addons/website/models/website.py` (2,715 lines)
-- `addons/website/models/website_configurator_feature.py` (29 lines)
-- `addons/website/models/website_controller_page.py` (134 lines)
-- `addons/website/models/website_form.py` (251 lines)
-- `addons/website/models/website_menu.py` (390 lines)
-- `addons/website/models/website_page.py` (452 lines)
-- `addons/website/models/website_page_properties.py` (294 lines)
-- `addons/website/models/website_rewrite.py` (197 lines)
-- `addons/website/models/website_snippet_filter.py` (301 lines)
-- `addons/website/models/website_technical_page.py` (75 lines)
-- `addons/website/models/website_visitor.py` (382 lines)
-- `addons/website/security/ir.access.csv` (34 lines)
-- `addons/website/security/website_security.xml` (38 lines)
-- `addons/website/static/description/icon.png` (32 lines)
-- `addons/website/static/description/icon.svg` (1 lines)
-- `addons/website/static/description/icon_hi.png` (112 lines)
-- `addons/website/static/lib/multirange/LICENSE` (21 lines)
-- `addons/website/static/lib/multirange/multirange_custom.js` (303 lines)
-- `addons/website/static/lib/multirange/multirange_custom.scss` (75 lines)
-- `addons/website/static/shapes/footer_mega_cards_image.svg` (73 lines)
-- `addons/website/static/shapes/s_attributes_1.svg` (7 lines)
-- `addons/website/static/shapes/s_attributes_2.svg` (13 lines)
-- `addons/website/static/shapes/s_attributes_3.svg` (11 lines)
-- `addons/website/static/shapes/s_attributes_4.svg` (8 lines)
-- `addons/website/static/shapes/s_hero_maintenance.svg` (1 lines)
-- `addons/website/static/src/@types/plugins.d.ts` (111 lines)
-- `addons/website/static/src/@types/registries.d.ts` (30 lines)
-- `addons/website/static/src/@types/services.d.ts` (19 lines)
-- `addons/website/static/src/builder/builder_urlpicker.js` (67 lines)
-- `addons/website/static/src/builder/builder_urlpicker.xml` (37 lines)
-- `addons/website/static/src/builder/icon_selector.js` (12 lines)
-- `addons/website/static/src/builder/plugins/achievements_list_option.xml` (16 lines)
-- `addons/website/static/src/builder/plugins/achievements_list_option_plugin.js` (14 lines)
-- `addons/website/static/src/builder/plugins/bootstrap_option_plugin.js` (77 lines)
-- `addons/website/static/src/builder/plugins/carousel_bottom_controllers_option.xml` (34 lines)
-- `addons/website/static/src/builder/plugins/carousel_cards.edit.xml` (10 lines)
-- `addons/website/static/src/builder/plugins/carousel_cards_option.xml` (47 lines)
-- `addons/website/static/src/builder/plugins/carousel_item_header_buttons.js` (49 lines)
-- `addons/website/static/src/builder/plugins/carousel_option.js` (32 lines)
-- `addons/website/static/src/builder/plugins/carousel_option.xml` (135 lines)
-- `addons/website/static/src/builder/plugins/carousel_option_plugin.js` (556 lines)
-- `addons/website/static/src/builder/plugins/collapse_plugin.js` (75 lines)
-- `addons/website/static/src/builder/plugins/company_team_plugin.js` (20 lines)
-- `addons/website/static/src/builder/plugins/content_width_option.edit.scss` (4 lines)
-- `addons/website/static/src/builder/plugins/content_width_option.xml` (14 lines)
-- `addons/website/static/src/builder/plugins/content_width_option_plugin.js` (23 lines)
-- `addons/website/static/src/builder/plugins/customize_website_plugin.js` (1,134 lines)
-- `addons/website/static/src/builder/plugins/dynamic_svg_option.js` (35 lines)
-- `addons/website/static/src/builder/plugins/dynamic_svg_option.xml` (12 lines)
-- `addons/website/static/src/builder/plugins/dynamic_svg_option_plugin.js` (69 lines)
-- `addons/website/static/src/builder/plugins/edit_interaction_plugin.js` (86 lines)
-- `addons/website/static/src/builder/plugins/editable_button_plugin.js` (46 lines)
-- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks.edit.xml` (21 lines)
-- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks_block_mobile_option.js` (18 lines)
-- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks_block_option.js` (8 lines)
-- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks_block_option_plugin.js` (27 lines)
+## 4. Functionalities
 
-Additional files not expanded here: 1652. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 68 model declarations, 1170 methods, 13 constraint handlers, 5 onchange handlers, and 50 dependency declarations.
+- **Evidence:** `addons/website/models/res_partner.py:8`, `addons/website/models/ir_access.py:4`, `addons/website/models/html_text_processor.py:15`, `addons/website/models/res_lang.py:8`, `addons/website/models/digest.py:6`, `addons/website/models/website_menu.py:15`, `addons/website/models/ir_ui_view.py:19`, `addons/website/models/res_groups.py:6`, `addons/website/models/website_snippet_filter.py:14`, `addons/website/models/ir_asset.py:7`, `addons/website/models/res_config_settings.py:11`, `addons/website/models/ir_qweb.py:15`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 7 controller files and 65 route declarations.
+- **Evidence:** `addons/website/controllers/form.py:24`, `addons/website/controllers/form.py:30`, `addons/website/controllers/binary.py:7`, `addons/website/controllers/backend.py:10`, `addons/website/controllers/backend.py:35`, `addons/website/controllers/backend.py:39`, `addons/website/controllers/backend.py:46`, `addons/website/controllers/webclient.py:9`, `addons/website/controllers/model_page.py:12`, `addons/website/controllers/main.py:189`, `addons/website/controllers/main.py:244`, `addons/website/controllers/main.py:254`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 418 XML files and 674 JavaScript/TypeScript files; static XML analysis found 812 record/template/menu identifiers.
+- **Evidence:** `addons/website/security/website_security.xml:2`, `addons/website/security/website_security.xml:8`, `addons/website/security/website_security.xml:14`, `addons/website/security/website_security.xml:26`, `addons/website/security/website_security.xml:30`, `addons/website/security/website_security.xml:34`, `addons/website/wizard/website_robots.xml:4`, `addons/website/wizard/website_llms.xml:4`, `addons/website/wizard/base_language_install_views.xml:4`, `addons/website/wizard/blocked_third_party_domains.xml:4`, `addons/website/data/digest_data.xml:4`, `addons/website/data/digest_data.xml:11`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 2 security-directory files are present.
+- **Evidence:** `addons/website/security/ir.access.csv`, `addons/website/security/website_security.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 12 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/website/__manifest__.py`, `addons/website/models/website_snippet_filter.py`, `addons/website/models/website_visitor.py`, `addons/website/models/ir_actions_server.py`, `addons/website/models/mixins.py`, `addons/website/controllers/main.py`, `addons/website/data/ir_cron_data.xml`, `addons/website/data/website_visitor_cron.xml`, `addons/website/views/ir_actions_server_views.xml`, `addons/website/views/website_views.xml`, `addons/website/tests/test_controllers.py`, `addons/website/tests/test_website_visitor.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 49 test files are present.
+- **Evidence:** `addons/website/tests/test_header_search.py`, `addons/website/tests/test_grid_layout.py`, `addons/website/tests/test_fuzzy.py`, `addons/website/tests/test_website_website_builder_assets_bundle.py`, `addons/website/tests/test_skip_website_configurator.py`, `addons/website/tests/test_controllers.py`, `addons/website/tests/test_menu.py`, `addons/website/tests/test_performance.py`, `addons/website/tests/test_lang_url.py`, `addons/website/tests/test_client_action.py`, `addons/website/tests/test_crawl.py`, `addons/website/tests/test_iap.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 418; representative identifiers: `res_groups_privilege_website`, `group_website_restricted_editor`, `group_website_designer`, `website_page_controller_expose`, `base.group_public`, `base.group_portal`, `view_edit_robots`, `view_edit_llms`, `view_base_language_install`, `view_edit_third_party_domains`, `digest.digest_digest_default`, `digest_tip_website_0`, `digest_tip_website_1`, `digest_tip_website_2`, `digest_tip_website_3`, `digest_tip_website_4`, `bs_debug_view`, `color_combinations_debug_view`, `snippets_debug_view`, `base.default_user_group`
+- Menus: 24; representative evidence: `addons/website/views/website_pages_views.xml:213`, `addons/website/views/website_visitor_views.xml:317`, `addons/website/views/website_visitor_views.xml:321`, `addons/website/views/res_config_settings_views.xml:291`, `addons/website/views/res_config_settings_views.xml:294`, `addons/website/views/res_config_settings_views.xml:301`, `addons/website/views/res_config_settings_views.xml:304`, `addons/website/views/res_config_settings_views.xml:312`, `addons/website/views/website_controller_pages_views.xml:107`, `addons/website/views/website_views.xml:341`, `addons/website/views/website_views.xml:347`, `addons/website/views/website_views.xml:352`
+- Templates: 412; representative evidence: `addons/website/data/website_data.xml:17`, `addons/website/data/website_data.xml:22`, `addons/website/data/website_data.xml:246`, `addons/website/data/website_data.xml:390`, `addons/website/data/website_data.xml:408`, `addons/website/data/website_data.xml:426`, `addons/website/data/website_data.xml:444`, `addons/website/views/neutralize_views.xml:3`, `addons/website/views/theme_colors_preview.xml:4`, `addons/website/views/http_routing_template.xml:4`, `addons/website/views/http_routing_template.xml:12`, `addons/website/views/http_routing_template.xml:20`
+- View/action field declarations: 177; representative evidence: `addons/website/wizard/website_robots.xml:6`, `addons/website/wizard/website_robots.xml:7`, `addons/website/wizard/website_llms.xml:6`, `addons/website/wizard/website_llms.xml:7`, `addons/website/wizard/base_language_install_views.xml:6`, `addons/website/wizard/base_language_install_views.xml:8`, `addons/website/wizard/blocked_third_party_domains.xml:6`, `addons/website/wizard/blocked_third_party_domains.xml:7`, `addons/website/data/website_demo.xml:8`, `addons/website/data/website_demo.xml:471`, `addons/website/data/website_demo.xml:592`, `addons/website/data/website_data.xml:222`
+- Browser assets: 674; representative files: `addons/website/static/tests/publish_website_systray_item.test.js`, `addons/website/static/tests/page_url_field.test.js`, `addons/website/static/tests/new_content_systray_item.test.js`, `addons/website/static/tests/website_loader.test.js`, `addons/website/static/tests/redirect_field.test.js`, `addons/website/static/tests/helpers.js`, `addons/website/static/lib/multirange/multirange_custom.js`, `addons/website/static/src/services/website_service.js`, `addons/website/static/src/services/website_custom_menus.js`, `addons/website/static/src/services/google_maps_service.js`, `addons/website/static/src/@types/registries.d.ts`, `addons/website/static/src/@types/plugins.d.ts`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/website/__manifest__.py`
+- **HTTP entry points:** `addons/website/controllers/form.py:24`, `addons/website/controllers/form.py:30`, `addons/website/controllers/binary.py:7`, `addons/website/controllers/backend.py:10`, `addons/website/controllers/backend.py:35`, `addons/website/controllers/backend.py:39`, `addons/website/controllers/backend.py:46`, `addons/website/controllers/webclient.py:9`, `addons/website/controllers/model_page.py:12`, `addons/website/controllers/main.py:189`, `addons/website/controllers/main.py:244`, `addons/website/controllers/main.py:254`
+- **Scheduled entry points:** `addons/website/__manifest__.py`, `addons/website/models/website_snippet_filter.py`, `addons/website/models/website_visitor.py`, `addons/website/models/ir_actions_server.py`, `addons/website/models/mixins.py`, `addons/website/controllers/main.py`, `addons/website/data/ir_cron_data.xml`, `addons/website/data/website_visitor_cron.xml`, `addons/website/views/ir_actions_server_views.xml`, `addons/website/views/website_views.xml`, `addons/website/tests/test_controllers.py`, `addons/website/tests/test_website_visitor.py`
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 68
+- Representative model evidence: `res.partner` (addons/website/models/res_partner.py:8); inherits `ir.access` (addons/website/models/ir_access.py:4); `website.html.text.processor` (addons/website/models/html_text_processor.py:15); inherits `res.lang` (addons/website/models/res_lang.py:8); inherits `digest.digest` (addons/website/models/digest.py:6); `website.menu` (addons/website/models/website_menu.py:15); `ir.ui.view` (addons/website/models/ir_ui_view.py:19); inherits `res.groups` (addons/website/models/res_groups.py:6); `website.snippet.filter` (addons/website/models/website_snippet_filter.py:14); inherits `ir.asset` (addons/website/models/ir_asset.py:7); inherits `res.config.settings` (addons/website/models/res_config_settings.py:11); inherits `ir.qweb` (addons/website/models/ir_qweb.py:15); inherits `base` (addons/website/models/ir_model.py:6); `website.controller.page` (addons/website/models/website_controller_page.py:7); inherits `website` (addons/website/models/website_form.py:13); inherits `ir.model` (addons/website/models/website_form.py:22); inherits `ir.model.fields` (addons/website/models/website_form.py:153); `website.configurator.feature` (addons/website/models/website_configurator_feature.py:7); inherits `ir.binary` (addons/website/models/ir_binary.py:4); `website.route` (addons/website/models/website_rewrite.py:13); `website.rewrite` (addons/website/models/website_rewrite.py:52); `website.track` (addons/website/models/website_visitor.py:17); `website.visitor` (addons/website/models/website_visitor.py:29); `website.page.properties.base` (addons/website/models/website_page_properties.py:6); `website.page.properties` (addons/website/models/website_page_properties.py:194); `theme.ir.asset` (addons/website/models/theme_models.py:13); `theme.ir.ui.view` (addons/website/models/theme_models.py:51); `theme.ir.attachment` (addons/website/models/theme_models.py:111); `theme.website.menu` (addons/website/models/theme_models.py:135); `theme.website.page` (addons/website/models/theme_models.py:176)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 7
+- Route declarations: 65
+- Route evidence: `addons/website/controllers/form.py:24`, `addons/website/controllers/form.py:30`, `addons/website/controllers/binary.py:7`, `addons/website/controllers/backend.py:10`, `addons/website/controllers/backend.py:35`, `addons/website/controllers/backend.py:39`, `addons/website/controllers/backend.py:46`, `addons/website/controllers/webclient.py:9`, `addons/website/controllers/model_page.py:12`, `addons/website/controllers/main.py:189`, `addons/website/controllers/main.py:244`, `addons/website/controllers/main.py:254`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `digest`, `web`, `html_editor`, `http_routing`, `portal`, `social_media`, `auth_signup`, `mail`, `google_recaptcha`, `utm`, `html_builder`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/website/README.md`
+- `addons/website/__init__.py`
+- `addons/website/__manifest__.py`
+- `addons/website/controllers/__init__.py`
+- `addons/website/controllers/backend.py`
+- `addons/website/controllers/binary.py`
+- `addons/website/controllers/form.py`
+- `addons/website/controllers/main.py`
+- `addons/website/controllers/model_page.py`
+- `addons/website/controllers/webclient.py`
+- `addons/website/data/digest_data.xml`
+- `addons/website/data/image_library.xml`
+- `addons/website/data/ir_asset.xml`
+- `addons/website/data/ir_cron_data.xml`
+- `addons/website/data/mail_mail_data.xml`
+- `addons/website/data/neutralize.sql`
+- `addons/website/data/update_theme_images.xml`
+- `addons/website/data/website_data.xml`
+- `addons/website/data/website_demo.xml`
+- `addons/website/data/website_visitor_cron.xml`
+- `addons/website/data/website_visitor_demo.xml`
+- `addons/website/doc/website.snippet.rst`
+- `addons/website/i18n/ar.po`
+- `addons/website/i18n/az.po`
+- `addons/website/i18n/bg.po`
+- `addons/website/i18n/bs.po`
+- `addons/website/i18n/ca.po`
+- `addons/website/i18n/cs.po`
+- `addons/website/i18n/da.po`
+- `addons/website/i18n/de.po`
+- `addons/website/i18n/el.po`
+- `addons/website/i18n/es.po`
+- `addons/website/i18n/es_419.po`
+- `addons/website/i18n/et.po`
+- `addons/website/i18n/fa.po`
+- `addons/website/i18n/fi.po`
+- `addons/website/i18n/fr.po`
+- `addons/website/i18n/gu.po`
+- `addons/website/i18n/he.po`
+- `addons/website/i18n/hi.po`
+- `addons/website/i18n/hr.po`
+- `addons/website/i18n/hu.po`
+- `addons/website/i18n/id.po`
+- `addons/website/i18n/is.po`
+- `addons/website/i18n/it.po`
+- `addons/website/i18n/ja.po`
+- `addons/website/i18n/ka.po`
+- `addons/website/i18n/kab.po`
+- `addons/website/i18n/km.po`
+- `addons/website/i18n/ko.po`
+- `addons/website/i18n/ku.po`
+- `addons/website/i18n/lb.po`
+- `addons/website/i18n/lo.po`
+- `addons/website/i18n/lt.po`
+- `addons/website/i18n/lv.po`
+- `addons/website/i18n/mk.po`
+- `addons/website/i18n/mn.po`
+- `addons/website/i18n/my.po`
+- `addons/website/i18n/nb.po`
+- `addons/website/i18n/nl.po`
+- `addons/website/i18n/pl.po`
+- `addons/website/i18n/pt.po`
+- `addons/website/i18n/pt_BR.po`
+- `addons/website/i18n/ro.po`
+- `addons/website/i18n/ru.po`
+- `addons/website/i18n/sk.po`
+- `addons/website/i18n/sl.po`
+- `addons/website/i18n/sr@latin.po`
+- `addons/website/i18n/sv.po`
+- `addons/website/i18n/th.po`
+- `addons/website/i18n/tr.po`
+- `addons/website/i18n/uk.po`
+- `addons/website/i18n/uz.po`
+- `addons/website/i18n/vi.po`
+- `addons/website/i18n/website.pot`
+- `addons/website/i18n/zh_CN.po`
+- `addons/website/i18n/zh_TW.po`
+- `addons/website/models/__init__.py`
+- `addons/website/models/assets.py`
+- `addons/website/models/base_partner_merge.py`
+- `addons/website/models/digest.py`
+- `addons/website/models/html_text_processor.py`
+- `addons/website/models/ir_access.py`
+- `addons/website/models/ir_actions_server.py`
+- `addons/website/models/ir_asset.py`
+- `addons/website/models/ir_attachment.py`
+- `addons/website/models/ir_binary.py`
+- `addons/website/models/ir_http.py`
+- `addons/website/models/ir_model.py`
+- `addons/website/models/ir_model_data.py`
+- `addons/website/models/ir_module_module.py`
+- `addons/website/models/ir_qweb.py`
+- `addons/website/models/ir_qweb_fields.py`
+- `addons/website/models/ir_ui_menu.py`
+- `addons/website/models/ir_ui_view.py`
+- `addons/website/models/mixins.py`
+- `addons/website/models/models.py`
+- `addons/website/models/res_company.py`
+- `addons/website/models/res_config_settings.py`
+- `addons/website/models/res_groups.py`
+- `addons/website/models/res_lang.py`
+- `addons/website/models/res_partner.py`
+- `addons/website/models/res_users.py`
+- `addons/website/models/theme_models.py`
+- `addons/website/models/website.py`
+- `addons/website/models/website_configurator_feature.py`
+- `addons/website/models/website_controller_page.py`
+- `addons/website/models/website_form.py`
+- `addons/website/models/website_menu.py`
+- `addons/website/models/website_page.py`
+- `addons/website/models/website_page_properties.py`
+- `addons/website/models/website_rewrite.py`
+- `addons/website/models/website_snippet_filter.py`
+- `addons/website/models/website_technical_page.py`
+- `addons/website/models/website_visitor.py`
+- `addons/website/security/ir.access.csv`
+- `addons/website/security/website_security.xml`
+- `addons/website/static/description/icon.png`
+- `addons/website/static/description/icon.svg`
+- `addons/website/static/description/icon_hi.png`
+- `addons/website/static/lib/multirange/LICENSE`
+- `addons/website/static/lib/multirange/multirange_custom.js`
+- `addons/website/static/lib/multirange/multirange_custom.scss`
+- `addons/website/static/shapes/footer_mega_cards_image.svg`
+- `addons/website/static/shapes/s_attributes_1.svg`
+- `addons/website/static/shapes/s_attributes_2.svg`
+- `addons/website/static/shapes/s_attributes_3.svg`
+- `addons/website/static/shapes/s_attributes_4.svg`
+- `addons/website/static/shapes/s_hero_maintenance.svg`
+- `addons/website/static/src/@types/plugins.d.ts`
+- `addons/website/static/src/@types/registries.d.ts`
+- `addons/website/static/src/@types/services.d.ts`
+- `addons/website/static/src/builder/builder_urlpicker.js`
+- `addons/website/static/src/builder/builder_urlpicker.xml`
+- `addons/website/static/src/builder/icon_selector.js`
+- `addons/website/static/src/builder/plugins/achievements_list_option.xml`
+- `addons/website/static/src/builder/plugins/achievements_list_option_plugin.js`
+- `addons/website/static/src/builder/plugins/bootstrap_option_plugin.js`
+- `addons/website/static/src/builder/plugins/carousel_bottom_controllers_option.xml`
+- `addons/website/static/src/builder/plugins/carousel_cards.edit.xml`
+- `addons/website/static/src/builder/plugins/carousel_cards_option.xml`
+- `addons/website/static/src/builder/plugins/carousel_item_header_buttons.js`
+- `addons/website/static/src/builder/plugins/carousel_option.js`
+- `addons/website/static/src/builder/plugins/carousel_option.xml`
+- `addons/website/static/src/builder/plugins/carousel_option_plugin.js`
+- `addons/website/static/src/builder/plugins/collapse_plugin.js`
+- `addons/website/static/src/builder/plugins/company_team_plugin.js`
+- `addons/website/static/src/builder/plugins/content_width_option.edit.scss`
+- `addons/website/static/src/builder/plugins/content_width_option.xml`
+- `addons/website/static/src/builder/plugins/content_width_option_plugin.js`
+- `addons/website/static/src/builder/plugins/customize_website_plugin.js`
+- `addons/website/static/src/builder/plugins/dynamic_svg_option.js`
+- `addons/website/static/src/builder/plugins/dynamic_svg_option.xml`
+- `addons/website/static/src/builder/plugins/dynamic_svg_option_plugin.js`
+- `addons/website/static/src/builder/plugins/edit_interaction_plugin.js`
+- `addons/website/static/src/builder/plugins/editable_button_plugin.js`
+- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks.edit.xml`
+- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks_block_mobile_option.js`
+- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks_block_option.js`
+- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks_block_option_plugin.js`
+- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks_option.xml`
+- `addons/website/static/src/builder/plugins/floating_blocks/floating_blocks_option_plugin.js`
+- `addons/website/static/src/builder/plugins/floating_snippets_plugin.js`
+- `addons/website/static/src/builder/plugins/font/add_font_dialog.js`
+- `addons/website/static/src/builder/plugins/font/add_font_dialog.xml`
+- `addons/website/static/src/builder/plugins/font/builder.fonts.scss`
+- `addons/website/static/src/builder/plugins/font/font_plugin.js`
+- `addons/website/static/src/builder/plugins/font_awesome_option.xml`
+- `addons/website/static/src/builder/plugins/font_awesome_option_plugin.js`
+- `addons/website/static/src/builder/plugins/form/form.edit.xml`
+- `addons/website/static/src/builder/plugins/form/form_action_fields_option.js`
+- `addons/website/static/src/builder/plugins/form/form_field_option.js`
+- `addons/website/static/src/builder/plugins/form/form_field_option_redraw.js`
+- `addons/website/static/src/builder/plugins/form/form_option.edit.scss`
+- `addons/website/static/src/builder/plugins/form/form_option.js`
+- `addons/website/static/src/builder/plugins/form/form_option.xml`
+- `addons/website/static/src/builder/plugins/form/form_option_add_field_button.js`
+- `addons/website/static/src/builder/plugins/form/form_option_plugin.js`
+- `addons/website/static/src/builder/plugins/form/utils.js`
+- `addons/website/static/src/builder/plugins/highlight/highlight_configurator.js`
+- `addons/website/static/src/builder/plugins/highlight/highlight_configurator.xml`
+- `addons/website/static/src/builder/plugins/highlight/highlight_picker.js`
+- `addons/website/static/src/builder/plugins/highlight/highlight_picker.xml`
+- `addons/website/static/src/builder/plugins/highlight/highlight_plugin.js`
+- `addons/website/static/src/builder/plugins/highlight/stacking_component.js`
+- `addons/website/static/src/builder/plugins/http_error_option.js`
+- `addons/website/static/src/builder/plugins/http_error_option.xml`
+- `addons/website/static/src/builder/plugins/image/grid_image_option.js`
+- `addons/website/static/src/builder/plugins/image/grid_image_option.xml`
+- `addons/website/static/src/builder/plugins/image/grid_image_option_plugin.js`
+- `addons/website/static/src/builder/plugins/image/image_hover_plugin.js`
+- `addons/website/static/src/builder/plugins/image/image_popup_option.js`
+- `addons/website/static/src/builder/plugins/image/image_popup_option.xml`
+- `addons/website/static/src/builder/plugins/image/image_tool_option.xml`
+- `addons/website/static/src/builder/plugins/layout_option/grid_column_option.xml`
+- `addons/website/static/src/builder/plugins/layout_option/grid_column_option_plugin.js`
+- `addons/website/static/src/builder/plugins/layout_option/layout_option.js`
+- `addons/website/static/src/builder/plugins/layout_option/layout_option.xml`
+- `addons/website/static/src/builder/plugins/layout_option/layout_option_plugin.js`
+- `addons/website/static/src/builder/plugins/layout_option/spacing_option.js`
+- `addons/website/static/src/builder/plugins/layout_option/spacing_option.xml`
+- `addons/website/static/src/builder/plugins/layout_option/spacing_option_plugin.js`
+- `addons/website/static/src/builder/plugins/menu_data_plugin.js`
+- `addons/website/static/src/builder/plugins/navbar_link_popover/navbar_link_popover.js`
+- `addons/website/static/src/builder/plugins/navbar_link_popover/navbar_link_popover.xml`
+- `addons/website/static/src/builder/plugins/options/accordion_option.xml`
+- `addons/website/static/src/builder/plugins/options/accordion_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/age_verification_popup.edit.xml`
+- `addons/website/static/src/builder/plugins/options/age_verification_popup_option.xml`
+- `addons/website/static/src/builder/plugins/options/age_verification_popup_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/animate_option.js`
+- `addons/website/static/src/builder/plugins/options/animate_option.xml`
+- `addons/website/static/src/builder/plugins/options/animate_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/animate_text.js`
+- `addons/website/static/src/builder/plugins/options/animate_text.scss`
+- `addons/website/static/src/builder/plugins/options/animate_text.xml`
+- `addons/website/static/src/builder/plugins/options/animated_number_option.xml`
+- `addons/website/static/src/builder/plugins/options/animated_number_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/announcement_scroll_option.xml`
+- `addons/website/static/src/builder/plugins/options/announcement_scroll_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/avatars_header_buttons.js`
+- `addons/website/static/src/builder/plugins/options/avatars_option.xml`
+- `addons/website/static/src/builder/plugins/options/avatars_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/background_option.js`
+- `addons/website/static/src/builder/plugins/options/background_option.xml`
+- `addons/website/static/src/builder/plugins/options/background_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/background_video_option.xml`
+- `addons/website/static/src/builder/plugins/options/base_visibility_option.js`
+- `addons/website/static/src/builder/plugins/options/base_visibility_option.xml`
+- `addons/website/static/src/builder/plugins/options/bento_border_option.xml`
+- `addons/website/static/src/builder/plugins/options/bg_blur_option.xml`
+- `addons/website/static/src/builder/plugins/options/bg_blur_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/blockquote_option.js`
+- `addons/website/static/src/builder/plugins/options/blockquote_option.xml`
+- `addons/website/static/src/builder/plugins/options/blockquote_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/border_option.xml`
+- `addons/website/static/src/builder/plugins/options/breadcrumb_option.js`
+- `addons/website/static/src/builder/plugins/options/breadcrumb_option.xml`
+- `addons/website/static/src/builder/plugins/options/button_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/card_image.edit.xml`
+- `addons/website/static/src/builder/plugins/options/card_image_option.js`
+- `addons/website/static/src/builder/plugins/options/card_image_option.xml`
+- `addons/website/static/src/builder/plugins/options/card_image_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/card_image_position_option.js`
+- `addons/website/static/src/builder/plugins/options/card_image_position_option.xml`
+- `addons/website/static/src/builder/plugins/options/card_option.js`
+- `addons/website/static/src/builder/plugins/options/card_option.xml`
+- `addons/website/static/src/builder/plugins/options/card_option_plugin.js`
+- `addons/website/static/src/builder/plugins/options/card_width_option.xml`
+- `addons/website/static/src/builder/plugins/options/card_width_option_plugin.js`
+- Additional source files not expanded in this page: 1562; see `../../01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.

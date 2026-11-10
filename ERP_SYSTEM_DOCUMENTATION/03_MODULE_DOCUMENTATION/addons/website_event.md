@@ -1,279 +1,294 @@
 # Module: website_event
 
 - **Module ID:** MOD-606
-- **Path:** `addons/website_event`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/website_event`
 - **Manifest:** `addons/website_event/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `True`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Marketing/Events`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Publish events, sell tickets
+**Purpose:** Publish events, sell tickets
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `event`, `website`, `website_partner`, `website_mail`, `html_builder`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 166 files, including 28 Python, 35 XML, and 23 JavaScript/TypeScript files. The manifest declares dependencies: `event`, `website`, `website_partner`, `website_mail`, `html_builder`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 28 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 13 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 3 | Files under `controllers/` or `controllers.py`. |
-| XML files | 35 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 23 | Client behavior/assets. |
-| Tests | 10 | Test files found by path/name convention. |
-| Security artifacts | 2 | Access CSV and/or security XML. |
-| Route declarations | 9 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 12
+- Controller/API files: 3
+- XML/data/view/template files: 35
+- Browser asset files: 23
+- Security files: 2
+- Test files: 10
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "event",
-    "website",
-    "website_partner",
-    "website_mail",
-    "html_builder"
-  ],
-  "data": [
-    "data/event_data.xml",
-    "data/website_snippet_data.xml",
-    "views/snippets/s_events.xml",
-    "views/snippets/s_events_carousel.xml",
-    "views/snippets/s_event_upcoming_snippet_preview_data.xml",
-    "views/snippets/s_event_carousel_preview_data.xml",
-    "views/snippets/snippets.xml",
-    "views/event_templates_list.xml",
-    "views/event_templates_svg.xml",
-    "views/event_templates_page.xml",
-    "views/event_templates_page_registration.xml",
-    "views/event_templates_page_misc.xml",
-    "views/event_templates_widgets.xml",
-    "views/event_event_views.xml",
-    "views/event_registration_views.xml",
-    "views/event_tag_category_views.xml",
-    "views/event_tag_views.xml",
-    "views/event_type_views.xml",
-    "views/portal_templates.xml",
-    "views/website_event_menu_views.xml",
-    "views/website_visitor_views.xml",
-    "views/event_menus.xml",
-    "views/website_pages_views.xml",
-    "views/event_event_add.xml",
-    "security/event_security.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/res_partner_demo.xml",
-    "data/event_demo.xml",
-    "data/event_question_demo.xml",
-    "data/event_registration_demo.xml",
-    "data/event_registration_answer_demo.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "website_event/static/src/js/tours/**/*"
-    ],
-    "web.assets_tests": [
-      "website_event/static/tests/tours/**/*"
-    ],
-    "web.assets_unit_tests": [
-      "website_event/static/tests/interactions/**/*"
-    ],
-    "web.assets_unit_tests_setup": [
-      "website_event/static/src/snippets/**/*.js"
-    ],
-    "web.assets_frontend": [
-      "website_event/static/src/js/tours/**/*",
-      "website_event/static/src/scss/event_templates_common.scss",
-      "website_event/static/src/scss/event_templates_list.scss",
-      "website_event/static/src/scss/event_templates_page.scss",
-      "website_event/static/src/interactions/*.js",
-      "website_event/static/src/snippets/**/*.js"
-    ],
-    "website.assets_editor": [
-      "website_event/static/src/js/systray_items/*.js"
-    ],
-    "website.website_builder_assets": [
-      "website_event/static/src/website_builder/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/website_event/security/ir.access.csv`, `addons/website_event/security/event_security.xml`
 
-- `addons/website_event/README.md` (115 lines)
-- `addons/website_event/__init__.py` (5 lines)
-- `addons/website_event/__manifest__.py` (83 lines)
-- `addons/website_event/controllers/__init__.py` (4 lines)
-- `addons/website_event/controllers/community.py` (13 lines)
-- `addons/website_event/controllers/main.py` (594 lines)
-- `addons/website_event/data/event_data.xml` (47 lines)
-- `addons/website_event/data/event_demo.xml` (173 lines)
-- `addons/website_event/data/event_question_demo.xml` (150 lines)
-- `addons/website_event/data/event_registration_answer_demo.xml` (64 lines)
-- `addons/website_event/data/event_registration_demo.xml` (18 lines)
-- `addons/website_event/data/res_partner_demo.xml` (311 lines)
-- `addons/website_event/data/website_snippet_data.xml` (37 lines)
-- `addons/website_event/i18n/af.po` (2,178 lines)
-- `addons/website_event/i18n/ar.po` (2,232 lines)
-- `addons/website_event/i18n/az.po` (2,186 lines)
-- `addons/website_event/i18n/bg.po` (2,189 lines)
-- `addons/website_event/i18n/bs.po` (2,182 lines)
-- `addons/website_event/i18n/ca.po` (2,256 lines)
-- `addons/website_event/i18n/cs.po` (2,210 lines)
-- `addons/website_event/i18n/da.po` (2,239 lines)
-- `addons/website_event/i18n/de.po` (2,457 lines)
-- `addons/website_event/i18n/el.po` (2,184 lines)
-- `addons/website_event/i18n/es.po` (2,396 lines)
-- `addons/website_event/i18n/es_419.po` (2,396 lines)
-- `addons/website_event/i18n/et.po` (2,215 lines)
-- `addons/website_event/i18n/fa.po` (2,208 lines)
-- `addons/website_event/i18n/fi.po` (2,400 lines)
-- `addons/website_event/i18n/fr.po` (2,262 lines)
-- `addons/website_event/i18n/gl.po` (2,176 lines)
-- `addons/website_event/i18n/gu.po` (2,178 lines)
-- `addons/website_event/i18n/he.po` (2,205 lines)
-- `addons/website_event/i18n/hi.po` (2,178 lines)
-- `addons/website_event/i18n/hr.po` (2,189 lines)
-- `addons/website_event/i18n/hu.po` (2,193 lines)
-- `addons/website_event/i18n/id.po` (2,385 lines)
-- `addons/website_event/i18n/is.po` (2,174 lines)
-- `addons/website_event/i18n/it.po` (2,435 lines)
-- `addons/website_event/i18n/ja.po` (2,240 lines)
-- `addons/website_event/i18n/ka.po` (2,176 lines)
-- `addons/website_event/i18n/kab.po` (2,178 lines)
-- `addons/website_event/i18n/km.po` (2,178 lines)
-- `addons/website_event/i18n/ko.po` (2,226 lines)
-- `addons/website_event/i18n/ku.po` (2,178 lines)
-- `addons/website_event/i18n/lo.po` (2,390 lines)
-- `addons/website_event/i18n/lt.po` (2,215 lines)
-- `addons/website_event/i18n/lv.po` (2,183 lines)
-- `addons/website_event/i18n/mk.po` (2,182 lines)
-- `addons/website_event/i18n/mn.po` (2,186 lines)
-- `addons/website_event/i18n/my.po` (2,179 lines)
-- `addons/website_event/i18n/nb.po` (2,187 lines)
-- `addons/website_event/i18n/nl.po` (2,435 lines)
-- `addons/website_event/i18n/pl.po` (2,414 lines)
-- `addons/website_event/i18n/pt.po` (2,221 lines)
-- `addons/website_event/i18n/pt_BR.po` (2,430 lines)
-- `addons/website_event/i18n/ro.po` (2,246 lines)
-- `addons/website_event/i18n/ru.po` (2,434 lines)
-- `addons/website_event/i18n/sk.po` (2,192 lines)
-- `addons/website_event/i18n/sl.po` (2,195 lines)
-- `addons/website_event/i18n/sr@latin.po` (2,246 lines)
-- `addons/website_event/i18n/sv.po` (2,237 lines)
-- `addons/website_event/i18n/th.po` (2,354 lines)
-- `addons/website_event/i18n/tr.po` (2,404 lines)
-- `addons/website_event/i18n/uk.po` (2,211 lines)
-- `addons/website_event/i18n/uz.po` (2,516 lines)
-- `addons/website_event/i18n/vi.po` (2,234 lines)
-- `addons/website_event/i18n/website_event.pot` (2,141 lines)
-- `addons/website_event/i18n/zh_CN.po` (2,264 lines)
-- `addons/website_event/i18n/zh_TW.po` (2,228 lines)
-- `addons/website_event/models/__init__.py` (15 lines)
-- `addons/website_event/models/event_event.py` (779 lines)
-- `addons/website_event/models/event_registration.py` (17 lines)
-- `addons/website_event/models/event_slot.py` (18 lines)
-- `addons/website_event/models/event_tag.py` (15 lines)
-- `addons/website_event/models/event_tag_category.py` (12 lines)
-- `addons/website_event/models/event_type.py` (18 lines)
-- `addons/website_event/models/website.py` (96 lines)
-- `addons/website_event/models/website_event_menu.py` (79 lines)
-- `addons/website_event/models/website_menu.py` (121 lines)
-- `addons/website_event/models/website_snippet_filter.py` (58 lines)
-- `addons/website_event/models/website_track.py` (11 lines)
-- `addons/website_event/models/website_visitor.py` (105 lines)
-- `addons/website_event/security/event_security.xml` (5 lines)
-- `addons/website_event/security/ir.access.csv` (18 lines)
-- `addons/website_event/static/description/icon.png` (33 lines)
-- `addons/website_event/static/description/icon.svg` (1 lines)
-- `addons/website_event/static/description/icon_hi.png` (121 lines)
-- `addons/website_event/static/src/img/event_cover_0.jpg` (1,853 lines)
-- `addons/website_event/static/src/img/event_cover_1.jpg` (404 lines)
-- `addons/website_event/static/src/img/event_cover_2.jpg` (954 lines)
-- `addons/website_event/static/src/img/event_cover_3.jpg` (1,580 lines)
-- `addons/website_event/static/src/img/event_cover_4.jpg` (1,421 lines)
-- `addons/website_event/static/src/img/event_cover_5.jpg` (1,216 lines)
-- `addons/website_event/static/src/img/event_cover_7.jpg` (455 lines)
-- `addons/website_event/static/src/img/event_past_0.jpg` (2,358 lines)
-- `addons/website_event/static/src/img/event_previews/event_1.jpg` (114 lines)
-- `addons/website_event/static/src/img/event_previews/event_2.jpg` (230 lines)
-- `addons/website_event/static/src/img/event_previews/event_3.jpg` (123 lines)
-- `addons/website_event/static/src/img/event_training_0.jpg` (2,126 lines)
-- `addons/website_event/static/src/img/openerp_enterprise_of_the_year.png` (246 lines)
-- `addons/website_event/static/src/img/speaker.png` (19 lines)
-- `addons/website_event/static/src/img/training.jpg` (348 lines)
-- `addons/website_event/static/src/interactions/display_timer.js` (102 lines)
-- `addons/website_event/static/src/interactions/event_page.js` (15 lines)
-- `addons/website_event/static/src/interactions/modal_registration.js` (125 lines)
-- `addons/website_event/static/src/interactions/register_toaster.js` (21 lines)
-- `addons/website_event/static/src/interactions/website_event_slot_details.js` (149 lines)
-- `addons/website_event/static/src/interactions/website_event_ticket_details.js` (97 lines)
-- `addons/website_event/static/src/js/systray_items/new_content.js` (16 lines)
-- `addons/website_event/static/src/js/tours/event_tour.js` (76 lines)
-- `addons/website_event/static/src/scss/event_templates_common.scss` (94 lines)
-- `addons/website_event/static/src/scss/event_templates_list.scss` (127 lines)
-- `addons/website_event/static/src/scss/event_templates_page.scss` (129 lines)
-- `addons/website_event/static/src/snippets/s_events/000.scss` (67 lines)
-- `addons/website_event/static/src/snippets/s_events/events.js` (32 lines)
-- `addons/website_event/static/src/snippets/s_events/events_carousel.js` (20 lines)
-- `addons/website_event/static/src/snippets/s_events/events_mixin.js` (20 lines)
-- `addons/website_event/static/src/website_builder/dark_palette_content.js` (13 lines)
-- `addons/website_event/static/src/website_builder/dynamic_snippet_events_carousel_option.js` (11 lines)
-- `addons/website_event/static/src/website_builder/dynamic_snippet_events_carousel_option.xml` (19 lines)
-- `addons/website_event/static/src/website_builder/dynamic_snippet_events_option.js` (28 lines)
-- `addons/website_event/static/src/website_builder/dynamic_snippet_events_option.xml` (25 lines)
-- `addons/website_event/static/src/website_builder/dynamic_snippet_events_option_plugin.js` (51 lines)
-- `addons/website_event/static/src/website_builder/dynamic_snippet_events_shared_option.xml` (24 lines)
-- `addons/website_event/static/src/website_builder/event_page_option.xml` (63 lines)
-- `addons/website_event/static/src/website_builder/event_page_option_plugin.js` (76 lines)
-- `addons/website_event/static/src/website_builder/event_searchbar_option_plugin.js` (24 lines)
-- `addons/website_event/static/src/website_builder/events_list_page_option.xml` (69 lines)
-- `addons/website_event/static/tests/interactions/snippets/events.test.js` (84 lines)
-- `addons/website_event/static/tests/tours/sub_templates_config.js` (11 lines)
-- `addons/website_event/static/tests/tours/tickets_questions.js` (120 lines)
-- `addons/website_event/static/tests/tours/website_event.js` (160 lines)
-- `addons/website_event/static/tests/tours/website_event_pages_seo.js` (41 lines)
-- `addons/website_event/static/tests/tours/website_event_search.js` (40 lines)
-- `addons/website_event/tests/__init__.py` (11 lines)
-- `addons/website_event/tests/common.py` (115 lines)
-- `addons/website_event/tests/test_event_ics.py` (78 lines)
-- `addons/website_event/tests/test_event_internals.py` (319 lines)
-- `addons/website_event/tests/test_event_mail.py` (116 lines)
-- `addons/website_event/tests/test_event_menus.py` (243 lines)
-- `addons/website_event/tests/test_event_visitor.py` (75 lines)
-- `addons/website_event/tests/test_fuzzy.py` (42 lines)
-- `addons/website_event/tests/test_website_event.py` (341 lines)
-- `addons/website_event/tests/test_website_event_technical_page.py` (9 lines)
-- `addons/website_event/views/event_event_add.xml` (31 lines)
-- `addons/website_event/views/event_event_views.xml` (93 lines)
-- `addons/website_event/views/event_menus.xml` (11 lines)
-- `addons/website_event/views/event_registration_views.xml` (61 lines)
-- `addons/website_event/views/event_tag_category_views.xml` (27 lines)
-- `addons/website_event/views/event_tag_views.xml` (16 lines)
-- `addons/website_event/views/event_templates_list.xml` (546 lines)
-- `addons/website_event/views/event_templates_page.xml` (105 lines)
-- `addons/website_event/views/event_templates_page_misc.xml` (19 lines)
-- `addons/website_event/views/event_templates_page_registration.xml` (737 lines)
-- `addons/website_event/views/event_templates_svg.xml` (49 lines)
-- `addons/website_event/views/event_templates_widgets.xml` (37 lines)
-- `addons/website_event/views/event_type_views.xml` (24 lines)
-- `addons/website_event/views/portal_templates.xml` (15 lines)
-- `addons/website_event/views/snippets/s_event_carousel_preview_data.xml` (56 lines)
-- `addons/website_event/views/snippets/s_event_upcoming_snippet_preview_data.xml` (280 lines)
+## 4. Functionalities
 
-Additional files not expanded here: 6. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 12 model declarations, 136 methods, 1 constraint handlers, 0 onchange handlers, and 15 dependency declarations.
+- **Evidence:** `addons/website_event/models/website_track.py:6`, `addons/website_event/models/website_menu.py:9`, `addons/website_event/models/website_snippet_filter.py:9`, `addons/website_event/models/event_slot.py:6`, `addons/website_event/models/event_type.py:6`, `addons/website_event/models/event_tag_category.py:7`, `addons/website_event/models/website_visitor.py:8`, `addons/website_event/models/event_tag.py:6`, `addons/website_event/models/website_event_menu.py:9`, `addons/website_event/models/event_event.py:21`, `addons/website_event/models/event_registration.py:6`, `addons/website_event/models/website.py:10`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 3 controller files and 9 route declarations.
+- **Evidence:** `addons/website_event/controllers/community.py:10`, `addons/website_event/controllers/main.py:39`, `addons/website_event/controllers/main.py:196`, `addons/website_event/controllers/main.py:244`, `addons/website_event/controllers/main.py:254`, `addons/website_event/controllers/main.py:309`, `addons/website_event/controllers/main.py:372`, `addons/website_event/controllers/main.py:490`, `addons/website_event/controllers/main.py:517`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 35 XML files and 23 JavaScript/TypeScript files; static XML analysis found 180 record/template/menu identifiers.
+- **Evidence:** `addons/website_event/security/event_security.xml:2`, `addons/website_event/data/website_snippet_data.xml:5`, `addons/website_event/data/website_snippet_data.xml:15`, `addons/website_event/data/website_snippet_data.xml:23`, `addons/website_event/data/website_snippet_data.xml:30`, `addons/website_event/data/event_data.xml:5`, `addons/website_event/data/event_data.xml:11`, `addons/website_event/data/event_data.xml:16`, `addons/website_event/data/event_data.xml:21`, `addons/website_event/data/event_data.xml:27`, `addons/website_event/data/event_data.xml:33`, `addons/website_event/data/event_data.xml:39`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 2 security-directory files are present.
+- **Evidence:** `addons/website_event/security/ir.access.csv`, `addons/website_event/security/event_security.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 10 test files are present.
+- **Evidence:** `addons/website_event/tests/test_fuzzy.py`, `addons/website_event/tests/test_event_ics.py`, `addons/website_event/tests/test_website_event_technical_page.py`, `addons/website_event/tests/test_event_mail.py`, `addons/website_event/tests/test_event_visitor.py`, `addons/website_event/tests/common.py`, `addons/website_event/tests/test_event_internals.py`, `addons/website_event/tests/test_event_menus.py`, `addons/website_event/tests/test_website_event.py`, `addons/website_event/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 35; representative identifiers: `event.group_event_manager`, `ir_filters_event_list_snippet`, `website_snippet_filter_event_list`, `ir_filters_event_list_snippet_unfinished`, `website_snippet_filter_event_list_unfinished`, `menu_events`, `action_open_website`, `base.open_menu`, `mt_event_published`, `mt_event_unpublished`, `mt_event_scheduled`, `mt_event_unscheduled`, `event_registration_0_0_registration_answer_0`, `event_registration_0_0_registration_answer_1`, `event_registration_0_0_registration_answer_2`, `event_registration_0_1_registration_answer_0`, `event_registration_0_1_registration_answer_1`, `event_registration_0_2_registration_answer_0`, `event_registration_0_2_registration_answer_1`, `event_registration_7_0_registration_answer_0`
+- Menus: 2; representative evidence: `addons/website_event/views/website_pages_views.xml:94`, `addons/website_event/views/event_menus.xml:4`
+- Templates: 74; representative evidence: `addons/website_event/views/event_templates_page_misc.xml:5`, `addons/website_event/views/event_templates_svg.xml:3`, `addons/website_event/views/event_templates_widgets.xml:5`, `addons/website_event/views/event_templates_widgets.xml:30`, `addons/website_event/views/portal_templates.xml:3`, `addons/website_event/views/event_templates_page.xml:5`, `addons/website_event/views/event_templates_page.xml:23`, `addons/website_event/views/event_templates_page.xml:90`, `addons/website_event/views/event_templates_page_registration.xml:5`, `addons/website_event/views/event_templates_page_registration.xml:14`, `addons/website_event/views/event_templates_page_registration.xml:149`, `addons/website_event/views/event_templates_page_registration.xml:190`
+- View/action field declarations: 58; representative evidence: `addons/website_event/data/event_data.xml:23`, `addons/website_event/data/event_data.xml:29`, `addons/website_event/data/event_data.xml:35`, `addons/website_event/data/event_data.xml:41`, `addons/website_event/views/website_pages_views.xml:6`, `addons/website_event/views/website_pages_views.xml:10`, `addons/website_event/views/website_pages_views.xml:42`, `addons/website_event/views/website_pages_views.xml:46`, `addons/website_event/views/website_pages_views.xml:84`, `addons/website_event/views/website_pages_views.xml:86`, `addons/website_event/views/event_event_add.xml:6`, `addons/website_event/views/event_event_add.xml:9`
+- Browser assets: 23; representative files: `addons/website_event/static/src/website_builder/dynamic_snippet_events_option_plugin.js`, `addons/website_event/static/src/website_builder/event_searchbar_option_plugin.js`, `addons/website_event/static/src/website_builder/event_page_option_plugin.js`, `addons/website_event/static/src/website_builder/dynamic_snippet_events_option.js`, `addons/website_event/static/src/website_builder/dynamic_snippet_events_carousel_option.js`, `addons/website_event/static/src/website_builder/dark_palette_content.js`, `addons/website_event/static/src/interactions/website_event_ticket_details.js`, `addons/website_event/static/src/interactions/display_timer.js`, `addons/website_event/static/src/interactions/register_toaster.js`, `addons/website_event/static/src/interactions/modal_registration.js`, `addons/website_event/static/src/interactions/event_page.js`, `addons/website_event/static/src/interactions/website_event_slot_details.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/website_event/__manifest__.py`
+- **HTTP entry points:** `addons/website_event/controllers/community.py:10`, `addons/website_event/controllers/main.py:39`, `addons/website_event/controllers/main.py:196`, `addons/website_event/controllers/main.py:244`, `addons/website_event/controllers/main.py:254`, `addons/website_event/controllers/main.py:309`, `addons/website_event/controllers/main.py:372`, `addons/website_event/controllers/main.py:490`, `addons/website_event/controllers/main.py:517`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 12
+- Representative model evidence: inherits `website.track` (addons/website_event/models/website_track.py:6); inherits `website.menu` (addons/website_event/models/website_menu.py:9); inherits `website.snippet.filter` (addons/website_event/models/website_snippet_filter.py:9); inherits `event.slot` (addons/website_event/models/event_slot.py:6); inherits `event.type` (addons/website_event/models/event_type.py:6); `event.tag.category` (addons/website_event/models/event_tag_category.py:7); inherits `website.visitor` (addons/website_event/models/website_visitor.py:8); `event.tag` (addons/website_event/models/event_tag.py:6); `website.event.menu` (addons/website_event/models/website_event_menu.py:9); `event.event` (addons/website_event/models/event_event.py:21); inherits `event.registration` (addons/website_event/models/event_registration.py:6); inherits `website` (addons/website_event/models/website.py:10)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 3
+- Route declarations: 9
+- Route evidence: `addons/website_event/controllers/community.py:10`, `addons/website_event/controllers/main.py:39`, `addons/website_event/controllers/main.py:196`, `addons/website_event/controllers/main.py:244`, `addons/website_event/controllers/main.py:254`, `addons/website_event/controllers/main.py:309`, `addons/website_event/controllers/main.py:372`, `addons/website_event/controllers/main.py:490`, `addons/website_event/controllers/main.py:517`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `event`, `website`, `website_partner`, `website_mail`, `html_builder`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/website_event/README.md`
+- `addons/website_event/__init__.py`
+- `addons/website_event/__manifest__.py`
+- `addons/website_event/controllers/__init__.py`
+- `addons/website_event/controllers/community.py`
+- `addons/website_event/controllers/main.py`
+- `addons/website_event/data/event_data.xml`
+- `addons/website_event/data/event_demo.xml`
+- `addons/website_event/data/event_question_demo.xml`
+- `addons/website_event/data/event_registration_answer_demo.xml`
+- `addons/website_event/data/event_registration_demo.xml`
+- `addons/website_event/data/res_partner_demo.xml`
+- `addons/website_event/data/website_snippet_data.xml`
+- `addons/website_event/i18n/af.po`
+- `addons/website_event/i18n/ar.po`
+- `addons/website_event/i18n/az.po`
+- `addons/website_event/i18n/bg.po`
+- `addons/website_event/i18n/bs.po`
+- `addons/website_event/i18n/ca.po`
+- `addons/website_event/i18n/cs.po`
+- `addons/website_event/i18n/da.po`
+- `addons/website_event/i18n/de.po`
+- `addons/website_event/i18n/el.po`
+- `addons/website_event/i18n/es.po`
+- `addons/website_event/i18n/es_419.po`
+- `addons/website_event/i18n/et.po`
+- `addons/website_event/i18n/fa.po`
+- `addons/website_event/i18n/fi.po`
+- `addons/website_event/i18n/fr.po`
+- `addons/website_event/i18n/gl.po`
+- `addons/website_event/i18n/gu.po`
+- `addons/website_event/i18n/he.po`
+- `addons/website_event/i18n/hi.po`
+- `addons/website_event/i18n/hr.po`
+- `addons/website_event/i18n/hu.po`
+- `addons/website_event/i18n/id.po`
+- `addons/website_event/i18n/is.po`
+- `addons/website_event/i18n/it.po`
+- `addons/website_event/i18n/ja.po`
+- `addons/website_event/i18n/ka.po`
+- `addons/website_event/i18n/kab.po`
+- `addons/website_event/i18n/km.po`
+- `addons/website_event/i18n/ko.po`
+- `addons/website_event/i18n/ku.po`
+- `addons/website_event/i18n/lo.po`
+- `addons/website_event/i18n/lt.po`
+- `addons/website_event/i18n/lv.po`
+- `addons/website_event/i18n/mk.po`
+- `addons/website_event/i18n/mn.po`
+- `addons/website_event/i18n/my.po`
+- `addons/website_event/i18n/nb.po`
+- `addons/website_event/i18n/nl.po`
+- `addons/website_event/i18n/pl.po`
+- `addons/website_event/i18n/pt.po`
+- `addons/website_event/i18n/pt_BR.po`
+- `addons/website_event/i18n/ro.po`
+- `addons/website_event/i18n/ru.po`
+- `addons/website_event/i18n/sk.po`
+- `addons/website_event/i18n/sl.po`
+- `addons/website_event/i18n/sr@latin.po`
+- `addons/website_event/i18n/sv.po`
+- `addons/website_event/i18n/th.po`
+- `addons/website_event/i18n/tr.po`
+- `addons/website_event/i18n/uk.po`
+- `addons/website_event/i18n/uz.po`
+- `addons/website_event/i18n/vi.po`
+- `addons/website_event/i18n/website_event.pot`
+- `addons/website_event/i18n/zh_CN.po`
+- `addons/website_event/i18n/zh_TW.po`
+- `addons/website_event/models/__init__.py`
+- `addons/website_event/models/event_event.py`
+- `addons/website_event/models/event_registration.py`
+- `addons/website_event/models/event_slot.py`
+- `addons/website_event/models/event_tag.py`
+- `addons/website_event/models/event_tag_category.py`
+- `addons/website_event/models/event_type.py`
+- `addons/website_event/models/website.py`
+- `addons/website_event/models/website_event_menu.py`
+- `addons/website_event/models/website_menu.py`
+- `addons/website_event/models/website_snippet_filter.py`
+- `addons/website_event/models/website_track.py`
+- `addons/website_event/models/website_visitor.py`
+- `addons/website_event/security/event_security.xml`
+- `addons/website_event/security/ir.access.csv`
+- `addons/website_event/static/description/icon.png`
+- `addons/website_event/static/description/icon.svg`
+- `addons/website_event/static/description/icon_hi.png`
+- `addons/website_event/static/src/img/event_cover_0.jpg`
+- `addons/website_event/static/src/img/event_cover_1.jpg`
+- `addons/website_event/static/src/img/event_cover_2.jpg`
+- `addons/website_event/static/src/img/event_cover_3.jpg`
+- `addons/website_event/static/src/img/event_cover_4.jpg`
+- `addons/website_event/static/src/img/event_cover_5.jpg`
+- `addons/website_event/static/src/img/event_cover_7.jpg`
+- `addons/website_event/static/src/img/event_past_0.jpg`
+- `addons/website_event/static/src/img/event_previews/event_1.jpg`
+- `addons/website_event/static/src/img/event_previews/event_2.jpg`
+- `addons/website_event/static/src/img/event_previews/event_3.jpg`
+- `addons/website_event/static/src/img/event_training_0.jpg`
+- `addons/website_event/static/src/img/openerp_enterprise_of_the_year.png`
+- `addons/website_event/static/src/img/speaker.png`
+- `addons/website_event/static/src/img/training.jpg`
+- `addons/website_event/static/src/interactions/display_timer.js`
+- `addons/website_event/static/src/interactions/event_page.js`
+- `addons/website_event/static/src/interactions/modal_registration.js`
+- `addons/website_event/static/src/interactions/register_toaster.js`
+- `addons/website_event/static/src/interactions/website_event_slot_details.js`
+- `addons/website_event/static/src/interactions/website_event_ticket_details.js`
+- `addons/website_event/static/src/js/systray_items/new_content.js`
+- `addons/website_event/static/src/js/tours/event_tour.js`
+- `addons/website_event/static/src/scss/event_templates_common.scss`
+- `addons/website_event/static/src/scss/event_templates_list.scss`
+- `addons/website_event/static/src/scss/event_templates_page.scss`
+- `addons/website_event/static/src/snippets/s_events/000.scss`
+- `addons/website_event/static/src/snippets/s_events/events.js`
+- `addons/website_event/static/src/snippets/s_events/events_carousel.js`
+- `addons/website_event/static/src/snippets/s_events/events_mixin.js`
+- `addons/website_event/static/src/website_builder/dark_palette_content.js`
+- `addons/website_event/static/src/website_builder/dynamic_snippet_events_carousel_option.js`
+- `addons/website_event/static/src/website_builder/dynamic_snippet_events_carousel_option.xml`
+- `addons/website_event/static/src/website_builder/dynamic_snippet_events_option.js`
+- `addons/website_event/static/src/website_builder/dynamic_snippet_events_option.xml`
+- `addons/website_event/static/src/website_builder/dynamic_snippet_events_option_plugin.js`
+- `addons/website_event/static/src/website_builder/dynamic_snippet_events_shared_option.xml`
+- `addons/website_event/static/src/website_builder/event_page_option.xml`
+- `addons/website_event/static/src/website_builder/event_page_option_plugin.js`
+- `addons/website_event/static/src/website_builder/event_searchbar_option_plugin.js`
+- `addons/website_event/static/src/website_builder/events_list_page_option.xml`
+- `addons/website_event/static/tests/interactions/snippets/events.test.js`
+- `addons/website_event/static/tests/tours/sub_templates_config.js`
+- `addons/website_event/static/tests/tours/tickets_questions.js`
+- `addons/website_event/static/tests/tours/website_event.js`
+- `addons/website_event/static/tests/tours/website_event_pages_seo.js`
+- `addons/website_event/static/tests/tours/website_event_search.js`
+- `addons/website_event/tests/__init__.py`
+- `addons/website_event/tests/common.py`
+- `addons/website_event/tests/test_event_ics.py`
+- `addons/website_event/tests/test_event_internals.py`
+- `addons/website_event/tests/test_event_mail.py`
+- `addons/website_event/tests/test_event_menus.py`
+- `addons/website_event/tests/test_event_visitor.py`
+- `addons/website_event/tests/test_fuzzy.py`
+- `addons/website_event/tests/test_website_event.py`
+- `addons/website_event/tests/test_website_event_technical_page.py`
+- `addons/website_event/views/event_event_add.xml`
+- `addons/website_event/views/event_event_views.xml`
+- `addons/website_event/views/event_menus.xml`
+- `addons/website_event/views/event_registration_views.xml`
+- `addons/website_event/views/event_tag_category_views.xml`
+- `addons/website_event/views/event_tag_views.xml`
+- `addons/website_event/views/event_templates_list.xml`
+- `addons/website_event/views/event_templates_page.xml`
+- `addons/website_event/views/event_templates_page_misc.xml`
+- `addons/website_event/views/event_templates_page_registration.xml`
+- `addons/website_event/views/event_templates_svg.xml`
+- `addons/website_event/views/event_templates_widgets.xml`
+- `addons/website_event/views/event_type_views.xml`
+- `addons/website_event/views/portal_templates.xml`
+- `addons/website_event/views/snippets/s_event_carousel_preview_data.xml`
+- `addons/website_event/views/snippets/s_event_upcoming_snippet_preview_data.xml`
+- `addons/website_event/views/snippets/s_events.xml`
+- `addons/website_event/views/snippets/s_events_carousel.xml`
+- `addons/website_event/views/snippets/snippets.xml`
+- `addons/website_event/views/website_event_menu_views.xml`
+- `addons/website_event/views/website_pages_views.xml`
+- `addons/website_event/views/website_visitor_views.xml`

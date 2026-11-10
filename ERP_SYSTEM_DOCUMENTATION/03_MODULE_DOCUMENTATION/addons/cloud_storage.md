@@ -1,145 +1,194 @@
 # Module: cloud_storage
 
 - **Module ID:** MOD-049
-- **Path:** `addons/cloud_storage`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/cloud_storage`
 - **Manifest:** `addons/cloud_storage/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Technical Settings`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Store chatter attachments in the cloud
+**Purpose:** Store chatter attachments in the cloud
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `base_setup`, `mail`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 74 files, including 14 Python, 3 XML, and 7 JavaScript/TypeScript files. The manifest declares dependencies: `base_setup`, `mail`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 14 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 4 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 3 | Files under `controllers/` or `controllers.py`. |
-| XML files | 3 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 7 | Client behavior/assets. |
-| Tests | 5 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 3
+- Controller/API files: 3
+- XML/data/view/template files: 3
+- Browser asset files: 7
+- Security files: 0
+- Test files: 5
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "base_setup",
-    "mail"
-  ],
-  "data": [
-    "views/settings.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "cloud_storage/static/src/core/common/**/*",
-      "cloud_storage/static/src/core/public_web/**/*",
-      "cloud_storage/static/src/**/web/**/*"
-    ],
-    "mail.assets_public": [
-      "cloud_storage/static/src/core/common/**/*",
-      "cloud_storage/static/src/core/public_web/**/*"
-    ],
-    "portal.assets_chatter_helpers": [
-      "cloud_storage/static/src/core/common/**/*"
-    ],
-    "web.assets_unit_tests": [
-      "cloud_storage/static/tests/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** Not found in module
 
-- `addons/cloud_storage/__init__.py` (4 lines)
-- `addons/cloud_storage/__manifest__.py` (30 lines)
-- `addons/cloud_storage/controllers/__init__.py` (4 lines)
-- `addons/cloud_storage/controllers/attachment.py` (35 lines)
-- `addons/cloud_storage/controllers/rtc.py` (92 lines)
-- `addons/cloud_storage/data/neutralize.sql` (1 lines)
-- `addons/cloud_storage/i18n/ar.po` (171 lines)
-- `addons/cloud_storage/i18n/az.po` (166 lines)
-- `addons/cloud_storage/i18n/bg.po` (166 lines)
-- `addons/cloud_storage/i18n/bs.po` (166 lines)
-- `addons/cloud_storage/i18n/ca.po` (169 lines)
-- `addons/cloud_storage/i18n/cloud_storage.pot` (159 lines)
-- `addons/cloud_storage/i18n/cs.po` (167 lines)
-- `addons/cloud_storage/i18n/da.po` (172 lines)
-- `addons/cloud_storage/i18n/de.po` (177 lines)
-- `addons/cloud_storage/i18n/el.po` (165 lines)
-- `addons/cloud_storage/i18n/es.po` (181 lines)
-- `addons/cloud_storage/i18n/es_419.po` (178 lines)
-- `addons/cloud_storage/i18n/et.po` (171 lines)
-- `addons/cloud_storage/i18n/fa.po` (166 lines)
-- `addons/cloud_storage/i18n/fi.po` (176 lines)
-- `addons/cloud_storage/i18n/fr.po` (178 lines)
-- `addons/cloud_storage/i18n/he.po` (165 lines)
-- `addons/cloud_storage/i18n/hi.po` (166 lines)
-- `addons/cloud_storage/i18n/hr.po` (167 lines)
-- `addons/cloud_storage/i18n/hu.po` (167 lines)
-- `addons/cloud_storage/i18n/id.po` (173 lines)
-- `addons/cloud_storage/i18n/it.po` (176 lines)
-- `addons/cloud_storage/i18n/ja.po` (174 lines)
-- `addons/cloud_storage/i18n/kab.po` (165 lines)
-- `addons/cloud_storage/i18n/ko.po` (170 lines)
-- `addons/cloud_storage/i18n/ku.po` (164 lines)
-- `addons/cloud_storage/i18n/lo.po` (168 lines)
-- `addons/cloud_storage/i18n/lt.po` (168 lines)
-- `addons/cloud_storage/i18n/lv.po` (168 lines)
-- `addons/cloud_storage/i18n/mn.po` (166 lines)
-- `addons/cloud_storage/i18n/my.po` (164 lines)
-- `addons/cloud_storage/i18n/nb.po` (167 lines)
-- `addons/cloud_storage/i18n/nl.po` (172 lines)
-- `addons/cloud_storage/i18n/pl.po` (175 lines)
-- `addons/cloud_storage/i18n/pt.po` (176 lines)
-- `addons/cloud_storage/i18n/pt_BR.po` (176 lines)
-- `addons/cloud_storage/i18n/ro.po` (177 lines)
-- `addons/cloud_storage/i18n/ru.po` (174 lines)
-- `addons/cloud_storage/i18n/sk.po` (167 lines)
-- `addons/cloud_storage/i18n/sl.po` (173 lines)
-- `addons/cloud_storage/i18n/sr@latin.po` (167 lines)
-- `addons/cloud_storage/i18n/sv.po` (174 lines)
-- `addons/cloud_storage/i18n/th.po` (170 lines)
-- `addons/cloud_storage/i18n/tr.po` (173 lines)
-- `addons/cloud_storage/i18n/uk.po` (167 lines)
-- `addons/cloud_storage/i18n/uz.po` (197 lines)
-- `addons/cloud_storage/i18n/vi.po` (172 lines)
-- `addons/cloud_storage/i18n/zh_CN.po` (170 lines)
-- `addons/cloud_storage/i18n/zh_TW.po` (172 lines)
-- `addons/cloud_storage/models/__init__.py` (5 lines)
-- `addons/cloud_storage/models/ir_attachment.py` (148 lines)
-- `addons/cloud_storage/models/ir_http.py` (16 lines)
-- `addons/cloud_storage/models/res_config_settings.py` (85 lines)
-- `addons/cloud_storage/static/src/chatter/web/chatter_patch.js` (11 lines)
-- `addons/cloud_storage/static/src/chatter/web/chatter_patch.xml` (12 lines)
-- `addons/cloud_storage/static/src/core/common/attachment_list_patch.js` (20 lines)
-- `addons/cloud_storage/static/src/core/common/attachment_model_patch.js` (99 lines)
-- `addons/cloud_storage/static/src/core/common/file_viewer_patch.js` (33 lines)
-- `addons/cloud_storage/static/src/core/public_web/attachment_upload_service_patch.js` (110 lines)
-- `addons/cloud_storage/static/src/core/public_web/composer_patch.js` (13 lines)
-- `addons/cloud_storage/static/src/core/public_web/composer_patch.xml` (8 lines)
-- `addons/cloud_storage/static/tests/attachment_list.test.js` (54 lines)
-- `addons/cloud_storage/tests/__init__.py` (5 lines)
-- `addons/cloud_storage/tests/test_attachment_controller.py` (57 lines)
-- `addons/cloud_storage/tests/test_ir_attachment.py` (27 lines)
-- `addons/cloud_storage/tests/test_rtc.py` (183 lines)
-- `addons/cloud_storage/tests/tools.py` (9 lines)
-- `addons/cloud_storage/views/settings.xml` (26 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 3 model declarations, 30 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/cloud_storage/models/res_config_settings.py:9`, `addons/cloud_storage/models/ir_http.py:7`, `addons/cloud_storage/models/ir_attachment.py:15`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### HTTP/API surface
+
+- **Description:** 3 controller files and 1 route declarations.
+- **Evidence:** `addons/cloud_storage/controllers/rtc.py:54`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 3 XML files and 7 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/cloud_storage/views/settings.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 5 test files are present.
+- **Evidence:** `addons/cloud_storage/tests/test_attachment_controller.py`, `addons/cloud_storage/tests/test_rtc.py`, `addons/cloud_storage/tests/__init__.py`, `addons/cloud_storage/tests/tools.py`, `addons/cloud_storage/tests/test_ir_attachment.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 3; representative identifiers: `cloud_storage_config_settings_view_form`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/cloud_storage/views/settings.xml:5`, `addons/cloud_storage/views/settings.xml:8`
+- Browser assets: 7; representative files: `addons/cloud_storage/static/tests/attachment_list.test.js`, `addons/cloud_storage/static/src/chatter/web/chatter_patch.js`, `addons/cloud_storage/static/src/core/common/attachment_list_patch.js`, `addons/cloud_storage/static/src/core/common/attachment_model_patch.js`, `addons/cloud_storage/static/src/core/common/file_viewer_patch.js`, `addons/cloud_storage/static/src/core/public_web/composer_patch.js`, `addons/cloud_storage/static/src/core/public_web/attachment_upload_service_patch.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/cloud_storage/__manifest__.py`
+- **HTTP entry points:** `addons/cloud_storage/controllers/rtc.py:54`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 3
+- Representative model evidence: inherits `res.config.settings` (addons/cloud_storage/models/res_config_settings.py:9); inherits `ir.http` (addons/cloud_storage/models/ir_http.py:7); inherits `ir.attachment` (addons/cloud_storage/models/ir_attachment.py:15)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 3
+- Route declarations: 1
+- Route evidence: `addons/cloud_storage/controllers/rtc.py:54`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base_setup`, `mail`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/cloud_storage/__init__.py`
+- `addons/cloud_storage/__manifest__.py`
+- `addons/cloud_storage/controllers/__init__.py`
+- `addons/cloud_storage/controllers/attachment.py`
+- `addons/cloud_storage/controllers/rtc.py`
+- `addons/cloud_storage/data/neutralize.sql`
+- `addons/cloud_storage/i18n/ar.po`
+- `addons/cloud_storage/i18n/az.po`
+- `addons/cloud_storage/i18n/bg.po`
+- `addons/cloud_storage/i18n/bs.po`
+- `addons/cloud_storage/i18n/ca.po`
+- `addons/cloud_storage/i18n/cloud_storage.pot`
+- `addons/cloud_storage/i18n/cs.po`
+- `addons/cloud_storage/i18n/da.po`
+- `addons/cloud_storage/i18n/de.po`
+- `addons/cloud_storage/i18n/el.po`
+- `addons/cloud_storage/i18n/es.po`
+- `addons/cloud_storage/i18n/es_419.po`
+- `addons/cloud_storage/i18n/et.po`
+- `addons/cloud_storage/i18n/fa.po`
+- `addons/cloud_storage/i18n/fi.po`
+- `addons/cloud_storage/i18n/fr.po`
+- `addons/cloud_storage/i18n/he.po`
+- `addons/cloud_storage/i18n/hi.po`
+- `addons/cloud_storage/i18n/hr.po`
+- `addons/cloud_storage/i18n/hu.po`
+- `addons/cloud_storage/i18n/id.po`
+- `addons/cloud_storage/i18n/it.po`
+- `addons/cloud_storage/i18n/ja.po`
+- `addons/cloud_storage/i18n/kab.po`
+- `addons/cloud_storage/i18n/ko.po`
+- `addons/cloud_storage/i18n/ku.po`
+- `addons/cloud_storage/i18n/lo.po`
+- `addons/cloud_storage/i18n/lt.po`
+- `addons/cloud_storage/i18n/lv.po`
+- `addons/cloud_storage/i18n/mn.po`
+- `addons/cloud_storage/i18n/my.po`
+- `addons/cloud_storage/i18n/nb.po`
+- `addons/cloud_storage/i18n/nl.po`
+- `addons/cloud_storage/i18n/pl.po`
+- `addons/cloud_storage/i18n/pt.po`
+- `addons/cloud_storage/i18n/pt_BR.po`
+- `addons/cloud_storage/i18n/ro.po`
+- `addons/cloud_storage/i18n/ru.po`
+- `addons/cloud_storage/i18n/sk.po`
+- `addons/cloud_storage/i18n/sl.po`
+- `addons/cloud_storage/i18n/sr@latin.po`
+- `addons/cloud_storage/i18n/sv.po`
+- `addons/cloud_storage/i18n/th.po`
+- `addons/cloud_storage/i18n/tr.po`
+- `addons/cloud_storage/i18n/uk.po`
+- `addons/cloud_storage/i18n/uz.po`
+- `addons/cloud_storage/i18n/vi.po`
+- `addons/cloud_storage/i18n/zh_CN.po`
+- `addons/cloud_storage/i18n/zh_TW.po`
+- `addons/cloud_storage/models/__init__.py`
+- `addons/cloud_storage/models/ir_attachment.py`
+- `addons/cloud_storage/models/ir_http.py`
+- `addons/cloud_storage/models/res_config_settings.py`
+- `addons/cloud_storage/static/src/chatter/web/chatter_patch.js`
+- `addons/cloud_storage/static/src/chatter/web/chatter_patch.xml`
+- `addons/cloud_storage/static/src/core/common/attachment_list_patch.js`
+- `addons/cloud_storage/static/src/core/common/attachment_model_patch.js`
+- `addons/cloud_storage/static/src/core/common/file_viewer_patch.js`
+- `addons/cloud_storage/static/src/core/public_web/attachment_upload_service_patch.js`
+- `addons/cloud_storage/static/src/core/public_web/composer_patch.js`
+- `addons/cloud_storage/static/src/core/public_web/composer_patch.xml`
+- `addons/cloud_storage/static/tests/attachment_list.test.js`
+- `addons/cloud_storage/tests/__init__.py`
+- `addons/cloud_storage/tests/test_attachment_controller.py`
+- `addons/cloud_storage/tests/test_ir_attachment.py`
+- `addons/cloud_storage/tests/test_rtc.py`
+- `addons/cloud_storage/tests/tools.py`
+- `addons/cloud_storage/views/settings.xml`

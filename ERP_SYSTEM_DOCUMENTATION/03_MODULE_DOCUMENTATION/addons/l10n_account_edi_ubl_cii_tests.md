@@ -1,18 +1,19 @@
 # Module: l10n_account_edi_ubl_cii_tests
 
 - **Module ID:** MOD-114
-- **Path:** `addons/l10n_account_edi_ubl_cii_tests`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_account_edi_ubl_cii_tests`
 - **Manifest:** `addons/l10n_account_edi_ubl_cii_tests/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Accounting/Accounting`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 This module tests the module 'account_edi_ubl_cii', it is separated since dependencies to some
 localizations were required. Its name begins with 'l10n' to not overload runbot.
@@ -26,98 +27,144 @@ The test files are separated by sources, they were taken from:
 We test that the external examples are correctly imported (currency, total amount and total tax match).
 We also test that generating xml from odoo with given parameters gives exactly the same xml as the expected,
 valid ones.
-    
 
-Declared dependencies: `account_edi_ubl_cii`, `l10n_fr_account`, `l10n_be`, `l10n_de`, `l10n_nl`, `l10n_au`.
+**Scope evidence:** The module contains 55 files, including 13 Python, 42 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `account_edi_ubl_cii`, `l10n_fr_account`, `l10n_be`, `l10n_de`, `l10n_nl`, `l10n_au`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 13 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 0 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 42 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 11 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 0
+- Controller/API files: 0
+- XML/data/view/template files: 42
+- Browser asset files: 0
+- Security files: 0
+- Test files: 11
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "account_edi_ubl_cii",
-    "l10n_fr_account",
-    "l10n_be",
-    "l10n_de",
-    "l10n_nl",
-    "l10n_au"
-  ]
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/l10n_account_edi_ubl_cii_tests/__init__.py` (2 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/__manifest__.py` (28 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/__init__.py` (11 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/common.py` (248 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_factur-x_doc/facturx_credit_note_type380.xml` (193 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_factur-x_doc/facturx_credit_note_type381.xml` (193 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_factur-x_doc/facturx_invoice_basis_quantity.xml` (441 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_factur-x_doc/facturx_invoice_negative_amounts.xml` (325 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/a_nz_out_invoice.xml` (194 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/a_nz_out_invoice_attacheddocument_b64.xml` (179 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/a_nz_out_invoice_attacheddocument_description.xml` (256 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/a_nz_out_refund.xml` (193 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case1.xml` (160 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case2.xml` (166 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case3.xml` (160 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case4.xml` (165 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case5.xml` (178 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_out_invoice.xml` (211 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_out_invoice_no_prices.xml` (171 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_out_invoice_quantity_and_or_unit_price_zero.xml` (182 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_out_refund.xml` (209 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_pay_term.xml` (238 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_ecotaxes_case1.xml` (170 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_ecotaxes_case2.xml` (178 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_ecotaxes_case3.xml` (170 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_out_invoice.xml` (232 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_out_invoice_tax_incl.xml` (259 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_out_refund.xml` (231 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_positive_discount_price_unit.xml` (189 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_test_import_partner.xml` (127 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/nlcius_out_invoice.xml` (208 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/nlcius_out_refund.xml` (212 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/sg_out_invoice.xml` (188 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/sg_out_refund.xml` (187 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/ubl_test_import_partner.xml` (104 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/xrechnung_ubl_out_invoice.xml` (206 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/xrechnung_ubl_out_refund.xml` (205 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/zugferd_out_invoice.xml` (220 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/zugferd_out_invoice_gln.xml` (144 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/zugferd_out_invoice_without_vat.xml` (148 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/zugferd_out_refund.xml` (219 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_allowance.xml` (369 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_credit_note.xml` (224 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_invoice_ignore_lineextensionamount.xml` (43 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_invoice_negative_amounts.xml` (224 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_tax_exempt_gbp.xml` (114 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_de.py` (113 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_fr.py` (578 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_us.py` (71 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_attacheddocument.py` (77 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_au.py` (190 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_be.py` (642 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_de.py` (503 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_nl.py` (244 lines)
-- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_sg.py` (144 lines)
+### User interface and data
 
-## Functional behavior classification
+- **Description:** 42 XML files and 0 JavaScript/TypeScript files; static XML analysis found 0 record/template/menu identifiers.
+- **Evidence:** Not found in module
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### Automated verification
+
+- **Description:** 11 test files are present.
+- **Evidence:** `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_de.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_us.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_de.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_nl.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/common.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_attacheddocument.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_be.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_fr.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_au.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/__init__.py`, `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_sg.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 42; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_account_edi_ubl_cii_tests/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 0
+- Representative model evidence: No literal model metadata found
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account_edi_ubl_cii`, `l10n_fr_account`, `l10n_be`, `l10n_de`, `l10n_nl`, `l10n_au`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Not found
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_account_edi_ubl_cii_tests/__init__.py`
+- `addons/l10n_account_edi_ubl_cii_tests/__manifest__.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/__init__.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/common.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_factur-x_doc/facturx_credit_note_type380.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_factur-x_doc/facturx_credit_note_type381.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_factur-x_doc/facturx_invoice_basis_quantity.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_factur-x_doc/facturx_invoice_negative_amounts.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/a_nz_out_invoice.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/a_nz_out_invoice_attacheddocument_b64.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/a_nz_out_invoice_attacheddocument_description.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/a_nz_out_refund.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case1.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case2.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case3.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case4.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_ecotaxes_case5.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_out_invoice.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_out_invoice_no_prices.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_out_invoice_quantity_and_or_unit_price_zero.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_out_refund.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/bis3_pay_term.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_ecotaxes_case1.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_ecotaxes_case2.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_ecotaxes_case3.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_out_invoice.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_out_invoice_tax_incl.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_out_refund.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_positive_discount_price_unit.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/facturx_test_import_partner.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/nlcius_out_invoice.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/nlcius_out_refund.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/sg_out_invoice.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/sg_out_refund.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/ubl_test_import_partner.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/xrechnung_ubl_out_invoice.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/xrechnung_ubl_out_refund.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/zugferd_out_invoice.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/zugferd_out_invoice_gln.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/zugferd_out_invoice_without_vat.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_odoo/zugferd_out_refund.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_allowance.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_credit_note.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_invoice_ignore_lineextensionamount.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_invoice_negative_amounts.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_files/from_peppol-bis-invoice-3_doc/bis3_tax_exempt_gbp.xml`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_de.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_fr.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_cii_us.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_attacheddocument.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_au.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_be.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_de.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_nl.py`
+- `addons/l10n_account_edi_ubl_cii_tests/tests/test_xml_ubl_sg.py`

@@ -1,124 +1,189 @@
 # Module: payment_paymob
 
 - **Module ID:** MOD-407
-- **Path:** `addons/payment_paymob`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/payment_paymob`
 - **Manifest:** `addons/payment_paymob/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Accounting/Payment Providers`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-An Egyptian payment provider for the Middle East.
+**Purpose:** An Egyptian payment provider for the Middle East.
 
- 
+**Manifest description:**
 
-Declared dependencies: `payment`.
 
-## Static implementation surface
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 12 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 3 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 4 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 2 | Static decorator matches. |
+**Scope evidence:** The module contains 69 files, including 12 Python, 3 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `payment`.
 
-## Evidence inventory
+## 2. Module structure
 
-### Manifest-declared data and assets
+- Model/business logic files: 2
+- Controller/API files: 2
+- XML/data/view/template files: 3
+- Browser asset files: 0
+- Security files: 0
+- Test files: 4
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-```text
-{
-  "depends": [
-    "payment"
-  ],
-  "data": [
-    "views/payment_provider_views.xml",
-    "data/payment_method_data.xml",
-    "data/payment_provider_data.xml"
-  ]
-}
-```
+## 3. Actors and permissions
 
-### Representative source files
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-- `addons/payment_paymob/README.md` (31 lines)
-- `addons/payment_paymob/__init__.py` (12 lines)
-- `addons/payment_paymob/__manifest__.py` (19 lines)
-- `addons/payment_paymob/const.py` (59 lines)
-- `addons/payment_paymob/controllers/__init__.py` (3 lines)
-- `addons/payment_paymob/controllers/main.py` (120 lines)
-- `addons/payment_paymob/data/neutralize.sql` (6 lines)
-- `addons/payment_paymob/data/payment_method_data.xml` (181 lines)
-- `addons/payment_paymob/data/payment_provider_data.xml` (9 lines)
-- `addons/payment_paymob/i18n/ar.po` (293 lines)
-- `addons/payment_paymob/i18n/az.po` (295 lines)
-- `addons/payment_paymob/i18n/bg.po` (296 lines)
-- `addons/payment_paymob/i18n/bs.po` (295 lines)
-- `addons/payment_paymob/i18n/ca.po` (301 lines)
-- `addons/payment_paymob/i18n/cs.po` (300 lines)
-- `addons/payment_paymob/i18n/da.po` (319 lines)
-- `addons/payment_paymob/i18n/de.po` (294 lines)
-- `addons/payment_paymob/i18n/el.po` (296 lines)
-- `addons/payment_paymob/i18n/es.po` (292 lines)
-- `addons/payment_paymob/i18n/es_419.po` (292 lines)
-- `addons/payment_paymob/i18n/et.po` (299 lines)
-- `addons/payment_paymob/i18n/fa.po` (298 lines)
-- `addons/payment_paymob/i18n/fi.po` (289 lines)
-- `addons/payment_paymob/i18n/fr.po` (293 lines)
-- `addons/payment_paymob/i18n/he.po` (300 lines)
-- `addons/payment_paymob/i18n/hi.po` (299 lines)
-- `addons/payment_paymob/i18n/hr.po` (299 lines)
-- `addons/payment_paymob/i18n/hu.po` (296 lines)
-- `addons/payment_paymob/i18n/id.po` (296 lines)
-- `addons/payment_paymob/i18n/it.po` (292 lines)
-- `addons/payment_paymob/i18n/ja.po` (292 lines)
-- `addons/payment_paymob/i18n/kab.po` (293 lines)
-- `addons/payment_paymob/i18n/ko.po` (292 lines)
-- `addons/payment_paymob/i18n/ku.po` (294 lines)
-- `addons/payment_paymob/i18n/lo.po` (291 lines)
-- `addons/payment_paymob/i18n/lt.po` (298 lines)
-- `addons/payment_paymob/i18n/lv.po` (298 lines)
-- `addons/payment_paymob/i18n/mn.po` (296 lines)
-- `addons/payment_paymob/i18n/my.po` (294 lines)
-- `addons/payment_paymob/i18n/nb.po` (296 lines)
-- `addons/payment_paymob/i18n/nl.po` (293 lines)
-- `addons/payment_paymob/i18n/payment_paymob.pot` (285 lines)
-- `addons/payment_paymob/i18n/pl.po` (294 lines)
-- `addons/payment_paymob/i18n/pt.po` (299 lines)
-- `addons/payment_paymob/i18n/pt_BR.po` (295 lines)
-- `addons/payment_paymob/i18n/ro.po` (292 lines)
-- `addons/payment_paymob/i18n/ru.po` (293 lines)
-- `addons/payment_paymob/i18n/sk.po` (300 lines)
-- `addons/payment_paymob/i18n/sl.po` (299 lines)
-- `addons/payment_paymob/i18n/sr@latin.po` (296 lines)
-- `addons/payment_paymob/i18n/sv.po` (299 lines)
-- `addons/payment_paymob/i18n/th.po` (299 lines)
-- `addons/payment_paymob/i18n/tr.po` (294 lines)
-- `addons/payment_paymob/i18n/uk.po` (302 lines)
-- `addons/payment_paymob/i18n/uz.po` (326 lines)
-- `addons/payment_paymob/i18n/vi.po` (301 lines)
-- `addons/payment_paymob/i18n/zh_CN.po` (290 lines)
-- `addons/payment_paymob/i18n/zh_TW.po` (291 lines)
-- `addons/payment_paymob/models/__init__.py` (3 lines)
-- `addons/payment_paymob/models/payment_provider.py` (281 lines)
-- `addons/payment_paymob/models/payment_transaction.py` (157 lines)
-- `addons/payment_paymob/static/description/icon.png` (13 lines)
-- `addons/payment_paymob/static/description/icon.svg` (10 lines)
-- `addons/payment_paymob/static/description/icon_hi.png` (54 lines)
-- `addons/payment_paymob/tests/__init__.py` (3 lines)
-- `addons/payment_paymob/tests/common.py` (80 lines)
-- `addons/payment_paymob/tests/test_paymob.py` (85 lines)
-- `addons/payment_paymob/tests/test_processing_flows.py` (114 lines)
-- `addons/payment_paymob/views/payment_provider_views.xml` (62 lines)
+**Security evidence:** Not found in module
 
-## Functional behavior classification
+## 4. Functionalities
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### Model and business logic
+
+- **Description:** 2 model declarations, 37 methods, 1 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/payment_paymob/models/payment_transaction.py:15`, `addons/payment_paymob/models/payment_provider.py:16`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### HTTP/API surface
+
+- **Description:** 2 controller files and 2 route declarations.
+- **Evidence:** `addons/payment_paymob/controllers/main.py:24`, `addons/payment_paymob/controllers/main.py:43`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 3 XML files and 0 JavaScript/TypeScript files; static XML analysis found 21 record/template/menu identifiers.
+- **Evidence:** `addons/payment_paymob/data/payment_provider_data.xml:4`, `addons/payment_paymob/data/payment_method_data.xml:8`, `addons/payment_paymob/data/payment_method_data.xml:17`, `addons/payment_paymob/data/payment_method_data.xml:27`, `addons/payment_paymob/data/payment_method_data.xml:36`, `addons/payment_paymob/data/payment_method_data.xml:45`, `addons/payment_paymob/data/payment_method_data.xml:54`, `addons/payment_paymob/data/payment_method_data.xml:63`, `addons/payment_paymob/data/payment_method_data.xml:72`, `addons/payment_paymob/data/payment_method_data.xml:81`, `addons/payment_paymob/data/payment_method_data.xml:90`, `addons/payment_paymob/data/payment_method_data.xml:99`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 4 test files are present.
+- **Evidence:** `addons/payment_paymob/tests/test_processing_flows.py`, `addons/payment_paymob/tests/test_paymob.py`, `addons/payment_paymob/tests/common.py`, `addons/payment_paymob/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 3; representative identifiers: `payment.payment_provider_paymob`, `payment_method_aman`, `payment_method_card`, `payment_method_contact`, `payment_method_forsa`, `payment_method_halan`, `payment_method_installments_eg`, `payment_method_kiosk`, `payment_method_mobile_wallet_eg`, `payment_method_omannet`, `payment_method_premium_card`, `payment_method_souhoola`, `payment_method_stcpay`, `payment_method_sympl`, `payment_method_tabby`, `payment_method_tamara`, `payment_method_valu`, `payment_method_amex`, `payment_method_mastercard`, `payment_method_visa`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/payment_paymob/views/payment_provider_views.xml:6`, `addons/payment_paymob/views/payment_provider_views.xml:8`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/payment_paymob/__manifest__.py`
+- **HTTP entry points:** `addons/payment_paymob/controllers/main.py:24`, `addons/payment_paymob/controllers/main.py:43`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `payment.transaction` (addons/payment_paymob/models/payment_transaction.py:15); inherits `payment.provider` (addons/payment_paymob/models/payment_provider.py:16)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 2
+- Route evidence: `addons/payment_paymob/controllers/main.py:24`, `addons/payment_paymob/controllers/main.py:43`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `payment`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/payment_paymob/README.md`
+- `addons/payment_paymob/__init__.py`
+- `addons/payment_paymob/__manifest__.py`
+- `addons/payment_paymob/const.py`
+- `addons/payment_paymob/controllers/__init__.py`
+- `addons/payment_paymob/controllers/main.py`
+- `addons/payment_paymob/data/neutralize.sql`
+- `addons/payment_paymob/data/payment_method_data.xml`
+- `addons/payment_paymob/data/payment_provider_data.xml`
+- `addons/payment_paymob/i18n/ar.po`
+- `addons/payment_paymob/i18n/az.po`
+- `addons/payment_paymob/i18n/bg.po`
+- `addons/payment_paymob/i18n/bs.po`
+- `addons/payment_paymob/i18n/ca.po`
+- `addons/payment_paymob/i18n/cs.po`
+- `addons/payment_paymob/i18n/da.po`
+- `addons/payment_paymob/i18n/de.po`
+- `addons/payment_paymob/i18n/el.po`
+- `addons/payment_paymob/i18n/es.po`
+- `addons/payment_paymob/i18n/es_419.po`
+- `addons/payment_paymob/i18n/et.po`
+- `addons/payment_paymob/i18n/fa.po`
+- `addons/payment_paymob/i18n/fi.po`
+- `addons/payment_paymob/i18n/fr.po`
+- `addons/payment_paymob/i18n/he.po`
+- `addons/payment_paymob/i18n/hi.po`
+- `addons/payment_paymob/i18n/hr.po`
+- `addons/payment_paymob/i18n/hu.po`
+- `addons/payment_paymob/i18n/id.po`
+- `addons/payment_paymob/i18n/it.po`
+- `addons/payment_paymob/i18n/ja.po`
+- `addons/payment_paymob/i18n/kab.po`
+- `addons/payment_paymob/i18n/ko.po`
+- `addons/payment_paymob/i18n/ku.po`
+- `addons/payment_paymob/i18n/lo.po`
+- `addons/payment_paymob/i18n/lt.po`
+- `addons/payment_paymob/i18n/lv.po`
+- `addons/payment_paymob/i18n/mn.po`
+- `addons/payment_paymob/i18n/my.po`
+- `addons/payment_paymob/i18n/nb.po`
+- `addons/payment_paymob/i18n/nl.po`
+- `addons/payment_paymob/i18n/payment_paymob.pot`
+- `addons/payment_paymob/i18n/pl.po`
+- `addons/payment_paymob/i18n/pt.po`
+- `addons/payment_paymob/i18n/pt_BR.po`
+- `addons/payment_paymob/i18n/ro.po`
+- `addons/payment_paymob/i18n/ru.po`
+- `addons/payment_paymob/i18n/sk.po`
+- `addons/payment_paymob/i18n/sl.po`
+- `addons/payment_paymob/i18n/sr@latin.po`
+- `addons/payment_paymob/i18n/sv.po`
+- `addons/payment_paymob/i18n/th.po`
+- `addons/payment_paymob/i18n/tr.po`
+- `addons/payment_paymob/i18n/uk.po`
+- `addons/payment_paymob/i18n/uz.po`
+- `addons/payment_paymob/i18n/vi.po`
+- `addons/payment_paymob/i18n/zh_CN.po`
+- `addons/payment_paymob/i18n/zh_TW.po`
+- `addons/payment_paymob/models/__init__.py`
+- `addons/payment_paymob/models/payment_provider.py`
+- `addons/payment_paymob/models/payment_transaction.py`
+- `addons/payment_paymob/static/description/icon.png`
+- `addons/payment_paymob/static/description/icon.svg`
+- `addons/payment_paymob/static/description/icon_hi.png`
+- `addons/payment_paymob/tests/__init__.py`
+- `addons/payment_paymob/tests/common.py`
+- `addons/payment_paymob/tests/test_paymob.py`
+- `addons/payment_paymob/tests/test_processing_flows.py`
+- `addons/payment_paymob/views/payment_provider_views.xml`

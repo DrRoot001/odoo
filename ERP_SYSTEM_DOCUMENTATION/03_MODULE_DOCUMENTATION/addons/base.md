@@ -1,296 +1,388 @@
 # Module: base
 
 - **Module ID:** MOD-648
-- **Path:** `odoo/addons/base`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `odoo/addons/base`
 - **Manifest:** `odoo/addons/base/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Hidden`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 The kernel of Odoo, needed for all installation.
 ===================================================
 
+**Scope evidence:** The module contains 661 files, including 107 Python, 88 XML, and 1 JavaScript/TypeScript files. The manifest declares dependencies: None declared.
 
-Declared dependencies: None declared.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 130
+- Controller/API files: 0
+- XML/data/view/template files: 88
+- Browser asset files: 1
+- Security files: 2
+- Test files: 42
+- Scheduled/automation evidence files: 28
+- Reporting evidence files: 13
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 107 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 52 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 88 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 1 | Client behavior/assets. |
-| Tests | 42 | Test files found by path/name convention. |
-| Security artifacts | 2 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `odoo/addons/base/security/base_groups.xml`, `odoo/addons/base/security/ir.access.csv`
 
-```text
-{
-  "data": [
-    "data/res.lang.csv",
-    "data/res_lang_data.xml",
-    "data/res_partner_data.xml",
-    "data/res_currency_data.xml",
-    "data/res_company_data.xml",
-    "data/res_users_data.xml",
-    "data/report_paperformat_data.xml",
-    "data/res_country_data.xml",
-    "data/clearing_label_data.xml",
-    "data/ir_demo_data.xml",
-    "security/base_groups.xml",
-    "wizard/wizard_ir_model_menu_create_views.xml",
-    "views/decimal_precision_views.xml",
-    "views/res_config_views.xml",
-    "data/res.country.state.csv",
-    "views/ir_actions_views.xml",
-    "views/ir_asset_views.xml",
-    "views/ir_config_parameter_views.xml",
-    "views/ir_cron_views.xml",
-    "views/ir_cron_trigger_views.xml",
-    "views/ir_filters_views.xml",
-    "views/ir_mail_server_views.xml",
-    "views/ir_model_views.xml",
-    "views/ir_attachment_views.xml",
-    "views/ir_access_views.xml",
-    "views/ir_sequence_views.xml",
-    "views/ir_ui_menu_views.xml",
-    "views/ir_ui_view_views.xml",
-    "views/ir_default_views.xml",
-    "data/ir_config_parameter_data.xml",
-    "data/ir_cron_data.xml",
-    "report/ir_model_report.xml",
-    "report/ir_model_templates.xml",
-    "views/ir_logging_views.xml",
-    "views/ir_qweb_widget_templates.xml",
-    "views/ir_module_views.xml",
-    "data/ir_module_category_data.xml",
-    "data/ir_module_module.xml",
-    "report/ir_module_reports.xml",
-    "report/ir_module_report_templates.xml",
-    "wizard/base_module_update_views.xml",
-    "wizard/base_language_install_views.xml",
-    "wizard/base_import_language_views.xml",
-    "wizard/base_module_upgrade_views.xml",
-    "wizard/base_module_uninstall_views.xml",
-    "wizard/base_export_language_views.xml",
-    "wizard/base_partner_merge_views.xml",
-    "data/ir_demo_failure_data.xml",
-    "views/ir_profile_views.xml",
-    "views/res_company_views.xml",
-    "views/res_lang_views.xml",
-    "views/res_partner_views.xml",
-    "views/clearing_label_views.xml",
-    "views/res_partner_bank_views.xml",
-    "views/res_country_views.xml",
-    "views/res_country_group_views.xml",
-    "views/res_country_state_views.xml",
-    "views/res_currency_views.xml",
-    "views/res_groups_views.xml",
-    "views/res_users_views.xml",
-    "views/res_users_apikeys_views.xml",
-    "views/res_device_views.xml",
-    "views/res_users_identitycheck_views.xml",
-    "views/res_config_settings_views.xml",
-    "views/report_paperformat_views.xml",
-    "data/ir_action_data.xml",
-    "data/website.xml",
-    "views/base_menus.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/res_users_demo.xml",
-    "data/res_partner_bank_demo.xml",
-    "data/res_currency_demo.xml",
-    "data/res_currency_rate_demo.xml",
-    "data/res_partner_demo.xml",
-    "data/res_partner_image_demo.xml"
-  ],
-  "assets": {
-    "web.assets_tests": [
-      "base/static/tests/**/*"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `odoo/addons/base/__init__.py` (11 lines)
-- `odoo/addons/base/__manifest__.py` (100 lines)
-- `odoo/addons/base/data/base_data.sql` (141 lines)
-- `odoo/addons/base/data/base_data_test.sql` (21 lines)
-- `odoo/addons/base/data/clearing_label_data.xml` (66 lines)
-- `odoo/addons/base/data/ir_action_data.xml` (13 lines)
-- `odoo/addons/base/data/ir_config_parameter_data.xml` (9 lines)
-- `odoo/addons/base/data/ir_cron_data.xml` (22 lines)
-- `odoo/addons/base/data/ir_demo_data.xml` (27 lines)
-- `odoo/addons/base/data/ir_demo_failure_data.xml` (71 lines)
-- `odoo/addons/base/data/ir_module_category_data.xml` (152 lines)
-- `odoo/addons/base/data/ir_module_module.xml` (282 lines)
-- `odoo/addons/base/data/neutralize.sql` (33 lines)
-- `odoo/addons/base/data/report_paperformat_data.xml` (54 lines)
-- `odoo/addons/base/data/res.country.state.csv` (2,131 lines)
-- `odoo/addons/base/data/res.lang.csv` (94 lines)
-- `odoo/addons/base/data/res_company_data.xml` (10 lines)
-- `odoo/addons/base/data/res_country_data.xml` (1,790 lines)
-- `odoo/addons/base/data/res_currency_data.xml` (1,900 lines)
-- `odoo/addons/base/data/res_currency_demo.xml` (22 lines)
-- `odoo/addons/base/data/res_currency_rate_demo.xml` (982 lines)
-- `odoo/addons/base/data/res_lang_data.xml` (28 lines)
-- `odoo/addons/base/data/res_partner_bank_demo.xml` (9 lines)
-- `odoo/addons/base/data/res_partner_data.xml` (137 lines)
-- `odoo/addons/base/data/res_partner_demo.xml` (369 lines)
-- `odoo/addons/base/data/res_partner_image_demo.xml` (106 lines)
-- `odoo/addons/base/data/res_users_data.xml` (39 lines)
-- `odoo/addons/base/data/res_users_demo.xml` (121 lines)
-- `odoo/addons/base/data/rtlcss.json` (21 lines)
-- `odoo/addons/base/data/website.xml` (11 lines)
-- `odoo/addons/base/i18n/af.po` (21,617 lines)
-- `odoo/addons/base/i18n/am.po` (21,613 lines)
-- `odoo/addons/base/i18n/ar.po` (22,468 lines)
-- `odoo/addons/base/i18n/az.po` (21,991 lines)
-- `odoo/addons/base/i18n/base.pot` (21,499 lines)
-- `odoo/addons/base/i18n/bg.po` (21,920 lines)
-- `odoo/addons/base/i18n/bs.po` (21,727 lines)
-- `odoo/addons/base/i18n/ca.po` (22,197 lines)
-- `odoo/addons/base/i18n/cs.po` (22,486 lines)
-- `odoo/addons/base/i18n/da.po` (22,714 lines)
-- `odoo/addons/base/i18n/de.po` (22,869 lines)
-- `odoo/addons/base/i18n/el.po` (21,769 lines)
-- `odoo/addons/base/i18n/es.po` (22,638 lines)
-- `odoo/addons/base/i18n/es_419.po` (23,000 lines)
-- `odoo/addons/base/i18n/es_CL.po` (763 lines)
-- `odoo/addons/base/i18n/et.po` (22,102 lines)
-- `odoo/addons/base/i18n/eu.po` (21,616 lines)
-- `odoo/addons/base/i18n/fa.po` (21,907 lines)
-- `odoo/addons/base/i18n/fi.po` (22,630 lines)
-- `odoo/addons/base/i18n/fo.po` (21,616 lines)
-- `odoo/addons/base/i18n/fr.po` (22,838 lines)
-- `odoo/addons/base/i18n/fr_BE.po` (21,612 lines)
-- `odoo/addons/base/i18n/fr_CA.po` (715 lines)
-- `odoo/addons/base/i18n/gl.po` (21,616 lines)
-- `odoo/addons/base/i18n/gu.po` (21,633 lines)
-- `odoo/addons/base/i18n/he.po` (21,911 lines)
-- `odoo/addons/base/i18n/hi.po` (21,644 lines)
-- `odoo/addons/base/i18n/hr.po` (21,815 lines)
-- `odoo/addons/base/i18n/hu.po` (21,927 lines)
-- `odoo/addons/base/i18n/id.po` (22,912 lines)
-- `odoo/addons/base/i18n/is.po` (21,832 lines)
-- `odoo/addons/base/i18n/it.po` (23,025 lines)
-- `odoo/addons/base/i18n/ja.po` (22,751 lines)
-- `odoo/addons/base/i18n/ka.po` (21,616 lines)
-- `odoo/addons/base/i18n/kab.po` (21,619 lines)
-- `odoo/addons/base/i18n/km.po` (21,621 lines)
-- `odoo/addons/base/i18n/ko.po` (22,272 lines)
-- `odoo/addons/base/i18n/ku.po` (21,647 lines)
-- `odoo/addons/base/i18n/lb.po` (21,618 lines)
-- `odoo/addons/base/i18n/lo.po` (22,543 lines)
-- `odoo/addons/base/i18n/lt.po` (21,809 lines)
-- `odoo/addons/base/i18n/lv.po` (21,956 lines)
-- `odoo/addons/base/i18n/mk.po` (21,616 lines)
-- `odoo/addons/base/i18n/mn.po` (22,805 lines)
-- `odoo/addons/base/i18n/my.po` (21,623 lines)
-- `odoo/addons/base/i18n/nb.po` (21,733 lines)
-- `odoo/addons/base/i18n/nl.po` (22,774 lines)
-- `odoo/addons/base/i18n/pl.po` (22,678 lines)
-- `odoo/addons/base/i18n/pt.po` (22,233 lines)
-- `odoo/addons/base/i18n/pt_BR.po` (22,950 lines)
-- `odoo/addons/base/i18n/ro.po` (22,463 lines)
-- `odoo/addons/base/i18n/ru.po` (22,551 lines)
-- `odoo/addons/base/i18n/sk.po` (21,949 lines)
-- `odoo/addons/base/i18n/sl.po` (22,334 lines)
-- `odoo/addons/base/i18n/sq.po` (21,616 lines)
-- `odoo/addons/base/i18n/sr@latin.po` (21,652 lines)
-- `odoo/addons/base/i18n/sv.po` (22,464 lines)
-- `odoo/addons/base/i18n/th.po` (22,226 lines)
-- `odoo/addons/base/i18n/tr.po` (22,761 lines)
-- `odoo/addons/base/i18n/uk.po` (22,199 lines)
-- `odoo/addons/base/i18n/uz.po` (25,547 lines)
-- `odoo/addons/base/i18n/vi.po` (22,689 lines)
-- `odoo/addons/base/i18n/zh_CN.po` (22,218 lines)
-- `odoo/addons/base/i18n/zh_TW.po` (22,066 lines)
-- `odoo/addons/base/models/__init__.py` (57 lines)
-- `odoo/addons/base/models/assetsbundle.py` (1,189 lines)
-- `odoo/addons/base/models/avatar_mixin.py` (104 lines)
-- `odoo/addons/base/models/clearing_label.py` (21 lines)
-- `odoo/addons/base/models/decimal_precision.py` (45 lines)
-- `odoo/addons/base/models/image_mixin.py` (18 lines)
-- `odoo/addons/base/models/ir_access.py` (540 lines)
-- `odoo/addons/base/models/ir_actions.py` (1,498 lines)
-- `odoo/addons/base/models/ir_actions_report.py` (926 lines)
-- `odoo/addons/base/models/ir_asset.py` (423 lines)
-- `odoo/addons/base/models/ir_attachment.py` (1,237 lines)
-- `odoo/addons/base/models/ir_autovacuum.py` (75 lines)
-- `odoo/addons/base/models/ir_binary.py` (298 lines)
-- `odoo/addons/base/models/ir_config_parameter.py` (173 lines)
-- `odoo/addons/base/models/ir_cron.py` (966 lines)
-- `odoo/addons/base/models/ir_default.py` (250 lines)
-- `odoo/addons/base/models/ir_demo.py` (19 lines)
-- `odoo/addons/base/models/ir_demo_failure.py` (32 lines)
-- `odoo/addons/base/models/ir_embedded_actions.py` (111 lines)
-- `odoo/addons/base/models/ir_exports.py` (167 lines)
-- `odoo/addons/base/models/ir_fields.py` (753 lines)
-- `odoo/addons/base/models/ir_filters.py` (127 lines)
-- `odoo/addons/base/models/ir_http.py` (691 lines)
-- `odoo/addons/base/models/ir_logging.py` (45 lines)
-- `odoo/addons/base/models/ir_mail_server.py` (965 lines)
-- `odoo/addons/base/models/ir_model.py` (2,823 lines)
-- `odoo/addons/base/models/ir_module.py` (1,149 lines)
-- `odoo/addons/base/models/ir_profile.py` (279 lines)
-- `odoo/addons/base/models/ir_profile_query.py` (68 lines)
-- `odoo/addons/base/models/ir_qweb.py` (3,216 lines)
-- `odoo/addons/base/models/ir_qweb_fields.py` (920 lines)
-- `odoo/addons/base/models/ir_sequence.py` (394 lines)
-- `odoo/addons/base/models/ir_ui_menu.py` (322 lines)
-- `odoo/addons/base/models/ir_ui_view.py` (3,699 lines)
-- `odoo/addons/base/models/properties_base_definition.py` (66 lines)
-- `odoo/addons/base/models/properties_base_definition_mixin.py` (54 lines)
-- `odoo/addons/base/models/report_layout.py` (17 lines)
-- `odoo/addons/base/models/report_paperformat.py` (213 lines)
-- `odoo/addons/base/models/res_company.py` (589 lines)
-- `odoo/addons/base/models/res_config.py` (560 lines)
-- `odoo/addons/base/models/res_country.py` (298 lines)
-- `odoo/addons/base/models/res_currency.py` (546 lines)
-- `odoo/addons/base/models/res_device.py` (376 lines)
-- `odoo/addons/base/models/res_groups.py` (649 lines)
-- `odoo/addons/base/models/res_groups_privilege.py` (15 lines)
-- `odoo/addons/base/models/res_lang.py` (544 lines)
-- `odoo/addons/base/models/res_partner.py` (2,463 lines)
-- `odoo/addons/base/models/res_partner_bank.py` (254 lines)
-- `odoo/addons/base/models/res_users.py` (1,963 lines)
-- `odoo/addons/base/models/res_users_deletion.py` (100 lines)
-- `odoo/addons/base/models/res_users_settings.py` (55 lines)
-- `odoo/addons/base/models/website.py` (66 lines)
-- `odoo/addons/base/populate/common.xml` (32 lines)
-- `odoo/addons/base/report/__init__.py` (4 lines)
-- `odoo/addons/base/report/corporate_defaults.xsl` (94 lines)
-- `odoo/addons/base/report/custom_default_printscreen.xsl` (20 lines)
-- `odoo/addons/base/report/custom_new.xsl` (177 lines)
-- `odoo/addons/base/report/custom_rml_printscreen.xsl` (29 lines)
-- `odoo/addons/base/report/ir_model_report.xml` (12 lines)
-- `odoo/addons/base/report/ir_model_templates.xml` (103 lines)
-- `odoo/addons/base/report/ir_module_report_templates.xml` (68 lines)
-- `odoo/addons/base/report/ir_module_reports.xml` (15 lines)
-- `odoo/addons/base/report/mako_footer.html` (23 lines)
-- `odoo/addons/base/report/mako_header.html` (62 lines)
-- `odoo/addons/base/report/mako_template.css` (16 lines)
-- `odoo/addons/base/report/report_base_report_irmodulereference.py` (46 lines)
+- **Description:** 130 model declarations, 2500 methods, 49 constraint handlers, 35 onchange handlers, and 134 dependency declarations.
+- **Evidence:** `odoo/addons/base/models/properties_base_definition_mixin.py:8`, `odoo/addons/base/models/res_partner.py:141`, `odoo/addons/base/models/res_partner.py:153`, `odoo/addons/base/models/res_partner.py:231`, `odoo/addons/base/models/res_partner.py:271`, `odoo/addons/base/models/res_partner.py:2453`, `odoo/addons/base/models/ir_access.py:64`, `odoo/addons/base/models/ir_profile_query.py:15`, `odoo/addons/base/models/res_lang.py:83`, `odoo/addons/base/models/ir_config_parameter.py:33`, `odoo/addons/base/models/ir_profile.py:21`, `odoo/addons/base/models/ir_profile.py:259`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Additional files not expanded here: 501. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### User interface and data
 
-## Functional behavior classification
+- **Description:** 88 XML files and 1 JavaScript/TypeScript files; static XML analysis found 1141 record/template/menu identifiers.
+- **Evidence:** `odoo/addons/base/security/base_groups.xml:6`, `odoo/addons/base/security/base_groups.xml:11`, `odoo/addons/base/security/base_groups.xml:16`, `odoo/addons/base/security/base_groups.xml:26`, `odoo/addons/base/security/base_groups.xml:31`, `odoo/addons/base/security/base_groups.xml:37`, `odoo/addons/base/security/base_groups.xml:42`, `odoo/addons/base/security/base_groups.xml:46`, `odoo/addons/base/security/base_groups.xml:53`, `odoo/addons/base/security/base_groups.xml:57`, `odoo/addons/base/security/base_groups.xml:61`, `odoo/addons/base/security/base_groups.xml:66`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### Security
+
+- **Description:** 2 security-directory files are present.
+- **Evidence:** `odoo/addons/base/security/base_groups.xml`, `odoo/addons/base/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 28 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `odoo/addons/base/__manifest__.py`, `odoo/addons/base/models/ir_profile.py`, `odoo/addons/base/models/res_device.py`, `odoo/addons/base/models/ir_model.py`, `odoo/addons/base/models/ir_actions.py`, `odoo/addons/base/models/ir_http.py`, `odoo/addons/base/models/ir_module.py`, `odoo/addons/base/models/res_users_deletion.py`, `odoo/addons/base/models/ir_autovacuum.py`, `odoo/addons/base/models/res_users.py`, `odoo/addons/base/models/__init__.py`, `odoo/addons/base/models/ir_cron.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 13 files contain report-action/template indicators.
+- **Evidence:** `odoo/addons/base/models/ir_actions_report.py`, `odoo/addons/base/models/ir_module.py`, `odoo/addons/base/models/ir_qweb_fields.py`, `odoo/addons/base/models/ir_ui_menu.py`, `odoo/addons/base/models/report_paperformat.py`, `odoo/addons/base/report/ir_model_report.xml`, `odoo/addons/base/report/report_base_report_irmodulereference.py`, `odoo/addons/base/report/ir_module_reports.xml`, `odoo/addons/base/views/ir_actions_views.xml`, `odoo/addons/base/views/report_paperformat_views.xml`, `odoo/addons/base/tests/test_ir_ui_view.py`, `odoo/addons/base/tests/test_ir_module.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 42 test files are present.
+- **Evidence:** `odoo/addons/base/tests/test_calendar_view.py`, `odoo/addons/base/tests/test_avatar_mixin.py`, `odoo/addons/base/tests/test_res_lang.py`, `odoo/addons/base/tests/test_ir_cron.py`, `odoo/addons/base/tests/test_ir_http.py`, `odoo/addons/base/tests/test_res_currency.py`, `odoo/addons/base/tests/test_ir_model.py`, `odoo/addons/base/tests/test_ir_mail_server_smtpd.py`, `odoo/addons/base/tests/test_res_users.py`, `odoo/addons/base/tests/mail_examples.py`, `odoo/addons/base/tests/test_ir_mail_server.py`, `odoo/addons/base/tests/test_ir_actions.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 88; representative identifiers: `module_category_master_data`, `res_groups_privilege_export`, `res_groups_privilege_contact`, `group_user`, `group_user_regular`, `group_erp_manager`, `group_sanitize_override`, `group_system`, `group_multi_company`, `group_multi_currency`, `group_no_one`, `group_allow_export`, `group_partner_manager`, `group_portal`, `group_public`, `group_everyone`, `public_user`, `template_portal_user_id`, `default_template_user_config`, `default_user_group`
+- Menus: 66; representative evidence: `odoo/addons/base/views/base_menus.xml:4`, `odoo/addons/base/views/base_menus.xml:11`, `odoo/addons/base/views/base_menus.xml:12`, `odoo/addons/base/views/base_menus.xml:13`, `odoo/addons/base/views/base_menus.xml:14`, `odoo/addons/base/views/base_menus.xml:15`, `odoo/addons/base/views/base_menus.xml:18`, `odoo/addons/base/views/base_menus.xml:25`, `odoo/addons/base/views/base_menus.xml:33`, `odoo/addons/base/views/base_menus.xml:40`, `odoo/addons/base/views/base_menus.xml:41`, `odoo/addons/base/views/base_menus.xml:42`
+- Templates: 5; representative evidence: `odoo/addons/base/report/ir_model_templates.xml:3`, `odoo/addons/base/report/ir_module_report_templates.xml:4`, `odoo/addons/base/views/ir_qweb_widget_templates.xml:3`, `odoo/addons/base/views/ir_qweb_widget_templates.xml:17`, `odoo/addons/base/views/ir_qweb_widget_templates.xml:68`
+- View/action field declarations: 504; representative evidence: `odoo/addons/base/report/ir_model_report.xml:5`, `odoo/addons/base/report/ir_module_reports.xml:7`, `odoo/addons/base/wizard/base_export_language_views.xml:6`, `odoo/addons/base/wizard/base_export_language_views.xml:7`, `odoo/addons/base/wizard/base_export_language_views.xml:68`, `odoo/addons/base/wizard/base_export_language_views.xml:69`, `odoo/addons/base/wizard/base_partner_merge_views.xml:5`, `odoo/addons/base/wizard/base_partner_merge_views.xml:6`, `odoo/addons/base/wizard/base_partner_merge_views.xml:13`, `odoo/addons/base/wizard/base_partner_merge_views.xml:14`, `odoo/addons/base/wizard/base_partner_merge_views.xml:104`, `odoo/addons/base/wizard/base_partner_merge_views.xml:105`
+- Browser assets: 1; representative files: `odoo/addons/base/static/tests/test_ir_model_fields_translation.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `odoo/addons/base/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** `odoo/addons/base/__manifest__.py`, `odoo/addons/base/models/ir_profile.py`, `odoo/addons/base/models/res_device.py`, `odoo/addons/base/models/ir_model.py`, `odoo/addons/base/models/ir_actions.py`, `odoo/addons/base/models/ir_http.py`, `odoo/addons/base/models/ir_module.py`, `odoo/addons/base/models/res_users_deletion.py`, `odoo/addons/base/models/ir_autovacuum.py`, `odoo/addons/base/models/res_users.py`, `odoo/addons/base/models/__init__.py`, `odoo/addons/base/models/ir_cron.py`
+- **Report entry points:** `odoo/addons/base/models/ir_actions_report.py`, `odoo/addons/base/models/ir_module.py`, `odoo/addons/base/models/ir_qweb_fields.py`, `odoo/addons/base/models/ir_ui_menu.py`, `odoo/addons/base/models/report_paperformat.py`, `odoo/addons/base/report/ir_model_report.xml`, `odoo/addons/base/report/report_base_report_irmodulereference.py`, `odoo/addons/base/report/ir_module_reports.xml`, `odoo/addons/base/views/ir_actions_views.xml`, `odoo/addons/base/views/report_paperformat_views.xml`, `odoo/addons/base/tests/test_ir_ui_view.py`, `odoo/addons/base/tests/test_ir_module.py`
+
+## 7. Database interactions
+
+- Model declarations: 130
+- Representative model evidence: `properties.base.definition.mixin` (odoo/addons/base/models/properties_base_definition_mixin.py:8); `format.vat.label.mixin` (odoo/addons/base/models/res_partner.py:141); `format.address.mixin` (odoo/addons/base/models/res_partner.py:153); `res.partner.category` (odoo/addons/base/models/res_partner.py:231); `res.partner` (odoo/addons/base/models/res_partner.py:271); `res.partner.industry` (odoo/addons/base/models/res_partner.py:2453); `ir.access` (odoo/addons/base/models/ir_access.py:64); `ir.profile.query` (odoo/addons/base/models/ir_profile_query.py:15); `res.lang` (odoo/addons/base/models/res_lang.py:83); `ir.config_parameter` (odoo/addons/base/models/ir_config_parameter.py:33); `ir.profile` (odoo/addons/base/models/ir_profile.py:21); `base.enable.profiling.wizard` (odoo/addons/base/models/ir_profile.py:259); `ir.ui.view.custom` (odoo/addons/base/models/ir_ui_view.py:73); `ir.ui.view` (odoo/addons/base/models/ir_ui_view.py:146); `reset.view.arch.wizard` (odoo/addons/base/models/ir_ui_view.py:2728); inherits `base` (odoo/addons/base/models/ir_ui_view.py:2810); `res.groups` (odoo/addons/base/models/res_groups.py:14); `ir.asset` (odoo/addons/base/models/ir_asset.py:51); `avatar.mixin` (odoo/addons/base/models/avatar_mixin.py:36); `res.device.log` (odoo/addons/base/models/res_device.py:26); `res.device` (odoo/addons/base/models/res_device.py:175); `res.session` (odoo/addons/base/models/res_device.py:265); `ir.sequence` (odoo/addons/base/models/ir_sequence.py:84); `ir.sequence.date_range` (odoo/addons/base/models/ir_sequence.py:311); `ir.qweb` (odoo/addons/base/models/ir_qweb.py:699); `res.currency` (odoo/addons/base/models/res_currency.py:51); `res.currency.rate` (odoo/addons/base/models/res_currency.py:396); `base` (odoo/addons/base/models/ir_model.py:211); `_unknown` (odoo/addons/base/models/ir_model.py:217); `ir.model` (odoo/addons/base/models/ir_model.py:226)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: None declared
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `odoo/addons/base/__init__.py`
+- `odoo/addons/base/__manifest__.py`
+- `odoo/addons/base/data/base_data.sql`
+- `odoo/addons/base/data/base_data_test.sql`
+- `odoo/addons/base/data/clearing_label_data.xml`
+- `odoo/addons/base/data/ir_action_data.xml`
+- `odoo/addons/base/data/ir_config_parameter_data.xml`
+- `odoo/addons/base/data/ir_cron_data.xml`
+- `odoo/addons/base/data/ir_demo_data.xml`
+- `odoo/addons/base/data/ir_demo_failure_data.xml`
+- `odoo/addons/base/data/ir_module_category_data.xml`
+- `odoo/addons/base/data/ir_module_module.xml`
+- `odoo/addons/base/data/neutralize.sql`
+- `odoo/addons/base/data/report_paperformat_data.xml`
+- `odoo/addons/base/data/res.country.state.csv`
+- `odoo/addons/base/data/res.lang.csv`
+- `odoo/addons/base/data/res_company_data.xml`
+- `odoo/addons/base/data/res_country_data.xml`
+- `odoo/addons/base/data/res_currency_data.xml`
+- `odoo/addons/base/data/res_currency_demo.xml`
+- `odoo/addons/base/data/res_currency_rate_demo.xml`
+- `odoo/addons/base/data/res_lang_data.xml`
+- `odoo/addons/base/data/res_partner_bank_demo.xml`
+- `odoo/addons/base/data/res_partner_data.xml`
+- `odoo/addons/base/data/res_partner_demo.xml`
+- `odoo/addons/base/data/res_partner_image_demo.xml`
+- `odoo/addons/base/data/res_users_data.xml`
+- `odoo/addons/base/data/res_users_demo.xml`
+- `odoo/addons/base/data/rtlcss.json`
+- `odoo/addons/base/data/website.xml`
+- `odoo/addons/base/i18n/af.po`
+- `odoo/addons/base/i18n/am.po`
+- `odoo/addons/base/i18n/ar.po`
+- `odoo/addons/base/i18n/az.po`
+- `odoo/addons/base/i18n/base.pot`
+- `odoo/addons/base/i18n/bg.po`
+- `odoo/addons/base/i18n/bs.po`
+- `odoo/addons/base/i18n/ca.po`
+- `odoo/addons/base/i18n/cs.po`
+- `odoo/addons/base/i18n/da.po`
+- `odoo/addons/base/i18n/de.po`
+- `odoo/addons/base/i18n/el.po`
+- `odoo/addons/base/i18n/es.po`
+- `odoo/addons/base/i18n/es_419.po`
+- `odoo/addons/base/i18n/es_CL.po`
+- `odoo/addons/base/i18n/et.po`
+- `odoo/addons/base/i18n/eu.po`
+- `odoo/addons/base/i18n/fa.po`
+- `odoo/addons/base/i18n/fi.po`
+- `odoo/addons/base/i18n/fo.po`
+- `odoo/addons/base/i18n/fr.po`
+- `odoo/addons/base/i18n/fr_BE.po`
+- `odoo/addons/base/i18n/fr_CA.po`
+- `odoo/addons/base/i18n/gl.po`
+- `odoo/addons/base/i18n/gu.po`
+- `odoo/addons/base/i18n/he.po`
+- `odoo/addons/base/i18n/hi.po`
+- `odoo/addons/base/i18n/hr.po`
+- `odoo/addons/base/i18n/hu.po`
+- `odoo/addons/base/i18n/id.po`
+- `odoo/addons/base/i18n/is.po`
+- `odoo/addons/base/i18n/it.po`
+- `odoo/addons/base/i18n/ja.po`
+- `odoo/addons/base/i18n/ka.po`
+- `odoo/addons/base/i18n/kab.po`
+- `odoo/addons/base/i18n/km.po`
+- `odoo/addons/base/i18n/ko.po`
+- `odoo/addons/base/i18n/ku.po`
+- `odoo/addons/base/i18n/lb.po`
+- `odoo/addons/base/i18n/lo.po`
+- `odoo/addons/base/i18n/lt.po`
+- `odoo/addons/base/i18n/lv.po`
+- `odoo/addons/base/i18n/mk.po`
+- `odoo/addons/base/i18n/mn.po`
+- `odoo/addons/base/i18n/my.po`
+- `odoo/addons/base/i18n/nb.po`
+- `odoo/addons/base/i18n/nl.po`
+- `odoo/addons/base/i18n/pl.po`
+- `odoo/addons/base/i18n/pt.po`
+- `odoo/addons/base/i18n/pt_BR.po`
+- `odoo/addons/base/i18n/ro.po`
+- `odoo/addons/base/i18n/ru.po`
+- `odoo/addons/base/i18n/sk.po`
+- `odoo/addons/base/i18n/sl.po`
+- `odoo/addons/base/i18n/sq.po`
+- `odoo/addons/base/i18n/sr@latin.po`
+- `odoo/addons/base/i18n/sv.po`
+- `odoo/addons/base/i18n/th.po`
+- `odoo/addons/base/i18n/tr.po`
+- `odoo/addons/base/i18n/uk.po`
+- `odoo/addons/base/i18n/uz.po`
+- `odoo/addons/base/i18n/vi.po`
+- `odoo/addons/base/i18n/zh_CN.po`
+- `odoo/addons/base/i18n/zh_TW.po`
+- `odoo/addons/base/models/__init__.py`
+- `odoo/addons/base/models/assetsbundle.py`
+- `odoo/addons/base/models/avatar_mixin.py`
+- `odoo/addons/base/models/clearing_label.py`
+- `odoo/addons/base/models/decimal_precision.py`
+- `odoo/addons/base/models/image_mixin.py`
+- `odoo/addons/base/models/ir_access.py`
+- `odoo/addons/base/models/ir_actions.py`
+- `odoo/addons/base/models/ir_actions_report.py`
+- `odoo/addons/base/models/ir_asset.py`
+- `odoo/addons/base/models/ir_attachment.py`
+- `odoo/addons/base/models/ir_autovacuum.py`
+- `odoo/addons/base/models/ir_binary.py`
+- `odoo/addons/base/models/ir_config_parameter.py`
+- `odoo/addons/base/models/ir_cron.py`
+- `odoo/addons/base/models/ir_default.py`
+- `odoo/addons/base/models/ir_demo.py`
+- `odoo/addons/base/models/ir_demo_failure.py`
+- `odoo/addons/base/models/ir_embedded_actions.py`
+- `odoo/addons/base/models/ir_exports.py`
+- `odoo/addons/base/models/ir_fields.py`
+- `odoo/addons/base/models/ir_filters.py`
+- `odoo/addons/base/models/ir_http.py`
+- `odoo/addons/base/models/ir_logging.py`
+- `odoo/addons/base/models/ir_mail_server.py`
+- `odoo/addons/base/models/ir_model.py`
+- `odoo/addons/base/models/ir_module.py`
+- `odoo/addons/base/models/ir_profile.py`
+- `odoo/addons/base/models/ir_profile_query.py`
+- `odoo/addons/base/models/ir_qweb.py`
+- `odoo/addons/base/models/ir_qweb_fields.py`
+- `odoo/addons/base/models/ir_sequence.py`
+- `odoo/addons/base/models/ir_ui_menu.py`
+- `odoo/addons/base/models/ir_ui_view.py`
+- `odoo/addons/base/models/properties_base_definition.py`
+- `odoo/addons/base/models/properties_base_definition_mixin.py`
+- `odoo/addons/base/models/report_layout.py`
+- `odoo/addons/base/models/report_paperformat.py`
+- `odoo/addons/base/models/res_company.py`
+- `odoo/addons/base/models/res_config.py`
+- `odoo/addons/base/models/res_country.py`
+- `odoo/addons/base/models/res_currency.py`
+- `odoo/addons/base/models/res_device.py`
+- `odoo/addons/base/models/res_groups.py`
+- `odoo/addons/base/models/res_groups_privilege.py`
+- `odoo/addons/base/models/res_lang.py`
+- `odoo/addons/base/models/res_partner.py`
+- `odoo/addons/base/models/res_partner_bank.py`
+- `odoo/addons/base/models/res_users.py`
+- `odoo/addons/base/models/res_users_deletion.py`
+- `odoo/addons/base/models/res_users_settings.py`
+- `odoo/addons/base/models/website.py`
+- `odoo/addons/base/populate/common.xml`
+- `odoo/addons/base/report/__init__.py`
+- `odoo/addons/base/report/corporate_defaults.xsl`
+- `odoo/addons/base/report/custom_default_printscreen.xsl`
+- `odoo/addons/base/report/custom_new.xsl`
+- `odoo/addons/base/report/custom_rml_printscreen.xsl`
+- `odoo/addons/base/report/ir_model_report.xml`
+- `odoo/addons/base/report/ir_model_templates.xml`
+- `odoo/addons/base/report/ir_module_report_templates.xml`
+- `odoo/addons/base/report/ir_module_reports.xml`
+- `odoo/addons/base/report/mako_footer.html`
+- `odoo/addons/base/report/mako_header.html`
+- `odoo/addons/base/report/mako_template.css`
+- `odoo/addons/base/report/report_base_report_irmodulereference.py`
+- `odoo/addons/base/rng/activity_view.rng`
+- `odoo/addons/base/rng/calendar_view.rng`
+- `odoo/addons/base/rng/common.rng`
+- `odoo/addons/base/rng/graph_view.rng`
+- `odoo/addons/base/rng/list_view.rng`
+- `odoo/addons/base/rng/pivot_view.rng`
+- `odoo/addons/base/rng/search_view.rng`
+- `odoo/addons/base/security/base_groups.xml`
+- `odoo/addons/base/security/ir.access.csv`
+- `odoo/addons/base/static/description/board.png`
+- `odoo/addons/base/static/description/board.svg`
+- `odoo/addons/base/static/description/exception.png`
+- `odoo/addons/base/static/description/exception.svg`
+- `odoo/addons/base/static/description/icon.png`
+- `odoo/addons/base/static/description/icon.svg`
+- `odoo/addons/base/static/description/modules.png`
+- `odoo/addons/base/static/description/modules.svg`
+- `odoo/addons/base/static/description/settings.png`
+- `odoo/addons/base/static/description/settings.svg`
+- `odoo/addons/base/static/img/avatar.png`
+- `odoo/addons/base/static/img/avatar_grey.png`
+- `odoo/addons/base/static/img/avatar_placeholder_company.png`
+- `odoo/addons/base/static/img/avatar_placeholder_delivery.png`
+- `odoo/addons/base/static/img/avatar_placeholder_invoice.png`
+- `odoo/addons/base/static/img/avatar_placeholder_other.png`
+- `odoo/addons/base/static/img/bill.png`
+- `odoo/addons/base/static/img/company_image.png`
+- `odoo/addons/base/static/img/country_flags/419.png`
+- `odoo/addons/base/static/img/country_flags/ad.png`
+- `odoo/addons/base/static/img/country_flags/ae.png`
+- `odoo/addons/base/static/img/country_flags/af.png`
+- `odoo/addons/base/static/img/country_flags/ag.png`
+- `odoo/addons/base/static/img/country_flags/ai.png`
+- `odoo/addons/base/static/img/country_flags/al.png`
+- `odoo/addons/base/static/img/country_flags/am.png`
+- `odoo/addons/base/static/img/country_flags/an.png`
+- `odoo/addons/base/static/img/country_flags/ao.png`
+- `odoo/addons/base/static/img/country_flags/ar.png`
+- `odoo/addons/base/static/img/country_flags/as.png`
+- `odoo/addons/base/static/img/country_flags/at.png`
+- `odoo/addons/base/static/img/country_flags/au.png`
+- `odoo/addons/base/static/img/country_flags/aw.png`
+- `odoo/addons/base/static/img/country_flags/ax.png`
+- `odoo/addons/base/static/img/country_flags/az.png`
+- `odoo/addons/base/static/img/country_flags/ba.png`
+- `odoo/addons/base/static/img/country_flags/bb.png`
+- `odoo/addons/base/static/img/country_flags/bd.png`
+- `odoo/addons/base/static/img/country_flags/be.png`
+- `odoo/addons/base/static/img/country_flags/bf.png`
+- `odoo/addons/base/static/img/country_flags/bg.png`
+- `odoo/addons/base/static/img/country_flags/bh.png`
+- `odoo/addons/base/static/img/country_flags/bi.png`
+- `odoo/addons/base/static/img/country_flags/bj.png`
+- `odoo/addons/base/static/img/country_flags/bl.png`
+- `odoo/addons/base/static/img/country_flags/bm.png`
+- `odoo/addons/base/static/img/country_flags/bn.png`
+- `odoo/addons/base/static/img/country_flags/bo.png`
+- `odoo/addons/base/static/img/country_flags/br.png`
+- `odoo/addons/base/static/img/country_flags/bs.png`
+- `odoo/addons/base/static/img/country_flags/bt.png`
+- `odoo/addons/base/static/img/country_flags/bw.png`
+- `odoo/addons/base/static/img/country_flags/by.png`
+- `odoo/addons/base/static/img/country_flags/bz.png`
+- `odoo/addons/base/static/img/country_flags/ca.png`
+- `odoo/addons/base/static/img/country_flags/cc.png`
+- `odoo/addons/base/static/img/country_flags/cd.png`
+- `odoo/addons/base/static/img/country_flags/cf.png`
+- `odoo/addons/base/static/img/country_flags/cg.png`
+- `odoo/addons/base/static/img/country_flags/ch.png`
+- `odoo/addons/base/static/img/country_flags/ci.png`
+- `odoo/addons/base/static/img/country_flags/ck.png`
+- `odoo/addons/base/static/img/country_flags/cl.png`
+- `odoo/addons/base/static/img/country_flags/cm.png`
+- `odoo/addons/base/static/img/country_flags/cn.png`
+- `odoo/addons/base/static/img/country_flags/co.png`
+- `odoo/addons/base/static/img/country_flags/cr.png`
+- `odoo/addons/base/static/img/country_flags/cu.png`
+- `odoo/addons/base/static/img/country_flags/cv.png`
+- `odoo/addons/base/static/img/country_flags/cw.png`
+- `odoo/addons/base/static/img/country_flags/cx.png`
+- `odoo/addons/base/static/img/country_flags/cy.png`
+- `odoo/addons/base/static/img/country_flags/cz.png`
+- `odoo/addons/base/static/img/country_flags/de.png`
+- `odoo/addons/base/static/img/country_flags/dj.png`
+- `odoo/addons/base/static/img/country_flags/dk.png`
+- `odoo/addons/base/static/img/country_flags/dm.png`
+- `odoo/addons/base/static/img/country_flags/do.png`
+- `odoo/addons/base/static/img/country_flags/dz.png`
+- `odoo/addons/base/static/img/country_flags/ec.png`
+- `odoo/addons/base/static/img/country_flags/ee.png`
+- Additional source files not expanded in this page: 411; see `../../01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.

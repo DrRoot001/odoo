@@ -1,130 +1,176 @@
 # Module: cloud_storage_google
 
 - **Module ID:** MOD-051
-- **Path:** `addons/cloud_storage_google`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/cloud_storage_google`
 - **Manifest:** `addons/cloud_storage_google/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Technical Settings`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Store chatter attachments in the Google cloud
+**Purpose:** Store chatter attachments in the Google cloud
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `cloud_storage`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 64 files, including 12 Python, 1 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `cloud_storage`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 12 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 4 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 2
+- Controller/API files: 0
+- XML/data/view/template files: 1
+- Browser asset files: 0
+- Security files: 0
+- Test files: 4
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "cloud_storage"
-  ],
-  "data": [
-    "views/settings.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "cloud_storage_google/static/src/**/*"
-    ]
-  },
-  "external_dependencies": {
-    "python": [
-      "google-auth"
-    ],
-    "apt": {
-      "google-auth": "python3-google-auth"
-    }
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** Not found in module
 
-- `addons/cloud_storage_google/__init__.py` (14 lines)
-- `addons/cloud_storage_google/__manifest__.py` (25 lines)
-- `addons/cloud_storage_google/data/neutralize.sql` (4 lines)
-- `addons/cloud_storage_google/i18n/ar.po` (125 lines)
-- `addons/cloud_storage_google/i18n/az.po` (115 lines)
-- `addons/cloud_storage_google/i18n/bg.po` (115 lines)
-- `addons/cloud_storage_google/i18n/bs.po` (117 lines)
-- `addons/cloud_storage_google/i18n/ca.po` (118 lines)
-- `addons/cloud_storage_google/i18n/cloud_storage_google.pot` (111 lines)
-- `addons/cloud_storage_google/i18n/cs.po` (116 lines)
-- `addons/cloud_storage_google/i18n/da.po` (125 lines)
-- `addons/cloud_storage_google/i18n/de.po` (127 lines)
-- `addons/cloud_storage_google/i18n/el.po` (116 lines)
-- `addons/cloud_storage_google/i18n/es.po` (127 lines)
-- `addons/cloud_storage_google/i18n/es_419.po` (126 lines)
-- `addons/cloud_storage_google/i18n/et.po` (123 lines)
-- `addons/cloud_storage_google/i18n/fa.po` (115 lines)
-- `addons/cloud_storage_google/i18n/fi.po` (125 lines)
-- `addons/cloud_storage_google/i18n/fr.po` (125 lines)
-- `addons/cloud_storage_google/i18n/he.po` (116 lines)
-- `addons/cloud_storage_google/i18n/hi.po` (115 lines)
-- `addons/cloud_storage_google/i18n/hr.po` (116 lines)
-- `addons/cloud_storage_google/i18n/hu.po` (116 lines)
-- `addons/cloud_storage_google/i18n/id.po` (124 lines)
-- `addons/cloud_storage_google/i18n/it.po` (124 lines)
-- `addons/cloud_storage_google/i18n/ja.po` (125 lines)
-- `addons/cloud_storage_google/i18n/kab.po` (116 lines)
-- `addons/cloud_storage_google/i18n/ko.po` (124 lines)
-- `addons/cloud_storage_google/i18n/ku.po` (115 lines)
-- `addons/cloud_storage_google/i18n/lo.po` (114 lines)
-- `addons/cloud_storage_google/i18n/lt.po` (117 lines)
-- `addons/cloud_storage_google/i18n/lv.po` (117 lines)
-- `addons/cloud_storage_google/i18n/mn.po` (115 lines)
-- `addons/cloud_storage_google/i18n/my.po` (115 lines)
-- `addons/cloud_storage_google/i18n/nb.po` (116 lines)
-- `addons/cloud_storage_google/i18n/nl.po` (124 lines)
-- `addons/cloud_storage_google/i18n/pl.po` (127 lines)
-- `addons/cloud_storage_google/i18n/pt.po` (125 lines)
-- `addons/cloud_storage_google/i18n/pt_BR.po` (124 lines)
-- `addons/cloud_storage_google/i18n/ro.po` (125 lines)
-- `addons/cloud_storage_google/i18n/ru.po` (126 lines)
-- `addons/cloud_storage_google/i18n/sk.po` (116 lines)
-- `addons/cloud_storage_google/i18n/sl.po` (125 lines)
-- `addons/cloud_storage_google/i18n/sr@latin.po` (116 lines)
-- `addons/cloud_storage_google/i18n/sv.po` (127 lines)
-- `addons/cloud_storage_google/i18n/th.po` (123 lines)
-- `addons/cloud_storage_google/i18n/tr.po` (126 lines)
-- `addons/cloud_storage_google/i18n/uk.po` (116 lines)
-- `addons/cloud_storage_google/i18n/uz.po` (143 lines)
-- `addons/cloud_storage_google/i18n/vi.po` (125 lines)
-- `addons/cloud_storage_google/i18n/zh_CN.po` (123 lines)
-- `addons/cloud_storage_google/i18n/zh_TW.po` (125 lines)
-- `addons/cloud_storage_google/models/__init__.py` (4 lines)
-- `addons/cloud_storage_google/models/ir_attachment.py` (88 lines)
-- `addons/cloud_storage_google/models/res_config_settings.py` (122 lines)
-- `addons/cloud_storage_google/static/src/scss/cloud_storage_google.scss` (5 lines)
-- `addons/cloud_storage_google/tests/__init__.py` (5 lines)
-- `addons/cloud_storage_google/tests/test_cloud_storage_google.py` (68 lines)
-- `addons/cloud_storage_google/tests/test_cloud_storage_google_attachment_controller.py` (87 lines)
-- `addons/cloud_storage_google/tests/test_res_config_settings.py` (31 lines)
-- `addons/cloud_storage_google/utils/__init__.py` (3 lines)
-- `addons/cloud_storage_google/utils/cleanup_cloud_storage_google.py` (131 lines)
-- `addons/cloud_storage_google/utils/cloud_storage_google_utils.py` (290 lines)
-- `addons/cloud_storage_google/views/settings.xml` (26 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 2 model declarations, 17 methods, 0 constraint handlers, 1 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/cloud_storage_google/models/res_config_settings.py:16`, `addons/cloud_storage_google/models/ir_attachment.py:31`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 1 XML files and 0 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/cloud_storage_google/views/settings.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 4 test files are present.
+- **Evidence:** `addons/cloud_storage_google/tests/test_cloud_storage_google_attachment_controller.py`, `addons/cloud_storage_google/tests/test_cloud_storage_google.py`, `addons/cloud_storage_google/tests/__init__.py`, `addons/cloud_storage_google/tests/test_res_config_settings.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `cloud_storage_google_config_settings_view_form`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/cloud_storage_google/views/settings.xml:5`, `addons/cloud_storage_google/views/settings.xml:8`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/cloud_storage_google/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `res.config.settings` (addons/cloud_storage_google/models/res_config_settings.py:16); inherits `ir.attachment` (addons/cloud_storage_google/models/ir_attachment.py:31)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `cloud_storage`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/cloud_storage_google/__init__.py`
+- `addons/cloud_storage_google/__manifest__.py`
+- `addons/cloud_storage_google/data/neutralize.sql`
+- `addons/cloud_storage_google/i18n/ar.po`
+- `addons/cloud_storage_google/i18n/az.po`
+- `addons/cloud_storage_google/i18n/bg.po`
+- `addons/cloud_storage_google/i18n/bs.po`
+- `addons/cloud_storage_google/i18n/ca.po`
+- `addons/cloud_storage_google/i18n/cloud_storage_google.pot`
+- `addons/cloud_storage_google/i18n/cs.po`
+- `addons/cloud_storage_google/i18n/da.po`
+- `addons/cloud_storage_google/i18n/de.po`
+- `addons/cloud_storage_google/i18n/el.po`
+- `addons/cloud_storage_google/i18n/es.po`
+- `addons/cloud_storage_google/i18n/es_419.po`
+- `addons/cloud_storage_google/i18n/et.po`
+- `addons/cloud_storage_google/i18n/fa.po`
+- `addons/cloud_storage_google/i18n/fi.po`
+- `addons/cloud_storage_google/i18n/fr.po`
+- `addons/cloud_storage_google/i18n/he.po`
+- `addons/cloud_storage_google/i18n/hi.po`
+- `addons/cloud_storage_google/i18n/hr.po`
+- `addons/cloud_storage_google/i18n/hu.po`
+- `addons/cloud_storage_google/i18n/id.po`
+- `addons/cloud_storage_google/i18n/it.po`
+- `addons/cloud_storage_google/i18n/ja.po`
+- `addons/cloud_storage_google/i18n/kab.po`
+- `addons/cloud_storage_google/i18n/ko.po`
+- `addons/cloud_storage_google/i18n/ku.po`
+- `addons/cloud_storage_google/i18n/lo.po`
+- `addons/cloud_storage_google/i18n/lt.po`
+- `addons/cloud_storage_google/i18n/lv.po`
+- `addons/cloud_storage_google/i18n/mn.po`
+- `addons/cloud_storage_google/i18n/my.po`
+- `addons/cloud_storage_google/i18n/nb.po`
+- `addons/cloud_storage_google/i18n/nl.po`
+- `addons/cloud_storage_google/i18n/pl.po`
+- `addons/cloud_storage_google/i18n/pt.po`
+- `addons/cloud_storage_google/i18n/pt_BR.po`
+- `addons/cloud_storage_google/i18n/ro.po`
+- `addons/cloud_storage_google/i18n/ru.po`
+- `addons/cloud_storage_google/i18n/sk.po`
+- `addons/cloud_storage_google/i18n/sl.po`
+- `addons/cloud_storage_google/i18n/sr@latin.po`
+- `addons/cloud_storage_google/i18n/sv.po`
+- `addons/cloud_storage_google/i18n/th.po`
+- `addons/cloud_storage_google/i18n/tr.po`
+- `addons/cloud_storage_google/i18n/uk.po`
+- `addons/cloud_storage_google/i18n/uz.po`
+- `addons/cloud_storage_google/i18n/vi.po`
+- `addons/cloud_storage_google/i18n/zh_CN.po`
+- `addons/cloud_storage_google/i18n/zh_TW.po`
+- `addons/cloud_storage_google/models/__init__.py`
+- `addons/cloud_storage_google/models/ir_attachment.py`
+- `addons/cloud_storage_google/models/res_config_settings.py`
+- `addons/cloud_storage_google/static/src/scss/cloud_storage_google.scss`
+- `addons/cloud_storage_google/tests/__init__.py`
+- `addons/cloud_storage_google/tests/test_cloud_storage_google.py`
+- `addons/cloud_storage_google/tests/test_cloud_storage_google_attachment_controller.py`
+- `addons/cloud_storage_google/tests/test_res_config_settings.py`
+- `addons/cloud_storage_google/utils/__init__.py`
+- `addons/cloud_storage_google/utils/cleanup_cloud_storage_google.py`
+- `addons/cloud_storage_google/utils/cloud_storage_google_utils.py`
+- `addons/cloud_storage_google/views/settings.xml`

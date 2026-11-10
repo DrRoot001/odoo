@@ -1,404 +1,395 @@
 # Module: website_sale
 
 - **Module ID:** MOD-634
-- **Path:** `addons/website_sale`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/website_sale`
 - **Manifest:** `addons/website_sale/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `True`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Website/Website`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Sell your products online
+**Purpose:** Sell your products online
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `website`, `sale`, `website_payment`, `website_mail`, `portal_rating`, `digest`, `delivery`, `html_builder`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 567 files, including 123 Python, 108 XML, and 165 JavaScript/TypeScript files. The manifest declares dependencies: `website`, `sale`, `website_payment`, `website_mail`, `portal_rating`, `digest`, `delivery`, `html_builder`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 123 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 42 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 17 | Files under `controllers/` or `controllers.py`. |
-| XML files | 108 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 165 | Client behavior/assets. |
-| Tests | 58 | Test files found by path/name convention. |
-| Security artifacts | 3 | Access CSV and/or security XML. |
-| Route declarations | 62 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 42
+- Controller/API files: 17
+- XML/data/view/template files: 108
+- Browser asset files: 165
+- Security files: 3
+- Test files: 58
+- Scheduled/automation evidence files: 15
+- Reporting evidence files: 1
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "website",
-    "sale",
-    "website_payment",
-    "website_mail",
-    "portal_rating",
-    "digest",
-    "delivery",
-    "html_builder"
-  ],
-  "data": [
-    "security/ir_access.xml",
-    "security/res_groups.xml",
-    "data/mail_template_data.xml",
-    "data/data.xml",
-    "data/digest_data.xml",
-    "data/donation_data.xml",
-    "data/ir_actions_server_data.xml",
-    "data/ir_cron_data.xml",
-    "data/product_attribute_data.xml",
-    "data/product_ribbon_data.xml",
-    "data/tour.xml",
-    "data/website_checkout_step_data.xml",
-    "data/website_snippet_filter_data.xml",
-    "report/sale_report_views.xml",
-    "templates/comparison_templates.xml",
-    "templates/product_tile_templates.xml",
-    "templates/gmc_templates.xml",
-    "templates/product_page_templates.xml",
-    "templates/sale_portal_templates.xml",
-    "templates/shop_page_templates.xml",
-    "templates/shop_empty_screens/shop_page_empty_screen.xml",
-    "templates/shop_empty_screens/svg_templates.xml",
-    "templates/website_templates.xml",
-    "templates/wishlist_templates.xml",
-    "templates/checkout/checkout_templates.xml",
-    "templates/checkout/address_templates.xml",
-    "templates/checkout/cart_templates.xml",
-    "templates/checkout/confirmation_templates.xml",
-    "templates/checkout/extra_info_templates.xml",
-    "templates/checkout/payment_templates.xml",
-    "views/account_move_views.xml",
-    "views/delivery_carrier_views.xml",
-    "views/digest_views.xml",
-    "views/product_attribute_category_views.xml",
-    "views/product_attribute_views.xml",
-    "views/product_document_views.xml",
-    "views/product_feed_views.xml",
-    "views/product_image_views.xml",
-    "views/product_pricelist_views.xml",
-    "views/product_product_add.xml",
-    "views/product_public_category_views.xml",
-    "views/product_ribbon_views.xml",
-    "views/product_views.xml",
-    "views/res_config_settings_views.xml",
-    "views/sale_order_views.xml",
-    "views/website_sale_menus.xml",
-    "views/website_sale_visitor_views.xml",
-    "views/website_views.xml",
-    "templates/snippets/snippets.xml",
-    "templates/snippets/product_snippet_template_data.xml",
-    "templates/snippets/s_add_to_cart.xml",
-    "templates/snippets/s_donation.xml",
-    "templates/snippets/s_dynamic_snippet_products.xml",
-    "templates/snippets/s_dynamic_snippet_categories.xml",
-    "templates/snippets/s_dynamic_snippet_products_preview_data.xml",
-    "templates/snippets/s_dynamic_snippet_category_preview_data.xml",
-    "templates/snippets/snippet_category_template_data.xml",
-    "templates/generate_primary_template.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/demo.xml",
-    "data/product_attribute_category_data.xml",
-    "data/product_attribute_category_demo.xml"
-  ],
-  "assets": {
-    "web.assets_frontend": [
-      "website_sale/static/src/interactions/**/*",
-      "website_sale/static/src/snippets/**/*.js",
-      "website_sale/static/src/js/tours/tour_utils.js",
-      "website_sale/static/src/scss/product_tile.scss",
-      "website_sale/static/src/scss/website_sale.scss",
-      "website_sale/static/src/scss/website_sale_frontend.scss",
-      "website_sale/static/src/scss/shop_page_empty_screen.scss",
-      "website_sale/static/src/scss/website_sale_comparison.scss",
-      "website_sale/static/src/scss/website_sale_comparison.options.scss",
-      "website_sale/static/src/scss/website_sale_delivery.scss",
-      "website_sale/static/src/scss/website_sale_wishlist.scss",
-      "website_sale/static/src/scss/website_sale_wishlist.options.scss",
-      "website_sale/static/src/snippets/s_dynamic_snippet_categories/000.scss",
-      "website_sale/static/src/snippets/s_dynamic_snippet_categories/000.xml",
-      "website_sale/static/src/snippets/s_dynamic_snippet_products/000.xml",
-      "website/static/lib/multirange/multirange_custom.scss",
-      "sale/static/src/scss/sale_portal.scss",
-      "website_sale/static/src/scss/product_configurator.scss",
-      "website_sale/static/src/js/cart_service.js",
-      "website_sale/static/src/xml/website_sale.xml",
-      "website_sale/static/src/js/website_sale_utils.js",
-      "website_sale/static/src/js/wishlist_utils.js",
-      "website_sale/static/src/js/comparison_utils.js",
-      "website/static/lib/multirange/multirange_custom.js",
-      "website/static/src/interactions/multirange_input.js",
-      "website_sale/static/src/xml/website_sale_image_viewer.xml",
-      "website_sale/static/src/xml/website_sale_product_availability.xml",
-      "website_sale/static/src/js/components/alert_banner/*",
-      "website_sale/static/src/js/components/website_sale_image_viewer.js",
-      "website_sale/static/src/js/cart_notification/item_added_notification/item_added_notification.js",
-      "website_sale/static/src/js/cart_notification/item_added_notification/item_added_notification.xml",
-      "website_sale/static/src/js/cart_notification/cart_notification_container/cart_notification_container.js",
-      "website_sale/static/src/js/cart_notification/cart_notification_container/cart_notification_container.xml",
-      "website_sale/static/src/js/cart_notification/warning_notification/warning_notification.js",
-      "website_sale/static/src/js/cart_notification/warning_notification/warning_notification.xml",
-      "sale/static/src/js/badge_extra_price/*",
-      "sale/static/src/js/combo_configurator_dialog/*",
-      "sale/static/src/js/models/*",
-      "sale/static/src/js/product/*",
-      "sale/static/src/js/product_card/*",
-      "sale/static/src/js/product_configurator_dialog/*",
-      "sale/static/src/js/product_list/*",
-      "sale/static/src/js/product_template_attribute_line/*",
-      "sale/static/src/js/quantity_buttons/*",
-      "sale/static/src/js/sale_utils.js",
-      "website_sale/static/src/js/combo_configurator_dialog/*",
-      "website_sale/static/src/js/product/*",
-      "website_sale/static/src/js/product_configurator_dialog/*",
-      "website_sale/static/src/js/product_list/*",
-      "website_sale/static/src/js/product_template_attribute_line/*",
-      "website_sale/static/src/js/quantity_buttons/*",
-      "website_sale/static/src/js/product_row/*",
-      "website_sale/static/src/js/product_comparison_bottom_bar/*"
-    ],
-    "web._assets_primary_variables": [
-      "website_sale/static/src/scss/primary_variables.scss"
-    ],
-    "web.assets_backend": [
-      "website_sale/static/src/js/client_actions/**/*",
-      "website_sale/static/src/js/tours/tour_utils.js",
-      "website_sale/static/src/js/website_sale_video_field_preview.js",
-      "website_sale/static/src/scss/website_sale_backend.scss",
-      "website_sale/static/src/js/tours/website_sale_shop.js",
-      "website_sale/static/src/js/product_image/**/*",
-      "website_sale/static/src/xml/website_sale.xml",
-      "website_sale/static/src/scss/kanban_record.scss",
-      "website_sale/static/src/js/dashboard/dashboard.js",
-      "website_sale/static/src/views/**/*"
-    ],
-    "website.website_builder_assets": [
-      "website_sale/static/src/website_builder/**/*",
-      "website_sale/static/src/js/website_sale_utils.js",
-      [
-        "remove",
-        "website_sale/static/src/**/*.edit.*"
-      ]
-    ],
-    "website.assets_wysiwyg": [
-      "website_sale/static/src/scss/website_sale.editor.scss",
-      "website_sale/static/src/js/website_sale_form_editor.js"
-    ],
-    "website.assets_editor": [
-      "website_sale/static/src/js/systray_items/*.js",
-      "website_sale/static/src/xml/website_sale_editor_previews.xml"
-    ],
-    "website.assets_inside_builder_iframe": [
-      "web/static/lib/bootstrap/scss/_variables.scss",
-      "website_sale/static/src/website_builder/**/*.edit.*"
-    ],
-    "website.assets_inside_builder_iframe_tests": [
-      "website_sale/static/src/website_builder/**/*.edit.xml"
-    ],
-    "web.assets_tests": [
-      "website_sale/static/tests/tours/**/*",
-      "website_sale/static/src/js/tours/product_configurator_tour_utils.js",
-      "website_sale/static/src/js/tours/wishlist_tour_utils.js"
-    ],
-    "web.assets_unit_tests": [
-      "website_sale/static/tests/interactions/**/*",
-      "website_sale/static/tests/builder/**/*"
-    ],
-    "web.assets_unit_tests_setup": [
-      "website_sale/static/src/interactions/**/*",
-      "website_sale/static/src/js/product_row/*",
-      "website_sale/static/src/js/product_comparison_bottom_bar/*",
-      "website_sale/static/src/snippets/s_dynamic_snippet_products/dynamic_snippet_products.js",
-      "website_sale/static/src/snippets/s_dynamic_snippet_products/000.xml",
-      "website_sale/static/src/js/comparison_utils.js",
-      "website_sale/static/src/js/wishlist_utils.js",
-      "website_sale/static/src/js/website_sale_utils.js",
-      "website_sale/static/src/js/components/alert_banner/*",
-      "website_sale/static/src/js/components/website_sale_image_viewer.js"
-    ],
-    "html_builder.iframe_add_dialog": [
-      "website_sale/static/src/snippets/**/*.preview.scss"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/website_sale/security/ir.access.csv`, `addons/website_sale/security/res_groups.xml`, `addons/website_sale/security/ir_access.xml`
 
-- `addons/website_sale/README.md` (153 lines)
-- `addons/website_sale/__init__.py` (51 lines)
-- `addons/website_sale/__manifest__.py` (216 lines)
-- `addons/website_sale/const.py` (413 lines)
-- `addons/website_sale/controllers/__init__.py` (20 lines)
-- `addons/website_sale/controllers/cart.py` (627 lines)
-- `addons/website_sale/controllers/combo_configurator.py` (48 lines)
-- `addons/website_sale/controllers/comparison.py` (48 lines)
-- `addons/website_sale/controllers/delivery.py` (304 lines)
-- `addons/website_sale/controllers/donation.py` (31 lines)
-- `addons/website_sale/controllers/main.py` (2,173 lines)
-- `addons/website_sale/controllers/payment.py` (97 lines)
-- `addons/website_sale/controllers/portal.py` (19 lines)
-- `addons/website_sale/controllers/product_configurator.py` (263 lines)
-- `addons/website_sale/controllers/product_feed.py` (68 lines)
-- `addons/website_sale/controllers/reorder.py` (82 lines)
-- `addons/website_sale/controllers/sale.py` (40 lines)
-- `addons/website_sale/controllers/thread.py` (11 lines)
-- `addons/website_sale/controllers/variant.py` (134 lines)
-- `addons/website_sale/controllers/website.py` (104 lines)
-- `addons/website_sale/controllers/wishlist.py` (120 lines)
-- `addons/website_sale/data/data.xml` (76 lines)
-- `addons/website_sale/data/demo.xml` (1,294 lines)
-- `addons/website_sale/data/digest_data.xml` (8 lines)
-- `addons/website_sale/data/donation_data.xml` (21 lines)
-- `addons/website_sale/data/ir_actions_server_data.xml` (17 lines)
-- `addons/website_sale/data/ir_cron_data.xml` (41 lines)
-- `addons/website_sale/data/mail_template_data.xml` (416 lines)
-- `addons/website_sale/data/product_attribute_category_data.xml` (7 lines)
-- `addons/website_sale/data/product_attribute_category_demo.xml` (82 lines)
-- `addons/website_sale/data/product_attribute_data.xml` (23 lines)
-- `addons/website_sale/data/product_ribbon_data.xml` (36 lines)
-- `addons/website_sale/data/tour.xml` (8 lines)
-- `addons/website_sale/data/website_checkout_step_data.xml` (49 lines)
-- `addons/website_sale/data/website_snippet_filter_data.xml` (134 lines)
-- `addons/website_sale/i18n/af.po` (8,279 lines)
-- `addons/website_sale/i18n/ar.po` (9,338 lines)
-- `addons/website_sale/i18n/az.po` (8,464 lines)
-- `addons/website_sale/i18n/bg.po` (8,412 lines)
-- `addons/website_sale/i18n/bs.po` (8,312 lines)
-- `addons/website_sale/i18n/ca.po` (8,641 lines)
-- `addons/website_sale/i18n/cs.po` (8,480 lines)
-- `addons/website_sale/i18n/da.po` (8,498 lines)
-- `addons/website_sale/i18n/de.po` (10,964 lines)
-- `addons/website_sale/i18n/el.po` (8,361 lines)
-- `addons/website_sale/i18n/es.po` (10,669 lines)
-- `addons/website_sale/i18n/es_419.po` (10,863 lines)
-- `addons/website_sale/i18n/es_CL.po` (367 lines)
-- `addons/website_sale/i18n/et.po` (8,470 lines)
-- `addons/website_sale/i18n/eu.po` (8,278 lines)
-- `addons/website_sale/i18n/fa.po` (8,410 lines)
-- `addons/website_sale/i18n/fi.po` (10,425 lines)
-- `addons/website_sale/i18n/fr.po` (9,681 lines)
-- `addons/website_sale/i18n/gl.po` (8,277 lines)
-- `addons/website_sale/i18n/gu.po` (8,284 lines)
-- `addons/website_sale/i18n/he.po` (8,378 lines)
-- `addons/website_sale/i18n/hi.po` (8,325 lines)
-- `addons/website_sale/i18n/hr.po` (8,489 lines)
-- `addons/website_sale/i18n/hu.po` (8,368 lines)
-- `addons/website_sale/i18n/id.po` (10,745 lines)
-- `addons/website_sale/i18n/is.po` (8,281 lines)
-- `addons/website_sale/i18n/it.po` (10,776 lines)
-- `addons/website_sale/i18n/ja.po` (9,858 lines)
-- `addons/website_sale/i18n/ka.po` (8,277 lines)
-- `addons/website_sale/i18n/kab.po` (8,298 lines)
-- `addons/website_sale/i18n/km.po` (8,280 lines)
-- `addons/website_sale/i18n/ko.po` (9,425 lines)
-- `addons/website_sale/i18n/ku.po` (8,314 lines)
-- `addons/website_sale/i18n/lo.po` (9,779 lines)
-- `addons/website_sale/i18n/lt.po` (8,376 lines)
-- `addons/website_sale/i18n/lv.po` (8,316 lines)
-- `addons/website_sale/i18n/mk.po` (8,286 lines)
-- `addons/website_sale/i18n/mn.po` (9,926 lines)
-- `addons/website_sale/i18n/my.po` (8,327 lines)
-- `addons/website_sale/i18n/nb.po` (8,358 lines)
-- `addons/website_sale/i18n/nl.po` (10,753 lines)
-- `addons/website_sale/i18n/pl.po` (9,533 lines)
-- `addons/website_sale/i18n/pt.po` (9,523 lines)
-- `addons/website_sale/i18n/pt_BR.po` (10,911 lines)
-- `addons/website_sale/i18n/ro.po` (8,610 lines)
-- `addons/website_sale/i18n/ru.po` (10,199 lines)
-- `addons/website_sale/i18n/sk.po` (8,334 lines)
-- `addons/website_sale/i18n/sl.po` (8,380 lines)
-- `addons/website_sale/i18n/sr@latin.po` (9,405 lines)
-- `addons/website_sale/i18n/sv.po` (8,490 lines)
-- `addons/website_sale/i18n/th.po` (10,355 lines)
-- `addons/website_sale/i18n/tr.po` (9,352 lines)
-- `addons/website_sale/i18n/uk.po` (8,397 lines)
-- `addons/website_sale/i18n/uz.po` (9,456 lines)
-- `addons/website_sale/i18n/vi.po` (8,718 lines)
-- `addons/website_sale/i18n/website_sale.pot` (8,014 lines)
-- `addons/website_sale/i18n/zh_CN.po` (10,695 lines)
-- `addons/website_sale/i18n/zh_TW.po` (8,601 lines)
-- `addons/website_sale/models/__init__.py` (47 lines)
-- `addons/website_sale/models/account_move.py` (20 lines)
-- `addons/website_sale/models/crm_team.py` (58 lines)
-- `addons/website_sale/models/delivery_carrier.py` (78 lines)
-- `addons/website_sale/models/digest.py` (30 lines)
-- `addons/website_sale/models/ir_http.py` (35 lines)
-- `addons/website_sale/models/ir_module_module.py` (62 lines)
-- `addons/website_sale/models/payment_transaction.py` (55 lines)
-- `addons/website_sale/models/product_attribute.py` (42 lines)
-- `addons/website_sale/models/product_attribute_category.py` (19 lines)
-- `addons/website_sale/models/product_combo.py` (25 lines)
-- `addons/website_sale/models/product_document.py` (20 lines)
-- `addons/website_sale/models/product_feed.py` (410 lines)
-- `addons/website_sale/models/product_image.py` (95 lines)
-- `addons/website_sale/models/product_pricelist.py` (129 lines)
-- `addons/website_sale/models/product_pricelist_item.py` (21 lines)
-- `addons/website_sale/models/product_product.py` (591 lines)
-- `addons/website_sale/models/product_public_category.py` (245 lines)
-- `addons/website_sale/models/product_ribbon.py` (140 lines)
-- `addons/website_sale/models/product_stock_notification.py` (19 lines)
-- `addons/website_sale/models/product_tag.py` (8 lines)
-- `addons/website_sale/models/product_template.py` (2,065 lines)
-- `addons/website_sale/models/product_template_attribute_line.py` (59 lines)
-- `addons/website_sale/models/product_template_attribute_value.py` (50 lines)
-- `addons/website_sale/models/product_wishlist.py` (96 lines)
-- `addons/website_sale/models/res_company.py` (28 lines)
-- `addons/website_sale/models/res_config_settings.py` (183 lines)
-- `addons/website_sale/models/res_groups.py` (14 lines)
-- `addons/website_sale/models/res_partner.py` (98 lines)
-- `addons/website_sale/models/res_users.py` (13 lines)
-- `addons/website_sale/models/sale_order.py` (1,569 lines)
-- `addons/website_sale/models/sale_order_line.py` (265 lines)
-- `addons/website_sale/models/theme_utils.py` (28 lines)
-- `addons/website_sale/models/website.py` (1,294 lines)
-- `addons/website_sale/models/website_checkout_alert_mixin.py` (59 lines)
-- `addons/website_sale/models/website_checkout_step.py` (178 lines)
-- `addons/website_sale/models/website_menu.py` (15 lines)
-- `addons/website_sale/models/website_sale_extra_field.py` (20 lines)
-- `addons/website_sale/models/website_snippet_filter.py` (391 lines)
-- `addons/website_sale/models/website_track.py` (11 lines)
-- `addons/website_sale/models/website_visitor.py` (34 lines)
-- `addons/website_sale/models/withdrawal_request.py` (146 lines)
-- `addons/website_sale/report/__init__.py` (1 lines)
-- `addons/website_sale/report/sale_report.py` (33 lines)
-- `addons/website_sale/report/sale_report_views.xml` (130 lines)
-- `addons/website_sale/security/ir.access.csv` (39 lines)
-- `addons/website_sale/security/ir_access.xml` (17 lines)
-- `addons/website_sale/security/res_groups.xml` (34 lines)
-- `addons/website_sale/static/description/icon.png` (24 lines)
-- `addons/website_sale/static/description/icon.svg` (1 lines)
-- `addons/website_sale/static/description/icon_hi.png` (65 lines)
-- `addons/website_sale/static/shapes/s_donation_gift.svg` (87 lines)
-- `addons/website_sale/static/src/img/categories/bins.jpg` (342 lines)
-- `addons/website_sale/static/src/img/categories/boxes.jpg` (240 lines)
-- `addons/website_sale/static/src/img/categories/cabinets.jpg` (128 lines)
-- `addons/website_sale/static/src/img/categories/desk_components.jpg` (272 lines)
-- `addons/website_sale/static/src/img/categories/desks.jpg` (193 lines)
-- `addons/website_sale/static/src/img/categories/drawers.jpg` (199 lines)
-- `addons/website_sale/static/src/img/categories/furnitures.jpg` (172 lines)
-- `addons/website_sale/static/src/img/categories/lamps.jpg` (237 lines)
-- `addons/website_sale/static/src/img/categories/placeholder_thumbnail.png` (23 lines)
-- `addons/website_sale/static/src/img/categories/shape_mixed_1.png` (83 lines)
-- `addons/website_sale/static/src/img/categories/shape_mixed_2.png` (35 lines)
-- `addons/website_sale/static/src/img/categories/shape_mixed_3.png` (7 lines)
-- `addons/website_sale/static/src/img/categories/shape_mixed_4.png` (92 lines)
-- `addons/website_sale/static/src/img/categories/shape_mixed_5.png` (6 lines)
-- `addons/website_sale/static/src/img/categories/shape_mixed_6.png` (87 lines)
+## 4. Functionalities
 
-Additional files not expanded here: 407. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 42 model declarations, 996 methods, 4 constraint handlers, 5 onchange handlers, and 32 dependency declarations.
+- **Evidence:** `addons/website_sale/models/res_partner.py:7`, `addons/website_sale/models/sale_order.py:20`, `addons/website_sale/models/product_product.py:12`, `addons/website_sale/models/product_combo.py:6`, `addons/website_sale/models/website_track.py:6`, `addons/website_sale/models/product_attribute.py:6`, `addons/website_sale/models/product_feed.py:19`, `addons/website_sale/models/digest.py:6`, `addons/website_sale/models/product_template.py:38`, `addons/website_sale/models/website_menu.py:6`, `addons/website_sale/models/res_groups.py:6`, `addons/website_sale/models/website_snippet_filter.py:11`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 17 controller files and 62 route declarations.
+- **Evidence:** `addons/website_sale/controllers/product_feed.py:10`, `addons/website_sale/controllers/donation.py:5`, `addons/website_sale/controllers/cart.py:19`, `addons/website_sale/controllers/cart.py:82`, `addons/website_sale/controllers/cart.py:315`, `addons/website_sale/controllers/cart.py:373`, `addons/website_sale/controllers/wishlist.py:10`, `addons/website_sale/controllers/wishlist.py:37`, `addons/website_sale/controllers/wishlist.py:52`, `addons/website_sale/controllers/wishlist.py:65`, `addons/website_sale/controllers/wishlist.py:71`, `addons/website_sale/controllers/comparison.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 108 XML files and 165 JavaScript/TypeScript files; static XML analysis found 565 record/template/menu identifiers.
+- **Evidence:** `addons/website_sale/security/res_groups.xml:5`, `addons/website_sale/security/res_groups.xml:9`, `addons/website_sale/security/res_groups.xml:13`, `addons/website_sale/security/res_groups.xml:17`, `addons/website_sale/security/res_groups.xml:22`, `addons/website_sale/security/res_groups.xml:28`, `addons/website_sale/security/ir_access.xml:11`, `addons/website_sale/security/ir_access.xml:14`, `addons/website_sale/report/sale_report_views.xml:3`, `addons/website_sale/report/sale_report_views.xml:40`, `addons/website_sale/report/sale_report_views.xml:52`, `addons/website_sale/report/sale_report_views.xml:63`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 3 security-directory files are present.
+- **Evidence:** `addons/website_sale/security/ir.access.csv`, `addons/website_sale/security/res_groups.xml`, `addons/website_sale/security/ir_access.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 15 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/website_sale/__manifest__.py`, `addons/website_sale/models/sale_order.py`, `addons/website_sale/models/product_product.py`, `addons/website_sale/models/product_template.py`, `addons/website_sale/models/withdrawal_request.py`, `addons/website_sale/models/res_config_settings.py`, `addons/website_sale/models/product_wishlist.py`, `addons/website_sale/models/website.py`, `addons/website_sale/data/ir_actions_server_data.xml`, `addons/website_sale/data/website_snippet_filter_data.xml`, `addons/website_sale/data/ir_cron_data.xml`, `addons/website_sale/views/product_feed_views.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 1 files contain report-action/template indicators.
+- **Evidence:** `addons/website_sale/controllers/main.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 58 test files are present.
+- **Evidence:** `addons/website_sale/tests/test_product_public_category.py`, `addons/website_sale/tests/test_product_configurator.py`, `addons/website_sale/tests/test_google_analytics.py`, `addons/website_sale/tests/test_fuzzy.py`, `addons/website_sale/tests/test_ecommerce_access.py`, `addons/website_sale/tests/test_donation_snippets.py`, `addons/website_sale/tests/test_dashboard.py`, `addons/website_sale/tests/test_performance.py`, `addons/website_sale/tests/test_shop_redirects.py`, `addons/website_sale/tests/test_sale_process.py`, `addons/website_sale/tests/test_main_controller.py`, `addons/website_sale/tests/test_abandoned_cart.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 108; representative identifiers: `group_product_price_comparison`, `group_automate_suggested_products`, `group_product_feed`, `group_unpublish_out_of_stock`, `base.group_user`, `sales_team.group_sale_manager`, `product.product_pricelist_comp_rule`, `product.product_pricelist_item_comp_rule`, `sale_report_view_search_website`, `sale_report_view_pivot_website`, `sale_report_view_graph_website`, `sale_report_view_tree`, `sale_report_action_dashboard`, `sale_report_action_view_pivot_website`, `sale_report_action_view_graph_website`, `sale_report_action_carts`, `sale_report_action_view_pivot_carts`, `sale_report_action_view_graph_carts`, `Product Base unit price`, `Product`
+- Menus: 19; representative evidence: `addons/website_sale/views/website_sale_menus.xml:9`, `addons/website_sale/views/website_sale_menus.xml:15`, `addons/website_sale/views/website_sale_menus.xml:21`, `addons/website_sale/views/website_sale_menus.xml:26`, `addons/website_sale/views/website_sale_menus.xml:32`, `addons/website_sale/views/website_sale_menus.xml:39`, `addons/website_sale/views/website_sale_menus.xml:47`, `addons/website_sale/views/website_sale_menus.xml:52`, `addons/website_sale/views/website_sale_menus.xml:58`, `addons/website_sale/views/website_sale_menus.xml:65`, `addons/website_sale/views/website_sale_menus.xml:71`, `addons/website_sale/views/website_sale_menus.xml:77`
+- Templates: 191; representative evidence: `addons/website_sale/templates/product_page_templates.xml:4`, `addons/website_sale/templates/product_page_templates.xml:15`, `addons/website_sale/templates/product_page_templates.xml:180`, `addons/website_sale/templates/product_page_templates.xml:406`, `addons/website_sale/templates/product_page_templates.xml:433`, `addons/website_sale/templates/product_page_templates.xml:448`, `addons/website_sale/templates/product_page_templates.xml:486`, `addons/website_sale/templates/product_page_templates.xml:534`, `addons/website_sale/templates/product_page_templates.xml:629`, `addons/website_sale/templates/product_page_templates.xml:679`, `addons/website_sale/templates/product_page_templates.xml:740`, `addons/website_sale/templates/product_page_templates.xml:753`
+- View/action field declarations: 138; representative evidence: `addons/website_sale/report/sale_report_views.xml:5`, `addons/website_sale/report/sale_report_views.xml:6`, `addons/website_sale/report/sale_report_views.xml:42`, `addons/website_sale/report/sale_report_views.xml:43`, `addons/website_sale/report/sale_report_views.xml:54`, `addons/website_sale/report/sale_report_views.xml:55`, `addons/website_sale/report/sale_report_views.xml:65`, `addons/website_sale/report/sale_report_views.xml:67`, `addons/website_sale/report/sale_report_views.xml:77`, `addons/website_sale/report/sale_report_views.xml:79`, `addons/website_sale/report/sale_report_views.xml:92`, `addons/website_sale/report/sale_report_views.xml:99`
+- Browser assets: 165; representative files: `addons/website_sale/static/src/website_builder/wishlist_page_option_plugin.js`, `addons/website_sale/static/src/website_builder/dynamic_snippet_products_option.js`, `addons/website_sale/static/src/website_builder/product_tag_image_option_plugin.js`, `addons/website_sale/static/src/website_builder/product_variant_option_plugin.js`, `addons/website_sale/static/src/website_builder/product_page_option.js`, `addons/website_sale/static/src/website_builder/product_template_option_plugin.js`, `addons/website_sale/static/src/website_builder/products_searchbar_option_plugin.js`, `addons/website_sale/static/src/website_builder/website_sale_form_editor.edit.js`, `addons/website_sale/static/src/website_builder/snippet_model.js`, `addons/website_sale/static/src/website_builder/footer_option_plugin.js`, `addons/website_sale/static/src/website_builder/product_ribbon_options.js`, `addons/website_sale/static/src/website_builder/product_template_option.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/website_sale/__manifest__.py`
+- **HTTP entry points:** `addons/website_sale/controllers/product_feed.py:10`, `addons/website_sale/controllers/donation.py:5`, `addons/website_sale/controllers/cart.py:19`, `addons/website_sale/controllers/cart.py:82`, `addons/website_sale/controllers/cart.py:315`, `addons/website_sale/controllers/cart.py:373`, `addons/website_sale/controllers/wishlist.py:10`, `addons/website_sale/controllers/wishlist.py:37`, `addons/website_sale/controllers/wishlist.py:52`, `addons/website_sale/controllers/wishlist.py:65`, `addons/website_sale/controllers/wishlist.py:71`, `addons/website_sale/controllers/comparison.py:7`
+- **Scheduled entry points:** `addons/website_sale/__manifest__.py`, `addons/website_sale/models/sale_order.py`, `addons/website_sale/models/product_product.py`, `addons/website_sale/models/product_template.py`, `addons/website_sale/models/withdrawal_request.py`, `addons/website_sale/models/res_config_settings.py`, `addons/website_sale/models/product_wishlist.py`, `addons/website_sale/models/website.py`, `addons/website_sale/data/ir_actions_server_data.xml`, `addons/website_sale/data/website_snippet_filter_data.xml`, `addons/website_sale/data/ir_cron_data.xml`, `addons/website_sale/views/product_feed_views.xml`
+- **Report entry points:** `addons/website_sale/controllers/main.py`
+
+## 7. Database interactions
+
+- Model declarations: 42
+- Representative model evidence: inherits `res.partner` (addons/website_sale/models/res_partner.py:7); `sale.order` (addons/website_sale/models/sale_order.py:20); `product.product` (addons/website_sale/models/product_product.py:12); inherits `product.combo` (addons/website_sale/models/product_combo.py:6); inherits `website.track` (addons/website_sale/models/website_track.py:6); inherits `product.attribute` (addons/website_sale/models/product_attribute.py:6); `product.feed` (addons/website_sale/models/product_feed.py:19); inherits `digest.digest` (addons/website_sale/models/digest.py:6); `product.template` (addons/website_sale/models/product_template.py:38); inherits `website.menu` (addons/website_sale/models/website_menu.py:6); inherits `res.groups` (addons/website_sale/models/res_groups.py:6); inherits `website.snippet.filter` (addons/website_sale/models/website_snippet_filter.py:11); `product.attribute.category` (addons/website_sale/models/product_attribute_category.py:6); `delivery.carrier` (addons/website_sale/models/delivery_carrier.py:11); `withdrawal.request` (addons/website_sale/models/withdrawal_request.py:12); inherits `res.config.settings` (addons/website_sale/models/res_config_settings.py:6); inherits `product.pricelist` (addons/website_sale/models/product_pricelist.py:7); inherits `product.template.attribute.value` (addons/website_sale/models/product_template_attribute_value.py:8); `website.checkout.step` (addons/website_sale/models/website_checkout_step.py:9); inherits `product.template.attribute.line` (addons/website_sale/models/product_template_attribute_line.py:8); inherits `crm.team` (addons/website_sale/models/crm_team.py:6); inherits `website.visitor` (addons/website_sale/models/website_visitor.py:6); inherits `ir.http` (addons/website_sale/models/ir_http.py:8); inherits `product.pricelist.item` (addons/website_sale/models/product_pricelist_item.py:6); inherits `ir.module.module` (addons/website_sale/models/ir_module_module.py:7); inherits `product.document` (addons/website_sale/models/product_document.py:6); `product.wishlist` (addons/website_sale/models/product_wishlist.py:9); `product.ribbon` (addons/website_sale/models/product_ribbon.py:7); inherits `theme.utils` (addons/website_sale/models/theme_utils.py:6); inherits `res.users` (addons/website_sale/models/res_users.py:5)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 17
+- Route declarations: 62
+- Route evidence: `addons/website_sale/controllers/product_feed.py:10`, `addons/website_sale/controllers/donation.py:5`, `addons/website_sale/controllers/cart.py:19`, `addons/website_sale/controllers/cart.py:82`, `addons/website_sale/controllers/cart.py:315`, `addons/website_sale/controllers/cart.py:373`, `addons/website_sale/controllers/wishlist.py:10`, `addons/website_sale/controllers/wishlist.py:37`, `addons/website_sale/controllers/wishlist.py:52`, `addons/website_sale/controllers/wishlist.py:65`, `addons/website_sale/controllers/wishlist.py:71`, `addons/website_sale/controllers/comparison.py:7`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `website`, `sale`, `website_payment`, `website_mail`, `portal_rating`, `digest`, `delivery`, `html_builder`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/website_sale/README.md`
+- `addons/website_sale/__init__.py`
+- `addons/website_sale/__manifest__.py`
+- `addons/website_sale/const.py`
+- `addons/website_sale/controllers/__init__.py`
+- `addons/website_sale/controllers/cart.py`
+- `addons/website_sale/controllers/combo_configurator.py`
+- `addons/website_sale/controllers/comparison.py`
+- `addons/website_sale/controllers/delivery.py`
+- `addons/website_sale/controllers/donation.py`
+- `addons/website_sale/controllers/main.py`
+- `addons/website_sale/controllers/payment.py`
+- `addons/website_sale/controllers/portal.py`
+- `addons/website_sale/controllers/product_configurator.py`
+- `addons/website_sale/controllers/product_feed.py`
+- `addons/website_sale/controllers/reorder.py`
+- `addons/website_sale/controllers/sale.py`
+- `addons/website_sale/controllers/thread.py`
+- `addons/website_sale/controllers/variant.py`
+- `addons/website_sale/controllers/website.py`
+- `addons/website_sale/controllers/wishlist.py`
+- `addons/website_sale/data/data.xml`
+- `addons/website_sale/data/demo.xml`
+- `addons/website_sale/data/digest_data.xml`
+- `addons/website_sale/data/donation_data.xml`
+- `addons/website_sale/data/ir_actions_server_data.xml`
+- `addons/website_sale/data/ir_cron_data.xml`
+- `addons/website_sale/data/mail_template_data.xml`
+- `addons/website_sale/data/product_attribute_category_data.xml`
+- `addons/website_sale/data/product_attribute_category_demo.xml`
+- `addons/website_sale/data/product_attribute_data.xml`
+- `addons/website_sale/data/product_ribbon_data.xml`
+- `addons/website_sale/data/tour.xml`
+- `addons/website_sale/data/website_checkout_step_data.xml`
+- `addons/website_sale/data/website_snippet_filter_data.xml`
+- `addons/website_sale/i18n/af.po`
+- `addons/website_sale/i18n/ar.po`
+- `addons/website_sale/i18n/az.po`
+- `addons/website_sale/i18n/bg.po`
+- `addons/website_sale/i18n/bs.po`
+- `addons/website_sale/i18n/ca.po`
+- `addons/website_sale/i18n/cs.po`
+- `addons/website_sale/i18n/da.po`
+- `addons/website_sale/i18n/de.po`
+- `addons/website_sale/i18n/el.po`
+- `addons/website_sale/i18n/es.po`
+- `addons/website_sale/i18n/es_419.po`
+- `addons/website_sale/i18n/es_CL.po`
+- `addons/website_sale/i18n/et.po`
+- `addons/website_sale/i18n/eu.po`
+- `addons/website_sale/i18n/fa.po`
+- `addons/website_sale/i18n/fi.po`
+- `addons/website_sale/i18n/fr.po`
+- `addons/website_sale/i18n/gl.po`
+- `addons/website_sale/i18n/gu.po`
+- `addons/website_sale/i18n/he.po`
+- `addons/website_sale/i18n/hi.po`
+- `addons/website_sale/i18n/hr.po`
+- `addons/website_sale/i18n/hu.po`
+- `addons/website_sale/i18n/id.po`
+- `addons/website_sale/i18n/is.po`
+- `addons/website_sale/i18n/it.po`
+- `addons/website_sale/i18n/ja.po`
+- `addons/website_sale/i18n/ka.po`
+- `addons/website_sale/i18n/kab.po`
+- `addons/website_sale/i18n/km.po`
+- `addons/website_sale/i18n/ko.po`
+- `addons/website_sale/i18n/ku.po`
+- `addons/website_sale/i18n/lo.po`
+- `addons/website_sale/i18n/lt.po`
+- `addons/website_sale/i18n/lv.po`
+- `addons/website_sale/i18n/mk.po`
+- `addons/website_sale/i18n/mn.po`
+- `addons/website_sale/i18n/my.po`
+- `addons/website_sale/i18n/nb.po`
+- `addons/website_sale/i18n/nl.po`
+- `addons/website_sale/i18n/pl.po`
+- `addons/website_sale/i18n/pt.po`
+- `addons/website_sale/i18n/pt_BR.po`
+- `addons/website_sale/i18n/ro.po`
+- `addons/website_sale/i18n/ru.po`
+- `addons/website_sale/i18n/sk.po`
+- `addons/website_sale/i18n/sl.po`
+- `addons/website_sale/i18n/sr@latin.po`
+- `addons/website_sale/i18n/sv.po`
+- `addons/website_sale/i18n/th.po`
+- `addons/website_sale/i18n/tr.po`
+- `addons/website_sale/i18n/uk.po`
+- `addons/website_sale/i18n/uz.po`
+- `addons/website_sale/i18n/vi.po`
+- `addons/website_sale/i18n/website_sale.pot`
+- `addons/website_sale/i18n/zh_CN.po`
+- `addons/website_sale/i18n/zh_TW.po`
+- `addons/website_sale/models/__init__.py`
+- `addons/website_sale/models/account_move.py`
+- `addons/website_sale/models/crm_team.py`
+- `addons/website_sale/models/delivery_carrier.py`
+- `addons/website_sale/models/digest.py`
+- `addons/website_sale/models/ir_http.py`
+- `addons/website_sale/models/ir_module_module.py`
+- `addons/website_sale/models/payment_transaction.py`
+- `addons/website_sale/models/product_attribute.py`
+- `addons/website_sale/models/product_attribute_category.py`
+- `addons/website_sale/models/product_combo.py`
+- `addons/website_sale/models/product_document.py`
+- `addons/website_sale/models/product_feed.py`
+- `addons/website_sale/models/product_image.py`
+- `addons/website_sale/models/product_pricelist.py`
+- `addons/website_sale/models/product_pricelist_item.py`
+- `addons/website_sale/models/product_product.py`
+- `addons/website_sale/models/product_public_category.py`
+- `addons/website_sale/models/product_ribbon.py`
+- `addons/website_sale/models/product_stock_notification.py`
+- `addons/website_sale/models/product_tag.py`
+- `addons/website_sale/models/product_template.py`
+- `addons/website_sale/models/product_template_attribute_line.py`
+- `addons/website_sale/models/product_template_attribute_value.py`
+- `addons/website_sale/models/product_wishlist.py`
+- `addons/website_sale/models/res_company.py`
+- `addons/website_sale/models/res_config_settings.py`
+- `addons/website_sale/models/res_groups.py`
+- `addons/website_sale/models/res_partner.py`
+- `addons/website_sale/models/res_users.py`
+- `addons/website_sale/models/sale_order.py`
+- `addons/website_sale/models/sale_order_line.py`
+- `addons/website_sale/models/theme_utils.py`
+- `addons/website_sale/models/website.py`
+- `addons/website_sale/models/website_checkout_alert_mixin.py`
+- `addons/website_sale/models/website_checkout_step.py`
+- `addons/website_sale/models/website_menu.py`
+- `addons/website_sale/models/website_sale_extra_field.py`
+- `addons/website_sale/models/website_snippet_filter.py`
+- `addons/website_sale/models/website_track.py`
+- `addons/website_sale/models/website_visitor.py`
+- `addons/website_sale/models/withdrawal_request.py`
+- `addons/website_sale/report/__init__.py`
+- `addons/website_sale/report/sale_report.py`
+- `addons/website_sale/report/sale_report_views.xml`
+- `addons/website_sale/security/ir.access.csv`
+- `addons/website_sale/security/ir_access.xml`
+- `addons/website_sale/security/res_groups.xml`
+- `addons/website_sale/static/description/icon.png`
+- `addons/website_sale/static/description/icon.svg`
+- `addons/website_sale/static/description/icon_hi.png`
+- `addons/website_sale/static/shapes/s_donation_gift.svg`
+- `addons/website_sale/static/src/img/categories/bins.jpg`
+- `addons/website_sale/static/src/img/categories/boxes.jpg`
+- `addons/website_sale/static/src/img/categories/cabinets.jpg`
+- `addons/website_sale/static/src/img/categories/desk_components.jpg`
+- `addons/website_sale/static/src/img/categories/desks.jpg`
+- `addons/website_sale/static/src/img/categories/drawers.jpg`
+- `addons/website_sale/static/src/img/categories/furnitures.jpg`
+- `addons/website_sale/static/src/img/categories/lamps.jpg`
+- `addons/website_sale/static/src/img/categories/placeholder_thumbnail.png`
+- `addons/website_sale/static/src/img/categories/shape_mixed_1.png`
+- `addons/website_sale/static/src/img/categories/shape_mixed_2.png`
+- `addons/website_sale/static/src/img/categories/shape_mixed_3.png`
+- `addons/website_sale/static/src/img/categories/shape_mixed_4.png`
+- `addons/website_sale/static/src/img/categories/shape_mixed_5.png`
+- `addons/website_sale/static/src/img/categories/shape_mixed_6.png`
+- `addons/website_sale/static/src/img/categories/shape_mixed_7.png`
+- `addons/website_sale/static/src/img/categories/shape_mixed_8.png`
+- `addons/website_sale/static/src/img/configurator/product/classic.webp`
+- `addons/website_sale/static/src/img/configurator/product/focused.webp`
+- `addons/website_sale/static/src/img/configurator/product/functional.webp`
+- `addons/website_sale/static/src/img/configurator/product/image_grid.webp`
+- `addons/website_sale/static/src/img/configurator/product/large_grid.webp`
+- `addons/website_sale/static/src/img/configurator/product/large_image.webp`
+- `addons/website_sale/static/src/img/configurator/shop/cards.webp`
+- `addons/website_sale/static/src/img/configurator/shop/chips_contained.webp`
+- `addons/website_sale/static/src/img/configurator/shop/classic_grid.webp`
+- `addons/website_sale/static/src/img/configurator/shop/condensed_list.webp`
+- `addons/website_sale/static/src/img/configurator/shop/modern_grid.webp`
+- `addons/website_sale/static/src/img/configurator/shop/showcase.webp`
+- `addons/website_sale/static/src/img/filmstrips/bordered.svg`
+- `addons/website_sale/static/src/img/filmstrips/default.svg`
+- `addons/website_sale/static/src/img/filmstrips/grid.svg`
+- `addons/website_sale/static/src/img/filmstrips/images.svg`
+- `addons/website_sale/static/src/img/filmstrips/large_images.svg`
+- `addons/website_sale/static/src/img/filmstrips/pills.svg`
+- `addons/website_sale/static/src/img/filmstrips/tabs.svg`
+- `addons/website_sale/static/src/img/product_previews/product_1.jpg`
+- `addons/website_sale/static/src/img/product_previews/product_2.jpg`
+- `addons/website_sale/static/src/img/product_previews/product_3.jpg`
+- `addons/website_sale/static/src/img/product_previews/product_4.jpg`
+- `addons/website_sale/static/src/img/products_demo/carpentry.jpg`
+- `addons/website_sale/static/src/img/products_demo/desk_organizer_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/donation.png`
+- `addons/website_sale/static/src/img/products_demo/floor_protection-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_lamp_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_10-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_12-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_16-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_24-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_27-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_3-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_46-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_5-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_6-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_7-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_9-image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_d01_image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/product_product_d03_image_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/table02_02.jpg`
+- `addons/website_sale/static/src/img/products_demo/table02_03.webp`
+- `addons/website_sale/static/src/img/products_demo/warranty.jpg`
+- `addons/website_sale/static/src/img/products_entries_design/style_catalog_bento.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_catalog_cards.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_catalog_chips.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_catalog_grid.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_catalog_overlay.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_catalog_panel.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_catalog_thumb.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_list_cards.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_list_condensed.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_list_grid.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_list_large.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_list_list.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_list_narrow.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_list_showcase.svg`
+- `addons/website_sale/static/src/img/products_entries_design/style_list_thumbs.svg`
+- `addons/website_sale/static/src/img/snippet_options/image-width-100.svg`
+- `addons/website_sale/static/src/img/snippet_options/image-width-33.svg`
+- `addons/website_sale/static/src/img/snippet_options/image-width-50.svg`
+- `addons/website_sale/static/src/img/snippet_options/image-width-66.svg`
+- `addons/website_sale/static/src/img/snippet_options/image-width-none.svg`
+- `addons/website_sale/static/src/img/snippets_options/footer_template_website_sale.svg`
+- `addons/website_sale/static/src/interactions/add_to_cart.js`
+- `addons/website_sale/static/src/interactions/add_to_comparison.js`
+- `addons/website_sale/static/src/interactions/add_to_wishlist.js`
+- `addons/website_sale/static/src/interactions/address.js`
+- `addons/website_sale/static/src/interactions/carousel_product.js`
+- `addons/website_sale/static/src/interactions/cart_line.js`
+- `addons/website_sale/static/src/interactions/checkout.js`
+- `addons/website_sale/static/src/interactions/comparison_bottom_bar.js`
+- `addons/website_sale/static/src/interactions/comparison_page.js`
+- `addons/website_sale/static/src/interactions/confirm_order.js`
+- `addons/website_sale/static/src/interactions/delivery_date_picker.js`
+- `addons/website_sale/static/src/interactions/dropdown_typeahead.js`
+- `addons/website_sale/static/src/interactions/express_checkout.js`
+- `addons/website_sale/static/src/interactions/extra_info_form.js`
+- `addons/website_sale/static/src/interactions/mobile_summary_keyboard.js`
+- `addons/website_sale/static/src/interactions/payment_button.js`
+- `addons/website_sale/static/src/interactions/payment_form.js`
+- `addons/website_sale/static/src/interactions/popup.js`
+- `addons/website_sale/static/src/interactions/price_range.js`
+- `addons/website_sale/static/src/interactions/product/product_images_grid.js`
+- `addons/website_sale/static/src/interactions/product/product_variant_preview.js`
+- `addons/website_sale/static/src/interactions/product/product_variant_preview_hover.js`
+- `addons/website_sale/static/src/interactions/product_accordion.js`
+- Additional source files not expanded in this page: 317; see `../../01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.

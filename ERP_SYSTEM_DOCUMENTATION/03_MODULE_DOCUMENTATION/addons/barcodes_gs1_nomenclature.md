@@ -1,131 +1,177 @@
 # Module: barcodes_gs1_nomenclature
 
 - **Module ID:** MOD-033
-- **Path:** `addons/barcodes_gs1_nomenclature`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/barcodes_gs1_nomenclature`
 - **Manifest:** `addons/barcodes_gs1_nomenclature/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Supply Chain/Inventory`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Parse barcodes according to the GS1-128 specifications
+**Purpose:** Parse barcodes according to the GS1-128 specifications
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `barcodes`, `uom`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 65 files, including 8 Python, 2 XML, and 6 JavaScript/TypeScript files. The manifest declares dependencies: `barcodes`, `uom`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 8 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 4 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 2 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 6 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 3
+- Controller/API files: 0
+- XML/data/view/template files: 2
+- Browser asset files: 6
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "barcodes",
-    "uom"
-  ],
-  "data": [
-    "data/barcodes_gs1_rules.xml",
-    "views/barcodes_view.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "barcodes_gs1_nomenclature/static/src/js/barcode_parser.js",
-      "barcodes_gs1_nomenclature/static/src/js/barcode_plugin.js",
-      "barcodes_gs1_nomenclature/static/src/js/epc_model.js",
-      "barcodes_gs1_nomenclature/static/src/js/epc_utils.js"
-    ],
-    "web.assets_unit_tests": [
-      "barcodes_gs1_nomenclature/static/src/js/tests/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** Not found in module
 
-- `addons/barcodes_gs1_nomenclature/__init__.py` (1 lines)
-- `addons/barcodes_gs1_nomenclature/__manifest__.py` (25 lines)
-- `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml` (338 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/ar.po` (291 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/az.po` (269 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/barcodes_gs1_nomenclature.pot` (261 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/bg.po` (269 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/bs.po` (269 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/ca.po` (288 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/cs.po` (270 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/da.po` (294 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/de.po` (296 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/el.po` (271 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/es.po` (303 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/es_419.po` (301 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/et.po` (290 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/fa.po` (283 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/fi.po` (293 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/fr.po` (294 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/he.po` (268 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/hi.po` (267 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/hr.po` (269 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/hu.po` (269 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/id.po` (294 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/it.po` (298 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/ja.po` (290 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/kab.po` (268 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/ko.po` (288 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/ku.po` (269 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/lo.po` (287 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/lt.po` (271 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/lv.po` (269 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/mn.po` (269 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/my.po` (267 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/nb.po` (267 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/nl.po` (293 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/pl.po` (297 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/pt.po` (294 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/pt_BR.po` (296 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/ro.po` (286 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/ru.po` (301 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/sk.po` (270 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/sl.po` (289 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/sr@latin.po` (268 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/sv.po` (290 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/th.po` (284 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/tr.po` (291 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/uk.po` (285 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/uz.po` (336 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/vi.po` (296 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/zh_CN.po` (279 lines)
-- `addons/barcodes_gs1_nomenclature/i18n/zh_TW.po` (282 lines)
-- `addons/barcodes_gs1_nomenclature/models/__init__.py` (3 lines)
-- `addons/barcodes_gs1_nomenclature/models/barcode_nomenclature.py` (205 lines)
-- `addons/barcodes_gs1_nomenclature/models/barcode_rule.py` (69 lines)
-- `addons/barcodes_gs1_nomenclature/models/ir_http.py` (16 lines)
-- `addons/barcodes_gs1_nomenclature/static/src/js/barcode_parser.js` (179 lines)
-- `addons/barcodes_gs1_nomenclature/static/src/js/barcode_plugin.js` (16 lines)
-- `addons/barcodes_gs1_nomenclature/static/src/js/epc_model.js` (279 lines)
-- `addons/barcodes_gs1_nomenclature/static/src/js/epc_utils.js` (285 lines)
-- `addons/barcodes_gs1_nomenclature/static/src/js/tests/barcode_parser.test.js` (255 lines)
-- `addons/barcodes_gs1_nomenclature/static/src/js/tests/epc_utils.test.js` (64 lines)
-- `addons/barcodes_gs1_nomenclature/tests/__init__.py` (1 lines)
-- `addons/barcodes_gs1_nomenclature/tests/test_barcodes_gs1_nomenclature.py` (145 lines)
-- `addons/barcodes_gs1_nomenclature/views/barcodes_view.xml` (61 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 3 model declarations, 13 methods, 2 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/barcodes_gs1_nomenclature/models/barcode_nomenclature.py:13`, `addons/barcodes_gs1_nomenclature/models/barcode_rule.py:7`, `addons/barcodes_gs1_nomenclature/models/ir_http.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 2 XML files and 6 JavaScript/TypeScript files; static XML analysis found 33 record/template/menu identifiers.
+- **Evidence:** `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:4`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:10`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:20`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:30`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:40`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:50`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:60`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:71`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:81`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:92`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:102`, `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml:112`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/barcodes_gs1_nomenclature/tests/__init__.py`, `addons/barcodes_gs1_nomenclature/tests/test_barcodes_gs1_nomenclature.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 2; representative identifiers: `default_gs1_nomenclature`, `barcode_rule_gs1_00`, `barcode_rule_gs1_01`, `barcode_rule_gs1_02`, `barcode_rule_gs1_410`, `barcode_rule_gs1_413`, `barcode_rule_gs1_414`, `barcode_rule_gs1_10`, `barcode_rule_gs1_21`, `barcode_rule_gs1_13`, `barcode_rule_gs1_15`, `barcode_rule_gs1_17`, `barcode_rule_gs1_30`, `barcode_rule_gs1_37`, `barcode_rule_gs1_310y`, `barcode_rule_gs1_311y`, `barcode_rule_gs1_314y`, `barcode_rule_gs1_315y`, `barcode_rule_gs1_316y`, `barcode_rule_gs1_320y`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 6; representative evidence: `addons/barcodes_gs1_nomenclature/views/barcodes_view.xml:5`, `addons/barcodes_gs1_nomenclature/views/barcodes_view.xml:7`, `addons/barcodes_gs1_nomenclature/views/barcodes_view.xml:36`, `addons/barcodes_gs1_nomenclature/views/barcodes_view.xml:38`, `addons/barcodes_gs1_nomenclature/views/barcodes_view.xml:47`, `addons/barcodes_gs1_nomenclature/views/barcodes_view.xml:49`
+- Browser assets: 6; representative files: `addons/barcodes_gs1_nomenclature/static/src/js/epc_utils.js`, `addons/barcodes_gs1_nomenclature/static/src/js/barcode_plugin.js`, `addons/barcodes_gs1_nomenclature/static/src/js/epc_model.js`, `addons/barcodes_gs1_nomenclature/static/src/js/barcode_parser.js`, `addons/barcodes_gs1_nomenclature/static/src/js/tests/barcode_parser.test.js`, `addons/barcodes_gs1_nomenclature/static/src/js/tests/epc_utils.test.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/barcodes_gs1_nomenclature/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 3
+- Representative model evidence: inherits `barcode.nomenclature` (addons/barcodes_gs1_nomenclature/models/barcode_nomenclature.py:13); inherits `barcode.rule` (addons/barcodes_gs1_nomenclature/models/barcode_rule.py:7); inherits `ir.http` (addons/barcodes_gs1_nomenclature/models/ir_http.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `barcodes`, `uom`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/barcodes_gs1_nomenclature/__init__.py`
+- `addons/barcodes_gs1_nomenclature/__manifest__.py`
+- `addons/barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml`
+- `addons/barcodes_gs1_nomenclature/i18n/ar.po`
+- `addons/barcodes_gs1_nomenclature/i18n/az.po`
+- `addons/barcodes_gs1_nomenclature/i18n/barcodes_gs1_nomenclature.pot`
+- `addons/barcodes_gs1_nomenclature/i18n/bg.po`
+- `addons/barcodes_gs1_nomenclature/i18n/bs.po`
+- `addons/barcodes_gs1_nomenclature/i18n/ca.po`
+- `addons/barcodes_gs1_nomenclature/i18n/cs.po`
+- `addons/barcodes_gs1_nomenclature/i18n/da.po`
+- `addons/barcodes_gs1_nomenclature/i18n/de.po`
+- `addons/barcodes_gs1_nomenclature/i18n/el.po`
+- `addons/barcodes_gs1_nomenclature/i18n/es.po`
+- `addons/barcodes_gs1_nomenclature/i18n/es_419.po`
+- `addons/barcodes_gs1_nomenclature/i18n/et.po`
+- `addons/barcodes_gs1_nomenclature/i18n/fa.po`
+- `addons/barcodes_gs1_nomenclature/i18n/fi.po`
+- `addons/barcodes_gs1_nomenclature/i18n/fr.po`
+- `addons/barcodes_gs1_nomenclature/i18n/he.po`
+- `addons/barcodes_gs1_nomenclature/i18n/hi.po`
+- `addons/barcodes_gs1_nomenclature/i18n/hr.po`
+- `addons/barcodes_gs1_nomenclature/i18n/hu.po`
+- `addons/barcodes_gs1_nomenclature/i18n/id.po`
+- `addons/barcodes_gs1_nomenclature/i18n/it.po`
+- `addons/barcodes_gs1_nomenclature/i18n/ja.po`
+- `addons/barcodes_gs1_nomenclature/i18n/kab.po`
+- `addons/barcodes_gs1_nomenclature/i18n/ko.po`
+- `addons/barcodes_gs1_nomenclature/i18n/ku.po`
+- `addons/barcodes_gs1_nomenclature/i18n/lo.po`
+- `addons/barcodes_gs1_nomenclature/i18n/lt.po`
+- `addons/barcodes_gs1_nomenclature/i18n/lv.po`
+- `addons/barcodes_gs1_nomenclature/i18n/mn.po`
+- `addons/barcodes_gs1_nomenclature/i18n/my.po`
+- `addons/barcodes_gs1_nomenclature/i18n/nb.po`
+- `addons/barcodes_gs1_nomenclature/i18n/nl.po`
+- `addons/barcodes_gs1_nomenclature/i18n/pl.po`
+- `addons/barcodes_gs1_nomenclature/i18n/pt.po`
+- `addons/barcodes_gs1_nomenclature/i18n/pt_BR.po`
+- `addons/barcodes_gs1_nomenclature/i18n/ro.po`
+- `addons/barcodes_gs1_nomenclature/i18n/ru.po`
+- `addons/barcodes_gs1_nomenclature/i18n/sk.po`
+- `addons/barcodes_gs1_nomenclature/i18n/sl.po`
+- `addons/barcodes_gs1_nomenclature/i18n/sr@latin.po`
+- `addons/barcodes_gs1_nomenclature/i18n/sv.po`
+- `addons/barcodes_gs1_nomenclature/i18n/th.po`
+- `addons/barcodes_gs1_nomenclature/i18n/tr.po`
+- `addons/barcodes_gs1_nomenclature/i18n/uk.po`
+- `addons/barcodes_gs1_nomenclature/i18n/uz.po`
+- `addons/barcodes_gs1_nomenclature/i18n/vi.po`
+- `addons/barcodes_gs1_nomenclature/i18n/zh_CN.po`
+- `addons/barcodes_gs1_nomenclature/i18n/zh_TW.po`
+- `addons/barcodes_gs1_nomenclature/models/__init__.py`
+- `addons/barcodes_gs1_nomenclature/models/barcode_nomenclature.py`
+- `addons/barcodes_gs1_nomenclature/models/barcode_rule.py`
+- `addons/barcodes_gs1_nomenclature/models/ir_http.py`
+- `addons/barcodes_gs1_nomenclature/static/src/js/barcode_parser.js`
+- `addons/barcodes_gs1_nomenclature/static/src/js/barcode_plugin.js`
+- `addons/barcodes_gs1_nomenclature/static/src/js/epc_model.js`
+- `addons/barcodes_gs1_nomenclature/static/src/js/epc_utils.js`
+- `addons/barcodes_gs1_nomenclature/static/src/js/tests/barcode_parser.test.js`
+- `addons/barcodes_gs1_nomenclature/static/src/js/tests/epc_utils.test.js`
+- `addons/barcodes_gs1_nomenclature/tests/__init__.py`
+- `addons/barcodes_gs1_nomenclature/tests/test_barcodes_gs1_nomenclature.py`
+- `addons/barcodes_gs1_nomenclature/views/barcodes_view.xml`

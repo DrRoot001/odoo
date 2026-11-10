@@ -1,122 +1,173 @@
 # Module: pos_sale_loyalty
 
 - **Module ID:** MOD-452
-- **Path:** `addons/pos_sale_loyalty`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/pos_sale_loyalty`
 - **Manifest:** `addons/pos_sale_loyalty/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Sales/Point of Sale`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Link module between pos_sale and pos_loyalty
+**Purpose:** Link module between pos_sale and pos_loyalty
 
+**Manifest description:**
 
 This module correct some behaviors when both module are installed.
 
+**Scope evidence:** The module contains 61 files, including 7 Python, 0 XML, and 5 JavaScript/TypeScript files. The manifest declares dependencies: `pos_sale`, `pos_loyalty`.
 
-Declared dependencies: `pos_sale`, `pos_loyalty`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 2
+- Controller/API files: 0
+- XML/data/view/template files: 0
+- Browser asset files: 5
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 7 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 0 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 5 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "pos_sale",
-    "pos_loyalty"
-  ],
-  "assets": {
-    "point_of_sale._assets_pos": [
-      "pos_sale_loyalty/static/src/**/*"
-    ],
-    "web.assets_tests": [
-      "pos_sale_loyalty/static/tests/tours/**/*"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/pos_sale_loyalty/__init__.py` (4 lines)
-- `addons/pos_sale_loyalty/__manifest__.py` (24 lines)
-- `addons/pos_sale_loyalty/i18n/ar.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/az.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/bg.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/bs.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/ca.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/cs.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/da.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/de.po` (66 lines)
-- `addons/pos_sale_loyalty/i18n/el.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/es.po` (63 lines)
-- `addons/pos_sale_loyalty/i18n/es_419.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/et.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/fa.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/fi.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/fr.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/he.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/hi.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/hr.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/hu.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/id.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/it.po` (63 lines)
-- `addons/pos_sale_loyalty/i18n/ja.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/kab.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/ko.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/ku.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/lo.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/lt.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/lv.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/mn.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/my.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/nb.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/nl.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/pl.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/pos_sale_loyalty.pot` (55 lines)
-- `addons/pos_sale_loyalty/i18n/pt.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/pt_BR.po` (67 lines)
-- `addons/pos_sale_loyalty/i18n/ro.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/ru.po` (62 lines)
-- `addons/pos_sale_loyalty/i18n/sk.po` (58 lines)
-- `addons/pos_sale_loyalty/i18n/sl.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/sr@latin.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/sv.po` (60 lines)
-- `addons/pos_sale_loyalty/i18n/th.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/tr.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/uk.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/uz.po` (69 lines)
-- `addons/pos_sale_loyalty/i18n/vi.po` (59 lines)
-- `addons/pos_sale_loyalty/i18n/zh_CN.po` (65 lines)
-- `addons/pos_sale_loyalty/i18n/zh_TW.po` (61 lines)
-- `addons/pos_sale_loyalty/models/__init__.py` (5 lines)
-- `addons/pos_sale_loyalty/models/loyalty_rule.py` (11 lines)
-- `addons/pos_sale_loyalty/models/sale_order.py` (13 lines)
-- `addons/pos_sale_loyalty/static/src/overrides/components/control_buttons/control_buttons.js` (11 lines)
-- `addons/pos_sale_loyalty/static/src/overrides/models/loyalty_rule.js` (8 lines)
-- `addons/pos_sale_loyalty/static/src/overrides/models/pos_store.js` (17 lines)
-- `addons/pos_sale_loyalty/static/src/overrides/pos_store.js` (13 lines)
-- `addons/pos_sale_loyalty/static/tests/tours/pos_sale_loyalty_tour.js` (48 lines)
-- `addons/pos_sale_loyalty/tests/__init__.py` (4 lines)
-- `addons/pos_sale_loyalty/tests/test_pos_sale_loyalty.py` (160 lines)
+- **Description:** 2 model declarations, 6 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/pos_sale_loyalty/models/sale_order.py:7`, `addons/pos_sale_loyalty/models/loyalty_rule.py:6`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### User interface and data
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 0 XML files and 5 JavaScript/TypeScript files; static XML analysis found 0 record/template/menu identifiers.
+- **Evidence:** Not found in module
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/pos_sale_loyalty/tests/test_pos_sale_loyalty.py`, `addons/pos_sale_loyalty/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 0; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 5; representative files: `addons/pos_sale_loyalty/static/src/overrides/pos_store.js`, `addons/pos_sale_loyalty/static/src/overrides/models/loyalty_rule.js`, `addons/pos_sale_loyalty/static/src/overrides/models/pos_store.js`, `addons/pos_sale_loyalty/static/src/overrides/components/control_buttons/control_buttons.js`, `addons/pos_sale_loyalty/static/tests/tours/pos_sale_loyalty_tour.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/pos_sale_loyalty/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `sale.order.line` (addons/pos_sale_loyalty/models/sale_order.py:7); inherits `loyalty.rule` (addons/pos_sale_loyalty/models/loyalty_rule.py:6)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `pos_sale`, `pos_loyalty`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/pos_sale_loyalty/__init__.py`
+- `addons/pos_sale_loyalty/__manifest__.py`
+- `addons/pos_sale_loyalty/i18n/ar.po`
+- `addons/pos_sale_loyalty/i18n/az.po`
+- `addons/pos_sale_loyalty/i18n/bg.po`
+- `addons/pos_sale_loyalty/i18n/bs.po`
+- `addons/pos_sale_loyalty/i18n/ca.po`
+- `addons/pos_sale_loyalty/i18n/cs.po`
+- `addons/pos_sale_loyalty/i18n/da.po`
+- `addons/pos_sale_loyalty/i18n/de.po`
+- `addons/pos_sale_loyalty/i18n/el.po`
+- `addons/pos_sale_loyalty/i18n/es.po`
+- `addons/pos_sale_loyalty/i18n/es_419.po`
+- `addons/pos_sale_loyalty/i18n/et.po`
+- `addons/pos_sale_loyalty/i18n/fa.po`
+- `addons/pos_sale_loyalty/i18n/fi.po`
+- `addons/pos_sale_loyalty/i18n/fr.po`
+- `addons/pos_sale_loyalty/i18n/he.po`
+- `addons/pos_sale_loyalty/i18n/hi.po`
+- `addons/pos_sale_loyalty/i18n/hr.po`
+- `addons/pos_sale_loyalty/i18n/hu.po`
+- `addons/pos_sale_loyalty/i18n/id.po`
+- `addons/pos_sale_loyalty/i18n/it.po`
+- `addons/pos_sale_loyalty/i18n/ja.po`
+- `addons/pos_sale_loyalty/i18n/kab.po`
+- `addons/pos_sale_loyalty/i18n/ko.po`
+- `addons/pos_sale_loyalty/i18n/ku.po`
+- `addons/pos_sale_loyalty/i18n/lo.po`
+- `addons/pos_sale_loyalty/i18n/lt.po`
+- `addons/pos_sale_loyalty/i18n/lv.po`
+- `addons/pos_sale_loyalty/i18n/mn.po`
+- `addons/pos_sale_loyalty/i18n/my.po`
+- `addons/pos_sale_loyalty/i18n/nb.po`
+- `addons/pos_sale_loyalty/i18n/nl.po`
+- `addons/pos_sale_loyalty/i18n/pl.po`
+- `addons/pos_sale_loyalty/i18n/pos_sale_loyalty.pot`
+- `addons/pos_sale_loyalty/i18n/pt.po`
+- `addons/pos_sale_loyalty/i18n/pt_BR.po`
+- `addons/pos_sale_loyalty/i18n/ro.po`
+- `addons/pos_sale_loyalty/i18n/ru.po`
+- `addons/pos_sale_loyalty/i18n/sk.po`
+- `addons/pos_sale_loyalty/i18n/sl.po`
+- `addons/pos_sale_loyalty/i18n/sr@latin.po`
+- `addons/pos_sale_loyalty/i18n/sv.po`
+- `addons/pos_sale_loyalty/i18n/th.po`
+- `addons/pos_sale_loyalty/i18n/tr.po`
+- `addons/pos_sale_loyalty/i18n/uk.po`
+- `addons/pos_sale_loyalty/i18n/uz.po`
+- `addons/pos_sale_loyalty/i18n/vi.po`
+- `addons/pos_sale_loyalty/i18n/zh_CN.po`
+- `addons/pos_sale_loyalty/i18n/zh_TW.po`
+- `addons/pos_sale_loyalty/models/__init__.py`
+- `addons/pos_sale_loyalty/models/loyalty_rule.py`
+- `addons/pos_sale_loyalty/models/sale_order.py`
+- `addons/pos_sale_loyalty/static/src/overrides/components/control_buttons/control_buttons.js`
+- `addons/pos_sale_loyalty/static/src/overrides/models/loyalty_rule.js`
+- `addons/pos_sale_loyalty/static/src/overrides/models/pos_store.js`
+- `addons/pos_sale_loyalty/static/src/overrides/pos_store.js`
+- `addons/pos_sale_loyalty/static/tests/tours/pos_sale_loyalty_tour.js`
+- `addons/pos_sale_loyalty/tests/__init__.py`
+- `addons/pos_sale_loyalty/tests/test_pos_sale_loyalty.py`

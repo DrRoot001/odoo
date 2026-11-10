@@ -1,137 +1,184 @@
 # Module: website_mail
 
 - **Module ID:** MOD-624
-- **Path:** `addons/website_mail`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/website_mail`
 - **Manifest:** `addons/website_mail/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Website/Website`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Website Module for Mail
+**Purpose:** Website Module for Mail
 
+**Manifest description:**
 
 Module holding mail improvements for website. It holds the follow widget.
 
+**Scope evidence:** The module contains 72 files, including 7 Python, 1 XML, and 2 JavaScript/TypeScript files. The manifest declares dependencies: `website`, `mail`.
 
-Declared dependencies: `website`, `mail`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 2
+- Controller/API files: 2
+- XML/data/view/template files: 1
+- Browser asset files: 2
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 7 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 2 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 2 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** Not found in module
 
-```text
-{
-  "depends": [
-    "website",
-    "mail"
-  ],
-  "data": [
-    "views/website_mail_templates.xml"
-  ],
-  "assets": {
-    "web.assets_frontend": [
-      "website_mail/static/src/interactions/follow.js",
-      "website_mail/static/src/css/website_mail.scss"
-    ],
-    "web.assets_inside_builder_iframe": [
-      "website/static/src/interactions/follow.edit.js"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/website_mail/__init__.py` (5 lines)
-- `addons/website_mail/__manifest__.py` (27 lines)
-- `addons/website_mail/controllers/__init__.py` (4 lines)
-- `addons/website_mail/controllers/main.py` (99 lines)
-- `addons/website_mail/i18n/ar.po` (90 lines)
-- `addons/website_mail/i18n/az.po` (86 lines)
-- `addons/website_mail/i18n/bg.po` (87 lines)
-- `addons/website_mail/i18n/bs.po` (87 lines)
-- `addons/website_mail/i18n/ca.po` (89 lines)
-- `addons/website_mail/i18n/cs.po` (88 lines)
-- `addons/website_mail/i18n/da.po` (89 lines)
-- `addons/website_mail/i18n/de.po` (92 lines)
-- `addons/website_mail/i18n/el.po` (88 lines)
-- `addons/website_mail/i18n/es.po` (93 lines)
-- `addons/website_mail/i18n/es_419.po` (84 lines)
-- `addons/website_mail/i18n/et.po` (87 lines)
-- `addons/website_mail/i18n/fa.po` (86 lines)
-- `addons/website_mail/i18n/fi.po` (91 lines)
-- `addons/website_mail/i18n/fr.po` (90 lines)
-- `addons/website_mail/i18n/gu.po` (84 lines)
-- `addons/website_mail/i18n/he.po` (88 lines)
-- `addons/website_mail/i18n/hi.po` (84 lines)
-- `addons/website_mail/i18n/hr.po` (88 lines)
-- `addons/website_mail/i18n/hu.po` (87 lines)
-- `addons/website_mail/i18n/id.po` (89 lines)
-- `addons/website_mail/i18n/is.po` (80 lines)
-- `addons/website_mail/i18n/it.po` (89 lines)
-- `addons/website_mail/i18n/ja.po` (88 lines)
-- `addons/website_mail/i18n/kab.po` (84 lines)
-- `addons/website_mail/i18n/ko.po` (88 lines)
-- `addons/website_mail/i18n/ku.po` (84 lines)
-- `addons/website_mail/i18n/lo.po` (83 lines)
-- `addons/website_mail/i18n/lt.po` (90 lines)
-- `addons/website_mail/i18n/lv.po` (86 lines)
-- `addons/website_mail/i18n/mk.po` (84 lines)
-- `addons/website_mail/i18n/mn.po` (88 lines)
-- `addons/website_mail/i18n/my.po` (84 lines)
-- `addons/website_mail/i18n/nb.po` (89 lines)
-- `addons/website_mail/i18n/nl.po` (89 lines)
-- `addons/website_mail/i18n/pl.po` (91 lines)
-- `addons/website_mail/i18n/pt.po` (88 lines)
-- `addons/website_mail/i18n/pt_BR.po` (93 lines)
-- `addons/website_mail/i18n/ro.po` (89 lines)
-- `addons/website_mail/i18n/ru.po` (89 lines)
-- `addons/website_mail/i18n/sk.po` (87 lines)
-- `addons/website_mail/i18n/sl.po` (89 lines)
-- `addons/website_mail/i18n/sr@latin.po` (88 lines)
-- `addons/website_mail/i18n/sv.po` (90 lines)
-- `addons/website_mail/i18n/th.po` (88 lines)
-- `addons/website_mail/i18n/tr.po` (89 lines)
-- `addons/website_mail/i18n/uk.po` (90 lines)
-- `addons/website_mail/i18n/uz.po` (98 lines)
-- `addons/website_mail/i18n/vi.po` (89 lines)
-- `addons/website_mail/i18n/website_mail.pot` (80 lines)
-- `addons/website_mail/i18n/zh_CN.po` (87 lines)
-- `addons/website_mail/i18n/zh_TW.po` (87 lines)
-- `addons/website_mail/models/__init__.py` (5 lines)
-- `addons/website_mail/models/ir_http.py` (12 lines)
-- `addons/website_mail/models/update.py` (14 lines)
-- `addons/website_mail/static/src/css/website_mail.scss` (49 lines)
-- `addons/website_mail/static/src/img/thumbnail/airmail.png` (321 lines)
-- `addons/website_mail/static/src/img/thumbnail/basic.png` (461 lines)
-- `addons/website_mail/static/src/img/thumbnail/cleave.png` (204 lines)
-- `addons/website_mail/static/src/img/thumbnail/go.png` (283 lines)
-- `addons/website_mail/static/src/img/thumbnail/narrative.png` (303 lines)
-- `addons/website_mail/static/src/img/thumbnail/neopolitan.png` (185 lines)
-- `addons/website_mail/static/src/img/thumbnail/skyline.png` (606 lines)
-- `addons/website_mail/static/src/img/thumbnail/sunday.png` (310 lines)
-- `addons/website_mail/static/src/img/thumbnail/zenflat.png` (134 lines)
-- `addons/website_mail/static/src/interactions/follow.edit.js` (13 lines)
-- `addons/website_mail/static/src/interactions/follow.js` (142 lines)
-- `addons/website_mail/views/website_mail_templates.xml` (31 lines)
+- **Description:** 2 model declarations, 6 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/website_mail/models/ir_http.py:6`, `addons/website_mail/models/update.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### HTTP/API surface
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 2 controller files and 2 route declarations.
+- **Evidence:** `addons/website_mail/controllers/main.py:10`, `addons/website_mail/controllers/main.py:59`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 1 XML files and 2 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/website_mail/views/website_mail_templates.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `follow`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 1; representative evidence: `addons/website_mail/views/website_mail_templates.xml:3`
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 2; representative files: `addons/website_mail/static/src/interactions/follow.js`, `addons/website_mail/static/src/interactions/follow.edit.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/website_mail/__manifest__.py`
+- **HTTP entry points:** `addons/website_mail/controllers/main.py:10`, `addons/website_mail/controllers/main.py:59`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `ir.http` (addons/website_mail/models/ir_http.py:6); inherits `publisher_warranty.contract` (addons/website_mail/models/update.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 2
+- Route evidence: `addons/website_mail/controllers/main.py:10`, `addons/website_mail/controllers/main.py:59`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `website`, `mail`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/website_mail/__init__.py`
+- `addons/website_mail/__manifest__.py`
+- `addons/website_mail/controllers/__init__.py`
+- `addons/website_mail/controllers/main.py`
+- `addons/website_mail/i18n/ar.po`
+- `addons/website_mail/i18n/az.po`
+- `addons/website_mail/i18n/bg.po`
+- `addons/website_mail/i18n/bs.po`
+- `addons/website_mail/i18n/ca.po`
+- `addons/website_mail/i18n/cs.po`
+- `addons/website_mail/i18n/da.po`
+- `addons/website_mail/i18n/de.po`
+- `addons/website_mail/i18n/el.po`
+- `addons/website_mail/i18n/es.po`
+- `addons/website_mail/i18n/es_419.po`
+- `addons/website_mail/i18n/et.po`
+- `addons/website_mail/i18n/fa.po`
+- `addons/website_mail/i18n/fi.po`
+- `addons/website_mail/i18n/fr.po`
+- `addons/website_mail/i18n/gu.po`
+- `addons/website_mail/i18n/he.po`
+- `addons/website_mail/i18n/hi.po`
+- `addons/website_mail/i18n/hr.po`
+- `addons/website_mail/i18n/hu.po`
+- `addons/website_mail/i18n/id.po`
+- `addons/website_mail/i18n/is.po`
+- `addons/website_mail/i18n/it.po`
+- `addons/website_mail/i18n/ja.po`
+- `addons/website_mail/i18n/kab.po`
+- `addons/website_mail/i18n/ko.po`
+- `addons/website_mail/i18n/ku.po`
+- `addons/website_mail/i18n/lo.po`
+- `addons/website_mail/i18n/lt.po`
+- `addons/website_mail/i18n/lv.po`
+- `addons/website_mail/i18n/mk.po`
+- `addons/website_mail/i18n/mn.po`
+- `addons/website_mail/i18n/my.po`
+- `addons/website_mail/i18n/nb.po`
+- `addons/website_mail/i18n/nl.po`
+- `addons/website_mail/i18n/pl.po`
+- `addons/website_mail/i18n/pt.po`
+- `addons/website_mail/i18n/pt_BR.po`
+- `addons/website_mail/i18n/ro.po`
+- `addons/website_mail/i18n/ru.po`
+- `addons/website_mail/i18n/sk.po`
+- `addons/website_mail/i18n/sl.po`
+- `addons/website_mail/i18n/sr@latin.po`
+- `addons/website_mail/i18n/sv.po`
+- `addons/website_mail/i18n/th.po`
+- `addons/website_mail/i18n/tr.po`
+- `addons/website_mail/i18n/uk.po`
+- `addons/website_mail/i18n/uz.po`
+- `addons/website_mail/i18n/vi.po`
+- `addons/website_mail/i18n/website_mail.pot`
+- `addons/website_mail/i18n/zh_CN.po`
+- `addons/website_mail/i18n/zh_TW.po`
+- `addons/website_mail/models/__init__.py`
+- `addons/website_mail/models/ir_http.py`
+- `addons/website_mail/models/update.py`
+- `addons/website_mail/static/src/css/website_mail.scss`
+- `addons/website_mail/static/src/img/thumbnail/airmail.png`
+- `addons/website_mail/static/src/img/thumbnail/basic.png`
+- `addons/website_mail/static/src/img/thumbnail/cleave.png`
+- `addons/website_mail/static/src/img/thumbnail/go.png`
+- `addons/website_mail/static/src/img/thumbnail/narrative.png`
+- `addons/website_mail/static/src/img/thumbnail/neopolitan.png`
+- `addons/website_mail/static/src/img/thumbnail/skyline.png`
+- `addons/website_mail/static/src/img/thumbnail/sunday.png`
+- `addons/website_mail/static/src/img/thumbnail/zenflat.png`
+- `addons/website_mail/static/src/interactions/follow.edit.js`
+- `addons/website_mail/static/src/interactions/follow.js`
+- `addons/website_mail/views/website_mail_templates.xml`

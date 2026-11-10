@@ -1,259 +1,312 @@
 # Module: purchase
 
 - **Module ID:** MOD-493
-- **Path:** `addons/purchase`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/purchase`
 - **Manifest:** `addons/purchase/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `True`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Supply Chain/Purchase`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Purchase orders, tenders and agreements
+**Purpose:** Purchase orders, tenders and agreements
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `account`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 168 files, including 38 Python, 33 XML, and 21 JavaScript/TypeScript files. The manifest declares dependencies: `account`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 38 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 15 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 33 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 21 | Client behavior/assets. |
-| Tests | 13 | Test files found by path/name convention. |
-| Security artifacts | 2 | Access CSV and/or security XML. |
-| Route declarations | 5 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 21
+- Controller/API files: 2
+- XML/data/view/template files: 33
+- Browser asset files: 21
+- Security files: 2
+- Test files: 13
+- Scheduled/automation evidence files: 5
+- Reporting evidence files: 2
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "account"
-  ],
-  "data": [
-    "security/purchase_security.xml",
-    "data/digest_data.xml",
-    "data/portal_entry_data.xml",
-    "views/account_move_views.xml",
-    "data/purchase_data.xml",
-    "data/ir_cron_data.xml",
-    "report/purchase_reports.xml",
-    "views/product_views.xml",
-    "views/purchase_views.xml",
-    "views/purchase_bill_line_match_views.xml",
-    "views/res_config_settings_views.xml",
-    "views/res_partner_views.xml",
-    "report/purchase_bill_views.xml",
-    "report/purchase_report_views.xml",
-    "data/mail_templates.xml",
-    "data/mail_template_data.xml",
-    "views/portal_templates.xml",
-    "report/purchase_order_templates.xml",
-    "report/purchase_quotation_templates.xml",
-    "views/analytic_account_views.xml",
-    "wizard/bill_to_po_wizard_views.xml",
-    "data/purchase_tour.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/purchase_demo.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "purchase/static/src/components/**/*",
-      "purchase/static/src/product_catalog/**/*",
-      "purchase/static/src/toaster_button/*",
-      "purchase/static/src/views/*.js",
-      "purchase/static/src/js/tours/purchase.js",
-      "purchase/static/src/js/tours/purchase_steps.js",
-      "purchase/static/src/**/*.xml",
-      "purchase/static/src/**/*.scss"
-    ],
-    "web.assets_frontend": [
-      "purchase/static/src/interactions/**/*",
-      "purchase/static/src/scss/purchase_portal.scss"
-    ],
-    "web.assets_tests": [
-      "purchase/static/tests/tours/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/purchase/security/ir.access.csv`, `addons/purchase/security/purchase_security.xml`
 
-- `addons/purchase/README.md` (63 lines)
-- `addons/purchase/__init__.py` (20 lines)
-- `addons/purchase/__manifest__.py` (62 lines)
-- `addons/purchase/controllers/__init__.py` (4 lines)
-- `addons/purchase/controllers/portal.py` (216 lines)
-- `addons/purchase/data/digest_data.xml` (28 lines)
-- `addons/purchase/data/ir_cron_data.xml` (12 lines)
-- `addons/purchase/data/mail_template_data.xml` (130 lines)
-- `addons/purchase/data/mail_templates.xml` (47 lines)
-- `addons/purchase/data/portal_entry_data.xml` (22 lines)
-- `addons/purchase/data/purchase_data.xml` (43 lines)
-- `addons/purchase/data/purchase_demo.xml` (361 lines)
-- `addons/purchase/data/purchase_tour.xml` (7 lines)
-- `addons/purchase/i18n/af.po` (3,938 lines)
-- `addons/purchase/i18n/am.po` (3,934 lines)
-- `addons/purchase/i18n/ar.po` (4,415 lines)
-- `addons/purchase/i18n/az.po` (4,152 lines)
-- `addons/purchase/i18n/bg.po` (4,243 lines)
-- `addons/purchase/i18n/bs.po` (4,083 lines)
-- `addons/purchase/i18n/ca.po` (4,237 lines)
-- `addons/purchase/i18n/cs.po` (4,330 lines)
-- `addons/purchase/i18n/da.po` (4,219 lines)
-- `addons/purchase/i18n/de.po` (4,622 lines)
-- `addons/purchase/i18n/el.po` (4,115 lines)
-- `addons/purchase/i18n/en_AU.po` (74 lines)
-- `addons/purchase/i18n/es.po` (4,566 lines)
-- `addons/purchase/i18n/es_419.po` (4,597 lines)
-- `addons/purchase/i18n/es_CL.po` (510 lines)
-- `addons/purchase/i18n/et.po` (4,226 lines)
-- `addons/purchase/i18n/eu.po` (3,936 lines)
-- `addons/purchase/i18n/fa.po` (4,162 lines)
-- `addons/purchase/i18n/fi.po` (4,553 lines)
-- `addons/purchase/i18n/fo.po` (3,936 lines)
-- `addons/purchase/i18n/fr.po` (4,518 lines)
-- `addons/purchase/i18n/fr_CA.po` (216 lines)
-- `addons/purchase/i18n/gl.po` (3,936 lines)
-- `addons/purchase/i18n/gu.po` (3,955 lines)
-- `addons/purchase/i18n/he.po` (4,184 lines)
-- `addons/purchase/i18n/hi.po` (4,100 lines)
-- `addons/purchase/i18n/hr.po` (4,202 lines)
-- `addons/purchase/i18n/hu.po` (4,139 lines)
-- `addons/purchase/i18n/id.po` (4,564 lines)
-- `addons/purchase/i18n/is.po` (3,945 lines)
-- `addons/purchase/i18n/it.po` (4,584 lines)
-- `addons/purchase/i18n/ja.po` (4,419 lines)
-- `addons/purchase/i18n/ka.po` (3,940 lines)
-- `addons/purchase/i18n/kab.po` (4,076 lines)
-- `addons/purchase/i18n/km.po` (3,945 lines)
-- `addons/purchase/i18n/ko.po` (4,398 lines)
-- `addons/purchase/i18n/ku.po` (4,164 lines)
-- `addons/purchase/i18n/lb.po` (3,939 lines)
-- `addons/purchase/i18n/lo.po` (4,462 lines)
-- `addons/purchase/i18n/lt.po` (4,164 lines)
-- `addons/purchase/i18n/lv.po` (4,119 lines)
-- `addons/purchase/i18n/mk.po` (3,944 lines)
-- `addons/purchase/i18n/mn.po` (4,608 lines)
-- `addons/purchase/i18n/my.po` (4,076 lines)
-- `addons/purchase/i18n/nb.po` (4,145 lines)
-- `addons/purchase/i18n/nl.po` (4,577 lines)
-- `addons/purchase/i18n/pl.po` (4,526 lines)
-- `addons/purchase/i18n/pt.po` (4,332 lines)
-- `addons/purchase/i18n/pt_BR.po` (4,590 lines)
-- `addons/purchase/i18n/purchase.pot` (4,027 lines)
-- `addons/purchase/i18n/ro.po` (4,234 lines)
-- `addons/purchase/i18n/ru.po` (4,233 lines)
-- `addons/purchase/i18n/sk.po` (4,132 lines)
-- `addons/purchase/i18n/sl.po` (4,130 lines)
-- `addons/purchase/i18n/sq.po` (3,936 lines)
-- `addons/purchase/i18n/sr@latin.po` (4,102 lines)
-- `addons/purchase/i18n/sv.po` (4,230 lines)
-- `addons/purchase/i18n/th.po` (4,464 lines)
-- `addons/purchase/i18n/tr.po` (4,421 lines)
-- `addons/purchase/i18n/uk.po` (4,198 lines)
-- `addons/purchase/i18n/uz.po` (4,798 lines)
-- `addons/purchase/i18n/vi.po` (4,424 lines)
-- `addons/purchase/i18n/zh_CN.po` (4,444 lines)
-- `addons/purchase/i18n/zh_TW.po` (4,145 lines)
-- `addons/purchase/models/__init__.py` (18 lines)
-- `addons/purchase/models/account_invoice.py` (729 lines)
-- `addons/purchase/models/account_tax.py` (22 lines)
-- `addons/purchase/models/analytic_account.py` (34 lines)
-- `addons/purchase/models/analytic_applicability.py` (14 lines)
-- `addons/purchase/models/ir_actions_report.py` (56 lines)
-- `addons/purchase/models/product.py` (286 lines)
-- `addons/purchase/models/product_category.py` (22 lines)
-- `addons/purchase/models/purchase_bill_line_match.py` (255 lines)
-- `addons/purchase/models/purchase_order.py` (1,433 lines)
-- `addons/purchase/models/purchase_order_line.py` (944 lines)
-- `addons/purchase/models/res_company.py` (51 lines)
-- `addons/purchase/models/res_config_settings.py` (45 lines)
-- `addons/purchase/models/res_groups.py` (14 lines)
-- `addons/purchase/models/res_partner.py` (79 lines)
-- `addons/purchase/report/__init__.py` (5 lines)
-- `addons/purchase/report/purchase_bill.py` (73 lines)
-- `addons/purchase/report/purchase_bill_views.xml` (52 lines)
-- `addons/purchase/report/purchase_order_templates.xml` (157 lines)
-- `addons/purchase/report/purchase_quotation_templates.xml` (96 lines)
-- `addons/purchase/report/purchase_report.py` (138 lines)
-- `addons/purchase/report/purchase_report_views.xml` (111 lines)
-- `addons/purchase/report/purchase_reports.xml` (26 lines)
-- `addons/purchase/security/ir.access.csv` (36 lines)
-- `addons/purchase/security/purchase_security.xml` (40 lines)
-- `addons/purchase/static/description/icon.png` (5 lines)
-- `addons/purchase/static/description/icon.svg` (1 lines)
-- `addons/purchase/static/description/icon_hi.png` (17 lines)
-- `addons/purchase/static/src/components/matching_tag/matching_tag.js` (29 lines)
-- `addons/purchase/static/src/components/matching_tag/matching_tag.xml` (8 lines)
-- `addons/purchase/static/src/components/monetary_field_no_zero/monetary_field_no_zero.js` (28 lines)
-- `addons/purchase/static/src/components/open_match_line_widget/open_match_line_widget.js` (27 lines)
-- `addons/purchase/static/src/components/open_match_line_widget/open_match_line_widget.xml` (8 lines)
-- `addons/purchase/static/src/components/purchase_file_uploader/purchase_file_uploader.js` (90 lines)
-- `addons/purchase/static/src/components/purchase_file_uploader/purchase_file_uploader.xml` (18 lines)
-- `addons/purchase/static/src/components/purchase_line_match_field/purchase_line_match_field.js` (36 lines)
-- `addons/purchase/static/src/components/purchase_line_match_field/purchase_line_match_field.xml` (10 lines)
-- `addons/purchase/static/src/components/tax_totals/tax_totals.xml` (12 lines)
-- `addons/purchase/static/src/img/calculator.svg` (19 lines)
-- `addons/purchase/static/src/img/milk-OTDPurchase.gif` (143 lines)
-- `addons/purchase/static/src/interactions/purchase_datetimepicker.js` (34 lines)
-- `addons/purchase/static/src/interactions/purchase_sidebar.js` (21 lines)
-- `addons/purchase/static/src/js/tours/purchase.js` (170 lines)
-- `addons/purchase/static/src/js/tours/purchase_steps.js` (14 lines)
-- `addons/purchase/static/src/product_catalog/kanban_record.js` (18 lines)
-- `addons/purchase/static/src/product_catalog/kanban_renderer.js` (47 lines)
-- `addons/purchase/static/src/product_catalog/kanban_renderer.xml` (22 lines)
-- `addons/purchase/static/src/product_catalog/kanban_view.js` (11 lines)
-- `addons/purchase/static/src/product_catalog/purchase_order_line/purchase_order_line.js` (9 lines)
-- `addons/purchase/static/src/scss/purchase_portal.scss` (8 lines)
-- `addons/purchase/static/src/toaster_button/toaster_button_widget.js` (36 lines)
-- `addons/purchase/static/src/toaster_button/toaster_button_widget.xml` (11 lines)
-- `addons/purchase/static/src/views/purchase_dashboard.js` (48 lines)
-- `addons/purchase/static/src/views/purchase_dashboard.scss` (44 lines)
-- `addons/purchase/static/src/views/purchase_dashboard.xml` (186 lines)
-- `addons/purchase/static/src/views/purchase_kanbanview.js` (16 lines)
-- `addons/purchase/static/src/views/purchase_kanbanview.xml` (7 lines)
-- `addons/purchase/static/src/views/purchase_listview.js` (27 lines)
-- `addons/purchase/static/src/views/purchase_listview.xml` (13 lines)
-- `addons/purchase/static/tests/tours/purchase_catalog.js` (84 lines)
-- `addons/purchase/static/tests/tours/purchase_flow_tour.js` (73 lines)
-- `addons/purchase/static/tests/tours/purchase_order_duplicate_section_test_tour.js` (25 lines)
-- `addons/purchase/static/tests/tours/tour_helper.js` (165 lines)
-- `addons/purchase/static/xls/product_purchase.xls` (69 lines)
-- `addons/purchase/static/xls/products_import_template.xlsx` (537 lines)
-- `addons/purchase/static/xls/requests_for_quotation_import_template.xlsx` (51 lines)
-- `addons/purchase/tests/__init__.py` (15 lines)
-- `addons/purchase/tests/test_access_rights.py` (203 lines)
-- `addons/purchase/tests/test_accrued_purchase_orders.py` (289 lines)
-- `addons/purchase/tests/test_import_files.py` (56 lines)
-- `addons/purchase/tests/test_purchase.py` (1,666 lines)
-- `addons/purchase/tests/test_purchase_dashboard.py` (99 lines)
-- `addons/purchase/tests/test_purchase_downpayment.py` (146 lines)
-- `addons/purchase/tests/test_purchase_flow.py` (34 lines)
-- `addons/purchase/tests/test_purchase_invoice.py` (1,545 lines)
-- `addons/purchase/tests/test_purchase_order_product_catalog.py` (23 lines)
-- `addons/purchase/tests/test_purchase_order_report.py` (321 lines)
-- `addons/purchase/tests/test_purchase_order_tax_mode.py` (62 lines)
-- `addons/purchase/tests/test_purchase_product_catalog.py` (227 lines)
-- `addons/purchase/views/account_move_views.xml` (72 lines)
-- `addons/purchase/views/analytic_account_views.xml` (19 lines)
-- `addons/purchase/views/portal_templates.xml` (387 lines)
-- `addons/purchase/views/product_views.xml` (277 lines)
+## 4. Functionalities
 
-Additional files not expanded here: 8. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 21 model declarations, 401 methods, 1 constraint handlers, 12 onchange handlers, and 59 dependency declarations.
+- **Evidence:** `addons/purchase/models/product_category.py:6`, `addons/purchase/models/res_partner.py:7`, `addons/purchase/models/purchase_order.py:21`, `addons/purchase/models/res_groups.py:6`, `addons/purchase/models/purchase_order_line.py:13`, `addons/purchase/models/res_config_settings.py:7`, `addons/purchase/models/ir_actions_report.py:7`, `addons/purchase/models/product.py:10`, `addons/purchase/models/product.py:73`, `addons/purchase/models/product.py:276`, `addons/purchase/models/account_tax.py:4`, `addons/purchase/models/purchase_bill_line_match.py:9`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 2 controller files and 5 route declarations.
+- **Evidence:** `addons/purchase/controllers/portal.py:105`, `addons/purchase/controllers/portal.py:119`, `addons/purchase/controllers/portal.py:137`, `addons/purchase/controllers/portal.py:160`, `addons/purchase/controllers/portal.py:190`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 33 XML files and 21 JavaScript/TypeScript files; static XML analysis found 140 record/template/menu identifiers.
+- **Evidence:** `addons/purchase/security/purchase_security.xml:4`, `addons/purchase/security/purchase_security.xml:10`, `addons/purchase/security/purchase_security.xml:17`, `addons/purchase/security/purchase_security.xml:25`, `addons/purchase/security/purchase_security.xml:29`, `addons/purchase/security/purchase_security.xml:35`, `addons/purchase/report/purchase_reports.xml:4`, `addons/purchase/report/purchase_reports.xml:16`, `addons/purchase/report/purchase_quotation_templates.xml:3`, `addons/purchase/report/purchase_quotation_templates.xml:89`, `addons/purchase/report/purchase_report_views.xml:3`, `addons/purchase/report/purchase_report_views.xml:15`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 2 security-directory files are present.
+- **Evidence:** `addons/purchase/security/ir.access.csv`, `addons/purchase/security/purchase_security.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 5 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/purchase/__manifest__.py`, `addons/purchase/data/purchase_data.xml`, `addons/purchase/data/ir_cron_data.xml`, `addons/purchase/views/purchase_bill_line_match_views.xml`, `addons/purchase/views/purchase_views.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 2 files contain report-action/template indicators.
+- **Evidence:** `addons/purchase/models/ir_actions_report.py`, `addons/purchase/report/purchase_reports.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 13 test files are present.
+- **Evidence:** `addons/purchase/tests/test_purchase.py`, `addons/purchase/tests/test_access_rights.py`, `addons/purchase/tests/test_purchase_flow.py`, `addons/purchase/tests/test_purchase_downpayment.py`, `addons/purchase/tests/test_import_files.py`, `addons/purchase/tests/test_purchase_dashboard.py`, `addons/purchase/tests/test_purchase_invoice.py`, `addons/purchase/tests/test_purchase_order_product_catalog.py`, `addons/purchase/tests/test_purchase_product_catalog.py`, `addons/purchase/tests/test_accrued_purchase_orders.py`, `addons/purchase/tests/__init__.py`, `addons/purchase/tests/test_purchase_order_tax_mode.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 33; representative identifiers: `res_groups_privilege_purchase`, `group_purchase_user`, `group_purchase_manager`, `group_warning_purchase`, `group_send_reminder`, `base.group_user`, `action_report_purchase_order`, `report_purchase_quotation`, `report_purchasequotation_document`, `report_purchasequotation`, `view_purchase_order_pivot`, `view_purchase_order_graph`, `purchase_report_view_tree`, `view_purchase_order_search`, `action_purchase_order_report_all`, `Reporting`, `Purchase`, `report_purchaseorder_document`, `report_purchaseorder`, `document_tax_totals`
+- Menus: 16; representative evidence: `addons/purchase/report/purchase_report_views.xml:108`, `addons/purchase/report/purchase_report_views.xml:109`, `addons/purchase/views/res_config_settings_views.xml:81`, `addons/purchase/views/purchase_views.xml:5`, `addons/purchase/views/purchase_views.xml:11`, `addons/purchase/views/purchase_views.xml:15`, `addons/purchase/views/purchase_views.xml:19`, `addons/purchase/views/purchase_views.xml:21`, `addons/purchase/views/purchase_views.xml:25`, `addons/purchase/views/purchase_views.xml:33`, `addons/purchase/views/purchase_views.xml:37`, `addons/purchase/views/purchase_views.xml:41`
+- Templates: 14; representative evidence: `addons/purchase/report/purchase_quotation_templates.xml:3`, `addons/purchase/report/purchase_quotation_templates.xml:89`, `addons/purchase/report/purchase_order_templates.xml:3`, `addons/purchase/report/purchase_order_templates.xml:146`, `addons/purchase/report/purchase_order_templates.xml:155`, `addons/purchase/data/mail_templates.xml:4`, `addons/purchase/data/mail_templates.xml:37`, `addons/purchase/views/portal_templates.xml:4`, `addons/purchase/views/portal_templates.xml:20`, `addons/purchase/views/portal_templates.xml:50`, `addons/purchase/views/portal_templates.xml:94`, `addons/purchase/views/portal_templates.xml:185`
+- View/action field declarations: 122; representative evidence: `addons/purchase/report/purchase_reports.xml:6`, `addons/purchase/report/purchase_reports.xml:18`, `addons/purchase/report/purchase_report_views.xml:5`, `addons/purchase/report/purchase_report_views.xml:6`, `addons/purchase/report/purchase_report_views.xml:17`, `addons/purchase/report/purchase_report_views.xml:18`, `addons/purchase/report/purchase_report_views.xml:28`, `addons/purchase/report/purchase_report_views.xml:29`, `addons/purchase/report/purchase_report_views.xml:51`, `addons/purchase/report/purchase_report_views.xml:52`, `addons/purchase/report/purchase_report_views.xml:90`, `addons/purchase/report/purchase_report_views.xml:92`
+- Browser assets: 21; representative files: `addons/purchase/static/src/toaster_button/toaster_button_widget.js`, `addons/purchase/static/src/product_catalog/kanban_renderer.js`, `addons/purchase/static/src/product_catalog/kanban_record.js`, `addons/purchase/static/src/product_catalog/kanban_view.js`, `addons/purchase/static/src/interactions/purchase_datetimepicker.js`, `addons/purchase/static/src/interactions/purchase_sidebar.js`, `addons/purchase/static/src/views/purchase_kanbanview.js`, `addons/purchase/static/src/views/purchase_dashboard.js`, `addons/purchase/static/src/views/purchase_listview.js`, `addons/purchase/static/src/js/tours/purchase_steps.js`, `addons/purchase/static/src/js/tours/purchase.js`, `addons/purchase/static/src/product_catalog/purchase_order_line/purchase_order_line.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/purchase/__manifest__.py`
+- **HTTP entry points:** `addons/purchase/controllers/portal.py:105`, `addons/purchase/controllers/portal.py:119`, `addons/purchase/controllers/portal.py:137`, `addons/purchase/controllers/portal.py:160`, `addons/purchase/controllers/portal.py:190`
+- **Scheduled entry points:** `addons/purchase/__manifest__.py`, `addons/purchase/data/purchase_data.xml`, `addons/purchase/data/ir_cron_data.xml`, `addons/purchase/views/purchase_bill_line_match_views.xml`, `addons/purchase/views/purchase_views.xml`
+- **Report entry points:** `addons/purchase/models/ir_actions_report.py`, `addons/purchase/report/purchase_reports.xml`
+
+## 7. Database interactions
+
+- Model declarations: 21
+- Representative model evidence: inherits `product.category` (addons/purchase/models/product_category.py:6); inherits `res.partner` (addons/purchase/models/res_partner.py:7); `purchase.order` (addons/purchase/models/purchase_order.py:21); inherits `res.groups` (addons/purchase/models/res_groups.py:6); `purchase.order.line` (addons/purchase/models/purchase_order_line.py:13); inherits `res.config.settings` (addons/purchase/models/res_config_settings.py:7); inherits `ir.actions.report` (addons/purchase/models/ir_actions_report.py:7); inherits `product.template` (addons/purchase/models/product.py:10); inherits `product.product` (addons/purchase/models/product.py:73); inherits `product.supplierinfo` (addons/purchase/models/product.py:276); inherits `account.tax` (addons/purchase/models/account_tax.py:4); `purchase.bill.line.match` (addons/purchase/models/purchase_bill_line_match.py:9); inherits `account.analytic.account` (addons/purchase/models/analytic_account.py:7); inherits `account.move` (addons/purchase/models/account_invoice.py:17); inherits `account.move.line` (addons/purchase/models/account_invoice.py:658); inherits `account.analytic.applicability` (addons/purchase/models/analytic_applicability.py:6); inherits `res.company` (addons/purchase/models/res_company.py:10); `purchase.report` (addons/purchase/report/purchase_report.py:12); `purchase.bill.union` (addons/purchase/report/purchase_bill.py:7); inherits `account.accrued.orders.wizard` (addons/purchase/wizard/accrued_orders.py:9); `bill.to.po.wizard` (addons/purchase/wizard/bill_to_po_wizard.py:6)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 5
+- Route evidence: `addons/purchase/controllers/portal.py:105`, `addons/purchase/controllers/portal.py:119`, `addons/purchase/controllers/portal.py:137`, `addons/purchase/controllers/portal.py:160`, `addons/purchase/controllers/portal.py:190`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/purchase/README.md`
+- `addons/purchase/__init__.py`
+- `addons/purchase/__manifest__.py`
+- `addons/purchase/controllers/__init__.py`
+- `addons/purchase/controllers/portal.py`
+- `addons/purchase/data/digest_data.xml`
+- `addons/purchase/data/ir_cron_data.xml`
+- `addons/purchase/data/mail_template_data.xml`
+- `addons/purchase/data/mail_templates.xml`
+- `addons/purchase/data/portal_entry_data.xml`
+- `addons/purchase/data/purchase_data.xml`
+- `addons/purchase/data/purchase_demo.xml`
+- `addons/purchase/data/purchase_tour.xml`
+- `addons/purchase/i18n/af.po`
+- `addons/purchase/i18n/am.po`
+- `addons/purchase/i18n/ar.po`
+- `addons/purchase/i18n/az.po`
+- `addons/purchase/i18n/bg.po`
+- `addons/purchase/i18n/bs.po`
+- `addons/purchase/i18n/ca.po`
+- `addons/purchase/i18n/cs.po`
+- `addons/purchase/i18n/da.po`
+- `addons/purchase/i18n/de.po`
+- `addons/purchase/i18n/el.po`
+- `addons/purchase/i18n/en_AU.po`
+- `addons/purchase/i18n/es.po`
+- `addons/purchase/i18n/es_419.po`
+- `addons/purchase/i18n/es_CL.po`
+- `addons/purchase/i18n/et.po`
+- `addons/purchase/i18n/eu.po`
+- `addons/purchase/i18n/fa.po`
+- `addons/purchase/i18n/fi.po`
+- `addons/purchase/i18n/fo.po`
+- `addons/purchase/i18n/fr.po`
+- `addons/purchase/i18n/fr_CA.po`
+- `addons/purchase/i18n/gl.po`
+- `addons/purchase/i18n/gu.po`
+- `addons/purchase/i18n/he.po`
+- `addons/purchase/i18n/hi.po`
+- `addons/purchase/i18n/hr.po`
+- `addons/purchase/i18n/hu.po`
+- `addons/purchase/i18n/id.po`
+- `addons/purchase/i18n/is.po`
+- `addons/purchase/i18n/it.po`
+- `addons/purchase/i18n/ja.po`
+- `addons/purchase/i18n/ka.po`
+- `addons/purchase/i18n/kab.po`
+- `addons/purchase/i18n/km.po`
+- `addons/purchase/i18n/ko.po`
+- `addons/purchase/i18n/ku.po`
+- `addons/purchase/i18n/lb.po`
+- `addons/purchase/i18n/lo.po`
+- `addons/purchase/i18n/lt.po`
+- `addons/purchase/i18n/lv.po`
+- `addons/purchase/i18n/mk.po`
+- `addons/purchase/i18n/mn.po`
+- `addons/purchase/i18n/my.po`
+- `addons/purchase/i18n/nb.po`
+- `addons/purchase/i18n/nl.po`
+- `addons/purchase/i18n/pl.po`
+- `addons/purchase/i18n/pt.po`
+- `addons/purchase/i18n/pt_BR.po`
+- `addons/purchase/i18n/purchase.pot`
+- `addons/purchase/i18n/ro.po`
+- `addons/purchase/i18n/ru.po`
+- `addons/purchase/i18n/sk.po`
+- `addons/purchase/i18n/sl.po`
+- `addons/purchase/i18n/sq.po`
+- `addons/purchase/i18n/sr@latin.po`
+- `addons/purchase/i18n/sv.po`
+- `addons/purchase/i18n/th.po`
+- `addons/purchase/i18n/tr.po`
+- `addons/purchase/i18n/uk.po`
+- `addons/purchase/i18n/uz.po`
+- `addons/purchase/i18n/vi.po`
+- `addons/purchase/i18n/zh_CN.po`
+- `addons/purchase/i18n/zh_TW.po`
+- `addons/purchase/models/__init__.py`
+- `addons/purchase/models/account_invoice.py`
+- `addons/purchase/models/account_tax.py`
+- `addons/purchase/models/analytic_account.py`
+- `addons/purchase/models/analytic_applicability.py`
+- `addons/purchase/models/ir_actions_report.py`
+- `addons/purchase/models/product.py`
+- `addons/purchase/models/product_category.py`
+- `addons/purchase/models/purchase_bill_line_match.py`
+- `addons/purchase/models/purchase_order.py`
+- `addons/purchase/models/purchase_order_line.py`
+- `addons/purchase/models/res_company.py`
+- `addons/purchase/models/res_config_settings.py`
+- `addons/purchase/models/res_groups.py`
+- `addons/purchase/models/res_partner.py`
+- `addons/purchase/report/__init__.py`
+- `addons/purchase/report/purchase_bill.py`
+- `addons/purchase/report/purchase_bill_views.xml`
+- `addons/purchase/report/purchase_order_templates.xml`
+- `addons/purchase/report/purchase_quotation_templates.xml`
+- `addons/purchase/report/purchase_report.py`
+- `addons/purchase/report/purchase_report_views.xml`
+- `addons/purchase/report/purchase_reports.xml`
+- `addons/purchase/security/ir.access.csv`
+- `addons/purchase/security/purchase_security.xml`
+- `addons/purchase/static/description/icon.png`
+- `addons/purchase/static/description/icon.svg`
+- `addons/purchase/static/description/icon_hi.png`
+- `addons/purchase/static/src/components/matching_tag/matching_tag.js`
+- `addons/purchase/static/src/components/matching_tag/matching_tag.xml`
+- `addons/purchase/static/src/components/monetary_field_no_zero/monetary_field_no_zero.js`
+- `addons/purchase/static/src/components/open_match_line_widget/open_match_line_widget.js`
+- `addons/purchase/static/src/components/open_match_line_widget/open_match_line_widget.xml`
+- `addons/purchase/static/src/components/purchase_file_uploader/purchase_file_uploader.js`
+- `addons/purchase/static/src/components/purchase_file_uploader/purchase_file_uploader.xml`
+- `addons/purchase/static/src/components/purchase_line_match_field/purchase_line_match_field.js`
+- `addons/purchase/static/src/components/purchase_line_match_field/purchase_line_match_field.xml`
+- `addons/purchase/static/src/components/tax_totals/tax_totals.xml`
+- `addons/purchase/static/src/img/calculator.svg`
+- `addons/purchase/static/src/img/milk-OTDPurchase.gif`
+- `addons/purchase/static/src/interactions/purchase_datetimepicker.js`
+- `addons/purchase/static/src/interactions/purchase_sidebar.js`
+- `addons/purchase/static/src/js/tours/purchase.js`
+- `addons/purchase/static/src/js/tours/purchase_steps.js`
+- `addons/purchase/static/src/product_catalog/kanban_record.js`
+- `addons/purchase/static/src/product_catalog/kanban_renderer.js`
+- `addons/purchase/static/src/product_catalog/kanban_renderer.xml`
+- `addons/purchase/static/src/product_catalog/kanban_view.js`
+- `addons/purchase/static/src/product_catalog/purchase_order_line/purchase_order_line.js`
+- `addons/purchase/static/src/scss/purchase_portal.scss`
+- `addons/purchase/static/src/toaster_button/toaster_button_widget.js`
+- `addons/purchase/static/src/toaster_button/toaster_button_widget.xml`
+- `addons/purchase/static/src/views/purchase_dashboard.js`
+- `addons/purchase/static/src/views/purchase_dashboard.scss`
+- `addons/purchase/static/src/views/purchase_dashboard.xml`
+- `addons/purchase/static/src/views/purchase_kanbanview.js`
+- `addons/purchase/static/src/views/purchase_kanbanview.xml`
+- `addons/purchase/static/src/views/purchase_listview.js`
+- `addons/purchase/static/src/views/purchase_listview.xml`
+- `addons/purchase/static/tests/tours/purchase_catalog.js`
+- `addons/purchase/static/tests/tours/purchase_flow_tour.js`
+- `addons/purchase/static/tests/tours/purchase_order_duplicate_section_test_tour.js`
+- `addons/purchase/static/tests/tours/tour_helper.js`
+- `addons/purchase/static/xls/product_purchase.xls`
+- `addons/purchase/static/xls/products_import_template.xlsx`
+- `addons/purchase/static/xls/requests_for_quotation_import_template.xlsx`
+- `addons/purchase/tests/__init__.py`
+- `addons/purchase/tests/test_access_rights.py`
+- `addons/purchase/tests/test_accrued_purchase_orders.py`
+- `addons/purchase/tests/test_import_files.py`
+- `addons/purchase/tests/test_purchase.py`
+- `addons/purchase/tests/test_purchase_dashboard.py`
+- `addons/purchase/tests/test_purchase_downpayment.py`
+- `addons/purchase/tests/test_purchase_flow.py`
+- `addons/purchase/tests/test_purchase_invoice.py`
+- `addons/purchase/tests/test_purchase_order_product_catalog.py`
+- `addons/purchase/tests/test_purchase_order_report.py`
+- `addons/purchase/tests/test_purchase_order_tax_mode.py`
+- `addons/purchase/tests/test_purchase_product_catalog.py`
+- `addons/purchase/views/account_move_views.xml`
+- `addons/purchase/views/analytic_account_views.xml`
+- `addons/purchase/views/portal_templates.xml`
+- `addons/purchase/views/product_views.xml`
+- `addons/purchase/views/purchase_bill_line_match_views.xml`
+- `addons/purchase/views/purchase_views.xml`
+- `addons/purchase/views/res_config_settings_views.xml`
+- `addons/purchase/views/res_partner_views.xml`
+- `addons/purchase/wizard/__init__.py`
+- `addons/purchase/wizard/accrued_orders.py`
+- `addons/purchase/wizard/bill_to_po_wizard.py`
+- `addons/purchase/wizard/bill_to_po_wizard_views.xml`

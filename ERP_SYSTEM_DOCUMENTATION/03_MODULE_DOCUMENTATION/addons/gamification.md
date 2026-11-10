@@ -1,18 +1,19 @@
 # Module: gamification
 
 - **Module ID:** MOD-074
-- **Path:** `addons/gamification`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/gamification`
 - **Manifest:** `addons/gamification/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Human Resources`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 Gamification process
 ====================
@@ -25,184 +26,235 @@ For non-numerical achievements, **badges** can be granted to users. From a simpl
 
 Both goals and badges are flexibles and can be adapted to a large range of modules and actions. When installed, this module creates easy goals to help new users to discover Odoo and configure their user profile.
 
+**Scope evidence:** The module contains 123 files, including 19 Python, 19 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `mail`.
 
-Declared dependencies: `mail`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 11
+- Controller/API files: 0
+- XML/data/view/template files: 19
+- Browser asset files: 0
+- Security files: 1
+- Test files: 4
+- Scheduled/automation evidence files: 6
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 19 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 10 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 19 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 4 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `addons/gamification/security/ir.access.csv`
 
-```text
-{
-  "depends": [
-    "mail"
-  ],
-  "data": [
-    "wizard/update_goal.xml",
-    "wizard/grant_badge.xml",
-    "views/res_users_views.xml",
-    "views/gamification_karma_rank_views.xml",
-    "views/gamification_karma_tracking_views.xml",
-    "views/gamification_badge_views.xml",
-    "views/gamification_badge_user_views.xml",
-    "views/gamification_goal_views.xml",
-    "views/gamification_goal_definition_views.xml",
-    "views/gamification_challenge_views.xml",
-    "views/gamification_challenge_line_views.xml",
-    "views/gamification_menus.xml",
-    "data/ir_cron_data.xml",
-    "data/mail_template_data.xml",
-    "data/gamification_badge_data.xml",
-    "data/gamification_challenge_data.xml",
-    "data/gamification_karma_rank_data.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/gamification_karma_rank_demo.xml",
-    "data/gamification_karma_tracking_demo.xml"
-  ]
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/gamification/__init__.py` (5 lines)
-- `addons/gamification/__manifest__.py` (47 lines)
-- `addons/gamification/data/gamification_badge_data.xml` (35 lines)
-- `addons/gamification/data/gamification_challenge_data.xml` (96 lines)
-- `addons/gamification/data/gamification_karma_rank_data.xml` (80 lines)
-- `addons/gamification/data/gamification_karma_rank_demo.xml` (44 lines)
-- `addons/gamification/data/gamification_karma_tracking_demo.xml` (110 lines)
-- `addons/gamification/data/ir_cron_data.xml` (24 lines)
-- `addons/gamification/data/mail_template_data.xml` (324 lines)
-- `addons/gamification/i18n/af.po` (2,814 lines)
-- `addons/gamification/i18n/am.po` (2,810 lines)
-- `addons/gamification/i18n/ar.po` (3,621 lines)
-- `addons/gamification/i18n/az.po` (2,822 lines)
-- `addons/gamification/i18n/bg.po` (2,903 lines)
-- `addons/gamification/i18n/bs.po` (2,823 lines)
-- `addons/gamification/i18n/ca.po` (3,590 lines)
-- `addons/gamification/i18n/cs.po` (3,665 lines)
-- `addons/gamification/i18n/da.po` (2,913 lines)
-- `addons/gamification/i18n/de.po` (3,832 lines)
-- `addons/gamification/i18n/el.po` (2,826 lines)
-- `addons/gamification/i18n/es.po` (3,800 lines)
-- `addons/gamification/i18n/es_419.po` (3,797 lines)
-- `addons/gamification/i18n/es_CL.po` (132 lines)
-- `addons/gamification/i18n/et.po` (3,535 lines)
-- `addons/gamification/i18n/eu.po` (2,813 lines)
-- `addons/gamification/i18n/fa.po` (2,874 lines)
-- `addons/gamification/i18n/fi.po` (3,812 lines)
-- `addons/gamification/i18n/fo.po` (2,813 lines)
-- `addons/gamification/i18n/fr.po` (3,809 lines)
-- `addons/gamification/i18n/fr_CA.po` (126 lines)
-- `addons/gamification/i18n/gamification.pot` (2,660 lines)
-- `addons/gamification/i18n/gl.po` (2,813 lines)
-- `addons/gamification/i18n/gu.po` (2,814 lines)
-- `addons/gamification/i18n/he.po` (2,844 lines)
-- `addons/gamification/i18n/hi.po` (3,543 lines)
-- `addons/gamification/i18n/hr.po` (2,865 lines)
-- `addons/gamification/i18n/hu.po` (2,893 lines)
-- `addons/gamification/i18n/id.po` (3,770 lines)
-- `addons/gamification/i18n/is.po` (2,814 lines)
-- `addons/gamification/i18n/it.po` (3,812 lines)
-- `addons/gamification/i18n/ja.po` (3,754 lines)
-- `addons/gamification/i18n/ka.po` (2,813 lines)
-- `addons/gamification/i18n/kab.po` (2,815 lines)
-- `addons/gamification/i18n/km.po` (2,816 lines)
-- `addons/gamification/i18n/ko.po` (3,746 lines)
-- `addons/gamification/i18n/ku.po` (2,819 lines)
-- `addons/gamification/i18n/lo.po` (3,739 lines)
-- `addons/gamification/i18n/lt.po` (2,891 lines)
-- `addons/gamification/i18n/lv.po` (2,826 lines)
-- `addons/gamification/i18n/mk.po` (2,813 lines)
-- `addons/gamification/i18n/mn.po` (2,879 lines)
-- `addons/gamification/i18n/my.po` (2,815 lines)
-- `addons/gamification/i18n/nb.po` (2,825 lines)
-- `addons/gamification/i18n/nl.po` (3,783 lines)
-- `addons/gamification/i18n/pl.po` (3,597 lines)
-- `addons/gamification/i18n/pt.po` (3,759 lines)
-- `addons/gamification/i18n/pt_BR.po` (3,795 lines)
-- `addons/gamification/i18n/ro.po` (3,591 lines)
-- `addons/gamification/i18n/ru.po` (3,793 lines)
-- `addons/gamification/i18n/sk.po` (2,868 lines)
-- `addons/gamification/i18n/sl.po` (3,560 lines)
-- `addons/gamification/i18n/sq.po` (2,813 lines)
-- `addons/gamification/i18n/sr@latin.po` (2,825 lines)
-- `addons/gamification/i18n/sv.po` (3,583 lines)
-- `addons/gamification/i18n/th.po` (3,726 lines)
-- `addons/gamification/i18n/tr.po` (3,699 lines)
-- `addons/gamification/i18n/uk.po` (3,544 lines)
-- `addons/gamification/i18n/uz.po` (3,344 lines)
-- `addons/gamification/i18n/vi.po` (3,768 lines)
-- `addons/gamification/i18n/zh_CN.po` (3,725 lines)
-- `addons/gamification/i18n/zh_TW.po` (3,598 lines)
-- `addons/gamification/models/__init__.py` (12 lines)
-- `addons/gamification/models/gamification_badge.py` (202 lines)
-- `addons/gamification/models/gamification_badge_user.py` (70 lines)
-- `addons/gamification/models/gamification_challenge.py` (814 lines)
-- `addons/gamification/models/gamification_challenge_line.py` (28 lines)
-- `addons/gamification/models/gamification_goal.py` (340 lines)
-- `addons/gamification/models/gamification_goal_definition.py` (157 lines)
-- `addons/gamification/models/gamification_karma_rank.py` (72 lines)
-- `addons/gamification/models/gamification_karma_tracking.py` (139 lines)
-- `addons/gamification/models/res_users.py` (400 lines)
-- `addons/gamification/security/ir.access.csv` (25 lines)
-- `addons/gamification/static/description/icon.png` (18 lines)
-- `addons/gamification/static/description/icon.svg` (1 lines)
-- `addons/gamification/static/description/icon_hi.png` (93 lines)
-- `addons/gamification/static/img/badge_good_job-image.png` (105 lines)
-- `addons/gamification/static/img/badge_hidden-image.png` (453 lines)
-- `addons/gamification/static/img/badge_idea-image.png` (106 lines)
-- `addons/gamification/static/img/badge_problem_solver-image.png` (191 lines)
-- `addons/gamification/static/img/rank_bachelor.png` (102 lines)
-- `addons/gamification/static/img/rank_bachelor_badge.svg` (1 lines)
-- `addons/gamification/static/img/rank_doctor.png` (117 lines)
-- `addons/gamification/static/img/rank_doctor_badge.svg` (1 lines)
-- `addons/gamification/static/img/rank_master.png` (41 lines)
-- `addons/gamification/static/img/rank_master_badge.svg` (1 lines)
-- `addons/gamification/static/img/rank_misc_hat.png` (538 lines)
-- `addons/gamification/static/img/rank_misc_mug.png` (458 lines)
-- `addons/gamification/static/img/rank_misc_unicorn.png` (94 lines)
-- `addons/gamification/static/img/rank_misc_wand.png` (378 lines)
-- `addons/gamification/static/img/rank_misc_world.png` (417 lines)
-- `addons/gamification/static/img/rank_newbie.png` (37 lines)
-- `addons/gamification/static/img/rank_newbie_badge.svg` (1 lines)
-- `addons/gamification/static/img/rank_student.png` (53 lines)
-- `addons/gamification/static/img/rank_student_badge.svg` (1 lines)
-- `addons/gamification/tests/__init__.py` (6 lines)
-- `addons/gamification/tests/common.py` (20 lines)
-- `addons/gamification/tests/test_challenge.py` (264 lines)
-- `addons/gamification/tests/test_karma_tracking.py` (454 lines)
-- `addons/gamification/views/gamification_badge_user_views.xml` (35 lines)
-- `addons/gamification/views/gamification_badge_views.xml` (152 lines)
-- `addons/gamification/views/gamification_challenge_line_views.xml` (15 lines)
-- `addons/gamification/views/gamification_challenge_views.xml` (193 lines)
-- `addons/gamification/views/gamification_goal_definition_views.xml` (99 lines)
-- `addons/gamification/views/gamification_goal_views.xml` (191 lines)
-- `addons/gamification/views/gamification_karma_rank_views.xml` (86 lines)
-- `addons/gamification/views/gamification_karma_tracking_views.xml` (83 lines)
-- `addons/gamification/views/gamification_menus.xml` (33 lines)
-- `addons/gamification/views/res_users_views.xml` (37 lines)
-- `addons/gamification/wizard/__init__.py` (5 lines)
-- `addons/gamification/wizard/grant_badge.py` (34 lines)
-- `addons/gamification/wizard/grant_badge.xml` (31 lines)
-- `addons/gamification/wizard/update_goal.py` (25 lines)
-- `addons/gamification/wizard/update_goal.xml` (19 lines)
+- **Description:** 11 model declarations, 101 methods, 1 constraint handlers, 0 onchange handlers, and 13 dependency declarations.
+- **Evidence:** `addons/gamification/models/gamification_badge.py:14`, `addons/gamification/models/gamification_challenge_line.py:7`, `addons/gamification/models/gamification_badge_user.py:9`, `addons/gamification/models/gamification_goal_definition.py:10`, `addons/gamification/models/gamification_karma_rank.py:7`, `addons/gamification/models/gamification_challenge.py:50`, `addons/gamification/models/gamification_goal.py:14`, `addons/gamification/models/gamification_karma_tracking.py:10`, `addons/gamification/models/res_users.py:8`, `addons/gamification/wizard/update_goal.py:7`, `addons/gamification/wizard/grant_badge.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### User interface and data
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 19 XML files and 0 JavaScript/TypeScript files; static XML analysis found 89 record/template/menu identifiers.
+- **Evidence:** `addons/gamification/wizard/grant_badge.xml:2`, `addons/gamification/wizard/grant_badge.xml:21`, `addons/gamification/wizard/update_goal.xml:2`, `addons/gamification/data/mail_template_data.xml:4`, `addons/gamification/data/mail_template_data.xml:45`, `addons/gamification/data/mail_template_data.xml:67`, `addons/gamification/data/mail_template_data.xml:268`, `addons/gamification/data/gamification_badge_data.xml:4`, `addons/gamification/data/gamification_badge_data.xml:11`, `addons/gamification/data/gamification_badge_data.xml:18`, `addons/gamification/data/gamification_badge_data.xml:26`, `addons/gamification/data/gamification_challenge_data.xml:5`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/gamification/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 6 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/gamification/__manifest__.py`, `addons/gamification/models/gamification_challenge.py`, `addons/gamification/models/gamification_karma_tracking.py`, `addons/gamification/data/ir_cron_data.xml`, `addons/gamification/tests/test_challenge.py`, `addons/gamification/tests/test_karma_tracking.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 4 test files are present.
+- **Evidence:** `addons/gamification/tests/test_challenge.py`, `addons/gamification/tests/test_karma_tracking.py`, `addons/gamification/tests/common.py`, `addons/gamification/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 19; representative identifiers: `view_badge_wizard_grant`, `action_grant_wizard`, `view_goal_wizard_update_current`, `email_template_badge_received`, `email_template_goal_reminder`, `simple_report_template`, `mail_template_data_new_rank_reached`, `badge_good_job`, `badge_problem_solver`, `badge_hidden`, `badge_idea`, `definition_base_timezone`, `definition_base_company_data`, `definition_base_company_logo`, `definition_base_invite`, `challenge_base_discover`, `challenge_base_configure`, `line_base_discover1`, `line_base_admin2`, `line_base_admin1`
+- Menus: 7; representative evidence: `addons/gamification/views/gamification_menus.xml:4`, `addons/gamification/views/gamification_menus.xml:9`, `addons/gamification/views/gamification_menus.xml:13`, `addons/gamification/views/gamification_menus.xml:17`, `addons/gamification/views/gamification_menus.xml:21`, `addons/gamification/views/gamification_menus.xml:25`, `addons/gamification/views/gamification_menus.xml:29`
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 72; representative evidence: `addons/gamification/wizard/grant_badge.xml:4`, `addons/gamification/wizard/grant_badge.xml:5`, `addons/gamification/wizard/grant_badge.xml:23`, `addons/gamification/wizard/update_goal.xml:4`, `addons/gamification/wizard/update_goal.xml:5`, `addons/gamification/views/gamification_challenge_line_views.xml:6`, `addons/gamification/views/gamification_challenge_line_views.xml:7`, `addons/gamification/views/gamification_badge_views.xml:6`, `addons/gamification/views/gamification_badge_views.xml:7`, `addons/gamification/views/gamification_badge_views.xml:18`, `addons/gamification/views/gamification_badge_views.xml:20`, `addons/gamification/views/gamification_badge_views.xml:36`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/gamification/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** `addons/gamification/__manifest__.py`, `addons/gamification/models/gamification_challenge.py`, `addons/gamification/models/gamification_karma_tracking.py`, `addons/gamification/data/ir_cron_data.xml`, `addons/gamification/tests/test_challenge.py`, `addons/gamification/tests/test_karma_tracking.py`
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 11
+- Representative model evidence: `gamification.badge` (addons/gamification/models/gamification_badge.py:14); `gamification.challenge.line` (addons/gamification/models/gamification_challenge_line.py:7); `gamification.badge.user` (addons/gamification/models/gamification_badge_user.py:9); `gamification.goal.definition` (addons/gamification/models/gamification_goal_definition.py:10); `gamification.karma.rank` (addons/gamification/models/gamification_karma_rank.py:7); `gamification.challenge` (addons/gamification/models/gamification_challenge.py:50); `gamification.goal` (addons/gamification/models/gamification_goal.py:14); `gamification.karma.tracking` (addons/gamification/models/gamification_karma_tracking.py:10); inherits `res.users` (addons/gamification/models/res_users.py:8); `gamification.goal.wizard` (addons/gamification/wizard/update_goal.py:7); `gamification.badge.user.wizard` (addons/gamification/wizard/grant_badge.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `mail`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/gamification/__init__.py`
+- `addons/gamification/__manifest__.py`
+- `addons/gamification/data/gamification_badge_data.xml`
+- `addons/gamification/data/gamification_challenge_data.xml`
+- `addons/gamification/data/gamification_karma_rank_data.xml`
+- `addons/gamification/data/gamification_karma_rank_demo.xml`
+- `addons/gamification/data/gamification_karma_tracking_demo.xml`
+- `addons/gamification/data/ir_cron_data.xml`
+- `addons/gamification/data/mail_template_data.xml`
+- `addons/gamification/i18n/af.po`
+- `addons/gamification/i18n/am.po`
+- `addons/gamification/i18n/ar.po`
+- `addons/gamification/i18n/az.po`
+- `addons/gamification/i18n/bg.po`
+- `addons/gamification/i18n/bs.po`
+- `addons/gamification/i18n/ca.po`
+- `addons/gamification/i18n/cs.po`
+- `addons/gamification/i18n/da.po`
+- `addons/gamification/i18n/de.po`
+- `addons/gamification/i18n/el.po`
+- `addons/gamification/i18n/es.po`
+- `addons/gamification/i18n/es_419.po`
+- `addons/gamification/i18n/es_CL.po`
+- `addons/gamification/i18n/et.po`
+- `addons/gamification/i18n/eu.po`
+- `addons/gamification/i18n/fa.po`
+- `addons/gamification/i18n/fi.po`
+- `addons/gamification/i18n/fo.po`
+- `addons/gamification/i18n/fr.po`
+- `addons/gamification/i18n/fr_CA.po`
+- `addons/gamification/i18n/gamification.pot`
+- `addons/gamification/i18n/gl.po`
+- `addons/gamification/i18n/gu.po`
+- `addons/gamification/i18n/he.po`
+- `addons/gamification/i18n/hi.po`
+- `addons/gamification/i18n/hr.po`
+- `addons/gamification/i18n/hu.po`
+- `addons/gamification/i18n/id.po`
+- `addons/gamification/i18n/is.po`
+- `addons/gamification/i18n/it.po`
+- `addons/gamification/i18n/ja.po`
+- `addons/gamification/i18n/ka.po`
+- `addons/gamification/i18n/kab.po`
+- `addons/gamification/i18n/km.po`
+- `addons/gamification/i18n/ko.po`
+- `addons/gamification/i18n/ku.po`
+- `addons/gamification/i18n/lo.po`
+- `addons/gamification/i18n/lt.po`
+- `addons/gamification/i18n/lv.po`
+- `addons/gamification/i18n/mk.po`
+- `addons/gamification/i18n/mn.po`
+- `addons/gamification/i18n/my.po`
+- `addons/gamification/i18n/nb.po`
+- `addons/gamification/i18n/nl.po`
+- `addons/gamification/i18n/pl.po`
+- `addons/gamification/i18n/pt.po`
+- `addons/gamification/i18n/pt_BR.po`
+- `addons/gamification/i18n/ro.po`
+- `addons/gamification/i18n/ru.po`
+- `addons/gamification/i18n/sk.po`
+- `addons/gamification/i18n/sl.po`
+- `addons/gamification/i18n/sq.po`
+- `addons/gamification/i18n/sr@latin.po`
+- `addons/gamification/i18n/sv.po`
+- `addons/gamification/i18n/th.po`
+- `addons/gamification/i18n/tr.po`
+- `addons/gamification/i18n/uk.po`
+- `addons/gamification/i18n/uz.po`
+- `addons/gamification/i18n/vi.po`
+- `addons/gamification/i18n/zh_CN.po`
+- `addons/gamification/i18n/zh_TW.po`
+- `addons/gamification/models/__init__.py`
+- `addons/gamification/models/gamification_badge.py`
+- `addons/gamification/models/gamification_badge_user.py`
+- `addons/gamification/models/gamification_challenge.py`
+- `addons/gamification/models/gamification_challenge_line.py`
+- `addons/gamification/models/gamification_goal.py`
+- `addons/gamification/models/gamification_goal_definition.py`
+- `addons/gamification/models/gamification_karma_rank.py`
+- `addons/gamification/models/gamification_karma_tracking.py`
+- `addons/gamification/models/res_users.py`
+- `addons/gamification/security/ir.access.csv`
+- `addons/gamification/static/description/icon.png`
+- `addons/gamification/static/description/icon.svg`
+- `addons/gamification/static/description/icon_hi.png`
+- `addons/gamification/static/img/badge_good_job-image.png`
+- `addons/gamification/static/img/badge_hidden-image.png`
+- `addons/gamification/static/img/badge_idea-image.png`
+- `addons/gamification/static/img/badge_problem_solver-image.png`
+- `addons/gamification/static/img/rank_bachelor.png`
+- `addons/gamification/static/img/rank_bachelor_badge.svg`
+- `addons/gamification/static/img/rank_doctor.png`
+- `addons/gamification/static/img/rank_doctor_badge.svg`
+- `addons/gamification/static/img/rank_master.png`
+- `addons/gamification/static/img/rank_master_badge.svg`
+- `addons/gamification/static/img/rank_misc_hat.png`
+- `addons/gamification/static/img/rank_misc_mug.png`
+- `addons/gamification/static/img/rank_misc_unicorn.png`
+- `addons/gamification/static/img/rank_misc_wand.png`
+- `addons/gamification/static/img/rank_misc_world.png`
+- `addons/gamification/static/img/rank_newbie.png`
+- `addons/gamification/static/img/rank_newbie_badge.svg`
+- `addons/gamification/static/img/rank_student.png`
+- `addons/gamification/static/img/rank_student_badge.svg`
+- `addons/gamification/tests/__init__.py`
+- `addons/gamification/tests/common.py`
+- `addons/gamification/tests/test_challenge.py`
+- `addons/gamification/tests/test_karma_tracking.py`
+- `addons/gamification/views/gamification_badge_user_views.xml`
+- `addons/gamification/views/gamification_badge_views.xml`
+- `addons/gamification/views/gamification_challenge_line_views.xml`
+- `addons/gamification/views/gamification_challenge_views.xml`
+- `addons/gamification/views/gamification_goal_definition_views.xml`
+- `addons/gamification/views/gamification_goal_views.xml`
+- `addons/gamification/views/gamification_karma_rank_views.xml`
+- `addons/gamification/views/gamification_karma_tracking_views.xml`
+- `addons/gamification/views/gamification_menus.xml`
+- `addons/gamification/views/res_users_views.xml`
+- `addons/gamification/wizard/__init__.py`
+- `addons/gamification/wizard/grant_badge.py`
+- `addons/gamification/wizard/grant_badge.xml`
+- `addons/gamification/wizard/update_goal.py`
+- `addons/gamification/wizard/update_goal.xml`

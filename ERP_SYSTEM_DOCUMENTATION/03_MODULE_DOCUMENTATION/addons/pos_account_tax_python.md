@@ -1,119 +1,169 @@
 # Module: pos_account_tax_python
 
 - **Module ID:** MOD-422
-- **Path:** `addons/pos_account_tax_python`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/pos_account_tax_python`
 - **Manifest:** `addons/pos_account_tax_python/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Accounting/Accounting`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
+
+**Manifest description:**
 
 Add code to manage custom taxes to the POS assets bundle
 
-Declared dependencies: `account_tax_python`, `point_of_sale`.
+**Scope evidence:** The module contains 57 files, including 6 Python, 0 XML, and 2 JavaScript/TypeScript files. The manifest declares dependencies: `account_tax_python`, `point_of_sale`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 6 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 0 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 2 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 1
+- Controller/API files: 0
+- XML/data/view/template files: 0
+- Browser asset files: 2
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "account_tax_python",
-    "point_of_sale"
-  ],
-  "assets": {
-    "point_of_sale._assets_pos": [
-      "account_tax_python/static/src/helpers/*.js"
-    ],
-    "web.assets_unit_tests": [
-      "pos_account_tax_python/static/tests/unit/data/**/*"
-    ],
-    "web.assets_tests": [
-      "pos_account_tax_python/static/tests/tours/**/*"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/pos_account_tax_python/__init__.py` (1 lines)
-- `addons/pos_account_tax_python/__manifest__.py` (22 lines)
-- `addons/pos_account_tax_python/i18n/ar.po` (46 lines)
-- `addons/pos_account_tax_python/i18n/az.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/bg.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/bs.po` (46 lines)
-- `addons/pos_account_tax_python/i18n/ca.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/cs.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/da.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/de.po` (47 lines)
-- `addons/pos_account_tax_python/i18n/el.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/es.po` (47 lines)
-- `addons/pos_account_tax_python/i18n/es_419.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/et.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/fa.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/fi.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/fr.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/he.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/hi.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/hr.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/hu.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/id.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/it.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/ja.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/kab.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/ko.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/ku.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/lo.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/lt.po` (46 lines)
-- `addons/pos_account_tax_python/i18n/lv.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/mn.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/my.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/nb.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/nl.po` (46 lines)
-- `addons/pos_account_tax_python/i18n/pl.po` (46 lines)
-- `addons/pos_account_tax_python/i18n/pos_account_tax_python.pot` (41 lines)
-- `addons/pos_account_tax_python/i18n/pt.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/pt_BR.po` (48 lines)
-- `addons/pos_account_tax_python/i18n/ro.po` (46 lines)
-- `addons/pos_account_tax_python/i18n/ru.po` (46 lines)
-- `addons/pos_account_tax_python/i18n/sk.po` (44 lines)
-- `addons/pos_account_tax_python/i18n/sl.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/sr@latin.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/sv.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/th.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/tr.po` (46 lines)
-- `addons/pos_account_tax_python/i18n/uk.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/uz.po` (55 lines)
-- `addons/pos_account_tax_python/i18n/vi.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/zh_CN.po` (45 lines)
-- `addons/pos_account_tax_python/i18n/zh_TW.po` (45 lines)
-- `addons/pos_account_tax_python/models/__init__.py` (1 lines)
-- `addons/pos_account_tax_python/models/account_tax.py` (9 lines)
-- `addons/pos_account_tax_python/static/tests/tours/test_taxes_tax_totals_summary.js` (51 lines)
-- `addons/pos_account_tax_python/static/tests/unit/data/pos_printer.data.js` (8 lines)
-- `addons/pos_account_tax_python/tests/__init__.py` (1 lines)
-- `addons/pos_account_tax_python/tests/test_taxes_tax_totals_summary.py` (69 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 1 model declarations, 3 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/pos_account_tax_python/models/account_tax.py:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 0 XML files and 2 JavaScript/TypeScript files; static XML analysis found 0 record/template/menu identifiers.
+- **Evidence:** Not found in module
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/pos_account_tax_python/tests/test_taxes_tax_totals_summary.py`, `addons/pos_account_tax_python/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 0; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 2; representative files: `addons/pos_account_tax_python/static/tests/tours/test_taxes_tax_totals_summary.js`, `addons/pos_account_tax_python/static/tests/unit/data/pos_printer.data.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/pos_account_tax_python/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: inherits `account.tax` (addons/pos_account_tax_python/models/account_tax.py:4)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account_tax_python`, `point_of_sale`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/pos_account_tax_python/__init__.py`
+- `addons/pos_account_tax_python/__manifest__.py`
+- `addons/pos_account_tax_python/i18n/ar.po`
+- `addons/pos_account_tax_python/i18n/az.po`
+- `addons/pos_account_tax_python/i18n/bg.po`
+- `addons/pos_account_tax_python/i18n/bs.po`
+- `addons/pos_account_tax_python/i18n/ca.po`
+- `addons/pos_account_tax_python/i18n/cs.po`
+- `addons/pos_account_tax_python/i18n/da.po`
+- `addons/pos_account_tax_python/i18n/de.po`
+- `addons/pos_account_tax_python/i18n/el.po`
+- `addons/pos_account_tax_python/i18n/es.po`
+- `addons/pos_account_tax_python/i18n/es_419.po`
+- `addons/pos_account_tax_python/i18n/et.po`
+- `addons/pos_account_tax_python/i18n/fa.po`
+- `addons/pos_account_tax_python/i18n/fi.po`
+- `addons/pos_account_tax_python/i18n/fr.po`
+- `addons/pos_account_tax_python/i18n/he.po`
+- `addons/pos_account_tax_python/i18n/hi.po`
+- `addons/pos_account_tax_python/i18n/hr.po`
+- `addons/pos_account_tax_python/i18n/hu.po`
+- `addons/pos_account_tax_python/i18n/id.po`
+- `addons/pos_account_tax_python/i18n/it.po`
+- `addons/pos_account_tax_python/i18n/ja.po`
+- `addons/pos_account_tax_python/i18n/kab.po`
+- `addons/pos_account_tax_python/i18n/ko.po`
+- `addons/pos_account_tax_python/i18n/ku.po`
+- `addons/pos_account_tax_python/i18n/lo.po`
+- `addons/pos_account_tax_python/i18n/lt.po`
+- `addons/pos_account_tax_python/i18n/lv.po`
+- `addons/pos_account_tax_python/i18n/mn.po`
+- `addons/pos_account_tax_python/i18n/my.po`
+- `addons/pos_account_tax_python/i18n/nb.po`
+- `addons/pos_account_tax_python/i18n/nl.po`
+- `addons/pos_account_tax_python/i18n/pl.po`
+- `addons/pos_account_tax_python/i18n/pos_account_tax_python.pot`
+- `addons/pos_account_tax_python/i18n/pt.po`
+- `addons/pos_account_tax_python/i18n/pt_BR.po`
+- `addons/pos_account_tax_python/i18n/ro.po`
+- `addons/pos_account_tax_python/i18n/ru.po`
+- `addons/pos_account_tax_python/i18n/sk.po`
+- `addons/pos_account_tax_python/i18n/sl.po`
+- `addons/pos_account_tax_python/i18n/sr@latin.po`
+- `addons/pos_account_tax_python/i18n/sv.po`
+- `addons/pos_account_tax_python/i18n/th.po`
+- `addons/pos_account_tax_python/i18n/tr.po`
+- `addons/pos_account_tax_python/i18n/uk.po`
+- `addons/pos_account_tax_python/i18n/uz.po`
+- `addons/pos_account_tax_python/i18n/vi.po`
+- `addons/pos_account_tax_python/i18n/zh_CN.po`
+- `addons/pos_account_tax_python/i18n/zh_TW.po`
+- `addons/pos_account_tax_python/models/__init__.py`
+- `addons/pos_account_tax_python/models/account_tax.py`
+- `addons/pos_account_tax_python/static/tests/tours/test_taxes_tax_totals_summary.js`
+- `addons/pos_account_tax_python/static/tests/unit/data/pos_printer.data.js`
+- `addons/pos_account_tax_python/tests/__init__.py`
+- `addons/pos_account_tax_python/tests/test_taxes_tax_totals_summary.py`

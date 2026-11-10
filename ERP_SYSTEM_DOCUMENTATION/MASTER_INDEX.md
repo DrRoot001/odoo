@@ -17,9 +17,13 @@
 - [Requirements traceability](10_TESTING/Requirements_Traceability.csv) — requirement-to-source/test links
 - [Module catalog](03_MODULE_DOCUMENTATION/Module_Catalog.md) — 666 per-addon evidence pages in `03_MODULE_DOCUMENTATION/addons/`
 - [Module hierarchy](03_MODULE_DOCUMENTATION/Module_Hierarchy.md) — normalized Phase 2 domain classification
+- [Detailed module specifications](03_MODULE_DOCUMENTATION/Module_Detail_Methodology.md) — Phase 4 evidence structure for all 666 modules
+- [Module detail index](03_MODULE_DOCUMENTATION/Module_Detail_Index.csv) — aggregate artifact and dependency metrics
 - [Feature inventory](03_MODULE_DOCUMENTATION/Feature_Inventory.csv) — one evidence-backed feature row per manifest
 - [Coverage matrix](03_MODULE_DOCUMENTATION/Module_Coverage_Matrix.md) — domain artifact totals
 - [Module hierarchy](03_MODULE_DOCUMENTATION/Module_Hierarchy.md) — normalized Phase 2 domain classification
+- [Detailed module specifications](03_MODULE_DOCUMENTATION/Module_Detail_Methodology.md) — Phase 4 evidence structure for all 666 modules
+- [Module detail index](03_MODULE_DOCUMENTATION/Module_Detail_Index.csv) — aggregate artifact and dependency metrics
 - [Feature inventory](03_MODULE_DOCUMENTATION/Feature_Inventory.csv) — one evidence-backed feature row per manifest
 - [Coverage matrix](03_MODULE_DOCUMENTATION/Module_Coverage_Matrix.md) — domain artifact totals
 - [Architecture](04_SYSTEM_ARCHITECTURE/System_Architecture.md)

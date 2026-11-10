@@ -1,87 +1,144 @@
 # Module: l10n_ke_edi_tremol
 
 - **Module ID:** MOD-251
-- **Path:** `addons/l10n_ke_edi_tremol`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_ke_edi_tremol`
 - **Manifest:** `addons/l10n_ke_edi_tremol/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Accounting/Localizations/EDI`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Kenya Tremol Device EDI Integration
+**Purpose:** Kenya Tremol Device EDI Integration
 
+**Manifest description:**
 
 This module integrates with the Kenyan G03 Tremol control unit device to the KRA through TIMS.
-    
 
-Declared dependencies: `l10n_ke`.
+**Scope evidence:** The module contains 24 files, including 13 Python, 5 XML, and 3 JavaScript/TypeScript files. The manifest declares dependencies: `l10n_ke`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 13 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 6 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 5 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 3 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 6
+- Controller/API files: 0
+- XML/data/view/template files: 5
+- Browser asset files: 3
+- Security files: 0
+- Test files: 3
+- Scheduled/automation evidence files: 1
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "l10n_ke"
-  ],
-  "data": [
-    "views/account_move_view.xml",
-    "views/report_invoice.xml",
-    "views/res_config_settings_view.xml",
-    "views/res_partner_views.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "l10n_ke_edi_tremol/static/src/components/*"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/l10n_ke_edi_tremol/__init__.py` (5 lines)
-- `addons/l10n_ke_edi_tremol/__manifest__.py` (24 lines)
-- `addons/l10n_ke_edi_tremol/data/neutralize.sql` (3 lines)
-- `addons/l10n_ke_edi_tremol/i18n/l10n_ke_edi_tremol.pot` (375 lines)
-- `addons/l10n_ke_edi_tremol/i18n/sw.po` (378 lines)
-- `addons/l10n_ke_edi_tremol/models/__init__.py` (5 lines)
-- `addons/l10n_ke_edi_tremol/models/account_move.py` (308 lines)
-- `addons/l10n_ke_edi_tremol/models/account_move_send.py` (45 lines)
-- `addons/l10n_ke_edi_tremol/models/res_company.py` (14 lines)
-- `addons/l10n_ke_edi_tremol/models/res_config_settings.py` (10 lines)
-- `addons/l10n_ke_edi_tremol/models/res_partner.py` (16 lines)
-- `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_action.js` (20 lines)
-- `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_dialog.js` (24 lines)
-- `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_dialog.xml` (38 lines)
-- `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_hook.js` (83 lines)
-- `addons/l10n_ke_edi_tremol/tests/__init__.py` (4 lines)
-- `addons/l10n_ke_edi_tremol/tests/test_account_move_send.py` (52 lines)
-- `addons/l10n_ke_edi_tremol/tests/test_move_export.py` (296 lines)
-- `addons/l10n_ke_edi_tremol/views/account_move_view.xml` (72 lines)
-- `addons/l10n_ke_edi_tremol/views/report_invoice.xml` (32 lines)
-- `addons/l10n_ke_edi_tremol/views/res_config_settings_view.xml` (27 lines)
-- `addons/l10n_ke_edi_tremol/views/res_partner_views.xml` (15 lines)
-- `addons/l10n_ke_edi_tremol/wizard/__init__.py` (1 lines)
-- `addons/l10n_ke_edi_tremol/wizard/account_move_send_wizard.py` (14 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 6 model declarations, 25 methods, 0 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/l10n_ke_edi_tremol/models/res_partner.py:7`, `addons/l10n_ke_edi_tremol/models/res_config_settings.py:7`, `addons/l10n_ke_edi_tremol/models/account_move.py:29`, `addons/l10n_ke_edi_tremol/models/account_move_send.py:4`, `addons/l10n_ke_edi_tremol/models/res_company.py:7`, `addons/l10n_ke_edi_tremol/wizard/account_move_send_wizard.py:5`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 5 XML files and 3 JavaScript/TypeScript files; static XML analysis found 7 record/template/menu identifiers.
+- **Evidence:** `addons/l10n_ke_edi_tremol/views/report_invoice.xml:3`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:3`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:35`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:46`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:57`, `addons/l10n_ke_edi_tremol/views/res_config_settings_view.xml:3`, `addons/l10n_ke_edi_tremol/views/res_partner_views.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 1 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/l10n_ke_edi_tremol/views/account_move_view.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/l10n_ke_edi_tremol/tests/__init__.py`, `addons/l10n_ke_edi_tremol/tests/test_account_move_send.py`, `addons/l10n_ke_edi_tremol/tests/test_move_export.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 5; representative identifiers: `l10n_ke_invoice`, `l10n_ke_inherit_account_move_form`, `l10n_ke_inherit_account_move_tree_view`, `action_send_invoices_to_device`, `l10n_ke_inherit_account_move_search_view`, `res_config_settings_view_form`, `res_partner_view_form`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 1; representative evidence: `addons/l10n_ke_edi_tremol/views/report_invoice.xml:3`
+- View/action field declarations: 10; representative evidence: `addons/l10n_ke_edi_tremol/views/account_move_view.xml:5`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:8`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:37`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:39`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:59`, `addons/l10n_ke_edi_tremol/views/account_move_view.xml:61`, `addons/l10n_ke_edi_tremol/views/res_config_settings_view.xml:5`, `addons/l10n_ke_edi_tremol/views/res_config_settings_view.xml:7`, `addons/l10n_ke_edi_tremol/views/res_partner_views.xml:5`, `addons/l10n_ke_edi_tremol/views/res_partner_views.xml:7`
+- Browser assets: 3; representative files: `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_hook.js`, `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_dialog.js`, `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_action.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_ke_edi_tremol/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** `addons/l10n_ke_edi_tremol/views/account_move_view.xml`
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 6
+- Representative model evidence: inherits `res.partner` (addons/l10n_ke_edi_tremol/models/res_partner.py:7); inherits `res.config.settings` (addons/l10n_ke_edi_tremol/models/res_config_settings.py:7); inherits `account.move` (addons/l10n_ke_edi_tremol/models/account_move.py:29); inherits `account.move.send` (addons/l10n_ke_edi_tremol/models/account_move_send.py:4); inherits `res.company` (addons/l10n_ke_edi_tremol/models/res_company.py:7); inherits `account.move.send.wizard` (addons/l10n_ke_edi_tremol/wizard/account_move_send_wizard.py:5)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `l10n_ke`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_ke_edi_tremol/__init__.py`
+- `addons/l10n_ke_edi_tremol/__manifest__.py`
+- `addons/l10n_ke_edi_tremol/data/neutralize.sql`
+- `addons/l10n_ke_edi_tremol/i18n/l10n_ke_edi_tremol.pot`
+- `addons/l10n_ke_edi_tremol/i18n/sw.po`
+- `addons/l10n_ke_edi_tremol/models/__init__.py`
+- `addons/l10n_ke_edi_tremol/models/account_move.py`
+- `addons/l10n_ke_edi_tremol/models/account_move_send.py`
+- `addons/l10n_ke_edi_tremol/models/res_company.py`
+- `addons/l10n_ke_edi_tremol/models/res_config_settings.py`
+- `addons/l10n_ke_edi_tremol/models/res_partner.py`
+- `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_action.js`
+- `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_dialog.js`
+- `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_dialog.xml`
+- `addons/l10n_ke_edi_tremol/static/src/components/ke_proxy_hook.js`
+- `addons/l10n_ke_edi_tremol/tests/__init__.py`
+- `addons/l10n_ke_edi_tremol/tests/test_account_move_send.py`
+- `addons/l10n_ke_edi_tremol/tests/test_move_export.py`
+- `addons/l10n_ke_edi_tremol/views/account_move_view.xml`
+- `addons/l10n_ke_edi_tremol/views/report_invoice.xml`
+- `addons/l10n_ke_edi_tremol/views/res_config_settings_view.xml`
+- `addons/l10n_ke_edi_tremol/views/res_partner_views.xml`
+- `addons/l10n_ke_edi_tremol/wizard/__init__.py`
+- `addons/l10n_ke_edi_tremol/wizard/account_move_send_wizard.py`

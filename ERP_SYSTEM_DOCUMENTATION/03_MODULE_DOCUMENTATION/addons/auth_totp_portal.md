@@ -1,127 +1,184 @@
 # Module: auth_totp_portal
 
 - **Module ID:** MOD-031
-- **Path:** `addons/auth_totp_portal`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/auth_totp_portal`
 - **Manifest:** `addons/auth_totp_portal/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Hidden`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `portal`, `auth_totp`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 64 files, including 6 Python, 1 XML, and 6 JavaScript/TypeScript files. The manifest declares dependencies: `portal`, `auth_totp`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 6 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 6 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 1
+- Controller/API files: 0
+- XML/data/view/template files: 1
+- Browser asset files: 6
+- Security files: 1
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "portal",
-    "auth_totp"
-  ],
-  "data": [
-    "views/templates.xml",
-    "security/ir.access.csv"
-  ],
-  "assets": {
-    "web.assets_frontend": [
-      "auth_totp_portal/static/src/**/*"
-    ],
-    "web.assets_tests": [
-      "auth_totp_portal/static/tests/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/auth_totp_portal/security/ir.access.csv`
 
-- `addons/auth_totp_portal/__init__.py` (4 lines)
-- `addons/auth_totp_portal/__manifest__.py` (20 lines)
-- `addons/auth_totp_portal/i18n/ar.po` (133 lines)
-- `addons/auth_totp_portal/i18n/auth_totp_portal.pot` (117 lines)
-- `addons/auth_totp_portal/i18n/az.po` (131 lines)
-- `addons/auth_totp_portal/i18n/bg.po` (133 lines)
-- `addons/auth_totp_portal/i18n/bs.po` (126 lines)
-- `addons/auth_totp_portal/i18n/ca.po` (134 lines)
-- `addons/auth_totp_portal/i18n/cs.po` (133 lines)
-- `addons/auth_totp_portal/i18n/da.po` (134 lines)
-- `addons/auth_totp_portal/i18n/de.po` (137 lines)
-- `addons/auth_totp_portal/i18n/el.po` (125 lines)
-- `addons/auth_totp_portal/i18n/es.po` (134 lines)
-- `addons/auth_totp_portal/i18n/es_419.po` (135 lines)
-- `addons/auth_totp_portal/i18n/et.po` (133 lines)
-- `addons/auth_totp_portal/i18n/fa.po` (132 lines)
-- `addons/auth_totp_portal/i18n/fi.po` (134 lines)
-- `addons/auth_totp_portal/i18n/fr.po` (135 lines)
-- `addons/auth_totp_portal/i18n/he.po` (134 lines)
-- `addons/auth_totp_portal/i18n/hi.po` (124 lines)
-- `addons/auth_totp_portal/i18n/hr.po` (135 lines)
-- `addons/auth_totp_portal/i18n/hu.po` (134 lines)
-- `addons/auth_totp_portal/i18n/id.po` (134 lines)
-- `addons/auth_totp_portal/i18n/it.po` (134 lines)
-- `addons/auth_totp_portal/i18n/ja.po` (134 lines)
-- `addons/auth_totp_portal/i18n/kab.po` (125 lines)
-- `addons/auth_totp_portal/i18n/ko.po` (133 lines)
-- `addons/auth_totp_portal/i18n/ku.po` (124 lines)
-- `addons/auth_totp_portal/i18n/lo.po` (123 lines)
-- `addons/auth_totp_portal/i18n/lt.po` (135 lines)
-- `addons/auth_totp_portal/i18n/lv.po` (126 lines)
-- `addons/auth_totp_portal/i18n/mn.po` (124 lines)
-- `addons/auth_totp_portal/i18n/my.po` (124 lines)
-- `addons/auth_totp_portal/i18n/nb.po` (124 lines)
-- `addons/auth_totp_portal/i18n/nl.po` (134 lines)
-- `addons/auth_totp_portal/i18n/pl.po` (134 lines)
-- `addons/auth_totp_portal/i18n/pt.po` (134 lines)
-- `addons/auth_totp_portal/i18n/pt_BR.po` (134 lines)
-- `addons/auth_totp_portal/i18n/ro.po` (134 lines)
-- `addons/auth_totp_portal/i18n/ru.po` (136 lines)
-- `addons/auth_totp_portal/i18n/sk.po` (125 lines)
-- `addons/auth_totp_portal/i18n/sl.po` (136 lines)
-- `addons/auth_totp_portal/i18n/sr@latin.po` (127 lines)
-- `addons/auth_totp_portal/i18n/sv.po` (134 lines)
-- `addons/auth_totp_portal/i18n/th.po` (132 lines)
-- `addons/auth_totp_portal/i18n/tr.po` (134 lines)
-- `addons/auth_totp_portal/i18n/uk.po` (134 lines)
-- `addons/auth_totp_portal/i18n/uz.po` (144 lines)
-- `addons/auth_totp_portal/i18n/vi.po` (132 lines)
-- `addons/auth_totp_portal/i18n/zh_CN.po` (133 lines)
-- `addons/auth_totp_portal/i18n/zh_TW.po` (136 lines)
-- `addons/auth_totp_portal/models/__init__.py` (4 lines)
-- `addons/auth_totp_portal/models/res_users.py` (14 lines)
-- `addons/auth_totp_portal/security/ir.access.csv` (2 lines)
-- `addons/auth_totp_portal/static/src/components/totp_confirmation_dialog.js` (37 lines)
-- `addons/auth_totp_portal/static/src/interactions/revoke_all_trusted_devices.js` (25 lines)
-- `addons/auth_totp_portal/static/src/interactions/revoke_trusted_device.js` (24 lines)
-- `addons/auth_totp_portal/static/src/interactions/totp_disable.js` (26 lines)
-- `addons/auth_totp_portal/static/src/interactions/totp_enable.js` (193 lines)
-- `addons/auth_totp_portal/static/src/scss/auth_totp_portal.scss` (36 lines)
-- `addons/auth_totp_portal/static/tests/totp_portal.js` (129 lines)
-- `addons/auth_totp_portal/tests/__init__.py` (1 lines)
-- `addons/auth_totp_portal/tests/test_tour.py` (21 lines)
-- `addons/auth_totp_portal/views/templates.xml` (67 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 1 model declarations, 2 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/auth_totp_portal/models/res_users.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 1 XML files and 6 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/auth_totp_portal/views/templates.xml:2`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/auth_totp_portal/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/auth_totp_portal/tests/__init__.py`, `addons/auth_totp_portal/tests/test_tour.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `TOTP Portal hook`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 1; representative evidence: `addons/auth_totp_portal/views/templates.xml:2`
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 6; representative files: `addons/auth_totp_portal/static/tests/totp_portal.js`, `addons/auth_totp_portal/static/src/components/totp_confirmation_dialog.js`, `addons/auth_totp_portal/static/src/interactions/revoke_trusted_device.js`, `addons/auth_totp_portal/static/src/interactions/totp_enable.js`, `addons/auth_totp_portal/static/src/interactions/revoke_all_trusted_devices.js`, `addons/auth_totp_portal/static/src/interactions/totp_disable.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/auth_totp_portal/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: inherits `res.users` (addons/auth_totp_portal/models/res_users.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `portal`, `auth_totp`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/auth_totp_portal/__init__.py`
+- `addons/auth_totp_portal/__manifest__.py`
+- `addons/auth_totp_portal/i18n/ar.po`
+- `addons/auth_totp_portal/i18n/auth_totp_portal.pot`
+- `addons/auth_totp_portal/i18n/az.po`
+- `addons/auth_totp_portal/i18n/bg.po`
+- `addons/auth_totp_portal/i18n/bs.po`
+- `addons/auth_totp_portal/i18n/ca.po`
+- `addons/auth_totp_portal/i18n/cs.po`
+- `addons/auth_totp_portal/i18n/da.po`
+- `addons/auth_totp_portal/i18n/de.po`
+- `addons/auth_totp_portal/i18n/el.po`
+- `addons/auth_totp_portal/i18n/es.po`
+- `addons/auth_totp_portal/i18n/es_419.po`
+- `addons/auth_totp_portal/i18n/et.po`
+- `addons/auth_totp_portal/i18n/fa.po`
+- `addons/auth_totp_portal/i18n/fi.po`
+- `addons/auth_totp_portal/i18n/fr.po`
+- `addons/auth_totp_portal/i18n/he.po`
+- `addons/auth_totp_portal/i18n/hi.po`
+- `addons/auth_totp_portal/i18n/hr.po`
+- `addons/auth_totp_portal/i18n/hu.po`
+- `addons/auth_totp_portal/i18n/id.po`
+- `addons/auth_totp_portal/i18n/it.po`
+- `addons/auth_totp_portal/i18n/ja.po`
+- `addons/auth_totp_portal/i18n/kab.po`
+- `addons/auth_totp_portal/i18n/ko.po`
+- `addons/auth_totp_portal/i18n/ku.po`
+- `addons/auth_totp_portal/i18n/lo.po`
+- `addons/auth_totp_portal/i18n/lt.po`
+- `addons/auth_totp_portal/i18n/lv.po`
+- `addons/auth_totp_portal/i18n/mn.po`
+- `addons/auth_totp_portal/i18n/my.po`
+- `addons/auth_totp_portal/i18n/nb.po`
+- `addons/auth_totp_portal/i18n/nl.po`
+- `addons/auth_totp_portal/i18n/pl.po`
+- `addons/auth_totp_portal/i18n/pt.po`
+- `addons/auth_totp_portal/i18n/pt_BR.po`
+- `addons/auth_totp_portal/i18n/ro.po`
+- `addons/auth_totp_portal/i18n/ru.po`
+- `addons/auth_totp_portal/i18n/sk.po`
+- `addons/auth_totp_portal/i18n/sl.po`
+- `addons/auth_totp_portal/i18n/sr@latin.po`
+- `addons/auth_totp_portal/i18n/sv.po`
+- `addons/auth_totp_portal/i18n/th.po`
+- `addons/auth_totp_portal/i18n/tr.po`
+- `addons/auth_totp_portal/i18n/uk.po`
+- `addons/auth_totp_portal/i18n/uz.po`
+- `addons/auth_totp_portal/i18n/vi.po`
+- `addons/auth_totp_portal/i18n/zh_CN.po`
+- `addons/auth_totp_portal/i18n/zh_TW.po`
+- `addons/auth_totp_portal/models/__init__.py`
+- `addons/auth_totp_portal/models/res_users.py`
+- `addons/auth_totp_portal/security/ir.access.csv`
+- `addons/auth_totp_portal/static/src/components/totp_confirmation_dialog.js`
+- `addons/auth_totp_portal/static/src/interactions/revoke_all_trusted_devices.js`
+- `addons/auth_totp_portal/static/src/interactions/revoke_trusted_device.js`
+- `addons/auth_totp_portal/static/src/interactions/totp_disable.js`
+- `addons/auth_totp_portal/static/src/interactions/totp_enable.js`
+- `addons/auth_totp_portal/static/src/scss/auth_totp_portal.scss`
+- `addons/auth_totp_portal/static/tests/totp_portal.js`
+- `addons/auth_totp_portal/tests/__init__.py`
+- `addons/auth_totp_portal/tests/test_tour.py`
+- `addons/auth_totp_portal/views/templates.xml`

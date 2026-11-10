@@ -1,106 +1,159 @@
 # Module: sale_stock_margin
 
 - **Module ID:** MOD-534
-- **Path:** `addons/sale_stock_margin`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/sale_stock_margin`
 - **Manifest:** `addons/sale_stock_margin/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Sales/Sales`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
+
+**Manifest description:**
 
 Once the delivery is validated, update the cost on the SO to have an exact margin computation.
 
-Declared dependencies: `sale_stock`, `sale_margin`.
+**Scope evidence:** The module contains 55 files, including 6 Python, 0 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `sale_stock`, `sale_margin`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 6 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 0 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 1
+- Controller/API files: 0
+- XML/data/view/template files: 0
+- Browser asset files: 0
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "sale_stock",
-    "sale_margin"
-  ]
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/sale_stock_margin/__init__.py` (4 lines)
-- `addons/sale_stock_margin/__manifest__.py` (9 lines)
-- `addons/sale_stock_margin/i18n/ar.po` (49 lines)
-- `addons/sale_stock_margin/i18n/az.po` (46 lines)
-- `addons/sale_stock_margin/i18n/bg.po` (46 lines)
-- `addons/sale_stock_margin/i18n/bs.po` (48 lines)
-- `addons/sale_stock_margin/i18n/ca.po` (47 lines)
-- `addons/sale_stock_margin/i18n/cs.po` (48 lines)
-- `addons/sale_stock_margin/i18n/da.po` (47 lines)
-- `addons/sale_stock_margin/i18n/de.po` (50 lines)
-- `addons/sale_stock_margin/i18n/el.po` (47 lines)
-- `addons/sale_stock_margin/i18n/es.po` (51 lines)
-- `addons/sale_stock_margin/i18n/es_419.po` (48 lines)
-- `addons/sale_stock_margin/i18n/et.po` (46 lines)
-- `addons/sale_stock_margin/i18n/fa.po` (46 lines)
-- `addons/sale_stock_margin/i18n/fi.po` (50 lines)
-- `addons/sale_stock_margin/i18n/fr.po` (48 lines)
-- `addons/sale_stock_margin/i18n/he.po` (47 lines)
-- `addons/sale_stock_margin/i18n/hi.po` (46 lines)
-- `addons/sale_stock_margin/i18n/hr.po` (47 lines)
-- `addons/sale_stock_margin/i18n/hu.po` (47 lines)
-- `addons/sale_stock_margin/i18n/id.po` (48 lines)
-- `addons/sale_stock_margin/i18n/it.po` (48 lines)
-- `addons/sale_stock_margin/i18n/ja.po` (48 lines)
-- `addons/sale_stock_margin/i18n/kab.po` (47 lines)
-- `addons/sale_stock_margin/i18n/ko.po` (48 lines)
-- `addons/sale_stock_margin/i18n/ku.po` (46 lines)
-- `addons/sale_stock_margin/i18n/lo.po` (46 lines)
-- `addons/sale_stock_margin/i18n/lt.po` (48 lines)
-- `addons/sale_stock_margin/i18n/lv.po` (47 lines)
-- `addons/sale_stock_margin/i18n/mn.po` (46 lines)
-- `addons/sale_stock_margin/i18n/my.po` (46 lines)
-- `addons/sale_stock_margin/i18n/nb.po` (47 lines)
-- `addons/sale_stock_margin/i18n/nl.po` (48 lines)
-- `addons/sale_stock_margin/i18n/pl.po` (49 lines)
-- `addons/sale_stock_margin/i18n/pt.po` (47 lines)
-- `addons/sale_stock_margin/i18n/pt_BR.po` (52 lines)
-- `addons/sale_stock_margin/i18n/ro.po` (48 lines)
-- `addons/sale_stock_margin/i18n/ru.po` (50 lines)
-- `addons/sale_stock_margin/i18n/sale_stock_margin.pot` (43 lines)
-- `addons/sale_stock_margin/i18n/sk.po` (46 lines)
-- `addons/sale_stock_margin/i18n/sl.po` (48 lines)
-- `addons/sale_stock_margin/i18n/sr@latin.po` (47 lines)
-- `addons/sale_stock_margin/i18n/sv.po` (49 lines)
-- `addons/sale_stock_margin/i18n/th.po` (48 lines)
-- `addons/sale_stock_margin/i18n/tr.po` (48 lines)
-- `addons/sale_stock_margin/i18n/uk.po` (47 lines)
-- `addons/sale_stock_margin/i18n/uz.po` (57 lines)
-- `addons/sale_stock_margin/i18n/vi.po` (48 lines)
-- `addons/sale_stock_margin/i18n/zh_CN.po` (48 lines)
-- `addons/sale_stock_margin/i18n/zh_TW.po` (50 lines)
-- `addons/sale_stock_margin/models/__init__.py` (4 lines)
-- `addons/sale_stock_margin/models/sale_order_line.py` (36 lines)
-- `addons/sale_stock_margin/tests/__init__.py` (3 lines)
-- `addons/sale_stock_margin/tests/test_sale_stock_margin.py` (716 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 1 model declarations, 25 methods, 0 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/sale_stock_margin/models/sale_order_line.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/sale_stock_margin/tests/__init__.py`, `addons/sale_stock_margin/tests/test_sale_stock_margin.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 0; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/sale_stock_margin/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: inherits `sale.order.line` (addons/sale_stock_margin/models/sale_order_line.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `sale_stock`, `sale_margin`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Not found
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/sale_stock_margin/__init__.py`
+- `addons/sale_stock_margin/__manifest__.py`
+- `addons/sale_stock_margin/i18n/ar.po`
+- `addons/sale_stock_margin/i18n/az.po`
+- `addons/sale_stock_margin/i18n/bg.po`
+- `addons/sale_stock_margin/i18n/bs.po`
+- `addons/sale_stock_margin/i18n/ca.po`
+- `addons/sale_stock_margin/i18n/cs.po`
+- `addons/sale_stock_margin/i18n/da.po`
+- `addons/sale_stock_margin/i18n/de.po`
+- `addons/sale_stock_margin/i18n/el.po`
+- `addons/sale_stock_margin/i18n/es.po`
+- `addons/sale_stock_margin/i18n/es_419.po`
+- `addons/sale_stock_margin/i18n/et.po`
+- `addons/sale_stock_margin/i18n/fa.po`
+- `addons/sale_stock_margin/i18n/fi.po`
+- `addons/sale_stock_margin/i18n/fr.po`
+- `addons/sale_stock_margin/i18n/he.po`
+- `addons/sale_stock_margin/i18n/hi.po`
+- `addons/sale_stock_margin/i18n/hr.po`
+- `addons/sale_stock_margin/i18n/hu.po`
+- `addons/sale_stock_margin/i18n/id.po`
+- `addons/sale_stock_margin/i18n/it.po`
+- `addons/sale_stock_margin/i18n/ja.po`
+- `addons/sale_stock_margin/i18n/kab.po`
+- `addons/sale_stock_margin/i18n/ko.po`
+- `addons/sale_stock_margin/i18n/ku.po`
+- `addons/sale_stock_margin/i18n/lo.po`
+- `addons/sale_stock_margin/i18n/lt.po`
+- `addons/sale_stock_margin/i18n/lv.po`
+- `addons/sale_stock_margin/i18n/mn.po`
+- `addons/sale_stock_margin/i18n/my.po`
+- `addons/sale_stock_margin/i18n/nb.po`
+- `addons/sale_stock_margin/i18n/nl.po`
+- `addons/sale_stock_margin/i18n/pl.po`
+- `addons/sale_stock_margin/i18n/pt.po`
+- `addons/sale_stock_margin/i18n/pt_BR.po`
+- `addons/sale_stock_margin/i18n/ro.po`
+- `addons/sale_stock_margin/i18n/ru.po`
+- `addons/sale_stock_margin/i18n/sale_stock_margin.pot`
+- `addons/sale_stock_margin/i18n/sk.po`
+- `addons/sale_stock_margin/i18n/sl.po`
+- `addons/sale_stock_margin/i18n/sr@latin.po`
+- `addons/sale_stock_margin/i18n/sv.po`
+- `addons/sale_stock_margin/i18n/th.po`
+- `addons/sale_stock_margin/i18n/tr.po`
+- `addons/sale_stock_margin/i18n/uk.po`
+- `addons/sale_stock_margin/i18n/uz.po`
+- `addons/sale_stock_margin/i18n/vi.po`
+- `addons/sale_stock_margin/i18n/zh_CN.po`
+- `addons/sale_stock_margin/i18n/zh_TW.po`
+- `addons/sale_stock_margin/models/__init__.py`
+- `addons/sale_stock_margin/models/sale_order_line.py`
+- `addons/sale_stock_margin/tests/__init__.py`
+- `addons/sale_stock_margin/tests/test_sale_stock_margin.py`

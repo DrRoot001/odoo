@@ -1,117 +1,165 @@
 # Module: mass_mailing_event_track
 
 - **Module ID:** MOD-367
-- **Path:** `addons/mass_mailing_event_track`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/mass_mailing_event_track`
 - **Manifest:** `addons/mass_mailing_event_track/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Marketing/Email Marketing`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 Mass mail event track speakers
 ==============================
 
 Bridge module adding UX requirements to ease mass mailing of event track speakers.
-        
 
-Declared dependencies: `website_event_track`, `mass_mailing`.
+**Scope evidence:** The module contains 58 files, including 5 Python, 1 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `website_event_track`, `mass_mailing`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 5 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 2
+- Controller/API files: 0
+- XML/data/view/template files: 1
+- Browser asset files: 0
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "website_event_track",
-    "mass_mailing"
-  ],
-  "data": [
-    "views/event_views.xml"
-  ]
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/mass_mailing_event_track/__init__.py` (4 lines)
-- `addons/mass_mailing_event_track/__manifest__.py` (20 lines)
-- `addons/mass_mailing_event_track/i18n/ar.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/az.po` (71 lines)
-- `addons/mass_mailing_event_track/i18n/bg.po` (72 lines)
-- `addons/mass_mailing_event_track/i18n/bs.po` (71 lines)
-- `addons/mass_mailing_event_track/i18n/ca.po` (75 lines)
-- `addons/mass_mailing_event_track/i18n/cs.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/da.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/de.po` (80 lines)
-- `addons/mass_mailing_event_track/i18n/el.po` (71 lines)
-- `addons/mass_mailing_event_track/i18n/es.po` (81 lines)
-- `addons/mass_mailing_event_track/i18n/es_419.po` (71 lines)
-- `addons/mass_mailing_event_track/i18n/et.po` (74 lines)
-- `addons/mass_mailing_event_track/i18n/fa.po` (72 lines)
-- `addons/mass_mailing_event_track/i18n/fi.po` (80 lines)
-- `addons/mass_mailing_event_track/i18n/fr.po` (74 lines)
-- `addons/mass_mailing_event_track/i18n/gu.po` (68 lines)
-- `addons/mass_mailing_event_track/i18n/he.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/hi.po` (69 lines)
-- `addons/mass_mailing_event_track/i18n/hr.po` (74 lines)
-- `addons/mass_mailing_event_track/i18n/hu.po` (72 lines)
-- `addons/mass_mailing_event_track/i18n/id.po` (72 lines)
-- `addons/mass_mailing_event_track/i18n/is.po` (65 lines)
-- `addons/mass_mailing_event_track/i18n/it.po` (81 lines)
-- `addons/mass_mailing_event_track/i18n/ja.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/kab.po` (68 lines)
-- `addons/mass_mailing_event_track/i18n/km.po` (68 lines)
-- `addons/mass_mailing_event_track/i18n/ko.po` (72 lines)
-- `addons/mass_mailing_event_track/i18n/ku.po` (69 lines)
-- `addons/mass_mailing_event_track/i18n/lo.po` (68 lines)
-- `addons/mass_mailing_event_track/i18n/lt.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/lv.po` (71 lines)
-- `addons/mass_mailing_event_track/i18n/mass_mailing_event_track.pot` (64 lines)
-- `addons/mass_mailing_event_track/i18n/mn.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/my.po` (69 lines)
-- `addons/mass_mailing_event_track/i18n/nb.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/nl.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/pl.po` (75 lines)
-- `addons/mass_mailing_event_track/i18n/pt.po` (75 lines)
-- `addons/mass_mailing_event_track/i18n/pt_BR.po` (80 lines)
-- `addons/mass_mailing_event_track/i18n/ro.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/ru.po` (74 lines)
-- `addons/mass_mailing_event_track/i18n/sk.po` (72 lines)
-- `addons/mass_mailing_event_track/i18n/sl.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/sr@latin.po` (72 lines)
-- `addons/mass_mailing_event_track/i18n/sv.po` (74 lines)
-- `addons/mass_mailing_event_track/i18n/th.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/tr.po` (75 lines)
-- `addons/mass_mailing_event_track/i18n/uk.po` (75 lines)
-- `addons/mass_mailing_event_track/i18n/uz.po` (82 lines)
-- `addons/mass_mailing_event_track/i18n/vi.po` (72 lines)
-- `addons/mass_mailing_event_track/i18n/zh_CN.po` (73 lines)
-- `addons/mass_mailing_event_track/i18n/zh_TW.po` (73 lines)
-- `addons/mass_mailing_event_track/models/__init__.py` (5 lines)
-- `addons/mass_mailing_event_track/models/event_event.py` (26 lines)
-- `addons/mass_mailing_event_track/models/event_track.py` (12 lines)
-- `addons/mass_mailing_event_track/views/event_views.xml` (14 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 2 model declarations, 2 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/mass_mailing_event_track/models/event_event.py:7`, `addons/mass_mailing_event_track/models/event_track.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 1 XML files and 0 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/mass_mailing_event_track/views/event_views.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `event_event_view_form_inherit_mass_mailing_track`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/mass_mailing_event_track/views/event_views.xml:5`, `addons/mass_mailing_event_track/views/event_views.xml:8`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/mass_mailing_event_track/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `event.event` (addons/mass_mailing_event_track/models/event_event.py:7); inherits `event.track` (addons/mass_mailing_event_track/models/event_track.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `website_event_track`, `mass_mailing`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/mass_mailing_event_track/__init__.py`
+- `addons/mass_mailing_event_track/__manifest__.py`
+- `addons/mass_mailing_event_track/i18n/ar.po`
+- `addons/mass_mailing_event_track/i18n/az.po`
+- `addons/mass_mailing_event_track/i18n/bg.po`
+- `addons/mass_mailing_event_track/i18n/bs.po`
+- `addons/mass_mailing_event_track/i18n/ca.po`
+- `addons/mass_mailing_event_track/i18n/cs.po`
+- `addons/mass_mailing_event_track/i18n/da.po`
+- `addons/mass_mailing_event_track/i18n/de.po`
+- `addons/mass_mailing_event_track/i18n/el.po`
+- `addons/mass_mailing_event_track/i18n/es.po`
+- `addons/mass_mailing_event_track/i18n/es_419.po`
+- `addons/mass_mailing_event_track/i18n/et.po`
+- `addons/mass_mailing_event_track/i18n/fa.po`
+- `addons/mass_mailing_event_track/i18n/fi.po`
+- `addons/mass_mailing_event_track/i18n/fr.po`
+- `addons/mass_mailing_event_track/i18n/gu.po`
+- `addons/mass_mailing_event_track/i18n/he.po`
+- `addons/mass_mailing_event_track/i18n/hi.po`
+- `addons/mass_mailing_event_track/i18n/hr.po`
+- `addons/mass_mailing_event_track/i18n/hu.po`
+- `addons/mass_mailing_event_track/i18n/id.po`
+- `addons/mass_mailing_event_track/i18n/is.po`
+- `addons/mass_mailing_event_track/i18n/it.po`
+- `addons/mass_mailing_event_track/i18n/ja.po`
+- `addons/mass_mailing_event_track/i18n/kab.po`
+- `addons/mass_mailing_event_track/i18n/km.po`
+- `addons/mass_mailing_event_track/i18n/ko.po`
+- `addons/mass_mailing_event_track/i18n/ku.po`
+- `addons/mass_mailing_event_track/i18n/lo.po`
+- `addons/mass_mailing_event_track/i18n/lt.po`
+- `addons/mass_mailing_event_track/i18n/lv.po`
+- `addons/mass_mailing_event_track/i18n/mass_mailing_event_track.pot`
+- `addons/mass_mailing_event_track/i18n/mn.po`
+- `addons/mass_mailing_event_track/i18n/my.po`
+- `addons/mass_mailing_event_track/i18n/nb.po`
+- `addons/mass_mailing_event_track/i18n/nl.po`
+- `addons/mass_mailing_event_track/i18n/pl.po`
+- `addons/mass_mailing_event_track/i18n/pt.po`
+- `addons/mass_mailing_event_track/i18n/pt_BR.po`
+- `addons/mass_mailing_event_track/i18n/ro.po`
+- `addons/mass_mailing_event_track/i18n/ru.po`
+- `addons/mass_mailing_event_track/i18n/sk.po`
+- `addons/mass_mailing_event_track/i18n/sl.po`
+- `addons/mass_mailing_event_track/i18n/sr@latin.po`
+- `addons/mass_mailing_event_track/i18n/sv.po`
+- `addons/mass_mailing_event_track/i18n/th.po`
+- `addons/mass_mailing_event_track/i18n/tr.po`
+- `addons/mass_mailing_event_track/i18n/uk.po`
+- `addons/mass_mailing_event_track/i18n/uz.po`
+- `addons/mass_mailing_event_track/i18n/vi.po`
+- `addons/mass_mailing_event_track/i18n/zh_CN.po`
+- `addons/mass_mailing_event_track/i18n/zh_TW.po`
+- `addons/mass_mailing_event_track/models/__init__.py`
+- `addons/mass_mailing_event_track/models/event_event.py`
+- `addons/mass_mailing_event_track/models/event_track.py`
+- `addons/mass_mailing_event_track/views/event_views.xml`

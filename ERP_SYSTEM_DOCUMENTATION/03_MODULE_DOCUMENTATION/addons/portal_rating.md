@@ -1,181 +1,204 @@
 # Module: portal_rating
 
 - **Module ID:** MOD-421
-- **Path:** `addons/portal_rating`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/portal_rating`
 - **Manifest:** `addons/portal_rating/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Services`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 Bridge module adding rating capabilities on portal. It includes notably
 inclusion of rating directly within the customer portal discuss widget.
-        
 
-Declared dependencies: `portal`, `rating`.
+**Scope evidence:** The module contains 91 files, including 9 Python, 10 XML, and 19 JavaScript/TypeScript files. The manifest declares dependencies: `portal`, `rating`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 9 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 4 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 3 | Files under `controllers/` or `controllers.py`. |
-| XML files | 10 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 19 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+- Model/business logic files: 3
+- Controller/API files: 3
+- XML/data/view/template files: 10
+- Browser asset files: 19
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "portal",
-    "rating"
-  ],
-  "data": [
-    "views/rating_rating_views.xml",
-    "views/portal_templates.xml",
-    "views/rating_templates.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "portal_rating/static/src/core/common/**/*"
-    ],
-    "mail.assets_public": [
-      "portal_rating/static/src/core/common/**/*"
-    ],
-    "im_livechat.assets_embed_core": [
-      "portal_rating/static/src/core/common/**/*"
-    ],
-    "portal.assets_chatter_helpers": [
-      "portal_rating/static/src/core/common/**/*"
-    ],
-    "web.assets_frontend": [
-      "portal_rating/static/src/scss/portal_rating.scss",
-      "portal_rating/static/src/xml/portal_chatter.xml",
-      "portal_rating/static/src/interactions/**/*",
-      "portal_rating/static/src/xml/portal_rating_composer.xml",
-      "portal_rating/static/src/xml/portal_tools.xml"
-    ],
-    "web.assets_unit_tests_setup": [
-      "portal_rating/static/src/interactions/**/*",
-      "portal_rating/static/src/xml/**/*"
-    ],
-    "portal.assets_chatter": [
-      "portal_rating/static/src/chatter/portal/**/*"
-    ],
-    "portal.assets_chatter_style": [
-      "portal_rating/static/src/scss/portal_rating.scss"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/portal_rating/__init__.py` (5 lines)
-- `addons/portal_rating/__manifest__.py` (53 lines)
-- `addons/portal_rating/controllers/__init__.py` (4 lines)
-- `addons/portal_rating/controllers/portal_rating.py` (22 lines)
-- `addons/portal_rating/controllers/thread.py` (14 lines)
-- `addons/portal_rating/i18n/ar.po` (261 lines)
-- `addons/portal_rating/i18n/az.po` (282 lines)
-- `addons/portal_rating/i18n/bg.po` (279 lines)
-- `addons/portal_rating/i18n/bs.po` (268 lines)
-- `addons/portal_rating/i18n/ca.po` (274 lines)
-- `addons/portal_rating/i18n/cs.po` (268 lines)
-- `addons/portal_rating/i18n/da.po` (275 lines)
-- `addons/portal_rating/i18n/de.po` (268 lines)
-- `addons/portal_rating/i18n/el.po` (262 lines)
-- `addons/portal_rating/i18n/es.po` (268 lines)
-- `addons/portal_rating/i18n/es_419.po` (258 lines)
-- `addons/portal_rating/i18n/et.po` (273 lines)
-- `addons/portal_rating/i18n/fa.po` (280 lines)
-- `addons/portal_rating/i18n/fi.po` (274 lines)
-- `addons/portal_rating/i18n/fr.po` (264 lines)
-- `addons/portal_rating/i18n/gu.po` (254 lines)
-- `addons/portal_rating/i18n/he.po` (276 lines)
-- `addons/portal_rating/i18n/hi.po` (267 lines)
-- `addons/portal_rating/i18n/hr.po` (286 lines)
-- `addons/portal_rating/i18n/hu.po` (268 lines)
-- `addons/portal_rating/i18n/id.po` (268 lines)
-- `addons/portal_rating/i18n/is.po` (250 lines)
-- `addons/portal_rating/i18n/it.po` (267 lines)
-- `addons/portal_rating/i18n/ja.po` (258 lines)
-- `addons/portal_rating/i18n/kab.po` (261 lines)
-- `addons/portal_rating/i18n/km.po` (254 lines)
-- `addons/portal_rating/i18n/ko.po` (264 lines)
-- `addons/portal_rating/i18n/ku.po` (261 lines)
-- `addons/portal_rating/i18n/lo.po` (259 lines)
-- `addons/portal_rating/i18n/lt.po` (269 lines)
-- `addons/portal_rating/i18n/lv.po` (268 lines)
-- `addons/portal_rating/i18n/mn.po` (267 lines)
-- `addons/portal_rating/i18n/my.po` (261 lines)
-- `addons/portal_rating/i18n/nb.po` (263 lines)
-- `addons/portal_rating/i18n/nl.po` (263 lines)
-- `addons/portal_rating/i18n/pl.po` (278 lines)
-- `addons/portal_rating/i18n/portal_rating.pot` (250 lines)
-- `addons/portal_rating/i18n/pt.po` (274 lines)
-- `addons/portal_rating/i18n/pt_BR.po` (270 lines)
-- `addons/portal_rating/i18n/ro.po` (280 lines)
-- `addons/portal_rating/i18n/ru.po` (268 lines)
-- `addons/portal_rating/i18n/sk.po` (265 lines)
-- `addons/portal_rating/i18n/sl.po` (267 lines)
-- `addons/portal_rating/i18n/sr@latin.po` (266 lines)
-- `addons/portal_rating/i18n/sv.po` (264 lines)
-- `addons/portal_rating/i18n/th.po` (264 lines)
-- `addons/portal_rating/i18n/tr.po` (275 lines)
-- `addons/portal_rating/i18n/uk.po` (275 lines)
-- `addons/portal_rating/i18n/uz.po` (288 lines)
-- `addons/portal_rating/i18n/vi.po` (267 lines)
-- `addons/portal_rating/i18n/zh_CN.po` (267 lines)
-- `addons/portal_rating/i18n/zh_TW.po` (263 lines)
-- `addons/portal_rating/models/__init__.py` (5 lines)
-- `addons/portal_rating/models/ir_http.py` (13 lines)
-- `addons/portal_rating/models/mail_message.py` (69 lines)
-- `addons/portal_rating/models/rating_rating.py` (54 lines)
-- `addons/portal_rating/static/src/chatter/portal/@types/models.d.ts` (7 lines)
-- `addons/portal_rating/static/src/chatter/portal/chatter_patch.js` (69 lines)
-- `addons/portal_rating/static/src/chatter/portal/composer_model_patch.js` (8 lines)
-- `addons/portal_rating/static/src/chatter/portal/composer_patch.js` (101 lines)
-- `addons/portal_rating/static/src/chatter/portal/composer_patch.xml` (20 lines)
-- `addons/portal_rating/static/src/chatter/portal/message_model_patch.js` (32 lines)
-- `addons/portal_rating/static/src/chatter/portal/message_patch.js` (117 lines)
-- `addons/portal_rating/static/src/chatter/portal/message_patch.xml` (79 lines)
-- `addons/portal_rating/static/src/chatter/portal/portal_chatter_patch.js` (17 lines)
-- `addons/portal_rating/static/src/chatter/portal/portal_chatter_patch.xml` (57 lines)
-- `addons/portal_rating/static/src/chatter/portal/portal_chatter_service_patch.js` (15 lines)
-- `addons/portal_rating/static/src/chatter/portal/portal_rating_plugin.js` (5 lines)
-- `addons/portal_rating/static/src/chatter/portal/store_service_patch.js` (13 lines)
-- `addons/portal_rating/static/src/chatter/portal/suggestion_service_patch.js` (12 lines)
-- `addons/portal_rating/static/src/chatter/portal/thread_model_patch.js` (55 lines)
-- `addons/portal_rating/static/src/chatter/portal/thread_patch.js` (55 lines)
-- `addons/portal_rating/static/src/chatter/portal/thread_patch.xml` (18 lines)
-- `addons/portal_rating/static/src/core/common/@types/models.d.ts` (16 lines)
-- `addons/portal_rating/static/src/core/common/message_model_patch.js` (13 lines)
-- `addons/portal_rating/static/src/core/common/rating_model_patch.js` (19 lines)
-- `addons/portal_rating/static/src/core/common/res_partner_model_patch.js` (11 lines)
-- `addons/portal_rating/static/src/interactions/portal_composer.js` (162 lines)
-- `addons/portal_rating/static/src/interactions/portal_rating_composer.js` (137 lines)
-- `addons/portal_rating/static/src/scss/portal_rating.scss` (96 lines)
-- `addons/portal_rating/static/src/xml/portal_chatter.xml` (16 lines)
-- `addons/portal_rating/static/src/xml/portal_rating_composer.xml` (29 lines)
-- `addons/portal_rating/static/src/xml/portal_tools.xml` (115 lines)
-- `addons/portal_rating/views/portal_templates.xml` (8 lines)
-- `addons/portal_rating/views/rating_rating_views.xml` (22 lines)
-- `addons/portal_rating/views/rating_templates.xml` (95 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 3 model declarations, 10 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/portal_rating/models/mail_message.py:8`, `addons/portal_rating/models/ir_http.py:7`, `addons/portal_rating/models/rating_rating.py:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 3 controller files and 1 route declarations.
+- **Evidence:** `addons/portal_rating/controllers/portal_rating.py:10`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 10 XML files and 19 JavaScript/TypeScript files; static XML analysis found 4 record/template/menu identifiers.
+- **Evidence:** `addons/portal_rating/views/portal_templates.xml:3`, `addons/portal_rating/views/rating_rating_views.xml:3`, `addons/portal_rating/views/rating_templates.xml:6`, `addons/portal_rating/views/rating_templates.xml:53`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 10; representative identifiers: `message_thread`, `rating_rating_view_form`, `Rating: static star widget`, `Rating: rating composer in popup`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 3; representative evidence: `addons/portal_rating/views/portal_templates.xml:3`, `addons/portal_rating/views/rating_templates.xml:6`, `addons/portal_rating/views/rating_templates.xml:53`
+- View/action field declarations: 2; representative evidence: `addons/portal_rating/views/rating_rating_views.xml:5`, `addons/portal_rating/views/rating_rating_views.xml:7`
+- Browser assets: 19; representative files: `addons/portal_rating/static/src/interactions/portal_composer.js`, `addons/portal_rating/static/src/interactions/portal_rating_composer.js`, `addons/portal_rating/static/src/chatter/portal/suggestion_service_patch.js`, `addons/portal_rating/static/src/chatter/portal/thread_model_patch.js`, `addons/portal_rating/static/src/chatter/portal/portal_chatter_patch.js`, `addons/portal_rating/static/src/chatter/portal/composer_model_patch.js`, `addons/portal_rating/static/src/chatter/portal/composer_patch.js`, `addons/portal_rating/static/src/chatter/portal/chatter_patch.js`, `addons/portal_rating/static/src/chatter/portal/message_patch.js`, `addons/portal_rating/static/src/chatter/portal/thread_patch.js`, `addons/portal_rating/static/src/chatter/portal/store_service_patch.js`, `addons/portal_rating/static/src/chatter/portal/portal_chatter_service_patch.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/portal_rating/__manifest__.py`
+- **HTTP entry points:** `addons/portal_rating/controllers/portal_rating.py:10`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 3
+- Representative model evidence: inherits `mail.message` (addons/portal_rating/models/mail_message.py:8); inherits `ir.http` (addons/portal_rating/models/ir_http.py:7); inherits `rating.rating` (addons/portal_rating/models/rating_rating.py:4)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 3
+- Route declarations: 1
+- Route evidence: `addons/portal_rating/controllers/portal_rating.py:10`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `portal`, `rating`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/portal_rating/__init__.py`
+- `addons/portal_rating/__manifest__.py`
+- `addons/portal_rating/controllers/__init__.py`
+- `addons/portal_rating/controllers/portal_rating.py`
+- `addons/portal_rating/controllers/thread.py`
+- `addons/portal_rating/i18n/ar.po`
+- `addons/portal_rating/i18n/az.po`
+- `addons/portal_rating/i18n/bg.po`
+- `addons/portal_rating/i18n/bs.po`
+- `addons/portal_rating/i18n/ca.po`
+- `addons/portal_rating/i18n/cs.po`
+- `addons/portal_rating/i18n/da.po`
+- `addons/portal_rating/i18n/de.po`
+- `addons/portal_rating/i18n/el.po`
+- `addons/portal_rating/i18n/es.po`
+- `addons/portal_rating/i18n/es_419.po`
+- `addons/portal_rating/i18n/et.po`
+- `addons/portal_rating/i18n/fa.po`
+- `addons/portal_rating/i18n/fi.po`
+- `addons/portal_rating/i18n/fr.po`
+- `addons/portal_rating/i18n/gu.po`
+- `addons/portal_rating/i18n/he.po`
+- `addons/portal_rating/i18n/hi.po`
+- `addons/portal_rating/i18n/hr.po`
+- `addons/portal_rating/i18n/hu.po`
+- `addons/portal_rating/i18n/id.po`
+- `addons/portal_rating/i18n/is.po`
+- `addons/portal_rating/i18n/it.po`
+- `addons/portal_rating/i18n/ja.po`
+- `addons/portal_rating/i18n/kab.po`
+- `addons/portal_rating/i18n/km.po`
+- `addons/portal_rating/i18n/ko.po`
+- `addons/portal_rating/i18n/ku.po`
+- `addons/portal_rating/i18n/lo.po`
+- `addons/portal_rating/i18n/lt.po`
+- `addons/portal_rating/i18n/lv.po`
+- `addons/portal_rating/i18n/mn.po`
+- `addons/portal_rating/i18n/my.po`
+- `addons/portal_rating/i18n/nb.po`
+- `addons/portal_rating/i18n/nl.po`
+- `addons/portal_rating/i18n/pl.po`
+- `addons/portal_rating/i18n/portal_rating.pot`
+- `addons/portal_rating/i18n/pt.po`
+- `addons/portal_rating/i18n/pt_BR.po`
+- `addons/portal_rating/i18n/ro.po`
+- `addons/portal_rating/i18n/ru.po`
+- `addons/portal_rating/i18n/sk.po`
+- `addons/portal_rating/i18n/sl.po`
+- `addons/portal_rating/i18n/sr@latin.po`
+- `addons/portal_rating/i18n/sv.po`
+- `addons/portal_rating/i18n/th.po`
+- `addons/portal_rating/i18n/tr.po`
+- `addons/portal_rating/i18n/uk.po`
+- `addons/portal_rating/i18n/uz.po`
+- `addons/portal_rating/i18n/vi.po`
+- `addons/portal_rating/i18n/zh_CN.po`
+- `addons/portal_rating/i18n/zh_TW.po`
+- `addons/portal_rating/models/__init__.py`
+- `addons/portal_rating/models/ir_http.py`
+- `addons/portal_rating/models/mail_message.py`
+- `addons/portal_rating/models/rating_rating.py`
+- `addons/portal_rating/static/src/chatter/portal/@types/models.d.ts`
+- `addons/portal_rating/static/src/chatter/portal/chatter_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/composer_model_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/composer_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/composer_patch.xml`
+- `addons/portal_rating/static/src/chatter/portal/message_model_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/message_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/message_patch.xml`
+- `addons/portal_rating/static/src/chatter/portal/portal_chatter_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/portal_chatter_patch.xml`
+- `addons/portal_rating/static/src/chatter/portal/portal_chatter_service_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/portal_rating_plugin.js`
+- `addons/portal_rating/static/src/chatter/portal/store_service_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/suggestion_service_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/thread_model_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/thread_patch.js`
+- `addons/portal_rating/static/src/chatter/portal/thread_patch.xml`
+- `addons/portal_rating/static/src/core/common/@types/models.d.ts`
+- `addons/portal_rating/static/src/core/common/message_model_patch.js`
+- `addons/portal_rating/static/src/core/common/rating_model_patch.js`
+- `addons/portal_rating/static/src/core/common/res_partner_model_patch.js`
+- `addons/portal_rating/static/src/interactions/portal_composer.js`
+- `addons/portal_rating/static/src/interactions/portal_rating_composer.js`
+- `addons/portal_rating/static/src/scss/portal_rating.scss`
+- `addons/portal_rating/static/src/xml/portal_chatter.xml`
+- `addons/portal_rating/static/src/xml/portal_rating_composer.xml`
+- `addons/portal_rating/static/src/xml/portal_tools.xml`
+- `addons/portal_rating/views/portal_templates.xml`
+- `addons/portal_rating/views/rating_rating_views.xml`
+- `addons/portal_rating/views/rating_templates.xml`

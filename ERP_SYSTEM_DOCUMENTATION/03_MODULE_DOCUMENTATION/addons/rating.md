@@ -1,187 +1,236 @@
 # Module: rating
 
 - **Module ID:** MOD-504
-- **Path:** `addons/rating`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/rating`
 - **Manifest:** `addons/rating/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Productivity`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 This module allows a customer to give rating.
 
+**Scope evidence:** The module contains 108 files, including 14 Python, 4 XML, and 9 JavaScript/TypeScript files. The manifest declares dependencies: `mail`.
 
-Declared dependencies: `mail`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 5
+- Controller/API files: 2
+- XML/data/view/template files: 4
+- Browser asset files: 9
+- Security files: 1
+- Test files: 3
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 14 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 7 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 4 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 9 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 2 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `addons/rating/security/ir.access.csv`
 
-```text
-{
-  "depends": [
-    "mail"
-  ],
-  "data": [
-    "views/rating_rating_views.xml",
-    "views/rating_templates.xml",
-    "views/mail_message_views.xml",
-    "security/ir.access.csv"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "rating/static/src/core/common/**/*",
-      "rating/static/src/core/web/**/*"
-    ],
-    "web.assets_frontend": [
-      "rating/static/src/scss/rating_templates.scss"
-    ],
-    "web.assets_unit_tests": [
-      "rating/static/tests/**/*"
-    ],
-    "im_livechat.assets_embed_core": [
-      "rating/static/src/core/common/**/*"
-    ],
-    "mail.assets_public": [
-      "rating/static/src/core/common/**/*"
-    ],
-    "portal.assets_chatter_helpers": [
-      "rating/static/src/core/common/**/*"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/rating/__init__.py` (5 lines)
-- `addons/rating/__manifest__.py` (42 lines)
-- `addons/rating/controllers/__init__.py` (3 lines)
-- `addons/rating/controllers/main.py` (98 lines)
-- `addons/rating/i18n/af.po` (603 lines)
-- `addons/rating/i18n/am.po` (599 lines)
-- `addons/rating/i18n/ar.po` (614 lines)
-- `addons/rating/i18n/az.po` (607 lines)
-- `addons/rating/i18n/bg.po` (611 lines)
-- `addons/rating/i18n/bs.po` (607 lines)
-- `addons/rating/i18n/ca.po` (624 lines)
-- `addons/rating/i18n/cs.po` (612 lines)
-- `addons/rating/i18n/da.po` (614 lines)
-- `addons/rating/i18n/de.po` (621 lines)
-- `addons/rating/i18n/el.po` (608 lines)
-- `addons/rating/i18n/es.po` (621 lines)
-- `addons/rating/i18n/es_419.po` (614 lines)
-- `addons/rating/i18n/es_CL.po` (63 lines)
-- `addons/rating/i18n/et.po` (623 lines)
-- `addons/rating/i18n/eu.po` (601 lines)
-- `addons/rating/i18n/fa.po` (616 lines)
-- `addons/rating/i18n/fi.po` (622 lines)
-- `addons/rating/i18n/fo.po` (601 lines)
-- `addons/rating/i18n/fr.po` (620 lines)
-- `addons/rating/i18n/fr_BE.po` (43 lines)
-- `addons/rating/i18n/fr_CA.po` (63 lines)
-- `addons/rating/i18n/gl.po` (601 lines)
-- `addons/rating/i18n/gu.po` (603 lines)
-- `addons/rating/i18n/he.po` (614 lines)
-- `addons/rating/i18n/hi.po` (603 lines)
-- `addons/rating/i18n/hr.po` (612 lines)
-- `addons/rating/i18n/hu.po` (612 lines)
-- `addons/rating/i18n/id.po` (617 lines)
-- `addons/rating/i18n/is.po` (599 lines)
-- `addons/rating/i18n/it.po` (621 lines)
-- `addons/rating/i18n/ja.po` (614 lines)
-- `addons/rating/i18n/ka.po` (601 lines)
-- `addons/rating/i18n/kab.po` (603 lines)
-- `addons/rating/i18n/km.po` (604 lines)
-- `addons/rating/i18n/ko.po` (611 lines)
-- `addons/rating/i18n/ku.po` (603 lines)
-- `addons/rating/i18n/lo.po` (607 lines)
-- `addons/rating/i18n/lt.po` (615 lines)
-- `addons/rating/i18n/lv.po` (612 lines)
-- `addons/rating/i18n/mk.po` (607 lines)
-- `addons/rating/i18n/ml_IN.po` (602 lines)
-- `addons/rating/i18n/mn.po` (613 lines)
-- `addons/rating/i18n/my.po` (604 lines)
-- `addons/rating/i18n/nb.po` (607 lines)
-- `addons/rating/i18n/nl.po` (617 lines)
-- `addons/rating/i18n/pl.po` (632 lines)
-- `addons/rating/i18n/pt.po` (626 lines)
-- `addons/rating/i18n/pt_BR.po` (622 lines)
-- `addons/rating/i18n/rating.pot` (596 lines)
-- `addons/rating/i18n/ro.po` (618 lines)
-- `addons/rating/i18n/ru.po` (619 lines)
-- `addons/rating/i18n/sk.po` (611 lines)
-- `addons/rating/i18n/sl.po` (613 lines)
-- `addons/rating/i18n/sq.po` (601 lines)
-- `addons/rating/i18n/sr@latin.po` (608 lines)
-- `addons/rating/i18n/sv.po` (623 lines)
-- `addons/rating/i18n/ta.po` (601 lines)
-- `addons/rating/i18n/th.po` (611 lines)
-- `addons/rating/i18n/tr.po` (627 lines)
-- `addons/rating/i18n/uk.po` (616 lines)
-- `addons/rating/i18n/uz.po` (707 lines)
-- `addons/rating/i18n/vi.po` (610 lines)
-- `addons/rating/i18n/zh_CN.po` (615 lines)
-- `addons/rating/i18n/zh_TW.po` (610 lines)
-- `addons/rating/models/__init__.py` (8 lines)
-- `addons/rating/models/mail_message.py` (71 lines)
-- `addons/rating/models/mail_thread.py` (219 lines)
-- `addons/rating/models/rating.py` (211 lines)
-- `addons/rating/models/rating_data.py` (87 lines)
-- `addons/rating/models/rating_mixin.py` (240 lines)
-- `addons/rating/models/rating_parent_mixin.py` (71 lines)
-- `addons/rating/security/ir.access.csv` (3 lines)
-- `addons/rating/static/src/core/common/@types/models.d.ts` (21 lines)
-- `addons/rating/static/src/core/common/message_model_patch.js` (19 lines)
-- `addons/rating/static/src/core/common/rating_model.js` (23 lines)
-- `addons/rating/static/src/core/common/thread_model_patch.js` (17 lines)
-- `addons/rating/static/src/core/web/messaging_menu_item_patch.js` (16 lines)
-- `addons/rating/static/src/core/web/messaging_menu_item_patch.scss` (4 lines)
-- `addons/rating/static/src/core/web/notification_item_patch.js` (16 lines)
-- `addons/rating/static/src/core/web/notification_item_patch.xml` (12 lines)
-- `addons/rating/static/src/img/503.svg` (34 lines)
-- `addons/rating/static/src/img/rating_0.png` (15 lines)
-- `addons/rating/static/src/img/rating_0_white.png` (17 lines)
-- `addons/rating/static/src/img/rating_1.png` (19 lines)
-- `addons/rating/static/src/img/rating_1.svg` (1 lines)
-- `addons/rating/static/src/img/rating_1_white.png` (19 lines)
-- `addons/rating/static/src/img/rating_3.png` (21 lines)
-- `addons/rating/static/src/img/rating_3.svg` (1 lines)
-- `addons/rating/static/src/img/rating_3_white.png` (14 lines)
-- `addons/rating/static/src/img/rating_5.png` (12 lines)
-- `addons/rating/static/src/img/rating_5.svg` (1 lines)
-- `addons/rating/static/src/img/rating_5_white.png` (11 lines)
-- `addons/rating/static/src/scss/rating_rating_views.scss` (5 lines)
-- `addons/rating/static/src/scss/rating_templates.scss` (36 lines)
-- `addons/rating/static/tests/mock_server/models/mail_message.js` (18 lines)
-- `addons/rating/static/tests/mock_server/models/rating_rating.js` (11 lines)
-- `addons/rating/static/tests/rating_test_helpers.js` (5 lines)
-- `addons/rating/tests/__init__.py` (5 lines)
-- `addons/rating/tests/test_controller.py` (57 lines)
-- `addons/rating/tests/test_security.py` (76 lines)
-- `addons/rating/views/mail_message_views.xml` (15 lines)
-- `addons/rating/views/rating_rating_views.xml` (246 lines)
-- `addons/rating/views/rating_templates.xml` (89 lines)
+- **Description:** 5 model declarations, 55 methods, 0 constraint handlers, 0 onchange handlers, and 13 dependency declarations.
+- **Evidence:** `addons/rating/models/mail_message.py:8`, `addons/rating/models/rating.py:11`, `addons/rating/models/mail_thread.py:9`, `addons/rating/models/rating_parent_mixin.py:12`, `addons/rating/models/rating_mixin.py:11`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### HTTP/API surface
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 2 controller files and 2 route declarations.
+- **Evidence:** `addons/rating/controllers/main.py:27`, `addons/rating/controllers/main.py:63`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 4 XML files and 9 JavaScript/TypeScript files; static XML analysis found 16 record/template/menu identifiers.
+- **Evidence:** `addons/rating/views/mail_message_views.xml:3`, `addons/rating/views/rating_rating_views.xml:3`, `addons/rating/views/rating_rating_views.xml:19`, `addons/rating/views/rating_rating_views.xml:55`, `addons/rating/views/rating_rating_views.xml:72`, `addons/rating/views/rating_rating_views.xml:109`, `addons/rating/views/rating_rating_views.xml:154`, `addons/rating/views/rating_rating_views.xml:168`, `addons/rating/views/rating_rating_views.xml:181`, `addons/rating/views/rating_rating_views.xml:214`, `addons/rating/views/rating_rating_views.xml:226`, `addons/rating/views/rating_rating_views.xml:232`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/rating/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/rating/tests/test_controller.py`, `addons/rating/tests/test_security.py`, `addons/rating/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 4; representative identifiers: `mail_message_view_form`, `rating_rating_view_tree`, `rating_rating_view_form`, `rating_rating_view_form_text`, `rating_rating_view_kanban`, `rating_rating_view_kanban_stars`, `rating_rating_view_pivot`, `rating_rating_view_graph`, `rating_rating_view_search`, `rating_rating_action`, `rating_rating_action_view_kanban`, `rating_rating_action_view_form`, `rating_rating_menu_technical`, `Thanks for your Feedback`, `Not allows to rating`, `Rate our Services`
+- Menus: 1; representative evidence: `addons/rating/views/rating_rating_views.xml:240`
+- Templates: 3; representative evidence: `addons/rating/views/rating_templates.xml:4`, `addons/rating/views/rating_templates.xml:20`, `addons/rating/views/rating_templates.xml:49`
+- View/action field declarations: 22; representative evidence: `addons/rating/views/mail_message_views.xml:5`, `addons/rating/views/mail_message_views.xml:7`, `addons/rating/views/rating_rating_views.xml:5`, `addons/rating/views/rating_rating_views.xml:6`, `addons/rating/views/rating_rating_views.xml:21`, `addons/rating/views/rating_rating_views.xml:22`, `addons/rating/views/rating_rating_views.xml:57`, `addons/rating/views/rating_rating_views.xml:61`, `addons/rating/views/rating_rating_views.xml:74`, `addons/rating/views/rating_rating_views.xml:75`, `addons/rating/views/rating_rating_views.xml:111`, `addons/rating/views/rating_rating_views.xml:113`
+- Browser assets: 9; representative files: `addons/rating/static/tests/rating_test_helpers.js`, `addons/rating/static/src/core/web/messaging_menu_item_patch.js`, `addons/rating/static/src/core/web/notification_item_patch.js`, `addons/rating/static/src/core/common/thread_model_patch.js`, `addons/rating/static/src/core/common/rating_model.js`, `addons/rating/static/src/core/common/message_model_patch.js`, `addons/rating/static/src/core/common/@types/models.d.ts`, `addons/rating/static/tests/mock_server/models/mail_message.js`, `addons/rating/static/tests/mock_server/models/rating_rating.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/rating/__manifest__.py`
+- **HTTP entry points:** `addons/rating/controllers/main.py:27`, `addons/rating/controllers/main.py:63`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 5
+- Representative model evidence: inherits `mail.message` (addons/rating/models/mail_message.py:8); `rating.rating` (addons/rating/models/rating.py:11); inherits `mail.thread` (addons/rating/models/mail_thread.py:9); `rating.parent.mixin` (addons/rating/models/rating_parent_mixin.py:12); `rating.mixin` (addons/rating/models/rating_mixin.py:11)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 2
+- Route evidence: `addons/rating/controllers/main.py:27`, `addons/rating/controllers/main.py:63`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `mail`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/rating/__init__.py`
+- `addons/rating/__manifest__.py`
+- `addons/rating/controllers/__init__.py`
+- `addons/rating/controllers/main.py`
+- `addons/rating/i18n/af.po`
+- `addons/rating/i18n/am.po`
+- `addons/rating/i18n/ar.po`
+- `addons/rating/i18n/az.po`
+- `addons/rating/i18n/bg.po`
+- `addons/rating/i18n/bs.po`
+- `addons/rating/i18n/ca.po`
+- `addons/rating/i18n/cs.po`
+- `addons/rating/i18n/da.po`
+- `addons/rating/i18n/de.po`
+- `addons/rating/i18n/el.po`
+- `addons/rating/i18n/es.po`
+- `addons/rating/i18n/es_419.po`
+- `addons/rating/i18n/es_CL.po`
+- `addons/rating/i18n/et.po`
+- `addons/rating/i18n/eu.po`
+- `addons/rating/i18n/fa.po`
+- `addons/rating/i18n/fi.po`
+- `addons/rating/i18n/fo.po`
+- `addons/rating/i18n/fr.po`
+- `addons/rating/i18n/fr_BE.po`
+- `addons/rating/i18n/fr_CA.po`
+- `addons/rating/i18n/gl.po`
+- `addons/rating/i18n/gu.po`
+- `addons/rating/i18n/he.po`
+- `addons/rating/i18n/hi.po`
+- `addons/rating/i18n/hr.po`
+- `addons/rating/i18n/hu.po`
+- `addons/rating/i18n/id.po`
+- `addons/rating/i18n/is.po`
+- `addons/rating/i18n/it.po`
+- `addons/rating/i18n/ja.po`
+- `addons/rating/i18n/ka.po`
+- `addons/rating/i18n/kab.po`
+- `addons/rating/i18n/km.po`
+- `addons/rating/i18n/ko.po`
+- `addons/rating/i18n/ku.po`
+- `addons/rating/i18n/lo.po`
+- `addons/rating/i18n/lt.po`
+- `addons/rating/i18n/lv.po`
+- `addons/rating/i18n/mk.po`
+- `addons/rating/i18n/ml_IN.po`
+- `addons/rating/i18n/mn.po`
+- `addons/rating/i18n/my.po`
+- `addons/rating/i18n/nb.po`
+- `addons/rating/i18n/nl.po`
+- `addons/rating/i18n/pl.po`
+- `addons/rating/i18n/pt.po`
+- `addons/rating/i18n/pt_BR.po`
+- `addons/rating/i18n/rating.pot`
+- `addons/rating/i18n/ro.po`
+- `addons/rating/i18n/ru.po`
+- `addons/rating/i18n/sk.po`
+- `addons/rating/i18n/sl.po`
+- `addons/rating/i18n/sq.po`
+- `addons/rating/i18n/sr@latin.po`
+- `addons/rating/i18n/sv.po`
+- `addons/rating/i18n/ta.po`
+- `addons/rating/i18n/th.po`
+- `addons/rating/i18n/tr.po`
+- `addons/rating/i18n/uk.po`
+- `addons/rating/i18n/uz.po`
+- `addons/rating/i18n/vi.po`
+- `addons/rating/i18n/zh_CN.po`
+- `addons/rating/i18n/zh_TW.po`
+- `addons/rating/models/__init__.py`
+- `addons/rating/models/mail_message.py`
+- `addons/rating/models/mail_thread.py`
+- `addons/rating/models/rating.py`
+- `addons/rating/models/rating_data.py`
+- `addons/rating/models/rating_mixin.py`
+- `addons/rating/models/rating_parent_mixin.py`
+- `addons/rating/security/ir.access.csv`
+- `addons/rating/static/src/core/common/@types/models.d.ts`
+- `addons/rating/static/src/core/common/message_model_patch.js`
+- `addons/rating/static/src/core/common/rating_model.js`
+- `addons/rating/static/src/core/common/thread_model_patch.js`
+- `addons/rating/static/src/core/web/messaging_menu_item_patch.js`
+- `addons/rating/static/src/core/web/messaging_menu_item_patch.scss`
+- `addons/rating/static/src/core/web/notification_item_patch.js`
+- `addons/rating/static/src/core/web/notification_item_patch.xml`
+- `addons/rating/static/src/img/503.svg`
+- `addons/rating/static/src/img/rating_0.png`
+- `addons/rating/static/src/img/rating_0_white.png`
+- `addons/rating/static/src/img/rating_1.png`
+- `addons/rating/static/src/img/rating_1.svg`
+- `addons/rating/static/src/img/rating_1_white.png`
+- `addons/rating/static/src/img/rating_3.png`
+- `addons/rating/static/src/img/rating_3.svg`
+- `addons/rating/static/src/img/rating_3_white.png`
+- `addons/rating/static/src/img/rating_5.png`
+- `addons/rating/static/src/img/rating_5.svg`
+- `addons/rating/static/src/img/rating_5_white.png`
+- `addons/rating/static/src/scss/rating_rating_views.scss`
+- `addons/rating/static/src/scss/rating_templates.scss`
+- `addons/rating/static/tests/mock_server/models/mail_message.js`
+- `addons/rating/static/tests/mock_server/models/rating_rating.js`
+- `addons/rating/static/tests/rating_test_helpers.js`
+- `addons/rating/tests/__init__.py`
+- `addons/rating/tests/test_controller.py`
+- `addons/rating/tests/test_security.py`
+- `addons/rating/views/mail_message_views.xml`
+- `addons/rating/views/rating_rating_views.xml`
+- `addons/rating/views/rating_templates.xml`

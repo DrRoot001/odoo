@@ -1,79 +1,122 @@
 # Module: l10n_rs
 
 - **Module ID:** MOD-307
-- **Path:** `addons/l10n_rs`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_rs`
 - **Manifest:** `addons/l10n_rs/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `['account']`
+- **Category:** `Accounting/Localizations/Account Charts`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 This is the base module of the Serbian localization. It manages chart of accounts and taxes.
 This module is based on the official document "Pravilnik o kontnom okviru i sadržini računa u kontnom okviru za privredna društva, zadruge i preduzetnike ("Sl. glasnik RS", br. 89/2020)"
 Source: https://www.paragraf.rs/propisi/pravilnik-o-kontnom-okviru-sadrzini-racuna-za-privredna-drustva-zadruge.html
-    
 
-Declared dependencies: `account`.
+**Scope evidence:** The module contains 16 files, including 5 Python, 5 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `account`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 5 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 5 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 2
+- Controller/API files: 0
+- XML/data/view/template files: 5
+- Browser asset files: 0
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "account"
-  ],
-  "data": [
-    "data/account_tax_report_data.xml",
-    "data/menuitem_data.xml",
-    "views/account_move.xml",
-    "views/report_invoice.xml"
-  ],
-  "demo": [
-    "demo/demo_company.xml"
-  ]
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/l10n_rs/__init__.py` (4 lines)
-- `addons/l10n_rs/__manifest__.py` (28 lines)
-- `addons/l10n_rs/data/account_tax_report_data.xml` (268 lines)
-- `addons/l10n_rs/data/menuitem_data.xml` (10 lines)
-- `addons/l10n_rs/data/template/account.account-rs.csv` (421 lines)
-- `addons/l10n_rs/data/template/account.fiscal.position-rs.csv` (4 lines)
-- `addons/l10n_rs/data/template/account.tax-rs.csv` (53 lines)
-- `addons/l10n_rs/data/template/account.tax.group-rs.csv` (5 lines)
-- `addons/l10n_rs/demo/demo_company.xml` (42 lines)
-- `addons/l10n_rs/i18n/l10n_rs.pot` (68 lines)
-- `addons/l10n_rs/i18n/sr@latin.po` (78 lines)
-- `addons/l10n_rs/models/__init__.py` (3 lines)
-- `addons/l10n_rs/models/account_move.py` (10 lines)
-- `addons/l10n_rs/models/template_rs.py` (35 lines)
-- `addons/l10n_rs/views/account_move.xml` (15 lines)
-- `addons/l10n_rs/views/report_invoice.xml` (13 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 2 model declarations, 2 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/l10n_rs/models/template_rs.py:6`, `addons/l10n_rs/models/account_move.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 5 XML files and 0 JavaScript/TypeScript files; static XML analysis found 49 record/template/menu identifiers.
+- **Evidence:** `addons/l10n_rs/demo/demo_company.xml:3`, `addons/l10n_rs/demo/demo_company.xml:15`, `addons/l10n_rs/demo/demo_company.xml:20`, `addons/l10n_rs/data/account_tax_report_data.xml:3`, `addons/l10n_rs/data/account_tax_report_data.xml:11`, `addons/l10n_rs/data/account_tax_report_data.xml:18`, `addons/l10n_rs/data/account_tax_report_data.xml:23`, `addons/l10n_rs/data/account_tax_report_data.xml:27`, `addons/l10n_rs/data/account_tax_report_data.xml:32`, `addons/l10n_rs/data/account_tax_report_data.xml:39`, `addons/l10n_rs/data/account_tax_report_data.xml:44`, `addons/l10n_rs/data/account_tax_report_data.xml:51`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 5; representative identifiers: `base.partner_demo_company_rs`, `base.demo_company_rs`, `base.demo_bank_rs`, `tax_report_vat`, `tax_report_vat_balance`, `tax_report_title_operations`, `tax_report_title_operations_turnover`, `tax_report_line_001`, `tax_report_line_001_tag`, `tax_report_line_002`, `tax_report_line_002_tag`, `tax_report_line_003`, `tax_report_line_003_tag`, `tax_report_line_004`, `tax_report_line_004_tag`, `tax_report_line_005`, `tax_report_line_005_formula`, `tax_report_title_operations_previous_tax`, `tax_report_line_006`, `tax_report_line_006_tag`
+- Menus: 1; representative evidence: `addons/l10n_rs/data/menuitem_data.xml:3`
+- Templates: 1; representative evidence: `addons/l10n_rs/views/report_invoice.xml:4`
+- View/action field declarations: 2; representative evidence: `addons/l10n_rs/views/account_move.xml:6`, `addons/l10n_rs/views/account_move.xml:8`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_rs/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `account.chart.template` (addons/l10n_rs/models/template_rs.py:6); inherits `account.move` (addons/l10n_rs/models/account_move.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_rs/__init__.py`
+- `addons/l10n_rs/__manifest__.py`
+- `addons/l10n_rs/data/account_tax_report_data.xml`
+- `addons/l10n_rs/data/menuitem_data.xml`
+- `addons/l10n_rs/data/template/account.account-rs.csv`
+- `addons/l10n_rs/data/template/account.fiscal.position-rs.csv`
+- `addons/l10n_rs/data/template/account.tax-rs.csv`
+- `addons/l10n_rs/data/template/account.tax.group-rs.csv`
+- `addons/l10n_rs/demo/demo_company.xml`
+- `addons/l10n_rs/i18n/l10n_rs.pot`
+- `addons/l10n_rs/i18n/sr@latin.po`
+- `addons/l10n_rs/models/__init__.py`
+- `addons/l10n_rs/models/account_move.py`
+- `addons/l10n_rs/models/template_rs.py`
+- `addons/l10n_rs/views/account_move.xml`
+- `addons/l10n_rs/views/report_invoice.xml`

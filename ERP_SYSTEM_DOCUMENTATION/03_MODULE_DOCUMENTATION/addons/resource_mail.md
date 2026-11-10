@@ -1,140 +1,182 @@
 # Module: resource_mail
 
 - **Module ID:** MOD-507
-- **Path:** `addons/resource_mail`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/resource_mail`
 - **Manifest:** `addons/resource_mail/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Hidden`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
+
+**Manifest description:**
 
 Integrate features developped in Mail in use case involving resources instead of users
 
-Declared dependencies: `resource`, `mail`.
+**Scope evidence:** The module contains 70 files, including 6 Python, 3 XML, and 10 JavaScript/TypeScript files. The manifest declares dependencies: `resource`, `mail`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 6 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 3 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 10 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 1
+- Controller/API files: 2
+- XML/data/view/template files: 3
+- Browser asset files: 10
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "resource",
-    "mail"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "resource_mail/static/src/core/common/**/*",
-      "resource_mail/static/src/core/web/**/*",
-      "resource_mail/static/src/**/*"
-    ],
-    "im_livechat.assets_embed_core": [
-      "resource_mail/static/src/core/common/**/*"
-    ],
-    "mail.assets_public": [
-      "resource_mail/static/src/core/common/**/*"
-    ],
-    "portal.assets_chatter_helpers": [
-      "resource_mail/static/src/core/common/**/*"
-    ],
-    "web.assets_unit_tests": [
-      "resource_mail/static/tests/**/*"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/resource_mail/__init__.py` (5 lines)
-- `addons/resource_mail/__manifest__.py` (30 lines)
-- `addons/resource_mail/controllers/__init__.py` (3 lines)
-- `addons/resource_mail/controllers/webclient.py` (9 lines)
-- `addons/resource_mail/i18n/ar.po` (73 lines)
-- `addons/resource_mail/i18n/az.po` (71 lines)
-- `addons/resource_mail/i18n/bg.po` (71 lines)
-- `addons/resource_mail/i18n/bs.po` (72 lines)
-- `addons/resource_mail/i18n/ca.po` (72 lines)
-- `addons/resource_mail/i18n/cs.po` (72 lines)
-- `addons/resource_mail/i18n/da.po` (73 lines)
-- `addons/resource_mail/i18n/de.po` (74 lines)
-- `addons/resource_mail/i18n/el.po` (72 lines)
-- `addons/resource_mail/i18n/es.po` (75 lines)
-- `addons/resource_mail/i18n/es_419.po` (73 lines)
-- `addons/resource_mail/i18n/et.po` (71 lines)
-- `addons/resource_mail/i18n/fa.po` (71 lines)
-- `addons/resource_mail/i18n/fi.po` (73 lines)
-- `addons/resource_mail/i18n/fr.po` (73 lines)
-- `addons/resource_mail/i18n/he.po` (72 lines)
-- `addons/resource_mail/i18n/hi.po` (71 lines)
-- `addons/resource_mail/i18n/hr.po` (72 lines)
-- `addons/resource_mail/i18n/hu.po` (72 lines)
-- `addons/resource_mail/i18n/id.po` (73 lines)
-- `addons/resource_mail/i18n/it.po` (72 lines)
-- `addons/resource_mail/i18n/ja.po` (72 lines)
-- `addons/resource_mail/i18n/kab.po` (71 lines)
-- `addons/resource_mail/i18n/ko.po` (73 lines)
-- `addons/resource_mail/i18n/ku.po` (71 lines)
-- `addons/resource_mail/i18n/lo.po` (70 lines)
-- `addons/resource_mail/i18n/lt.po` (73 lines)
-- `addons/resource_mail/i18n/lv.po` (71 lines)
-- `addons/resource_mail/i18n/mn.po` (71 lines)
-- `addons/resource_mail/i18n/my.po` (71 lines)
-- `addons/resource_mail/i18n/nb.po` (72 lines)
-- `addons/resource_mail/i18n/nl.po` (72 lines)
-- `addons/resource_mail/i18n/pl.po` (73 lines)
-- `addons/resource_mail/i18n/pt.po` (73 lines)
-- `addons/resource_mail/i18n/pt_BR.po` (77 lines)
-- `addons/resource_mail/i18n/resource_mail.pot` (67 lines)
-- `addons/resource_mail/i18n/ro.po` (72 lines)
-- `addons/resource_mail/i18n/ru.po` (75 lines)
-- `addons/resource_mail/i18n/sk.po` (70 lines)
-- `addons/resource_mail/i18n/sl.po` (73 lines)
-- `addons/resource_mail/i18n/sr@latin.po` (72 lines)
-- `addons/resource_mail/i18n/sv.po` (73 lines)
-- `addons/resource_mail/i18n/th.po` (73 lines)
-- `addons/resource_mail/i18n/tr.po` (77 lines)
-- `addons/resource_mail/i18n/uk.po` (72 lines)
-- `addons/resource_mail/i18n/uz.po` (82 lines)
-- `addons/resource_mail/i18n/vi.po` (73 lines)
-- `addons/resource_mail/i18n/zh_CN.po` (73 lines)
-- `addons/resource_mail/i18n/zh_TW.po` (74 lines)
-- `addons/resource_mail/models/__init__.py` (4 lines)
-- `addons/resource_mail/models/resource_resource.py` (13 lines)
-- `addons/resource_mail/static/src/core/common/@types/models.d.ts` (13 lines)
-- `addons/resource_mail/static/src/core/common/resource_resource_model.js` (15 lines)
-- `addons/resource_mail/static/src/core/web/avatar_card/avatar_card_patch.js` (36 lines)
-- `addons/resource_mail/static/src/views/fields/many2many_avatar_resource/many2many_avatar_resource_field.js` (124 lines)
-- `addons/resource_mail/static/src/views/fields/many2many_avatar_resource/many2many_avatar_resource_field.scss` (3 lines)
-- `addons/resource_mail/static/src/views/fields/many2many_avatar_resource/many2many_avatar_resource_field.xml` (30 lines)
-- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/kanban_many2one_avatar_resource_field.js` (38 lines)
-- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/kanban_many2one_avatar_resource_field.xml` (36 lines)
-- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/many2one_avatar_resource_field.js` (45 lines)
-- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/many2one_avatar_resource_field.scss` (4 lines)
-- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/many2one_avatar_resource_field.xml` (38 lines)
-- `addons/resource_mail/static/tests/many2many_avatar_resource.test.js` (309 lines)
-- `addons/resource_mail/static/tests/many2one_avatar_resource.test.js` (168 lines)
-- `addons/resource_mail/static/tests/mock_server/mock_models/resource_resource.js` (10 lines)
-- `addons/resource_mail/static/tests/resource_mail_test_helpers.js` (7 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 1 model declarations, 2 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/resource_mail/models/resource_resource.py:8`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 2 controller files and 0 route declarations.
+- **Evidence:** `addons/resource_mail/controllers/webclient.py`, `addons/resource_mail/controllers/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 3 XML files and 10 JavaScript/TypeScript files; static XML analysis found 0 record/template/menu identifiers.
+- **Evidence:** Not found in module
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 3; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 10; representative files: `addons/resource_mail/static/tests/resource_mail_test_helpers.js`, `addons/resource_mail/static/tests/many2many_avatar_resource.test.js`, `addons/resource_mail/static/tests/many2one_avatar_resource.test.js`, `addons/resource_mail/static/src/core/common/resource_resource_model.js`, `addons/resource_mail/static/src/core/web/avatar_card/avatar_card_patch.js`, `addons/resource_mail/static/src/core/common/@types/models.d.ts`, `addons/resource_mail/static/src/views/fields/many2many_avatar_resource/many2many_avatar_resource_field.js`, `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/many2one_avatar_resource_field.js`, `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/kanban_many2one_avatar_resource_field.js`, `addons/resource_mail/static/tests/mock_server/mock_models/resource_resource.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/resource_mail/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: inherits `resource.resource` (addons/resource_mail/models/resource_resource.py:8)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `resource`, `mail`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/resource_mail/__init__.py`
+- `addons/resource_mail/__manifest__.py`
+- `addons/resource_mail/controllers/__init__.py`
+- `addons/resource_mail/controllers/webclient.py`
+- `addons/resource_mail/i18n/ar.po`
+- `addons/resource_mail/i18n/az.po`
+- `addons/resource_mail/i18n/bg.po`
+- `addons/resource_mail/i18n/bs.po`
+- `addons/resource_mail/i18n/ca.po`
+- `addons/resource_mail/i18n/cs.po`
+- `addons/resource_mail/i18n/da.po`
+- `addons/resource_mail/i18n/de.po`
+- `addons/resource_mail/i18n/el.po`
+- `addons/resource_mail/i18n/es.po`
+- `addons/resource_mail/i18n/es_419.po`
+- `addons/resource_mail/i18n/et.po`
+- `addons/resource_mail/i18n/fa.po`
+- `addons/resource_mail/i18n/fi.po`
+- `addons/resource_mail/i18n/fr.po`
+- `addons/resource_mail/i18n/he.po`
+- `addons/resource_mail/i18n/hi.po`
+- `addons/resource_mail/i18n/hr.po`
+- `addons/resource_mail/i18n/hu.po`
+- `addons/resource_mail/i18n/id.po`
+- `addons/resource_mail/i18n/it.po`
+- `addons/resource_mail/i18n/ja.po`
+- `addons/resource_mail/i18n/kab.po`
+- `addons/resource_mail/i18n/ko.po`
+- `addons/resource_mail/i18n/ku.po`
+- `addons/resource_mail/i18n/lo.po`
+- `addons/resource_mail/i18n/lt.po`
+- `addons/resource_mail/i18n/lv.po`
+- `addons/resource_mail/i18n/mn.po`
+- `addons/resource_mail/i18n/my.po`
+- `addons/resource_mail/i18n/nb.po`
+- `addons/resource_mail/i18n/nl.po`
+- `addons/resource_mail/i18n/pl.po`
+- `addons/resource_mail/i18n/pt.po`
+- `addons/resource_mail/i18n/pt_BR.po`
+- `addons/resource_mail/i18n/resource_mail.pot`
+- `addons/resource_mail/i18n/ro.po`
+- `addons/resource_mail/i18n/ru.po`
+- `addons/resource_mail/i18n/sk.po`
+- `addons/resource_mail/i18n/sl.po`
+- `addons/resource_mail/i18n/sr@latin.po`
+- `addons/resource_mail/i18n/sv.po`
+- `addons/resource_mail/i18n/th.po`
+- `addons/resource_mail/i18n/tr.po`
+- `addons/resource_mail/i18n/uk.po`
+- `addons/resource_mail/i18n/uz.po`
+- `addons/resource_mail/i18n/vi.po`
+- `addons/resource_mail/i18n/zh_CN.po`
+- `addons/resource_mail/i18n/zh_TW.po`
+- `addons/resource_mail/models/__init__.py`
+- `addons/resource_mail/models/resource_resource.py`
+- `addons/resource_mail/static/src/core/common/@types/models.d.ts`
+- `addons/resource_mail/static/src/core/common/resource_resource_model.js`
+- `addons/resource_mail/static/src/core/web/avatar_card/avatar_card_patch.js`
+- `addons/resource_mail/static/src/views/fields/many2many_avatar_resource/many2many_avatar_resource_field.js`
+- `addons/resource_mail/static/src/views/fields/many2many_avatar_resource/many2many_avatar_resource_field.scss`
+- `addons/resource_mail/static/src/views/fields/many2many_avatar_resource/many2many_avatar_resource_field.xml`
+- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/kanban_many2one_avatar_resource_field.js`
+- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/kanban_many2one_avatar_resource_field.xml`
+- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/many2one_avatar_resource_field.js`
+- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/many2one_avatar_resource_field.scss`
+- `addons/resource_mail/static/src/views/fields/many2one_avatar_resource/many2one_avatar_resource_field.xml`
+- `addons/resource_mail/static/tests/many2many_avatar_resource.test.js`
+- `addons/resource_mail/static/tests/many2one_avatar_resource.test.js`
+- `addons/resource_mail/static/tests/mock_server/mock_models/resource_resource.js`
+- `addons/resource_mail/static/tests/resource_mail_test_helpers.js`

@@ -1,154 +1,213 @@
 # Module: stock_landed_costs
 
 - **Module ID:** MOD-564
-- **Path:** `addons/stock_landed_costs`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/stock_landed_costs`
 - **Manifest:** `addons/stock_landed_costs/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Supply Chain/Inventory`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Landed Costs
+**Purpose:** Landed Costs
 
+**Manifest description:**
 
 Landed Costs Management
 =======================
 This module allows you to easily add extra costs on pickings and decide the split of these costs among their stock moves in order to take them into account in your stock valuation.
-    
 
-Declared dependencies: `stock_account`, `purchase_stock`.
+**Scope evidence:** The module contains 91 files, including 18 Python, 5 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `stock_account`, `purchase_stock`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 18 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 8 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 5 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 8 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 10
+- Controller/API files: 0
+- XML/data/view/template files: 5
+- Browser asset files: 0
+- Security files: 1
+- Test files: 8
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "stock_account",
-    "purchase_stock"
-  ],
-  "data": [
-    "data/stock_landed_cost_data.xml",
-    "views/account_move_views.xml",
-    "views/product_views.xml",
-    "views/stock_landed_cost_views.xml",
-    "views/res_config_settings_views.xml",
-    "security/ir.access.csv"
-  ]
-}
-```
+**Security evidence:** `addons/stock_landed_costs/security/ir.access.csv`
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/stock_landed_costs/__init__.py` (4 lines)
-- `addons/stock_landed_costs/__manifest__.py` (25 lines)
-- `addons/stock_landed_costs/data/stock_landed_cost_data.xml` (19 lines)
-- `addons/stock_landed_costs/i18n/af.po` (776 lines)
-- `addons/stock_landed_costs/i18n/am.po` (772 lines)
-- `addons/stock_landed_costs/i18n/ar.po` (802 lines)
-- `addons/stock_landed_costs/i18n/az.po` (792 lines)
-- `addons/stock_landed_costs/i18n/bg.po` (805 lines)
-- `addons/stock_landed_costs/i18n/bs.po` (783 lines)
-- `addons/stock_landed_costs/i18n/ca.po` (813 lines)
-- `addons/stock_landed_costs/i18n/cs.po` (799 lines)
-- `addons/stock_landed_costs/i18n/da.po` (794 lines)
-- `addons/stock_landed_costs/i18n/de.po` (823 lines)
-- `addons/stock_landed_costs/i18n/el.po` (794 lines)
-- `addons/stock_landed_costs/i18n/es.po` (813 lines)
-- `addons/stock_landed_costs/i18n/es_419.po` (808 lines)
-- `addons/stock_landed_costs/i18n/es_CL.po` (184 lines)
-- `addons/stock_landed_costs/i18n/et.po` (813 lines)
-- `addons/stock_landed_costs/i18n/eu.po` (774 lines)
-- `addons/stock_landed_costs/i18n/fa.po` (797 lines)
-- `addons/stock_landed_costs/i18n/fi.po` (826 lines)
-- `addons/stock_landed_costs/i18n/fo.po` (774 lines)
-- `addons/stock_landed_costs/i18n/fr.po` (812 lines)
-- `addons/stock_landed_costs/i18n/fr_BE.po` (91 lines)
-- `addons/stock_landed_costs/i18n/fr_CA.po` (152 lines)
-- `addons/stock_landed_costs/i18n/gl.po` (774 lines)
-- `addons/stock_landed_costs/i18n/gu.po` (786 lines)
-- `addons/stock_landed_costs/i18n/he.po` (804 lines)
-- `addons/stock_landed_costs/i18n/hi.po` (787 lines)
-- `addons/stock_landed_costs/i18n/hr.po` (807 lines)
-- `addons/stock_landed_costs/i18n/hu.po` (806 lines)
-- `addons/stock_landed_costs/i18n/hy.po` (774 lines)
-- `addons/stock_landed_costs/i18n/id.po` (808 lines)
-- `addons/stock_landed_costs/i18n/is.po` (783 lines)
-- `addons/stock_landed_costs/i18n/it.po` (814 lines)
-- `addons/stock_landed_costs/i18n/ja.po` (807 lines)
-- `addons/stock_landed_costs/i18n/ka.po` (774 lines)
-- `addons/stock_landed_costs/i18n/kab.po` (777 lines)
-- `addons/stock_landed_costs/i18n/kk.po` (774 lines)
-- `addons/stock_landed_costs/i18n/km.po` (784 lines)
-- `addons/stock_landed_costs/i18n/ko.po` (803 lines)
-- `addons/stock_landed_costs/i18n/ku.po` (788 lines)
-- `addons/stock_landed_costs/i18n/lo.po` (808 lines)
-- `addons/stock_landed_costs/i18n/lt.po` (813 lines)
-- `addons/stock_landed_costs/i18n/lv.po` (793 lines)
-- `addons/stock_landed_costs/i18n/mk.po` (776 lines)
-- `addons/stock_landed_costs/i18n/mn.po` (799 lines)
-- `addons/stock_landed_costs/i18n/my.po` (777 lines)
-- `addons/stock_landed_costs/i18n/nb.po` (795 lines)
-- `addons/stock_landed_costs/i18n/nl.po` (809 lines)
-- `addons/stock_landed_costs/i18n/pl.po` (815 lines)
-- `addons/stock_landed_costs/i18n/pt.po` (812 lines)
-- `addons/stock_landed_costs/i18n/pt_BR.po` (823 lines)
-- `addons/stock_landed_costs/i18n/ro.po` (812 lines)
-- `addons/stock_landed_costs/i18n/ru.po` (811 lines)
-- `addons/stock_landed_costs/i18n/sk.po` (796 lines)
-- `addons/stock_landed_costs/i18n/sl.po` (799 lines)
-- `addons/stock_landed_costs/i18n/sq.po` (774 lines)
-- `addons/stock_landed_costs/i18n/sr@latin.po` (791 lines)
-- `addons/stock_landed_costs/i18n/stock_landed_costs.pot` (765 lines)
-- `addons/stock_landed_costs/i18n/sv.po` (815 lines)
-- `addons/stock_landed_costs/i18n/ta.po` (776 lines)
-- `addons/stock_landed_costs/i18n/te.po` (774 lines)
-- `addons/stock_landed_costs/i18n/th.po` (801 lines)
-- `addons/stock_landed_costs/i18n/tr.po` (820 lines)
-- `addons/stock_landed_costs/i18n/uk.po` (804 lines)
-- `addons/stock_landed_costs/i18n/uz.po` (922 lines)
-- `addons/stock_landed_costs/i18n/vi.po` (803 lines)
-- `addons/stock_landed_costs/i18n/zh_CN.po` (806 lines)
-- `addons/stock_landed_costs/i18n/zh_TW.po` (794 lines)
-- `addons/stock_landed_costs/models/__init__.py` (10 lines)
-- `addons/stock_landed_costs/models/account_move.py` (79 lines)
-- `addons/stock_landed_costs/models/product.py` (28 lines)
-- `addons/stock_landed_costs/models/purchase.py` (10 lines)
-- `addons/stock_landed_costs/models/res_company.py` (10 lines)
-- `addons/stock_landed_costs/models/res_config_settings.py` (10 lines)
-- `addons/stock_landed_costs/models/stock_landed_cost.py` (426 lines)
-- `addons/stock_landed_costs/models/stock_move.py` (54 lines)
-- `addons/stock_landed_costs/security/ir.access.csv` (5 lines)
-- `addons/stock_landed_costs/tests/__init__.py` (8 lines)
-- `addons/stock_landed_costs/tests/common.py` (60 lines)
-- `addons/stock_landed_costs/tests/test_stock_landed_costs.py` (78 lines)
-- `addons/stock_landed_costs/tests/test_stock_landed_costs_branches.py` (95 lines)
-- `addons/stock_landed_costs/tests/test_stock_landed_costs_lots.py` (185 lines)
-- `addons/stock_landed_costs/tests/test_stock_landed_costs_purchase.py` (772 lines)
-- `addons/stock_landed_costs/tests/test_stock_landed_costs_rounding.py` (316 lines)
-- `addons/stock_landed_costs/tests/test_stockvaluationlayer.py` (734 lines)
-- `addons/stock_landed_costs/views/account_move_views.xml` (37 lines)
-- `addons/stock_landed_costs/views/product_views.xml` (25 lines)
-- `addons/stock_landed_costs/views/res_config_settings_views.xml` (20 lines)
-- `addons/stock_landed_costs/views/stock_landed_cost_views.xml` (226 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 10 model declarations, 104 methods, 0 constraint handlers, 4 onchange handlers, and 7 dependency declarations.
+- **Evidence:** `addons/stock_landed_costs/models/res_config_settings.py:7`, `addons/stock_landed_costs/models/stock_landed_cost.py:19`, `addons/stock_landed_costs/models/stock_landed_cost.py:300`, `addons/stock_landed_costs/models/stock_landed_cost.py:342`, `addons/stock_landed_costs/models/stock_move.py:4`, `addons/stock_landed_costs/models/purchase.py:4`, `addons/stock_landed_costs/models/product.py:9`, `addons/stock_landed_costs/models/account_move.py:7`, `addons/stock_landed_costs/models/account_move.py:63`, `addons/stock_landed_costs/models/res_company.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 5 XML files and 0 JavaScript/TypeScript files; static XML analysis found 12 record/template/menu identifiers.
+- **Evidence:** `addons/stock_landed_costs/data/stock_landed_cost_data.xml:5`, `addons/stock_landed_costs/data/stock_landed_cost_data.xml:11`, `addons/stock_landed_costs/views/res_config_settings_views.xml:4`, `addons/stock_landed_costs/views/account_move_views.xml:3`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:5`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:123`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:137`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:153`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:178`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:209`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:224`, `addons/stock_landed_costs/views/product_views.xml:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/stock_landed_costs/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 8 test files are present.
+- **Evidence:** `addons/stock_landed_costs/tests/test_stock_landed_costs.py`, `addons/stock_landed_costs/tests/test_stock_landed_costs_branches.py`, `addons/stock_landed_costs/tests/test_stockvaluationlayer.py`, `addons/stock_landed_costs/tests/test_stock_landed_costs_rounding.py`, `addons/stock_landed_costs/tests/common.py`, `addons/stock_landed_costs/tests/test_stock_landed_costs_purchase.py`, `addons/stock_landed_costs/tests/__init__.py`, `addons/stock_landed_costs/tests/test_stock_landed_costs_lots.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 5; representative identifiers: `mt_stock_landed_cost_open`, `seq_stock_landed_costs`, `res_config_settings_view_form`, `account_view_move_form_inherited`, `view_stock_landed_cost_form`, `view_stock_landed_cost_tree`, `view_stock_landed_cost_tree2`, `stock_landed_cost_view_kanban`, `view_stock_landed_cost_search`, `action_stock_landed_cost`, `menu_stock_landed_cost`, `view_product_landed_cost_form`
+- Menus: 1; representative evidence: `addons/stock_landed_costs/views/stock_landed_cost_views.xml:224`
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 19; representative evidence: `addons/stock_landed_costs/data/stock_landed_cost_data.xml:7`, `addons/stock_landed_costs/views/res_config_settings_views.xml:6`, `addons/stock_landed_costs/views/res_config_settings_views.xml:8`, `addons/stock_landed_costs/views/account_move_views.xml:5`, `addons/stock_landed_costs/views/account_move_views.xml:7`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:7`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:8`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:125`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:126`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:139`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:141`, `addons/stock_landed_costs/views/stock_landed_cost_views.xml:155`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/stock_landed_costs/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 10
+- Representative model evidence: inherits `res.config.settings` (addons/stock_landed_costs/models/res_config_settings.py:7); `stock.landed.cost` (addons/stock_landed_costs/models/stock_landed_cost.py:19); `stock.landed.cost.lines` (addons/stock_landed_costs/models/stock_landed_cost.py:300); `stock.valuation.adjustment.lines` (addons/stock_landed_costs/models/stock_landed_cost.py:342); inherits `stock.move` (addons/stock_landed_costs/models/stock_move.py:4); inherits `purchase.order.line` (addons/stock_landed_costs/models/purchase.py:4); inherits `product.template` (addons/stock_landed_costs/models/product.py:9); inherits `account.move` (addons/stock_landed_costs/models/account_move.py:7); inherits `account.move.line` (addons/stock_landed_costs/models/account_move.py:63); inherits `res.company` (addons/stock_landed_costs/models/res_company.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `stock_account`, `purchase_stock`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/stock_landed_costs/__init__.py`
+- `addons/stock_landed_costs/__manifest__.py`
+- `addons/stock_landed_costs/data/stock_landed_cost_data.xml`
+- `addons/stock_landed_costs/i18n/af.po`
+- `addons/stock_landed_costs/i18n/am.po`
+- `addons/stock_landed_costs/i18n/ar.po`
+- `addons/stock_landed_costs/i18n/az.po`
+- `addons/stock_landed_costs/i18n/bg.po`
+- `addons/stock_landed_costs/i18n/bs.po`
+- `addons/stock_landed_costs/i18n/ca.po`
+- `addons/stock_landed_costs/i18n/cs.po`
+- `addons/stock_landed_costs/i18n/da.po`
+- `addons/stock_landed_costs/i18n/de.po`
+- `addons/stock_landed_costs/i18n/el.po`
+- `addons/stock_landed_costs/i18n/es.po`
+- `addons/stock_landed_costs/i18n/es_419.po`
+- `addons/stock_landed_costs/i18n/es_CL.po`
+- `addons/stock_landed_costs/i18n/et.po`
+- `addons/stock_landed_costs/i18n/eu.po`
+- `addons/stock_landed_costs/i18n/fa.po`
+- `addons/stock_landed_costs/i18n/fi.po`
+- `addons/stock_landed_costs/i18n/fo.po`
+- `addons/stock_landed_costs/i18n/fr.po`
+- `addons/stock_landed_costs/i18n/fr_BE.po`
+- `addons/stock_landed_costs/i18n/fr_CA.po`
+- `addons/stock_landed_costs/i18n/gl.po`
+- `addons/stock_landed_costs/i18n/gu.po`
+- `addons/stock_landed_costs/i18n/he.po`
+- `addons/stock_landed_costs/i18n/hi.po`
+- `addons/stock_landed_costs/i18n/hr.po`
+- `addons/stock_landed_costs/i18n/hu.po`
+- `addons/stock_landed_costs/i18n/hy.po`
+- `addons/stock_landed_costs/i18n/id.po`
+- `addons/stock_landed_costs/i18n/is.po`
+- `addons/stock_landed_costs/i18n/it.po`
+- `addons/stock_landed_costs/i18n/ja.po`
+- `addons/stock_landed_costs/i18n/ka.po`
+- `addons/stock_landed_costs/i18n/kab.po`
+- `addons/stock_landed_costs/i18n/kk.po`
+- `addons/stock_landed_costs/i18n/km.po`
+- `addons/stock_landed_costs/i18n/ko.po`
+- `addons/stock_landed_costs/i18n/ku.po`
+- `addons/stock_landed_costs/i18n/lo.po`
+- `addons/stock_landed_costs/i18n/lt.po`
+- `addons/stock_landed_costs/i18n/lv.po`
+- `addons/stock_landed_costs/i18n/mk.po`
+- `addons/stock_landed_costs/i18n/mn.po`
+- `addons/stock_landed_costs/i18n/my.po`
+- `addons/stock_landed_costs/i18n/nb.po`
+- `addons/stock_landed_costs/i18n/nl.po`
+- `addons/stock_landed_costs/i18n/pl.po`
+- `addons/stock_landed_costs/i18n/pt.po`
+- `addons/stock_landed_costs/i18n/pt_BR.po`
+- `addons/stock_landed_costs/i18n/ro.po`
+- `addons/stock_landed_costs/i18n/ru.po`
+- `addons/stock_landed_costs/i18n/sk.po`
+- `addons/stock_landed_costs/i18n/sl.po`
+- `addons/stock_landed_costs/i18n/sq.po`
+- `addons/stock_landed_costs/i18n/sr@latin.po`
+- `addons/stock_landed_costs/i18n/stock_landed_costs.pot`
+- `addons/stock_landed_costs/i18n/sv.po`
+- `addons/stock_landed_costs/i18n/ta.po`
+- `addons/stock_landed_costs/i18n/te.po`
+- `addons/stock_landed_costs/i18n/th.po`
+- `addons/stock_landed_costs/i18n/tr.po`
+- `addons/stock_landed_costs/i18n/uk.po`
+- `addons/stock_landed_costs/i18n/uz.po`
+- `addons/stock_landed_costs/i18n/vi.po`
+- `addons/stock_landed_costs/i18n/zh_CN.po`
+- `addons/stock_landed_costs/i18n/zh_TW.po`
+- `addons/stock_landed_costs/models/__init__.py`
+- `addons/stock_landed_costs/models/account_move.py`
+- `addons/stock_landed_costs/models/product.py`
+- `addons/stock_landed_costs/models/purchase.py`
+- `addons/stock_landed_costs/models/res_company.py`
+- `addons/stock_landed_costs/models/res_config_settings.py`
+- `addons/stock_landed_costs/models/stock_landed_cost.py`
+- `addons/stock_landed_costs/models/stock_move.py`
+- `addons/stock_landed_costs/security/ir.access.csv`
+- `addons/stock_landed_costs/tests/__init__.py`
+- `addons/stock_landed_costs/tests/common.py`
+- `addons/stock_landed_costs/tests/test_stock_landed_costs.py`
+- `addons/stock_landed_costs/tests/test_stock_landed_costs_branches.py`
+- `addons/stock_landed_costs/tests/test_stock_landed_costs_lots.py`
+- `addons/stock_landed_costs/tests/test_stock_landed_costs_purchase.py`
+- `addons/stock_landed_costs/tests/test_stock_landed_costs_rounding.py`
+- `addons/stock_landed_costs/tests/test_stockvaluationlayer.py`
+- `addons/stock_landed_costs/views/account_move_views.xml`
+- `addons/stock_landed_costs/views/product_views.xml`
+- `addons/stock_landed_costs/views/res_config_settings_views.xml`
+- `addons/stock_landed_costs/views/stock_landed_cost_views.xml`

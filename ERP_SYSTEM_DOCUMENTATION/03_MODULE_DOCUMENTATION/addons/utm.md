@@ -1,173 +1,218 @@
 # Module: utm
 
 - **Module ID:** MOD-591
-- **Path:** `addons/utm`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/utm`
 - **Manifest:** `addons/utm/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Marketing`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
 Enable management of UTM trackers: campaign, medium, source.
 
+**Scope evidence:** The module contains 98 files, including 16 Python, 12 XML, and 1 JavaScript/TypeScript files. The manifest declares dependencies: `base`, `web`.
 
-Declared dependencies: `base`, `web`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 7
+- Controller/API files: 0
+- XML/data/view/template files: 12
+- Browser asset files: 1
+- Security files: 1
+- Test files: 6
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 16 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 8 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 12 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 1 | Client behavior/assets. |
-| Tests | 6 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `addons/utm/security/ir.access.csv`
 
-```text
-{
-  "depends": [
-    "base",
-    "web"
-  ],
-  "data": [
-    "data/utm_medium_data.xml",
-    "data/utm_source_data.xml",
-    "data/utm_stage_data.xml",
-    "data/utm_tag_data.xml",
-    "views/utm_campaign_views.xml",
-    "views/utm_medium_views.xml",
-    "views/utm_source_views.xml",
-    "views/utm_stage_views.xml",
-    "views/utm_tag_views.xml",
-    "views/utm_menus.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/utm_campaign_demo.xml",
-    "data/utm_stage_demo.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "utm/static/src/**/*"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/utm/__init__.py` (4 lines)
-- `addons/utm/__manifest__.py` (35 lines)
-- `addons/utm/data/utm_campaign_demo.xml` (15 lines)
-- `addons/utm/data/utm_medium_data.xml` (21 lines)
-- `addons/utm/data/utm_source_data.xml` (46 lines)
-- `addons/utm/data/utm_stage_data.xml` (9 lines)
-- `addons/utm/data/utm_stage_demo.xml` (17 lines)
-- `addons/utm/data/utm_tag_data.xml` (8 lines)
-- `addons/utm/i18n/af.po` (677 lines)
-- `addons/utm/i18n/ar.po` (702 lines)
-- `addons/utm/i18n/az.po` (685 lines)
-- `addons/utm/i18n/bg.po` (697 lines)
-- `addons/utm/i18n/bs.po` (681 lines)
-- `addons/utm/i18n/ca.po` (715 lines)
-- `addons/utm/i18n/cs.po` (693 lines)
-- `addons/utm/i18n/da.po` (694 lines)
-- `addons/utm/i18n/de.po` (717 lines)
-- `addons/utm/i18n/el.po` (682 lines)
-- `addons/utm/i18n/es.po` (712 lines)
-- `addons/utm/i18n/es_419.po` (704 lines)
-- `addons/utm/i18n/es_CL.po` (90 lines)
-- `addons/utm/i18n/et.po` (714 lines)
-- `addons/utm/i18n/eu.po` (675 lines)
-- `addons/utm/i18n/fa.po` (702 lines)
-- `addons/utm/i18n/fi.po` (715 lines)
-- `addons/utm/i18n/fo.po` (675 lines)
-- `addons/utm/i18n/fr.po` (714 lines)
-- `addons/utm/i18n/fr_BE.po` (72 lines)
-- `addons/utm/i18n/fr_CA.po` (83 lines)
-- `addons/utm/i18n/gl.po` (675 lines)
-- `addons/utm/i18n/gu.po` (677 lines)
-- `addons/utm/i18n/he.po` (694 lines)
-- `addons/utm/i18n/hi.po` (679 lines)
-- `addons/utm/i18n/hr.po` (705 lines)
-- `addons/utm/i18n/hu.po` (690 lines)
-- `addons/utm/i18n/id.po` (709 lines)
-- `addons/utm/i18n/is.po` (673 lines)
-- `addons/utm/i18n/it.po` (711 lines)
-- `addons/utm/i18n/ja.po` (709 lines)
-- `addons/utm/i18n/ka.po` (675 lines)
-- `addons/utm/i18n/kab.po` (677 lines)
-- `addons/utm/i18n/km.po` (677 lines)
-- `addons/utm/i18n/ko.po` (701 lines)
-- `addons/utm/i18n/ku.po` (677 lines)
-- `addons/utm/i18n/lo.po` (699 lines)
-- `addons/utm/i18n/lt.po` (695 lines)
-- `addons/utm/i18n/lv.po` (683 lines)
-- `addons/utm/i18n/mk.po` (677 lines)
-- `addons/utm/i18n/ml_IN.po` (676 lines)
-- `addons/utm/i18n/mn.po` (689 lines)
-- `addons/utm/i18n/my.po` (678 lines)
-- `addons/utm/i18n/nb.po` (686 lines)
-- `addons/utm/i18n/nl.po` (710 lines)
-- `addons/utm/i18n/pl.po` (718 lines)
-- `addons/utm/i18n/pt.po` (707 lines)
-- `addons/utm/i18n/pt_BR.po` (714 lines)
-- `addons/utm/i18n/ro.po` (694 lines)
-- `addons/utm/i18n/ru.po` (708 lines)
-- `addons/utm/i18n/sk.po` (692 lines)
-- `addons/utm/i18n/sl.po` (690 lines)
-- `addons/utm/i18n/sq.po` (675 lines)
-- `addons/utm/i18n/sr@latin.po` (685 lines)
-- `addons/utm/i18n/sv.po` (715 lines)
-- `addons/utm/i18n/ta.po` (678 lines)
-- `addons/utm/i18n/th.po` (689 lines)
-- `addons/utm/i18n/tr.po` (719 lines)
-- `addons/utm/i18n/uk.po` (707 lines)
-- `addons/utm/i18n/utm.pot` (673 lines)
-- `addons/utm/i18n/uz.po` (817 lines)
-- `addons/utm/i18n/vi.po` (708 lines)
-- `addons/utm/i18n/zh_CN.po` (692 lines)
-- `addons/utm/i18n/zh_TW.po` (685 lines)
-- `addons/utm/models/__init__.py` (10 lines)
-- `addons/utm/models/ir_http.py` (26 lines)
-- `addons/utm/models/utm_campaign.py` (61 lines)
-- `addons/utm/models/utm_medium.py` (45 lines)
-- `addons/utm/models/utm_mixin.py` (255 lines)
-- `addons/utm/models/utm_source.py` (59 lines)
-- `addons/utm/models/utm_stage.py` (16 lines)
-- `addons/utm/models/utm_tag.py` (27 lines)
-- `addons/utm/security/ir.access.csv` (11 lines)
-- `addons/utm/static/description/icon.png` (14 lines)
-- `addons/utm/static/description/icon.svg` (1 lines)
-- `addons/utm/static/description/icon_hi.png` (42 lines)
-- `addons/utm/static/src/js/utm_campaign_kanban_examples.js` (30 lines)
-- `addons/utm/static/src/scss/utm_views.scss` (12 lines)
-- `addons/utm/tests/__init__.py` (8 lines)
-- `addons/utm/tests/common.py` (23 lines)
-- `addons/utm/tests/test_routes.py` (15 lines)
-- `addons/utm/tests/test_utm.py` (196 lines)
-- `addons/utm/tests/test_utm_consistency.py` (51 lines)
-- `addons/utm/tests/test_utm_security.py` (79 lines)
-- `addons/utm/views/utm_campaign_views.xml` (133 lines)
-- `addons/utm/views/utm_medium_views.xml` (54 lines)
-- `addons/utm/views/utm_menus.xml` (31 lines)
-- `addons/utm/views/utm_source_views.xml` (39 lines)
-- `addons/utm/views/utm_stage_views.xml` (53 lines)
-- `addons/utm/views/utm_tag_views.xml` (24 lines)
+- **Description:** 7 model declarations, 35 methods, 0 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/utm/models/utm_mixin.py:13`, `addons/utm/models/utm_tag.py:9`, `addons/utm/models/utm_source.py:7`, `addons/utm/models/ir_http.py:7`, `addons/utm/models/utm_campaign.py:7`, `addons/utm/models/utm_stage.py:8`, `addons/utm/models/utm_medium.py:9`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-## Functional behavior classification
+### User interface and data
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 12 XML files and 1 JavaScript/TypeScript files; static XML analysis found 51 record/template/menu identifiers.
+- **Evidence:** `addons/utm/data/utm_campaign_demo.xml:4`, `addons/utm/data/utm_campaign_demo.xml:9`, `addons/utm/data/utm_stage_data.xml:5`, `addons/utm/data/utm_stage_demo.xml:4`, `addons/utm/data/utm_stage_demo.xml:8`, `addons/utm/data/utm_stage_demo.xml:12`, `addons/utm/data/utm_tag_data.xml:4`, `addons/utm/data/utm_source_data.xml:3`, `addons/utm/data/utm_source_data.xml:6`, `addons/utm/data/utm_source_data.xml:9`, `addons/utm/data/utm_source_data.xml:12`, `addons/utm/data/utm_source_data.xml:15`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/utm/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 6 test files are present.
+- **Evidence:** `addons/utm/tests/test_utm.py`, `addons/utm/tests/test_routes.py`, `addons/utm/tests/common.py`, `addons/utm/tests/test_utm_security.py`, `addons/utm/tests/__init__.py`, `addons/utm/tests/test_utm_consistency.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 12; representative identifiers: `utm_campaign_black_friday`, `utm_campaign_christmas_special`, `default_utm_stage`, `campaign_stage_1`, `campaign_stage_2`, `campaign_stage_3`, `utm_tag_1`, `utm_source_google`, `utm_source_mailing`, `utm_source_newsletter`, `utm_source_monster`, `utm_source_glassdoor`, `utm_source_craigslist`, `utm_source_survey`, `utm_source_referral`, `utm_source_livechat`, `utm_source_facebook`, `utm_source_twitter`, `utm_source_linkedin`, `utm_source_instagram`
+- Menus: 5; representative evidence: `addons/utm/views/utm_menus.xml:3`, `addons/utm/views/utm_menus.xml:9`, `addons/utm/views/utm_menus.xml:15`, `addons/utm/views/utm_menus.xml:20`, `addons/utm/views/utm_menus.xml:25`
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 37; representative evidence: `addons/utm/views/utm_campaign_views.xml:5`, `addons/utm/views/utm_campaign_views.xml:6`, `addons/utm/views/utm_campaign_views.xml:30`, `addons/utm/views/utm_campaign_views.xml:31`, `addons/utm/views/utm_campaign_views.xml:56`, `addons/utm/views/utm_campaign_views.xml:57`, `addons/utm/views/utm_campaign_views.xml:71`, `addons/utm/views/utm_campaign_views.xml:73`, `addons/utm/views/utm_campaign_views.xml:87`, `addons/utm/views/utm_campaign_views.xml:88`, `addons/utm/views/utm_campaign_views.xml:122`, `addons/utm/views/utm_campaign_views.xml:123`
+- Browser assets: 1; representative files: `addons/utm/static/src/js/utm_campaign_kanban_examples.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/utm/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 7
+- Representative model evidence: `utm.mixin` (addons/utm/models/utm_mixin.py:13); `utm.tag` (addons/utm/models/utm_tag.py:9); `utm.source` (addons/utm/models/utm_source.py:7); inherits `ir.http` (addons/utm/models/ir_http.py:7); `utm.campaign` (addons/utm/models/utm_campaign.py:7); `utm.stage` (addons/utm/models/utm_stage.py:8); `utm.medium` (addons/utm/models/utm_medium.py:9)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base`, `web`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/utm/__init__.py`
+- `addons/utm/__manifest__.py`
+- `addons/utm/data/utm_campaign_demo.xml`
+- `addons/utm/data/utm_medium_data.xml`
+- `addons/utm/data/utm_source_data.xml`
+- `addons/utm/data/utm_stage_data.xml`
+- `addons/utm/data/utm_stage_demo.xml`
+- `addons/utm/data/utm_tag_data.xml`
+- `addons/utm/i18n/af.po`
+- `addons/utm/i18n/ar.po`
+- `addons/utm/i18n/az.po`
+- `addons/utm/i18n/bg.po`
+- `addons/utm/i18n/bs.po`
+- `addons/utm/i18n/ca.po`
+- `addons/utm/i18n/cs.po`
+- `addons/utm/i18n/da.po`
+- `addons/utm/i18n/de.po`
+- `addons/utm/i18n/el.po`
+- `addons/utm/i18n/es.po`
+- `addons/utm/i18n/es_419.po`
+- `addons/utm/i18n/es_CL.po`
+- `addons/utm/i18n/et.po`
+- `addons/utm/i18n/eu.po`
+- `addons/utm/i18n/fa.po`
+- `addons/utm/i18n/fi.po`
+- `addons/utm/i18n/fo.po`
+- `addons/utm/i18n/fr.po`
+- `addons/utm/i18n/fr_BE.po`
+- `addons/utm/i18n/fr_CA.po`
+- `addons/utm/i18n/gl.po`
+- `addons/utm/i18n/gu.po`
+- `addons/utm/i18n/he.po`
+- `addons/utm/i18n/hi.po`
+- `addons/utm/i18n/hr.po`
+- `addons/utm/i18n/hu.po`
+- `addons/utm/i18n/id.po`
+- `addons/utm/i18n/is.po`
+- `addons/utm/i18n/it.po`
+- `addons/utm/i18n/ja.po`
+- `addons/utm/i18n/ka.po`
+- `addons/utm/i18n/kab.po`
+- `addons/utm/i18n/km.po`
+- `addons/utm/i18n/ko.po`
+- `addons/utm/i18n/ku.po`
+- `addons/utm/i18n/lo.po`
+- `addons/utm/i18n/lt.po`
+- `addons/utm/i18n/lv.po`
+- `addons/utm/i18n/mk.po`
+- `addons/utm/i18n/ml_IN.po`
+- `addons/utm/i18n/mn.po`
+- `addons/utm/i18n/my.po`
+- `addons/utm/i18n/nb.po`
+- `addons/utm/i18n/nl.po`
+- `addons/utm/i18n/pl.po`
+- `addons/utm/i18n/pt.po`
+- `addons/utm/i18n/pt_BR.po`
+- `addons/utm/i18n/ro.po`
+- `addons/utm/i18n/ru.po`
+- `addons/utm/i18n/sk.po`
+- `addons/utm/i18n/sl.po`
+- `addons/utm/i18n/sq.po`
+- `addons/utm/i18n/sr@latin.po`
+- `addons/utm/i18n/sv.po`
+- `addons/utm/i18n/ta.po`
+- `addons/utm/i18n/th.po`
+- `addons/utm/i18n/tr.po`
+- `addons/utm/i18n/uk.po`
+- `addons/utm/i18n/utm.pot`
+- `addons/utm/i18n/uz.po`
+- `addons/utm/i18n/vi.po`
+- `addons/utm/i18n/zh_CN.po`
+- `addons/utm/i18n/zh_TW.po`
+- `addons/utm/models/__init__.py`
+- `addons/utm/models/ir_http.py`
+- `addons/utm/models/utm_campaign.py`
+- `addons/utm/models/utm_medium.py`
+- `addons/utm/models/utm_mixin.py`
+- `addons/utm/models/utm_source.py`
+- `addons/utm/models/utm_stage.py`
+- `addons/utm/models/utm_tag.py`
+- `addons/utm/security/ir.access.csv`
+- `addons/utm/static/description/icon.png`
+- `addons/utm/static/description/icon.svg`
+- `addons/utm/static/description/icon_hi.png`
+- `addons/utm/static/src/js/utm_campaign_kanban_examples.js`
+- `addons/utm/static/src/scss/utm_views.scss`
+- `addons/utm/tests/__init__.py`
+- `addons/utm/tests/common.py`
+- `addons/utm/tests/test_routes.py`
+- `addons/utm/tests/test_utm.py`
+- `addons/utm/tests/test_utm_consistency.py`
+- `addons/utm/tests/test_utm_security.py`
+- `addons/utm/views/utm_campaign_views.xml`
+- `addons/utm/views/utm_medium_views.xml`
+- `addons/utm/views/utm_menus.xml`
+- `addons/utm/views/utm_source_views.xml`
+- `addons/utm/views/utm_stage_views.xml`
+- `addons/utm/views/utm_tag_views.xml`

@@ -1,148 +1,197 @@
 # Module: crm_iap_mine
 
 - **Module ID:** MOD-056
-- **Path:** `addons/crm_iap_mine`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/crm_iap_mine`
 - **Manifest:** `addons/crm_iap_mine/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Sales/CRM`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Generate Leads/Opportunities based on country, industries, size, etc.
+**Purpose:** Generate Leads/Opportunities based on country, industries, size, etc.
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `iap_crm`, `iap_mail`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 77 files, including 13 Python, 7 XML, and 2 JavaScript/TypeScript files. The manifest declares dependencies: `iap_crm`, `iap_mail`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 13 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 8 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 7 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 2 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 7
+- Controller/API files: 0
+- XML/data/view/template files: 7
+- Browser asset files: 2
+- Security files: 1
+- Test files: 3
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "iap_crm",
-    "iap_mail"
-  ],
-  "data": [
-    "data/crm.iap.lead.industry.division.csv",
-    "data/crm.iap.lead.industry.csv",
-    "data/crm.iap.lead.role.csv",
-    "data/crm.iap.lead.seniority.csv",
-    "data/mail_template_data.xml",
-    "data/ir_sequence_data.xml",
-    "views/crm_iap_lead_industry_views.xml",
-    "views/crm_iap_lead_mining_request_views.xml",
-    "views/res_config_settings_views.xml",
-    "views/mail_templates.xml",
-    "views/crm_menus.xml",
-    "security/ir.access.csv"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "crm_iap_mine/static/src/js/**/*",
-      "crm_iap_mine/static/src/components/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/crm_iap_mine/security/ir.access.csv`
 
-- `addons/crm_iap_mine/__init__.py` (4 lines)
-- `addons/crm_iap_mine/__manifest__.py` (36 lines)
-- `addons/crm_iap_mine/data/crm.iap.lead.industry.csv` (84 lines)
-- `addons/crm_iap_mine/data/crm.iap.lead.industry.division.csv` (11 lines)
-- `addons/crm_iap_mine/data/crm.iap.lead.role.csv` (23 lines)
-- `addons/crm_iap_mine/data/crm.iap.lead.seniority.csv` (4 lines)
-- `addons/crm_iap_mine/data/ir_sequence_data.xml` (14 lines)
-- `addons/crm_iap_mine/data/mail_template_data.xml` (21 lines)
-- `addons/crm_iap_mine/i18n/ar.po` (1,182 lines)
-- `addons/crm_iap_mine/i18n/az.po` (1,174 lines)
-- `addons/crm_iap_mine/i18n/bg.po` (1,157 lines)
-- `addons/crm_iap_mine/i18n/bs.po` (1,154 lines)
-- `addons/crm_iap_mine/i18n/ca.po` (1,182 lines)
-- `addons/crm_iap_mine/i18n/crm_iap_mine.pot` (1,148 lines)
-- `addons/crm_iap_mine/i18n/cs.po` (1,187 lines)
-- `addons/crm_iap_mine/i18n/da.po` (1,188 lines)
-- `addons/crm_iap_mine/i18n/de.po` (1,199 lines)
-- `addons/crm_iap_mine/i18n/el.po` (1,154 lines)
-- `addons/crm_iap_mine/i18n/es.po` (1,186 lines)
-- `addons/crm_iap_mine/i18n/es_419.po` (1,193 lines)
-- `addons/crm_iap_mine/i18n/et.po` (1,179 lines)
-- `addons/crm_iap_mine/i18n/fa.po` (1,157 lines)
-- `addons/crm_iap_mine/i18n/fi.po` (1,181 lines)
-- `addons/crm_iap_mine/i18n/fr.po` (1,202 lines)
-- `addons/crm_iap_mine/i18n/he.po` (1,187 lines)
-- `addons/crm_iap_mine/i18n/hi.po` (1,157 lines)
-- `addons/crm_iap_mine/i18n/hr.po` (1,165 lines)
-- `addons/crm_iap_mine/i18n/hu.po` (1,161 lines)
-- `addons/crm_iap_mine/i18n/id.po` (1,181 lines)
-- `addons/crm_iap_mine/i18n/it.po` (1,199 lines)
-- `addons/crm_iap_mine/i18n/ja.po` (1,190 lines)
-- `addons/crm_iap_mine/i18n/kab.po` (1,153 lines)
-- `addons/crm_iap_mine/i18n/ko.po` (1,179 lines)
-- `addons/crm_iap_mine/i18n/ku.po` (1,152 lines)
-- `addons/crm_iap_mine/i18n/lo.po` (1,184 lines)
-- `addons/crm_iap_mine/i18n/lt.po` (1,171 lines)
-- `addons/crm_iap_mine/i18n/lv.po` (1,154 lines)
-- `addons/crm_iap_mine/i18n/mn.po` (1,163 lines)
-- `addons/crm_iap_mine/i18n/my.po` (1,153 lines)
-- `addons/crm_iap_mine/i18n/nb.po` (1,159 lines)
-- `addons/crm_iap_mine/i18n/nl.po` (1,196 lines)
-- `addons/crm_iap_mine/i18n/pl.po` (1,207 lines)
-- `addons/crm_iap_mine/i18n/pt.po` (1,169 lines)
-- `addons/crm_iap_mine/i18n/pt_BR.po` (1,196 lines)
-- `addons/crm_iap_mine/i18n/ro.po` (1,189 lines)
-- `addons/crm_iap_mine/i18n/ru.po` (1,195 lines)
-- `addons/crm_iap_mine/i18n/sk.po` (1,155 lines)
-- `addons/crm_iap_mine/i18n/sl.po` (1,182 lines)
-- `addons/crm_iap_mine/i18n/sr@latin.po` (1,155 lines)
-- `addons/crm_iap_mine/i18n/sv.po` (1,179 lines)
-- `addons/crm_iap_mine/i18n/th.po` (1,178 lines)
-- `addons/crm_iap_mine/i18n/tr.po` (1,208 lines)
-- `addons/crm_iap_mine/i18n/uk.po` (1,186 lines)
-- `addons/crm_iap_mine/i18n/uz.po` (1,281 lines)
-- `addons/crm_iap_mine/i18n/vi.po` (1,181 lines)
-- `addons/crm_iap_mine/i18n/zh_CN.po` (1,188 lines)
-- `addons/crm_iap_mine/i18n/zh_TW.po` (1,179 lines)
-- `addons/crm_iap_mine/models/__init__.py` (10 lines)
-- `addons/crm_iap_mine/models/crm_iap_lead_helpers.py` (64 lines)
-- `addons/crm_iap_mine/models/crm_iap_lead_industry.py` (42 lines)
-- `addons/crm_iap_mine/models/crm_iap_lead_industry_division.py` (19 lines)
-- `addons/crm_iap_mine/models/crm_iap_lead_mining_request.py` (316 lines)
-- `addons/crm_iap_mine/models/crm_iap_lead_role.py` (23 lines)
-- `addons/crm_iap_mine/models/crm_iap_lead_seniority.py` (23 lines)
-- `addons/crm_iap_mine/models/crm_lead.py` (24 lines)
-- `addons/crm_iap_mine/security/ir.access.csv` (6 lines)
-- `addons/crm_iap_mine/static/img/crunchbase.ico` (61 lines)
-- `addons/crm_iap_mine/static/src/components/lead_generation_dropdown/crm_lead_gen_element.js` (28 lines)
-- `addons/crm_iap_mine/static/src/js/tours/crm_iap_lead.js` (45 lines)
-- `addons/crm_iap_mine/tests/__init__.py` (4 lines)
-- `addons/crm_iap_mine/tests/common.py` (70 lines)
-- `addons/crm_iap_mine/tests/test_lead_mine.py` (92 lines)
-- `addons/crm_iap_mine/views/crm_iap_lead_industry_views.xml` (25 lines)
-- `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml` (159 lines)
-- `addons/crm_iap_mine/views/crm_menus.xml` (15 lines)
-- `addons/crm_iap_mine/views/mail_templates.xml` (50 lines)
-- `addons/crm_iap_mine/views/res_config_settings_views.xml` (13 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 7 model declarations, 39 methods, 0 constraint handlers, 5 onchange handlers, and 6 dependency declarations.
+- **Evidence:** `addons/crm_iap_mine/models/crm_iap_lead_helpers.py:4`, `addons/crm_iap_mine/models/crm_iap_lead_industry.py:9`, `addons/crm_iap_mine/models/crm_iap_lead_role.py:7`, `addons/crm_iap_mine/models/crm_iap_lead_industry_division.py:6`, `addons/crm_iap_mine/models/crm_iap_lead_mining_request.py:21`, `addons/crm_iap_mine/models/crm_iap_lead_seniority.py:7`, `addons/crm_iap_mine/models/crm_lead.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 7 XML files and 2 JavaScript/TypeScript files; static XML analysis found 12 record/template/menu identifiers.
+- **Evidence:** `addons/crm_iap_mine/data/mail_template_data.xml:5`, `addons/crm_iap_mine/data/ir_sequence_data.xml:5`, `addons/crm_iap_mine/views/crm_menus.xml:4`, `addons/crm_iap_mine/views/crm_menus.xml:10`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:3`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:111`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:128`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:154`, `addons/crm_iap_mine/views/res_config_settings_views.xml:3`, `addons/crm_iap_mine/views/crm_iap_lead_industry_views.xml:3`, `addons/crm_iap_mine/views/crm_iap_lead_industry_views.xml:15`, `addons/crm_iap_mine/views/mail_templates.xml:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/crm_iap_mine/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/crm_iap_mine/tests/test_lead_mine.py`, `addons/crm_iap_mine/tests/common.py`, `addons/crm_iap_mine/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 7; representative identifiers: `lead_generation_no_credits`, `ir_sequence_crm_iap_mine`, `Lead Generation`, `crm_iap_lead_mining_request_menu_action`, `crm_iap_lead_mining_request_view_form`, `crm_iap_lead_mining_request_view_tree`, `crm_iap_lead_mining_request_view_search`, `crm_iap_lead_mining_request_action`, `res_config_settings_view_form`, `crm_iap_lead_industry_view_search`, `crm_iap_lead_industry_view_tree`, `enrich_company`
+- Menus: 2; representative evidence: `addons/crm_iap_mine/views/crm_menus.xml:4`, `addons/crm_iap_mine/views/crm_menus.xml:10`
+- Templates: 1; representative evidence: `addons/crm_iap_mine/views/mail_templates.xml:4`
+- View/action field declarations: 14; representative evidence: `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:5`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:6`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:113`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:114`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:130`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:131`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:156`, `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml:157`, `addons/crm_iap_mine/views/res_config_settings_views.xml:5`, `addons/crm_iap_mine/views/res_config_settings_views.xml:7`, `addons/crm_iap_mine/views/crm_iap_lead_industry_views.xml:5`, `addons/crm_iap_mine/views/crm_iap_lead_industry_views.xml:6`
+- Browser assets: 2; representative files: `addons/crm_iap_mine/static/src/js/tours/crm_iap_lead.js`, `addons/crm_iap_mine/static/src/components/lead_generation_dropdown/crm_lead_gen_element.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/crm_iap_mine/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 7
+- Representative model evidence: `crm.iap.lead.helpers` (addons/crm_iap_mine/models/crm_iap_lead_helpers.py:4); `crm.iap.lead.industry` (addons/crm_iap_mine/models/crm_iap_lead_industry.py:9); `crm.iap.lead.role` (addons/crm_iap_mine/models/crm_iap_lead_role.py:7); `crm.iap.lead.industry.division` (addons/crm_iap_mine/models/crm_iap_lead_industry_division.py:6); `crm.iap.lead.mining.request` (addons/crm_iap_mine/models/crm_iap_lead_mining_request.py:21); `crm.iap.lead.seniority` (addons/crm_iap_mine/models/crm_iap_lead_seniority.py:7); inherits `crm.lead` (addons/crm_iap_mine/models/crm_lead.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `iap_crm`, `iap_mail`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/crm_iap_mine/__init__.py`
+- `addons/crm_iap_mine/__manifest__.py`
+- `addons/crm_iap_mine/data/crm.iap.lead.industry.csv`
+- `addons/crm_iap_mine/data/crm.iap.lead.industry.division.csv`
+- `addons/crm_iap_mine/data/crm.iap.lead.role.csv`
+- `addons/crm_iap_mine/data/crm.iap.lead.seniority.csv`
+- `addons/crm_iap_mine/data/ir_sequence_data.xml`
+- `addons/crm_iap_mine/data/mail_template_data.xml`
+- `addons/crm_iap_mine/i18n/ar.po`
+- `addons/crm_iap_mine/i18n/az.po`
+- `addons/crm_iap_mine/i18n/bg.po`
+- `addons/crm_iap_mine/i18n/bs.po`
+- `addons/crm_iap_mine/i18n/ca.po`
+- `addons/crm_iap_mine/i18n/crm_iap_mine.pot`
+- `addons/crm_iap_mine/i18n/cs.po`
+- `addons/crm_iap_mine/i18n/da.po`
+- `addons/crm_iap_mine/i18n/de.po`
+- `addons/crm_iap_mine/i18n/el.po`
+- `addons/crm_iap_mine/i18n/es.po`
+- `addons/crm_iap_mine/i18n/es_419.po`
+- `addons/crm_iap_mine/i18n/et.po`
+- `addons/crm_iap_mine/i18n/fa.po`
+- `addons/crm_iap_mine/i18n/fi.po`
+- `addons/crm_iap_mine/i18n/fr.po`
+- `addons/crm_iap_mine/i18n/he.po`
+- `addons/crm_iap_mine/i18n/hi.po`
+- `addons/crm_iap_mine/i18n/hr.po`
+- `addons/crm_iap_mine/i18n/hu.po`
+- `addons/crm_iap_mine/i18n/id.po`
+- `addons/crm_iap_mine/i18n/it.po`
+- `addons/crm_iap_mine/i18n/ja.po`
+- `addons/crm_iap_mine/i18n/kab.po`
+- `addons/crm_iap_mine/i18n/ko.po`
+- `addons/crm_iap_mine/i18n/ku.po`
+- `addons/crm_iap_mine/i18n/lo.po`
+- `addons/crm_iap_mine/i18n/lt.po`
+- `addons/crm_iap_mine/i18n/lv.po`
+- `addons/crm_iap_mine/i18n/mn.po`
+- `addons/crm_iap_mine/i18n/my.po`
+- `addons/crm_iap_mine/i18n/nb.po`
+- `addons/crm_iap_mine/i18n/nl.po`
+- `addons/crm_iap_mine/i18n/pl.po`
+- `addons/crm_iap_mine/i18n/pt.po`
+- `addons/crm_iap_mine/i18n/pt_BR.po`
+- `addons/crm_iap_mine/i18n/ro.po`
+- `addons/crm_iap_mine/i18n/ru.po`
+- `addons/crm_iap_mine/i18n/sk.po`
+- `addons/crm_iap_mine/i18n/sl.po`
+- `addons/crm_iap_mine/i18n/sr@latin.po`
+- `addons/crm_iap_mine/i18n/sv.po`
+- `addons/crm_iap_mine/i18n/th.po`
+- `addons/crm_iap_mine/i18n/tr.po`
+- `addons/crm_iap_mine/i18n/uk.po`
+- `addons/crm_iap_mine/i18n/uz.po`
+- `addons/crm_iap_mine/i18n/vi.po`
+- `addons/crm_iap_mine/i18n/zh_CN.po`
+- `addons/crm_iap_mine/i18n/zh_TW.po`
+- `addons/crm_iap_mine/models/__init__.py`
+- `addons/crm_iap_mine/models/crm_iap_lead_helpers.py`
+- `addons/crm_iap_mine/models/crm_iap_lead_industry.py`
+- `addons/crm_iap_mine/models/crm_iap_lead_industry_division.py`
+- `addons/crm_iap_mine/models/crm_iap_lead_mining_request.py`
+- `addons/crm_iap_mine/models/crm_iap_lead_role.py`
+- `addons/crm_iap_mine/models/crm_iap_lead_seniority.py`
+- `addons/crm_iap_mine/models/crm_lead.py`
+- `addons/crm_iap_mine/security/ir.access.csv`
+- `addons/crm_iap_mine/static/img/crunchbase.ico`
+- `addons/crm_iap_mine/static/src/components/lead_generation_dropdown/crm_lead_gen_element.js`
+- `addons/crm_iap_mine/static/src/js/tours/crm_iap_lead.js`
+- `addons/crm_iap_mine/tests/__init__.py`
+- `addons/crm_iap_mine/tests/common.py`
+- `addons/crm_iap_mine/tests/test_lead_mine.py`
+- `addons/crm_iap_mine/views/crm_iap_lead_industry_views.xml`
+- `addons/crm_iap_mine/views/crm_iap_lead_mining_request_views.xml`
+- `addons/crm_iap_mine/views/crm_menus.xml`
+- `addons/crm_iap_mine/views/mail_templates.xml`
+- `addons/crm_iap_mine/views/res_config_settings_views.xml`

@@ -1,126 +1,184 @@
 # Module: pos_qfpay
 
 - **Module ID:** MOD-444
-- **Path:** `addons/pos_qfpay`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/pos_qfpay`
 - **Manifest:** `addons/pos_qfpay/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Sales/Point of Sale`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Integrate your POS with the QFPay terminal in Hong Kong
+**Purpose:** Integrate your POS with the QFPay terminal in Hong Kong
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `point_of_sale`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 64 files, including 8 Python, 1 XML, and 5 JavaScript/TypeScript files. The manifest declares dependencies: `point_of_sale`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 8 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 2 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 5 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 1
+- Controller/API files: 2
+- XML/data/view/template files: 1
+- Browser asset files: 5
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "point_of_sale"
-  ],
-  "data": [
-    "views/pos_payment_method_views.xml"
-  ],
-  "assets": {
-    "point_of_sale._assets_pos": [
-      "pos_qfpay/static/src/**/*"
-    ],
-    "web.assets_tests": [
-      "pos_qfpay/static/src/app/qfpay.js",
-      "pos_qfpay/static/tests/tours/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** Not found in module
 
-- `addons/pos_qfpay/__init__.py` (3 lines)
-- `addons/pos_qfpay/__manifest__.py` (22 lines)
-- `addons/pos_qfpay/controllers/__init__.py` (2 lines)
-- `addons/pos_qfpay/controllers/main.py` (49 lines)
-- `addons/pos_qfpay/data/neutralize.sql` (3 lines)
-- `addons/pos_qfpay/i18n/ar.po` (191 lines)
-- `addons/pos_qfpay/i18n/az.po` (184 lines)
-- `addons/pos_qfpay/i18n/bg.po` (184 lines)
-- `addons/pos_qfpay/i18n/bs.po` (186 lines)
-- `addons/pos_qfpay/i18n/ca.po` (185 lines)
-- `addons/pos_qfpay/i18n/cs.po` (185 lines)
-- `addons/pos_qfpay/i18n/da.po` (184 lines)
-- `addons/pos_qfpay/i18n/de.po` (198 lines)
-- `addons/pos_qfpay/i18n/el.po` (184 lines)
-- `addons/pos_qfpay/i18n/es.po` (195 lines)
-- `addons/pos_qfpay/i18n/es_419.po` (197 lines)
-- `addons/pos_qfpay/i18n/et.po` (184 lines)
-- `addons/pos_qfpay/i18n/fa.po` (184 lines)
-- `addons/pos_qfpay/i18n/fi.po` (190 lines)
-- `addons/pos_qfpay/i18n/fr.po` (199 lines)
-- `addons/pos_qfpay/i18n/he.po` (185 lines)
-- `addons/pos_qfpay/i18n/hi.po` (184 lines)
-- `addons/pos_qfpay/i18n/hr.po` (185 lines)
-- `addons/pos_qfpay/i18n/hu.po` (184 lines)
-- `addons/pos_qfpay/i18n/id.po` (192 lines)
-- `addons/pos_qfpay/i18n/it.po` (198 lines)
-- `addons/pos_qfpay/i18n/ja.po` (193 lines)
-- `addons/pos_qfpay/i18n/kab.po` (185 lines)
-- `addons/pos_qfpay/i18n/ko.po` (185 lines)
-- `addons/pos_qfpay/i18n/ku.po` (184 lines)
-- `addons/pos_qfpay/i18n/lo.po` (184 lines)
-- `addons/pos_qfpay/i18n/lt.po` (186 lines)
-- `addons/pos_qfpay/i18n/lv.po` (185 lines)
-- `addons/pos_qfpay/i18n/mn.po` (184 lines)
-- `addons/pos_qfpay/i18n/my.po` (185 lines)
-- `addons/pos_qfpay/i18n/nb.po` (184 lines)
-- `addons/pos_qfpay/i18n/nl.po` (198 lines)
-- `addons/pos_qfpay/i18n/pl.po` (198 lines)
-- `addons/pos_qfpay/i18n/pos_qfpay.pot` (181 lines)
-- `addons/pos_qfpay/i18n/pt.po` (184 lines)
-- `addons/pos_qfpay/i18n/pt_BR.po` (196 lines)
-- `addons/pos_qfpay/i18n/ro.po` (196 lines)
-- `addons/pos_qfpay/i18n/ru.po` (191 lines)
-- `addons/pos_qfpay/i18n/sk.po` (184 lines)
-- `addons/pos_qfpay/i18n/sl.po` (185 lines)
-- `addons/pos_qfpay/i18n/sr@latin.po` (185 lines)
-- `addons/pos_qfpay/i18n/sv.po` (185 lines)
-- `addons/pos_qfpay/i18n/th.po` (185 lines)
-- `addons/pos_qfpay/i18n/tr.po` (197 lines)
-- `addons/pos_qfpay/i18n/uk.po` (185 lines)
-- `addons/pos_qfpay/i18n/uz.po` (225 lines)
-- `addons/pos_qfpay/i18n/vi.po` (190 lines)
-- `addons/pos_qfpay/i18n/zh_CN.po` (188 lines)
-- `addons/pos_qfpay/i18n/zh_TW.po` (188 lines)
-- `addons/pos_qfpay/models/__init__.py` (2 lines)
-- `addons/pos_qfpay/models/pos_payment_method.py` (83 lines)
-- `addons/pos_qfpay/static/src/app/payment_qfpay.js` (166 lines)
-- `addons/pos_qfpay/static/src/app/qfpay.js` (64 lines)
-- `addons/pos_qfpay/static/src/app/services/pos_store.js` (14 lines)
-- `addons/pos_qfpay/static/tests/tours/qfpay_tour.js` (99 lines)
-- `addons/pos_qfpay/static/tests/tours/utils/common.js` (73 lines)
-- `addons/pos_qfpay/tests/__init__.py` (3 lines)
-- `addons/pos_qfpay/tests/test_basic.py` (33 lines)
-- `addons/pos_qfpay/views/pos_payment_method_views.xml` (30 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 1 model declarations, 8 methods, 1 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/pos_qfpay/models/pos_payment_method.py:12`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### HTTP/API surface
+
+- **Description:** 2 controller files and 1 route declarations.
+- **Evidence:** `addons/pos_qfpay/controllers/main.py:13`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 1 XML files and 5 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/pos_qfpay/views/pos_payment_method_views.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/pos_qfpay/tests/__init__.py`, `addons/pos_qfpay/tests/test_basic.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `pos_payment_method_view_form`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/pos_qfpay/views/pos_payment_method_views.xml:5`, `addons/pos_qfpay/views/pos_payment_method_views.xml:7`
+- Browser assets: 5; representative files: `addons/pos_qfpay/static/src/app/qfpay.js`, `addons/pos_qfpay/static/src/app/payment_qfpay.js`, `addons/pos_qfpay/static/src/app/services/pos_store.js`, `addons/pos_qfpay/static/tests/tours/qfpay_tour.js`, `addons/pos_qfpay/static/tests/tours/utils/common.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/pos_qfpay/__manifest__.py`
+- **HTTP entry points:** `addons/pos_qfpay/controllers/main.py:13`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: inherits `pos.payment.method` (addons/pos_qfpay/models/pos_payment_method.py:12)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 2
+- Route declarations: 1
+- Route evidence: `addons/pos_qfpay/controllers/main.py:13`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `point_of_sale`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/pos_qfpay/__init__.py`
+- `addons/pos_qfpay/__manifest__.py`
+- `addons/pos_qfpay/controllers/__init__.py`
+- `addons/pos_qfpay/controllers/main.py`
+- `addons/pos_qfpay/data/neutralize.sql`
+- `addons/pos_qfpay/i18n/ar.po`
+- `addons/pos_qfpay/i18n/az.po`
+- `addons/pos_qfpay/i18n/bg.po`
+- `addons/pos_qfpay/i18n/bs.po`
+- `addons/pos_qfpay/i18n/ca.po`
+- `addons/pos_qfpay/i18n/cs.po`
+- `addons/pos_qfpay/i18n/da.po`
+- `addons/pos_qfpay/i18n/de.po`
+- `addons/pos_qfpay/i18n/el.po`
+- `addons/pos_qfpay/i18n/es.po`
+- `addons/pos_qfpay/i18n/es_419.po`
+- `addons/pos_qfpay/i18n/et.po`
+- `addons/pos_qfpay/i18n/fa.po`
+- `addons/pos_qfpay/i18n/fi.po`
+- `addons/pos_qfpay/i18n/fr.po`
+- `addons/pos_qfpay/i18n/he.po`
+- `addons/pos_qfpay/i18n/hi.po`
+- `addons/pos_qfpay/i18n/hr.po`
+- `addons/pos_qfpay/i18n/hu.po`
+- `addons/pos_qfpay/i18n/id.po`
+- `addons/pos_qfpay/i18n/it.po`
+- `addons/pos_qfpay/i18n/ja.po`
+- `addons/pos_qfpay/i18n/kab.po`
+- `addons/pos_qfpay/i18n/ko.po`
+- `addons/pos_qfpay/i18n/ku.po`
+- `addons/pos_qfpay/i18n/lo.po`
+- `addons/pos_qfpay/i18n/lt.po`
+- `addons/pos_qfpay/i18n/lv.po`
+- `addons/pos_qfpay/i18n/mn.po`
+- `addons/pos_qfpay/i18n/my.po`
+- `addons/pos_qfpay/i18n/nb.po`
+- `addons/pos_qfpay/i18n/nl.po`
+- `addons/pos_qfpay/i18n/pl.po`
+- `addons/pos_qfpay/i18n/pos_qfpay.pot`
+- `addons/pos_qfpay/i18n/pt.po`
+- `addons/pos_qfpay/i18n/pt_BR.po`
+- `addons/pos_qfpay/i18n/ro.po`
+- `addons/pos_qfpay/i18n/ru.po`
+- `addons/pos_qfpay/i18n/sk.po`
+- `addons/pos_qfpay/i18n/sl.po`
+- `addons/pos_qfpay/i18n/sr@latin.po`
+- `addons/pos_qfpay/i18n/sv.po`
+- `addons/pos_qfpay/i18n/th.po`
+- `addons/pos_qfpay/i18n/tr.po`
+- `addons/pos_qfpay/i18n/uk.po`
+- `addons/pos_qfpay/i18n/uz.po`
+- `addons/pos_qfpay/i18n/vi.po`
+- `addons/pos_qfpay/i18n/zh_CN.po`
+- `addons/pos_qfpay/i18n/zh_TW.po`
+- `addons/pos_qfpay/models/__init__.py`
+- `addons/pos_qfpay/models/pos_payment_method.py`
+- `addons/pos_qfpay/static/src/app/payment_qfpay.js`
+- `addons/pos_qfpay/static/src/app/qfpay.js`
+- `addons/pos_qfpay/static/src/app/services/pos_store.js`
+- `addons/pos_qfpay/static/tests/tours/qfpay_tour.js`
+- `addons/pos_qfpay/static/tests/tours/utils/common.js`
+- `addons/pos_qfpay/tests/__init__.py`
+- `addons/pos_qfpay/tests/test_basic.py`
+- `addons/pos_qfpay/views/pos_payment_method_views.xml`

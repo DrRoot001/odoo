@@ -1,165 +1,208 @@
 # Module: website_sale_slides
 
 - **Module ID:** MOD-641
-- **Path:** `addons/website_sale_slides`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/website_sale_slides`
 - **Manifest:** `addons/website_sale_slides/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Website/eLearning`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Sell your courses online
+**Purpose:** Sell your courses online
+
+**Manifest description:**
 
 Sell your courses using the e-commerce features of the website.
 
-Declared dependencies: `website_slides`, `website_sale`.
+**Scope evidence:** The module contains 88 files, including 14 Python, 14 XML, and 5 JavaScript/TypeScript files. The manifest declares dependencies: `website_slides`, `website_sale`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 14 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 6 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 3 | Files under `controllers/` or `controllers.py`. |
-| XML files | 14 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 5 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 1 | Static decorator matches. |
+- Model/business logic files: 5
+- Controller/API files: 3
+- XML/data/view/template files: 14
+- Browser asset files: 5
+- Security files: 0
+- Test files: 3
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "website_slides",
-    "website_sale"
-  ],
-  "data": [
-    "data/product_data.xml",
-    "report/sale_report_views.xml",
-    "views/website_slides_menu_views.xml",
-    "views/product_template_views.xml",
-    "views/slide_channel_views.xml",
-    "views/website_sale_templates.xml",
-    "views/website_slides_templates.xml"
-  ],
-  "demo": [
-    "data/product_demo.xml",
-    "data/slide_demo.xml",
-    "data/sale_order_demo.xml"
-  ],
-  "assets": {
-    "web.assets_frontend": [
-      "website_sale_slides/static/src/interactions/**/*",
-      "website_sale_slides/static/src/xml/**/*"
-    ],
-    "web.assets_tests": [
-      "website_sale_slides/static/tests/tours/*.js"
-    ],
-    "website.website_builder_assets": [
-      "website_sale_slides/static/src/website_builder/**/*"
-    ]
-  }
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/website_sale_slides/__init__.py` (5 lines)
-- `addons/website_sale_slides/__manifest__.py` (37 lines)
-- `addons/website_sale_slides/controllers/__init__.py` (5 lines)
-- `addons/website_sale_slides/controllers/sale.py` (21 lines)
-- `addons/website_sale_slides/controllers/slides.py` (31 lines)
-- `addons/website_sale_slides/data/product_data.xml` (13 lines)
-- `addons/website_sale_slides/data/product_demo.xml` (44 lines)
-- `addons/website_sale_slides/data/sale_order_demo.xml` (90 lines)
-- `addons/website_sale_slides/data/slide_demo.xml` (23 lines)
-- `addons/website_sale_slides/i18n/ar.po` (343 lines)
-- `addons/website_sale_slides/i18n/az.po` (335 lines)
-- `addons/website_sale_slides/i18n/bg.po` (335 lines)
-- `addons/website_sale_slides/i18n/bs.po` (337 lines)
-- `addons/website_sale_slides/i18n/ca.po` (339 lines)
-- `addons/website_sale_slides/i18n/cs.po` (342 lines)
-- `addons/website_sale_slides/i18n/da.po` (343 lines)
-- `addons/website_sale_slides/i18n/de.po` (348 lines)
-- `addons/website_sale_slides/i18n/el.po` (336 lines)
-- `addons/website_sale_slides/i18n/es.po` (347 lines)
-- `addons/website_sale_slides/i18n/es_419.po` (341 lines)
-- `addons/website_sale_slides/i18n/et.po` (336 lines)
-- `addons/website_sale_slides/i18n/fa.po` (335 lines)
-- `addons/website_sale_slides/i18n/fi.po` (340 lines)
-- `addons/website_sale_slides/i18n/fr.po` (347 lines)
-- `addons/website_sale_slides/i18n/he.po` (344 lines)
-- `addons/website_sale_slides/i18n/hi.po` (335 lines)
-- `addons/website_sale_slides/i18n/hr.po` (344 lines)
-- `addons/website_sale_slides/i18n/hu.po` (348 lines)
-- `addons/website_sale_slides/i18n/id.po` (342 lines)
-- `addons/website_sale_slides/i18n/it.po` (346 lines)
-- `addons/website_sale_slides/i18n/ja.po` (339 lines)
-- `addons/website_sale_slides/i18n/kab.po` (336 lines)
-- `addons/website_sale_slides/i18n/ko.po` (337 lines)
-- `addons/website_sale_slides/i18n/ku.po` (335 lines)
-- `addons/website_sale_slides/i18n/lo.po` (338 lines)
-- `addons/website_sale_slides/i18n/lt.po` (350 lines)
-- `addons/website_sale_slides/i18n/lv.po` (336 lines)
-- `addons/website_sale_slides/i18n/mn.po` (343 lines)
-- `addons/website_sale_slides/i18n/my.po` (336 lines)
-- `addons/website_sale_slides/i18n/nb.po` (341 lines)
-- `addons/website_sale_slides/i18n/nl.po` (348 lines)
-- `addons/website_sale_slides/i18n/pl.po` (352 lines)
-- `addons/website_sale_slides/i18n/pt.po` (349 lines)
-- `addons/website_sale_slides/i18n/pt_BR.po` (349 lines)
-- `addons/website_sale_slides/i18n/ro.po` (344 lines)
-- `addons/website_sale_slides/i18n/ru.po` (343 lines)
-- `addons/website_sale_slides/i18n/sk.po` (335 lines)
-- `addons/website_sale_slides/i18n/sl.po` (337 lines)
-- `addons/website_sale_slides/i18n/sr@latin.po` (337 lines)
-- `addons/website_sale_slides/i18n/sv.po` (341 lines)
-- `addons/website_sale_slides/i18n/th.po` (337 lines)
-- `addons/website_sale_slides/i18n/tr.po` (353 lines)
-- `addons/website_sale_slides/i18n/uk.po` (342 lines)
-- `addons/website_sale_slides/i18n/uz.po` (396 lines)
-- `addons/website_sale_slides/i18n/vi.po` (345 lines)
-- `addons/website_sale_slides/i18n/website_sale_slides.pot` (332 lines)
-- `addons/website_sale_slides/i18n/zh_CN.po` (344 lines)
-- `addons/website_sale_slides/i18n/zh_TW.po` (340 lines)
-- `addons/website_sale_slides/models/__init__.py` (7 lines)
-- `addons/website_sale_slides/models/product_product.py` (28 lines)
-- `addons/website_sale_slides/models/product_template.py` (24 lines)
-- `addons/website_sale_slides/models/sale_order.py` (40 lines)
-- `addons/website_sale_slides/models/sale_order_line.py` (11 lines)
-- `addons/website_sale_slides/models/slide_channel.py` (94 lines)
-- `addons/website_sale_slides/report/sale_report_views.xml` (28 lines)
-- `addons/website_sale_slides/static/img/channel_demo_furniture_2.jpg` (498 lines)
-- `addons/website_sale_slides/static/img/channel_demo_tree_1.jpg` (354 lines)
-- `addons/website_sale_slides/static/img/default_course_product.jpg` (419 lines)
-- `addons/website_sale_slides/static/img/flower_pot.jpg` (279 lines)
-- `addons/website_sale_slides/static/img/product_course.jpg` (450 lines)
-- `addons/website_sale_slides/static/img/water_can.jpg` (584 lines)
-- `addons/website_sale_slides/static/src/interactions/slides_course_fullscreen.js` (16 lines)
-- `addons/website_sale_slides/static/src/interactions/slides_course_join.js` (31 lines)
-- `addons/website_sale_slides/static/src/interactions/slides_course_quiz_edit.js` (19 lines)
-- `addons/website_sale_slides/static/src/website_builder/course_page_option.xml` (21 lines)
-- `addons/website_sale_slides/static/src/xml/slide_course_join.xml` (15 lines)
-- `addons/website_sale_slides/static/src/xml/website_sale_slides_quiz.xml` (15 lines)
-- `addons/website_sale_slides/static/src/xml/website_slides_unsubscribe.xml` (18 lines)
-- `addons/website_sale_slides/static/tests/tours/slides_course_member_invited_logged.js` (41 lines)
-- `addons/website_sale_slides/static/tests/tours/slides_course_member_invited_public.js` (58 lines)
-- `addons/website_sale_slides/tests/__init__.py` (5 lines)
-- `addons/website_sale_slides/tests/test_course_purchase_flow.py` (126 lines)
-- `addons/website_sale_slides/tests/test_ui_website_sale_slides.py` (39 lines)
-- `addons/website_sale_slides/views/product_template_views.xml` (13 lines)
-- `addons/website_sale_slides/views/slide_channel_views.xml` (80 lines)
-- `addons/website_sale_slides/views/website_sale_templates.xml` (56 lines)
-- `addons/website_sale_slides/views/website_slides_menu_views.xml` (8 lines)
-- `addons/website_sale_slides/views/website_slides_templates.xml` (198 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 5 model declarations, 25 methods, 0 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/website_sale_slides/models/sale_order.py:6`, `addons/website_sale_slides/models/product_product.py:7`, `addons/website_sale_slides/models/slide_channel.py:7`, `addons/website_sale_slides/models/product_template.py:7`, `addons/website_sale_slides/models/sale_order_line.py:6`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 3 controller files and 1 route declarations.
+- **Evidence:** `addons/website_sale_slides/controllers/slides.py:11`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 14 XML files and 5 JavaScript/TypeScript files; static XML analysis found 38 record/template/menu identifiers.
+- **Evidence:** `addons/website_sale_slides/report/sale_report_views.xml:3`, `addons/website_sale_slides/report/sale_report_views.xml:14`, `addons/website_sale_slides/data/slide_demo.xml:5`, `addons/website_sale_slides/data/slide_demo.xml:12`, `addons/website_sale_slides/data/slide_demo.xml:19`, `addons/website_sale_slides/data/product_data.xml:2`, `addons/website_sale_slides/data/sale_order_demo.xml:7`, `addons/website_sale_slides/data/sale_order_demo.xml:18`, `addons/website_sale_slides/data/sale_order_demo.xml:24`, `addons/website_sale_slides/data/sale_order_demo.xml:34`, `addons/website_sale_slides/data/sale_order_demo.xml:39`, `addons/website_sale_slides/data/sale_order_demo.xml:48`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/website_sale_slides/tests/test_course_purchase_flow.py`, `addons/website_sale_slides/tests/__init__.py`, `addons/website_sale_slides/tests/test_ui_website_sale_slides.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 14; representative identifiers: `sale_report_view_graph_slides`, `sale_report_action_slides`, `website_slides.slide_channel_demo_1_gard1`, `website_slides.slide_channel_demo_5_furn2`, `website_slides.slide_channel_demo_6_furn3`, `default_product_course`, `sale_order_course_1`, `sale_order_course_1_line_1`, `sale_order_course_2`, `sale_order_course_2_line_1`, `sale_order_course_2_line_2`, `sale_order_course_3`, `sale_order_course_3_line_1`, `website_sale_slides_activity_1`, `website_sale_slides_activity_2`, `product_course_channel_1`, `product_course_channel_5`, `product_course_channel_6`, `lesson_content_quiz`, `slide_aside_training_category_buy_course`
+- Menus: 1; representative evidence: `addons/website_sale_slides/views/website_slides_menu_views.xml:3`
+- Templates: 14; representative evidence: `addons/website_sale_slides/views/website_slides_templates.xml:5`, `addons/website_sale_slides/views/website_slides_templates.xml:16`, `addons/website_sale_slides/views/website_slides_templates.xml:25`, `addons/website_sale_slides/views/website_slides_templates.xml:39`, `addons/website_sale_slides/views/website_slides_templates.xml:53`, `addons/website_sale_slides/views/website_slides_templates.xml:64`, `addons/website_sale_slides/views/website_slides_templates.xml:74`, `addons/website_sale_slides/views/website_slides_templates.xml:86`, `addons/website_sale_slides/views/website_slides_templates.xml:96`, `addons/website_sale_slides/views/website_slides_templates.xml:113`, `addons/website_sale_slides/views/website_slides_templates.xml:179`, `addons/website_sale_slides/views/website_sale_templates.xml:4`
+- View/action field declarations: 14; representative evidence: `addons/website_sale_slides/report/sale_report_views.xml:5`, `addons/website_sale_slides/report/sale_report_views.xml:6`, `addons/website_sale_slides/report/sale_report_views.xml:16`, `addons/website_sale_slides/report/sale_report_views.xml:17`, `addons/website_sale_slides/views/product_template_views.xml:5`, `addons/website_sale_slides/views/product_template_views.xml:7`, `addons/website_sale_slides/views/slide_channel_views.xml:5`, `addons/website_sale_slides/views/slide_channel_views.xml:7`, `addons/website_sale_slides/views/slide_channel_views.xml:37`, `addons/website_sale_slides/views/slide_channel_views.xml:39`, `addons/website_sale_slides/views/slide_channel_views.xml:48`, `addons/website_sale_slides/views/slide_channel_views.xml:50`
+- Browser assets: 5; representative files: `addons/website_sale_slides/static/src/interactions/slides_course_fullscreen.js`, `addons/website_sale_slides/static/src/interactions/slides_course_join.js`, `addons/website_sale_slides/static/src/interactions/slides_course_quiz_edit.js`, `addons/website_sale_slides/static/tests/tours/slides_course_member_invited_logged.js`, `addons/website_sale_slides/static/tests/tours/slides_course_member_invited_public.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/website_sale_slides/__manifest__.py`
+- **HTTP entry points:** `addons/website_sale_slides/controllers/slides.py:11`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 5
+- Representative model evidence: inherits `sale.order` (addons/website_sale_slides/models/sale_order.py:6); inherits `product.product` (addons/website_sale_slides/models/product_product.py:7); inherits `slide.channel` (addons/website_sale_slides/models/slide_channel.py:7); inherits `product.template` (addons/website_sale_slides/models/product_template.py:7); inherits `sale.order.line` (addons/website_sale_slides/models/sale_order_line.py:6)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 3
+- Route declarations: 1
+- Route evidence: `addons/website_sale_slides/controllers/slides.py:11`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `website_slides`, `website_sale`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/website_sale_slides/__init__.py`
+- `addons/website_sale_slides/__manifest__.py`
+- `addons/website_sale_slides/controllers/__init__.py`
+- `addons/website_sale_slides/controllers/sale.py`
+- `addons/website_sale_slides/controllers/slides.py`
+- `addons/website_sale_slides/data/product_data.xml`
+- `addons/website_sale_slides/data/product_demo.xml`
+- `addons/website_sale_slides/data/sale_order_demo.xml`
+- `addons/website_sale_slides/data/slide_demo.xml`
+- `addons/website_sale_slides/i18n/ar.po`
+- `addons/website_sale_slides/i18n/az.po`
+- `addons/website_sale_slides/i18n/bg.po`
+- `addons/website_sale_slides/i18n/bs.po`
+- `addons/website_sale_slides/i18n/ca.po`
+- `addons/website_sale_slides/i18n/cs.po`
+- `addons/website_sale_slides/i18n/da.po`
+- `addons/website_sale_slides/i18n/de.po`
+- `addons/website_sale_slides/i18n/el.po`
+- `addons/website_sale_slides/i18n/es.po`
+- `addons/website_sale_slides/i18n/es_419.po`
+- `addons/website_sale_slides/i18n/et.po`
+- `addons/website_sale_slides/i18n/fa.po`
+- `addons/website_sale_slides/i18n/fi.po`
+- `addons/website_sale_slides/i18n/fr.po`
+- `addons/website_sale_slides/i18n/he.po`
+- `addons/website_sale_slides/i18n/hi.po`
+- `addons/website_sale_slides/i18n/hr.po`
+- `addons/website_sale_slides/i18n/hu.po`
+- `addons/website_sale_slides/i18n/id.po`
+- `addons/website_sale_slides/i18n/it.po`
+- `addons/website_sale_slides/i18n/ja.po`
+- `addons/website_sale_slides/i18n/kab.po`
+- `addons/website_sale_slides/i18n/ko.po`
+- `addons/website_sale_slides/i18n/ku.po`
+- `addons/website_sale_slides/i18n/lo.po`
+- `addons/website_sale_slides/i18n/lt.po`
+- `addons/website_sale_slides/i18n/lv.po`
+- `addons/website_sale_slides/i18n/mn.po`
+- `addons/website_sale_slides/i18n/my.po`
+- `addons/website_sale_slides/i18n/nb.po`
+- `addons/website_sale_slides/i18n/nl.po`
+- `addons/website_sale_slides/i18n/pl.po`
+- `addons/website_sale_slides/i18n/pt.po`
+- `addons/website_sale_slides/i18n/pt_BR.po`
+- `addons/website_sale_slides/i18n/ro.po`
+- `addons/website_sale_slides/i18n/ru.po`
+- `addons/website_sale_slides/i18n/sk.po`
+- `addons/website_sale_slides/i18n/sl.po`
+- `addons/website_sale_slides/i18n/sr@latin.po`
+- `addons/website_sale_slides/i18n/sv.po`
+- `addons/website_sale_slides/i18n/th.po`
+- `addons/website_sale_slides/i18n/tr.po`
+- `addons/website_sale_slides/i18n/uk.po`
+- `addons/website_sale_slides/i18n/uz.po`
+- `addons/website_sale_slides/i18n/vi.po`
+- `addons/website_sale_slides/i18n/website_sale_slides.pot`
+- `addons/website_sale_slides/i18n/zh_CN.po`
+- `addons/website_sale_slides/i18n/zh_TW.po`
+- `addons/website_sale_slides/models/__init__.py`
+- `addons/website_sale_slides/models/product_product.py`
+- `addons/website_sale_slides/models/product_template.py`
+- `addons/website_sale_slides/models/sale_order.py`
+- `addons/website_sale_slides/models/sale_order_line.py`
+- `addons/website_sale_slides/models/slide_channel.py`
+- `addons/website_sale_slides/report/sale_report_views.xml`
+- `addons/website_sale_slides/static/img/channel_demo_furniture_2.jpg`
+- `addons/website_sale_slides/static/img/channel_demo_tree_1.jpg`
+- `addons/website_sale_slides/static/img/default_course_product.jpg`
+- `addons/website_sale_slides/static/img/flower_pot.jpg`
+- `addons/website_sale_slides/static/img/product_course.jpg`
+- `addons/website_sale_slides/static/img/water_can.jpg`
+- `addons/website_sale_slides/static/src/interactions/slides_course_fullscreen.js`
+- `addons/website_sale_slides/static/src/interactions/slides_course_join.js`
+- `addons/website_sale_slides/static/src/interactions/slides_course_quiz_edit.js`
+- `addons/website_sale_slides/static/src/website_builder/course_page_option.xml`
+- `addons/website_sale_slides/static/src/xml/slide_course_join.xml`
+- `addons/website_sale_slides/static/src/xml/website_sale_slides_quiz.xml`
+- `addons/website_sale_slides/static/src/xml/website_slides_unsubscribe.xml`
+- `addons/website_sale_slides/static/tests/tours/slides_course_member_invited_logged.js`
+- `addons/website_sale_slides/static/tests/tours/slides_course_member_invited_public.js`
+- `addons/website_sale_slides/tests/__init__.py`
+- `addons/website_sale_slides/tests/test_course_purchase_flow.py`
+- `addons/website_sale_slides/tests/test_ui_website_sale_slides.py`
+- `addons/website_sale_slides/views/product_template_views.xml`
+- `addons/website_sale_slides/views/slide_channel_views.xml`
+- `addons/website_sale_slides/views/website_sale_templates.xml`
+- `addons/website_sale_slides/views/website_slides_menu_views.xml`
+- `addons/website_sale_slides/views/website_slides_templates.xml`

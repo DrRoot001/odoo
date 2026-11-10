@@ -1,133 +1,188 @@
 # Module: hr_recruitment_skills
 
 - **Module ID:** MOD-095
-- **Path:** `addons/hr_recruitment_skills`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/hr_recruitment_skills`
 - **Manifest:** `addons/hr_recruitment_skills/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Human Resources/Recruitment`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Manage skills of your employees
+**Purpose:** Manage skills of your employees
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `hr_skills`, `hr_recruitment`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 68 files, including 9 Python, 6 XML, and 2 JavaScript/TypeScript files. The manifest declares dependencies: `hr_skills`, `hr_recruitment`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 9 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 4 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 6 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 2 | Client behavior/assets. |
-| Tests | 3 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 3
+- Controller/API files: 0
+- XML/data/view/template files: 6
+- Browser asset files: 2
+- Security files: 1
+- Test files: 3
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "hr_skills",
-    "hr_recruitment"
-  ],
-  "data": [
-    "views/hr_applicant_views.xml",
-    "views/hr_applicant_skill_views.xml",
-    "views/hr_job_views.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/hr_recruitment_skills_demo.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "hr_recruitment_skills/static/src/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/hr_recruitment_skills/security/ir.access.csv`
 
-- `addons/hr_recruitment_skills/__init__.py` (4 lines)
-- `addons/hr_recruitment_skills/__manifest__.py` (26 lines)
-- `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml` (92 lines)
-- `addons/hr_recruitment_skills/i18n/ar.po` (327 lines)
-- `addons/hr_recruitment_skills/i18n/az.po` (323 lines)
-- `addons/hr_recruitment_skills/i18n/bg.po` (323 lines)
-- `addons/hr_recruitment_skills/i18n/bs.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/ca.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/cs.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/da.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/de.po` (330 lines)
-- `addons/hr_recruitment_skills/i18n/el.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/es.po` (330 lines)
-- `addons/hr_recruitment_skills/i18n/es_419.po` (329 lines)
-- `addons/hr_recruitment_skills/i18n/et.po` (323 lines)
-- `addons/hr_recruitment_skills/i18n/fa.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/fi.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/fr.po` (329 lines)
-- `addons/hr_recruitment_skills/i18n/he.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/hi.po` (323 lines)
-- `addons/hr_recruitment_skills/i18n/hr.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/hr_recruitment_skills.pot` (319 lines)
-- `addons/hr_recruitment_skills/i18n/hu.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/id.po` (326 lines)
-- `addons/hr_recruitment_skills/i18n/it.po` (327 lines)
-- `addons/hr_recruitment_skills/i18n/ja.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/kab.po` (323 lines)
-- `addons/hr_recruitment_skills/i18n/ko.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/ku.po` (323 lines)
-- `addons/hr_recruitment_skills/i18n/lo.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/lt.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/lv.po` (323 lines)
-- `addons/hr_recruitment_skills/i18n/mn.po` (323 lines)
-- `addons/hr_recruitment_skills/i18n/my.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/nb.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/nl.po` (327 lines)
-- `addons/hr_recruitment_skills/i18n/pl.po` (327 lines)
-- `addons/hr_recruitment_skills/i18n/pt.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/pt_BR.po` (328 lines)
-- `addons/hr_recruitment_skills/i18n/ro.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/ru.po` (328 lines)
-- `addons/hr_recruitment_skills/i18n/sk.po` (322 lines)
-- `addons/hr_recruitment_skills/i18n/sl.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/sr@latin.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/sv.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/th.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/tr.po` (327 lines)
-- `addons/hr_recruitment_skills/i18n/uk.po` (324 lines)
-- `addons/hr_recruitment_skills/i18n/uz.po` (368 lines)
-- `addons/hr_recruitment_skills/i18n/vi.po` (325 lines)
-- `addons/hr_recruitment_skills/i18n/zh_CN.po` (326 lines)
-- `addons/hr_recruitment_skills/i18n/zh_TW.po` (327 lines)
-- `addons/hr_recruitment_skills/models/__init__.py` (6 lines)
-- `addons/hr_recruitment_skills/models/hr_applicant.py` (236 lines)
-- `addons/hr_recruitment_skills/models/hr_applicant_skill.py` (36 lines)
-- `addons/hr_recruitment_skills/models/hr_job.py` (103 lines)
-- `addons/hr_recruitment_skills/security/ir.access.csv` (8 lines)
-- `addons/hr_recruitment_skills/static/src/components/match_scores_gauge/match_scores_gauge.js` (193 lines)
-- `addons/hr_recruitment_skills/static/src/components/match_scores_gauge/match_scores_gauge.xml` (19 lines)
-- `addons/hr_recruitment_skills/static/src/components/search_job_applicant_menu/search_job_applicant_menu.js` (52 lines)
-- `addons/hr_recruitment_skills/static/src/components/search_job_applicant_menu/search_job_applicant_menu.xml` (8 lines)
-- `addons/hr_recruitment_skills/static/src/scss/skills_one2many_recruitment.scss` (5 lines)
-- `addons/hr_recruitment_skills/tests/__init__.py` (4 lines)
-- `addons/hr_recruitment_skills/tests/test_applicant_skills.py` (638 lines)
-- `addons/hr_recruitment_skills/tests/test_recruitment_skills.py` (419 lines)
-- `addons/hr_recruitment_skills/views/hr_applicant_skill_views.xml` (44 lines)
-- `addons/hr_recruitment_skills/views/hr_applicant_views.xml` (198 lines)
-- `addons/hr_recruitment_skills/views/hr_job_views.xml` (49 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 3 model declarations, 59 methods, 0 constraint handlers, 0 onchange handlers, and 5 dependency declarations.
+- **Evidence:** `addons/hr_recruitment_skills/models/hr_applicant_skill.py:7`, `addons/hr_recruitment_skills/models/hr_job.py:8`, `addons/hr_recruitment_skills/models/hr_applicant.py:8`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 6 XML files and 2 JavaScript/TypeScript files; static XML analysis found 24 record/template/menu identifiers.
+- **Evidence:** `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:3`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:9`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:15`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:22`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:29`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:35`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:42`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:48`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:54`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:61`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:67`, `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml:73`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/hr_recruitment_skills/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 3 test files are present.
+- **Evidence:** `addons/hr_recruitment_skills/tests/test_recruitment_skills.py`, `addons/hr_recruitment_skills/tests/test_applicant_skills.py`, `addons/hr_recruitment_skills/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 6; representative identifiers: `hr_case_mkt0_skill_lang_en`, `hr_case_mkt0_skill_lang_fr`, `hr_case_mkt0_skill_softskill_org`, `hr_case_mkt1_skill_softskill_org`, `hr_case_mkt2_skill_lang_fr_b2`, `hr_case_mkt2_skill_lang_en_a1`, `hr_applicant_skill_dev0_go_beginner`, `hr_applicant_skill_dev0_html_expert`, `hr_applicant_skill_dev0_css_expert`, `hr_applicant_skill_dev1_go_beginner`, `hr_applicant_skill_dev1_html_beginner`, `hr_applicant_skill_dev1_css_beginner`, `hr_applicant_skill_dev2_go_intermediate`, `hr_applicant_skill_dev2_ruby_expert`, `hr_applicant_skill_view_form`, `Skill Types`, `hr_job_list_inherit_hr_recruitment_skills`, `view_hr_job_form`, `view_hr_job_kanban`, `hr_applicant_view_form`
+- Menus: 1; representative evidence: `addons/hr_recruitment_skills/views/hr_applicant_skill_views.xml:37`
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 18; representative evidence: `addons/hr_recruitment_skills/views/hr_applicant_skill_views.xml:5`, `addons/hr_recruitment_skills/views/hr_applicant_skill_views.xml:6`, `addons/hr_recruitment_skills/views/hr_job_views.xml:5`, `addons/hr_recruitment_skills/views/hr_job_views.xml:7`, `addons/hr_recruitment_skills/views/hr_job_views.xml:21`, `addons/hr_recruitment_skills/views/hr_job_views.xml:23`, `addons/hr_recruitment_skills/views/hr_job_views.xml:39`, `addons/hr_recruitment_skills/views/hr_job_views.xml:41`, `addons/hr_recruitment_skills/views/hr_applicant_views.xml:5`, `addons/hr_recruitment_skills/views/hr_applicant_views.xml:7`, `addons/hr_recruitment_skills/views/hr_applicant_views.xml:67`, `addons/hr_recruitment_skills/views/hr_applicant_views.xml:69`
+- Browser assets: 2; representative files: `addons/hr_recruitment_skills/static/src/components/match_scores_gauge/match_scores_gauge.js`, `addons/hr_recruitment_skills/static/src/components/search_job_applicant_menu/search_job_applicant_menu.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/hr_recruitment_skills/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 3
+- Representative model evidence: `hr.applicant.skill` (addons/hr_recruitment_skills/models/hr_applicant_skill.py:7); inherits `hr.job` (addons/hr_recruitment_skills/models/hr_job.py:8); inherits `hr.applicant` (addons/hr_recruitment_skills/models/hr_applicant.py:8)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `hr_skills`, `hr_recruitment`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/hr_recruitment_skills/__init__.py`
+- `addons/hr_recruitment_skills/__manifest__.py`
+- `addons/hr_recruitment_skills/data/hr_recruitment_skills_demo.xml`
+- `addons/hr_recruitment_skills/i18n/ar.po`
+- `addons/hr_recruitment_skills/i18n/az.po`
+- `addons/hr_recruitment_skills/i18n/bg.po`
+- `addons/hr_recruitment_skills/i18n/bs.po`
+- `addons/hr_recruitment_skills/i18n/ca.po`
+- `addons/hr_recruitment_skills/i18n/cs.po`
+- `addons/hr_recruitment_skills/i18n/da.po`
+- `addons/hr_recruitment_skills/i18n/de.po`
+- `addons/hr_recruitment_skills/i18n/el.po`
+- `addons/hr_recruitment_skills/i18n/es.po`
+- `addons/hr_recruitment_skills/i18n/es_419.po`
+- `addons/hr_recruitment_skills/i18n/et.po`
+- `addons/hr_recruitment_skills/i18n/fa.po`
+- `addons/hr_recruitment_skills/i18n/fi.po`
+- `addons/hr_recruitment_skills/i18n/fr.po`
+- `addons/hr_recruitment_skills/i18n/he.po`
+- `addons/hr_recruitment_skills/i18n/hi.po`
+- `addons/hr_recruitment_skills/i18n/hr.po`
+- `addons/hr_recruitment_skills/i18n/hr_recruitment_skills.pot`
+- `addons/hr_recruitment_skills/i18n/hu.po`
+- `addons/hr_recruitment_skills/i18n/id.po`
+- `addons/hr_recruitment_skills/i18n/it.po`
+- `addons/hr_recruitment_skills/i18n/ja.po`
+- `addons/hr_recruitment_skills/i18n/kab.po`
+- `addons/hr_recruitment_skills/i18n/ko.po`
+- `addons/hr_recruitment_skills/i18n/ku.po`
+- `addons/hr_recruitment_skills/i18n/lo.po`
+- `addons/hr_recruitment_skills/i18n/lt.po`
+- `addons/hr_recruitment_skills/i18n/lv.po`
+- `addons/hr_recruitment_skills/i18n/mn.po`
+- `addons/hr_recruitment_skills/i18n/my.po`
+- `addons/hr_recruitment_skills/i18n/nb.po`
+- `addons/hr_recruitment_skills/i18n/nl.po`
+- `addons/hr_recruitment_skills/i18n/pl.po`
+- `addons/hr_recruitment_skills/i18n/pt.po`
+- `addons/hr_recruitment_skills/i18n/pt_BR.po`
+- `addons/hr_recruitment_skills/i18n/ro.po`
+- `addons/hr_recruitment_skills/i18n/ru.po`
+- `addons/hr_recruitment_skills/i18n/sk.po`
+- `addons/hr_recruitment_skills/i18n/sl.po`
+- `addons/hr_recruitment_skills/i18n/sr@latin.po`
+- `addons/hr_recruitment_skills/i18n/sv.po`
+- `addons/hr_recruitment_skills/i18n/th.po`
+- `addons/hr_recruitment_skills/i18n/tr.po`
+- `addons/hr_recruitment_skills/i18n/uk.po`
+- `addons/hr_recruitment_skills/i18n/uz.po`
+- `addons/hr_recruitment_skills/i18n/vi.po`
+- `addons/hr_recruitment_skills/i18n/zh_CN.po`
+- `addons/hr_recruitment_skills/i18n/zh_TW.po`
+- `addons/hr_recruitment_skills/models/__init__.py`
+- `addons/hr_recruitment_skills/models/hr_applicant.py`
+- `addons/hr_recruitment_skills/models/hr_applicant_skill.py`
+- `addons/hr_recruitment_skills/models/hr_job.py`
+- `addons/hr_recruitment_skills/security/ir.access.csv`
+- `addons/hr_recruitment_skills/static/src/components/match_scores_gauge/match_scores_gauge.js`
+- `addons/hr_recruitment_skills/static/src/components/match_scores_gauge/match_scores_gauge.xml`
+- `addons/hr_recruitment_skills/static/src/components/search_job_applicant_menu/search_job_applicant_menu.js`
+- `addons/hr_recruitment_skills/static/src/components/search_job_applicant_menu/search_job_applicant_menu.xml`
+- `addons/hr_recruitment_skills/static/src/scss/skills_one2many_recruitment.scss`
+- `addons/hr_recruitment_skills/tests/__init__.py`
+- `addons/hr_recruitment_skills/tests/test_applicant_skills.py`
+- `addons/hr_recruitment_skills/tests/test_recruitment_skills.py`
+- `addons/hr_recruitment_skills/views/hr_applicant_skill_views.xml`
+- `addons/hr_recruitment_skills/views/hr_applicant_views.xml`
+- `addons/hr_recruitment_skills/views/hr_job_views.xml`

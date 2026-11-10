@@ -1,471 +1,387 @@
 # Module: project
 
 - **Module ID:** MOD-475
-- **Path:** `addons/project`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/project`
 - **Manifest:** `addons/project/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `True`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Services/Project`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Manage tasks and collaborate on projects
+**Purpose:** Manage tasks and collaborate on projects
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `analytic`, `base_setup`, `mail`, `portal_rating`, `resource`, `web`, `web_tour`, `digest`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 395 files, including 82 Python, 74 XML, and 145 JavaScript/TypeScript files. The manifest declares dependencies: `analytic`, `base_setup`, `mail`, `portal_rating`, `resource`, `web`, `web_tour`, `digest`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 82 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 23 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 4 | Files under `controllers/` or `controllers.py`. |
-| XML files | 74 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 145 | Client behavior/assets. |
-| Tests | 39 | Test files found by path/name convention. |
-| Security artifacts | 2 | Access CSV and/or security XML. |
-| Route declarations | 9 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 33
+- Controller/API files: 4
+- XML/data/view/template files: 74
+- Browser asset files: 145
+- Security files: 2
+- Test files: 39
+- Scheduled/automation evidence files: 6
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "analytic",
-    "base_setup",
-    "mail",
-    "portal_rating",
-    "resource",
-    "web",
-    "web_tour",
-    "digest"
-  ],
-  "data": [
-    "security/project_security.xml",
-    "data/digest_data.xml",
-    "data/portal_entry_data.xml",
-    "report/project_task_burndown_chart_report_views.xml",
-    "views/account_analytic_account_views.xml",
-    "views/digest_digest_views.xml",
-    "views/rating_rating_views.xml",
-    "views/project_update_views.xml",
-    "views/project_update_templates.xml",
-    "views/project_project_stage_views.xml",
-    "wizard/project_share_wizard_views.xml",
-    "views/project_task_type_views.xml",
-    "views/project_project_views.xml",
-    "views/project_task_views.xml",
-    "views/project_role_views.xml",
-    "views/project_tags_views.xml",
-    "views/project_milestone_views.xml",
-    "views/res_partner_views.xml",
-    "views/res_config_settings_views.xml",
-    "views/mail_activity_plan_views.xml",
-    "views/mail_activity_type_views.xml",
-    "views/project_sharing_project_task_views.xml",
-    "views/project_portal_project_project_templates.xml",
-    "views/project_portal_project_task_templates.xml",
-    "views/project_task_templates.xml",
-    "views/project_sharing_project_task_templates.xml",
-    "report/project_report_views.xml",
-    "report/project_time_by_stage_report_views.xml",
-    "data/ir_cron_data.xml",
-    "data/mail_message_subtype_data.xml",
-    "data/mail_template_data.xml",
-    "data/project_data.xml",
-    "data/project_tour.xml",
-    "wizard/project_task_type_delete_views.xml",
-    "wizard/project_task_share_wizard_views.xml",
-    "wizard/project_project_stage_delete_views.xml",
-    "wizard/project_template_create_wizard.xml",
-    "views/project_menus.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/mail_template_demo.xml",
-    "data/project_demo.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "project/static/src/css/project.css",
-      "project/static/src/core/web/**/*",
-      "project/static/src/utils/**/*",
-      "project/static/src/actions/client_actions.js",
-      "project/static/src/components/**/*",
-      "project/static/src/views/**/*",
-      "project/static/src/js/tours/project.js",
-      "project/static/src/scss/project_dashboard.scss",
-      "project/static/src/scss/project_form.scss",
-      "project/static/src/scss/project_widgets.scss",
-      "project/static/src/xml/**/*",
-      "project/static/src/webclient/**/*",
-      [
-        "remove",
-        "project/static/src/views/project_task_activity/**"
-      ],
-      [
-        "remove",
-        "project/static/src/views/project_task_graph/**"
-      ],
-      [
-        "remove",
-        "project/static/src/views/project_task_pivot/**"
-      ],
-      [
-        "remove",
-        "project/static/src/views/project_task_analysis_renderer_mixin.js"
-      ],
-      [
-        "remove",
-        "project/static/src/views/project_task_analysis_graph/**"
-      ],
-      [
-        "remove",
-        "project/static/src/views/project_task_analysis_pivot/**"
-      ],
-      [
-        "remove",
-        "project/static/src/views/burndown_chart/**"
-      ],
-      [
-        "remove",
-        "project/static/src/views/project_project_activity/**"
-      ]
-    ],
-    "web.assets_backend_lazy": [
-      "project/static/src/views/project_task_model_mixin",
-      "project/static/src/views/project_task_activity/**",
-      "project/static/src/views/project_task_graph/**",
-      "project/static/src/views/project_task_pivot/**",
-      "project/static/src/views/project_task_analysis_renderer_mixin.js",
-      "project/static/src/views/project_task_analysis_graph/**",
-      "project/static/src/views/project_task_analysis_pivot/**",
-      "project/static/src/views/burndown_chart/**",
-      "project/static/src/views/project_project_activity/**"
-    ],
-    "web.assets_frontend": [
-      "project/static/src/scss/portal_rating.scss"
-    ],
-    "web.assets_unit_tests": [
-      "project/static/tests/mock_server/**/*",
-      "project/static/tests/project_models.js",
-      "project/static/tests/**/*.test.js"
-    ],
-    "web.assets_tests": [
-      "project/static/tests/tours/**/*"
-    ],
-    "project.webclient": [
-      [
-        "include",
-        "web._assets_helpers"
-      ],
-      [
-        "include",
-        "web._assets_backend_helpers"
-      ],
-      "web/static/src/scss/pre_variables.scss",
-      "web/static/lib/bootstrap/scss/_variables.scss",
-      "web/static/lib/bootstrap/scss/_variables-dark.scss",
-      "web/static/lib/bootstrap/scss/_maps.scss",
-      [
-        "include",
-        "web._assets_bootstrap_backend"
-      ],
-      [
-        "include",
-        "web.icons_fonts"
-      ],
-      "web/static/src/webclient/navbar/navbar.scss",
-      "web/static/src/scss/animation.scss",
-      "web/static/src/scss/mimetypes.scss",
-      "web/static/src/scss/ui.scss",
-      "web/static/src/module_loader.js",
-      "web/static/src/session.js",
-      "web/static/lib/luxon/luxon.js",
-      "web/static/src/libs/luxon.js",
-      "web/static/lib/owl/owl.js",
-      "web/static/src/owl2/owl3_compatibility_layer.js",
-      "web/static/src/owl2/utils.js",
-      "web/static/lib/owl/odoo_module.js",
-      "web/static/lib/popper/popper.js",
-      "web/static/lib/bootstrap/js/dist/util/index.js",
-      "web/static/lib/bootstrap/js/dist/dom/data.js",
-      "web/static/lib/bootstrap/js/dist/dom/event-handler.js",
-      "web/static/lib/bootstrap/js/dist/dom/manipulator.js",
-      "web/static/lib/bootstrap/js/dist/dom/selector-engine.js",
-      "web/static/lib/bootstrap/js/dist/util/config.js",
-      "web/static/lib/bootstrap/js/dist/util/component-functions.js",
-      "web/static/lib/bootstrap/js/dist/util/backdrop.js",
-      "web/static/lib/bootstrap/js/dist/util/focustrap.js",
-      "web/static/lib/bootstrap/js/dist/util/sanitizer.js",
-      "web/static/lib/bootstrap/js/dist/util/scrollbar.js",
-      "web/static/lib/bootstrap/js/dist/util/swipe.js",
-      "web/static/lib/bootstrap/js/dist/util/template-factory.js",
-      "web/static/lib/bootstrap/js/dist/base-component.js",
-      "web/static/lib/bootstrap/js/dist/alert.js",
-      "web/static/lib/bootstrap/js/dist/button.js",
-      "web/static/lib/bootstrap/js/dist/carousel.js",
-      "web/static/lib/bootstrap/js/dist/collapse.js",
-      "web/static/lib/bootstrap/js/dist/dropdown.js",
-      "web/static/lib/bootstrap/js/dist/modal.js",
-      "web/static/lib/bootstrap/js/dist/offcanvas.js",
-      "web/static/lib/bootstrap/js/dist/tooltip.js",
-      "web/static/lib/bootstrap/js/dist/popover.js",
-      "web/static/lib/bootstrap/js/dist/scrollspy.js",
-      "web/static/lib/bootstrap/js/dist/tab.js",
-      "web/static/lib/bootstrap/js/dist/toast.js",
-      "web/static/lib/dompurify/DOMpurify.js",
-      "web/static/src/libs/bootstrap.js",
-      "base/static/src/css/modules.css",
-      "web/static/src/core/utils/transitions.scss",
-      "web/static/src/core/**/*",
-      "web/static/src/model/**/*",
-      "web/static/src/search/**/*",
-      "web/static/src/webclient/icons.scss",
-      "web/static/src/views/**/*.js",
-      "web/static/src/views/*.xml",
-      "web/static/src/views/*.scss",
-      "web/static/src/views/fields/**/*",
-      "web/static/src/views/form/**/*",
-      "web/static/src/views/card/**/*",
-      "web/static/src/views/kanban/**/*",
-      "web/static/src/views/list/**/*",
-      "web/static/src/views/view_button/**/*",
-      "web/static/src/views/view_components/**/*",
-      "web/static/src/views/view_dialogs/**/*",
-      "web/static/src/views/widgets/**/*",
-      "web/static/src/webclient/**/*",
-      [
-        "remove",
-        "web/static/src/webclient/clickbot/clickbot.js"
-      ],
-      [
-        "remove",
-        "web/static/src/views/form/button_box/*.scss"
-      ],
-      [
-        "remove",
-        "web/static/src/core/emoji_picker/emoji_data.js"
-      ],
-      [
-        "remove",
-        "web/static/src/webclient/actions/reports/**/*"
-      ],
-      "web/static/src/webclient/actions/reports/*.js",
-      "web/static/src/webclient/actions/reports/*.xml",
-      "web/static/src/env.js",
-      "base/static/src/scss/res_partner.scss",
-      "web/static/src/views/form/button_box/*.scss",
-      "bus/static/src/**/*.js",
-      [
-        "include",
-        "web_tour.assets"
-      ],
-      "web_tour/static/src/tour_pointer/tour_pointer.scss",
-      [
-        "include",
-        "html_editor.assets_editor"
-      ],
-      "html_editor/static/src/backend/**/*",
-      "html_editor/static/src/fields/**/*",
-      "html_editor/static/src/scss/html_editor.common.scss",
-      "html_editor/static/src/scss/base_style.scss",
-      "mail/static/src/scss/variables/*.scss",
-      "mail/static/src/chatter/web/form_renderer.scss",
-      "mail/static/src/views/fields/**/*",
-      "project/static/src/components/project_task_name_with_subtask_count_char_field/*",
-      "project/static/src/components/project_task_state_selection/*",
-      "project/static/src/components/project_many2one_field/*",
-      "project/static/src/views/project_task_form/*.scss",
-      "project/static/src/views/project_task_kanban/*.scss",
-      "project/static/src/views/project_task_control_panel/*",
-      "project/static/src/views/project_task_model_mixin.js",
-      "project/static/src/views/project_task_relational_model.js",
-      "project/static/src/views/project_model_mixin.js",
-      "project/static/src/views/project_relational_model.js",
-      [
-        "include",
-        "portal.assets_chatter_helpers"
-      ],
-      "portal/static/src/chatter/portal_project/**/*",
-      "project/static/src/project_sharing/**/*",
-      "web/static/src/start.js"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/project/security/ir.access.csv`, `addons/project/security/project_security.xml`
 
-- `addons/project/README.md` (69 lines)
-- `addons/project/__init__.py` (29 lines)
-- `addons/project/__manifest__.py` (239 lines)
-- `addons/project/controllers/__init__.py` (5 lines)
-- `addons/project/controllers/portal.py` (647 lines)
-- `addons/project/controllers/project_sharing_chatter.py` (30 lines)
-- `addons/project/controllers/webmanifest.py` (9 lines)
-- `addons/project/data/digest_data.xml` (144 lines)
-- `addons/project/data/ir_cron_data.xml` (10 lines)
-- `addons/project/data/mail_message_subtype_data.xml` (167 lines)
-- `addons/project/data/mail_template_data.xml` (137 lines)
-- `addons/project/data/mail_template_demo.xml` (26 lines)
-- `addons/project/data/portal_entry_data.xml` (22 lines)
-- `addons/project/data/project_data.xml` (72 lines)
-- `addons/project/data/project_demo.xml` (2,137 lines)
-- `addons/project/data/project_tour.xml` (8 lines)
-- `addons/project/doc/changelog.rst` (16 lines)
-- `addons/project/doc/index.rst` (22 lines)
-- `addons/project/doc/stage_status.rst` (55 lines)
-- `addons/project/i18n/af.po` (6,101 lines)
-- `addons/project/i18n/ar.po` (6,933 lines)
-- `addons/project/i18n/az.po` (6,314 lines)
-- `addons/project/i18n/bg.po` (6,331 lines)
-- `addons/project/i18n/bs.po` (6,279 lines)
-- `addons/project/i18n/ca.po` (6,704 lines)
-- `addons/project/i18n/cs.po` (6,481 lines)
-- `addons/project/i18n/da.po` (6,370 lines)
-- `addons/project/i18n/de.po` (7,299 lines)
-- `addons/project/i18n/el.po` (6,548 lines)
-- `addons/project/i18n/es.po` (7,164 lines)
-- `addons/project/i18n/es_419.po` (7,172 lines)
-- `addons/project/i18n/es_CL.po` (423 lines)
-- `addons/project/i18n/et.po` (6,909 lines)
-- `addons/project/i18n/eu.po` (6,099 lines)
-- `addons/project/i18n/fa.po` (6,475 lines)
-- `addons/project/i18n/fi.po` (7,146 lines)
-- `addons/project/i18n/fr.po` (7,271 lines)
-- `addons/project/i18n/gl.po` (6,099 lines)
-- `addons/project/i18n/gu.po` (6,111 lines)
-- `addons/project/i18n/he.po` (6,497 lines)
-- `addons/project/i18n/hi.po` (6,323 lines)
-- `addons/project/i18n/hr.po` (6,352 lines)
-- `addons/project/i18n/hu.po` (6,351 lines)
-- `addons/project/i18n/id.po` (7,232 lines)
-- `addons/project/i18n/is.po` (6,135 lines)
-- `addons/project/i18n/it.po` (7,168 lines)
-- `addons/project/i18n/ja.po` (6,981 lines)
-- `addons/project/i18n/ka.po` (6,099 lines)
-- `addons/project/i18n/kab.po` (6,267 lines)
-- `addons/project/i18n/km.po` (6,113 lines)
-- `addons/project/i18n/ko.po` (6,904 lines)
-- `addons/project/i18n/ku.po` (6,280 lines)
-- `addons/project/i18n/lb.po` (6,102 lines)
-- `addons/project/i18n/lo.po` (6,885 lines)
-- `addons/project/i18n/lt.po` (6,341 lines)
-- `addons/project/i18n/lv.po` (6,305 lines)
-- `addons/project/i18n/mk.po` (6,117 lines)
-- `addons/project/i18n/mn.po` (6,337 lines)
-- `addons/project/i18n/my.po` (6,289 lines)
-- `addons/project/i18n/nb.po` (6,292 lines)
-- `addons/project/i18n/nl.po` (7,223 lines)
-- `addons/project/i18n/pl.po` (7,044 lines)
-- `addons/project/i18n/project.pot` (6,166 lines)
-- `addons/project/i18n/pt.po` (6,871 lines)
-- `addons/project/i18n/pt_BR.po` (7,245 lines)
-- `addons/project/i18n/ro.po` (6,916 lines)
-- `addons/project/i18n/ru.po` (7,002 lines)
-- `addons/project/i18n/sk.po` (6,333 lines)
-- `addons/project/i18n/sl.po` (6,329 lines)
-- `addons/project/i18n/sr@latin.po` (6,307 lines)
-- `addons/project/i18n/sv.po` (6,587 lines)
-- `addons/project/i18n/th.po` (7,041 lines)
-- `addons/project/i18n/tr.po` (6,958 lines)
-- `addons/project/i18n/uk.po` (6,478 lines)
-- `addons/project/i18n/uz.po` (7,540 lines)
-- `addons/project/i18n/vi.po` (6,980 lines)
-- `addons/project/i18n/zh_CN.po` (6,998 lines)
-- `addons/project/i18n/zh_TW.po` (6,694 lines)
-- `addons/project/migrations/1.4/post-migrate.py` (6 lines)
-- `addons/project/models/__init__.py` (27 lines)
-- `addons/project/models/account_analytic_account.py` (44 lines)
-- `addons/project/models/account_analytic_line.py` (18 lines)
-- `addons/project/models/digest_digest.py` (31 lines)
-- `addons/project/models/ir_ui_menu.py` (20 lines)
-- `addons/project/models/mail_activity.py` (9 lines)
-- `addons/project/models/mail_message.py` (9 lines)
-- `addons/project/models/project_collaborator.py` (57 lines)
-- `addons/project/models/project_milestone.py` (141 lines)
-- `addons/project/models/project_project.py` (1,441 lines)
-- `addons/project/models/project_project_stage.py` (78 lines)
-- `addons/project/models/project_role.py` (24 lines)
-- `addons/project/models/project_tags.py` (119 lines)
-- `addons/project/models/project_task.py` (2,414 lines)
-- `addons/project/models/project_task_recurrence.py` (122 lines)
-- `addons/project/models/project_task_stage_personal.py` (20 lines)
-- `addons/project/models/project_task_type.py` (239 lines)
-- `addons/project/models/project_update.py` (147 lines)
-- `addons/project/models/res_config_settings.py` (18 lines)
-- `addons/project/models/res_groups.py` (16 lines)
-- `addons/project/models/res_partner.py` (82 lines)
-- `addons/project/models/res_users.py` (44 lines)
-- `addons/project/models/res_users_settings.py` (36 lines)
-- `addons/project/populate/benchmarks.xml` (299 lines)
-- `addons/project/populate/populate_demo.xml` (127 lines)
-- `addons/project/report/__init__.py` (6 lines)
-- `addons/project/report/project_report.py` (169 lines)
-- `addons/project/report/project_report_views.xml` (93 lines)
-- `addons/project/report/project_task_burndown_chart_report.py` (189 lines)
-- `addons/project/report/project_task_burndown_chart_report_views.xml` (64 lines)
-- `addons/project/report/project_time_by_stage_report.py` (107 lines)
-- `addons/project/report/project_time_by_stage_report_views.xml` (95 lines)
-- `addons/project/security/ir.access.csv` (147 lines)
-- `addons/project/security/project_security.xml` (63 lines)
-- `addons/project/static/description/icon.png` (25 lines)
-- `addons/project/static/description/icon.svg` (1 lines)
-- `addons/project/static/description/icon_hi.png` (89 lines)
-- `addons/project/static/src/actions/client_actions.js` (186 lines)
-- `addons/project/static/src/components/done_checkmark/task_done_checkmark.js` (28 lines)
-- `addons/project/static/src/components/done_checkmark/task_done_checkmark.scss` (26 lines)
-- `addons/project/static/src/components/done_checkmark/task_done_checkmark.xml` (12 lines)
-- `addons/project/static/src/components/float_time_days/float_time_field.js` (19 lines)
-- `addons/project/static/src/components/notebook_task_one2many_field/notebook_task_list_renderer.js` (56 lines)
-- `addons/project/static/src/components/notebook_task_one2many_field/notebook_task_list_renderer.xml` (20 lines)
-- `addons/project/static/src/components/notebook_task_one2many_field/notebook_task_one2many_field.js` (26 lines)
-- `addons/project/static/src/components/project_configure_project_cog_menu/project_configure_project_cog_menu.js` (39 lines)
-- `addons/project/static/src/components/project_configure_project_cog_menu/project_configure_project_cog_menu.xml` (10 lines)
-- `addons/project/static/src/components/project_convert_project_to_template_cog_menu/project_convert_project_to_template_cog_menu.js` (41 lines)
-- `addons/project/static/src/components/project_convert_project_to_template_cog_menu/project_convert_project_to_template_cog_menu.xml` (10 lines)
-- `addons/project/static/src/components/project_is_favorite/project_is_favorite_field.js` (14 lines)
-- `addons/project/static/src/components/project_many2one_field/project_many2one_field.js` (42 lines)
-- `addons/project/static/src/components/project_many2one_field/project_many2one_field.scss` (4 lines)
-- `addons/project/static/src/components/project_many2one_field/project_many2one_field.xml` (20 lines)
-- `addons/project/static/src/components/project_state_selection/project_state_selection.js` (29 lines)
-- `addons/project/static/src/components/project_state_selection/project_state_selection.scss` (3 lines)
-- `addons/project/static/src/components/project_status_with_color_selection/project_status_with_color_selection_field.js` (49 lines)
-- `addons/project/static/src/components/project_status_with_color_selection/project_status_with_color_selection_field.xml` (15 lines)
-- `addons/project/static/src/components/project_task_name_with_subtask_count_char_field/project_task_name_with_subtask_count_char_field.js` (16 lines)
-- `addons/project/static/src/components/project_task_name_with_subtask_count_char_field/project_task_name_with_subtask_count_char_field.xml` (14 lines)
-- `addons/project/static/src/components/project_task_priority_switch_field/project_task_priority_switch_field.js` (29 lines)
-- `addons/project/static/src/components/project_task_state_selection/project_task_stage_state_selection/project_task_stage_with_state_selection.js` (48 lines)
-- `addons/project/static/src/components/project_task_state_selection/project_task_stage_state_selection/project_task_stage_with_state_selection.xml` (10 lines)
-- `addons/project/static/src/components/project_task_state_selection/project_task_state_selection.js` (204 lines)
-- `addons/project/static/src/components/project_task_state_selection/project_task_state_selection.scss` (28 lines)
-- `addons/project/static/src/components/project_task_state_selection/project_task_state_selection.xml` (112 lines)
-- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_create/subtask_kanban_create.js` (69 lines)
-- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_create/subtask_kanban_create.xml` (18 lines)
-- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_list.js` (113 lines)
-- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_list.scss` (23 lines)
-- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_list.xml` (43 lines)
-- `addons/project/static/src/components/subtask_one2many_field/subtask_list_renderer.js` (17 lines)
-- `addons/project/static/src/components/subtask_one2many_field/subtask_one2many_field.js` (38 lines)
-- `addons/project/static/src/components/task_list_renderer.js` (20 lines)
-- `addons/project/static/src/core/web/@types/models.d.ts` (5 lines)
-- `addons/project/static/src/core/web/activity_menu_patch.js` (15 lines)
-- `addons/project/static/src/core/web/follower_list_patch.js` (33 lines)
-- `addons/project/static/src/core/web/thread_model_patch.js` (13 lines)
-- `addons/project/static/src/css/project.css` (8 lines)
-- `addons/project/static/src/img/app_store.png` (39 lines)
-- `addons/project/static/src/img/bird.jpg` (71 lines)
-- `addons/project/static/src/img/chrome_store.png` (43 lines)
+## 4. Functionalities
 
-Additional files not expanded here: 235. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 33 model declarations, 775 methods, 11 constraint handlers, 4 onchange handlers, and 61 dependency declarations.
+- **Evidence:** `addons/project/models/res_partner.py:9`, `addons/project/models/mail_message.py:6`, `addons/project/models/mail_activity.py:6`, `addons/project/models/project_role.py:6`, `addons/project/models/project_task_stage_personal.py:7`, `addons/project/models/res_groups.py:6`, `addons/project/models/project_project_stage.py:7`, `addons/project/models/project_task_recurrence.py:10`, `addons/project/models/res_config_settings.py:7`, `addons/project/models/account_analytic_line.py:6`, `addons/project/models/res_users_settings.py:4`, `addons/project/models/project_tags.py:10`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 4 controller files and 9 route declarations.
+- **Evidence:** `addons/project/controllers/portal.py:66`, `addons/project/controllers/portal.py:117`, `addons/project/controllers/portal.py:178`, `addons/project/controllers/portal.py:197`, `addons/project/controllers/portal.py:214`, `addons/project/controllers/portal.py:248`, `addons/project/controllers/portal.py:558`, `addons/project/controllers/portal.py:590`, `addons/project/controllers/portal.py:610`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 74 XML files and 145 JavaScript/TypeScript files; static XML analysis found 540 record/template/menu identifiers.
+- **Evidence:** `addons/project/security/project_security.xml:3`, `addons/project/security/project_security.xml:9`, `addons/project/security/project_security.xml:17`, `addons/project/security/project_security.xml:26`, `addons/project/security/project_security.xml:30`, `addons/project/security/project_security.xml:34`, `addons/project/security/project_security.xml:38`, `addons/project/security/project_security.xml:45`, `addons/project/report/project_report_views.xml:4`, `addons/project/report/project_report_views.xml:21`, `addons/project/report/project_report_views.xml:32`, `addons/project/report/project_report_views.xml:51`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 2 security-directory files are present.
+- **Evidence:** `addons/project/security/ir.access.csv`, `addons/project/security/project_security.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 6 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/project/__manifest__.py`, `addons/project/data/ir_cron_data.xml`, `addons/project/views/project_project_stage_views.xml`, `addons/project/views/project_task_type_views.xml`, `addons/project/views/project_task_views.xml`, `addons/project/views/project_project_views.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 39 test files are present.
+- **Evidence:** `addons/project/tests/test_access_rights.py`, `addons/project/tests/test_task_state.py`, `addons/project/tests/test_project_tags.py`, `addons/project/tests/test_project_sharing_portal_access.py`, `addons/project/tests/test_project_update_access_rights.py`, `addons/project/tests/test_task_dependencies.py`, `addons/project/tests/test_project_template_ui.py`, `addons/project/tests/test_project_sharing.py`, `addons/project/tests/test_project_sharing_ui.py`, `addons/project/tests/test_project_recurrence.py`, `addons/project/tests/test_task_templates_ui.py`, `addons/project/tests/test_project_embedded_action_settings.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 74; representative identifiers: `res_groups_privilege_project`, `group_project_user`, `group_project_manager`, `group_project_stages`, `group_project_recurring_tasks`, `group_project_task_dependencies`, `group_project_milestone`, `project_task_rule_portal_project_sharing`, `view_task_project_user_pivot`, `view_task_project_user_fsm_pivot_base`, `view_task_project_user_graph`, `view_task_project_user_fsm_graph_base`, `view_task_project_user_search`, `action_project_task_user_tree`, `project_task_burndown_chart_report_view_search`, `project_task_burndown_chart_report_view_graph`, `action_project_task_burndown_chart_report`, `project_time_by_stage_report_view_search`, `project_time_by_stage_report_view_graph`, `project_time_by_stage_report_view_pivot`
+- Menus: 20; representative evidence: `addons/project/views/project_menus.xml:3`, `addons/project/views/project_menus.xml:10`, `addons/project/views/project_menus.xml:16`, `addons/project/views/project_menus.xml:23`, `addons/project/views/project_menus.xml:28`, `addons/project/views/project_menus.xml:34`, `addons/project/views/project_menus.xml:41`, `addons/project/views/project_menus.xml:47`, `addons/project/views/project_menus.xml:53`, `addons/project/views/project_menus.xml:61`, `addons/project/views/project_menus.xml:67`, `addons/project/views/project_menus.xml:74`
+- Templates: 19; representative evidence: `addons/project/data/mail_template_data.xml:120`, `addons/project/data/mail_template_data.xml:129`, `addons/project/views/project_update_templates.xml:3`, `addons/project/views/project_update_templates.xml:15`, `addons/project/views/project_sharing_project_task_templates.xml:3`, `addons/project/views/project_portal_project_project_templates.xml:3`, `addons/project/views/project_portal_project_project_templates.xml:41`, `addons/project/views/project_portal_project_project_templates.xml:66`, `addons/project/views/project_task_templates.xml:3`, `addons/project/views/project_portal_project_task_templates.xml:3`, `addons/project/views/project_portal_project_task_templates.xml:12`, `addons/project/views/project_portal_project_task_templates.xml:19`
+- View/action field declarations: 428; representative evidence: `addons/project/report/project_report_views.xml:6`, `addons/project/report/project_report_views.xml:7`, `addons/project/report/project_report_views.xml:23`, `addons/project/report/project_report_views.xml:27`, `addons/project/report/project_report_views.xml:34`, `addons/project/report/project_report_views.xml:35`, `addons/project/report/project_report_views.xml:53`, `addons/project/report/project_report_views.xml:57`, `addons/project/report/project_report_views.xml:64`, `addons/project/report/project_report_views.xml:67`, `addons/project/report/project_report_views.xml:79`, `addons/project/report/project_report_views.xml:82`
+- Browser assets: 145; representative files: `addons/project/static/tests/project_project_form_view.test.js`, `addons/project/static/tests/project_project_calendar.test.js`, `addons/project/static/tests/project_is_favorite_field.test.js`, `addons/project/static/tests/project_task_priority_switch.test.js`, `addons/project/static/tests/project_project.test.js`, `addons/project/static/tests/project_task_list_view.test.js`, `addons/project/static/tests/project_notebook_task_list.test.js`, `addons/project/static/tests/project_task_subtask.test.js`, `addons/project/static/tests/project_update_with_color.test.js`, `addons/project/static/tests/project_task_calendar.test.js`, `addons/project/static/tests/project_task_groupby.test.js`, `addons/project/static/tests/project_task_analysis.test.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/project/__manifest__.py`
+- **HTTP entry points:** `addons/project/controllers/portal.py:66`, `addons/project/controllers/portal.py:117`, `addons/project/controllers/portal.py:178`, `addons/project/controllers/portal.py:197`, `addons/project/controllers/portal.py:214`, `addons/project/controllers/portal.py:248`, `addons/project/controllers/portal.py:558`, `addons/project/controllers/portal.py:590`, `addons/project/controllers/portal.py:610`
+- **Scheduled entry points:** `addons/project/__manifest__.py`, `addons/project/data/ir_cron_data.xml`, `addons/project/views/project_project_stage_views.xml`, `addons/project/views/project_task_type_views.xml`, `addons/project/views/project_task_views.xml`, `addons/project/views/project_project_views.xml`
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 33
+- Representative model evidence: inherits `res.partner` (addons/project/models/res_partner.py:9); inherits `mail.message` (addons/project/models/mail_message.py:6); inherits `mail.activity` (addons/project/models/mail_activity.py:6); `project.role` (addons/project/models/project_role.py:6); `project.task.stage.personal` (addons/project/models/project_task_stage_personal.py:7); inherits `res.groups` (addons/project/models/res_groups.py:6); `project.project.stage` (addons/project/models/project_project_stage.py:7); `project.task.recurrence` (addons/project/models/project_task_recurrence.py:10); inherits `res.config.settings` (addons/project/models/res_config_settings.py:7); inherits `account.analytic.line` (addons/project/models/account_analytic_line.py:6); inherits `res.users.settings` (addons/project/models/res_users_settings.py:4); `project.tags` (addons/project/models/project_tags.py:10); `project.update` (addons/project/models/project_update.py:21); inherits `digest.digest` (addons/project/models/digest_digest.py:7); `project.task` (addons/project/models/project_task.py:89); `project.project` (addons/project/models/project_project.py:22); `project.task.type` (addons/project/models/project_task_type.py:11); `project.collaborator` (addons/project/models/project_collaborator.py:6); inherits `res.users` (addons/project/models/res_users.py:4); inherits `account.analytic.account` (addons/project/models/account_analytic_account.py:8); `project.milestone` (addons/project/models/project_milestone.py:12); inherits `ir.ui.menu` (addons/project/models/ir_ui_menu.py:7); `report.project.task.user` (addons/project/report/project_report.py:9); `project.task.burndown.chart.report` (addons/project/report/project_task_burndown_chart_report.py:10); `project.task.stage.report` (addons/project/report/project_time_by_stage_report.py:5); `project.template.create.wizard` (addons/project/wizard/project_template_create_wizard.py:5); `project.template.role.to.users.map` (addons/project/wizard/project_template_create_wizard.py:70); `project.share.collaborator.wizard` (addons/project/wizard/project_share_collaborator_wizard.py:6); `project.share.wizard` (addons/project/wizard/project_share_wizard.py:8); `task.share.wizard` (addons/project/wizard/project_task_share_wizard.py:4)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 4
+- Route declarations: 9
+- Route evidence: `addons/project/controllers/portal.py:66`, `addons/project/controllers/portal.py:117`, `addons/project/controllers/portal.py:178`, `addons/project/controllers/portal.py:197`, `addons/project/controllers/portal.py:214`, `addons/project/controllers/portal.py:248`, `addons/project/controllers/portal.py:558`, `addons/project/controllers/portal.py:590`, `addons/project/controllers/portal.py:610`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `analytic`, `base_setup`, `mail`, `portal_rating`, `resource`, `web`, `web_tour`, `digest`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/project/README.md`
+- `addons/project/__init__.py`
+- `addons/project/__manifest__.py`
+- `addons/project/controllers/__init__.py`
+- `addons/project/controllers/portal.py`
+- `addons/project/controllers/project_sharing_chatter.py`
+- `addons/project/controllers/webmanifest.py`
+- `addons/project/data/digest_data.xml`
+- `addons/project/data/ir_cron_data.xml`
+- `addons/project/data/mail_message_subtype_data.xml`
+- `addons/project/data/mail_template_data.xml`
+- `addons/project/data/mail_template_demo.xml`
+- `addons/project/data/portal_entry_data.xml`
+- `addons/project/data/project_data.xml`
+- `addons/project/data/project_demo.xml`
+- `addons/project/data/project_tour.xml`
+- `addons/project/doc/changelog.rst`
+- `addons/project/doc/index.rst`
+- `addons/project/doc/stage_status.rst`
+- `addons/project/i18n/af.po`
+- `addons/project/i18n/ar.po`
+- `addons/project/i18n/az.po`
+- `addons/project/i18n/bg.po`
+- `addons/project/i18n/bs.po`
+- `addons/project/i18n/ca.po`
+- `addons/project/i18n/cs.po`
+- `addons/project/i18n/da.po`
+- `addons/project/i18n/de.po`
+- `addons/project/i18n/el.po`
+- `addons/project/i18n/es.po`
+- `addons/project/i18n/es_419.po`
+- `addons/project/i18n/es_CL.po`
+- `addons/project/i18n/et.po`
+- `addons/project/i18n/eu.po`
+- `addons/project/i18n/fa.po`
+- `addons/project/i18n/fi.po`
+- `addons/project/i18n/fr.po`
+- `addons/project/i18n/gl.po`
+- `addons/project/i18n/gu.po`
+- `addons/project/i18n/he.po`
+- `addons/project/i18n/hi.po`
+- `addons/project/i18n/hr.po`
+- `addons/project/i18n/hu.po`
+- `addons/project/i18n/id.po`
+- `addons/project/i18n/is.po`
+- `addons/project/i18n/it.po`
+- `addons/project/i18n/ja.po`
+- `addons/project/i18n/ka.po`
+- `addons/project/i18n/kab.po`
+- `addons/project/i18n/km.po`
+- `addons/project/i18n/ko.po`
+- `addons/project/i18n/ku.po`
+- `addons/project/i18n/lb.po`
+- `addons/project/i18n/lo.po`
+- `addons/project/i18n/lt.po`
+- `addons/project/i18n/lv.po`
+- `addons/project/i18n/mk.po`
+- `addons/project/i18n/mn.po`
+- `addons/project/i18n/my.po`
+- `addons/project/i18n/nb.po`
+- `addons/project/i18n/nl.po`
+- `addons/project/i18n/pl.po`
+- `addons/project/i18n/project.pot`
+- `addons/project/i18n/pt.po`
+- `addons/project/i18n/pt_BR.po`
+- `addons/project/i18n/ro.po`
+- `addons/project/i18n/ru.po`
+- `addons/project/i18n/sk.po`
+- `addons/project/i18n/sl.po`
+- `addons/project/i18n/sr@latin.po`
+- `addons/project/i18n/sv.po`
+- `addons/project/i18n/th.po`
+- `addons/project/i18n/tr.po`
+- `addons/project/i18n/uk.po`
+- `addons/project/i18n/uz.po`
+- `addons/project/i18n/vi.po`
+- `addons/project/i18n/zh_CN.po`
+- `addons/project/i18n/zh_TW.po`
+- `addons/project/migrations/1.4/post-migrate.py`
+- `addons/project/models/__init__.py`
+- `addons/project/models/account_analytic_account.py`
+- `addons/project/models/account_analytic_line.py`
+- `addons/project/models/digest_digest.py`
+- `addons/project/models/ir_ui_menu.py`
+- `addons/project/models/mail_activity.py`
+- `addons/project/models/mail_message.py`
+- `addons/project/models/project_collaborator.py`
+- `addons/project/models/project_milestone.py`
+- `addons/project/models/project_project.py`
+- `addons/project/models/project_project_stage.py`
+- `addons/project/models/project_role.py`
+- `addons/project/models/project_tags.py`
+- `addons/project/models/project_task.py`
+- `addons/project/models/project_task_recurrence.py`
+- `addons/project/models/project_task_stage_personal.py`
+- `addons/project/models/project_task_type.py`
+- `addons/project/models/project_update.py`
+- `addons/project/models/res_config_settings.py`
+- `addons/project/models/res_groups.py`
+- `addons/project/models/res_partner.py`
+- `addons/project/models/res_users.py`
+- `addons/project/models/res_users_settings.py`
+- `addons/project/populate/benchmarks.xml`
+- `addons/project/populate/populate_demo.xml`
+- `addons/project/report/__init__.py`
+- `addons/project/report/project_report.py`
+- `addons/project/report/project_report_views.xml`
+- `addons/project/report/project_task_burndown_chart_report.py`
+- `addons/project/report/project_task_burndown_chart_report_views.xml`
+- `addons/project/report/project_time_by_stage_report.py`
+- `addons/project/report/project_time_by_stage_report_views.xml`
+- `addons/project/security/ir.access.csv`
+- `addons/project/security/project_security.xml`
+- `addons/project/static/description/icon.png`
+- `addons/project/static/description/icon.svg`
+- `addons/project/static/description/icon_hi.png`
+- `addons/project/static/src/actions/client_actions.js`
+- `addons/project/static/src/components/done_checkmark/task_done_checkmark.js`
+- `addons/project/static/src/components/done_checkmark/task_done_checkmark.scss`
+- `addons/project/static/src/components/done_checkmark/task_done_checkmark.xml`
+- `addons/project/static/src/components/float_time_days/float_time_field.js`
+- `addons/project/static/src/components/notebook_task_one2many_field/notebook_task_list_renderer.js`
+- `addons/project/static/src/components/notebook_task_one2many_field/notebook_task_list_renderer.xml`
+- `addons/project/static/src/components/notebook_task_one2many_field/notebook_task_one2many_field.js`
+- `addons/project/static/src/components/project_configure_project_cog_menu/project_configure_project_cog_menu.js`
+- `addons/project/static/src/components/project_configure_project_cog_menu/project_configure_project_cog_menu.xml`
+- `addons/project/static/src/components/project_convert_project_to_template_cog_menu/project_convert_project_to_template_cog_menu.js`
+- `addons/project/static/src/components/project_convert_project_to_template_cog_menu/project_convert_project_to_template_cog_menu.xml`
+- `addons/project/static/src/components/project_is_favorite/project_is_favorite_field.js`
+- `addons/project/static/src/components/project_many2one_field/project_many2one_field.js`
+- `addons/project/static/src/components/project_many2one_field/project_many2one_field.scss`
+- `addons/project/static/src/components/project_many2one_field/project_many2one_field.xml`
+- `addons/project/static/src/components/project_state_selection/project_state_selection.js`
+- `addons/project/static/src/components/project_state_selection/project_state_selection.scss`
+- `addons/project/static/src/components/project_status_with_color_selection/project_status_with_color_selection_field.js`
+- `addons/project/static/src/components/project_status_with_color_selection/project_status_with_color_selection_field.xml`
+- `addons/project/static/src/components/project_task_name_with_subtask_count_char_field/project_task_name_with_subtask_count_char_field.js`
+- `addons/project/static/src/components/project_task_name_with_subtask_count_char_field/project_task_name_with_subtask_count_char_field.xml`
+- `addons/project/static/src/components/project_task_priority_switch_field/project_task_priority_switch_field.js`
+- `addons/project/static/src/components/project_task_state_selection/project_task_stage_state_selection/project_task_stage_with_state_selection.js`
+- `addons/project/static/src/components/project_task_state_selection/project_task_stage_state_selection/project_task_stage_with_state_selection.xml`
+- `addons/project/static/src/components/project_task_state_selection/project_task_state_selection.js`
+- `addons/project/static/src/components/project_task_state_selection/project_task_state_selection.scss`
+- `addons/project/static/src/components/project_task_state_selection/project_task_state_selection.xml`
+- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_create/subtask_kanban_create.js`
+- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_create/subtask_kanban_create.xml`
+- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_list.js`
+- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_list.scss`
+- `addons/project/static/src/components/subtask_kanban_list/subtask_kanban_list.xml`
+- `addons/project/static/src/components/subtask_one2many_field/subtask_list_renderer.js`
+- `addons/project/static/src/components/subtask_one2many_field/subtask_one2many_field.js`
+- `addons/project/static/src/components/task_list_renderer.js`
+- `addons/project/static/src/core/web/@types/models.d.ts`
+- `addons/project/static/src/core/web/activity_menu_patch.js`
+- `addons/project/static/src/core/web/follower_list_patch.js`
+- `addons/project/static/src/core/web/thread_model_patch.js`
+- `addons/project/static/src/css/project.css`
+- `addons/project/static/src/img/app_store.png`
+- `addons/project/static/src/img/bird.jpg`
+- `addons/project/static/src/img/chrome_store.png`
+- `addons/project/static/src/img/planner_icon.png`
+- `addons/project/static/src/img/play_store.png`
+- `addons/project/static/src/img/tasks.svg`
+- `addons/project/static/src/img/tasks_icon.png`
+- `addons/project/static/src/img/top_left_arrow.png`
+- `addons/project/static/src/img/web_planner_email.png`
+- `addons/project/static/src/img/web_planner_project.png`
+- `addons/project/static/src/img/web_planner_subtype.png`
+- `addons/project/static/src/js/tours/project.js`
+- `addons/project/static/src/project_sharing/chatter/chatter_patch.js`
+- `addons/project/static/src/project_sharing/chatter/composer_actions_patch.js`
+- `addons/project/static/src/project_sharing/chatter/composer_patch.js`
+- `addons/project/static/src/project_sharing/chatter/message_model_patch.js`
+- `addons/project/static/src/project_sharing/chatter/portal_chatter_patch.xml`
+- `addons/project/static/src/project_sharing/chatter/project_sharing_plugin.js`
+- `addons/project/static/src/project_sharing/chatter/suggestion_service_patch.js`
+- `addons/project/static/src/project_sharing/components/depend_on_ids_one2many/depend_on_ids_list_renderer.js`
+- `addons/project/static/src/project_sharing/components/depend_on_ids_one2many/depend_on_ids_list_renderer.xml`
+- `addons/project/static/src/project_sharing/components/depend_on_ids_one2many/depend_on_ids_one2many_field.js`
+- `addons/project/static/src/project_sharing/editor/project_sharing_media_plugin.js`
+- `addons/project/static/src/project_sharing/main.js`
+- `addons/project/static/src/project_sharing/project_sharing.js`
+- `addons/project/static/src/project_sharing/project_sharing.scss`
+- `addons/project/static/src/project_sharing/project_sharing.xml`
+- `addons/project/static/src/project_sharing/router.js`
+- `addons/project/static/src/project_sharing/search/control_panel/control_panel.xml`
+- `addons/project/static/src/project_sharing/views/form/project_sharing_form_compiler.js`
+- `addons/project/static/src/project_sharing/views/form/project_sharing_form_controller.js`
+- `addons/project/static/src/project_sharing/views/form/project_sharing_form_renderer.js`
+- `addons/project/static/src/project_sharing/views/form/project_sharing_form_view.js`
+- `addons/project/static/src/project_sharing/views/kanban/kanban_view.js`
+- `addons/project/static/src/project_sharing/views/list/list_view.js`
+- `addons/project/static/src/project_sharing/views/view.js`
+- `addons/project/static/src/scss/portal_rating.scss`
+- `addons/project/static/src/scss/project_dashboard.scss`
+- `addons/project/static/src/scss/project_form.scss`
+- `addons/project/static/src/scss/project_widgets.scss`
+- `addons/project/static/src/utils/project_utils.js`
+- `addons/project/static/src/views/analytic_account_form/analytic_account_form_controller.js`
+- `addons/project/static/src/views/analytic_account_form/analytic_account_form_view.js`
+- `addons/project/static/src/views/analytic_account_list/analytic_account_list_controller.js`
+- `addons/project/static/src/views/analytic_account_list/analytic_account_list_view.js`
+- `addons/project/static/src/views/burndown_chart/burndown_chart_model.js`
+- `addons/project/static/src/views/burndown_chart/burndown_chart_search_model.js`
+- `addons/project/static/src/views/burndown_chart/burndown_chart_view.js`
+- `addons/project/static/src/views/burndown_chart/burndown_chart_view.xml`
+- `addons/project/static/src/views/components/project_task_template_dropdown.js`
+- `addons/project/static/src/views/components/project_task_template_dropdown.xml`
+- `addons/project/static/src/views/components/project_template_buttons.js`
+- `addons/project/static/src/views/components/project_template_buttons.scss`
+- `addons/project/static/src/views/components/project_template_buttons.xml`
+- `addons/project/static/src/views/components/project_template_dropdown.js`
+- `addons/project/static/src/views/components/project_template_dropdown.xml`
+- `addons/project/static/src/views/project_form/project_project_form_controller.js`
+- `addons/project/static/src/views/project_form/project_project_form_controller.xml`
+- `addons/project/static/src/views/project_form/project_project_form_view.js`
+- `addons/project/static/src/views/project_model_mixin.js`
+- `addons/project/static/src/views/project_project_activity/project_project_activity_model.js`
+- `addons/project/static/src/views/project_project_activity/project_project_activity_view.js`
+- `addons/project/static/src/views/project_project_calendar/common/project_common_calendar_popover.js`
+- `addons/project/static/src/views/project_project_calendar/common/project_common_calendar_popover.xml`
+- `addons/project/static/src/views/project_project_calendar/common/project_common_calendar_renderer.js`
+- `addons/project/static/src/views/project_project_calendar/project_project_calendar_controller.js`
+- `addons/project/static/src/views/project_project_calendar/project_project_calendar_model.js`
+- `addons/project/static/src/views/project_project_calendar/project_project_calendar_renderer.js`
+- `addons/project/static/src/views/project_project_calendar/project_project_calendar_view.js`
+- `addons/project/static/src/views/project_project_kanban/project_project_group_config_menu.js`
+- `addons/project/static/src/views/project_project_kanban/project_project_kanban_controller.js`
+- `addons/project/static/src/views/project_project_kanban/project_project_kanban_controller.xml`
+- `addons/project/static/src/views/project_project_kanban/project_project_kanban_header.js`
+- `addons/project/static/src/views/project_project_kanban/project_project_kanban_renderer.js`
+- `addons/project/static/src/views/project_project_kanban/project_task_kanban_view.js`
+- `addons/project/static/src/views/project_project_list/project_project_list_controller.js`
+- `addons/project/static/src/views/project_project_list/project_project_list_controller.xml`
+- `addons/project/static/src/views/project_project_list/project_project_list_renderer.js`
+- `addons/project/static/src/views/project_project_list/project_project_list_view.js`
+- `addons/project/static/src/views/project_relational_model.js`
+- `addons/project/static/src/views/project_task_activity/project_task_activity_model.js`
+- `addons/project/static/src/views/project_task_activity/project_task_activity_view.js`
+- `addons/project/static/src/views/project_task_analysis_graph/project_task_analysis_graph_model.js`
+- `addons/project/static/src/views/project_task_analysis_graph/project_task_analysis_graph_renderer.js`
+- `addons/project/static/src/views/project_task_analysis_graph/project_task_analysis_graph_view.js`
+- `addons/project/static/src/views/project_task_analysis_pivot/project_task_analysis_pivot_model.js`
+- `addons/project/static/src/views/project_task_analysis_pivot/project_task_analysis_pivot_renderer.js`
+- `addons/project/static/src/views/project_task_analysis_pivot/project_task_analysis_pivot_view.js`
+- `addons/project/static/src/views/project_task_analysis_renderer_mixin.js`
+- `addons/project/static/src/views/project_task_calendar/project_task_calendar_common/project_task_calendar_common_renderer.js`
+- `addons/project/static/src/views/project_task_calendar/project_task_calendar_controller.js`
+- `addons/project/static/src/views/project_task_calendar/project_task_calendar_filter_section/project_task_calendar_filter_section.js`
+- `addons/project/static/src/views/project_task_calendar/project_task_calendar_filter_section/project_task_calendar_filter_section.xml`
+- Additional source files not expanded in this page: 145; see `../../01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.

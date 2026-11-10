@@ -1,127 +1,165 @@
 # Module: pos_cashmatic
 
 - **Module ID:** MOD-426
-- **Path:** `addons/pos_cashmatic`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/pos_cashmatic`
 - **Manifest:** `addons/pos_cashmatic/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Sales/Point of Sale`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Integrate your POS with a cash matic automatic cash payment device
+**Purpose:** Integrate your POS with a cash matic automatic cash payment device
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `point_of_sale`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 61 files, including 4 Python, 2 XML, and 4 JavaScript/TypeScript files. The manifest declares dependencies: `point_of_sale`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 4 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 2 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 4 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 1
+- Controller/API files: 0
+- XML/data/view/template files: 2
+- Browser asset files: 4
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "point_of_sale"
-  ],
-  "data": [
-    "views/pos_payment_method_views.xml"
-  ],
-  "assets": {
-    "point_of_sale._assets_pos": [
-      "pos_cashmatic/static/src/**/*"
-    ],
-    "point_of_sale.payment_terminals": [
-      "pos_cashmatic/static/src/cashmatic_service.js",
-      "pos_cashmatic/static/src/app/payment_cashmatic.js"
-    ],
-    "web.assets_unit_tests": [
-      "pos_cashmatic/static/tests/**/*",
-      "pos_cashmatic/static/src/cashmatic_service.js"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** Not found in module
 
-- `addons/pos_cashmatic/__init__.py` (1 lines)
-- `addons/pos_cashmatic/__manifest__.py` (24 lines)
-- `addons/pos_cashmatic/data/neutralize.sql` (2 lines)
-- `addons/pos_cashmatic/i18n/ar.po` (109 lines)
-- `addons/pos_cashmatic/i18n/az.po` (107 lines)
-- `addons/pos_cashmatic/i18n/bg.po` (107 lines)
-- `addons/pos_cashmatic/i18n/bs.po` (108 lines)
-- `addons/pos_cashmatic/i18n/ca.po` (107 lines)
-- `addons/pos_cashmatic/i18n/cs.po` (107 lines)
-- `addons/pos_cashmatic/i18n/da.po` (107 lines)
-- `addons/pos_cashmatic/i18n/de.po` (112 lines)
-- `addons/pos_cashmatic/i18n/el.po` (107 lines)
-- `addons/pos_cashmatic/i18n/es.po` (112 lines)
-- `addons/pos_cashmatic/i18n/es_419.po` (110 lines)
-- `addons/pos_cashmatic/i18n/et.po` (107 lines)
-- `addons/pos_cashmatic/i18n/fa.po` (107 lines)
-- `addons/pos_cashmatic/i18n/fi.po` (110 lines)
-- `addons/pos_cashmatic/i18n/fr.po` (110 lines)
-- `addons/pos_cashmatic/i18n/he.po` (108 lines)
-- `addons/pos_cashmatic/i18n/hi.po` (107 lines)
-- `addons/pos_cashmatic/i18n/hr.po` (108 lines)
-- `addons/pos_cashmatic/i18n/hu.po` (107 lines)
-- `addons/pos_cashmatic/i18n/id.po` (107 lines)
-- `addons/pos_cashmatic/i18n/it.po` (110 lines)
-- `addons/pos_cashmatic/i18n/ja.po` (107 lines)
-- `addons/pos_cashmatic/i18n/kab.po` (107 lines)
-- `addons/pos_cashmatic/i18n/ko.po` (107 lines)
-- `addons/pos_cashmatic/i18n/ku.po` (107 lines)
-- `addons/pos_cashmatic/i18n/lo.po` (107 lines)
-- `addons/pos_cashmatic/i18n/lt.po` (109 lines)
-- `addons/pos_cashmatic/i18n/lv.po` (108 lines)
-- `addons/pos_cashmatic/i18n/mn.po` (107 lines)
-- `addons/pos_cashmatic/i18n/my.po` (107 lines)
-- `addons/pos_cashmatic/i18n/nb.po` (107 lines)
-- `addons/pos_cashmatic/i18n/nl.po` (111 lines)
-- `addons/pos_cashmatic/i18n/pl.po` (108 lines)
-- `addons/pos_cashmatic/i18n/pos_cashmatic.pot` (104 lines)
-- `addons/pos_cashmatic/i18n/pt.po` (107 lines)
-- `addons/pos_cashmatic/i18n/pt_BR.po` (114 lines)
-- `addons/pos_cashmatic/i18n/ro.po` (111 lines)
-- `addons/pos_cashmatic/i18n/ru.po` (111 lines)
-- `addons/pos_cashmatic/i18n/sk.po` (107 lines)
-- `addons/pos_cashmatic/i18n/sl.po` (108 lines)
-- `addons/pos_cashmatic/i18n/sr@latin.po` (108 lines)
-- `addons/pos_cashmatic/i18n/sv.po` (108 lines)
-- `addons/pos_cashmatic/i18n/th.po` (107 lines)
-- `addons/pos_cashmatic/i18n/tr.po` (107 lines)
-- `addons/pos_cashmatic/i18n/uk.po` (108 lines)
-- `addons/pos_cashmatic/i18n/uz.po` (107 lines)
-- `addons/pos_cashmatic/i18n/vi.po` (107 lines)
-- `addons/pos_cashmatic/i18n/zh_CN.po` (109 lines)
-- `addons/pos_cashmatic/i18n/zh_TW.po` (107 lines)
-- `addons/pos_cashmatic/models/__init__.py` (1 lines)
-- `addons/pos_cashmatic/models/pos_payment_method.py` (16 lines)
-- `addons/pos_cashmatic/static/description/icon.png` (37 lines)
-- `addons/pos_cashmatic/static/src/app/payment_cashmatic.js` (121 lines)
-- `addons/pos_cashmatic/static/src/app/screens/payment_screen/payment_lines/payment_lines.xml` (12 lines)
-- `addons/pos_cashmatic/static/src/app/screens/payment_screen/payment_screen.js` (12 lines)
-- `addons/pos_cashmatic/static/src/cashmatic_service.js` (131 lines)
-- `addons/pos_cashmatic/static/tests/cashmatic_service.test.js` (155 lines)
-- `addons/pos_cashmatic/views/pos_payment_method_views.xml` (24 lines)
+## 4. Functionalities
 
-## Functional behavior classification
+### Model and business logic
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+- **Description:** 1 model declarations, 2 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/pos_cashmatic/models/pos_payment_method.py:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 2 XML files and 4 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/pos_cashmatic/views/pos_payment_method_views.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 2; representative identifiers: `pos_payment_method_view_form_inherit_pos_cashmatic`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/pos_cashmatic/views/pos_payment_method_views.xml:5`, `addons/pos_cashmatic/views/pos_payment_method_views.xml:7`
+- Browser assets: 4; representative files: `addons/pos_cashmatic/static/src/cashmatic_service.js`, `addons/pos_cashmatic/static/tests/cashmatic_service.test.js`, `addons/pos_cashmatic/static/src/app/payment_cashmatic.js`, `addons/pos_cashmatic/static/src/app/screens/payment_screen/payment_screen.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/pos_cashmatic/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: inherits `pos.payment.method` (addons/pos_cashmatic/models/pos_payment_method.py:4)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `point_of_sale`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/pos_cashmatic/__init__.py`
+- `addons/pos_cashmatic/__manifest__.py`
+- `addons/pos_cashmatic/data/neutralize.sql`
+- `addons/pos_cashmatic/i18n/ar.po`
+- `addons/pos_cashmatic/i18n/az.po`
+- `addons/pos_cashmatic/i18n/bg.po`
+- `addons/pos_cashmatic/i18n/bs.po`
+- `addons/pos_cashmatic/i18n/ca.po`
+- `addons/pos_cashmatic/i18n/cs.po`
+- `addons/pos_cashmatic/i18n/da.po`
+- `addons/pos_cashmatic/i18n/de.po`
+- `addons/pos_cashmatic/i18n/el.po`
+- `addons/pos_cashmatic/i18n/es.po`
+- `addons/pos_cashmatic/i18n/es_419.po`
+- `addons/pos_cashmatic/i18n/et.po`
+- `addons/pos_cashmatic/i18n/fa.po`
+- `addons/pos_cashmatic/i18n/fi.po`
+- `addons/pos_cashmatic/i18n/fr.po`
+- `addons/pos_cashmatic/i18n/he.po`
+- `addons/pos_cashmatic/i18n/hi.po`
+- `addons/pos_cashmatic/i18n/hr.po`
+- `addons/pos_cashmatic/i18n/hu.po`
+- `addons/pos_cashmatic/i18n/id.po`
+- `addons/pos_cashmatic/i18n/it.po`
+- `addons/pos_cashmatic/i18n/ja.po`
+- `addons/pos_cashmatic/i18n/kab.po`
+- `addons/pos_cashmatic/i18n/ko.po`
+- `addons/pos_cashmatic/i18n/ku.po`
+- `addons/pos_cashmatic/i18n/lo.po`
+- `addons/pos_cashmatic/i18n/lt.po`
+- `addons/pos_cashmatic/i18n/lv.po`
+- `addons/pos_cashmatic/i18n/mn.po`
+- `addons/pos_cashmatic/i18n/my.po`
+- `addons/pos_cashmatic/i18n/nb.po`
+- `addons/pos_cashmatic/i18n/nl.po`
+- `addons/pos_cashmatic/i18n/pl.po`
+- `addons/pos_cashmatic/i18n/pos_cashmatic.pot`
+- `addons/pos_cashmatic/i18n/pt.po`
+- `addons/pos_cashmatic/i18n/pt_BR.po`
+- `addons/pos_cashmatic/i18n/ro.po`
+- `addons/pos_cashmatic/i18n/ru.po`
+- `addons/pos_cashmatic/i18n/sk.po`
+- `addons/pos_cashmatic/i18n/sl.po`
+- `addons/pos_cashmatic/i18n/sr@latin.po`
+- `addons/pos_cashmatic/i18n/sv.po`
+- `addons/pos_cashmatic/i18n/th.po`
+- `addons/pos_cashmatic/i18n/tr.po`
+- `addons/pos_cashmatic/i18n/uk.po`
+- `addons/pos_cashmatic/i18n/uz.po`
+- `addons/pos_cashmatic/i18n/vi.po`
+- `addons/pos_cashmatic/i18n/zh_CN.po`
+- `addons/pos_cashmatic/i18n/zh_TW.po`
+- `addons/pos_cashmatic/models/__init__.py`
+- `addons/pos_cashmatic/models/pos_payment_method.py`
+- `addons/pos_cashmatic/static/description/icon.png`
+- `addons/pos_cashmatic/static/src/app/payment_cashmatic.js`
+- `addons/pos_cashmatic/static/src/app/screens/payment_screen/payment_lines/payment_lines.xml`
+- `addons/pos_cashmatic/static/src/app/screens/payment_screen/payment_screen.js`
+- `addons/pos_cashmatic/static/src/cashmatic_service.js`
+- `addons/pos_cashmatic/static/tests/cashmatic_service.test.js`
+- `addons/pos_cashmatic/views/pos_payment_method_views.xml`

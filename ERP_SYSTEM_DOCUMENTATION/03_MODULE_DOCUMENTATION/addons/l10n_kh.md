@@ -1,78 +1,120 @@
 # Module: l10n_kh
 
 - **Module ID:** MOD-252
-- **Path:** `addons/l10n_kh`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_kh`
 - **Manifest:** `addons/l10n_kh/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Accounting/Localizations/Account Charts`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-No manifest summary declared.
+**Purpose:** No manifest summary declared
 
+**Manifest description:**
 
-    Chart Of Account and Taxes for Cambodia.
-    
+Chart Of Account and Taxes for Cambodia.
 
-Declared dependencies: `account_qr_code_emv`, `l10n_account_withholding_tax`.
+**Scope evidence:** The module contains 16 files, including 5 Python, 5 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `account_qr_code_emv`, `l10n_account_withholding_tax`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 5 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 3 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 5 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 2
+- Controller/API files: 0
+- XML/data/view/template files: 5
+- Browser asset files: 0
+- Security files: 0
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "account_qr_code_emv",
-    "l10n_account_withholding_tax"
-  ],
-  "data": [
-    "data/form_t7001.xml",
-    "data/form_wt003.xml",
-    "views/res_bank_views.xml",
-    "views/res_config_settings_views.xml"
-  ],
-  "demo": [
-    "demo/demo_company.xml"
-  ]
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/l10n_kh/__init__.py` (2 lines)
-- `addons/l10n_kh/__manifest__.py` (26 lines)
-- `addons/l10n_kh/data/form_t7001.xml` (649 lines)
-- `addons/l10n_kh/data/form_wt003.xml` (256 lines)
-- `addons/l10n_kh/data/template/account.account-kh.csv` (192 lines)
-- `addons/l10n_kh/data/template/account.fiscal.position-kh.csv` (4 lines)
-- `addons/l10n_kh/data/template/account.tax-kh.csv` (198 lines)
-- `addons/l10n_kh/data/template/account.tax.group-kh.csv` (14 lines)
-- `addons/l10n_kh/demo/demo_company.xml` (31 lines)
-- `addons/l10n_kh/i18n/km.po` (541 lines)
-- `addons/l10n_kh/i18n/l10n_kh.pot` (537 lines)
-- `addons/l10n_kh/models/__init__.py` (4 lines)
-- `addons/l10n_kh/models/res_bank.py` (95 lines)
-- `addons/l10n_kh/models/template_kh.py` (53 lines)
-- `addons/l10n_kh/views/res_bank_views.xml` (13 lines)
-- `addons/l10n_kh/views/res_config_settings_views.xml` (22 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 2 model declarations, 13 methods, 1 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/l10n_kh/models/template_kh.py:6`, `addons/l10n_kh/models/res_bank.py:9`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 5 XML files and 0 JavaScript/TypeScript files; static XML analysis found 150 record/template/menu identifiers.
+- **Evidence:** `addons/l10n_kh/demo/demo_company.xml:3`, `addons/l10n_kh/demo/demo_company.xml:14`, `addons/l10n_kh/data/form_wt003.xml:3`, `addons/l10n_kh/data/form_wt003.xml:12`, `addons/l10n_kh/data/form_wt003.xml:16`, `addons/l10n_kh/data/form_wt003.xml:22`, `addons/l10n_kh/data/form_wt003.xml:27`, `addons/l10n_kh/data/form_wt003.xml:32`, `addons/l10n_kh/data/form_wt003.xml:37`, `addons/l10n_kh/data/form_wt003.xml:44`, `addons/l10n_kh/data/form_wt003.xml:49`, `addons/l10n_kh/data/form_wt003.xml:54`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 5; representative identifiers: `partner_demo_company_kh`, `demo_company_kh`, `l10n_kh_wt003`, `l10n_kh_wt003_balance`, `l10n_kh_wt003_tax`, `l10n_kh_wt003_kh_wt003_wht`, `l10n_kh_wt003_kh_wt003_wht_1`, `l10n_kh_wt003_kh_wt003_wht_1_balance`, `l10n_kh_wt003_kh_wt003_wht_1_tax`, `l10n_kh_wt003_kh_wt003_wht_1_1`, `l10n_kh_wt003_kh_wt003_wht_1_1_balance`, `l10n_kh_wt003_kh_wt003_wht_1_1_tax`, `l10n_kh_wt003_kh_wt003_wht_1_2`, `l10n_kh_wt003_kh_wt003_wht_1_2_balance`, `l10n_kh_wt003_kh_wt003_wht_1_2_tax`, `l10n_kh_wt003_kh_wt003_wht_1_3`, `l10n_kh_wt003_kh_wt003_wht_1_3_balance`, `l10n_kh_wt003_kh_wt003_wht_1_3_tax`, `l10n_kh_wt003_kh_wt003_wht_1_4`, `l10n_kh_wt003_kh_wt003_wht_1_4_balance`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 4; representative evidence: `addons/l10n_kh/views/res_config_settings_views.xml:6`, `addons/l10n_kh/views/res_config_settings_views.xml:8`, `addons/l10n_kh/views/res_bank_views.xml:5`, `addons/l10n_kh/views/res_bank_views.xml:7`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_kh/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `account.chart.template` (addons/l10n_kh/models/template_kh.py:6); inherits `res.partner.bank` (addons/l10n_kh/models/res_bank.py:9)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account_qr_code_emv`, `l10n_account_withholding_tax`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_kh/__init__.py`
+- `addons/l10n_kh/__manifest__.py`
+- `addons/l10n_kh/data/form_t7001.xml`
+- `addons/l10n_kh/data/form_wt003.xml`
+- `addons/l10n_kh/data/template/account.account-kh.csv`
+- `addons/l10n_kh/data/template/account.fiscal.position-kh.csv`
+- `addons/l10n_kh/data/template/account.tax-kh.csv`
+- `addons/l10n_kh/data/template/account.tax.group-kh.csv`
+- `addons/l10n_kh/demo/demo_company.xml`
+- `addons/l10n_kh/i18n/km.po`
+- `addons/l10n_kh/i18n/l10n_kh.pot`
+- `addons/l10n_kh/models/__init__.py`
+- `addons/l10n_kh/models/res_bank.py`
+- `addons/l10n_kh/models/template_kh.py`
+- `addons/l10n_kh/views/res_bank_views.xml`
+- `addons/l10n_kh/views/res_config_settings_views.xml`

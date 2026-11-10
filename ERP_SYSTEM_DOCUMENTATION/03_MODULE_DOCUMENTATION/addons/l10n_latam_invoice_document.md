@@ -1,18 +1,19 @@
 # Module: l10n_latam_invoice_document
 
 - **Module ID:** MOD-260
-- **Path:** `addons/l10n_latam_invoice_document`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/l10n_latam_invoice_document`
 - **Manifest:** `addons/l10n_latam_invoice_document/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Accounting/Localizations`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-LATAM Document Types
+**Purpose:** LATAM Document Types
 
+**Manifest description:**
 
 Functional
 ----------
@@ -31,75 +32,130 @@ If your localization needs this logic will then need to add this module as depen
 * extend company's _localization_use_documents() method.
 * create the data of the document types that exists for the specific country. The document type has a country field
 
+**Scope evidence:** The module contains 26 files, including 15 Python, 7 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `account`, `account_debit_note`.
 
+## 2. Module structure
 
-Declared dependencies: `account`, `account_debit_note`.
+- Model/business logic files: 9
+- Controller/API files: 0
+- XML/data/view/template files: 7
+- Browser asset files: 0
+- Security files: 1
+- Test files: 0
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 2
 
-## Static implementation surface
+## 3. Actors and permissions
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 15 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 7 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 7 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 0 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-## Evidence inventory
+**Security evidence:** `addons/l10n_latam_invoice_document/security/ir.access.csv`
 
-### Manifest-declared data and assets
+## 4. Functionalities
 
-```text
-{
-  "depends": [
-    "account",
-    "account_debit_note"
-  ],
-  "data": [
-    "views/account_journal_view.xml",
-    "views/account_move_line_view.xml",
-    "views/account_move_view.xml",
-    "views/l10n_latam_document_type_view.xml",
-    "views/report_templates.xml",
-    "report/invoice_report_view.xml",
-    "wizards/account_move_reversal_view.xml",
-    "security/ir.access.csv"
-  ]
-}
-```
+### Model and business logic
 
-### Representative source files
+- **Description:** 9 model declarations, 41 methods, 3 constraint handlers, 4 onchange handlers, and 14 dependency declarations.
+- **Evidence:** `addons/l10n_latam_invoice_document/models/account_journal.py:7`, `addons/l10n_latam_invoice_document/models/account_chart_template.py:6`, `addons/l10n_latam_invoice_document/models/l10n_latam_document_type.py:5`, `addons/l10n_latam_invoice_document/models/account_move.py:9`, `addons/l10n_latam_invoice_document/models/account_move_line.py:6`, `addons/l10n_latam_invoice_document/models/res_company.py:5`, `addons/l10n_latam_invoice_document/wizards/account_move_reversal.py:7`, `addons/l10n_latam_invoice_document/wizards/account_debit_note.py:4`, `addons/l10n_latam_invoice_document/report/invoice_report.py:5`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-- `addons/l10n_latam_invoice_document/__init__.py` (4 lines)
-- `addons/l10n_latam_invoice_document/__manifest__.py` (42 lines)
-- `addons/l10n_latam_invoice_document/i18n/es_419.po` (466 lines)
-- `addons/l10n_latam_invoice_document/i18n/l10n_latam_invoice_document.pot` (400 lines)
-- `addons/l10n_latam_invoice_document/i18n/pt_BR.po` (465 lines)
-- `addons/l10n_latam_invoice_document/migrations/1.1/post-migration.py` (8 lines)
-- `addons/l10n_latam_invoice_document/models/__init__.py` (8 lines)
-- `addons/l10n_latam_invoice_document/models/account_chart_template.py` (16 lines)
-- `addons/l10n_latam_invoice_document/models/account_journal.py` (51 lines)
-- `addons/l10n_latam_invoice_document/models/account_move.py` (249 lines)
-- `addons/l10n_latam_invoice_document/models/account_move_line.py` (13 lines)
-- `addons/l10n_latam_invoice_document/models/l10n_latam_document_type.py` (43 lines)
-- `addons/l10n_latam_invoice_document/models/res_company.py` (11 lines)
-- `addons/l10n_latam_invoice_document/report/__init__.py` (3 lines)
-- `addons/l10n_latam_invoice_document/report/invoice_report.py` (11 lines)
-- `addons/l10n_latam_invoice_document/report/invoice_report_view.xml` (18 lines)
-- `addons/l10n_latam_invoice_document/security/ir.access.csv` (3 lines)
-- `addons/l10n_latam_invoice_document/views/account_journal_view.xml` (22 lines)
-- `addons/l10n_latam_invoice_document/views/account_move_line_view.xml` (18 lines)
-- `addons/l10n_latam_invoice_document/views/account_move_view.xml` (64 lines)
-- `addons/l10n_latam_invoice_document/views/l10n_latam_document_type_view.xml` (65 lines)
-- `addons/l10n_latam_invoice_document/views/report_templates.xml` (113 lines)
-- `addons/l10n_latam_invoice_document/wizards/__init__.py` (4 lines)
-- `addons/l10n_latam_invoice_document/wizards/account_debit_note.py` (21 lines)
-- `addons/l10n_latam_invoice_document/wizards/account_move_reversal.py` (86 lines)
-- `addons/l10n_latam_invoice_document/wizards/account_move_reversal_view.xml` (21 lines)
+### User interface and data
 
-## Functional behavior classification
+- **Description:** 7 XML files and 0 JavaScript/TypeScript files; static XML analysis found 21 record/template/menu identifiers.
+- **Evidence:** `addons/l10n_latam_invoice_document/wizards/account_move_reversal_view.xml:4`, `addons/l10n_latam_invoice_document/report/invoice_report_view.xml:4`, `addons/l10n_latam_invoice_document/views/report_templates.xml:4`, `addons/l10n_latam_invoice_document/views/report_templates.xml:18`, `addons/l10n_latam_invoice_document/views/report_templates.xml:30`, `addons/l10n_latam_invoice_document/views/report_templates.xml:42`, `addons/l10n_latam_invoice_document/views/report_templates.xml:54`, `addons/l10n_latam_invoice_document/views/report_templates.xml:66`, `addons/l10n_latam_invoice_document/views/report_templates.xml:78`, `addons/l10n_latam_invoice_document/views/report_templates.xml:90`, `addons/l10n_latam_invoice_document/views/report_templates.xml:102`, `addons/l10n_latam_invoice_document/views/account_move_view.xml:4`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/l10n_latam_invoice_document/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 2 files contain report-action/template indicators.
+- **Evidence:** `addons/l10n_latam_invoice_document/models/l10n_latam_document_type.py`, `addons/l10n_latam_invoice_document/views/l10n_latam_document_type_view.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 7; representative identifiers: `view_account_move_reversal`, `view_account_invoice_report_search`, `external_layout_footer_content`, `external_layout_standard`, `external_layout_bubble`, `external_layout_wave`, `external_layout_folder`, `external_layout_center`, `external_layout_dual`, `external_layout_lines`, `external_layout_compact`, `view_account_invoice_filter`, `view_account_move_filter`, `view_move_form`, `view_account_move_line_filter`, `view_account_journal_form`, `view_document_type_form`, `view_document_type_tree`, `view_document_type_filter`, `action_document_type`
+- Menus: 1; representative evidence: `addons/l10n_latam_invoice_document/views/l10n_latam_document_type_view.xml:63`
+- Templates: 9; representative evidence: `addons/l10n_latam_invoice_document/views/report_templates.xml:4`, `addons/l10n_latam_invoice_document/views/report_templates.xml:18`, `addons/l10n_latam_invoice_document/views/report_templates.xml:30`, `addons/l10n_latam_invoice_document/views/report_templates.xml:42`, `addons/l10n_latam_invoice_document/views/report_templates.xml:54`, `addons/l10n_latam_invoice_document/views/report_templates.xml:66`, `addons/l10n_latam_invoice_document/views/report_templates.xml:78`, `addons/l10n_latam_invoice_document/views/report_templates.xml:90`, `addons/l10n_latam_invoice_document/views/report_templates.xml:102`
+- View/action field declarations: 21; representative evidence: `addons/l10n_latam_invoice_document/wizards/account_move_reversal_view.xml:6`, `addons/l10n_latam_invoice_document/wizards/account_move_reversal_view.xml:8`, `addons/l10n_latam_invoice_document/report/invoice_report_view.xml:6`, `addons/l10n_latam_invoice_document/report/invoice_report_view.xml:8`, `addons/l10n_latam_invoice_document/views/account_move_view.xml:6`, `addons/l10n_latam_invoice_document/views/account_move_view.xml:8`, `addons/l10n_latam_invoice_document/views/account_move_view.xml:20`, `addons/l10n_latam_invoice_document/views/account_move_view.xml:22`, `addons/l10n_latam_invoice_document/views/account_move_view.xml:34`, `addons/l10n_latam_invoice_document/views/account_move_view.xml:36`, `addons/l10n_latam_invoice_document/views/account_move_line_view.xml:6`, `addons/l10n_latam_invoice_document/views/account_move_line_view.xml:8`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/l10n_latam_invoice_document/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** `addons/l10n_latam_invoice_document/models/l10n_latam_document_type.py`, `addons/l10n_latam_invoice_document/views/l10n_latam_document_type_view.xml`
+
+## 7. Database interactions
+
+- Model declarations: 9
+- Representative model evidence: inherits `account.journal` (addons/l10n_latam_invoice_document/models/account_journal.py:7); inherits `account.chart.template` (addons/l10n_latam_invoice_document/models/account_chart_template.py:6); `l10n_latam.document.type` (addons/l10n_latam_invoice_document/models/l10n_latam_document_type.py:5); inherits `account.move` (addons/l10n_latam_invoice_document/models/account_move.py:9); inherits `account.move.line` (addons/l10n_latam_invoice_document/models/account_move_line.py:6); inherits `res.company` (addons/l10n_latam_invoice_document/models/res_company.py:5); inherits `account.move.reversal` (addons/l10n_latam_invoice_document/wizards/account_move_reversal.py:7); inherits `account.debit.note` (addons/l10n_latam_invoice_document/wizards/account_debit_note.py:4); inherits `account.invoice.report` (addons/l10n_latam_invoice_document/report/invoice_report.py:5)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `account`, `account_debit_note`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Present
+- **Test evidence:** Not found
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/l10n_latam_invoice_document/__init__.py`
+- `addons/l10n_latam_invoice_document/__manifest__.py`
+- `addons/l10n_latam_invoice_document/i18n/es_419.po`
+- `addons/l10n_latam_invoice_document/i18n/l10n_latam_invoice_document.pot`
+- `addons/l10n_latam_invoice_document/i18n/pt_BR.po`
+- `addons/l10n_latam_invoice_document/migrations/1.1/post-migration.py`
+- `addons/l10n_latam_invoice_document/models/__init__.py`
+- `addons/l10n_latam_invoice_document/models/account_chart_template.py`
+- `addons/l10n_latam_invoice_document/models/account_journal.py`
+- `addons/l10n_latam_invoice_document/models/account_move.py`
+- `addons/l10n_latam_invoice_document/models/account_move_line.py`
+- `addons/l10n_latam_invoice_document/models/l10n_latam_document_type.py`
+- `addons/l10n_latam_invoice_document/models/res_company.py`
+- `addons/l10n_latam_invoice_document/report/__init__.py`
+- `addons/l10n_latam_invoice_document/report/invoice_report.py`
+- `addons/l10n_latam_invoice_document/report/invoice_report_view.xml`
+- `addons/l10n_latam_invoice_document/security/ir.access.csv`
+- `addons/l10n_latam_invoice_document/views/account_journal_view.xml`
+- `addons/l10n_latam_invoice_document/views/account_move_line_view.xml`
+- `addons/l10n_latam_invoice_document/views/account_move_view.xml`
+- `addons/l10n_latam_invoice_document/views/l10n_latam_document_type_view.xml`
+- `addons/l10n_latam_invoice_document/views/report_templates.xml`
+- `addons/l10n_latam_invoice_document/wizards/__init__.py`
+- `addons/l10n_latam_invoice_document/wizards/account_debit_note.py`
+- `addons/l10n_latam_invoice_document/wizards/account_move_reversal.py`
+- `addons/l10n_latam_invoice_document/wizards/account_move_reversal_view.xml`

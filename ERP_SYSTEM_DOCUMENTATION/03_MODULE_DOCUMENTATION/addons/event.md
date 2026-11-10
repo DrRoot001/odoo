@@ -1,18 +1,19 @@
 # Module: event
 
 - **Module ID:** MOD-064
-- **Path:** `addons/event`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/event`
 - **Manifest:** `addons/event/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Marketing/Events`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Trainings, Conferences, Meetings, Exhibitions, Registrations
+**Purpose:** Trainings, Conferences, Meetings, Exhibitions, Registrations
 
+**Manifest description:**
 
 Organization and management of Events.
 ======================================
@@ -25,265 +26,306 @@ Key Features
 * Manage your Events and Registrations
 * Use emails to automatically confirm and send acknowledgments for any event registration
 
+**Scope evidence:** The module contains 178 files, including 32 Python, 40 XML, and 16 JavaScript/TypeScript files. The manifest declares dependencies: `barcodes`, `base_setup`, `digest`, `mail`, `phone_validation`, `portal`, `utm`.
 
-Declared dependencies: `barcodes`, `base_setup`, `digest`, `mail`, `phone_validation`, `portal`, `utm`.
+## 2. Module structure
 
-## Static implementation surface
+- Model/business logic files: 20
+- Controller/API files: 3
+- XML/data/view/template files: 40
+- Browser asset files: 16
+- Security files: 2
+- Test files: 6
+- Scheduled/automation evidence files: 5
+- Reporting evidence files: 4
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 32 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 20 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 3 | Files under `controllers/` or `controllers.py`. |
-| XML files | 40 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 16 | Client behavior/assets. |
-| Tests | 6 | Test files found by path/name convention. |
-| Security artifacts | 2 | Access CSV and/or security XML. |
-| Route declarations | 4 | Static decorator matches. |
+## 3. Actors and permissions
 
-## Evidence inventory
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Manifest-declared data and assets
+**Security evidence:** `addons/event/security/ir.access.csv`, `addons/event/security/event_security.xml`
 
-```text
-{
-  "depends": [
-    "barcodes",
-    "base_setup",
-    "digest",
-    "mail",
-    "phone_validation",
-    "portal",
-    "utm"
-  ],
-  "data": [
-    "security/event_security.xml",
-    "views/digest_views.xml",
-    "views/event_menu_views.xml",
-    "views/event_ticket_views.xml",
-    "views/event_mail_views.xml",
-    "views/event_registration_views.xml",
-    "views/event_slot_views.xml",
-    "views/event_type_views.xml",
-    "views/event_event_views.xml",
-    "views/event_stage_views.xml",
-    "report/event_event_templates.xml",
-    "report/event_event_reports.xml",
-    "report/event_registration_report.xml",
-    "data/digest_data.xml",
-    "data/ir_cron_data.xml",
-    "data/mail_template_data.xml",
-    "data/portal_entry_data.xml",
-    "data/event_data.xml",
-    "data/event_tour.xml",
-    "views/res_config_settings_views.xml",
-    "views/event_templates.xml",
-    "views/res_partner_views.xml",
-    "views/event_tag_views.xml",
-    "views/event_question_views.xml",
-    "views/event_registration_answer_views.xml",
-    "views/portal_templates.xml",
-    "data/event_question_data.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/res_users_demo.xml",
-    "data/res_partner_demo.xml",
-    "data/event_demo_misc.xml",
-    "data/event_demo.xml",
-    "data/event_registration_demo.xml"
-  ],
-  "assets": {
-    "web.assets_backend": [
-      "event/static/src/client_action/**/*",
-      "event/static/src/scss/event.scss",
-      "event/static/src/event_state_selection_field/*",
-      "event/static/src/icon_selection_field/icon_selection_field.js",
-      "event/static/src/icon_selection_field/icon_selection_field.xml",
-      "event/static/src/template_reference_field/*",
-      "event/static/src/js/tours/**/*",
-      "event/static/src/views/**/*"
-    ],
-    "web.assets_frontend": [
-      "event/static/src/js/tours/**/*"
-    ],
-    "web.report_assets_common": [
-      "/event/static/src/scss/event_badge_report.scss",
-      "/event/static/src/scss/event_full_page_ticket_report.scss",
-      "/event/static/src/scss/event_full_page_ticket_responsive_html_report.scss"
-    ],
-    "web.report_assets_pdf": [
-      "/event/static/src/scss/event_full_page_ticket_report_pdf.scss"
-    ]
-  }
-}
-```
+## 4. Functionalities
 
-### Representative source files
+### Model and business logic
 
-- `addons/event/__init__.py` (6 lines)
-- `addons/event/__manifest__.py` (82 lines)
-- `addons/event/controllers/__init__.py` (5 lines)
-- `addons/event/controllers/main.py` (105 lines)
-- `addons/event/controllers/portal.py` (97 lines)
-- `addons/event/data/digest_data.xml` (8 lines)
-- `addons/event/data/event_data.xml` (28 lines)
-- `addons/event/data/event_demo.xml` (313 lines)
-- `addons/event/data/event_demo_misc.xml` (93 lines)
-- `addons/event/data/event_question_data.xml` (25 lines)
-- `addons/event/data/event_registration_demo.xml` (166 lines)
-- `addons/event/data/event_tour.xml` (8 lines)
-- `addons/event/data/ir_cron_data.xml` (14 lines)
-- `addons/event/data/mail_template_data.xml` (822 lines)
-- `addons/event/data/portal_entry_data.xml` (12 lines)
-- `addons/event/data/res_partner_demo.xml` (67 lines)
-- `addons/event/data/res_users_demo.xml` (6 lines)
-- `addons/event/i18n/af.po` (5,397 lines)
-- `addons/event/i18n/am.po` (5,393 lines)
-- `addons/event/i18n/ar.po` (8,891 lines)
-- `addons/event/i18n/az.po` (5,429 lines)
-- `addons/event/i18n/bg.po` (5,470 lines)
-- `addons/event/i18n/bs.po` (5,413 lines)
-- `addons/event/i18n/ca.po` (7,247 lines)
-- `addons/event/i18n/cs.po` (5,644 lines)
-- `addons/event/i18n/da.po` (5,629 lines)
-- `addons/event/i18n/de.po` (12,281 lines)
-- `addons/event/i18n/el.po` (5,432 lines)
-- `addons/event/i18n/es.po` (9,779 lines)
-- `addons/event/i18n/es_419.po` (12,251 lines)
-- `addons/event/i18n/es_CL.po` (199 lines)
-- `addons/event/i18n/et.po` (5,579 lines)
-- `addons/event/i18n/eu.po` (5,396 lines)
-- `addons/event/i18n/event.pot` (4,931 lines)
-- `addons/event/i18n/fa.po` (5,432 lines)
-- `addons/event/i18n/fi.po` (12,210 lines)
-- `addons/event/i18n/fo.po` (5,396 lines)
-- `addons/event/i18n/fr.po` (9,836 lines)
-- `addons/event/i18n/fr_BE.po` (269 lines)
-- `addons/event/i18n/fr_CA.po` (182 lines)
-- `addons/event/i18n/gl.po` (5,396 lines)
-- `addons/event/i18n/gu.po` (5,407 lines)
-- `addons/event/i18n/he.po` (5,508 lines)
-- `addons/event/i18n/hi.po` (5,432 lines)
-- `addons/event/i18n/hr.po` (5,466 lines)
-- `addons/event/i18n/hu.po` (5,445 lines)
-- `addons/event/i18n/id.po` (12,169 lines)
-- `addons/event/i18n/is.po` (5,393 lines)
-- `addons/event/i18n/it.po` (12,233 lines)
-- `addons/event/i18n/ja.po` (8,052 lines)
-- `addons/event/i18n/ka.po` (5,396 lines)
-- `addons/event/i18n/kab.po` (5,408 lines)
-- `addons/event/i18n/km.po` (5,400 lines)
-- `addons/event/i18n/ko.po` (8,003 lines)
-- `addons/event/i18n/ku.po` (5,420 lines)
-- `addons/event/i18n/lb.po` (5,398 lines)
-- `addons/event/i18n/lo.po` (8,006 lines)
-- `addons/event/i18n/lt.po` (5,481 lines)
-- `addons/event/i18n/lv.po` (5,425 lines)
-- `addons/event/i18n/mk.po` (5,396 lines)
-- `addons/event/i18n/mn.po` (5,444 lines)
-- `addons/event/i18n/my.po` (5,414 lines)
-- `addons/event/i18n/nb.po` (5,430 lines)
-- `addons/event/i18n/nl.po` (12,246 lines)
-- `addons/event/i18n/pl.po` (10,575 lines)
-- `addons/event/i18n/pt.po` (8,075 lines)
-- `addons/event/i18n/pt_BR.po` (12,140 lines)
-- `addons/event/i18n/ro.po` (5,668 lines)
-- `addons/event/i18n/ru.po` (8,930 lines)
-- `addons/event/i18n/sk.po` (5,453 lines)
-- `addons/event/i18n/sl.po` (5,595 lines)
-- `addons/event/i18n/sq.po` (5,396 lines)
-- `addons/event/i18n/sr@latin.po` (5,580 lines)
-- `addons/event/i18n/sv.po` (9,761 lines)
-- `addons/event/i18n/th.po` (12,053 lines)
-- `addons/event/i18n/tr.po` (9,007 lines)
-- `addons/event/i18n/uk.po` (5,573 lines)
-- `addons/event/i18n/uz.po` (6,282 lines)
-- `addons/event/i18n/vi.po` (8,043 lines)
-- `addons/event/i18n/zh_CN.po` (9,635 lines)
-- `addons/event/i18n/zh_TW.po` (7,179 lines)
-- `addons/event/models/__init__.py` (24 lines)
-- `addons/event/models/digest.py` (22 lines)
-- `addons/event/models/event_event.py` (914 lines)
-- `addons/event/models/event_mail.py` (488 lines)
-- `addons/event/models/event_mail_registration.py` (56 lines)
-- `addons/event/models/event_mail_slot.py` (31 lines)
-- `addons/event/models/event_question.py` (102 lines)
-- `addons/event/models/event_question_answer.py` (21 lines)
-- `addons/event/models/event_registration.py` (522 lines)
-- `addons/event/models/event_registration_answer.py` (32 lines)
-- `addons/event/models/event_slot.py` (145 lines)
-- `addons/event/models/event_stage.py` (18 lines)
-- `addons/event/models/event_tag.py` (41 lines)
-- `addons/event/models/event_ticket.py` (205 lines)
-- `addons/event/models/event_type.py` (62 lines)
-- `addons/event/models/event_type_mail.py` (44 lines)
-- `addons/event/models/event_type_ticket.py` (36 lines)
-- `addons/event/models/mail_template.py` (28 lines)
-- `addons/event/models/res_config_settings.py` (76 lines)
-- `addons/event/models/res_partner.py` (87 lines)
-- `addons/event/report/__init__.py` (2 lines)
-- `addons/event/report/event_event_reports.xml` (100 lines)
-- `addons/event/report/event_event_templates.xml` (426 lines)
-- `addons/event/report/event_registration_report.xml` (78 lines)
-- `addons/event/security/event_security.xml` (32 lines)
-- `addons/event/security/ir.access.csv` (40 lines)
-- `addons/event/static/description/icon.png` (21 lines)
-- `addons/event/static/description/icon.svg` (1 lines)
-- `addons/event/static/description/icon_hi.png` (132 lines)
-- `addons/event/static/src/client_action/event_barcode.js` (143 lines)
-- `addons/event/static/src/client_action/event_barcode.scss` (67 lines)
-- `addons/event/static/src/client_action/event_barcode.xml` (28 lines)
-- `addons/event/static/src/client_action/event_registration_summary_dialog.js` (111 lines)
-- `addons/event/static/src/client_action/event_registration_summary_dialog.xml` (79 lines)
-- `addons/event/static/src/event_state_selection_field/event_state_selection_field.js` (69 lines)
-- `addons/event/static/src/event_state_selection_field/event_state_selection_field.scss` (12 lines)
-- `addons/event/static/src/event_state_selection_field/event_state_selection_field.xml` (24 lines)
-- `addons/event/static/src/icon_selection_field/icon_selection_field.js` (38 lines)
-- `addons/event/static/src/icon_selection_field/icon_selection_field.xml` (8 lines)
-- `addons/event/static/src/img/apple-calendar-128.png` (26 lines)
-- `addons/event/static/src/img/apple-calendar.svg` (48 lines)
-- `addons/event/static/src/img/event_ticket.svg` (56 lines)
-- `addons/event/static/src/img/google-calendar-128.png` (7 lines)
-- `addons/event/static/src/img/google-calendar.svg` (11 lines)
-- `addons/event/static/src/img/how_to_fold_1.png` (50 lines)
-- `addons/event/static/src/img/how_to_fold_2.png` (46 lines)
-- `addons/event/static/src/img/how_to_fold_3.png` (49 lines)
-- `addons/event/static/src/img/how_to_fold_4.png` (352 lines)
-- `addons/event/static/src/img/outlook-calendar-128.png` (15 lines)
-- `addons/event/static/src/img/outlook-calendar.svg` (20 lines)
-- `addons/event/static/src/img/partner_bloem.png` (76 lines)
-- `addons/event/static/src/img/partner_pterocarpus.png` (23 lines)
-- `addons/event/static/src/img/partner_tree_dealers.png` (86 lines)
-- `addons/event/static/src/js/tours/event_steps.js` (9 lines)
-- `addons/event/static/src/js/tours/event_tour.js` (104 lines)
-- `addons/event/static/src/scss/event.scss` (24 lines)
-- `addons/event/static/src/scss/event_badge_report.scss` (75 lines)
-- `addons/event/static/src/scss/event_full_page_ticket_report.scss` (84 lines)
-- `addons/event/static/src/scss/event_full_page_ticket_report_pdf.scss` (6 lines)
-- `addons/event/static/src/scss/event_full_page_ticket_responsive_html_report.scss` (45 lines)
-- `addons/event/static/src/template_reference_field/field_event_mail_template_reference.js` (38 lines)
-- `addons/event/static/src/template_reference_field/field_event_mail_template_reference.scss` (5 lines)
-- `addons/event/static/src/template_reference_field/field_event_mail_template_reference.xml` (14 lines)
-- `addons/event/static/src/views/event_registration_kanban_controller.js` (43 lines)
-- `addons/event/static/src/views/event_registration_list_controller.js` (43 lines)
-- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_common_renderer.xml` (11 lines)
-- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_controller.js` (140 lines)
-- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_controller.xml` (10 lines)
-- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_model.js` (90 lines)
-- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_renderer.js` (49 lines)
-- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_view.js` (14 lines)
-- `addons/event/static/src/views/event_slot/calendar/event_slot_multi_selection_buttons.js` (12 lines)
-- `addons/event/static/src/views/event_slot/calendar/event_slot_multi_selection_buttons.xml` (10 lines)
-- `addons/event/static/src/views/event_slot/list/event_slot_list_controller.js` (29 lines)
-- `addons/event/static/src/views/event_slot/list/event_slot_list_view.js` (10 lines)
-- `addons/event/tests/__init__.py` (7 lines)
-- `addons/event/tests/common.py` (228 lines)
-- `addons/event/tests/test_event_internals.py` (1,286 lines)
-- `addons/event/tests/test_event_mail_schedule.py` (1,175 lines)
+- **Description:** 20 model declarations, 239 methods, 11 constraint handlers, 5 onchange handlers, and 56 dependency declarations.
+- **Evidence:** `addons/event/models/res_partner.py:14`, `addons/event/models/event_question_answer.py:8`, `addons/event/models/event_mail_registration.py:11`, `addons/event/models/event_ticket.py:8`, `addons/event/models/digest.py:6`, `addons/event/models/event_registration_answer.py:7`, `addons/event/models/mail_template.py:7`, `addons/event/models/res_config_settings.py:10`, `addons/event/models/event_mail.py:25`, `addons/event/models/event_type_ticket.py:4`, `addons/event/models/event_slot.py:14`, `addons/event/models/event_type.py:5`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Additional files not expanded here: 18. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### HTTP/API surface
 
-## Functional behavior classification
+- **Description:** 3 controller files and 4 route declarations.
+- **Evidence:** `addons/event/controllers/portal.py:14`, `addons/event/controllers/main.py:16`, `addons/event/controllers/main.py:35`, `addons/event/controllers/main.py:87`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 40 XML files and 16 JavaScript/TypeScript files; static XML analysis found 206 record/template/menu identifiers.
+- **Evidence:** `addons/event/security/event_security.xml:3`, `addons/event/security/event_security.xml:9`, `addons/event/security/event_security.xml:16`, `addons/event/security/event_security.xml:23`, `addons/event/report/event_event_templates.xml:6`, `addons/event/report/event_event_templates.xml:110`, `addons/event/report/event_event_templates.xml:123`, `addons/event/report/event_event_templates.xml:143`, `addons/event/report/event_event_templates.xml:159`, `addons/event/report/event_event_templates.xml:173`, `addons/event/report/event_event_templates.xml:260`, `addons/event/report/event_event_templates.xml:291`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 2 security-directory files are present.
+- **Evidence:** `addons/event/security/ir.access.csv`, `addons/event/security/event_security.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 5 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/event/__manifest__.py`, `addons/event/models/event_event.py`, `addons/event/models/event_registration.py`, `addons/event/data/ir_cron_data.xml`, `addons/event/tests/test_event_mail_schedule.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 4 files contain report-action/template indicators.
+- **Evidence:** `addons/event/controllers/main.py`, `addons/event/report/event_event_reports.xml`, `addons/event/report/event_registration_report.xml`, `addons/event/tests/common.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 6 test files are present.
+- **Evidence:** `addons/event/tests/test_event_slot.py`, `addons/event/tests/common.py`, `addons/event/tests/test_event_mail_schedule.py`, `addons/event/tests/test_event_internals.py`, `addons/event/tests/test_mailing.py`, `addons/event/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 40; representative identifiers: `res_groups_privilege_events`, `group_event_registration_desk`, `group_event_user`, `group_event_manager`, `event_report_template_foldable_badge`, `event_report_template_a6_badge`, `event_report_template_four_per_sheet_badge`, `event_registration_report_template_badge`, `event_event_report_template_badge`, `event_report_template_full_page_ticket`, `event_report_full_page_ticket_layout`, `event_registration_report_template_full_page_ticket`, `event_event_report_template_full_page_ticket`, `event_registration_report_template_responsive_html_ticket`, `event_report_template_badge_card`, `event_report_template_formatted_event_address`, `paperformat_event_badge`, `paperformat_event_full_page_ticket`, `action_report_event_registration_full_page_ticket`, `action_report_event_event_full_page_ticket`
+- Menus: 12; representative evidence: `addons/event/views/res_config_settings_views.xml:94`, `addons/event/views/event_registration_views.xml:384`, `addons/event/views/event_event_views.xml:369`, `addons/event/views/event_menu_views.xml:5`, `addons/event/views/event_menu_views.xml:12`, `addons/event/views/event_menu_views.xml:19`, `addons/event/views/event_menu_views.xml:26`, `addons/event/views/event_menu_views.xml:31`, `addons/event/views/event_menu_views.xml:35`, `addons/event/views/event_menu_views.xml:39`, `addons/event/views/event_menu_views.xml:44`, `addons/event/views/event_menu_views.xml:48`
+- Templates: 17; representative evidence: `addons/event/report/event_event_templates.xml:6`, `addons/event/report/event_event_templates.xml:110`, `addons/event/report/event_event_templates.xml:123`, `addons/event/report/event_event_templates.xml:143`, `addons/event/report/event_event_templates.xml:159`, `addons/event/report/event_event_templates.xml:173`, `addons/event/report/event_event_templates.xml:260`, `addons/event/report/event_event_templates.xml:291`, `addons/event/report/event_event_templates.xml:302`, `addons/event/report/event_event_templates.xml:315`, `addons/event/report/event_event_templates.xml:328`, `addons/event/report/event_event_templates.xml:401`
+- View/action field declarations: 138; representative evidence: `addons/event/report/event_event_reports.xml:42`, `addons/event/report/event_event_reports.xml:53`, `addons/event/report/event_event_reports.xml:64`, `addons/event/report/event_event_reports.xml:75`, `addons/event/report/event_event_reports.xml:86`, `addons/event/report/event_event_reports.xml:93`, `addons/event/report/event_registration_report.xml:6`, `addons/event/data/event_demo.xml:84`, `addons/event/data/event_demo.xml:95`, `addons/event/data/event_demo.xml:104`, `addons/event/views/digest_views.xml:5`, `addons/event/views/digest_views.xml:7`
+- Browser assets: 16; representative files: `addons/event/static/src/event_state_selection_field/event_state_selection_field.js`, `addons/event/static/src/icon_selection_field/icon_selection_field.js`, `addons/event/static/src/client_action/event_barcode.js`, `addons/event/static/src/client_action/event_registration_summary_dialog.js`, `addons/event/static/src/template_reference_field/field_event_mail_template_reference.js`, `addons/event/static/src/views/event_registration_kanban_controller.js`, `addons/event/static/src/views/event_registration_list_controller.js`, `addons/event/static/src/js/tours/event_steps.js`, `addons/event/static/src/js/tours/event_tour.js`, `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_controller.js`, `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_renderer.js`, `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_model.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/event/__manifest__.py`
+- **HTTP entry points:** `addons/event/controllers/portal.py:14`, `addons/event/controllers/main.py:16`, `addons/event/controllers/main.py:35`, `addons/event/controllers/main.py:87`
+- **Scheduled entry points:** `addons/event/__manifest__.py`, `addons/event/models/event_event.py`, `addons/event/models/event_registration.py`, `addons/event/data/ir_cron_data.xml`, `addons/event/tests/test_event_mail_schedule.py`
+- **Report entry points:** `addons/event/controllers/main.py`, `addons/event/report/event_event_reports.xml`, `addons/event/report/event_registration_report.xml`, `addons/event/tests/common.py`
+
+## 7. Database interactions
+
+- Model declarations: 20
+- Representative model evidence: inherits `res.partner` (addons/event/models/res_partner.py:14); `event.question.answer` (addons/event/models/event_question_answer.py:8); `event.mail.registration` (addons/event/models/event_mail_registration.py:11); `event.event.ticket` (addons/event/models/event_ticket.py:8); inherits `digest.digest` (addons/event/models/digest.py:6); `event.registration.answer` (addons/event/models/event_registration_answer.py:7); inherits `mail.template` (addons/event/models/mail_template.py:7); inherits `res.config.settings` (addons/event/models/res_config_settings.py:10); `event.mail` (addons/event/models/event_mail.py:25); `event.type.ticket` (addons/event/models/event_type_ticket.py:4); `event.slot` (addons/event/models/event_slot.py:14); `event.type` (addons/event/models/event_type.py:5); `event.question` (addons/event/models/event_question.py:7); `event.tag.category` (addons/event/models/event_tag.py:9); `event.tag` (addons/event/models/event_tag.py:27); `event.type.mail` (addons/event/models/event_type_mail.py:4); `event.event` (addons/event/models/event_event.py:31); `event.registration` (addons/event/models/event_registration.py:14); `event.mail.slot` (addons/event/models/event_mail_slot.py:5); `event.stage` (addons/event/models/event_stage.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 3
+- Route declarations: 4
+- Route evidence: `addons/event/controllers/portal.py:14`, `addons/event/controllers/main.py:16`, `addons/event/controllers/main.py:35`, `addons/event/controllers/main.py:87`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `barcodes`, `base_setup`, `digest`, `mail`, `phone_validation`, `portal`, `utm`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/event/__init__.py`
+- `addons/event/__manifest__.py`
+- `addons/event/controllers/__init__.py`
+- `addons/event/controllers/main.py`
+- `addons/event/controllers/portal.py`
+- `addons/event/data/digest_data.xml`
+- `addons/event/data/event_data.xml`
+- `addons/event/data/event_demo.xml`
+- `addons/event/data/event_demo_misc.xml`
+- `addons/event/data/event_question_data.xml`
+- `addons/event/data/event_registration_demo.xml`
+- `addons/event/data/event_tour.xml`
+- `addons/event/data/ir_cron_data.xml`
+- `addons/event/data/mail_template_data.xml`
+- `addons/event/data/portal_entry_data.xml`
+- `addons/event/data/res_partner_demo.xml`
+- `addons/event/data/res_users_demo.xml`
+- `addons/event/i18n/af.po`
+- `addons/event/i18n/am.po`
+- `addons/event/i18n/ar.po`
+- `addons/event/i18n/az.po`
+- `addons/event/i18n/bg.po`
+- `addons/event/i18n/bs.po`
+- `addons/event/i18n/ca.po`
+- `addons/event/i18n/cs.po`
+- `addons/event/i18n/da.po`
+- `addons/event/i18n/de.po`
+- `addons/event/i18n/el.po`
+- `addons/event/i18n/es.po`
+- `addons/event/i18n/es_419.po`
+- `addons/event/i18n/es_CL.po`
+- `addons/event/i18n/et.po`
+- `addons/event/i18n/eu.po`
+- `addons/event/i18n/event.pot`
+- `addons/event/i18n/fa.po`
+- `addons/event/i18n/fi.po`
+- `addons/event/i18n/fo.po`
+- `addons/event/i18n/fr.po`
+- `addons/event/i18n/fr_BE.po`
+- `addons/event/i18n/fr_CA.po`
+- `addons/event/i18n/gl.po`
+- `addons/event/i18n/gu.po`
+- `addons/event/i18n/he.po`
+- `addons/event/i18n/hi.po`
+- `addons/event/i18n/hr.po`
+- `addons/event/i18n/hu.po`
+- `addons/event/i18n/id.po`
+- `addons/event/i18n/is.po`
+- `addons/event/i18n/it.po`
+- `addons/event/i18n/ja.po`
+- `addons/event/i18n/ka.po`
+- `addons/event/i18n/kab.po`
+- `addons/event/i18n/km.po`
+- `addons/event/i18n/ko.po`
+- `addons/event/i18n/ku.po`
+- `addons/event/i18n/lb.po`
+- `addons/event/i18n/lo.po`
+- `addons/event/i18n/lt.po`
+- `addons/event/i18n/lv.po`
+- `addons/event/i18n/mk.po`
+- `addons/event/i18n/mn.po`
+- `addons/event/i18n/my.po`
+- `addons/event/i18n/nb.po`
+- `addons/event/i18n/nl.po`
+- `addons/event/i18n/pl.po`
+- `addons/event/i18n/pt.po`
+- `addons/event/i18n/pt_BR.po`
+- `addons/event/i18n/ro.po`
+- `addons/event/i18n/ru.po`
+- `addons/event/i18n/sk.po`
+- `addons/event/i18n/sl.po`
+- `addons/event/i18n/sq.po`
+- `addons/event/i18n/sr@latin.po`
+- `addons/event/i18n/sv.po`
+- `addons/event/i18n/th.po`
+- `addons/event/i18n/tr.po`
+- `addons/event/i18n/uk.po`
+- `addons/event/i18n/uz.po`
+- `addons/event/i18n/vi.po`
+- `addons/event/i18n/zh_CN.po`
+- `addons/event/i18n/zh_TW.po`
+- `addons/event/models/__init__.py`
+- `addons/event/models/digest.py`
+- `addons/event/models/event_event.py`
+- `addons/event/models/event_mail.py`
+- `addons/event/models/event_mail_registration.py`
+- `addons/event/models/event_mail_slot.py`
+- `addons/event/models/event_question.py`
+- `addons/event/models/event_question_answer.py`
+- `addons/event/models/event_registration.py`
+- `addons/event/models/event_registration_answer.py`
+- `addons/event/models/event_slot.py`
+- `addons/event/models/event_stage.py`
+- `addons/event/models/event_tag.py`
+- `addons/event/models/event_ticket.py`
+- `addons/event/models/event_type.py`
+- `addons/event/models/event_type_mail.py`
+- `addons/event/models/event_type_ticket.py`
+- `addons/event/models/mail_template.py`
+- `addons/event/models/res_config_settings.py`
+- `addons/event/models/res_partner.py`
+- `addons/event/report/__init__.py`
+- `addons/event/report/event_event_reports.xml`
+- `addons/event/report/event_event_templates.xml`
+- `addons/event/report/event_registration_report.xml`
+- `addons/event/security/event_security.xml`
+- `addons/event/security/ir.access.csv`
+- `addons/event/static/description/icon.png`
+- `addons/event/static/description/icon.svg`
+- `addons/event/static/description/icon_hi.png`
+- `addons/event/static/src/client_action/event_barcode.js`
+- `addons/event/static/src/client_action/event_barcode.scss`
+- `addons/event/static/src/client_action/event_barcode.xml`
+- `addons/event/static/src/client_action/event_registration_summary_dialog.js`
+- `addons/event/static/src/client_action/event_registration_summary_dialog.xml`
+- `addons/event/static/src/event_state_selection_field/event_state_selection_field.js`
+- `addons/event/static/src/event_state_selection_field/event_state_selection_field.scss`
+- `addons/event/static/src/event_state_selection_field/event_state_selection_field.xml`
+- `addons/event/static/src/icon_selection_field/icon_selection_field.js`
+- `addons/event/static/src/icon_selection_field/icon_selection_field.xml`
+- `addons/event/static/src/img/apple-calendar-128.png`
+- `addons/event/static/src/img/apple-calendar.svg`
+- `addons/event/static/src/img/event_ticket.svg`
+- `addons/event/static/src/img/google-calendar-128.png`
+- `addons/event/static/src/img/google-calendar.svg`
+- `addons/event/static/src/img/how_to_fold_1.png`
+- `addons/event/static/src/img/how_to_fold_2.png`
+- `addons/event/static/src/img/how_to_fold_3.png`
+- `addons/event/static/src/img/how_to_fold_4.png`
+- `addons/event/static/src/img/outlook-calendar-128.png`
+- `addons/event/static/src/img/outlook-calendar.svg`
+- `addons/event/static/src/img/partner_bloem.png`
+- `addons/event/static/src/img/partner_pterocarpus.png`
+- `addons/event/static/src/img/partner_tree_dealers.png`
+- `addons/event/static/src/js/tours/event_steps.js`
+- `addons/event/static/src/js/tours/event_tour.js`
+- `addons/event/static/src/scss/event.scss`
+- `addons/event/static/src/scss/event_badge_report.scss`
+- `addons/event/static/src/scss/event_full_page_ticket_report.scss`
+- `addons/event/static/src/scss/event_full_page_ticket_report_pdf.scss`
+- `addons/event/static/src/scss/event_full_page_ticket_responsive_html_report.scss`
+- `addons/event/static/src/template_reference_field/field_event_mail_template_reference.js`
+- `addons/event/static/src/template_reference_field/field_event_mail_template_reference.scss`
+- `addons/event/static/src/template_reference_field/field_event_mail_template_reference.xml`
+- `addons/event/static/src/views/event_registration_kanban_controller.js`
+- `addons/event/static/src/views/event_registration_list_controller.js`
+- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_common_renderer.xml`
+- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_controller.js`
+- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_controller.xml`
+- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_model.js`
+- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_renderer.js`
+- `addons/event/static/src/views/event_slot/calendar/event_slot_calendar_view.js`
+- `addons/event/static/src/views/event_slot/calendar/event_slot_multi_selection_buttons.js`
+- `addons/event/static/src/views/event_slot/calendar/event_slot_multi_selection_buttons.xml`
+- `addons/event/static/src/views/event_slot/list/event_slot_list_controller.js`
+- `addons/event/static/src/views/event_slot/list/event_slot_list_view.js`
+- `addons/event/tests/__init__.py`
+- `addons/event/tests/common.py`
+- `addons/event/tests/test_event_internals.py`
+- `addons/event/tests/test_event_mail_schedule.py`
+- `addons/event/tests/test_event_slot.py`
+- `addons/event/tests/test_mailing.py`
+- `addons/event/views/digest_views.xml`
+- `addons/event/views/event_event_views.xml`
+- `addons/event/views/event_mail_views.xml`
+- `addons/event/views/event_menu_views.xml`
+- `addons/event/views/event_question_views.xml`
+- `addons/event/views/event_registration_answer_views.xml`
+- `addons/event/views/event_registration_views.xml`
+- `addons/event/views/event_slot_views.xml`
+- `addons/event/views/event_stage_views.xml`
+- `addons/event/views/event_tag_views.xml`
+- `addons/event/views/event_templates.xml`
+- `addons/event/views/event_ticket_views.xml`
+- `addons/event/views/event_type_views.xml`
+- `addons/event/views/portal_templates.xml`
+- `addons/event/views/res_config_settings_views.xml`
+- `addons/event/views/res_partner_views.xml`

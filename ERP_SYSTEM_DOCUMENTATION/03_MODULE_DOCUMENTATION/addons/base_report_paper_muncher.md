@@ -1,115 +1,175 @@
 # Module: base_report_paper_muncher
 
 - **Module ID:** MOD-040
-- **Path:** `addons/base_report_paper_muncher`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/base_report_paper_muncher`
 - **Manifest:** `addons/base_report_paper_muncher/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Partially implemented / limited artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Hidden/Tools`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Paper Muncher Engine
+**Purpose:** Paper Muncher Engine
 
+**Manifest description:**
 
 This module is the implementation of the odoo's
 in house rendering engine called Paper Muncher.
 
 learn more about it here:
 https://odoo.github.io/paper-muncher/
-    
 
-Declared dependencies: `base_setup`.
+**Scope evidence:** The module contains 59 files, including 7 Python, 0 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `base_setup`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 7 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 0 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 1
+- Controller/API files: 0
+- XML/data/view/template files: 0
+- Browser asset files: 0
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 2
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "base_setup"
-  ]
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/base_report_paper_muncher/README.md` (8 lines)
-- `addons/base_report_paper_muncher/__init__.py` (3 lines)
-- `addons/base_report_paper_muncher/__manifest__.py` (19 lines)
-- `addons/base_report_paper_muncher/i18n/ar.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/az.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/base_report_paper_muncher.pot` (70 lines)
-- `addons/base_report_paper_muncher/i18n/bg.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/bs.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/ca.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/cs.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/da.po` (77 lines)
-- `addons/base_report_paper_muncher/i18n/de.po` (85 lines)
-- `addons/base_report_paper_muncher/i18n/el.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/es.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/es_419.po` (84 lines)
-- `addons/base_report_paper_muncher/i18n/et.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/fa.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/fi.po` (80 lines)
-- `addons/base_report_paper_muncher/i18n/fr.po` (83 lines)
-- `addons/base_report_paper_muncher/i18n/he.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/hi.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/hr.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/hu.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/id.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/it.po` (84 lines)
-- `addons/base_report_paper_muncher/i18n/ja.po` (83 lines)
-- `addons/base_report_paper_muncher/i18n/kab.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/ko.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/ku.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/lo.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/lt.po` (75 lines)
-- `addons/base_report_paper_muncher/i18n/lv.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/mn.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/my.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/nb.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/nl.po` (78 lines)
-- `addons/base_report_paper_muncher/i18n/pl.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/pt.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/pt_BR.po` (83 lines)
-- `addons/base_report_paper_muncher/i18n/ro.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/ru.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/sk.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/sl.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/sr@latin.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/sv.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/th.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/tr.po` (83 lines)
-- `addons/base_report_paper_muncher/i18n/uk.po` (74 lines)
-- `addons/base_report_paper_muncher/i18n/uz.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/vi.po` (73 lines)
-- `addons/base_report_paper_muncher/i18n/zh_CN.po` (83 lines)
-- `addons/base_report_paper_muncher/i18n/zh_TW.po` (74 lines)
-- `addons/base_report_paper_muncher/models/__init__.py` (3 lines)
-- `addons/base_report_paper_muncher/models/ir_actions_report.py` (187 lines)
-- `addons/base_report_paper_muncher/paper_muncher.py` (408 lines)
-- `addons/base_report_paper_muncher/static/description/icon.png` (99 lines)
-- `addons/base_report_paper_muncher/static/description/icon.svg` (17 lines)
-- `addons/base_report_paper_muncher/tests/__init__.py` (3 lines)
-- `addons/base_report_paper_muncher/tests/test_report.py` (89 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 1 model declarations, 19 methods, 0 constraint handlers, 0 onchange handlers, and 0 dependency declarations.
+- **Evidence:** `addons/base_report_paper_muncher/models/ir_actions_report.py:19`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### Reporting
+
+- **Description:** 2 files contain report-action/template indicators.
+- **Evidence:** `addons/base_report_paper_muncher/models/ir_actions_report.py`, `addons/base_report_paper_muncher/tests/test_report.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/base_report_paper_muncher/tests/test_report.py`, `addons/base_report_paper_muncher/tests/__init__.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 0; representative identifiers: None found
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 0; representative evidence: Not found in module
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/base_report_paper_muncher/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** `addons/base_report_paper_muncher/models/ir_actions_report.py`, `addons/base_report_paper_muncher/tests/test_report.py`
+
+## 7. Database interactions
+
+- Model declarations: 1
+- Representative model evidence: inherits `ir.actions.report` (addons/base_report_paper_muncher/models/ir_actions_report.py:19)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `base_setup`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Not found
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/base_report_paper_muncher/README.md`
+- `addons/base_report_paper_muncher/__init__.py`
+- `addons/base_report_paper_muncher/__manifest__.py`
+- `addons/base_report_paper_muncher/i18n/ar.po`
+- `addons/base_report_paper_muncher/i18n/az.po`
+- `addons/base_report_paper_muncher/i18n/base_report_paper_muncher.pot`
+- `addons/base_report_paper_muncher/i18n/bg.po`
+- `addons/base_report_paper_muncher/i18n/bs.po`
+- `addons/base_report_paper_muncher/i18n/ca.po`
+- `addons/base_report_paper_muncher/i18n/cs.po`
+- `addons/base_report_paper_muncher/i18n/da.po`
+- `addons/base_report_paper_muncher/i18n/de.po`
+- `addons/base_report_paper_muncher/i18n/el.po`
+- `addons/base_report_paper_muncher/i18n/es.po`
+- `addons/base_report_paper_muncher/i18n/es_419.po`
+- `addons/base_report_paper_muncher/i18n/et.po`
+- `addons/base_report_paper_muncher/i18n/fa.po`
+- `addons/base_report_paper_muncher/i18n/fi.po`
+- `addons/base_report_paper_muncher/i18n/fr.po`
+- `addons/base_report_paper_muncher/i18n/he.po`
+- `addons/base_report_paper_muncher/i18n/hi.po`
+- `addons/base_report_paper_muncher/i18n/hr.po`
+- `addons/base_report_paper_muncher/i18n/hu.po`
+- `addons/base_report_paper_muncher/i18n/id.po`
+- `addons/base_report_paper_muncher/i18n/it.po`
+- `addons/base_report_paper_muncher/i18n/ja.po`
+- `addons/base_report_paper_muncher/i18n/kab.po`
+- `addons/base_report_paper_muncher/i18n/ko.po`
+- `addons/base_report_paper_muncher/i18n/ku.po`
+- `addons/base_report_paper_muncher/i18n/lo.po`
+- `addons/base_report_paper_muncher/i18n/lt.po`
+- `addons/base_report_paper_muncher/i18n/lv.po`
+- `addons/base_report_paper_muncher/i18n/mn.po`
+- `addons/base_report_paper_muncher/i18n/my.po`
+- `addons/base_report_paper_muncher/i18n/nb.po`
+- `addons/base_report_paper_muncher/i18n/nl.po`
+- `addons/base_report_paper_muncher/i18n/pl.po`
+- `addons/base_report_paper_muncher/i18n/pt.po`
+- `addons/base_report_paper_muncher/i18n/pt_BR.po`
+- `addons/base_report_paper_muncher/i18n/ro.po`
+- `addons/base_report_paper_muncher/i18n/ru.po`
+- `addons/base_report_paper_muncher/i18n/sk.po`
+- `addons/base_report_paper_muncher/i18n/sl.po`
+- `addons/base_report_paper_muncher/i18n/sr@latin.po`
+- `addons/base_report_paper_muncher/i18n/sv.po`
+- `addons/base_report_paper_muncher/i18n/th.po`
+- `addons/base_report_paper_muncher/i18n/tr.po`
+- `addons/base_report_paper_muncher/i18n/uk.po`
+- `addons/base_report_paper_muncher/i18n/uz.po`
+- `addons/base_report_paper_muncher/i18n/vi.po`
+- `addons/base_report_paper_muncher/i18n/zh_CN.po`
+- `addons/base_report_paper_muncher/i18n/zh_TW.po`
+- `addons/base_report_paper_muncher/models/__init__.py`
+- `addons/base_report_paper_muncher/models/ir_actions_report.py`
+- `addons/base_report_paper_muncher/paper_muncher.py`
+- `addons/base_report_paper_muncher/static/description/icon.png`
+- `addons/base_report_paper_muncher/static/description/icon.svg`
+- `addons/base_report_paper_muncher/tests/__init__.py`
+- `addons/base_report_paper_muncher/tests/test_report.py`

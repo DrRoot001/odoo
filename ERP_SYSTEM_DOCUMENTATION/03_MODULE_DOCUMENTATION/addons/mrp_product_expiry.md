@@ -1,114 +1,170 @@
 # Module: mrp_product_expiry
 
 - **Module ID:** MOD-381
-- **Path:** `addons/mrp_product_expiry`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/mrp_product_expiry`
 - **Manifest:** `addons/mrp_product_expiry/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `True`
+- **Category:** `Supply Chain/Manufacturing`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Manufacturing Expiry
+**Purpose:** Manufacturing Expiry
 
+**Manifest description:**
 
 Technical module.
-    
 
-Declared dependencies: `mrp`, `product_expiry`.
+**Scope evidence:** The module contains 58 files, including 8 Python, 1 XML, and 0 JavaScript/TypeScript files. The manifest declares dependencies: `mrp`, `product_expiry`.
 
-## Static implementation surface
+## 2. Module structure
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 8 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 2 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 0 | Files under `controllers/` or `controllers.py`. |
-| XML files | 1 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 0 | Client behavior/assets. |
-| Tests | 2 | Test files found by path/name convention. |
-| Security artifacts | 0 | Access CSV and/or security XML. |
-| Route declarations | 0 | Static decorator matches. |
+- Model/business logic files: 2
+- Controller/API files: 0
+- XML/data/view/template files: 1
+- Browser asset files: 0
+- Security files: 0
+- Test files: 2
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 0
 
-## Evidence inventory
+## 3. Actors and permissions
 
-### Manifest-declared data and assets
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-```text
-{
-  "depends": [
-    "mrp",
-    "product_expiry"
-  ],
-  "data": [
-    "wizard/confirm_expiry_view.xml"
-  ]
-}
-```
+**Security evidence:** Not found in module
 
-### Representative source files
+## 4. Functionalities
 
-- `addons/mrp_product_expiry/__init__.py` (5 lines)
-- `addons/mrp_product_expiry/__manifest__.py` (17 lines)
-- `addons/mrp_product_expiry/i18n/ar.po` (100 lines)
-- `addons/mrp_product_expiry/i18n/az.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/bg.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/bs.po` (94 lines)
-- `addons/mrp_product_expiry/i18n/ca.po` (95 lines)
-- `addons/mrp_product_expiry/i18n/cs.po` (94 lines)
-- `addons/mrp_product_expiry/i18n/da.po` (99 lines)
-- `addons/mrp_product_expiry/i18n/de.po` (101 lines)
-- `addons/mrp_product_expiry/i18n/el.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/es.po` (102 lines)
-- `addons/mrp_product_expiry/i18n/es_419.po` (99 lines)
-- `addons/mrp_product_expiry/i18n/et.po` (98 lines)
-- `addons/mrp_product_expiry/i18n/fa.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/fi.po` (100 lines)
-- `addons/mrp_product_expiry/i18n/fr.po` (99 lines)
-- `addons/mrp_product_expiry/i18n/he.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/hi.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/hr.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/hu.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/id.po` (99 lines)
-- `addons/mrp_product_expiry/i18n/it.po` (99 lines)
-- `addons/mrp_product_expiry/i18n/ja.po` (98 lines)
-- `addons/mrp_product_expiry/i18n/kab.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/ko.po` (99 lines)
-- `addons/mrp_product_expiry/i18n/ku.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/lo.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/lt.po` (94 lines)
-- `addons/mrp_product_expiry/i18n/lv.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/mn.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/mrp_product_expiry.pot` (88 lines)
-- `addons/mrp_product_expiry/i18n/my.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/nb.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/nl.po` (99 lines)
-- `addons/mrp_product_expiry/i18n/pl.po` (100 lines)
-- `addons/mrp_product_expiry/i18n/pt.po` (98 lines)
-- `addons/mrp_product_expiry/i18n/pt_BR.po` (102 lines)
-- `addons/mrp_product_expiry/i18n/ro.po` (99 lines)
-- `addons/mrp_product_expiry/i18n/ru.po` (102 lines)
-- `addons/mrp_product_expiry/i18n/sk.po` (92 lines)
-- `addons/mrp_product_expiry/i18n/sl.po` (94 lines)
-- `addons/mrp_product_expiry/i18n/sr@latin.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/sv.po` (101 lines)
-- `addons/mrp_product_expiry/i18n/th.po` (98 lines)
-- `addons/mrp_product_expiry/i18n/tr.po` (101 lines)
-- `addons/mrp_product_expiry/i18n/uk.po` (93 lines)
-- `addons/mrp_product_expiry/i18n/uz.po` (114 lines)
-- `addons/mrp_product_expiry/i18n/vi.po` (98 lines)
-- `addons/mrp_product_expiry/i18n/zh_CN.po` (98 lines)
-- `addons/mrp_product_expiry/i18n/zh_TW.po` (100 lines)
-- `addons/mrp_product_expiry/models/__init__.py` (4 lines)
-- `addons/mrp_product_expiry/models/mrp_production.py` (39 lines)
-- `addons/mrp_product_expiry/tests/__init__.py` (4 lines)
-- `addons/mrp_product_expiry/tests/test_mrp_product_expiry.py` (109 lines)
-- `addons/mrp_product_expiry/wizard/__init__.py` (4 lines)
-- `addons/mrp_product_expiry/wizard/confirm_expiry.py` (43 lines)
-- `addons/mrp_product_expiry/wizard/confirm_expiry_view.xml` (41 lines)
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 2 model declarations, 9 methods, 0 constraint handlers, 0 onchange handlers, and 1 dependency declarations.
+- **Evidence:** `addons/mrp_product_expiry/models/mrp_production.py:7`, `addons/mrp_product_expiry/wizard/confirm_expiry.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### User interface and data
+
+- **Description:** 1 XML files and 0 JavaScript/TypeScript files; static XML analysis found 1 record/template/menu identifiers.
+- **Evidence:** `addons/mrp_product_expiry/wizard/confirm_expiry_view.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 2 test files are present.
+- **Evidence:** `addons/mrp_product_expiry/tests/__init__.py`, `addons/mrp_product_expiry/tests/test_mrp_product_expiry.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 1; representative identifiers: `confirm_expiry_view_mrp_inherit`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 0; representative evidence: Not found in module
+- View/action field declarations: 2; representative evidence: `addons/mrp_product_expiry/wizard/confirm_expiry_view.xml:5`, `addons/mrp_product_expiry/wizard/confirm_expiry_view.xml:7`
+- Browser assets: 0; representative files: Not found in module
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/mrp_product_expiry/__manifest__.py`
+- **HTTP entry points:** Not found in module
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 2
+- Representative model evidence: inherits `mrp.production` (addons/mrp_product_expiry/models/mrp_production.py:7); inherits `expiry.picking.confirmation` (addons/mrp_product_expiry/wizard/confirm_expiry.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 0
+- Route declarations: 0
+- Route evidence: Not found in module
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `mrp`, `product_expiry`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Not found
+- **Security evidence:** Not found
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/mrp_product_expiry/__init__.py`
+- `addons/mrp_product_expiry/__manifest__.py`
+- `addons/mrp_product_expiry/i18n/ar.po`
+- `addons/mrp_product_expiry/i18n/az.po`
+- `addons/mrp_product_expiry/i18n/bg.po`
+- `addons/mrp_product_expiry/i18n/bs.po`
+- `addons/mrp_product_expiry/i18n/ca.po`
+- `addons/mrp_product_expiry/i18n/cs.po`
+- `addons/mrp_product_expiry/i18n/da.po`
+- `addons/mrp_product_expiry/i18n/de.po`
+- `addons/mrp_product_expiry/i18n/el.po`
+- `addons/mrp_product_expiry/i18n/es.po`
+- `addons/mrp_product_expiry/i18n/es_419.po`
+- `addons/mrp_product_expiry/i18n/et.po`
+- `addons/mrp_product_expiry/i18n/fa.po`
+- `addons/mrp_product_expiry/i18n/fi.po`
+- `addons/mrp_product_expiry/i18n/fr.po`
+- `addons/mrp_product_expiry/i18n/he.po`
+- `addons/mrp_product_expiry/i18n/hi.po`
+- `addons/mrp_product_expiry/i18n/hr.po`
+- `addons/mrp_product_expiry/i18n/hu.po`
+- `addons/mrp_product_expiry/i18n/id.po`
+- `addons/mrp_product_expiry/i18n/it.po`
+- `addons/mrp_product_expiry/i18n/ja.po`
+- `addons/mrp_product_expiry/i18n/kab.po`
+- `addons/mrp_product_expiry/i18n/ko.po`
+- `addons/mrp_product_expiry/i18n/ku.po`
+- `addons/mrp_product_expiry/i18n/lo.po`
+- `addons/mrp_product_expiry/i18n/lt.po`
+- `addons/mrp_product_expiry/i18n/lv.po`
+- `addons/mrp_product_expiry/i18n/mn.po`
+- `addons/mrp_product_expiry/i18n/mrp_product_expiry.pot`
+- `addons/mrp_product_expiry/i18n/my.po`
+- `addons/mrp_product_expiry/i18n/nb.po`
+- `addons/mrp_product_expiry/i18n/nl.po`
+- `addons/mrp_product_expiry/i18n/pl.po`
+- `addons/mrp_product_expiry/i18n/pt.po`
+- `addons/mrp_product_expiry/i18n/pt_BR.po`
+- `addons/mrp_product_expiry/i18n/ro.po`
+- `addons/mrp_product_expiry/i18n/ru.po`
+- `addons/mrp_product_expiry/i18n/sk.po`
+- `addons/mrp_product_expiry/i18n/sl.po`
+- `addons/mrp_product_expiry/i18n/sr@latin.po`
+- `addons/mrp_product_expiry/i18n/sv.po`
+- `addons/mrp_product_expiry/i18n/th.po`
+- `addons/mrp_product_expiry/i18n/tr.po`
+- `addons/mrp_product_expiry/i18n/uk.po`
+- `addons/mrp_product_expiry/i18n/uz.po`
+- `addons/mrp_product_expiry/i18n/vi.po`
+- `addons/mrp_product_expiry/i18n/zh_CN.po`
+- `addons/mrp_product_expiry/i18n/zh_TW.po`
+- `addons/mrp_product_expiry/models/__init__.py`
+- `addons/mrp_product_expiry/models/mrp_production.py`
+- `addons/mrp_product_expiry/tests/__init__.py`
+- `addons/mrp_product_expiry/tests/test_mrp_product_expiry.py`
+- `addons/mrp_product_expiry/wizard/__init__.py`
+- `addons/mrp_product_expiry/wizard/confirm_expiry.py`
+- `addons/mrp_product_expiry/wizard/confirm_expiry_view.xml`

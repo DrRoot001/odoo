@@ -1,372 +1,387 @@
 # Module: pos_self_order
 
 - **Module ID:** MOD-455
-- **Path:** `addons/pos_self_order`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/pos_self_order`
 - **Manifest:** `addons/pos_self_order/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `not declared`
-- **Installable flag:** `not declared`
-- **Auto install:** `['pos_restaurant']`
+- **Category:** `Sales/Point Of Sale`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Addon for the POS App that allows customers to view the menu on their smartphone.
+**Purpose:** Addon for the POS App that allows customers to view the menu on their smartphone.
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `pos_restaurant`, `http_routing`, `link_tracker`, `google_address_autocomplete`, `base_geolocalize`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 337 files, including 51 Python, 59 XML, and 146 JavaScript/TypeScript files. The manifest declares dependencies: `pos_restaurant`, `http_routing`, `link_tracker`, `google_address_autocomplete`, `base_geolocalize`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 51 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 23 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 4 | Files under `controllers/` or `controllers.py`. |
-| XML files | 59 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 146 | Client behavior/assets. |
-| Tests | 20 | Test files found by path/name convention. |
-| Security artifacts | 1 | Access CSV and/or security XML. |
-| Route declarations | 18 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 24
+- Controller/API files: 4
+- XML/data/view/template files: 59
+- Browser asset files: 146
+- Security files: 1
+- Test files: 20
+- Scheduled/automation evidence files: 0
+- Reporting evidence files: 3
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "pos_restaurant",
-    "http_routing",
-    "link_tracker",
-    "google_address_autocomplete",
-    "base_geolocalize"
-  ],
-  "data": [
-    "data/mail_template_data.xml",
-    "data/preset_data.xml",
-    "views/pos_self_order.index.xml",
-    "views/qr_code.xml",
-    "views/pos_category_views.xml",
-    "views/pos_config_view.xml",
-    "views/custom_link_views.xml",
-    "views/pos_restaurant_views.xml",
-    "views/product_views.xml",
-    "views/pos_preset_view.xml",
-    "data/init_access.xml",
-    "views/res_config_settings_views.xml",
-    "views/point_of_sale_dashboard.xml",
-    "receipt/pos_order_receipt.xml",
-    "receipt/pos_order_change_receipt.xml",
-    "receipt/dynamic_qr_receipt.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "data/kiosk_demo_data.xml"
-  ],
-  "assets": {
-    "web.assets_unit_tests_setup": [
-      [
-        "include",
-        "pos_self_order.assets"
-      ],
-      [
-        "remove",
-        "pos_self_order/static/src/app/root.js"
-      ],
-      [
-        "remove",
-        "pos_self_order/static/src/backend/pos_open_ui_button/pos_open_ui_button.js"
-      ],
-      [
-        "remove",
-        "pos_self_order/static/src/**/*.scss"
-      ],
-      "web/static/src/core/debug/**/*",
-      "web/static/src/core/browser/router.js"
-    ],
-    "web.assets_unit_tests": [
-      "pos_self_order/static/tests/unit/**/*"
-    ],
-    "point_of_sale._assets_pos": [
-      "pos_self_order/static/src/app/models/utils/snooze_tracker.js",
-      "pos_self_order/static/src/backend/qr_order_button/*",
-      "pos_self_order/static/src/overrides/**/*"
-    ],
-    "web.assets_backend": [
-      "pos_self_order/static/src/upgrade_selection_field.js",
-      "pos_self_order/static/src/backend/qr_order_button/*",
-      "pos_self_order/static/src/backend/pos_open_ui_button/pos_open_ui_button.js"
-    ],
-    "pos_self_order.assets": [
-      "pos_self_order/static/src/app/primary_variables.scss",
-      "pos_self_order/static/src/app/bootstrap_overridden.scss",
-      [
-        "include",
-        "point_of_sale.base_app"
-      ],
-      "google_address_autocomplete/static/src/google_places_session.js",
-      "google_address_autocomplete/static/src/address_autocomplete/google_address_autocomplete.js",
-      "google_address_autocomplete/static/src/address_autocomplete/google_address_autocomplete.xml",
-      "google_address_autocomplete/static/src/address_autocomplete/google_address_autocomplete.scss",
-      "web/static/src/core/autocomplete/*",
-      "web/static/src/views/fields/char/*",
-      "web/static/src/views/fields/translation/*",
-      "web/static/src/views/fields/dynamic_placeholder_hook.js",
-      "web/static/src/views/fields/dynamic_placeholder_popover.*",
-      "web/static/src/views/fields/formatters.js",
-      "web/static/src/views/fields/standard_field_props.js",
-      "web/static/src/views/fields/input_field_hook.js",
-      "web/static/src/core/model_field_selector/model_field_selector_popover.js",
-      "web/static/src/core/model_field_selector/model_field_selector_popover.xml",
-      "web/static/src/core/model_field_selector/model_field_selector_popover.scss",
-      "web/static/src/core/currency.js",
-      "barcodes/static/src/barcode_plugin.js",
-      "point_of_sale/static/src/utils.js",
-      "point_of_sale/static/src/app/utils/convert_python_template.js",
-      "point_of_sale/static/src/lazy_getter.js",
-      "point_of_sale/static/src/app/utils/init_lna.js",
-      "web/static/lib/bootstrap/js/dist/util/index.js",
-      "web/static/lib/bootstrap/js/dist/dom/data.js",
-      "web/static/lib/bootstrap/js/dist/dom/event-handler.js",
-      "web/static/lib/bootstrap/js/dist/dom/manipulator.js",
-      "web/static/lib/bootstrap/js/dist/dom/selector-engine.js",
-      "web/static/lib/bootstrap/js/dist/util/config.js",
-      "web/static/lib/bootstrap/js/dist/util/swipe.js",
-      "web/static/lib/bootstrap/js/dist/base-component.js",
-      "web/static/lib/bootstrap/js/dist/carousel.js",
-      "web/static/lib/bootstrap/js/dist/scrollspy.js",
-      "web/static/src/libs/bootstrap.js",
-      "html_editor/static/src/scss/base_style.scss",
-      "html_editor/static/src/scss/html_editor.common.scss",
-      "point_of_sale/static/src/app/utils/make_awaitable_dialog.js",
-      "point_of_sale/static/src/app/components/numpad/*",
-      "point_of_sale/static/src/app/components/loader/*",
-      "point_of_sale/static/src/app/components/loader/critical_pos_error/*",
-      "point_of_sale/static/src/app/components/product_card/*",
-      "point_of_sale/static/src/app/components/order_display/*",
-      "point_of_sale/static/src/app/components/orderline/*",
-      "point_of_sale/static/src/app/components/centered_icon/*",
-      "point_of_sale/static/src/app/components/validation_animation/*",
-      "point_of_sale/static/src/app/components/epos_templates.xml",
-      "point_of_sale/static/src/css/pos_receipts.css",
-      "pos_self_order/static/src/overrides/utils/printer/generate_printer_data.js",
-      "point_of_sale/static/src/app/utils/printer/*",
-      "point_of_sale/static/src/app/utils/html-to-image.js",
-      "point_of_sale/static/src/app/utils/use_timed_press.js",
-      "point_of_sale/static/src/app/components/popups/select_default_printer_popup/select_default_printer_popup.js",
-      "point_of_sale/static/src/app/plugins/pos_number_buffer_plugin.js",
-      "mail/static/src/core/common/sound_effects_plugin.js",
-      "point_of_sale/static/src/app/plugins/pos_ticket_printer_plugin.js",
-      "point_of_sale/static/src/app/components/popups/retry_print_popup/**",
-      "point_of_sale/static/src/app/components/popups/text_input_popup/**",
-      "pos_self_order/static/src/app/**/*",
-      "web/static/src/core/utils/render.js",
-      "account/static/src/helpers/*.js",
-      "web/static/src/model/**/*",
-      "web/static/src/search/**/*",
-      "web/static/src/views/fields/parsers.js",
-      "point_of_sale/static/src/app/models/data_service_options.js",
-      "point_of_sale/static/src/app/models/utils/indexed_db.js",
-      "point_of_sale/static/src/app/models/related_models/**/*",
-      "point_of_sale/static/src/app/plugins/pos_data_plugin.js",
-      "point_of_sale/static/src/app/models/**/*",
-      "pos_restaurant/static/src/app/models/restaurant_table.js",
-      "point_of_sale/static/src/app/utils/numbers.js",
-      "point_of_sale/static/src/app/utils/pretty_console_log.js",
-      "point_of_sale/static/src/app/utils/devices_identifier_sequence.js",
-      "point_of_sale/static/src/app/hooks/hooks.js",
-      "point_of_sale/static/src/app/utils/debug-formatter.js",
-      [
-        "include",
-        "point_of_sale.payment_terminals"
-      ]
-    ],
-    "pos_self_order.assets_tests": [
-      [
-        "include",
-        "point_of_sale.base_tests"
-      ],
-      "pos_self_order/static/tests/tours/**/*",
-      "point_of_sale/static/tests/generic_helpers/numpad_util.js",
-      "point_of_sale/static/tests/generic_helpers/dialog_util.js",
-      "point_of_sale/static/tests/generic_helpers/notification_util.js",
-      "point_of_sale/static/tests/generic_helpers/utils.js",
-      "point_of_sale/static/tests/pos/tours/utils/chrome_util.js"
-    ],
-    "web.assets_tests": [
-      "pos_self_order/static/tests/pos/**/*"
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/pos_self_order/security/ir.access.csv`
 
-- `addons/pos_self_order/__init__.py` (3 lines)
-- `addons/pos_self_order/__manifest__.py` (157 lines)
-- `addons/pos_self_order/controllers/__init__.py` (5 lines)
-- `addons/pos_self_order/controllers/orders.py` (459 lines)
-- `addons/pos_self_order/controllers/self_entry.py` (83 lines)
-- `addons/pos_self_order/controllers/webmanifest.py` (38 lines)
-- `addons/pos_self_order/data/init_access.xml` (6 lines)
-- `addons/pos_self_order/data/kiosk_demo_data.xml` (6 lines)
-- `addons/pos_self_order/data/mail_template_data.xml` (78 lines)
-- `addons/pos_self_order/data/preset_data.xml` (27 lines)
-- `addons/pos_self_order/i18n/ar.po` (2,287 lines)
-- `addons/pos_self_order/i18n/az.po` (2,258 lines)
-- `addons/pos_self_order/i18n/bg.po` (2,258 lines)
-- `addons/pos_self_order/i18n/bs.po` (2,258 lines)
-- `addons/pos_self_order/i18n/ca.po` (2,445 lines)
-- `addons/pos_self_order/i18n/cs.po` (2,262 lines)
-- `addons/pos_self_order/i18n/da.po` (2,285 lines)
-- `addons/pos_self_order/i18n/de.po` (2,492 lines)
-- `addons/pos_self_order/i18n/el.po` (2,259 lines)
-- `addons/pos_self_order/i18n/es.po` (2,479 lines)
-- `addons/pos_self_order/i18n/es_419.po` (2,465 lines)
-- `addons/pos_self_order/i18n/et.po` (2,260 lines)
-- `addons/pos_self_order/i18n/fa.po` (2,258 lines)
-- `addons/pos_self_order/i18n/fi.po` (2,289 lines)
-- `addons/pos_self_order/i18n/fr.po` (2,327 lines)
-- `addons/pos_self_order/i18n/he.po` (2,259 lines)
-- `addons/pos_self_order/i18n/hi.po` (2,257 lines)
-- `addons/pos_self_order/i18n/hr.po` (2,259 lines)
-- `addons/pos_self_order/i18n/hu.po` (2,259 lines)
-- `addons/pos_self_order/i18n/id.po` (2,471 lines)
-- `addons/pos_self_order/i18n/it.po` (2,315 lines)
-- `addons/pos_self_order/i18n/ja.po` (2,300 lines)
-- `addons/pos_self_order/i18n/kab.po` (2,257 lines)
-- `addons/pos_self_order/i18n/ko.po` (2,283 lines)
-- `addons/pos_self_order/i18n/ku.po` (2,257 lines)
-- `addons/pos_self_order/i18n/lo.po` (2,436 lines)
-- `addons/pos_self_order/i18n/lt.po` (2,261 lines)
-- `addons/pos_self_order/i18n/lv.po` (2,257 lines)
-- `addons/pos_self_order/i18n/mn.po` (2,258 lines)
-- `addons/pos_self_order/i18n/my.po` (2,258 lines)
-- `addons/pos_self_order/i18n/nb.po` (2,259 lines)
-- `addons/pos_self_order/i18n/nl.po` (2,487 lines)
-- `addons/pos_self_order/i18n/pl.po` (2,484 lines)
-- `addons/pos_self_order/i18n/pos_self_order.pot` (2,221 lines)
-- `addons/pos_self_order/i18n/pt.po` (2,439 lines)
-- `addons/pos_self_order/i18n/pt_BR.po` (2,478 lines)
-- `addons/pos_self_order/i18n/ro.po` (2,286 lines)
-- `addons/pos_self_order/i18n/ru.po` (2,360 lines)
-- `addons/pos_self_order/i18n/sk.po` (2,256 lines)
-- `addons/pos_self_order/i18n/sl.po` (2,260 lines)
-- `addons/pos_self_order/i18n/sr@latin.po` (2,259 lines)
-- `addons/pos_self_order/i18n/sv.po` (2,283 lines)
-- `addons/pos_self_order/i18n/th.po` (2,276 lines)
-- `addons/pos_self_order/i18n/tr.po` (2,299 lines)
-- `addons/pos_self_order/i18n/uk.po` (2,288 lines)
-- `addons/pos_self_order/i18n/uz.po` (2,512 lines)
-- `addons/pos_self_order/i18n/vi.po` (2,281 lines)
-- `addons/pos_self_order/i18n/zh_CN.po` (2,435 lines)
-- `addons/pos_self_order/i18n/zh_TW.po` (2,277 lines)
-- `addons/pos_self_order/models/__init__.py` (24 lines)
-- `addons/pos_self_order/models/ir_http.py` (48 lines)
-- `addons/pos_self_order/models/ir_ui_view.py` (23 lines)
-- `addons/pos_self_order/models/mail_template.py` (16 lines)
-- `addons/pos_self_order/models/pos_category.py` (13 lines)
-- `addons/pos_self_order/models/pos_config.py` (554 lines)
-- `addons/pos_self_order/models/pos_load_mixin.py` (70 lines)
-- `addons/pos_self_order/models/pos_order.py` (623 lines)
-- `addons/pos_self_order/models/pos_order_line.py` (27 lines)
-- `addons/pos_self_order/models/pos_payment_method.py` (21 lines)
-- `addons/pos_self_order/models/pos_prep_line.py` (9 lines)
-- `addons/pos_self_order/models/pos_prep_order.py` (9 lines)
-- `addons/pos_self_order/models/pos_preset.py` (187 lines)
-- `addons/pos_self_order/models/pos_restaurant.py` (47 lines)
-- `addons/pos_self_order/models/pos_self_order_custom_link.py` (53 lines)
-- `addons/pos_self_order/models/pos_session.py` (52 lines)
-- `addons/pos_self_order/models/pos_snooze.py` (18 lines)
-- `addons/pos_self_order/models/product_product.py` (33 lines)
-- `addons/pos_self_order/models/product_tag.py` (15 lines)
-- `addons/pos_self_order/models/product_template.py` (104 lines)
-- `addons/pos_self_order/models/res_config_settings.py` (226 lines)
-- `addons/pos_self_order/models/res_country.py` (11 lines)
-- `addons/pos_self_order/models/res_partner.py` (17 lines)
-- `addons/pos_self_order/receipt/__init__.py` (1 lines)
-- `addons/pos_self_order/receipt/dynamic_qr_receipt.xml` (44 lines)
-- `addons/pos_self_order/receipt/pos_order_change_receipt.xml` (11 lines)
-- `addons/pos_self_order/receipt/pos_order_receipt.py` (36 lines)
-- `addons/pos_self_order/receipt/pos_order_receipt.xml` (22 lines)
-- `addons/pos_self_order/security/ir.access.csv` (3 lines)
-- `addons/pos_self_order/static/img/delivery.jpg` (301 lines)
-- `addons/pos_self_order/static/img/dine_in.jpg` (367 lines)
-- `addons/pos_self_order/static/img/eatin.svg` (1 lines)
-- `addons/pos_self_order/static/img/kiosk_background.jpg` (321 lines)
-- `addons/pos_self_order/static/img/landing_01.jpg` (486 lines)
-- `addons/pos_self_order/static/img/landing_02.jpg` (800 lines)
-- `addons/pos_self_order/static/img/landing_03.jpg` (760 lines)
-- `addons/pos_self_order/static/img/takeAway.svg` (1 lines)
-- `addons/pos_self_order/static/img/take_out.jpg` (467 lines)
-- `addons/pos_self_order/static/src/app/bootstrap_overridden.scss` (31 lines)
-- `addons/pos_self_order/static/src/app/components/attribute_selection/attribute_selection.js` (119 lines)
-- `addons/pos_self_order/static/src/app/components/attribute_selection/attribute_selection.scss` (10 lines)
-- `addons/pos_self_order/static/src/app/components/attribute_selection/attribute_selection.xml` (40 lines)
-- `addons/pos_self_order/static/src/app/components/attribute_selection/attribute_selection_helper.js` (74 lines)
-- `addons/pos_self_order/static/src/app/components/cancel_popup/cancel_popup.js` (20 lines)
-- `addons/pos_self_order/static/src/app/components/cancel_popup/cancel_popup.xml` (25 lines)
-- `addons/pos_self_order/static/src/app/components/category_list_popup/category_list_popup.js` (23 lines)
-- `addons/pos_self_order/static/src/app/components/category_list_popup/category_list_popup.xml` (32 lines)
-- `addons/pos_self_order/static/src/app/components/choose_combo_popup/choose_combo_popup.js` (69 lines)
-- `addons/pos_self_order/static/src/app/components/choose_combo_popup/choose_combo_popup.xml` (102 lines)
-- `addons/pos_self_order/static/src/app/components/combo_stepper/combo_stepper.js` (40 lines)
-- `addons/pos_self_order/static/src/app/components/combo_stepper/combo_stepper.scss` (43 lines)
-- `addons/pos_self_order/static/src/app/components/combo_stepper/combo_stepper.xml` (15 lines)
-- `addons/pos_self_order/static/src/app/components/info_popup/info_popup.js` (10 lines)
-- `addons/pos_self_order/static/src/app/components/info_popup/info_popup.xml` (30 lines)
-- `addons/pos_self_order/static/src/app/components/language_popup/language_popup.js` (42 lines)
-- `addons/pos_self_order/static/src/app/components/language_popup/language_popup.scss` (16 lines)
-- `addons/pos_self_order/static/src/app/components/language_popup/language_popup.xml` (26 lines)
-- `addons/pos_self_order/static/src/app/components/language_selector/language_selector.js` (26 lines)
-- `addons/pos_self_order/static/src/app/components/language_selector/language_selector.scss` (3 lines)
-- `addons/pos_self_order/static/src/app/components/language_selector/language_selector.xml` (10 lines)
-- `addons/pos_self_order/static/src/app/components/loading_overlay/loading_overlay.js` (17 lines)
-- `addons/pos_self_order/static/src/app/components/loading_overlay/loading_overlay.xml` (8 lines)
-- `addons/pos_self_order/static/src/app/components/missing_required_details/missing_required_details.scss` (12 lines)
-- `addons/pos_self_order/static/src/app/components/missing_required_details/missing_required_details.xml` (12 lines)
-- `addons/pos_self_order/static/src/app/components/network_connectionLost_popup/network_connectionLost_popup.js` (83 lines)
-- `addons/pos_self_order/static/src/app/components/network_connectionLost_popup/network_connectionLost_popup.xml` (47 lines)
-- `addons/pos_self_order/static/src/app/components/number_popup/number_popup.js` (61 lines)
-- `addons/pos_self_order/static/src/app/components/number_popup/number_popup.scss` (19 lines)
-- `addons/pos_self_order/static/src/app/components/number_popup/number_popup.xml` (29 lines)
-- `addons/pos_self_order/static/src/app/components/order_widget/order_widget.js` (8 lines)
-- `addons/pos_self_order/static/src/app/components/order_widget/order_widget.xml` (18 lines)
-- `addons/pos_self_order/static/src/app/components/pills_selection_popup/pills_selection_popup.js` (99 lines)
-- `addons/pos_self_order/static/src/app/components/pills_selection_popup/pills_selection_popup.scss` (62 lines)
-- `addons/pos_self_order/static/src/app/components/pills_selection_popup/pills_selection_popup.xml` (64 lines)
-- `addons/pos_self_order/static/src/app/components/preset_info_popup/preset_info_popup.js` (401 lines)
-- `addons/pos_self_order/static/src/app/components/preset_info_popup/preset_info_popup.scss` (37 lines)
-- `addons/pos_self_order/static/src/app/components/preset_info_popup/preset_info_popup.xml` (104 lines)
-- `addons/pos_self_order/static/src/app/components/printing_failure_popup/printing_failure_popup.js` (22 lines)
-- `addons/pos_self_order/static/src/app/components/printing_failure_popup/printing_failure_popup.xml` (24 lines)
-- `addons/pos_self_order/static/src/app/components/product_card/product_card.js` (98 lines)
-- `addons/pos_self_order/static/src/app/components/product_card/product_card.scss` (23 lines)
-- `addons/pos_self_order/static/src/app/components/product_card/product_card.xml` (35 lines)
-- `addons/pos_self_order/static/src/app/components/product_info_popup/product_info_popup.js` (21 lines)
-- `addons/pos_self_order/static/src/app/components/product_info_popup/product_info_popup.xml` (45 lines)
-- `addons/pos_self_order/static/src/app/components/product_interface/product_interface.js` (26 lines)
-- `addons/pos_self_order/static/src/app/components/product_interface/product_interface.scss` (29 lines)
-- `addons/pos_self_order/static/src/app/components/product_interface/product_interface.xml` (45 lines)
-- `addons/pos_self_order/static/src/app/components/quantity_widget/quantity_widget.xml` (18 lines)
-- `addons/pos_self_order/static/src/app/components/slots_popup/slots_popup.xml` (36 lines)
-- `addons/pos_self_order/static/src/app/components/timeout_popup/timeout_popup.js` (25 lines)
-- `addons/pos_self_order/static/src/app/components/timeout_popup/timeout_popup.xml` (28 lines)
-- `addons/pos_self_order/static/src/app/components/unavailable_product_dialog/unavailable_product_dialog.js` (17 lines)
-- `addons/pos_self_order/static/src/app/components/unavailable_product_dialog/unavailable_product_dialog.xml` (24 lines)
-- `addons/pos_self_order/static/src/app/data_service_options.js` (25 lines)
-- `addons/pos_self_order/static/src/app/kiosk_style.js` (121 lines)
-- `addons/pos_self_order/static/src/app/models/pos_config.js` (15 lines)
-- `addons/pos_self_order/static/src/app/models/pos_order.js` (81 lines)
-- `addons/pos_self_order/static/src/app/models/pos_order_line.js` (63 lines)
-- `addons/pos_self_order/static/src/app/models/pos_preset.js` (35 lines)
-- `addons/pos_self_order/static/src/app/models/product_template.js` (38 lines)
-- `addons/pos_self_order/static/src/app/models/restaurant_floor.js` (12 lines)
+## 4. Functionalities
 
-Additional files not expanded here: 177. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 24 model declarations, 335 methods, 1 constraint handlers, 6 onchange handlers, and 4 dependency declarations.
+- **Evidence:** `addons/pos_self_order/models/pos_prep_line.py:4`, `addons/pos_self_order/models/res_partner.py:5`, `addons/pos_self_order/models/product_product.py:7`, `addons/pos_self_order/models/pos_self_order_custom_link.py:9`, `addons/pos_self_order/models/pos_restaurant.py:9`, `addons/pos_self_order/models/pos_restaurant.py:38`, `addons/pos_self_order/models/product_template.py:5`, `addons/pos_self_order/models/ir_ui_view.py:6`, `addons/pos_self_order/models/mail_template.py:3`, `addons/pos_self_order/models/pos_config.py:16`, `addons/pos_self_order/models/res_config_settings.py:11`, `addons/pos_self_order/models/pos_category.py:7`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 4 controller files and 18 route declarations.
+- **Evidence:** `addons/pos_self_order/controllers/self_entry.py:9`, `addons/pos_self_order/controllers/self_entry.py:36`, `addons/pos_self_order/controllers/webmanifest.py:34`, `addons/pos_self_order/controllers/orders.py:29`, `addons/pos_self_order/controllers/orders.py:156`, `addons/pos_self_order/controllers/orders.py:166`, `addons/pos_self_order/controllers/orders.py:228`, `addons/pos_self_order/controllers/orders.py:241`, `addons/pos_self_order/controllers/orders.py:272`, `addons/pos_self_order/controllers/orders.py:294`, `addons/pos_self_order/controllers/orders.py:315`, `addons/pos_self_order/controllers/orders.py:336`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 59 XML files and 146 JavaScript/TypeScript files; static XML analysis found 27 record/template/menu identifiers.
+- **Evidence:** `addons/pos_self_order/data/mail_template_data.xml:4`, `addons/pos_self_order/data/mail_template_data.xml:38`, `addons/pos_self_order/data/preset_data.xml:3`, `addons/pos_self_order/data/preset_data.xml:10`, `addons/pos_self_order/data/preset_data.xml:15`, `addons/pos_self_order/data/preset_data.xml:20`, `addons/pos_self_order/receipt/pos_order_change_receipt.xml:4`, `addons/pos_self_order/receipt/dynamic_qr_receipt.xml:4`, `addons/pos_self_order/receipt/pos_order_receipt.xml:4`, `addons/pos_self_order/views/pos_config_view.xml:3`, `addons/pos_self_order/views/pos_config_view.xml:14`, `addons/pos_self_order/views/res_config_settings_views.xml:3`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 1 security-directory files are present.
+- **Evidence:** `addons/pos_self_order/security/ir.access.csv`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Reporting
+
+- **Description:** 3 files contain report-action/template indicators.
+- **Evidence:** `addons/pos_self_order/controllers/orders.py`, `addons/pos_self_order/views/qr_code.xml`, `addons/pos_self_order/tests/test_self_order_receipt_lang.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 20 test files are present.
+- **Evidence:** `addons/pos_self_order/tests/test_self_order_controller.py`, `addons/pos_self_order/tests/test_self_order_sibling_ptav.py`, `addons/pos_self_order/tests/test_frontend.py`, `addons/pos_self_order/tests/test_self_order_attribute.py`, `addons/pos_self_order/tests/test_self_order_payment_method.py`, `addons/pos_self_order/tests/test_self_order_prices.py`, `addons/pos_self_order/tests/test_self_order_common.py`, `addons/pos_self_order/tests/test_self_order_combo.py`, `addons/pos_self_order/tests/test_self_order_preset.py`, `addons/pos_self_order/tests/test_webmanifest.py`, `addons/pos_self_order/tests/test_takeaway_preset_mail.py`, `addons/pos_self_order/tests/test_self_order_sequence.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 59; representative identifiers: `takeout_email_template`, `delivery_email_template`, `product_delivery_template`, `pos_restaurant.pos_takein_preset`, `pos_restaurant.pos_takeout_preset`, `pos_restaurant.pos_delivery_preset`, `pos_self_order.pos_order_change_receipt`, `pos_self_order.DynamicQrReceipt`, `pos_self_order.pos_order_receipt_header`, `pos_self_view_pos_config_tree`, `pos_config_view_form_inherit_pos_self_order`, `res_config_settings_view_form_menu`, `POS Self Order`, `report_self_order_qr_codes_page`, `paperformat_qrcodes`, `qr_codes_page`, `pos_self_order_product_pos_category_form_view`, `product_template_search_view_pos`, `product_template_form_view`, `product_template_tree_view`
+- Menus: 0; representative evidence: Not found in module
+- Templates: 5; representative evidence: `addons/pos_self_order/receipt/pos_order_change_receipt.xml:4`, `addons/pos_self_order/receipt/dynamic_qr_receipt.xml:4`, `addons/pos_self_order/receipt/pos_order_receipt.xml:4`, `addons/pos_self_order/views/pos_self_order.index.xml:3`, `addons/pos_self_order/views/qr_code.xml:18`
+- View/action field declarations: 29; representative evidence: `addons/pos_self_order/views/pos_config_view.xml:5`, `addons/pos_self_order/views/pos_config_view.xml:7`, `addons/pos_self_order/views/pos_config_view.xml:16`, `addons/pos_self_order/views/pos_config_view.xml:18`, `addons/pos_self_order/views/res_config_settings_views.xml:5`, `addons/pos_self_order/views/res_config_settings_views.xml:7`, `addons/pos_self_order/views/qr_code.xml:6`, `addons/pos_self_order/views/pos_category_views.xml:5`, `addons/pos_self_order/views/pos_category_views.xml:7`, `addons/pos_self_order/views/product_views.xml:5`, `addons/pos_self_order/views/product_views.xml:7`, `addons/pos_self_order/views/product_views.xml:21`
+- Browser assets: 146; representative files: `addons/pos_self_order/static/src/upgrade_selection_field.js`, `addons/pos_self_order/static/src/app/self_order_index.js`, `addons/pos_self_order/static/src/app/kiosk_style.js`, `addons/pos_self_order/static/src/app/utils.js`, `addons/pos_self_order/static/src/app/data_service_options.js`, `addons/pos_self_order/static/src/app/router.js`, `addons/pos_self_order/static/src/app/root.js`, `addons/pos_self_order/static/src/overrides/services/pos_ticket_printer_plugin.js`, `addons/pos_self_order/static/src/overrides/models/pos_store.js`, `addons/pos_self_order/static/src/overrides/models/restaurant_table.js`, `addons/pos_self_order/static/src/overrides/models/pos_config.js`, `addons/pos_self_order/static/src/overrides/order_tracker_dropdown/order_tracker_dropdown.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/pos_self_order/__manifest__.py`
+- **HTTP entry points:** `addons/pos_self_order/controllers/self_entry.py:9`, `addons/pos_self_order/controllers/self_entry.py:36`, `addons/pos_self_order/controllers/webmanifest.py:34`, `addons/pos_self_order/controllers/orders.py:29`, `addons/pos_self_order/controllers/orders.py:156`, `addons/pos_self_order/controllers/orders.py:166`, `addons/pos_self_order/controllers/orders.py:228`, `addons/pos_self_order/controllers/orders.py:241`, `addons/pos_self_order/controllers/orders.py:272`, `addons/pos_self_order/controllers/orders.py:294`, `addons/pos_self_order/controllers/orders.py:315`, `addons/pos_self_order/controllers/orders.py:336`
+- **Scheduled entry points:** Not found in module
+- **Report entry points:** `addons/pos_self_order/controllers/orders.py`, `addons/pos_self_order/views/qr_code.xml`, `addons/pos_self_order/tests/test_self_order_receipt_lang.py`
+
+## 7. Database interactions
+
+- Model declarations: 24
+- Representative model evidence: inherits `pos.prep.line` (addons/pos_self_order/models/pos_prep_line.py:4); inherits `res.partner` (addons/pos_self_order/models/res_partner.py:5); inherits `product.product` (addons/pos_self_order/models/product_product.py:7); `pos_self_order.custom_link` (addons/pos_self_order/models/pos_self_order_custom_link.py:9); inherits `restaurant.table` (addons/pos_self_order/models/pos_restaurant.py:9); inherits `restaurant.floor` (addons/pos_self_order/models/pos_restaurant.py:38); inherits `product.template` (addons/pos_self_order/models/product_template.py:5); inherits `ir.ui.view` (addons/pos_self_order/models/ir_ui_view.py:6); `mail.template` (addons/pos_self_order/models/mail_template.py:3); inherits `pos.config` (addons/pos_self_order/models/pos_config.py:16); inherits `res.config.settings` (addons/pos_self_order/models/res_config_settings.py:11); inherits `pos.category` (addons/pos_self_order/models/pos_category.py:7); inherits `pos.session` (addons/pos_self_order/models/pos_session.py:7); inherits `pos.prep.order` (addons/pos_self_order/models/pos_prep_order.py:4); inherits `pos.order` (addons/pos_self_order/models/pos_order.py:14); inherits `ir.http` (addons/pos_self_order/models/ir_http.py:9); inherits `pos.preset` (addons/pos_self_order/models/pos_preset.py:10); inherits `pos.load.mixin` (addons/pos_self_order/models/pos_load_mixin.py:9); inherits `pos.payment.method` (addons/pos_self_order/models/pos_payment_method.py:4); `res.country` (addons/pos_self_order/models/res_country.py:4); inherits `pos.order.line` (addons/pos_self_order/models/pos_order_line.py:6); inherits `product.tag` (addons/pos_self_order/models/product_tag.py:5); inherits `pos.snooze` (addons/pos_self_order/models/pos_snooze.py:6); inherits `pos.order.receipt` (addons/pos_self_order/receipt/pos_order_receipt.py:5)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 4
+- Route declarations: 18
+- Route evidence: `addons/pos_self_order/controllers/self_entry.py:9`, `addons/pos_self_order/controllers/self_entry.py:36`, `addons/pos_self_order/controllers/webmanifest.py:34`, `addons/pos_self_order/controllers/orders.py:29`, `addons/pos_self_order/controllers/orders.py:156`, `addons/pos_self_order/controllers/orders.py:166`, `addons/pos_self_order/controllers/orders.py:228`, `addons/pos_self_order/controllers/orders.py:241`, `addons/pos_self_order/controllers/orders.py:272`, `addons/pos_self_order/controllers/orders.py:294`, `addons/pos_self_order/controllers/orders.py:315`, `addons/pos_self_order/controllers/orders.py:336`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `pos_restaurant`, `http_routing`, `link_tracker`, `google_address_autocomplete`, `base_geolocalize`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/pos_self_order/__init__.py`
+- `addons/pos_self_order/__manifest__.py`
+- `addons/pos_self_order/controllers/__init__.py`
+- `addons/pos_self_order/controllers/orders.py`
+- `addons/pos_self_order/controllers/self_entry.py`
+- `addons/pos_self_order/controllers/webmanifest.py`
+- `addons/pos_self_order/data/init_access.xml`
+- `addons/pos_self_order/data/kiosk_demo_data.xml`
+- `addons/pos_self_order/data/mail_template_data.xml`
+- `addons/pos_self_order/data/preset_data.xml`
+- `addons/pos_self_order/i18n/ar.po`
+- `addons/pos_self_order/i18n/az.po`
+- `addons/pos_self_order/i18n/bg.po`
+- `addons/pos_self_order/i18n/bs.po`
+- `addons/pos_self_order/i18n/ca.po`
+- `addons/pos_self_order/i18n/cs.po`
+- `addons/pos_self_order/i18n/da.po`
+- `addons/pos_self_order/i18n/de.po`
+- `addons/pos_self_order/i18n/el.po`
+- `addons/pos_self_order/i18n/es.po`
+- `addons/pos_self_order/i18n/es_419.po`
+- `addons/pos_self_order/i18n/et.po`
+- `addons/pos_self_order/i18n/fa.po`
+- `addons/pos_self_order/i18n/fi.po`
+- `addons/pos_self_order/i18n/fr.po`
+- `addons/pos_self_order/i18n/he.po`
+- `addons/pos_self_order/i18n/hi.po`
+- `addons/pos_self_order/i18n/hr.po`
+- `addons/pos_self_order/i18n/hu.po`
+- `addons/pos_self_order/i18n/id.po`
+- `addons/pos_self_order/i18n/it.po`
+- `addons/pos_self_order/i18n/ja.po`
+- `addons/pos_self_order/i18n/kab.po`
+- `addons/pos_self_order/i18n/ko.po`
+- `addons/pos_self_order/i18n/ku.po`
+- `addons/pos_self_order/i18n/lo.po`
+- `addons/pos_self_order/i18n/lt.po`
+- `addons/pos_self_order/i18n/lv.po`
+- `addons/pos_self_order/i18n/mn.po`
+- `addons/pos_self_order/i18n/my.po`
+- `addons/pos_self_order/i18n/nb.po`
+- `addons/pos_self_order/i18n/nl.po`
+- `addons/pos_self_order/i18n/pl.po`
+- `addons/pos_self_order/i18n/pos_self_order.pot`
+- `addons/pos_self_order/i18n/pt.po`
+- `addons/pos_self_order/i18n/pt_BR.po`
+- `addons/pos_self_order/i18n/ro.po`
+- `addons/pos_self_order/i18n/ru.po`
+- `addons/pos_self_order/i18n/sk.po`
+- `addons/pos_self_order/i18n/sl.po`
+- `addons/pos_self_order/i18n/sr@latin.po`
+- `addons/pos_self_order/i18n/sv.po`
+- `addons/pos_self_order/i18n/th.po`
+- `addons/pos_self_order/i18n/tr.po`
+- `addons/pos_self_order/i18n/uk.po`
+- `addons/pos_self_order/i18n/uz.po`
+- `addons/pos_self_order/i18n/vi.po`
+- `addons/pos_self_order/i18n/zh_CN.po`
+- `addons/pos_self_order/i18n/zh_TW.po`
+- `addons/pos_self_order/models/__init__.py`
+- `addons/pos_self_order/models/ir_http.py`
+- `addons/pos_self_order/models/ir_ui_view.py`
+- `addons/pos_self_order/models/mail_template.py`
+- `addons/pos_self_order/models/pos_category.py`
+- `addons/pos_self_order/models/pos_config.py`
+- `addons/pos_self_order/models/pos_load_mixin.py`
+- `addons/pos_self_order/models/pos_order.py`
+- `addons/pos_self_order/models/pos_order_line.py`
+- `addons/pos_self_order/models/pos_payment_method.py`
+- `addons/pos_self_order/models/pos_prep_line.py`
+- `addons/pos_self_order/models/pos_prep_order.py`
+- `addons/pos_self_order/models/pos_preset.py`
+- `addons/pos_self_order/models/pos_restaurant.py`
+- `addons/pos_self_order/models/pos_self_order_custom_link.py`
+- `addons/pos_self_order/models/pos_session.py`
+- `addons/pos_self_order/models/pos_snooze.py`
+- `addons/pos_self_order/models/product_product.py`
+- `addons/pos_self_order/models/product_tag.py`
+- `addons/pos_self_order/models/product_template.py`
+- `addons/pos_self_order/models/res_config_settings.py`
+- `addons/pos_self_order/models/res_country.py`
+- `addons/pos_self_order/models/res_partner.py`
+- `addons/pos_self_order/receipt/__init__.py`
+- `addons/pos_self_order/receipt/dynamic_qr_receipt.xml`
+- `addons/pos_self_order/receipt/pos_order_change_receipt.xml`
+- `addons/pos_self_order/receipt/pos_order_receipt.py`
+- `addons/pos_self_order/receipt/pos_order_receipt.xml`
+- `addons/pos_self_order/security/ir.access.csv`
+- `addons/pos_self_order/static/img/delivery.jpg`
+- `addons/pos_self_order/static/img/dine_in.jpg`
+- `addons/pos_self_order/static/img/eatin.svg`
+- `addons/pos_self_order/static/img/kiosk_background.jpg`
+- `addons/pos_self_order/static/img/landing_01.jpg`
+- `addons/pos_self_order/static/img/landing_02.jpg`
+- `addons/pos_self_order/static/img/landing_03.jpg`
+- `addons/pos_self_order/static/img/takeAway.svg`
+- `addons/pos_self_order/static/img/take_out.jpg`
+- `addons/pos_self_order/static/src/app/bootstrap_overridden.scss`
+- `addons/pos_self_order/static/src/app/components/attribute_selection/attribute_selection.js`
+- `addons/pos_self_order/static/src/app/components/attribute_selection/attribute_selection.scss`
+- `addons/pos_self_order/static/src/app/components/attribute_selection/attribute_selection.xml`
+- `addons/pos_self_order/static/src/app/components/attribute_selection/attribute_selection_helper.js`
+- `addons/pos_self_order/static/src/app/components/cancel_popup/cancel_popup.js`
+- `addons/pos_self_order/static/src/app/components/cancel_popup/cancel_popup.xml`
+- `addons/pos_self_order/static/src/app/components/category_list_popup/category_list_popup.js`
+- `addons/pos_self_order/static/src/app/components/category_list_popup/category_list_popup.xml`
+- `addons/pos_self_order/static/src/app/components/choose_combo_popup/choose_combo_popup.js`
+- `addons/pos_self_order/static/src/app/components/choose_combo_popup/choose_combo_popup.xml`
+- `addons/pos_self_order/static/src/app/components/combo_stepper/combo_stepper.js`
+- `addons/pos_self_order/static/src/app/components/combo_stepper/combo_stepper.scss`
+- `addons/pos_self_order/static/src/app/components/combo_stepper/combo_stepper.xml`
+- `addons/pos_self_order/static/src/app/components/info_popup/info_popup.js`
+- `addons/pos_self_order/static/src/app/components/info_popup/info_popup.xml`
+- `addons/pos_self_order/static/src/app/components/language_popup/language_popup.js`
+- `addons/pos_self_order/static/src/app/components/language_popup/language_popup.scss`
+- `addons/pos_self_order/static/src/app/components/language_popup/language_popup.xml`
+- `addons/pos_self_order/static/src/app/components/language_selector/language_selector.js`
+- `addons/pos_self_order/static/src/app/components/language_selector/language_selector.scss`
+- `addons/pos_self_order/static/src/app/components/language_selector/language_selector.xml`
+- `addons/pos_self_order/static/src/app/components/loading_overlay/loading_overlay.js`
+- `addons/pos_self_order/static/src/app/components/loading_overlay/loading_overlay.xml`
+- `addons/pos_self_order/static/src/app/components/missing_required_details/missing_required_details.scss`
+- `addons/pos_self_order/static/src/app/components/missing_required_details/missing_required_details.xml`
+- `addons/pos_self_order/static/src/app/components/network_connectionLost_popup/network_connectionLost_popup.js`
+- `addons/pos_self_order/static/src/app/components/network_connectionLost_popup/network_connectionLost_popup.xml`
+- `addons/pos_self_order/static/src/app/components/number_popup/number_popup.js`
+- `addons/pos_self_order/static/src/app/components/number_popup/number_popup.scss`
+- `addons/pos_self_order/static/src/app/components/number_popup/number_popup.xml`
+- `addons/pos_self_order/static/src/app/components/order_widget/order_widget.js`
+- `addons/pos_self_order/static/src/app/components/order_widget/order_widget.xml`
+- `addons/pos_self_order/static/src/app/components/pills_selection_popup/pills_selection_popup.js`
+- `addons/pos_self_order/static/src/app/components/pills_selection_popup/pills_selection_popup.scss`
+- `addons/pos_self_order/static/src/app/components/pills_selection_popup/pills_selection_popup.xml`
+- `addons/pos_self_order/static/src/app/components/preset_info_popup/preset_info_popup.js`
+- `addons/pos_self_order/static/src/app/components/preset_info_popup/preset_info_popup.scss`
+- `addons/pos_self_order/static/src/app/components/preset_info_popup/preset_info_popup.xml`
+- `addons/pos_self_order/static/src/app/components/printing_failure_popup/printing_failure_popup.js`
+- `addons/pos_self_order/static/src/app/components/printing_failure_popup/printing_failure_popup.xml`
+- `addons/pos_self_order/static/src/app/components/product_card/product_card.js`
+- `addons/pos_self_order/static/src/app/components/product_card/product_card.scss`
+- `addons/pos_self_order/static/src/app/components/product_card/product_card.xml`
+- `addons/pos_self_order/static/src/app/components/product_info_popup/product_info_popup.js`
+- `addons/pos_self_order/static/src/app/components/product_info_popup/product_info_popup.xml`
+- `addons/pos_self_order/static/src/app/components/product_interface/product_interface.js`
+- `addons/pos_self_order/static/src/app/components/product_interface/product_interface.scss`
+- `addons/pos_self_order/static/src/app/components/product_interface/product_interface.xml`
+- `addons/pos_self_order/static/src/app/components/quantity_widget/quantity_widget.xml`
+- `addons/pos_self_order/static/src/app/components/slots_popup/slots_popup.xml`
+- `addons/pos_self_order/static/src/app/components/timeout_popup/timeout_popup.js`
+- `addons/pos_self_order/static/src/app/components/timeout_popup/timeout_popup.xml`
+- `addons/pos_self_order/static/src/app/components/unavailable_product_dialog/unavailable_product_dialog.js`
+- `addons/pos_self_order/static/src/app/components/unavailable_product_dialog/unavailable_product_dialog.xml`
+- `addons/pos_self_order/static/src/app/data_service_options.js`
+- `addons/pos_self_order/static/src/app/kiosk_style.js`
+- `addons/pos_self_order/static/src/app/models/pos_config.js`
+- `addons/pos_self_order/static/src/app/models/pos_order.js`
+- `addons/pos_self_order/static/src/app/models/pos_order_line.js`
+- `addons/pos_self_order/static/src/app/models/pos_preset.js`
+- `addons/pos_self_order/static/src/app/models/product_template.js`
+- `addons/pos_self_order/static/src/app/models/restaurant_floor.js`
+- `addons/pos_self_order/static/src/app/models/utils/snooze_tracker.js`
+- `addons/pos_self_order/static/src/app/pages/cart_page/cart_page.js`
+- `addons/pos_self_order/static/src/app/pages/cart_page/cart_page.scss`
+- `addons/pos_self_order/static/src/app/pages/cart_page/cart_page.xml`
+- `addons/pos_self_order/static/src/app/pages/combo_page/combo_page.js`
+- `addons/pos_self_order/static/src/app/pages/combo_page/combo_page.scss`
+- `addons/pos_self_order/static/src/app/pages/combo_page/combo_page.xml`
+- `addons/pos_self_order/static/src/app/pages/confirmation_page/confirmation_page.js`
+- `addons/pos_self_order/static/src/app/pages/confirmation_page/confirmation_page.scss`
+- `addons/pos_self_order/static/src/app/pages/confirmation_page/confirmation_page.xml`
+- `addons/pos_self_order/static/src/app/pages/eating_location_page/eating_location_page.js`
+- `addons/pos_self_order/static/src/app/pages/eating_location_page/eating_location_page.xml`
+- `addons/pos_self_order/static/src/app/pages/landing_page/landing_page.js`
+- `addons/pos_self_order/static/src/app/pages/landing_page/landing_page.scss`
+- `addons/pos_self_order/static/src/app/pages/landing_page/landing_page.xml`
+- `addons/pos_self_order/static/src/app/pages/optional_product_page/optional_product_page.js`
+- `addons/pos_self_order/static/src/app/pages/optional_product_page/optional_product_page.scss`
+- `addons/pos_self_order/static/src/app/pages/optional_product_page/optional_product_page.xml`
+- `addons/pos_self_order/static/src/app/pages/order_history_page/order_history_page.js`
+- `addons/pos_self_order/static/src/app/pages/order_history_page/order_history_page.xml`
+- `addons/pos_self_order/static/src/app/pages/payment_page/payment_page.js`
+- `addons/pos_self_order/static/src/app/pages/payment_page/payment_page.scss`
+- `addons/pos_self_order/static/src/app/pages/payment_page/payment_page.xml`
+- `addons/pos_self_order/static/src/app/pages/product_list_page/product_list_page.js`
+- `addons/pos_self_order/static/src/app/pages/product_list_page/product_list_page.scss`
+- `addons/pos_self_order/static/src/app/pages/product_list_page/product_list_page.xml`
+- `addons/pos_self_order/static/src/app/pages/product_page/product_page.js`
+- `addons/pos_self_order/static/src/app/pages/product_page/product_page.scss`
+- `addons/pos_self_order/static/src/app/pages/product_page/product_page.xml`
+- `addons/pos_self_order/static/src/app/pages/stand_number_page/stand_number_page.js`
+- `addons/pos_self_order/static/src/app/pages/stand_number_page/stand_number_page.scss`
+- `addons/pos_self_order/static/src/app/pages/stand_number_page/stand_number_page.xml`
+- `addons/pos_self_order/static/src/app/plugins/pos_data_plugin.js`
+- `addons/pos_self_order/static/src/app/plugins/pos_ticket_printer_plugin.js`
+- `addons/pos_self_order/static/src/app/primary_variables.scss`
+- `addons/pos_self_order/static/src/app/root.js`
+- `addons/pos_self_order/static/src/app/router.js`
+- `addons/pos_self_order/static/src/app/self_order_index.js`
+- `addons/pos_self_order/static/src/app/self_order_index.scss`
+- `addons/pos_self_order/static/src/app/self_order_index.xml`
+- `addons/pos_self_order/static/src/app/services/card_utils.js`
+- `addons/pos_self_order/static/src/app/services/self_order_router_service.js`
+- `addons/pos_self_order/static/src/app/services/self_order_service.js`
+- `addons/pos_self_order/static/src/app/utils/carousel_hook.js`
+- `addons/pos_self_order/static/src/app/utils/category_scrollspy_hook.js`
+- `addons/pos_self_order/static/src/app/utils/payment_interface.js`
+- `addons/pos_self_order/static/src/app/utils/scroll.js`
+- `addons/pos_self_order/static/src/app/utils/scroll_dnd_hook.js`
+- `addons/pos_self_order/static/src/app/utils/scroll_shadow_hook.js`
+- `addons/pos_self_order/static/src/app/utils/scroll_to_selected.js`
+- `addons/pos_self_order/static/src/app/utils/sticky_title_observer.js`
+- `addons/pos_self_order/static/src/app/utils/ui_animations.js`
+- `addons/pos_self_order/static/src/app/utils.js`
+- `addons/pos_self_order/static/src/backend/pos_open_ui_button/pos_open_ui_button.js`
+- `addons/pos_self_order/static/src/backend/qr_order_button/qr_order_button.js`
+- `addons/pos_self_order/static/src/overrides/components/dynamic_qr_popup/dynamic_qr_popup.js`
+- `addons/pos_self_order/static/src/overrides/components/dynamic_qr_popup/dynamic_qr_popup.xml`
+- `addons/pos_self_order/static/src/overrides/components/navbar/navbar.js`
+- `addons/pos_self_order/static/src/overrides/components/navbar/navbar.xml`
+- `addons/pos_self_order/static/src/overrides/components/product_info_popup/product_info_popup.js`
+- `addons/pos_self_order/static/src/overrides/components/product_info_popup/product_info_popup.xml`
+- `addons/pos_self_order/static/src/overrides/components/product_screen.xml`
+- `addons/pos_self_order/static/src/overrides/models/pos_config.js`
+- `addons/pos_self_order/static/src/overrides/models/pos_store.js`
+- `addons/pos_self_order/static/src/overrides/models/restaurant_table.js`
+- `addons/pos_self_order/static/src/overrides/order_tracker_dropdown/order_tracker_dropdown.js`
+- `addons/pos_self_order/static/src/overrides/order_tracker_dropdown/order_tracker_dropdown.xml`
+- `addons/pos_self_order/static/src/overrides/screens/floor_screen/floor_screen.xml`
+- `addons/pos_self_order/static/src/overrides/screens/product_screen/control_buttons/control_buttons.js`
+- `addons/pos_self_order/static/src/overrides/screens/product_screen/control_buttons/control_buttons.xml`
+- `addons/pos_self_order/static/src/overrides/screens/ticket_screen/order_details_dialog/order_details_dialog.js`
+- `addons/pos_self_order/static/src/overrides/screens/ticket_screen/ticket_screen.js`
+- `addons/pos_self_order/static/src/overrides/services/pos_ticket_printer_plugin.js`
+- `addons/pos_self_order/static/src/overrides/utils/printer/generate_printer_data.js`
+- `addons/pos_self_order/static/src/upgrade_selection_field.js`
+- `addons/pos_self_order/static/tests/pos/pos_self_order_tour.js`
+- `addons/pos_self_order/static/tests/tours/self_order_common_tour.js`
+- `addons/pos_self_order/static/tests/tours/self_order_kiosk_tour.js`
+- `addons/pos_self_order/static/tests/tours/self_order_mobile_tour.js`
+- `addons/pos_self_order/static/tests/tours/self_order_preset_tour.js`
+- `addons/pos_self_order/static/tests/tours/self_order_prices_tour.js`
+- `addons/pos_self_order/static/tests/tours/utils/cart_page_util.js`
+- `addons/pos_self_order/static/tests/tours/utils/combo_page_util.js`
+- `addons/pos_self_order/static/tests/tours/utils/common.js`
+- `addons/pos_self_order/static/tests/tours/utils/confirmation_page_util.js`
+- `addons/pos_self_order/static/tests/tours/utils/landing_page_util.js`
+- `addons/pos_self_order/static/tests/tours/utils/product_page_util.js`
+- `addons/pos_self_order/static/tests/unit/components/order_widget.test.js`
+- `addons/pos_self_order/static/tests/unit/components/pills_selection_popup.test.js`
+- `addons/pos_self_order/static/tests/unit/components/preset_info_popup.test.js`
+- Additional source files not expanded in this page: 87; see `../../01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.

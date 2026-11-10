@@ -1,459 +1,387 @@
 # Module: mass_mailing
 
 - **Module ID:** MOD-362
-- **Path:** `addons/mass_mailing`
+- **Domain classification:** See `../Module_Hierarchy.md`
+- **Source path:** `addons/mass_mailing`
 - **Manifest:** `addons/mass_mailing/__manifest__.py`
-- **Implementation status:** Implemented artifacts present
+- **Implementation assessment:** Fully implemented artifact surface
 - **Application flag:** `True`
-- **Installable flag:** `not declared`
-- **Auto install:** `not declared`
+- **Category:** `Marketing/Email Marketing`
 - **License:** `LGPL-3`
 
-## Purpose and dependencies
+## 1. Overview
 
-Design, send and track emails
+**Purpose:** Design, send and track emails
 
-No manifest description declared.
+**Manifest description:**
 
-Declared dependencies: `contacts`, `mail`, `html_builder`, `utm`, `link_tracker`, `social_media`, `web_tour`, `digest`.
+No manifest description declared
 
-## Static implementation surface
+**Scope evidence:** The module contains 481 files, including 55 Python, 103 XML, and 97 JavaScript/TypeScript files. The manifest declares dependencies: `contacts`, `mail`, `html_builder`, `utm`, `link_tracker`, `social_media`, `web_tour`, `digest`.
 
-| Artifact | Count | Evidence / interpretation |
-|---|---:|---|
-| Python files | 55 | ORM, services, controllers, wizards, reports, or tests; inspect file inventory below. |
-| Model-path Python files | 26 | Files under `models/` or `models.py`. |
-| Controller-path Python files | 3 | Files under `controllers/` or `controllers.py`. |
-| XML files | 103 | Views, actions, menus, templates, data, reports, or tests. |
-| JavaScript/TypeScript | 97 | Client behavior/assets. |
-| Tests | 16 | Test files found by path/name convention. |
-| Security artifacts | 2 | Access CSV and/or security XML. |
-| Route declarations | 17 | Static decorator matches. |
+## 2. Module structure
 
-## Evidence inventory
+- Model/business logic files: 32
+- Controller/API files: 3
+- XML/data/view/template files: 103
+- Browser asset files: 97
+- Security files: 2
+- Test files: 16
+- Scheduled/automation evidence files: 11
+- Reporting evidence files: 0
 
-### Manifest-declared data and assets
+## 3. Actors and permissions
 
-```text
-{
-  "depends": [
-    "contacts",
-    "mail",
-    "html_builder",
-    "utm",
-    "link_tracker",
-    "social_media",
-    "web_tour",
-    "digest"
-  ],
-  "data": [
-    "data/res_groups_privilege_data.xml",
-    "security/res_groups_data.xml",
-    "data/digest_data.xml",
-    "data/ir_attachment_data.xml",
-    "data/ir_config_parameter_data.xml",
-    "data/ir_cron_data.xml",
-    "data/ir_actions_server_data.xml",
-    "data/mailing_data_templates.xml",
-    "data/mailing_list_contact.xml",
-    "data/mailing_subscription_optout.xml",
-    "data/mailing_subscription.xml",
-    "data/mass_mailing_tour.xml",
-    "data/portal_entry_data.xml",
-    "wizard/mail_compose_message_views.xml",
-    "wizard/mailing_contact_import_views.xml",
-    "wizard/mailing_contact_to_list_views.xml",
-    "wizard/mailing_mailing_test_views.xml",
-    "wizard/mailing_mailing_schedule_date_views.xml",
-    "report/mailing_trace_report_views.xml",
-    "views/mail_blacklist_views.xml",
-    "views/mailing_filter_views.xml",
-    "views/mailing_mobile_preview_content.xml",
-    "views/mailing_trace_views.xml",
-    "views/link_tracker_views.xml",
-    "views/mailing_contact_views.xml",
-    "views/mailing_list_views.xml",
-    "views/mailing_mailing_views.xml",
-    "views/mailing_subscription_optout_views.xml",
-    "views/mailing_subscription_views.xml",
-    "views/res_config_settings_views.xml",
-    "views/res_partner_views.xml",
-    "views/utm_campaign_views.xml",
-    "views/mailing_menus.xml",
-    "views/mailing_templates_portal_layouts.xml",
-    "views/mailing_templates_portal_management.xml",
-    "views/mailing_templates_portal_unsubscribe.xml",
-    "views/themes_templates.xml",
-    "views/themes_templates_blocks.xml",
-    "views/snippets_themes.xml",
-    "security/ir.access.csv"
-  ],
-  "demo": [
-    "demo/utm.xml",
-    "demo/mailing_list_contact.xml",
-    "demo/mailing_subscription.xml",
-    "demo/mailing_mailing.xml",
-    "demo/mailing_trace.xml",
-    "demo/res_users.xml"
-  ],
-  "assets": {
-    "mass_mailing.assets_builder": [
-      [
-        "include",
-        "html_builder.assets"
-      ],
-      [
-        "remove",
-        "web/static/fonts/fonts.scss"
-      ],
-      "mass_mailing/static/src/builder/**/*",
-      "mass_mailing/static/src/snippets/**/*.xml",
-      [
-        "remove",
-        "mass_mailing/static/src/builder/**/*.inside.scss"
-      ]
-    ],
-    "mass_mailing.assets_iframe_helpers": [
-      [
-        "include",
-        "web._assets_helpers"
-      ],
-      "web/static/src/scss/bootstrap_overridden.scss",
-      [
-        "include",
-        "web._assets_frontend_helpers"
-      ],
-      "web/static/src/scss/pre_variables.scss",
-      "web/static/lib/bootstrap/scss/_variables.scss",
-      "web/static/lib/bootstrap/scss/_maps.scss",
-      "web/static/lib/bootstrap/scss/_alert.scss",
-      [
-        "include",
-        "web._assets_bootstrap_frontend"
-      ],
-      [
-        "include",
-        "web.icons_fonts"
-      ],
-      "web/static/src/scss/animation.scss",
-      "web/static/src/scss/mimetypes.scss",
-      "web/static/src/scss/ui.scss"
-    ],
-    "mass_mailing.assets_iframe_theme_selector": [
-      [
-        "include",
-        "mass_mailing.assets_iframe_helpers"
-      ],
-      "mass_mailing/static/src/themes/iframe_assets/**/*"
-    ],
-    "mass_mailing.assets_theme_selector_template_shadowdom": [
-      "mass_mailing/static/src/fields/template_preview_field/theme_selector_template_preview/**/*.shadowdom.scss"
-    ],
-    "mass_mailing.assets_mailing_template_kanban_card_shadowdom": [
-      "mass_mailing/static/src/fields/template_preview_field/mailing_template_kanban_card/**/*.shadowdom.scss"
-    ],
-    "mass_mailing.assets_iframe_style_base": [
-      "html_editor/static/src/scss/html_editor.common.scss",
-      "html_editor/static/src/scss/html_editor.frontend.scss",
-      "html_editor/static/src/scss/base_style.scss",
-      [
-        "after",
-        "web/static/lib/bootstrap/scss/_maps.scss",
-        "mass_mailing/static/src/scss/mass_mailing.ui.scss"
-      ],
-      "html_builder/static/src/scss/background.scss",
-      [
-        "include",
-        "mass_mailing.assets_mail_themes"
-      ],
-      "mass_mailing/static/src/scss/mass_mailing_mail.scss",
-      "mass_mailing/static/src/iframe_assets/**/*",
-      "mass_mailing/static/src/snippets/**/*.scss"
-    ],
-    "mass_mailing.assets_iframe_style": [
-      [
-        "include",
-        "mass_mailing.assets_iframe_helpers"
-      ],
-      [
-        "include",
-        "html_editor.assets_readonly"
-      ],
-      [
-        "include",
-        "mass_mailing.assets_iframe_style_base"
-      ]
-    ],
-    "mass_mailing.assets_inside_basic_editor_iframe": [
-      [
-        "include",
-        "mass_mailing.assets_iframe_helpers"
-      ],
-      [
-        "include",
-        "html_editor.assets_editor"
-      ],
-      [
-        "include",
-        "mass_mailing.assets_iframe_style_base"
-      ]
-    ],
-    "mass_mailing.assets_inside_builder_iframe": [
-      [
-        "include",
-        "mass_mailing.assets_iframe_helpers"
-      ],
-      [
-        "include",
-        "html_editor.assets_editor"
-      ],
-      [
-        "include",
-        "html_builder.assets_inside_builder_iframe"
-      ],
-      [
-        "include",
-        "mass_mailing.assets_iframe_style_base"
-      ],
-      "mass_mailing/static/src/builder/**/*.inside.scss"
-    ],
-    "mass_mailing.iframe_add_dialog": [
-      [
-        "include",
-        "html_builder.iframe_add_dialog"
-      ],
-      "mass_mailing/static/src/builder/snippet_viewer/*.scss"
-    ],
-    "mass_mailing.mailing_assets": [
-      "mass_mailing/static/src/scss/mailing_portal.scss",
-      "mass_mailing/static/src/interactions/subscribe.js",
-      "mass_mailing/static/src/xml/mailing_portal_subscription_blocklist.xml",
-      "mass_mailing/static/src/xml/mailing_portal_subscription_feedback.xml",
-      "mass_mailing/static/src/xml/mailing_portal_subscription_form.xml"
-    ],
-    "web.assets_backend": [
-      "mass_mailing/static/src/action/**/*",
-      "mass_mailing/static/src/components/**/*",
-      "mass_mailing/static/src/views/mailing_preview_form_view.js",
-      "mass_mailing/static/src/views/mailing_preview_form_view.xml",
-      "mass_mailing/static/src/views/format_utils.js",
-      "mass_mailing/static/src/views/fields/**/*",
-      "mass_mailing/static/src/views/mailing_filter*/**/*.js",
-      "mass_mailing/static/src/views/mailing_template_kanban_view/**/*",
-      "mass_mailing/static/src/editor/**/*",
-      "mass_mailing/static/src/fields/**/*",
-      "mass_mailing/static/src/themes/*",
-      "mass_mailing/static/src/utils/**/*",
-      "mass_mailing/static/src/themes/theme_selector/**/*",
-      "mass_mailing/static/src/iframe/**/*",
-      "mass_mailing/static/src/scss/mass_mailing.scss",
-      "mass_mailing/static/src/scss/mass_mailing_mobile.scss",
-      "mass_mailing/static/src/scss/mass_mailing_mobile_preview.scss",
-      "mass_mailing/static/src/js/tours/**/*",
-      [
-        "remove",
-        "mass_mailing/static/src/**/*.dark.scss"
-      ],
-      [
-        "remove",
-        "mass_mailing/static/src/**/*.shadowdom.scss"
-      ]
-    ],
-    "web.assets_backend_lazy": [
-      "mass_mailing/static/src/views/mass_mailing_subscription_graph_renderer.js"
-    ],
-    "web.assets_web_dark": [
-      "mass_mailing/static/src/**/*.dark.scss"
-    ],
-    "mass_mailing.assets_mail_themes": [
-      "mass_mailing/static/src/scss/themes/**/*"
-    ],
-    "web.assets_frontend": [
-      "mass_mailing/static/src/js/tours/**/*"
-    ],
-    "web.assets_tests": [
-      "mass_mailing/static/tests/tours/**/*"
-    ],
-    "web.assets_unit_tests": [
-      [
-        "include",
-        "mass_mailing.assets_builder"
-      ],
-      "mass_mailing/static/tests/**/*",
-      [
-        "remove",
-        "mass_mailing/static/tests/tours/**/*"
-      ]
-    ]
-  }
-}
-```
+The repository does not define one universal role model. Actors are therefore documented only where implementation surfaces establish them: authenticated users/portal users through controllers, administrators/operators through configuration and module lifecycle, and developers/QA through test artifacts. Exact groups, model permissions, and record rules require evaluating the module security XML/CSV in a configured database.
 
-### Representative source files
+**Security evidence:** `addons/mass_mailing/security/ir.access.csv`, `addons/mass_mailing/security/res_groups_data.xml`
 
-- `addons/mass_mailing/README.md` (97 lines)
-- `addons/mass_mailing/__init__.py` (45 lines)
-- `addons/mass_mailing/__manifest__.py` (205 lines)
-- `addons/mass_mailing/controllers/__init__.py` (5 lines)
-- `addons/mass_mailing/controllers/legacy.py` (21 lines)
-- `addons/mass_mailing/controllers/main.py` (564 lines)
-- `addons/mass_mailing/data/digest_data.xml` (16 lines)
-- `addons/mass_mailing/data/ir_actions_server_data.xml` (9 lines)
-- `addons/mass_mailing/data/ir_attachment_data.xml` (204 lines)
-- `addons/mass_mailing/data/ir_config_parameter_data.xml` (13 lines)
-- `addons/mass_mailing/data/ir_cron_data.xml` (27 lines)
-- `addons/mass_mailing/data/mailing_data_templates.xml` (117 lines)
-- `addons/mass_mailing/data/mailing_list_contact.xml` (14 lines)
-- `addons/mass_mailing/data/mailing_subscription.xml` (9 lines)
-- `addons/mass_mailing/data/mailing_subscription_optout.xml` (24 lines)
-- `addons/mass_mailing/data/mass_mailing_tour.xml` (10 lines)
-- `addons/mass_mailing/data/portal_entry_data.xml` (10 lines)
-- `addons/mass_mailing/data/res_groups_privilege_data.xml` (8 lines)
-- `addons/mass_mailing/demo/mailing_list_contact.xml` (48 lines)
-- `addons/mass_mailing/demo/mailing_mailing.xml` (90 lines)
-- `addons/mass_mailing/demo/mailing_subscription.xml` (54 lines)
-- `addons/mass_mailing/demo/mailing_trace.xml` (132 lines)
-- `addons/mass_mailing/demo/res_users.xml` (8 lines)
-- `addons/mass_mailing/demo/utm.xml` (12 lines)
-- `addons/mass_mailing/doc/changelog.rst` (9 lines)
-- `addons/mass_mailing/doc/index.rst` (13 lines)
-- `addons/mass_mailing/i18n/af.po` (7,266 lines)
-- `addons/mass_mailing/i18n/am.po` (7,262 lines)
-- `addons/mass_mailing/i18n/ar.po` (7,679 lines)
-- `addons/mass_mailing/i18n/az.po` (7,499 lines)
-- `addons/mass_mailing/i18n/bg.po` (7,469 lines)
-- `addons/mass_mailing/i18n/bs.po` (7,426 lines)
-- `addons/mass_mailing/i18n/ca.po` (7,612 lines)
-- `addons/mass_mailing/i18n/cs.po` (7,686 lines)
-- `addons/mass_mailing/i18n/da.po` (7,532 lines)
-- `addons/mass_mailing/i18n/de.po` (8,051 lines)
-- `addons/mass_mailing/i18n/el.po` (7,446 lines)
-- `addons/mass_mailing/i18n/es.po` (7,821 lines)
-- `addons/mass_mailing/i18n/es_419.po` (8,027 lines)
-- `addons/mass_mailing/i18n/es_CL.po` (194 lines)
-- `addons/mass_mailing/i18n/et.po` (7,589 lines)
-- `addons/mass_mailing/i18n/eu.po` (7,265 lines)
-- `addons/mass_mailing/i18n/fa.po` (7,499 lines)
-- `addons/mass_mailing/i18n/fi.po` (7,885 lines)
-- `addons/mass_mailing/i18n/fo.po` (7,265 lines)
-- `addons/mass_mailing/i18n/fr.po` (7,804 lines)
-- `addons/mass_mailing/i18n/fr_BE.po` (189 lines)
-- `addons/mass_mailing/i18n/fr_CA.po` (174 lines)
-- `addons/mass_mailing/i18n/gl.po` (7,265 lines)
-- `addons/mass_mailing/i18n/gu.po` (7,276 lines)
-- `addons/mass_mailing/i18n/he.po` (7,506 lines)
-- `addons/mass_mailing/i18n/hi.po` (7,454 lines)
-- `addons/mass_mailing/i18n/hr.po` (7,461 lines)
-- `addons/mass_mailing/i18n/hu.po` (7,469 lines)
-- `addons/mass_mailing/i18n/id.po` (7,971 lines)
-- `addons/mass_mailing/i18n/is.po` (7,275 lines)
-- `addons/mass_mailing/i18n/it.po` (8,019 lines)
-- `addons/mass_mailing/i18n/ja.po` (7,753 lines)
-- `addons/mass_mailing/i18n/ka.po` (7,265 lines)
-- `addons/mass_mailing/i18n/kab.po` (7,420 lines)
-- `addons/mass_mailing/i18n/km.po` (7,275 lines)
-- `addons/mass_mailing/i18n/ko.po` (7,625 lines)
-- `addons/mass_mailing/i18n/ku.po` (7,432 lines)
-- `addons/mass_mailing/i18n/lb.po` (7,267 lines)
-- `addons/mass_mailing/i18n/lo.po` (7,782 lines)
-- `addons/mass_mailing/i18n/lt.po` (7,495 lines)
-- `addons/mass_mailing/i18n/lv.po` (7,447 lines)
-- `addons/mass_mailing/i18n/mass_mailing.pot` (7,362 lines)
-- `addons/mass_mailing/i18n/mk.po` (7,265 lines)
-- `addons/mass_mailing/i18n/mn.po` (7,477 lines)
-- `addons/mass_mailing/i18n/my.po` (7,424 lines)
-- `addons/mass_mailing/i18n/nb.po` (7,458 lines)
-- `addons/mass_mailing/i18n/nl.po` (8,030 lines)
-- `addons/mass_mailing/i18n/pl.po` (7,910 lines)
-- `addons/mass_mailing/i18n/pt.po` (7,650 lines)
-- `addons/mass_mailing/i18n/pt_BR.po` (8,015 lines)
-- `addons/mass_mailing/i18n/ro.po` (7,692 lines)
-- `addons/mass_mailing/i18n/ru.po` (7,749 lines)
-- `addons/mass_mailing/i18n/sk.po` (7,471 lines)
-- `addons/mass_mailing/i18n/sl.po` (7,519 lines)
-- `addons/mass_mailing/i18n/sq.po` (7,265 lines)
-- `addons/mass_mailing/i18n/sr@latin.po` (7,443 lines)
-- `addons/mass_mailing/i18n/sv.po` (7,681 lines)
-- `addons/mass_mailing/i18n/th.po` (7,667 lines)
-- `addons/mass_mailing/i18n/tr.po` (7,827 lines)
-- `addons/mass_mailing/i18n/uk.po` (7,642 lines)
-- `addons/mass_mailing/i18n/uz.po` (8,494 lines)
-- `addons/mass_mailing/i18n/vi.po` (7,736 lines)
-- `addons/mass_mailing/i18n/zh_CN.po` (7,739 lines)
-- `addons/mass_mailing/i18n/zh_TW.po` (7,540 lines)
-- `addons/mass_mailing/models/__init__.py` (29 lines)
-- `addons/mass_mailing/models/ir_attachment.py` (10 lines)
-- `addons/mass_mailing/models/ir_http.py` (12 lines)
-- `addons/mass_mailing/models/ir_mail_server.py` (60 lines)
-- `addons/mass_mailing/models/ir_model.py` (30 lines)
-- `addons/mass_mailing/models/ir_ui_view.py` (7 lines)
-- `addons/mass_mailing/models/link_tracker.py` (80 lines)
-- `addons/mass_mailing/models/mail_blacklist.py` (20 lines)
-- `addons/mass_mailing/models/mail_mail.py` (118 lines)
-- `addons/mass_mailing/models/mail_render_mixin.py` (29 lines)
-- `addons/mass_mailing/models/mail_thread.py` (104 lines)
-- `addons/mass_mailing/models/mailing.py` (1,565 lines)
-- `addons/mass_mailing/models/mailing_contact.py` (477 lines)
-- `addons/mass_mailing/models/mailing_filter.py` (98 lines)
-- `addons/mass_mailing/models/mailing_list.py` (519 lines)
-- `addons/mass_mailing/models/mailing_subscription.py` (69 lines)
-- `addons/mass_mailing/models/mailing_subscription_optout.py` (15 lines)
-- `addons/mass_mailing/models/mailing_trace.py` (308 lines)
-- `addons/mass_mailing/models/res_company.py` (48 lines)
-- `addons/mass_mailing/models/res_config_settings.py` (56 lines)
-- `addons/mass_mailing/models/res_groups.py` (13 lines)
-- `addons/mass_mailing/models/res_partner.py` (53 lines)
-- `addons/mass_mailing/models/res_users.py` (20 lines)
-- `addons/mass_mailing/models/utm_campaign.py` (152 lines)
-- `addons/mass_mailing/models/utm_medium.py` (23 lines)
-- `addons/mass_mailing/models/utm_source.py` (23 lines)
-- `addons/mass_mailing/report/__init__.py` (4 lines)
-- `addons/mass_mailing/report/mailing_trace_report.py` (95 lines)
-- `addons/mass_mailing/report/mailing_trace_report_views.xml` (102 lines)
-- `addons/mass_mailing/security/ir.access.csv` (28 lines)
-- `addons/mass_mailing/security/res_groups_data.xml` (16 lines)
-- `addons/mass_mailing/static/description/icon.png` (16 lines)
-- `addons/mass_mailing/static/description/icon.svg` (1 lines)
-- `addons/mass_mailing/static/description/icon_hi.png` (119 lines)
-- `addons/mass_mailing/static/shapes/s_attributes_1.svg` (7 lines)
-- `addons/mass_mailing/static/shapes/s_attributes_2.svg` (13 lines)
-- `addons/mass_mailing/static/shapes/s_attributes_3.svg` (11 lines)
-- `addons/mass_mailing/static/shapes/s_attributes_4.svg` (14 lines)
-- `addons/mass_mailing/static/shapes/s_attributes_5.svg` (13 lines)
-- `addons/mass_mailing/static/shapes/s_newsletter_benefits_popup.svg` (243 lines)
-- `addons/mass_mailing/static/shapes/s_newsletter_sms_notifications.svg` (316 lines)
-- `addons/mass_mailing/static/src/action/client_actions.js` (21 lines)
-- `addons/mass_mailing/static/src/builder/builder_overlay_patch.js` (14 lines)
-- `addons/mass_mailing/static/src/builder/components/builder_row.scss` (3 lines)
-- `addons/mass_mailing/static/src/builder/components/company_update_dialog.js` (97 lines)
-- `addons/mass_mailing/static/src/builder/components/company_update_dialog.xml` (24 lines)
-- `addons/mass_mailing/static/src/builder/components/mass_mailing_builder_select_label.js` (10 lines)
-- `addons/mass_mailing/static/src/builder/components/mass_mailing_builder_select_label.scss` (26 lines)
-- `addons/mass_mailing/static/src/builder/components/mass_mailing_builder_select_label.xml` (9 lines)
-- `addons/mass_mailing/static/src/builder/fontfamily_picker.js` (58 lines)
-- `addons/mass_mailing/static/src/builder/fontfamily_picker.xml` (12 lines)
-- `addons/mass_mailing/static/src/builder/mass_mailing_builder.js` (78 lines)
-- `addons/mass_mailing/static/src/builder/mass_mailing_builder.xml` (22 lines)
-- `addons/mass_mailing/static/src/builder/mass_mailing_options.xml` (122 lines)
-- `addons/mass_mailing/static/src/builder/mass_mailing_snippet_model.js` (29 lines)
-- `addons/mass_mailing/static/src/builder/mass_mailing_snippet_preprocessor.js` (82 lines)
-- `addons/mass_mailing/static/src/builder/options/alert_option.xml` (7 lines)
-- `addons/mass_mailing/static/src/builder/options/alignment_option.xml` (12 lines)
-- `addons/mass_mailing/static/src/builder/options/bento_blocks_add_card_option.xml` (13 lines)
-- `addons/mass_mailing/static/src/builder/options/blockquote_option.xml` (8 lines)
-- `addons/mass_mailing/static/src/builder/options/border_options.xml` (5 lines)
-- `addons/mass_mailing/static/src/builder/options/color_picker_option.xml` (7 lines)
-- `addons/mass_mailing/static/src/builder/options/company_team_options.xml` (11 lines)
-- `addons/mass_mailing/static/src/builder/options/cta_badge_option.xml` (6 lines)
-- `addons/mass_mailing/static/src/builder/options/image_tool_option.js` (16 lines)
-- `addons/mass_mailing/static/src/builder/options/image_tool_option.xml` (35 lines)
-- `addons/mass_mailing/static/src/builder/options/masonry_block_template_option.xml` (256 lines)
-- `addons/mass_mailing/static/src/builder/options/options_container.js` (24 lines)
-- `addons/mass_mailing/static/src/builder/options/options_container.scss` (11 lines)
-- `addons/mass_mailing/static/src/builder/options/options_container.xml` (16 lines)
+## 4. Functionalities
 
-Additional files not expanded here: 321. Full paths are in `01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
+### Model and business logic
 
-## Functional behavior classification
+- **Description:** 32 model declarations, 375 methods, 4 constraint handlers, 1 onchange handlers, and 33 dependency declarations.
+- **Evidence:** `addons/mass_mailing/models/res_partner.py:7`, `addons/mass_mailing/models/mailing_trace.py:10`, `addons/mass_mailing/models/mail_mail.py:10`, `addons/mass_mailing/models/ir_ui_view.py:4`, `addons/mass_mailing/models/res_groups.py:6`, `addons/mass_mailing/models/res_config_settings.py:7`, `addons/mass_mailing/models/ir_model.py:7`, `addons/mass_mailing/models/mail_render_mixin.py:7`, `addons/mass_mailing/models/ir_mail_server.py:9`, `addons/mass_mailing/models/utm_source.py:9`, `addons/mass_mailing/models/mailing_filter.py:10`, `addons/mass_mailing/models/mailing_contact.py:17`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
 
-Static artifacts establish that the module is present and wired into Odoo's addon system. Exact screens, fields, access rules, state transitions, response payloads, and side effects require reading the referenced implementations and/or executing the module in a configured database. No behavior is inferred solely from the module name.
+### HTTP/API surface
+
+- **Description:** 3 controller files and 17 route declarations.
+- **Evidence:** `addons/mass_mailing/controllers/legacy.py:13`, `addons/mass_mailing/controllers/main.py:84`, `addons/mass_mailing/controllers/main.py:100`, `addons/mass_mailing/controllers/main.py:106`, `addons/mass_mailing/controllers/main.py:134`, `addons/mass_mailing/controllers/main.py:161`, `addons/mass_mailing/controllers/main.py:281`, `addons/mass_mailing/controllers/main.py:312`, `addons/mass_mailing/controllers/main.py:382`, `addons/mass_mailing/controllers/main.py:387`, `addons/mass_mailing/controllers/main.py:396`, `addons/mass_mailing/controllers/main.py:410`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### User interface and data
+
+- **Description:** 103 XML files and 97 JavaScript/TypeScript files; static XML analysis found 217 record/template/menu identifiers.
+- **Evidence:** `addons/mass_mailing/demo/mailing_subscription.xml:5`, `addons/mass_mailing/demo/mailing_subscription.xml:9`, `addons/mass_mailing/demo/mailing_subscription.xml:13`, `addons/mass_mailing/demo/mailing_subscription.xml:17`, `addons/mass_mailing/demo/mailing_subscription.xml:23`, `addons/mass_mailing/demo/mailing_subscription.xml:27`, `addons/mass_mailing/demo/mailing_subscription.xml:33`, `addons/mass_mailing/demo/mailing_subscription.xml:40`, `addons/mass_mailing/demo/mailing_subscription.xml:44`, `addons/mass_mailing/demo/mailing_subscription.xml:50`, `addons/mass_mailing/demo/mailing_list_contact.xml:5`, `addons/mass_mailing/demo/mailing_list_contact.xml:11`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Security
+
+- **Description:** 2 security-directory files are present.
+- **Evidence:** `addons/mass_mailing/security/ir.access.csv`, `addons/mass_mailing/security/res_groups_data.xml`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Scheduled/automation
+
+- **Description:** 11 files contain cron, automation, or scheduled-action indicators.
+- **Evidence:** `addons/mass_mailing/__manifest__.py`, `addons/mass_mailing/models/res_config_settings.py`, `addons/mass_mailing/models/mailing.py`, `addons/mass_mailing/models/utm_campaign.py`, `addons/mass_mailing/data/ir_actions_server_data.xml`, `addons/mass_mailing/data/ir_cron_data.xml`, `addons/mass_mailing/tests/test_mailing_internals.py`, `addons/mass_mailing/tests/test_mail_mail.py`, `addons/mass_mailing/tests/test_mailing_mailing_schedule_date.py`, `addons/mass_mailing/tests/test_mailing_retry.py`, `addons/mass_mailing/tests/test_mailing_ab_testing.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+### Automated verification
+
+- **Description:** 16 test files are present.
+- **Evidence:** `addons/mass_mailing/tests/test_utm.py`, `addons/mass_mailing/tests/test_mass_mailing_snippets.py`, `addons/mass_mailing/tests/test_mailing_contact.py`, `addons/mass_mailing/tests/test_mailing_internals.py`, `addons/mass_mailing/tests/test_mail_render_mixin.py`, `addons/mass_mailing/tests/test_mail_mail.py`, `addons/mass_mailing/tests/test_mailing_filter.py`, `addons/mass_mailing/tests/test_mailing_mailing_schedule_date.py`, `addons/mass_mailing/tests/test_mailing_contact_to_list.py`, `addons/mass_mailing/tests/common.py`, `addons/mass_mailing/tests/test_mailing_list.py`, `addons/mass_mailing/tests/test_mailing_ui.py`
+- **Success condition:** The corresponding implementation is loaded and executes its configured operation.
+- **Failure conditions:** Missing dependency, invalid input, access denial, database error, external-service failure, or rendering/test failure as applicable.
+- **Status:** Implemented artifact surface; runtime enablement and exact behavior require verification.
+
+## 5. Screens and user interface
+
+- XML files: 103; representative identifiers: `mailing_list_data_sub_contact_1`, `mailing_list_data_sub_contact_2`, `mailing_list_data_sub_contact_3`, `mailing_list_data_sub_contact_4`, `mailing_list_data_sub_contact_5`, `mailing_list_data_sub_contact_6`, `mailing_list_data_sub_contact_7`, `mailing_list_1_sub_contact_3`, `mailing_list_1_sub_contact_6`, `mail_blacklist_demo_1`, `mailing_list_1`, `mass_mail_contact_1`, `mass_mail_contact_2`, `mass_mail_contact_3`, `mass_mail_contact_4`, `mass_mail_contact_5`, `mass_mail_contact_6`, `mass_mail_contact_7`, `mass_mail_1_stat_0`, `mass_mail_1_stat_1`
+- Menus: 20; representative evidence: `addons/mass_mailing/views/mailing_menus.xml:4`, `addons/mass_mailing/views/mailing_menus.xml:11`, `addons/mass_mailing/views/mailing_menus.xml:18`, `addons/mass_mailing/views/mailing_menus.xml:22`, `addons/mass_mailing/views/mailing_menus.xml:27`, `addons/mass_mailing/views/mailing_menus.xml:32`, `addons/mass_mailing/views/mailing_menus.xml:39`, `addons/mass_mailing/views/mailing_menus.xml:46`, `addons/mass_mailing/views/mailing_menus.xml:54`, `addons/mass_mailing/views/mailing_menus.xml:58`, `addons/mass_mailing/views/mailing_menus.xml:63`, `addons/mass_mailing/views/mailing_menus.xml:70`
+- Templates: 25; representative evidence: `addons/mass_mailing/demo/mailing_mailing.xml:3`, `addons/mass_mailing/data/digest_data.xml:4`, `addons/mass_mailing/data/mailing_data_templates.xml:8`, `addons/mass_mailing/data/mailing_data_templates.xml:40`, `addons/mass_mailing/data/mailing_data_templates.xml:81`, `addons/mass_mailing/views/themes_templates.xml:4`, `addons/mass_mailing/views/themes_templates.xml:17`, `addons/mass_mailing/views/themes_templates.xml:21`, `addons/mass_mailing/views/mailing_templates_portal_layouts.xml:4`, `addons/mass_mailing/views/mailing_templates_portal_management.xml:3`, `addons/mass_mailing/views/mailing_templates_portal_management.xml:28`, `addons/mass_mailing/views/mailing_templates_portal_management.xml:53`
+- View/action field declarations: 188; representative evidence: `addons/mass_mailing/demo/mailing_trace.xml:7`, `addons/mass_mailing/demo/mailing_trace.xml:19`, `addons/mass_mailing/demo/mailing_trace.xml:31`, `addons/mass_mailing/demo/mailing_trace.xml:42`, `addons/mass_mailing/demo/mailing_trace.xml:53`, `addons/mass_mailing/demo/mailing_trace.xml:63`, `addons/mass_mailing/demo/mailing_trace.xml:72`, `addons/mass_mailing/demo/mailing_trace.xml:82`, `addons/mass_mailing/report/mailing_trace_report_views.xml:5`, `addons/mass_mailing/report/mailing_trace_report_views.xml:6`, `addons/mass_mailing/report/mailing_trace_report_views.xml:30`, `addons/mass_mailing/report/mailing_trace_report_views.xml:31`
+- Browser assets: 97; representative files: `addons/mass_mailing/static/tests/mass_mailing_html_field.test.js`, `addons/mass_mailing/static/tests/mass_mailing_link_plugin.test.js`, `addons/mass_mailing/static/tests/mass_mailing_test_helpers.js`, `addons/mass_mailing/static/tests/mailing_contact_to_list.test.js`, `addons/mass_mailing/static/tests/mass_mailing_snippet_model.test.js`, `addons/mass_mailing/static/tests/mailing_preview_iframe.test.js`, `addons/mass_mailing/static/src/iframe/mass_mailing_iframe.js`, `addons/mass_mailing/static/src/iframe/mass_mailing_iframe_utils.js`, `addons/mass_mailing/static/src/themes/theme_service.js`, `addons/mass_mailing/static/src/action/client_actions.js`, `addons/mass_mailing/static/src/interactions/subscribe.js`, `addons/mass_mailing/static/src/views/mass_mailing_subscription_graph_renderer.js`
+- Route URLs, labels, fields, access restrictions, empty/loading/error states, and inherited view results require runtime/UI inspection; they are not inferred from filenames.
+
+## 6. Business workflows
+
+Static evidence supports the following module-level workflow pattern: module installation/update resolves manifest dependencies, loads Python/XML/assets/security declarations, and exposes configured models/controllers/views/jobs/reports. Domain-specific state transitions must be traced from the model methods, XML actions, controllers, and tests listed below. No workflow is marked complete solely from a module name.
+
+- **Entry point evidence:** `addons/mass_mailing/__manifest__.py`
+- **HTTP entry points:** `addons/mass_mailing/controllers/legacy.py:13`, `addons/mass_mailing/controllers/main.py:84`, `addons/mass_mailing/controllers/main.py:100`, `addons/mass_mailing/controllers/main.py:106`, `addons/mass_mailing/controllers/main.py:134`, `addons/mass_mailing/controllers/main.py:161`, `addons/mass_mailing/controllers/main.py:281`, `addons/mass_mailing/controllers/main.py:312`, `addons/mass_mailing/controllers/main.py:382`, `addons/mass_mailing/controllers/main.py:387`, `addons/mass_mailing/controllers/main.py:396`, `addons/mass_mailing/controllers/main.py:410`
+- **Scheduled entry points:** `addons/mass_mailing/__manifest__.py`, `addons/mass_mailing/models/res_config_settings.py`, `addons/mass_mailing/models/mailing.py`, `addons/mass_mailing/models/utm_campaign.py`, `addons/mass_mailing/data/ir_actions_server_data.xml`, `addons/mass_mailing/data/ir_cron_data.xml`, `addons/mass_mailing/tests/test_mailing_internals.py`, `addons/mass_mailing/tests/test_mail_mail.py`, `addons/mass_mailing/tests/test_mailing_mailing_schedule_date.py`, `addons/mass_mailing/tests/test_mailing_retry.py`, `addons/mass_mailing/tests/test_mailing_ab_testing.py`
+- **Report entry points:** Not found in module
+
+## 7. Database interactions
+
+- Model declarations: 32
+- Representative model evidence: inherits `res.partner` (addons/mass_mailing/models/res_partner.py:7); `mailing.trace` (addons/mass_mailing/models/mailing_trace.py:10); inherits `mail.mail` (addons/mass_mailing/models/mail_mail.py:10); inherits `ir.ui.view` (addons/mass_mailing/models/ir_ui_view.py:4); inherits `res.groups` (addons/mass_mailing/models/res_groups.py:6); inherits `res.config.settings` (addons/mass_mailing/models/res_config_settings.py:7); inherits `ir.model` (addons/mass_mailing/models/ir_model.py:7); inherits `mail.render.mixin` (addons/mass_mailing/models/mail_render_mixin.py:7); inherits `ir.mail_server` (addons/mass_mailing/models/ir_mail_server.py:9); inherits `utm.source` (addons/mass_mailing/models/utm_source.py:9); `mailing.filter` (addons/mass_mailing/models/mailing_filter.py:10); `mailing.contact` (addons/mass_mailing/models/mailing_contact.py:17); inherits `ir.http` (addons/mass_mailing/models/ir_http.py:6); `mailing.mailing` (addons/mass_mailing/models/mailing.py:38); inherits `link.tracker` (addons/mass_mailing/models/link_tracker.py:9); inherits `link.tracker.click` (addons/mass_mailing/models/link_tracker.py:15); inherits `utm.campaign` (addons/mass_mailing/models/utm_campaign.py:12); inherits `mail.blacklist` (addons/mass_mailing/models/mail_blacklist.py:7); `mailing.subscription.optout` (addons/mass_mailing/models/mailing_subscription_optout.py:7); inherits `mail.thread` (addons/mass_mailing/models/mail_thread.py:12); inherits `res.users` (addons/mass_mailing/models/res_users.py:7); `mailing.list` (addons/mass_mailing/models/mailing_list.py:11); `mailing.subscription` (addons/mass_mailing/models/mailing_subscription.py:7); inherits `ir.attachment` (addons/mass_mailing/models/ir_attachment.py:6); inherits `utm.medium` (addons/mass_mailing/models/utm_medium.py:9); inherits `res.company` (addons/mass_mailing/models/res_company.py:8); `mailing.trace.report` (addons/mass_mailing/report/mailing_trace_report.py:7); `mailing.contact.to.list` (addons/mass_mailing/wizard/mailing_contact_to_list.py:7); inherits `mail.compose.message` (addons/mass_mailing/wizard/mail_compose_message.py:10); `mailing.mailing.schedule.date` (addons/mass_mailing/wizard/mailing_mailing_schedule_date.py:7)
+- CRUD operations, fields, constraints, indexes, and relationships are implemented in the referenced Python models and materialized in PostgreSQL at runtime. A deployment-specific schema is required for exact column/constraint documentation.
+
+## 8. APIs and services
+
+- Controller files: 3
+- Route declarations: 17
+- Route evidence: `addons/mass_mailing/controllers/legacy.py:13`, `addons/mass_mailing/controllers/main.py:84`, `addons/mass_mailing/controllers/main.py:100`, `addons/mass_mailing/controllers/main.py:106`, `addons/mass_mailing/controllers/main.py:134`, `addons/mass_mailing/controllers/main.py:161`, `addons/mass_mailing/controllers/main.py:281`, `addons/mass_mailing/controllers/main.py:312`, `addons/mass_mailing/controllers/main.py:382`, `addons/mass_mailing/controllers/main.py:387`, `addons/mass_mailing/controllers/main.py:396`, `addons/mass_mailing/controllers/main.py:410`
+- Authentication mode, request/response schemas, pagination, idempotency, rate limits, retries, and external contracts require route-by-route source/runtime verification.
+
+## 9. Module dependencies
+
+- Declared dependencies: `contacts`, `mail`, `html_builder`, `utm`, `link_tracker`, `social_media`, `web_tour`, `digest`
+- Upstream dependencies are resolved by the module graph; downstream extensions may inherit or extend this module through their own manifests and model/view inheritance.
+
+## 10. Implementation assessment
+
+- **Fully implemented artifact evidence:** Yes
+- **Backend/model evidence:** Present
+- **UI/data evidence:** Present
+- **API evidence:** Present
+- **Security evidence:** Present
+- **Test evidence:** Present
+- **Runtime status:** Requires verification in a configured Odoo instance; static artifacts do not establish installation, enablement, production behavior, or test pass status.
+
+## 11. Complete source inventory
+
+- `addons/mass_mailing/README.md`
+- `addons/mass_mailing/__init__.py`
+- `addons/mass_mailing/__manifest__.py`
+- `addons/mass_mailing/controllers/__init__.py`
+- `addons/mass_mailing/controllers/legacy.py`
+- `addons/mass_mailing/controllers/main.py`
+- `addons/mass_mailing/data/digest_data.xml`
+- `addons/mass_mailing/data/ir_actions_server_data.xml`
+- `addons/mass_mailing/data/ir_attachment_data.xml`
+- `addons/mass_mailing/data/ir_config_parameter_data.xml`
+- `addons/mass_mailing/data/ir_cron_data.xml`
+- `addons/mass_mailing/data/mailing_data_templates.xml`
+- `addons/mass_mailing/data/mailing_list_contact.xml`
+- `addons/mass_mailing/data/mailing_subscription.xml`
+- `addons/mass_mailing/data/mailing_subscription_optout.xml`
+- `addons/mass_mailing/data/mass_mailing_tour.xml`
+- `addons/mass_mailing/data/portal_entry_data.xml`
+- `addons/mass_mailing/data/res_groups_privilege_data.xml`
+- `addons/mass_mailing/demo/mailing_list_contact.xml`
+- `addons/mass_mailing/demo/mailing_mailing.xml`
+- `addons/mass_mailing/demo/mailing_subscription.xml`
+- `addons/mass_mailing/demo/mailing_trace.xml`
+- `addons/mass_mailing/demo/res_users.xml`
+- `addons/mass_mailing/demo/utm.xml`
+- `addons/mass_mailing/doc/changelog.rst`
+- `addons/mass_mailing/doc/index.rst`
+- `addons/mass_mailing/i18n/af.po`
+- `addons/mass_mailing/i18n/am.po`
+- `addons/mass_mailing/i18n/ar.po`
+- `addons/mass_mailing/i18n/az.po`
+- `addons/mass_mailing/i18n/bg.po`
+- `addons/mass_mailing/i18n/bs.po`
+- `addons/mass_mailing/i18n/ca.po`
+- `addons/mass_mailing/i18n/cs.po`
+- `addons/mass_mailing/i18n/da.po`
+- `addons/mass_mailing/i18n/de.po`
+- `addons/mass_mailing/i18n/el.po`
+- `addons/mass_mailing/i18n/es.po`
+- `addons/mass_mailing/i18n/es_419.po`
+- `addons/mass_mailing/i18n/es_CL.po`
+- `addons/mass_mailing/i18n/et.po`
+- `addons/mass_mailing/i18n/eu.po`
+- `addons/mass_mailing/i18n/fa.po`
+- `addons/mass_mailing/i18n/fi.po`
+- `addons/mass_mailing/i18n/fo.po`
+- `addons/mass_mailing/i18n/fr.po`
+- `addons/mass_mailing/i18n/fr_BE.po`
+- `addons/mass_mailing/i18n/fr_CA.po`
+- `addons/mass_mailing/i18n/gl.po`
+- `addons/mass_mailing/i18n/gu.po`
+- `addons/mass_mailing/i18n/he.po`
+- `addons/mass_mailing/i18n/hi.po`
+- `addons/mass_mailing/i18n/hr.po`
+- `addons/mass_mailing/i18n/hu.po`
+- `addons/mass_mailing/i18n/id.po`
+- `addons/mass_mailing/i18n/is.po`
+- `addons/mass_mailing/i18n/it.po`
+- `addons/mass_mailing/i18n/ja.po`
+- `addons/mass_mailing/i18n/ka.po`
+- `addons/mass_mailing/i18n/kab.po`
+- `addons/mass_mailing/i18n/km.po`
+- `addons/mass_mailing/i18n/ko.po`
+- `addons/mass_mailing/i18n/ku.po`
+- `addons/mass_mailing/i18n/lb.po`
+- `addons/mass_mailing/i18n/lo.po`
+- `addons/mass_mailing/i18n/lt.po`
+- `addons/mass_mailing/i18n/lv.po`
+- `addons/mass_mailing/i18n/mass_mailing.pot`
+- `addons/mass_mailing/i18n/mk.po`
+- `addons/mass_mailing/i18n/mn.po`
+- `addons/mass_mailing/i18n/my.po`
+- `addons/mass_mailing/i18n/nb.po`
+- `addons/mass_mailing/i18n/nl.po`
+- `addons/mass_mailing/i18n/pl.po`
+- `addons/mass_mailing/i18n/pt.po`
+- `addons/mass_mailing/i18n/pt_BR.po`
+- `addons/mass_mailing/i18n/ro.po`
+- `addons/mass_mailing/i18n/ru.po`
+- `addons/mass_mailing/i18n/sk.po`
+- `addons/mass_mailing/i18n/sl.po`
+- `addons/mass_mailing/i18n/sq.po`
+- `addons/mass_mailing/i18n/sr@latin.po`
+- `addons/mass_mailing/i18n/sv.po`
+- `addons/mass_mailing/i18n/th.po`
+- `addons/mass_mailing/i18n/tr.po`
+- `addons/mass_mailing/i18n/uk.po`
+- `addons/mass_mailing/i18n/uz.po`
+- `addons/mass_mailing/i18n/vi.po`
+- `addons/mass_mailing/i18n/zh_CN.po`
+- `addons/mass_mailing/i18n/zh_TW.po`
+- `addons/mass_mailing/models/__init__.py`
+- `addons/mass_mailing/models/ir_attachment.py`
+- `addons/mass_mailing/models/ir_http.py`
+- `addons/mass_mailing/models/ir_mail_server.py`
+- `addons/mass_mailing/models/ir_model.py`
+- `addons/mass_mailing/models/ir_ui_view.py`
+- `addons/mass_mailing/models/link_tracker.py`
+- `addons/mass_mailing/models/mail_blacklist.py`
+- `addons/mass_mailing/models/mail_mail.py`
+- `addons/mass_mailing/models/mail_render_mixin.py`
+- `addons/mass_mailing/models/mail_thread.py`
+- `addons/mass_mailing/models/mailing.py`
+- `addons/mass_mailing/models/mailing_contact.py`
+- `addons/mass_mailing/models/mailing_filter.py`
+- `addons/mass_mailing/models/mailing_list.py`
+- `addons/mass_mailing/models/mailing_subscription.py`
+- `addons/mass_mailing/models/mailing_subscription_optout.py`
+- `addons/mass_mailing/models/mailing_trace.py`
+- `addons/mass_mailing/models/res_company.py`
+- `addons/mass_mailing/models/res_config_settings.py`
+- `addons/mass_mailing/models/res_groups.py`
+- `addons/mass_mailing/models/res_partner.py`
+- `addons/mass_mailing/models/res_users.py`
+- `addons/mass_mailing/models/utm_campaign.py`
+- `addons/mass_mailing/models/utm_medium.py`
+- `addons/mass_mailing/models/utm_source.py`
+- `addons/mass_mailing/report/__init__.py`
+- `addons/mass_mailing/report/mailing_trace_report.py`
+- `addons/mass_mailing/report/mailing_trace_report_views.xml`
+- `addons/mass_mailing/security/ir.access.csv`
+- `addons/mass_mailing/security/res_groups_data.xml`
+- `addons/mass_mailing/static/description/icon.png`
+- `addons/mass_mailing/static/description/icon.svg`
+- `addons/mass_mailing/static/description/icon_hi.png`
+- `addons/mass_mailing/static/shapes/s_attributes_1.svg`
+- `addons/mass_mailing/static/shapes/s_attributes_2.svg`
+- `addons/mass_mailing/static/shapes/s_attributes_3.svg`
+- `addons/mass_mailing/static/shapes/s_attributes_4.svg`
+- `addons/mass_mailing/static/shapes/s_attributes_5.svg`
+- `addons/mass_mailing/static/shapes/s_newsletter_benefits_popup.svg`
+- `addons/mass_mailing/static/shapes/s_newsletter_sms_notifications.svg`
+- `addons/mass_mailing/static/src/action/client_actions.js`
+- `addons/mass_mailing/static/src/builder/builder_overlay_patch.js`
+- `addons/mass_mailing/static/src/builder/components/builder_row.scss`
+- `addons/mass_mailing/static/src/builder/components/company_update_dialog.js`
+- `addons/mass_mailing/static/src/builder/components/company_update_dialog.xml`
+- `addons/mass_mailing/static/src/builder/components/mass_mailing_builder_select_label.js`
+- `addons/mass_mailing/static/src/builder/components/mass_mailing_builder_select_label.scss`
+- `addons/mass_mailing/static/src/builder/components/mass_mailing_builder_select_label.xml`
+- `addons/mass_mailing/static/src/builder/fontfamily_picker.js`
+- `addons/mass_mailing/static/src/builder/fontfamily_picker.xml`
+- `addons/mass_mailing/static/src/builder/mass_mailing_builder.js`
+- `addons/mass_mailing/static/src/builder/mass_mailing_builder.xml`
+- `addons/mass_mailing/static/src/builder/mass_mailing_options.xml`
+- `addons/mass_mailing/static/src/builder/mass_mailing_snippet_model.js`
+- `addons/mass_mailing/static/src/builder/mass_mailing_snippet_preprocessor.js`
+- `addons/mass_mailing/static/src/builder/options/alert_option.xml`
+- `addons/mass_mailing/static/src/builder/options/alignment_option.xml`
+- `addons/mass_mailing/static/src/builder/options/bento_blocks_add_card_option.xml`
+- `addons/mass_mailing/static/src/builder/options/blockquote_option.xml`
+- `addons/mass_mailing/static/src/builder/options/border_options.xml`
+- `addons/mass_mailing/static/src/builder/options/color_picker_option.xml`
+- `addons/mass_mailing/static/src/builder/options/company_team_options.xml`
+- `addons/mass_mailing/static/src/builder/options/cta_badge_option.xml`
+- `addons/mass_mailing/static/src/builder/options/image_tool_option.js`
+- `addons/mass_mailing/static/src/builder/options/image_tool_option.xml`
+- `addons/mass_mailing/static/src/builder/options/masonry_block_template_option.xml`
+- `addons/mass_mailing/static/src/builder/options/options_container.js`
+- `addons/mass_mailing/static/src/builder/options/options_container.scss`
+- `addons/mass_mailing/static/src/builder/options/options_container.xml`
+- `addons/mass_mailing/static/src/builder/options/padding_option.xml`
+- `addons/mass_mailing/static/src/builder/options/record_snapshot_option.xml`
+- `addons/mass_mailing/static/src/builder/options/snippet_visibility_option.inside.scss`
+- `addons/mass_mailing/static/src/builder/options/snippet_visibility_option.js`
+- `addons/mass_mailing/static/src/builder/options/snippet_visibility_option.xml`
+- `addons/mass_mailing/static/src/builder/options/social_media_links.js`
+- `addons/mass_mailing/static/src/builder/options/social_media_links.xml`
+- `addons/mass_mailing/static/src/builder/options/social_media_option.xml`
+- `addons/mass_mailing/static/src/builder/plugins/background_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/bento_blocks_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/border_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/color_ui_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/crop_image_action.js`
+- `addons/mass_mailing/static/src/builder/plugins/cta_badge_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/customize_mailing_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/customize_mailing_variables.js`
+- `addons/mass_mailing/static/src/builder/plugins/design_tab_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/dropzone_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/empty_mailing_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/empty_not_editable_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/font_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/icon_snippet_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/image_snippet_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/layout_column_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/mail_blockquote_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/masonry_block_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/mass_mailing_setup_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/move_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/operation_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/padding_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/power_buttons.scss`
+- `addons/mass_mailing/static/src/builder/plugins/record_snapshot_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/save_snippet_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/schedule_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/signature_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/signature_snippet_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/snippet_visibility_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/social_media_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/version_control_plugin.js`
+- `addons/mass_mailing/static/src/builder/plugins/view_in_browser_option_plugin.js`
+- `addons/mass_mailing/static/src/builder/snippet_viewer/add_snippet_dialog.js`
+- `addons/mass_mailing/static/src/builder/snippet_viewer/add_snippet_dialog.xml`
+- `addons/mass_mailing/static/src/builder/snippet_viewer/snippet_viewer.scss`
+- `addons/mass_mailing/static/src/builder/tabs/design_tab.js`
+- `addons/mass_mailing/static/src/builder/tabs/design_tab.xml`
+- `addons/mass_mailing/static/src/components/mailing_filter_form_view_dialog/mailing_filter_form_view_dialog.js`
+- `addons/mass_mailing/static/src/components/mailing_filter_form_view_dialog/mailing_filter_form_view_dialog.xml`
+- `addons/mass_mailing/static/src/components/mailing_preview_iframe/mailing_preview_iframe.dark.scss`
+- `addons/mass_mailing/static/src/components/mailing_preview_iframe/mailing_preview_iframe.js`
+- `addons/mass_mailing/static/src/components/mailing_preview_iframe/mailing_preview_iframe.scss`
+- `addons/mass_mailing/static/src/components/mailing_preview_iframe/mailing_preview_iframe.xml`
+- `addons/mass_mailing/static/src/components/mailing_preview_iframe/mass_mailing_preview_record_field.js`
+- `addons/mass_mailing/static/src/components/mailing_preview_iframe/mass_mailing_preview_record_field.xml`
+- `addons/mass_mailing/static/src/components/mailing_preview_mode_toggle/mailing_preview_mode_toggle.js`
+- `addons/mass_mailing/static/src/components/mailing_preview_mode_toggle/mailing_preview_mode_toggle.xml`
+- `addons/mass_mailing/static/src/components/mass_mailing_link_popover/mailing_link_popover.xml`
+- `addons/mass_mailing/static/src/components/mass_mailing_link_popover/mass_mailing_link_popover.js`
+- `addons/mass_mailing/static/src/components/mass_mailing_save_as_template_cog_menu/mass_mailing_save_as_template_cog_menu.js`
+- `addons/mass_mailing/static/src/components/mass_mailing_save_as_template_cog_menu/mass_mailing_save_as_template_cog_menu.xml`
+- `addons/mass_mailing/static/src/editor/plugins/mass_mailing_contenteditable_plugin.js`
+- `addons/mass_mailing/static/src/editor/plugins/mass_mailing_link_plugin.js`
+- `addons/mass_mailing/static/src/editor/plugins/other_plugins.js`
+- `addons/mass_mailing/static/src/editor/plugins/plugin_templates.xml`
+- `addons/mass_mailing/static/src/editor/plugins/unsubscribe_command_plugin.js`
+- `addons/mass_mailing/static/src/fields/deliverance_percent_pie/deliverance_percent_pie_field.js`
+- `addons/mass_mailing/static/src/fields/deliverance_percent_pie/deliverance_percent_pie_field.xml`
+- `addons/mass_mailing/static/src/fields/domain_savable_field/domain_savable_field.js`
+- `addons/mass_mailing/static/src/fields/domain_savable_field/domain_savable_field.xml`
+- `addons/mass_mailing/static/src/fields/html_field/mass_mailing_html_field.js`
+- `addons/mass_mailing/static/src/fields/html_field/mass_mailing_html_field.scss`
+- `addons/mass_mailing/static/src/fields/html_field/mass_mailing_html_field.xml`
+- `addons/mass_mailing/static/src/fields/mass_mailing_many2many_tags_field/mass_mailing_many2many_tags_field.js`
+- `addons/mass_mailing/static/src/fields/template_preview_field/mailing_template_kanban_card/mailing_template_kanban_card.scss`
+- `addons/mass_mailing/static/src/fields/template_preview_field/mailing_template_kanban_card/mailing_template_kanban_card.shadowdom.scss`
+- `addons/mass_mailing/static/src/fields/template_preview_field/template_preview_field.js`
+- `addons/mass_mailing/static/src/fields/template_preview_field/template_preview_field.xml`
+- `addons/mass_mailing/static/src/fields/template_preview_field/theme_selector_template_preview/theme_selector_template_preview.shadowdom.scss`
+- `addons/mass_mailing/static/src/iframe/mass_mailing_iframe.js`
+- `addons/mass_mailing/static/src/iframe/mass_mailing_iframe.scss`
+- `addons/mass_mailing/static/src/iframe/mass_mailing_iframe.xml`
+- `addons/mass_mailing/static/src/iframe/mass_mailing_iframe_utils.js`
+- `addons/mass_mailing/static/src/iframe_assets/iframe_style.scss`
+- `addons/mass_mailing/static/src/iframe_assets/snippets_style.scss`
+- `addons/mass_mailing/static/src/img/newsletter.svg`
+- `addons/mass_mailing/static/src/img/snippets_demo/s_bento_grid_default_image_2.webp`
+- `addons/mass_mailing/static/src/img/snippets_demo/s_bento_grid_default_image_4.jpg`
+- `addons/mass_mailing/static/src/img/snippets_demo/s_shape_image_default_image.jpg`
+- `addons/mass_mailing/static/src/img/snippets_demo/s_showcase.jpg`
+- `addons/mass_mailing/static/src/img/snippets_demo/s_video.jpg`
+- `addons/mass_mailing/static/src/img/snippets_demo/set_catalog_square_md_1.webp`
+- Additional source files not expanded in this page: 231; see `../../01_CODEBASE_ANALYSIS/Repository_Inventory.csv`.
