@@ -76,3 +76,4 @@ This package documents actual source artifacts and explicitly labels runtime-dep
 - [Phase 14 final completeness audit](14_FINAL_COMPLETENESS_AUDIT.md)
 - [Phase 15 final release handoff](15_FINAL_RELEASE_HANDOFF.md)
 - [Phase 16 publication audit](16_PUBLICATION_AUDIT.md)
+- [Phase 17 publication status](17_PUBLICATION_STATUS.md)

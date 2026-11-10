@@ -2,9 +2,9 @@
 
 ## Publication state
 
-The original documentation publication PR [#1](https://github.com/DrRoot001/odoo/pull/1) merged at commit `5f1f2c61`. Phases 10–15 were completed afterward on `docs/erp-system-documentation`, ending at commit `501e6c99`, so those commits were not included in the original merge.
+The original documentation publication PR [#1](https://github.com/DrRoot001/odoo/pull/1) merged at commit `5f1f2c61`. Phases 10–16 were completed afterward on `docs/erp-system-documentation`, ending at commit `07b69570`, so those commits were not included in the original merge.
 
-Follow-up PR [#2](https://github.com/DrRoot001/odoo/pull/2) publishes the six post-merge documentation commits to base branch `20.0`.
+Follow-up PR [#2](https://github.com/DrRoot001/odoo/pull/2) publishes the post-merge documentation commits to base branch `20.0`.
 
 | Item | Value |
 |---|---|
@@ -13,8 +13,9 @@ Follow-up PR [#2](https://github.com/DrRoot001/odoo/pull/2) publishes the six po
 | Original merged PR | #1 |
 | Follow-up publication PR | #2 |
 | Base at audit | `5f1f2c61` |
-| Documentation branch at audit | `501e6c99` |
-| Post-merge commits pending | 6 |
+| Documentation branch at audit | `07b69570` |
+| Post-merge commits pending | 7 |
+| Pull-request checks | CodeRabbit: successful |
 | Automatic merge performed | No |
 
 ## Scope of pending publication
