@@ -1,15 +1,16 @@
-# Entity Relationship Diagram
+# Entity Relationship Diagram — Phase 6
 
-A complete static ERD for all possible Odoo addons would be misleading because the schema is generated from the installed module graph. The following runtime-level ERD shows verified platform relationships:
+The source-derived dictionaries contain 4,209 entity declarations and 5,290 relationship fields. A complete all-addon ERD would be misleading because inheritance and installed modules change the deployed schema.
 
 ```mermaid
 erDiagram
-  MODULE_MANIFEST ||--o{ MODULE_DEPENDENCY : declares
-  MODULE_MANIFEST ||--o{ ORM_MODEL : contributes
   ORM_MODEL ||--o{ ORM_FIELD : defines
-  ORM_MODEL ||--o{ ACCESS_RULE : governs
-  ORM_MODEL ||--o{ VIEW_OR_DATA_RECORD : loads
+  ORM_MODEL ||--o{ ORM_CONSTRAINT : declares
+  ORM_MODEL ||--o{ ORM_RELATIONSHIP : exposes
+  ORM_RELATIONSHIP }o--|| ORM_MODEL : targets
   ORM_MODEL }o--|| POSTGRESQL_TABLE : materializes_as
+  MODULE_MANIFEST ||--o{ ORM_MODEL : contributes
+  MODULE_MANIFEST ||--o{ MIGRATION : evolves
 ```
 
-`MODULE_MANIFEST`, `ORM_MODEL`, and related nodes are documentation abstractions, not literal database tables. Use `Entity_Dictionary.csv` and a live registry inspection for a deployment-specific ERD.
+The diagram uses documentation abstractions, not literal database tables. For a deployment-specific ERD, install the selected addon graph, initialize the registry, and export PostgreSQL metadata plus ORM field metadata.

@@ -27,7 +27,14 @@
 - [Feature inventory](03_MODULE_DOCUMENTATION/Feature_Inventory.csv) — one evidence-backed feature row per manifest
 - [Coverage matrix](03_MODULE_DOCUMENTATION/Module_Coverage_Matrix.md) — domain artifact totals
 - [Architecture](04_SYSTEM_ARCHITECTURE/System_Architecture.md)
-- [Database](05_DATABASE_DOCUMENTATION/Database_Overview.md)
+- [Database](05_DATABASE_DOCUMENTATION/Database_Overview.md) — Phase 6 ORM/entity/field/relationship extraction
+- [Entity dictionary](05_DATABASE_DOCUMENTATION/Entity_Dictionary.md)
+- [Field dictionary](05_DATABASE_DOCUMENTATION/Field_Dictionary.csv)
+- [Relationship dictionary](05_DATABASE_DOCUMENTATION/Relationship_Dictionary.csv)
+- [Constraint dictionary](05_DATABASE_DOCUMENTATION/Constraint_Dictionary.csv)
+- [Representative ERD](05_DATABASE_DOCUMENTATION/Representative_ERD.md)
+- [Schema evidence methodology](05_DATABASE_DOCUMENTATION/Schema_Evidence_Methodology.md)
+- [SQL and migration inventories](05_DATABASE_DOCUMENTATION/SQL_Artifact_Inventory.csv)
 - [API](06_API_DOCUMENTATION/API_Overview.md)
 - [Workflows](07_WORKFLOWS/Workflow_Catalog.md) — Phase 5 workflow families and evidence inventory
 - [Workflow evidence inventory](07_WORKFLOWS/Workflow_Evidence_Inventory.csv) — module-level workflow surfaces
