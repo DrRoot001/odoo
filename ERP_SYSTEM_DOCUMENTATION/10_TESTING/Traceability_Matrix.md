@@ -1,13 +1,10 @@
-# Traceability Matrix
+# Requirements Traceability Matrix — Phase 3
 
-| Requirement | Module/system surface | Source evidence | Test case |
-|---|---|---|---|
-| FR-001 | CLI/server | `odoo-bin`, `odoo/cli/`, `odoo/service/` | TC-001 |
-| FR-002 | Module lifecycle | `odoo/modules/` and manifests | TC-002 |
-| FR-003 | ORM/database | `odoo/orm/`, `odoo/sql_db.py` | TC-003 |
-| FR-004 | HTTP/API | `odoo/http/`, Route_Inventory.csv | TC-004 |
-| FR-005 | Security | addon security artifacts, ORM security | TC-005 |
-| FR-007 | UI/assets | XML and JS/TS inventories | TC-006 |
-| FR-008 | Testing | addon tests | TC-007 |
+The complete matrix is `Requirements_Traceability.csv` and links every generated requirement to its source artifact class and discovered module test files. Requirements without a test file are explicitly labeled `No test file found`; no test is claimed to have passed.
 
-Addon-specific traceability is one-to-one from `Module_Catalog.md` to each `addons/<module>.md`; runtime-level UI/API/database/test links remain deployment-specific where static source cannot prove them.
+| Coverage | Result |
+|---|---|
+| Platform and cross-cutting requirements | Source-linked |
+| Manifest-backed module requirements | One row per manifest |
+| Artifact-backed feature requirements | Generated only where artifacts exist |
+| Test execution | Not performed in Phase 3 |
