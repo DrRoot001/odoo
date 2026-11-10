@@ -57,7 +57,13 @@
 - [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
 - [Group inventory](08_SECURITY/Group_Inventory.csv)
 - [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv)
-- [UI/UX](09_UI_UX_DOCUMENTATION/Screen_Inventory.md)
+- [UI/UX](09_UI_UX_DOCUMENTATION/Screen_Inventory.md) — Phase 9 XML/navigation/frontend inventory
+- [UI/UX evidence methodology](09_UI_UX_DOCUMENTATION/UI_UX_Evidence_Methodology.md)
+- [UI/UX traceability](09_UI_UX_DOCUMENTATION/UI_Traceability.md)
+- [View/menu/action inventories](09_UI_UX_DOCUMENTATION/View_Inventory.csv) — Phase 9 XML/navigation/frontend inventory
+- [UI/UX evidence methodology](09_UI_UX_DOCUMENTATION/UI_UX_Evidence_Methodology.md)
+- [UI/UX traceability](09_UI_UX_DOCUMENTATION/UI_Traceability.md)
+- [View/menu/action inventories](09_UI_UX_DOCUMENTATION/View_Inventory.csv)
 - [Testing](10_TESTING/Testing_Strategy.md)
 - [Deployment and operations](11_DEPLOYMENT_AND_OPERATIONS/Installation_Guide.md)
 - [Audit and recommendations](12_AUDIT_AND_RECOMMENDATIONS/Implementation_Gaps.md)

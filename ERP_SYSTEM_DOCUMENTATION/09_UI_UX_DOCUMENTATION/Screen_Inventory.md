@@ -1,5 +1,21 @@
-# Screen Inventory
+# Screen Inventory — Phase 9
 
-The repository contains 6,101 XML files and 6,899 JavaScript/TypeScript files. XML files may define backend views, menus, actions, reports, website templates, email templates, data, or tests; file extension alone cannot identify a screen. A complete screen catalog requires parsing view/action records and resolving inherited XML views for a selected addon installation.
+## Static UI evidence
 
-The machine inventory records every XML file in `Repository_Inventory.csv`; browser/client assets are likewise recorded there.
+| Artifact | Count |
+|---|---:|
+| XML files | 6,099 |
+| XML records | 33,992 |
+| View records (`ir.ui.view`) | 3,962 |
+| Action/menu records | 6,998 |
+| Menuitem declarations | 884 |
+| Website/QWeb template declarations | 2,247 |
+| Asset declarations | 130 |
+| JS/TS files | 6,898 |
+| Frontend component/class evidence | 1,818 |
+| Frontend service evidence | 139 |
+| Frontend registry evidence | 1,839 |
+| Frontend test files | 2,462 |
+| Style files | 1,282 |
+
+The machine-readable inventories preserve source paths and declarations. XML view inheritance, access-group visibility, action resolution, asset bundle composition, and client rendering remain runtime/database dependent.
