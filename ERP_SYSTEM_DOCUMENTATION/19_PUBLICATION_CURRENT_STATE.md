@@ -16,4 +16,4 @@ Follow-up PR [#2](https://github.com/DrRoot001/odoo/pull/2) remains open against
 
 ## Publication boundary
 
-The documentation package is complete and verified on the documentation branch. It is not yet incorporated into `20.0`. The successful status context is not treated as human approval, and no automatic merge was performed.
+The documentation package is complete and verified on the documentation branch. It is not yet incorporated into `20.0`. The successful status context is not treated as human approval, and no automatic merge was performed. The documentation branch subsequently advanced through Phase 19 to `e32da48f`.

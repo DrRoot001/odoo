@@ -79,3 +79,4 @@ This package documents actual source artifacts and explicitly labels runtime-dep
 - [Phase 17 publication status](17_PUBLICATION_STATUS.md)
 - [Phase 18 publication review audit](18_PUBLICATION_REVIEW_AUDIT.md)
 - [Phase 19 publication current state](19_PUBLICATION_CURRENT_STATE.md)
+- [Phase 20 publication snapshot](20_PUBLICATION_SNAPSHOT.md)
