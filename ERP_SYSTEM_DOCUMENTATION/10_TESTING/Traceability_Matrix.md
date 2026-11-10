@@ -1,10 +1,13 @@
-# Requirements Traceability Matrix — Phase 3
+# Testing Traceability Matrix — Phase 10
 
-The complete matrix is `Requirements_Traceability.csv` and links every generated requirement to its source artifact class and discovered module test files. Requirements without a test file are explicitly labeled `No test file found`; no test is claimed to have passed.
+The Phase 3 requirement matrix remains the authoritative requirement-to-source register. Phase 10 adds test-artifact evidence through [`Test_File_Inventory.csv`](Test_File_Inventory.csv), module-level mapping through [`Test_Module_Coverage.csv`](Test_Module_Coverage.csv), and one non-executed evidence case per discovered test file through [`Evidence_Test_Cases.csv`](Evidence_Test_Cases.csv).
 
-| Coverage | Result |
-|---|---|
-| Platform and cross-cutting requirements | Source-linked |
-| Manifest-backed module requirements | One row per manifest |
-| Artifact-backed feature requirements | Generated only where artifacts exist |
-| Test execution | Not performed in Phase 3 |
+| Traceability link | Evidence | Status |
+|---|---|---|
+| Requirement → source artifact | `10_TESTING/Requirements_Traceability.csv` | Source-linked where discovered |
+| Module → test files | `Test_Module_Coverage.csv` | Static inventory complete |
+| Test file → execution case | `Evidence_Test_Cases.csv` | Generated; not executed |
+| Test case → pass/fail result | Actual Result column | Not available |
+| Requirement → individual assertion | Requires test execution and semantic review | Requires verification |
+
+No test is claimed to pass merely because a file or assertion exists.

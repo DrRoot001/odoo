@@ -64,7 +64,12 @@
 - [UI/UX evidence methodology](09_UI_UX_DOCUMENTATION/UI_UX_Evidence_Methodology.md)
 - [UI/UX traceability](09_UI_UX_DOCUMENTATION/UI_Traceability.md)
 - [View/menu/action inventories](09_UI_UX_DOCUMENTATION/View_Inventory.csv)
-- [Testing](10_TESTING/Testing_Strategy.md)
+- [Testing strategy](10_TESTING/Testing_Strategy.md) — Phase 10 test evidence and execution limits
+- [Existing test coverage](10_TESTING/Existing_Test_Coverage.md)
+- [Test file inventory](10_TESTING/Test_File_Inventory.csv)
+- [Module test coverage](10_TESTING/Test_Module_Coverage.csv)
+- [Evidence-linked test cases](10_TESTING/Evidence_Test_Cases.csv)
+- [Testing traceability](10_TESTING/Traceability_Matrix.md)
 - [Deployment and operations](11_DEPLOYMENT_AND_OPERATIONS/Installation_Guide.md)
 - [Audit and recommendations](12_AUDIT_AND_RECOMMENDATIONS/Implementation_Gaps.md)
 
