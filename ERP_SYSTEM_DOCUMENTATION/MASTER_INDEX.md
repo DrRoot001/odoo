@@ -29,7 +29,8 @@
 - [Architecture](04_SYSTEM_ARCHITECTURE/System_Architecture.md)
 - [Database](05_DATABASE_DOCUMENTATION/Database_Overview.md)
 - [API](06_API_DOCUMENTATION/API_Overview.md)
-- [Workflows](07_WORKFLOWS/Workflow_Catalog.md)
+- [Workflows](07_WORKFLOWS/Workflow_Catalog.md) — Phase 5 workflow families and evidence inventory
+- [Workflow evidence inventory](07_WORKFLOWS/Workflow_Evidence_Inventory.csv) — module-level workflow surfaces
 - [Security](08_SECURITY/Security_Architecture.md)
 - [UI/UX](09_UI_UX_DOCUMENTATION/Screen_Inventory.md)
 - [Testing](10_TESTING/Testing_Strategy.md)

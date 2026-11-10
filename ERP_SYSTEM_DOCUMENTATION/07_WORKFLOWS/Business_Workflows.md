@@ -1,5 +1,7 @@
 # Business Workflows
 
+The Phase 5 workflow reconstruction is documented in [`Workflow_Catalog.md`](Workflow_Catalog.md), with one evidence row for every module in [`Workflow_Evidence_Inventory.csv`](Workflow_Evidence_Inventory.csv). The diagrams below show the verified platform execution pattern; domain-specific flows remain module and deployment dependent.
+
 ```mermaid
 flowchart TD
   A[Process request or scheduled trigger] --> B[Authenticate/request context]
