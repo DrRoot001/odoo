@@ -23,11 +23,6 @@
 - [Module detail index](03_MODULE_DOCUMENTATION/Module_Detail_Index.csv) — aggregate artifact and dependency metrics
 - [Feature inventory](03_MODULE_DOCUMENTATION/Feature_Inventory.csv) — one evidence-backed feature row per manifest
 - [Coverage matrix](03_MODULE_DOCUMENTATION/Module_Coverage_Matrix.md) — domain artifact totals
-- [Module hierarchy](03_MODULE_DOCUMENTATION/Module_Hierarchy.md) — normalized Phase 2 domain classification
-- [Detailed module specifications](03_MODULE_DOCUMENTATION/Module_Detail_Methodology.md) — Phase 4 evidence structure for all 666 modules
-- [Module detail index](03_MODULE_DOCUMENTATION/Module_Detail_Index.csv) — aggregate artifact and dependency metrics
-- [Feature inventory](03_MODULE_DOCUMENTATION/Feature_Inventory.csv) — one evidence-backed feature row per manifest
-- [Coverage matrix](03_MODULE_DOCUMENTATION/Module_Coverage_Matrix.md) — domain artifact totals
 - [Architecture](04_SYSTEM_ARCHITECTURE/System_Architecture.md)
 - [Database](05_DATABASE_DOCUMENTATION/Database_Overview.md) — Phase 6 ORM/entity/field/relationship extraction
 - [Entity dictionary](05_DATABASE_DOCUMENTATION/Entity_Dictionary.md)
@@ -47,25 +42,10 @@
 - [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
 - [Group inventory](08_SECURITY/Group_Inventory.csv)
 - [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv) — Phase 8 security/control inventories
-- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
-- [Group inventory](08_SECURITY/Group_Inventory.csv)
-- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv) — Phase 8 security/control inventories
-- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
-- [Group inventory](08_SECURITY/Group_Inventory.csv)
-- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv) — Phase 8 security/control inventories
-- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
-- [Group inventory](08_SECURITY/Group_Inventory.csv)
-- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv) — Phase 8 security/control inventories
-- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
-- [Group inventory](08_SECURITY/Group_Inventory.csv)
-- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv)
 - [UI/UX](09_UI_UX_DOCUMENTATION/Screen_Inventory.md) — Phase 9 XML/navigation/frontend inventory
 - [UI/UX evidence methodology](09_UI_UX_DOCUMENTATION/UI_UX_Evidence_Methodology.md)
 - [UI/UX traceability](09_UI_UX_DOCUMENTATION/UI_Traceability.md)
 - [View/menu/action inventories](09_UI_UX_DOCUMENTATION/View_Inventory.csv) — Phase 9 XML/navigation/frontend inventory
-- [UI/UX evidence methodology](09_UI_UX_DOCUMENTATION/UI_UX_Evidence_Methodology.md)
-- [UI/UX traceability](09_UI_UX_DOCUMENTATION/UI_Traceability.md)
-- [View/menu/action inventories](09_UI_UX_DOCUMENTATION/View_Inventory.csv)
 - [Testing strategy](10_TESTING/Testing_Strategy.md) — Phase 10 test evidence and execution limits
 - [Existing test coverage](10_TESTING/Existing_Test_Coverage.md)
 - [Test file inventory](10_TESTING/Test_File_Inventory.csv)
@@ -92,3 +72,5 @@
 ## Evidence and limitations
 
 This package documents actual source artifacts and explicitly labels runtime-dependent conclusions as requiring verification. It does not invent a tenant-specific installed module set, database schema, API payloads, performance targets, permissions matrix, or production deployment.
+
+- [Phase 14 final completeness audit](14_FINAL_COMPLETENESS_AUDIT.md)
