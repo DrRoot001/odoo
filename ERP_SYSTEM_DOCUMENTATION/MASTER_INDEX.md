@@ -41,7 +41,22 @@
 - [Integration inventory](06_API_DOCUMENTATION/Integration_Inventory.csv)
 - [Workflows](07_WORKFLOWS/Workflow_Catalog.md) — Phase 5 workflow families and evidence inventory
 - [Workflow evidence inventory](07_WORKFLOWS/Workflow_Evidence_Inventory.csv) — module-level workflow surfaces
-- [Security](08_SECURITY/Security_Architecture.md)
+- [Security](08_SECURITY/Security_Architecture.md) — Phase 8 security/control inventories
+- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
+- [Group inventory](08_SECURITY/Group_Inventory.csv)
+- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv) — Phase 8 security/control inventories
+- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
+- [Group inventory](08_SECURITY/Group_Inventory.csv)
+- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv) — Phase 8 security/control inventories
+- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
+- [Group inventory](08_SECURITY/Group_Inventory.csv)
+- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv) — Phase 8 security/control inventories
+- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
+- [Group inventory](08_SECURITY/Group_Inventory.csv)
+- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv) — Phase 8 security/control inventories
+- [Security file inventory](08_SECURITY/Security_File_Inventory.csv)
+- [Group inventory](08_SECURITY/Group_Inventory.csv)
+- [Access/rule inventories](08_SECURITY/Model_Access_Inventory.csv)
 - [UI/UX](09_UI_UX_DOCUMENTATION/Screen_Inventory.md)
 - [Testing](10_TESTING/Testing_Strategy.md)
 - [Deployment and operations](11_DEPLOYMENT_AND_OPERATIONS/Installation_Guide.md)

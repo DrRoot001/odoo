@@ -1,12 +1,26 @@
-# Security Architecture
+# Security Architecture — Phase 8
 
-The security model combines HTTP/session handling, authentication addons, ORM access rights, record rules, model constraints, and deployment configuration. Static evidence includes 279 access/security files and security-focused test modules.
+## Static security surface
+
+| Evidence | Count |
+|---|---:|
+| Security-directory files | 279 |
+| XML group declarations | 192 |
+| XML access-rule declarations | 11 |
+| Model access CSV rows | 2,577 |
+| Authentication/security-related addon manifests | 37 |
+| Security/auth/session/access test files | 587 |
+| Route records in security matrix | 669 |
 
 ```mermaid
 flowchart LR
-  REQ[Request] --> AUTH[Authentication/session]
-  AUTH --> ACL[Model access rights]
-  ACL --> RULE[Record rules / data domain]
-  RULE --> ORM[ORM operation]
+  REQ[HTTP/API request] --> AUTH[Enabled authentication/provider/session]
+  AUTH --> ROUTE[Route auth/CSRF/CORS policy]
+  ROUTE --> ACL[Model access rights]
+  ACL --> RULE[Record rules and domains]
+  RULE --> ORM[ORM operation and model constraints]
   ORM --> DB[(PostgreSQL)]
+  AUTH --> AUDIT[Logging/session/security events]
 ```
+
+This architecture is source-backed. Effective controls depend on installed addons, loaded XML/CSV data, configuration, user/group assignments, and deployment settings.
