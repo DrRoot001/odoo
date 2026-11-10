@@ -10,8 +10,8 @@
 
 ## Blueprint sections
 
-- `01_PRODUCT_SPECIFICATION/` — product requirements, personas, rules, and capabilities.
-- `02_SYSTEM_ARCHITECTURE/` — original and cloneable architecture.
+- [`01_PRODUCT_SPECIFICATION/`](../01_PRODUCT_SPECIFICATION/) — product requirements, personas, rules, and capabilities.
+- [`02_SYSTEM_ARCHITECTURE/`](../02_SYSTEM_ARCHITECTURE/) — original and cloneable architecture.
 - `03_MODULE_SPECIFICATIONS/` — independent module specifications and domain groupings.
 - `04_DATABASE_DESIGN/` — entities, relationships, constraints, migration, and lifecycle.
 - `05_API_AND_INTEGRATIONS/` — routes, controllers, authentication, webhooks, and integrations.
@@ -24,6 +24,12 @@
 - `12_CLONING_AND_IMPLEMENTATION_ROADMAP/` — build order, milestones, MVP, team structure, and parity.
 - `13_TRACEABILITY_AND_GOVERNANCE/` — evidence, requirements, gaps, change control, and coverage.
 - `14_DIAGRAMS/` — Mermaid architecture and workflow diagrams.
+
+## Completed phases
+
+- [Phase 1 analysis](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_1_ANALYSIS.md)
+- [Phase 1 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_1_VALIDATION.md)
+- [Phase 2 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_2_VALIDATION.md)
 
 ## Existing evidence package
 
