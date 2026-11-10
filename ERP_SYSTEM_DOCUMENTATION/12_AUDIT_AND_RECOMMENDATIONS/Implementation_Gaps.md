@@ -1,9 +1,15 @@
-# Implementation Gaps
+# Implementation Gaps — Phase 12
 
-| ID | Finding | Severity | Evidence |
+The findings below distinguish unavailable deployment/runtime evidence from source-level implementation gaps. They do not claim that a feature is absent from the product merely because it cannot be proven from this repository snapshot.
+
+| ID | Severity | Finding | Status |
 |---|---|---|---|
-| GAP-001 | Deployed module set and database schema cannot be established from source alone. | High | Runtime installation/database not supplied. |
-| GAP-002 | Complete endpoint request/response contracts require route-by-route execution and serializer tracing. | Medium | 975 route declarations inventoried; no runtime API contract export. |
-| GAP-003 | Complete UI screen/menu inventory requires resolving inherited XML views/actions in a configured database. | Medium | 6,101 XML artifacts inventoried. |
-| GAP-004 | Production topology, backup/recovery, SLA, and capacity are not defined by repository artifacts. | High | Deployment artifacts are packaging/systemd focused. |
-| GAP-005 | Full test pass/coverage results were not executed during documentation generation. | Medium | 2,786 test files present; status remains Not Executed. |
+| AUD-001 | High | Installed addon set and runtime database schema are not derivable from source alone. | Requires runtime verification |
+| AUD-002 | High | Production topology, backup schedule, RPO/RTO, HA, and monitoring are not defined by repository artifacts. | Not Found in Codebase |
+| AUD-003 | Medium | Test execution and coverage results are unavailable for this documentation pass. | Not Executed |
+| AUD-004 | Medium | Complete API payload contracts require runtime tracing. | Requires runtime verification |
+| AUD-005 | Medium | Final UI/navigation behavior requires resolved installed XML inheritance and asset bundles. | Requires runtime verification |
+| AUD-006 | Medium | 2,936 TODO/FIXME/deprecation markers require triage. | Evidence-backed review item |
+| AUD-007 | Medium | 164 explicit `NotImplementedError` occurrences require reachability review. | Evidence-backed review item |
+
+Full register: [`Audit_Finding_Register.csv`](Audit_Finding_Register.csv).

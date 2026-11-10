@@ -80,7 +80,12 @@
 - [Configuration option inventory](11_DEPLOYMENT_AND_OPERATIONS/Configuration_Option_Inventory.csv)
 - [Environment variable inventory](11_DEPLOYMENT_AND_OPERATIONS/Environment_Variable_Inventory.csv)
 - [Migration artifact inventory](11_DEPLOYMENT_AND_OPERATIONS/Migration_Artifact_Inventory.csv)
-- [Audit and recommendations](12_AUDIT_AND_RECOMMENDATIONS/Implementation_Gaps.md)
+- [Implementation gaps](12_AUDIT_AND_RECOMMENDATIONS/Implementation_Gaps.md) — Phase 12 classified audit findings
+- [Technical debt](12_AUDIT_AND_RECOMMENDATIONS/Technical_Debt.md)
+- [Security findings](12_AUDIT_AND_RECOMMENDATIONS/Security_Findings.md)
+- [Improvement roadmap](12_AUDIT_AND_RECOMMENDATIONS/Improvement_Roadmap.md)
+- [Audit finding register](12_AUDIT_AND_RECOMMENDATIONS/Audit_Finding_Register.csv)
+- [Debt marker inventory](12_AUDIT_AND_RECOMMENDATIONS/Debt_Marker_Inventory.csv)
 
 ## Evidence and limitations
 
