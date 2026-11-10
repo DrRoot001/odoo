@@ -18,10 +18,10 @@ This documentation is evidence-based. It distinguishes static implementation evi
 | XML files | 6,101 |
 | Model files | 3,647 |
 | Controller files | 540 |
-| Route declarations found statically | 975 |
-| Test files | 2,786 |
+| Authoritative controller route records | 669 |
+| Test files | 3,470 |
 | Security artifact files | 279 |
 
 ### Coverage statement
 
-Repository artifact inventory coverage is 100% for files discoverable in the shallow clone, excluding `.git` metadata and this generated package. Semantic feature-trace coverage is partial: the package catalogs every addon and major artifact class, while detailed runtime behavior, rendered UI states, database-generated schema, and configuration-dependent integrations require execution-level verification. See `01_CODEBASE_ANALYSIS/Implementation_Inventory.md` and `12_AUDIT_AND_RECOMMENDATIONS/Implementation_Gaps.md`.
+Repository artifact inventory coverage is 100% for files discoverable in the shallow clone, excluding `.git` metadata and this generated package. Semantic feature-trace coverage is partial: the package catalogs every addon and major artifact class, while detailed runtime behavior, rendered UI states, database-generated schema, and configuration-dependent integrations require execution-level verification. The authoritative route count is the controller-derived 669-record inventory; broader text-discovery counts are not used as endpoint totals. See `01_CODEBASE_ANALYSIS/Implementation_Inventory.md`, `06_API_DOCUMENTATION/API_Endpoint_Inventory.csv`, and `12_AUDIT_AND_RECOMMENDATIONS/Implementation_Gaps.md`.

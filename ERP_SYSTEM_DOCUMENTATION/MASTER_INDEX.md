@@ -74,3 +74,4 @@
 This package documents actual source artifacts and explicitly labels runtime-dependent conclusions as requiring verification. It does not invent a tenant-specific installed module set, database schema, API payloads, performance targets, permissions matrix, or production deployment.
 
 - [Phase 14 final completeness audit](14_FINAL_COMPLETENESS_AUDIT.md)
+- [Phase 15 final release handoff](15_FINAL_RELEASE_HANDOFF.md)
