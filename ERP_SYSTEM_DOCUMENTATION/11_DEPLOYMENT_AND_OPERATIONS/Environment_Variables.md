@@ -1,31 +1,5 @@
-# Environment Variables
+# Environment Variables — Phase 11
 
-The following names were found in source/configuration references; values are not included:
+Static source inspection identified **72** environment-variable names or configuration environment mappings. Values are intentionally excluded. The complete list is [`Environment_Variable_Inventory.csv`](Environment_Variable_Inventory.csv).
 
-- `ADDONS_PATH`
-- `DEBUGPY_RUNNING`
-- `ODOO_BROWSER_BIN`
-- `ODOO_BROWSER_CPU_THROTTLING`
-- `ODOO_BROWSER_LOG_VERBOSITY`
-- `ODOO_HTTP_SOCKET_FD`
-- `ODOO_HTTP_SOCKET_TIMEOUT`
-- `ODOO_NOTIFY_PAYLOAD_MAX_LENGTH`
-- `ODOO_PROFILE_PRELOAD`
-- `ODOO_PROFILE_PRELOAD_INTERVAL`
-- `ODOO_PROFILE_PRELOAD_SQL`
-- `ODOO_READY_SIGHUP_PID`
-- `ODOO_REGISTRY_LRU_SIZE`
-- `ODOO_REGISTRY_LRU_SIZE_CRON`
-- `ODOO_REGISTRY_MAX_IDLE_TIMEOUT`
-- `ODOO_RELOAD_CHILD`
-- `ODOO_TEST_FAILURE_RETRIES`
-- `ODOO_TEST_MAX_FAILED_TESTS`
-- `PATH`
-- `PGHOST`
-- `PGPORT`
-- `PGUSER`
-- `PYTHONPATH`
-- `PYTHONSTARTUP`
-- `VIRTUAL_ENV`
-
-Some runtime settings are CLI/config-file options rather than environment variables.
+These names include PostgreSQL connection variables, Odoo runtime/test/browser/profile controls, HTTP/socket integration variables, proxy/webhook-related values, and standard process environment variables. A name's presence does not prove that a deployment sets it or that a feature is enabled.

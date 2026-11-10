@@ -70,7 +70,16 @@
 - [Module test coverage](10_TESTING/Test_Module_Coverage.csv)
 - [Evidence-linked test cases](10_TESTING/Evidence_Test_Cases.csv)
 - [Testing traceability](10_TESTING/Traceability_Matrix.md)
-- [Deployment and operations](11_DEPLOYMENT_AND_OPERATIONS/Installation_Guide.md)
+- [Installation guide](11_DEPLOYMENT_AND_OPERATIONS/Installation_Guide.md) — Phase 11 verified installation surfaces
+- [Configuration guide](11_DEPLOYMENT_AND_OPERATIONS/Configuration_Guide.md)
+- [Environment variables](11_DEPLOYMENT_AND_OPERATIONS/Environment_Variables.md)
+- [Deployment guide](11_DEPLOYMENT_AND_OPERATIONS/Deployment_Guide.md)
+- [Backup and recovery](11_DEPLOYMENT_AND_OPERATIONS/Backup_Recovery.md)
+- [Maintenance guide](11_DEPLOYMENT_AND_OPERATIONS/Maintenance_Guide.md)
+- [Deployment artifact inventory](11_DEPLOYMENT_AND_OPERATIONS/Deployment_Artifact_Inventory.csv)
+- [Configuration option inventory](11_DEPLOYMENT_AND_OPERATIONS/Configuration_Option_Inventory.csv)
+- [Environment variable inventory](11_DEPLOYMENT_AND_OPERATIONS/Environment_Variable_Inventory.csv)
+- [Migration artifact inventory](11_DEPLOYMENT_AND_OPERATIONS/Migration_Artifact_Inventory.csv)
 - [Audit and recommendations](12_AUDIT_AND_RECOMMENDATIONS/Implementation_Gaps.md)
 
 ## Evidence and limitations
