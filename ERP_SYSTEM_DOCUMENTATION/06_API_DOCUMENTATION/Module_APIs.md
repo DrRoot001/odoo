@@ -1,3 +1,7 @@
-# Module APIs
+# Module APIs — Phase 7
 
-Every addon controller is a potential HTTP API surface. The per-addon pages list controller files and route counts; `Route_Inventory.csv` provides source evidence. Internal ORM/service calls are not REST APIs and are documented through their model/service source files rather than invented endpoint schemas.
+The machine-readable endpoint inventory contains 669 rows. API routes are grouped by source module in the `Module` column and linked to controller source locations. Route declarations establish the transport contract surface; they do not alone establish response schemas or successful runtime availability.
+
+## API processing path
+
+`odoo/http/` provides routing, request/session handling, dispatch, and response mechanisms. Addon controllers call ORM models and services, may apply authentication/authorization, and may return rendered views, HTTP responses, JSON/JSON-RPC responses, redirects, files, or explicit exceptions.

@@ -35,7 +35,10 @@
 - [Representative ERD](05_DATABASE_DOCUMENTATION/Representative_ERD.md)
 - [Schema evidence methodology](05_DATABASE_DOCUMENTATION/Schema_Evidence_Methodology.md)
 - [SQL and migration inventories](05_DATABASE_DOCUMENTATION/SQL_Artifact_Inventory.csv)
-- [API](06_API_DOCUMENTATION/API_Overview.md)
+- [API](06_API_DOCUMENTATION/API_Overview.md) — Phase 7 route and integration extraction
+- [API endpoint inventory](06_API_DOCUMENTATION/API_Endpoint_Inventory.csv)
+- [Webhook inventory](06_API_DOCUMENTATION/Webhook_Inventory.csv)
+- [Integration inventory](06_API_DOCUMENTATION/Integration_Inventory.csv)
 - [Workflows](07_WORKFLOWS/Workflow_Catalog.md) — Phase 5 workflow families and evidence inventory
 - [Workflow evidence inventory](07_WORKFLOWS/Workflow_Evidence_Inventory.csv) — module-level workflow surfaces
 - [Security](08_SECURITY/Security_Architecture.md)

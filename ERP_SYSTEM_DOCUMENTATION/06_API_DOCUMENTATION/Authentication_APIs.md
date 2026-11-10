@@ -1,3 +1,5 @@
-# Authentication APIs
+# Authentication APIs — Phase 7
 
-Authentication is implemented through core HTTP/session mechanisms plus optional addons for signup, OAuth, LDAP, passkeys, TOTP, password policy, timeout, and portal behavior. Endpoint details are addon-specific and are listed in `Route_Inventory.csv`; exact request/response behavior requires tracing each controller and running the configured route.
+The endpoint inventory records authentication metadata for all 669 routes. Static auth distribution: {'public': 384, 'user': 229, 'none': 38, 'outlook': 5, 'calendar': 5, 'bearer': 6, 'thing': 2}.
+
+Authentication providers and extensions include local/session handling plus optional LDAP, OAuth, passkey, TOTP, signup, password policy, timeout, and portal addons. Provider enablement, credentials, session settings, and route protection must be verified in the target deployment.
