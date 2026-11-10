@@ -423,7 +423,7 @@ Modules are grouped using the manifest `category` field first, then conservative
 | [`web_hierarchy`](addons/web_hierarchy.md) | Hidden | Not declared | 1 | 6 Python, 3 XML, 10 JS/TS, 0 tests, 0 security, 0 routes |
 | [`web_tour`](addons/web_tour.md) | Hidden | Not declared | 1 | 9 Python, 6 XML, 28 JS/TS, 3 tests, 1 security, 0 routes |
 | [`web_unsplash`](addons/web_unsplash.md) | Hidden | Find free high-resolution images from Unsplash | 2 | 12 Python, 4 XML, 7 JS/TS, 2 tests, 0 security, 4 routes |
-| [`base`](../base.md) | Hidden | Not declared | 0 | 107 Python, 88 XML, 1 JS/TS, 42 tests, 2 security, 0 routes |
+| [`base`](addons/base.md) | Hidden | Not declared | 0 | 107 Python, 88 XML, 1 JS/TS, 42 tests, 2 security, 0 routes |
 
 ## Point of Sale (46 modules)
 | Module | Manifest category | Summary | Dependencies | Evidence |
@@ -648,24 +648,24 @@ Modules are grouped using the manifest `category` field first, then conservative
 | [`test_website`](addons/test_website.md) | Hidden | Website Test, mainly for module install/uninstall tests | 3 | 35 Python, 8 XML, 19 JS/TS, 28 tests, 2 security, 37 routes |
 | [`test_website_modules`](addons/test_website_modules.md) | Hidden | Not declared | 8 | 7 Python, 0 XML, 1 JS/TS, 5 tests, 0 security, 0 routes |
 | [`test_website_slides_full`](addons/test_website_slides_full.md) | Hidden/Tests | Not declared | 3 | 4 Python, 2 XML, 1 JS/TS, 2 tests, 0 security, 0 routes |
-| [`test_assetsbundle`](../test_assetsbundle.md) | Hidden/Tests | Not declared | 1 | 10 Python, 8 XML, 7 JS/TS, 4 tests, 0 security, 1 routes |
-| [`test_base`](../test_base.md) | Hidden/Tests | Not declared | 1 | 112 Python, 10 XML, 0 JS/TS, 107 tests, 1 security, 0 routes |
-| [`test_install_auto`](../test_install_auto.md) | Hidden/Tools | Not declared | 1 | 4 Python, 1 XML, 0 JS/TS, 4 tests, 0 security, 0 routes |
-| [`test_install_base`](../test_install_base.md) | Hidden/Tools | Not declared | 1 | 2 Python, 0 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
-| [`test_install_fail`](../test_install_fail.md) | Hidden/Tools | Not declared | 1 | 2 Python, 1 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
-| [`test_data_module`](../test_data_module.md) | Hidden/Tests | Not declared | 0 | 1 Python, 0 XML, 0 JS/TS, 0 tests, 0 security, 0 routes |
-| [`test_data_module_install`](../test_data_module_install.md) | Hidden/Tests | Not declared | 1 | 4 Python, 0 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
-| [`test_http`](../test_http.md) | Hidden/Tests | Not declared | 4 | 27 Python, 2 XML, 0 JS/TS, 20 tests, 0 security, 44 routes |
-| [`test_inherit`](../test_inherit.md) | Hidden/Tests | Not declared | 2 | 11 Python, 1 XML, 0 JS/TS, 3 tests, 1 security, 0 routes |
-| [`test_inherit_depends`](../test_inherit_depends.md) | Hidden/Tests | Not declared | 2 | 5 Python, 0 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
-| [`test_inherits_depends`](../test_inherits_depends.md) | Hidden/Tests | Not declared | 1 | 5 Python, 0 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
-| [`test_l10n`](../test_l10n.md) | Hidden/Tests | Not declared | 1 | 5 Python, 0 XML, 0 JS/TS, 3 tests, 0 security, 0 routes |
-| [`test_lint`](../test_lint.md) | Hidden/Tests | Not declared | 1 | 29 Python, 0 XML, 0 JS/TS, 27 tests, 0 security, 0 routes |
-| [`test_main_flows`](../test_main_flows.md) | Hidden/Tests | Not declared | 6 | 5 Python, 0 XML, 3 JS/TS, 2 tests, 0 security, 0 routes |
-| [`test_tests`](../test_tests.md) | Hidden/Tests | Not declared | 2 | 16 Python, 1 XML, 0 JS/TS, 11 tests, 1 security, 0 routes |
-| [`test_translation`](../test_translation.md) | Hidden/Tests | Not declared | 2 | 11 Python, 3 XML, 2 JS/TS, 7 tests, 1 security, 0 routes |
-| [`test_uninstall`](../test_uninstall.md) | Hidden/Tests | Not declared | 1 | 3 Python, 0 XML, 0 JS/TS, 0 tests, 0 security, 0 routes |
-| [`test_web`](../test_web.md) | Hidden/Tests | Not declared | 2 | 24 Python, 0 XML, 2 JS/TS, 20 tests, 0 security, 0 routes |
+| [`test_assetsbundle`](addons/test_assetsbundle.md) | Hidden/Tests | Not declared | 1 | 10 Python, 8 XML, 7 JS/TS, 4 tests, 0 security, 1 routes |
+| [`test_base`](addons/test_base.md) | Hidden/Tests | Not declared | 1 | 112 Python, 10 XML, 0 JS/TS, 107 tests, 1 security, 0 routes |
+| [`test_install_auto`](addons/test_install_auto.md) | Hidden/Tools | Not declared | 1 | 4 Python, 1 XML, 0 JS/TS, 4 tests, 0 security, 0 routes |
+| [`test_install_base`](addons/test_install_base.md) | Hidden/Tools | Not declared | 1 | 2 Python, 0 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
+| [`test_install_fail`](addons/test_install_fail.md) | Hidden/Tools | Not declared | 1 | 2 Python, 1 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
+| [`test_data_module`](addons/test_data_module.md) | Hidden/Tests | Not declared | 0 | 1 Python, 0 XML, 0 JS/TS, 0 tests, 0 security, 0 routes |
+| [`test_data_module_install`](addons/test_data_module_install.md) | Hidden/Tests | Not declared | 1 | 4 Python, 0 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
+| [`test_http`](addons/test_http.md) | Hidden/Tests | Not declared | 4 | 27 Python, 2 XML, 0 JS/TS, 20 tests, 0 security, 44 routes |
+| [`test_inherit`](addons/test_inherit.md) | Hidden/Tests | Not declared | 2 | 11 Python, 1 XML, 0 JS/TS, 3 tests, 1 security, 0 routes |
+| [`test_inherit_depends`](addons/test_inherit_depends.md) | Hidden/Tests | Not declared | 2 | 5 Python, 0 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
+| [`test_inherits_depends`](addons/test_inherits_depends.md) | Hidden/Tests | Not declared | 1 | 5 Python, 0 XML, 0 JS/TS, 2 tests, 0 security, 0 routes |
+| [`test_l10n`](addons/test_l10n.md) | Hidden/Tests | Not declared | 1 | 5 Python, 0 XML, 0 JS/TS, 3 tests, 0 security, 0 routes |
+| [`test_lint`](addons/test_lint.md) | Hidden/Tests | Not declared | 1 | 29 Python, 0 XML, 0 JS/TS, 27 tests, 0 security, 0 routes |
+| [`test_main_flows`](addons/test_main_flows.md) | Hidden/Tests | Not declared | 6 | 5 Python, 0 XML, 3 JS/TS, 2 tests, 0 security, 0 routes |
+| [`test_tests`](addons/test_tests.md) | Hidden/Tests | Not declared | 2 | 16 Python, 1 XML, 0 JS/TS, 11 tests, 1 security, 0 routes |
+| [`test_translation`](addons/test_translation.md) | Hidden/Tests | Not declared | 2 | 11 Python, 3 XML, 2 JS/TS, 7 tests, 1 security, 0 routes |
+| [`test_uninstall`](addons/test_uninstall.md) | Hidden/Tests | Not declared | 1 | 3 Python, 0 XML, 0 JS/TS, 0 tests, 0 security, 0 routes |
+| [`test_web`](addons/test_web.md) | Hidden/Tests | Not declared | 2 | 24 Python, 0 XML, 2 JS/TS, 20 tests, 0 security, 0 routes |
 
 ## Website & eCommerce (56 modules)
 | Module | Manifest category | Summary | Dependencies | Evidence |
@@ -726,4 +726,3 @@ Modules are grouped using the manifest `category` field first, then conservative
 | [`website_slides_survey`](addons/website_slides_survey.md) | Website/eLearning | Add certification capabilities to your courses | 2 | 15 Python, 21 XML, 3 JS/TS, 4 tests, 1 security, 3 routes |
 | [`website_sms`](addons/website_sms.md) | Website/Website | Allows to send sms to website visitor | 2 | 4 Python, 1 XML, 0 JS/TS, 0 tests, 0 security, 0 routes |
 | [`website_timesheet`](addons/website_timesheet.md) | Website/Website | Allow hiding timesheet information in the portal | 2 | 4 Python, 0 XML, 0 JS/TS, 0 tests, 0 security, 0 routes |
-

@@ -12,6 +12,9 @@
 - [Executive overview](00_EXECUTIVE_OVERVIEW/Executive_Summary.md)
 - [Codebase analysis](01_CODEBASE_ANALYSIS/Project_Structure.md)
 - [Requirements](02_REQUIREMENTS/Software_Requirements_Specification.md)
+- [Functional requirements register](02_REQUIREMENTS/Functional_Requirements_Document.md) — Phase 3 detailed FRD and `Functional_Requirements.csv`
+- [Validation rules](02_REQUIREMENTS/Validation_Rules.csv) — constraints, dependencies, security, jobs, reports
+- [Requirements traceability](10_TESTING/Requirements_Traceability.csv) — requirement-to-source/test links
 - [Module catalog](03_MODULE_DOCUMENTATION/Module_Catalog.md) — 666 per-addon evidence pages in `03_MODULE_DOCUMENTATION/addons/`
 - [Module hierarchy](03_MODULE_DOCUMENTATION/Module_Hierarchy.md) — normalized Phase 2 domain classification
 - [Feature inventory](03_MODULE_DOCUMENTATION/Feature_Inventory.csv) — one evidence-backed feature row per manifest

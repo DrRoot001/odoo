@@ -1,11 +1,14 @@
-# Business Rules
+# Business Rules — Phase 3
 
-## Verified rule mechanisms
+## Verified platform rules
 
-- Addon dependency declarations control module graph ordering (`__manifest__.py`, `odoo/modules/module_graph.py`).
-- ORM constraints are implemented through model decorators and field definitions; static scan found 573 `constrains` usages.
-- Computed/onchange dependencies are implemented through ORM decorators; static scan found 3,750 `depends` and 583 `onchange` usages.
-- Access rights and record rules are declared in addon security files and enforced by the ORM/security layer.
-- Localization, company, currency, tax, inventory, sales, accounting, HR, and other domain rules are distributed across addon inheritance chains.
+1. **Dependency ordering:** a module's manifest dependencies are prerequisites for loading the module; evidence is the manifest graph and `odoo/modules/`.
+2. **Declarative validation:** model constraint, computed dependency, and onchange decorators define processing/validation hooks; counts and evidence are in `Validation_Rules.csv`.
+3. **Authorization:** addon security declarations are evaluated by the platform security layer; exact permissions are module and deployment specific.
+4. **Transactional persistence:** ORM/database operations use the shared registry and PostgreSQL transaction layer; exact rollback boundaries depend on the operation.
+5. **Scheduled execution:** cron/automation declarations are conditional on installation and server scheduling configuration.
+6. **Reporting:** report actions/templates are conditional on installed modules and configured report services.
 
-Exact rule text is module/model specific and must be read from the cited model methods, XML rules, and tests. No business rule is inferred from a module name alone.
+## Explicit limits
+
+No domain-specific rule is inferred from a module name. Tax, accounting, inventory, payroll, sales, manufacturing, localization, and other rules must be traced from the relevant model methods, XML data, and tests in the module evidence pages.
