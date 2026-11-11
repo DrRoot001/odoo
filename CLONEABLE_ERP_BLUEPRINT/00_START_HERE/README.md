@@ -24,6 +24,6 @@ The clone may use a different technology stack. Odoo-specific implementation det
 4. [`DOCUMENTATION_INDEX.md`](DOCUMENTATION_INDEX.md)
 5. Product, architecture, module, data, API, workflow, security, frontend, testing, and roadmap sections.
 
-## Phase 1 status
+## Blueprint status
 
-Phase 1 establishes the structure, translation rules, source baseline, and 666-module coverage map. Detailed module specifications and implementation plans are produced in later blueprint phases.
+Phases 1–4 establish the structure, translation rules, source baseline, 666-module coverage map, independent module specifications, database registers, API/integration registers, and architecture diagrams. Remaining workflow, security, frontend, testing, deployment, roadmap, and final audit sections are produced in later blueprint phases.

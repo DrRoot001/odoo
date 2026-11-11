@@ -13,8 +13,8 @@
 - [`01_PRODUCT_SPECIFICATION/`](../01_PRODUCT_SPECIFICATION/) — product requirements, personas, rules, and capabilities.
 - [`02_SYSTEM_ARCHITECTURE/`](../02_SYSTEM_ARCHITECTURE/) — original and cloneable architecture.
 - [`03_MODULE_SPECIFICATIONS/`](../03_MODULE_SPECIFICATIONS/) — independent module specifications and domain groupings.
-- `04_DATABASE_DESIGN/` — entities, relationships, constraints, migration, and lifecycle.
-- `05_API_AND_INTEGRATIONS/` — routes, controllers, authentication, webhooks, and integrations.
+- [`04_DATABASE_DESIGN/`](../04_DATABASE_DESIGN/) — entities, relationships, constraints, migration, and lifecycle.
+- [`05_API_AND_INTEGRATIONS/`](../05_API_AND_INTEGRATIONS/) — routes, controllers, authentication, webhooks, and integrations.
 - `06_WORKFLOWS_AND_BUSINESS_PROCESSES/` — end-to-end flows and state transitions.
 - `07_SECURITY_AND_ACCESS_CONTROL/` — users, groups, ACLs, record rules, and security requirements.
 - `08_FRONTEND_AND_UX/` — components, screens, navigation, and UX behavior.
@@ -31,6 +31,7 @@
 - [Phase 1 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_1_VALIDATION.md)
 - [Phase 2 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_2_VALIDATION.md)
 - [Phase 3 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_3_VALIDATION.md)
+- [Phase 4 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_4_VALIDATION.md)
 
 ## Existing evidence package
 
