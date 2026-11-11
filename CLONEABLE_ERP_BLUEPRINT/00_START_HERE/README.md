@@ -26,4 +26,4 @@ The clone may use a different technology stack. Odoo-specific implementation det
 
 ## Blueprint status
 
-Phases 1–4 establish the structure, translation rules, source baseline, 666-module coverage map, independent module specifications, database registers, API/integration registers, and architecture diagrams. Remaining workflow, security, frontend, testing, deployment, roadmap, and final audit sections are produced in later blueprint phases.
+Phases 1–9 establish the structure, translation rules, source baseline, 666-module coverage map, independent module specifications, database/API/workflow/security/frontend/testing/deployment specifications, implementation roadmap, traceability governance, and final audit. Runtime schema, API payload, browser, test execution, deployment, backup, performance, and production topology validation remain explicitly identified as environment-dependent work.
