@@ -19,8 +19,8 @@
 - [`07_SECURITY_AND_ACCESS_CONTROL/`](../07_SECURITY_AND_ACCESS_CONTROL/) — users, groups, ACLs, record rules, and security requirements.
 - [`08_FRONTEND_AND_UX/`](../08_FRONTEND_AND_UX/) — components, screens, navigation, and UX behavior.
 - [`09_TECHNICAL_IMPLEMENTATION/`](../09_TECHNICAL_IMPLEMENTATION/) — implementation conventions, jobs, extensions, and errors.
-- `10_TESTING_AND_QUALITY/` — test strategy, cases, acceptance, integration, and regression.
-- `11_INFRASTRUCTURE_AND_DEPLOYMENT/` — development, production, configuration, recovery, and performance.
+- [`10_TESTING_AND_QUALITY/`](../10_TESTING_AND_QUALITY/) — test strategy, cases, acceptance, integration, and regression.
+- [`11_INFRASTRUCTURE_AND_DEPLOYMENT/`](../11_INFRASTRUCTURE_AND_DEPLOYMENT/) — development, production, configuration, recovery, and performance.
 - `12_CLONING_AND_IMPLEMENTATION_ROADMAP/` — build order, milestones, MVP, team structure, and parity.
 - `13_TRACEABILITY_AND_GOVERNANCE/` — evidence, requirements, gaps, change control, and coverage.
 - `14_DIAGRAMS/` — Mermaid architecture and workflow diagrams.
@@ -34,6 +34,7 @@
 - [Phase 4 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_4_VALIDATION.md)
 - [Phase 5 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_5_VALIDATION.md)
 - [Phase 6 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_6_VALIDATION.md)
+- [Phase 7 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_7_VALIDATION.md)
 
 ## Existing evidence package
 
