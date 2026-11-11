@@ -38,6 +38,7 @@
 - [Phase 8 validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_8_VALIDATION.md)
 - [Phase 9 final validation](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_9_FINAL_VALIDATION.md)
 - [Phase 10 release handoff](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_10_RELEASE_HANDOFF.md)
+- [Phase 12 publication audit](../13_TRACEABILITY_AND_GOVERNANCE/PHASE_12_PUBLICATION_AUDIT.md)
 
 ## Existing evidence package
 
